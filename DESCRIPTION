@@ -7,7 +7,11 @@ Title: Base DataSHIELD methods (server)
 Description: 
 Depends:
     stats
-DatashieldAggregation: summary, lm, glm
-DatashieldAssignment: 
+Aggregate: summary, length, matrix, colnames, mean, var, lm.ds,
+    glm.ds
+Assign: log, exp, sum, product, as.list, as.numeric, cbind,
+    complete.cases, c
 Collate:
-    'aggregation.r'
+    'base.r'
+    'stats.r'
+    'assign.r'

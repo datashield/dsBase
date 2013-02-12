@@ -1,18 +1,10 @@
-#' Summary with length constraint.
+#' Variance of a vector or a matrix with NA values stripped before computation proceeds.
 #'
-#' @param data vector of data
+#' @param a vector or matrix
 #' @export
 #' 
-summary <- function(data) {
-  if(is.atomic(data)) {
-    if(length(data) <= 1) {
-      "Vector too small."
-    } else {
-      base::summary(data);
-    }
-  } else if(is.recursive(data)) {
-    base::summary.default(data);
-  }
+var <- function (a) {
+  stats::var(a,na.rm=TRUE)
 }
 
 #' Linear model.
@@ -20,7 +12,7 @@ summary <- function(data) {
 #' @param data vector of data
 #' @export
 #'
-lm <- function(data) {
+lm.ds <- function(data) {
   if(inherits(data, 'lm')) {
     sum.lm <- stats::summary.lm(data)
     list(
@@ -31,6 +23,7 @@ lm <- function(data) {
     NULL
   }
 }
+
 #' Generalized linear model.
 #'
 #' @param formula
@@ -38,9 +31,9 @@ lm <- function(data) {
 #' @param beta.vect
 #' @export
 #'
-glm <- function (formula, family, beta.vect=NULL) {
+glm.ds <- function (formula, family, beta.vect=NULL) {
   
-  mod.glm.ds <- glm(formula, family=family, x=TRUE, control=glm.control(maxit=1))
+  mod.glm.ds <- stats::glm(formula, family=family, x=TRUE, control=glm.control(maxit=1), constrast=NULL)
   
   X.mat <- as.matrix(mod.glm.ds$x)
   
@@ -70,4 +63,13 @@ glm <- function (formula, family, beta.vect=NULL) {
   score.vect<-t(X.mat)%*%W.u.mat
   
   list(family=f, info.matrix=info.matrix, score.vect=score.vect, numsubs=numsubs, dev=dev)
+}
+
+#' Return a logical vector indicating which cases are complete, i.e., have no missing values.
+#' 
+#' @param ... a sequence of vectors, matrices and data frames.
+#' @export
+#' 
+complete.cases <- function(a, b=NULL) {
+  stats::complete.cases(a,b)
 }
