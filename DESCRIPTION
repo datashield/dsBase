@@ -6,12 +6,14 @@ License: GPL-3
 Title: Base DataSHIELD methods (server)
 Description: 
 Depends:
-    stats
+    stats,
+    graphics
 Aggregate: summary, length, matrix, colnames, mean, var, lm.ds,
-    glm.ds
+    glm.ds, histogram.1
 Assign: log, exp, sum, product, as.list, as.numeric, cbind,
     complete.cases, c
 Collate:
     'base.r'
     'stats.r'
     'assign.r'
+    'graphics.r'
