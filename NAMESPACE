@@ -1,1 +1,3 @@
+export(glm)
+export(lm)
 export(summary)

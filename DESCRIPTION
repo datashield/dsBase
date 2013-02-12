@@ -6,7 +6,8 @@ License: GPL-3
 Title: Base DataSHIELD methods (server)
 Description: 
 Depends:
-DatashieldAggregation: summary
+    stats
+DatashieldAggregation: summary, lm, glm
 DatashieldAssignment: 
 Collate:
     'aggregation.r'
