@@ -4,7 +4,5 @@
 \alias{dsbase-package}
 \title{dsbase}
 \description{
-  dsbase
-
-  dsbase
+  DataSHIELD base package (server).
 }
