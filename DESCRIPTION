@@ -5,13 +5,15 @@ Version: 1.0
 License: GPL-3
 Title: Base DataSHIELD methods (server)
 Description: 
-Depends:
+Imports:
     stats,
     graphics
-Aggregate: summary, length, matrix, colnames, mean, var, lm.ds,
-    glm.ds, histogram.1
-Assign: log, exp, sum, product, as.list, as.numeric, cbind,
-    complete.cases, c
+AggregateMethods: summary, length=base::length, matrix=base::matrix,
+    colnames=base::colnames, mean, var, lm.ds, glm.ds, histogram.1
+AssignMethods: log=base::log, exp=base::exp, sum, product,
+    as.list=base::as.list, as.numeric=base::as.numeric,
+    as.matrix=base::as.matrix, cbind, complete.cases=stats::complete.cases,
+    c=base::c, cbind=base::cbind
 Collate:
     'base.r'
     'stats.r'

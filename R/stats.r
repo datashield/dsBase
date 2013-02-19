@@ -64,12 +64,3 @@ glm.ds <- function (formula, family, beta.vect=NULL) {
   
   list(family=f, info.matrix=info.matrix, score.vect=score.vect, numsubs=numsubs, dev=dev)
 }
-
-#' Return a logical vector indicating which cases are complete, i.e., have no missing values.
-#' 
-#' @param ... a sequence of vectors, matrices and data frames.
-#' @export
-#' 
-complete.cases <- function(a, b=NULL) {
-  stats::complete.cases(a,b)
-}
