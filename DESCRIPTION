@@ -1,13 +1,10 @@
 Package: dsbase
 Maintainer: <datashield@obiba.org>
-Author: ymarcon
+Author: OBiBa <info@obiba.org>
 Version: 1.0
 License: GPL-3
 Title: Base DataSHIELD methods (server)
-Description: 
-Imports:
-    stats,
-    graphics
+Description: Base DataSHIELD methods (server)
 AggregateMethods: summary, length=base::length, matrix=base::matrix,
     colnames=base::colnames, mean, var, lm.ds, glm.ds, histogram.1
 AssignMethods: log=base::log, exp=base::exp, sum, product,
