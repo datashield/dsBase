@@ -14,12 +14,3 @@ summary <- function(data) {
     base::summary.default(data);
   }
 }
-
-#' Mean with NA values stripped before computation proceeds.
-#'
-#' @param a R object
-#' @export
-#' 
-mean <- function (a) {
-  base::mean(a,na.rm=TRUE)
-}

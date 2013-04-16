@@ -1,7 +1,5 @@
 export(equals)
-export(glm.ds)
 export(histogram.1)
-export(lm.ds)
 export(mean)
 export(product)
 export(sum)

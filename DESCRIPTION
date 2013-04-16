@@ -1,18 +1,21 @@
 Package: dsbase
 Maintainer: <datashield@obiba.org>
 Author: <datashield@obiba.org>
-Version: 1.1
+Version: 1.0
 License: GPL-3
 Title: Base DataSHIELD methods (server)
 Description: Base DataSHIELD methods (server)
-AggregateMethods: summary, length=base::length, matrix=base::matrix,
-    colnames=base::colnames, mean, var, lm.ds, glm.ds, histogram.1
+AggregateMethods: length=base::length, matrix=base::matrix, sum, summary
+    colnames=base::colnames, mean, var, histogram.1, equals, equals, product
 AssignMethods: log=base::log, exp=base::exp, sum, product,
     as.list=base::as.list, as.numeric=base::as.numeric,
     as.matrix=base::as.matrix, complete.cases=stats::complete.cases,
-    c=base::c, cbind=base::cbind
+    cbind=base::cbind
 Collate:
-    'base.r'
-    'stats.r'
-    'assign.r'
-    'graphics.r'
+    'sum.r'
+    'summary.r'
+    'histogram.1.r'
+    'var.r'
+    'equals.r'
+    'product.r'
+    'mean.r'
