@@ -1,4 +1,4 @@
-export(equals)
+export(contour.plot.1)
 export(histogram.1)
 export(mean)
 export(product)

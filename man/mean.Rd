@@ -1,13 +1,14 @@
 \name{mean}
 \alias{mean}
-\title{Mean with NA values stripped before computation proceeds.}
+\title{Computes the mean statistic for vectors with more than 4 entries}
 \usage{
   mean(a)
 }
 \arguments{
-  \item{a}{R object}
+  \item{a}{}
 }
 \description{
-  Mean with NA values stripped before computation proceeds.
+  Computes the mean statistic for vectors with more than 4
+  entries
 }
 

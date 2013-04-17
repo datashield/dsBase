@@ -5,19 +5,17 @@ Version: 1.0
 License: GPL-3
 Title: Base DataSHIELD methods (server)
 Description: Base DataSHIELD methods (server)
-AggregateMethods: length=base::length, matrix=base::matrix, sum, summary
-    colnames=base::colnames, mean, var, histogram.1, equals, equals, product,
-    contour.plot.1
+AggregateMethods: length=base::length, matrix=base::matrix, summary
+    colnames=base::colnames, mean, var, histogram.1, contour.plot.1
 AssignMethods: log=base::log, exp=base::exp, sum, product,
     as.list=base::as.list, as.numeric=base::as.numeric,
     as.matrix=base::as.matrix, complete.cases=stats::complete.cases,
     cbind=base::cbind
 Collate:
-    'sum.r'
-    'summary.r'
-    'histogram.1.r'
-    'var.r'
-    'equals.r'
-    'product.r'
-    'mean.r'
     'contour.plot.1.r'
+    'histogram.1.r'
+    'mean.r'
+    'product.r'
+    'summary.r'
+    'sum.r'
+    'var.r'
