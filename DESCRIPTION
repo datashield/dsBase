@@ -6,7 +6,7 @@ License: GPL-3
 Title: Base DataSHIELD methods (server)
 Description: Base DataSHIELD methods (server)
 AggregateMethods: length=base::length, matrix=base::matrix, summary
-    colnames=base::colnames, mean, var, histogram.1, contour.plot.1
+    colnames=base::colnames, mean, var, histogram.1, contour.plot.1, table.2d
 AssignMethods: log=base::log, exp=base::exp, sum, product,
     as.list=base::as.list, as.numeric=base::as.numeric,
     as.matrix=base::as.matrix, complete.cases=stats::complete.cases,
@@ -19,3 +19,4 @@ Collate:
     'summary.r'
     'sum.r'
     'var.r'
+    'table.2d.r'
