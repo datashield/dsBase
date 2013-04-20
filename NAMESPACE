@@ -1,6 +1,7 @@
 export(contour.plot.1)
 export(histogram.1)
 export(mean)
+export(order.frame)
 export(product)
 export(sum)
 export(summary)

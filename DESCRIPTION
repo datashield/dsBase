@@ -10,7 +10,7 @@ AggregateMethods: length=base::length, matrix=base::matrix, summary
 AssignMethods: log=base::log, exp=base::exp, sum, product,
     as.list=base::as.list, as.numeric=base::as.numeric,
     as.matrix=base::as.matrix, complete.cases=stats::complete.cases,
-    cbind=base::cbind
+    cbind=base::cbind, data.frame=base::data.frame, as.list=base::as.list
 Collate:
     'contour.plot.1.r'
     'histogram.1.r'
@@ -20,3 +20,4 @@ Collate:
     'sum.r'
     'var.r'
     'table.2d.r'
+    'order.frame.r'
