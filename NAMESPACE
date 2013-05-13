@@ -1,5 +1,4 @@
 export(contour.plot.1)
-export(cut)
 export(histogram.1)
 export(mean)
 export(order.frame)
