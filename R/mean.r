@@ -6,7 +6,7 @@
 
 mean <- function (a) {
   if(length(a) >= 5){
-    mean(a,na.rm=TRUE)
+    base::mean(a,na.rm=TRUE)
   }else{
     cat("Operation not allowed!\n")
   }
