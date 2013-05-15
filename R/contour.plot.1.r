@@ -8,6 +8,16 @@
 #' 
 contour.plot.1 <- function(xvect,yvect)
 {
+  xvect.save<-xvect
+  yvect.save<-yvect
+
+  xvect.not.missing<-1-(is.na(xvect)*1)
+  yvect.not.missing<-1-(is.na(yvect)*1)
+  
+  x.and.y.present<-xvect.not.missing*yvect.not.missing
+  xvect<-xvect.save[x.and.y.present==1]
+  yvect<-yvect.save[x.and.y.present==1]
+  
   #par(mfrow=c(1,1))
   y.min<-min(yvect)
   x.min<-min(xvect)
