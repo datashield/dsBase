@@ -45,7 +45,7 @@ factor.create.3 <- function (x = base::character(), maxval=NA, minval=NA,
   if(base::is.na(Xval5)==0){levels<-c(levels,Xval5)}
   
   
-  baseforce(ordered)
+  base::force(ordered)
   exclude <- base::as.vector(exclude, base::typeof(x))
   x <- base::as.character(x)
   levels <- levels[base::is.na(match(levels, exclude))]
