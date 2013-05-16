@@ -6,11 +6,16 @@ License: GPL-3
 Title: Base DataSHIELD methods (server)
 Description: Base DataSHIELD methods (server)
 AggregateMethods: length=base::length, matrix=base::matrix, summary,
-    colnames=base::colnames, mean, var, histogram.1, contour.plot.1, table.2d
+    colnames=base::colnames, mean, var, histogram.1, contour.plot.1, table.2d,
+    density.grid.ag, N.a.by.b, mean.a.by.b, odds.ratio,quantile.mean.ds,
+    table.1d, var.a.by.b
 AssignMethods: log=base::log, exp=base::exp, sum, product,
     as.list=base::as.list, as.numeric=base::as.numeric,
     as.matrix=base::as.matrix, complete.cases=stats::complete.cases,
-    cbind=base::cbind, data.frame=base::data.frame, as.list=base::as.list
+    cbind=base::cbind, data.frame=base::data.frame, as.list=base::as.list,
+    as.factor, factor.create.3, replace.9.na, replace.99.na,
+    replace.999.na, replace.9999.na, replace.na.999, replace.not.obese.na,
+    rm.col.dataframe
 Collate:
     'contour.plot.1.r'
     'histogram.1.r'
@@ -21,3 +26,18 @@ Collate:
     'var.r'
     'table.2d.r'
     'order.frame.r'
+    'density.grid.ag.R'
+    'factor.create.3.R'
+    'mean.a.by.b.R'
+    'N.a.by.b.R'
+    'odds.ratio.R'
+    'quantile.mean.ds.R'
+    'replace.9999.na.R'
+    'replace.999.na.R'
+    'replace.99.na.R'
+    'replace.9.na.R'
+    'replace.na.999.R'
+    'replace.not.obese.na.R'
+    'rm.col.dataframe.R'
+    'table.1d.R'
+    'var.a.by.b.R'
