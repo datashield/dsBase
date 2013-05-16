@@ -5,5 +5,5 @@
 #' 
 
 var.a.by.b <- function(a,b){
-  tapply(a,b,var,na.rm=TRUE)
+  base::tapply(a,b,stats::var,na.rm=TRUE)
 }

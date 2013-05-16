@@ -2,10 +2,10 @@
 \alias{factor.create.3}
 \title{Generates a factor variable}
 \usage{
-  factor.create.3(x = character(), maxval = NA,
+  factor.create.3(x = base::character(), maxval = NA,
     minval = NA, Xval1 = NA, Xval2 = NA, Xval3 = NA,
     Xval4 = NA, Xval5 = NA, levels, labels = levels,
-    exclude = NA, ordered = is.ordered(x))
+    exclude = NA, ordered = base::is.ordered(x))
 }
 \arguments{
   \item{x}{a categorical variable (numerical or character)}

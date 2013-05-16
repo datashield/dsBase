@@ -16,53 +16,53 @@
 #' @export
 #' 
 
-factor.create.3 <- function (x = character(), maxval=NA, minval=NA,
+factor.create.3 <- function (x = base::character(), maxval=NA, minval=NA,
           Xval1=NA, Xval2=NA, Xval3=NA, Xval4=NA, Xval5=NA,
           levels, labels = levels, exclude = NA, 
-          ordered = is.ordered(x)) 
+          ordered = base::is.ordered(x)) 
 {
-  if (is.null(x)) 
-    x <- character()
-  nx <- names(x)
-  if (missing(levels)) {
-    y <- unique(x)
-    ind <- sort.list(y)
-    y <- as.character(y)
-    levels <- unique(y[ind])
+  if (base::is.null(x)) 
+    x <- base::character()
+  nx <- base::names(x)
+  if (base::missing(levels)) {
+    y <- base::unique(x)
+    ind <- base::sort.list(y)
+    y <- base::as.character(y)
+    levels <- base::unique(y[ind])
   }
-  if(is.na(maxval)==0 && is.na(minval)==1) {
+  if(base::is.na(maxval)==0 && base::is.na(minval)==1) {
     levels<-0:maxval
   }
   
-  if(is.na(maxval)==0 && is.na(minval)==0) {
+  if(base::is.na(maxval)==0 && base::is.na(minval)==0) {
     levels<-minval:maxval
   }
   
-  if(is.na(Xval1)==0){levels<-c(levels,Xval1)}
-  if(is.na(Xval2)==0){levels<-c(levels,Xval2)}
-  if(is.na(Xval3)==0){levels<-c(levels,Xval3)}
-  if(is.na(Xval4)==0){levels<-c(levels,Xval4)}
-  if(is.na(Xval5)==0){levels<-c(levels,Xval5)}
+  if(base::is.na(Xval1)==0){levels<-c(levels,Xval1)}
+  if(base::is.na(Xval2)==0){levels<-c(levels,Xval2)}
+  if(base::is.na(Xval3)==0){levels<-c(levels,Xval3)}
+  if(base::is.na(Xval4)==0){levels<-c(levels,Xval4)}
+  if(base::is.na(Xval5)==0){levels<-c(levels,Xval5)}
   
   
-  force(ordered)
-  exclude <- as.vector(exclude, typeof(x))
-  x <- as.character(x)
-  levels <- levels[is.na(match(levels, exclude))]
-  f <- match(x, levels)
-  if (!is.null(nx)) 
-    names(f) <- nx
-  nl <- length(labels)
-  nL <- length(levels)
-  if (!any(nl == c(1L, nL))) 
-    stop(gettextf("invalid labels; length %d should be 1 or %d", 
+  baseforce(ordered)
+  exclude <- base::as.vector(exclude, base::typeof(x))
+  x <- base::as.character(x)
+  levels <- levels[base::is.na(match(levels, exclude))]
+  f <- base::match(x, levels)
+  if (!base::is.null(nx)) 
+    base::names(f) <- nx
+  nl <- base::length(labels)
+  nL <- base::length(levels)
+  if (!base::any(nl == c(1L, nL))) 
+    base::stop(base::gettextf("invalid labels; length %d should be 1 or %d", 
                   nl, nL), domain = NA)
-  levels(f) <- if (nl == nL) 
-    as.character(labels)
-  else paste(labels, seq_along(levels), sep = "")
-  class(f) <- c(if (ordered) "ordered", "factor")
+  base::levels(f) <- if (nl == nL) 
+    base::as.character(labels)
+  else base::paste(labels, base::seq_along(levels), sep = "")
+  base::class(f) <- c(if (ordered) "ordered", "factor")
   levels.all.valid<-
-    sum((as.vector(summary(f))<5)*(as.vector(summary(f))>0))==0
+    base::sum((base::as.vector(base::summary(f))<5)*(base::as.vector(base::summary(f))>0))==0
   
   output.object<-NULL    
   if(levels.all.valid==TRUE){

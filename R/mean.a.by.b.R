@@ -6,5 +6,5 @@
 #' 
 
 mean.a.by.b <- function(a,b){
-  tapply(a,b,mean,na.rm=TRUE)
+  base::tapply(a,b,base::mean,na.rm=TRUE)
 }
