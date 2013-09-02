@@ -39,7 +39,6 @@ AssignMethods: log=base::log,
     sum=base::sum,
     as.null=base::as.null
 Collate:
-    'ag.range.ds.R'
     'checkfactor.ds.R'
     'createfactor.ds.R'
     'densitygrid.ds.R'
@@ -49,3 +48,4 @@ Collate:
     'MinMax.ds.R'
     'product.ds.R'
     'quantilemean.ds.R'
+    'range.ds.R'

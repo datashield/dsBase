@@ -1,8 +1,8 @@
-\name{ag.range.ds}
-\alias{ag.range.ds}
+\name{range.ds}
+\alias{range.ds}
 \title{returns the minimum and maximum of a numeric vector}
 \usage{
-  ag.range.ds(xvect)
+  range.ds(xvect)
 }
 \arguments{
   \item{xvect}{a numerical}
@@ -24,7 +24,7 @@ data(logindata)
 
 # login and assign specific variable(s)
 myvar <- list("LAB_HDL")
-opals <- ag.ds.login(logins=logindata,assign=TRUE,variables=myvar)
+opals <- ds.login(logins=logindata,assign=TRUE,variables=myvar)
 
 # get the range of the variable 'LAB_HDL'
 datashield.aggregate(opals, quote(range.ds(D$LAB_HDL)))

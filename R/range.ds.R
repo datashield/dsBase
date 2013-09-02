@@ -13,13 +13,13 @@
 #' 
 #' # login and assign specific variable(s)
 #' myvar <- list("LAB_HDL")
-#' opals <- ag.ds.login(logins=logindata,assign=TRUE,variables=myvar)
+#' opals <- ds.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
 #' # get the range of the variable 'LAB_HDL'
 #' datashield.aggregate(opals, quote(range.ds(D$LAB_HDL)))
 #' }
 #'
-ag.range.ds <- function(xvect){
+range.ds <- function(xvect){
   
   # print an error message if the input vector is not a numeric
   if(!(is.numeric(xvect))){
