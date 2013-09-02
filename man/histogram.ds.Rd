@@ -2,17 +2,14 @@
 \alias{histogram.ds}
 \title{Computes a histogram of the given data values without plotting.}
 \usage{
-  histogram.ds(xvect, min, max)
+  histogram.ds(xvect, brks)
 }
 \arguments{
   \item{xvect}{the numeric vector for which the histogram
   is desired.}
 
-  \item{min}{a numerical used as the lower lim of the
-  histogram breaks}
-
-  \item{max}{a numerical used as the upper lim of the
-  histogram breaks}
+  \item{brks}{a numerical vector giving the breakpoints
+  between histogram cells}
 }
 \value{
   a list with an object of class \code{histogram} and a

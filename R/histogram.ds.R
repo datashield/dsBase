@@ -5,8 +5,7 @@
 #' count of less than 5. If a bin has a count < 5 it is collapsed with 
 #' the nearing bin; this process iterates until all bins have count >=5.
 #' @param xvect the numeric vector for which the histogram is desired.
-#' @param min a numerical used as the lower lim of the histogram breaks
-#' @param max a numerical used as the upper lim of the histogram breaks
+#' @param brks a numerical vector giving the breakpoints between histogram cells
 #' @return a list with an object of class \code{histogram} and a vector of x-positions
 #' @export
 #' @author Gaye, A.
@@ -24,10 +23,7 @@
 #' hist.object <- datashield.aggregate(opals, quote(histogram.ds(D$LAB_TSC)))
 #' }
 #' 
-histogram.ds <- function (xvect, min, max) {
-  
-  # generate breaks points using the provided range
-  brks <- seq(min, max, 0.3)
+histogram.ds <- function (xvect, brks) {
   
   # get the histogram object
   histout <- hist(xvect, breaks=brks, plot=FALSE)
