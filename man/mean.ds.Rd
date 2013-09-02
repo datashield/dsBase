@@ -22,6 +22,7 @@
 # load the file that contains the login details
 data(logindata)
 
+library(dsbaseclient)
 opals <- ds.login(logins=logindata,assign=TRUE,variables=myvar)
 
 # compute the statistical mean
