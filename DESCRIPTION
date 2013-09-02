@@ -18,7 +18,7 @@ AggregateMethods: length=base::length,
     t.test=stats::t.test,
     var=stats::var,
     is.null=base::is.null,
-    NROW=base::NROW
+    NROW=base::NROW,
     MinMax.ds,
     densitygrid.ds,
 AssignMethods: log=base::log,
