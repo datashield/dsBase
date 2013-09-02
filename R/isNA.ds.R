@@ -12,6 +12,7 @@
 #' data(logindata)
 #' 
 #' # login and assign specific variable(s)
+#' library(dsbaseclient)
 #' myvar <- list("LAB_HDL")
 #' opals <- ds.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 

@@ -17,6 +17,7 @@
 #' data(logindata)
 #' 
 #' # login and assign specific variable(s)
+#' library(dsbaseclient)
 #' myvar <- list("GENDER")
 #' opals <- ds.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 

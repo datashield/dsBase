@@ -19,6 +19,7 @@
 #' data(logindata)
 #' 
 #' # login and assign the required variables to R
+#' library(dsbaseclient)
 #' myvar <- list("LAB_TSC","LAB_HDL")
 #' opals <- ds.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
