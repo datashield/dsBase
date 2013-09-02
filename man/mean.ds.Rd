@@ -1,0 +1,34 @@
+\name{mean.ds}
+\alias{mean.ds}
+\title{Calculates a statistical mean for a vector with more than 4 entries}
+\usage{
+  mean.ds(xvect, na.rm = TRUE)
+}
+\arguments{
+  \item{xvect}{a numerical vector}
+
+  \item{na.rm}{a boolean indicating whether missing values
+  values should be removed before the mean is computed.}
+}
+\value{
+  a numerical
+}
+\description{
+  Calculates a statistical mean for a vector with more than
+  4 entries
+}
+\examples{
+\dontrun{
+# load the file that contains the login details
+data(logindata)
+
+opals <- ds.login(logins=logindata,assign=TRUE,variables=myvar)
+
+# compute the statistical mean
+stat.mean <- datashield.aggregate(opals, quote(mean.ds(D$LAB_TSC)))
+}
+}
+\author{
+  Gaye, A.
+}
+
