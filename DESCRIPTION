@@ -19,7 +19,6 @@ AggregateMethods: length=base::length,
     var=stats::var,
     is.null=base::is.null,
     NROW=base::NROW,
-    MinMax.ds,
     densitygrid.ds,
 AssignMethods: log=base::log,
     cbind=base::cbind,
@@ -41,7 +40,6 @@ Collate:
     'histogram.ds.R'
     'isNA.ds.R'
     'mean.ds.R'
-    'MinMax.ds.R'
     'product.ds.R'
     'quantilemean.ds.R'
     'range.ds.R'
