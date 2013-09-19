@@ -28,7 +28,9 @@ summary.ds <- function(data) {
     } else {
       temp <- summary(data)
       # remove the 'min' and 'max' values which are potentially disclosive
-      ss <- temp[-c(1,length(temp))]
+      indxmin <- which(names(temp)=="Min.")
+      indxmax <- which(names(temp)=="Max.")
+      ss <- temp[-c(indxmin,indxmax)]
     }
   } else if(is.recursive(data)) {
     ss <- summary.default(data)
