@@ -20,7 +20,7 @@ AggregateMethods: length=base::length,
     is.null=base::is.null,
     NROW=base::NROW,
     densitygrid.ds,
-    summary.ds,
+    summary,
     table1d.ds,
     table2d.ds
 AssignMethods: log=base::log,
@@ -48,4 +48,4 @@ Collate:
     'range.ds.R'
     'table1d.ds.R'
     'table2d.ds.R'
-    'summary.ds.R'
+    'summary.R'
