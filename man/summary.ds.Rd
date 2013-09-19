@@ -1,8 +1,8 @@
-\name{summary}
-\alias{summary}
+\name{summary.ds}
+\alias{summary.ds}
 \title{Generates a summary output}
 \usage{
-  summary(data)
+  summary.ds(data)
 }
 \arguments{
   \item{data}{some atomic or recursive data}
@@ -29,7 +29,7 @@ data(logindata)
 opals <- ds.login(logins=logindata,assign=TRUE,variables=list("LAB_HDL"))
 
 # summary of the numerical vector 'LAB_HDL'
-datashield.aggregate(opals, quote(summary(D$LAB_HDL)))
+datashield.aggregate(opals, quote(summary.ds(D$LAB_HDL)))
 }
 }
 \author{

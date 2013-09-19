@@ -17,17 +17,25 @@
 #' opals <- ds.login(logins=logindata,assign=TRUE,variables=list("LAB_HDL"))
 #'
 #' # summary of the numerical vector 'LAB_HDL'
-#' datashield.aggregate(opals, quote(summary(D$LAB_HDL)))
+#' datashield.aggregate(opals, quote(summary.ds(D$LAB_HDL)))
 #'}
 #'
-summary <- function(data) {
+summary.ds <- function(data) {
   if(is.atomic(data)) {
-    if(length(data) <= 1) {
-      "Vector too small."
+    if(length(data) < 5) {
+      stop("The input vector is not valid, its length < 5!\n")
     } else {
-      base::summary(data);
+      temp <- summary(data)
+      # remove the 'min' and 'max' values which are potentially disclosive
+      indxmin <- which(names(temp)=="Min.")
+      indxmax <- which(names(temp)=="Max.")
+      ss <- temp[-c(indxmin,indxmax)]
+      return(ss)
     }
-  } else if(is.recursive(data)) {
-    base::summary.default(data);
+  } 
+  
+  if(is.recursive(data)) {
+    ss <- summary.default(data)
+    return(ss)
   }
 }
