@@ -14,7 +14,7 @@
 #' data(logindata)
 #' 
 #' # login and assign a variable to R
-#' opals <- ds.login(logins=logindata,assign=TRUE,variables="LAB_HDL")
+#' opals <- ds.login(logins=logindata,assign=TRUE,variables=list("LAB_HDL"))
 #'
 #' # summary of the numerical vector 'LAB_HDL'
 #' datashield.aggregate(opals, quote(summary.ds(D$LAB_HDL)))
@@ -26,9 +26,9 @@ summary.ds <- function(data) {
     if(length(data) < 5) {
       stop("The input vector is not valid, its length < 5!\n")
     } else {
-      ss <- summary(data)
+      temp <- summary(data)
       # remove the 'min' and 'max' values which are potentially disclosive
-      ss <- ss[-c(1,length(ss))]
+      ss <- temp[-c(1,length(temp))]
     }
   } else if(is.recursive(data)) {
     ss <- summary.default(data)
