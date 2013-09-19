@@ -22,6 +22,10 @@
 #'
 summary.ds <- function(data) {
   
+<<<<<<< HEAD
+=======
+  summary <- function(data) {
+>>>>>>> 9030b0754b58c6e56cdda358f33da28c2ce100f5
     if(is.atomic(data)) {
       if(length(data) <= 1) {
         "Vector too small."
@@ -31,7 +35,11 @@ summary.ds <- function(data) {
     } else if(is.recursive(data)) {
       base::summary.default(data);
     }
+<<<<<<< HEAD
 
+=======
+  }
+>>>>>>> 9030b0754b58c6e56cdda358f33da28c2ce100f5
 
 #   if(is.atomic(data)) {
 #     if(length(data) < 5) {
