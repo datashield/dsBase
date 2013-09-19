@@ -21,21 +21,34 @@
 #'}
 #'
 summary.ds <- function(data) {
-
-  if(is.atomic(data)) {
-    if(length(data) < 5) {
-      stop("The input vector is not valid, its length < 5!\n")
-    } else {
-      temp <- summary(data)
-      # remove the 'min' and 'max' values which are potentially disclosive
-      indxmin <- which(names(temp)=="Min.")
-      indxmax <- which(names(temp)=="Max.")
-      ss <- temp[-c(indxmin,indxmax)]
-    }
-  } else if(is.recursive(data)) {
-    ss <- summary.default(data)
-  }
   
-  # return the summary results
-  return(ss)
+    if(is.atomic(data)) {
+      if(length(data) <= 1) {
+        "Vector too small."
+      } else {
+        base::summary(data);
+      }
+    } else if(is.recursive(data)) {
+      base::summary.default(data);
+    }
+
+
+#   if(is.atomic(data)) {
+#     if(length(data) < 5) {
+#       stop("The input vector is not valid, its length < 5!\n")
+#     } else {
+#       temp <- summary(data)
+#       # remove the 'min' and 'max' values which are potentially disclosive
+#       indxmin <- which(names(temp)=="Min.")
+#       indxmax <- which(names(temp)=="Max.")
+#       ss <- temp[-c(indxmin,indxmax)]
+#     }
+#   } else if(is.recursive(data)) {
+#     ss <- summary.default(data)
+#   }
+#   
+#   # return the summary results
+#   return(ss)
+#   
+  
 }
