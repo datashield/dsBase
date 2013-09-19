@@ -2,13 +2,10 @@
 \alias{mean.ds}
 \title{Calculates a statistical mean for a vector with more than 4 entries}
 \usage{
-  mean.ds(xvect, na.rm = TRUE)
+  mean.ds(xvect)
 }
 \arguments{
   \item{xvect}{a numerical vector}
-
-  \item{na.rm}{a boolean indicating whether missing values
-  values should be removed before the mean is computed.}
 }
 \value{
   a numerical
