@@ -40,29 +40,6 @@
   Generates a density grid with or without a priori defined
   limits
 }
-\examples{
-\dontrun{
-# load the file that contains the login details
-data(logindata)
-
-# login and assign the required variables to R
-library(dsbaseclient)
-myvar <- list("LAB_TSC","LAB_HDL")
-opals <- ds.login(logins=logindata,assign=TRUE,variables=myvar)
-
-# Example 1: generate a density grid matrix
-datashield.aggregate(opals, quote(densitygrid.ds(D$LAB_TSC, D$LAB_HDL)))
-
-# Example 2: generate a density grid matrix; SHOULD NOT WORK as \\code{limits=F}!
-datashield.aggregate(opals, quote(densitygrid.ds(D$LAB_TSC, D$LAB_HDL, x.min=3)))
-
-# Example 3: generate a density grid matrix with defined limits
-datashield.aggregate(opals, quote(densitygrid.ds(D$LAB_TSC, D$LAB_HDL, limits=T, x.min=1,x.max=11,y.min=0,y.max=3)))
-
-# Example 4: generate a density grid matrix; SHOULD NOT WORK as no defined limits are provided.
-datashield.aggregate(opals, quote(densitygrid.ds(D$LAB_TSC, D$LAB_HDL, limits=T)))
-}
-}
 \author{
   Isaeva, J. and Gaye, A.
 }

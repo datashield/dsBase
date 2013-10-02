@@ -24,7 +24,7 @@ data(logindata)
 # login and assign specific variable(s)
 library(dsbaseclient)
 myvar <- list("LAB_HDL")
-opals <- ds.login(logins=logindata,assign=TRUE,variables=myvar)
+opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
 # check if the variable 'LAB_HDL' is empty
 datashield.aggregate(opals, quote(isNA.ds(D$LAB_HDL)))

@@ -25,7 +25,7 @@ data(logindata)
 # login and assign specific variable(s)
 myvar <- list("LAB_HDL")
 library(dsbaseclient)
-opals <- ds.login(logins=logindata,assign=TRUE,variables=myvar)
+opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
 # get the range of the variable 'LAB_HDL'
 datashield.aggregate(opals, quote(range.ds(D$LAB_HDL)))

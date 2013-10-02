@@ -20,7 +20,7 @@
 data(logindata)
 
 library(dsbaseclient)
-opals <- ds.login(logins=logindata,assign=TRUE,variables=myvar)
+opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
 # compute the statistical mean
 stat.mean <- datashield.aggregate(opals, quote(mean.ds(D$LAB_TSC)))

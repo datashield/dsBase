@@ -14,7 +14,7 @@
 #' data(logindata)
 #' 
 #' # login and assign a variable to R
-#' opals <- ds.login(logins=logindata,assign=TRUE,variables=list("LAB_HDL"))
+#' opals <- datashield.login(logins=logindata,assign=TRUE,variables=list("LAB_HDL"))
 #'
 #' # summary of the numerical vector 'LAB_HDL'
 #' datashield.aggregate(opals, quote(summary.ds(D$LAB_HDL)))

@@ -17,7 +17,7 @@
 #  # login and assign a numeric variable to R
 #' library(dsbaseclient)
 #  myvar <- list("LAB_TSC")
-#' opals <- ds.login(logins=logindata,assign=TRUE,variables=myvar)
+#' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
 #' # generate a histogram object without plotting
 #' hist.object <- datashield.aggregate(opals, quote(histogram.ds(D$LAB_TSC)))

@@ -19,7 +19,7 @@
 #' # login and assign specific variable(s)
 #' library(dsbaseclient)
 #' myvar <- list("GENDER")
-#' opals <- ds.login(logins=logindata,assign=TRUE,variables=myvar)
+#' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
 #' # generate a factor vector using the variable 'GENDER'
 #' datashield.assign(opals, "sex", quote(createfactor.ds(D$GENDER)))

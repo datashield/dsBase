@@ -50,7 +50,7 @@ data(logindata)
 
 # login and assign the required variables to R
 myvar <- list("DIS_DIAB","GENDER","LAB_HDL")
-opals <- ds.login(logins=logindata,assign=TRUE,variables=myvar)
+opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
 # Example 1: generate a two dimensional table
 datashield.aggregate(opals, quote(table2d.ds(D$DIS_CVA,D$GENDER)))

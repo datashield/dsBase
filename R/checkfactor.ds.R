@@ -17,7 +17,7 @@
 #  # login and assign a numeric variable to R
 #' library(dsbaseclient)
 #  myvar <- list("LAB_TSC")
-#' opals <- ds.login(logins=logindata,assign=TRUE,variables=myvar)
+#' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
 #' # check that the factor does not contain categories with count > 0 and < 5
 #' output <- datashield.aggregate(opals, quote(checkfactor.ds(D$LAB_TSC)))
