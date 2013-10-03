@@ -24,7 +24,7 @@ AggregateMethods: length=base::length,
     table1d.ds,
     table2d.ds,
     colMeans.ds,
-    as.array
+    as.array=base::as.array
 AssignMethods: log=base::log,
     cbind=base::cbind,
     exp=base::exp,
