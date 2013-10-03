@@ -23,7 +23,7 @@ AggregateMethods: length=base::length,
     summary.ds,
     table1d.ds,
     table2d.ds,
-    means.ds
+    mean.ds
 AssignMethods: log=base::log,
     cbind=base::cbind,
     exp=base::exp,
