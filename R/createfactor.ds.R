@@ -17,7 +17,7 @@
 #' data(logindata)
 #' 
 #' # login and assign specific variable(s)
-#' library(dsbaseclient)
+#' library(opal)
 #' myvar <- list("GENDER")
 #' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 

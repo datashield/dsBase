@@ -13,7 +13,7 @@
 #' 
 #  # login and assign a numeric variable to R
 #  myvar <- list("LAB_TSC")
-#' library(dsbaseclient)
+#' library(opal)
 #' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
 #' # compute the sample quantiles that correspond to the probabilities specified internally

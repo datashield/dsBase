@@ -23,6 +23,7 @@
 #' data(logindata)
 #' 
 #' # login and assign the required variables to R
+#' library(opal)
 #' myvar  <- list("DIS_CVA")
 #' opals  <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 

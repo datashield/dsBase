@@ -19,7 +19,7 @@
 # load the file that contains the login details
 data(logindata)
 
-library(dsbaseclient)
+library(opal)
 opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
 # compute the sample quantiles that correspond to the probabilities specified internally

@@ -26,6 +26,7 @@
 data(logindata)
 
 # login and assign a variable to R
+library(opal)
 opals <- datashield.login(logins=logindata,assign=TRUE,variables=list("LAB_HDL"))
 
 # summary of the numerical vector 'LAB_HDL'

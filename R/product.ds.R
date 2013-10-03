@@ -14,7 +14,7 @@
 #' data(logindata)
 #' 
 #' # login and assign the required variables to R
-#' library(dsbaseclient)
+#' library(opal)
 #' myvar <- list("LAB_TSC","LAB_HDL")
 #' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 

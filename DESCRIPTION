@@ -22,7 +22,9 @@ AggregateMethods: length=base::length,
     densitygrid.ds,
     summary.ds,
     table1d.ds,
-    table2d.ds
+    table2d.ds,
+    colMeans.ds,
+    as.array
 AssignMethods: log=base::log,
     cbind=base::cbind,
     exp=base::exp,
@@ -42,10 +44,10 @@ Collate:
     'densitygrid.ds.R'
     'histogram.ds.R'
     'isNA.ds.R'
-    'mean.ds.R'
     'product.ds.R'
     'quantilemean.ds.R'
     'range.ds.R'
     'table1d.ds.R'
     'table2d.ds.R'
     'summary.ds.R'
+    'colMeans.ds.R'

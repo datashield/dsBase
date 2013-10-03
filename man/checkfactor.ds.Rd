@@ -24,7 +24,7 @@
 # load the file that contains the login details
 data(logindata)
 
-library(dsbaseclient)
+library(opal)
 opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
 # check that the factor does not contain categories with count > 0 and < 5
