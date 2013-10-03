@@ -23,7 +23,7 @@ AggregateMethods: length=base::length,
     summary.ds,
     table1d.ds,
     table2d.ds,
-    colMeans.ds
+    means.ds
 AssignMethods: log=base::log,
     cbind=base::cbind,
     exp=base::exp,
@@ -36,8 +36,7 @@ AssignMethods: log=base::log,
     subset=base::subset,
     product.ds,
     sum=base::sum,
-    as.null=base::as.null,
-    as.array=base::as.array
+    as.null=base::as.null
 Collate:
     'checkfactor.ds.R'
     'createfactor.ds.R'
@@ -50,4 +49,4 @@ Collate:
     'table1d.ds.R'
     'table2d.ds.R'
     'summary.ds.R'
-    'colMeans.ds.R'
+    'mean.ds.R'
