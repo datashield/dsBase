@@ -1,9 +1,6 @@
 #'
-<<<<<<< HEAD
 #' @title Calculates statistical mean for a numeric 1D array with more than 4 entries
-=======
 #' @title Calculates a statistical mean for a numeric 1D array with more than 4 entries
->>>>>>> 3f9154d22721bd3d50feda7e9845d60d3e8e8cc5
 #' @param xvect a numerical vector
 #' @return a numerical array, matrix or dataframe
 #' @author Gaye, A.
@@ -14,11 +11,8 @@
 #' data(logindata)
 #' 
 #  # login and assign a numeric variable to R
-<<<<<<< HEAD
 #' library(opal)
-=======
 #' library(dsbaseclient)
->>>>>>> 3f9154d22721bd3d50feda7e9845d60d3e8e8cc5
 #  myvar <- list("LAB_TSC")
 #' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
