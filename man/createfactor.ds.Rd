@@ -2,20 +2,13 @@
 \alias{createfactor.ds}
 \title{Generates a factor variable}
 \usage{
-  createfactor.ds(xvect, levels = NULL, labels = levels,
-    exclude = NA, ordered = is.ordered(xvect))
+  createfactor.ds(xvect = NULL, numobs = NULL)
 }
 \arguments{
   \item{xvect}{a numerical or character vector}
 
-  \item{levels}{optional vector of values that 'xvect'
-  might have taken}
-
-  \item{labels}{labels for the different levels}
-
-  \item{exclude}{values to be excluded}
-
-  \item{ordered}{tells if the variable 'x' is ordered}
+  \item{numobs}{the number of observations/missing values
+  to add to 'xvect'}
 }
 \value{
   a 'valid' factor vector or an empty vector of the same

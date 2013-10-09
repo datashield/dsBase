@@ -23,7 +23,10 @@ AggregateMethods: length=base::length,
     summary.ds,
     table1d.ds,
     table2d.ds,
-    mean.ds
+    mean.ds,
+    isValid.ds,
+    class=base::class,
+    levels=base::levels
 AssignMethods: log=base::log,
     cbind=base::cbind,
     exp=base::exp,
@@ -48,5 +51,5 @@ Collate:
     'range.ds.R'
     'table1d.ds.R'
     'table2d.ds.R'
-    'summary.ds.R'
     'mean.ds.R'
+    'isValid.ds.R'
