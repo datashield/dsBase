@@ -1,12 +1,11 @@
 #' 
 #' @title Generates a factor variable
-#' @description The functions uses the input vector to generate a factor vector.
-#' The generate factor is checked and if valid (no category with count > 0 and < 5)
-#' returned; if not valid an empty of the same length is returned. 
+#' @description The functions uses the input factor and generates a new factor 
+#' with additional levels.
 #' @param xvect a numerical or character vector
-#' @param numobs the number of observations/missing values to add to 'xvect'
-#' @return a 'valid' factor vector or an empty vector of the same length.
-#' @author Gaye, A.; Burton, P.
+#' @param addLevels the additional levels to add to the input factor
+#' @return a factor vector that has its original levels plus the added levels
+#' @author Gaye, A.
 #' @export
 #' @examples 
 #' \dontrun{
@@ -25,17 +24,18 @@
 #' datashield.aggregate(opals, quote(length(sex)))
 #'  }
 #'
-createfactor.ds <- function (xvect=NULL, numobs=NULL){
+createfactor.ds <- function (xvect=NULL, addLevels=NULL){
   
   if(is.null(xvect)){
     Stop("\n\nPlease provide a valid numeric or factor vector!\n\n")
   }
-  if(is.null(numobs)){
+  if(is.null(addLevels)){
     Stop("\n\nNumber of observations must provided!\n\n")
   }
   
-  # add the required number of observations as missing values
-  newxvect <- factor(c(as.character(xvect), rep(NA,numobs)))
+  # get the current levels of the input vector
+  old.levels <- levels(xvect)
+  levels(xvect) <- c(old.levels, addLevels)
 
-  return(newxvect)
+  return(xvect)
 }

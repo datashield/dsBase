@@ -2,23 +2,21 @@
 \alias{createfactor.ds}
 \title{Generates a factor variable}
 \usage{
-  createfactor.ds(xvect = NULL, numobs = NULL)
+  createfactor.ds(xvect = NULL, addLevels = NULL)
 }
 \arguments{
   \item{xvect}{a numerical or character vector}
 
-  \item{numobs}{the number of observations/missing values
-  to add to 'xvect'}
+  \item{addLevels}{the additional levels to add to the
+  input factor}
 }
 \value{
-  a 'valid' factor vector or an empty vector of the same
-  length.
+  a factor vector that has its original levels plus the
+  added levels
 }
 \description{
-  The functions uses the input vector to generate a factor
-  vector. The generate factor is checked and if valid (no
-  category with count > 0 and < 5) returned; if not valid
-  an empty of the same length is returned.
+  The functions uses the input factor and generates a new
+  factor with additional levels.
 }
 \examples{
 \dontrun{
@@ -38,6 +36,6 @@ datashield.aggregate(opals, quote(length(sex)))
  }
 }
 \author{
-  Gaye, A.; Burton, P.
+  Gaye, A.
 }
 
