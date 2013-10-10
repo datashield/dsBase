@@ -27,10 +27,10 @@
 createfactor.ds <- function (xvect=NULL, addLevels=NULL){
   
   if(is.null(xvect)){
-    Stop("\n\nPlease provide a valid numeric or factor vector!\n\n")
+    stop("\n\nPlease provide a valid numeric or factor vector!\n\n")
   }
   if(is.null(addLevels)){
-    Stop("\n\nNumber of observations must provided!\n\n")
+    stop("\n\nNumber of observations must provided!\n\n")
   }
   
   # get the current levels of the input vector
