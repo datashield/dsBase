@@ -28,7 +28,9 @@
 #'  }
 #'
 createfactor.ds <- function (xvect=NULL, categories=NULL){
+  
   environment(categories) <- environment()
+  
   if(is.null(xvect)){
     stop("\n\nPlease provide a valid factor vector!\n\n")
   }
@@ -42,7 +44,6 @@ createfactor.ds <- function (xvect=NULL, categories=NULL){
   
   if(check){
     # generate the new variable with the specified levels
-    ll <- 
     xvect_f <- factor(xvect, levels=categories)
     return(xvect_f)
   }
