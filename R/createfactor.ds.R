@@ -29,8 +29,6 @@
 #'
 createfactor.ds <- function (xvect=NULL, categories=NULL){
   
-  environment(categories) <- environment()
-  
   if(is.null(xvect)){
     stop("\n\nPlease provide a valid factor vector!\n\n")
   }
