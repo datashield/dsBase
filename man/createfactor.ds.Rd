@@ -2,21 +2,20 @@
 \alias{createfactor.ds}
 \title{Generates a factor variable}
 \usage{
-  createfactor.ds(xvect = NULL, addLevels = NULL)
+  createfactor.ds(xvect = NULL, categories = NULL)
 }
 \arguments{
-  \item{xvect}{a numerical or character vector}
+  \item{xvect}{a factor vector}
 
-  \item{addLevels}{the additional levels to add to the
-  input factor}
+  \item{categories}{the levels of the factor to generate}
 }
 \value{
-  a factor vector that has its original levels plus the
-  added levels
+  a factor vector that has the levels of the original
+  vector and some additional levels
 }
 \description{
   The functions uses the input factor and generates a new
-  factor with additional levels.
+  factor with new levels.
 }
 \examples{
 \dontrun{
@@ -25,14 +24,16 @@ data(logindata)
 
 # login and assign specific variable(s)
 library(opal)
-myvar <- list("GENDER")
+myvar <- list("PM_BMI_CATEGORICAL")
 opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
-# generate a factor vector using the variable 'GENDER'
-datashield.assign(opals, "sex", quote(createfactor.ds(D$GENDER)))
+# get the levels of variable PM_BMI_CATEGORICAL in study1
+current.levels <- datashield.aggregate(opals[1], quote(levels(D$PM_BMI_CATEGORICAL)))
 
-# display the number of observation in each vector
-datashield.aggregate(opals, quote(length(sex)))
+#' generate a new factor vector which has an additonal level '4'
+newlevels <- c(current.levels[[1]], "4")
+datashield.assign(opals, "bmi_f", quote(createfactor.ds(D$PM_BMI_CATEGORICAL, newlevels)))
+
  }
 }
 \author{
