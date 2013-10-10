@@ -44,7 +44,8 @@ createfactor.ds <- function (xvect=NULL, categories=NULL){
   
   if(check){
     # generate the new variable with the specified levels
-    xvect_f <- factor(xvect, levels=categories)
+    ll <- strsplit(categories, ",")
+    xvect_f <- factor(xvect, levels=ll)
     return(xvect_f)
   }
 }
