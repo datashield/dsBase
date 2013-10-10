@@ -30,14 +30,19 @@
 createfactor.ds <- function (xvect=NULL, categories=NULL){
   
   if(is.null(xvect)){
-    stop("\n\nPlease provide a valid numeric or factor vector!\n\n")
+    stop("\n\nPlease provide a valid factor vector!\n\n")
   }
+
   if(is.null(categories)){
-    stop("\n\nthe levels of the variable must provided!\n\n")
+    stop("\n\nthe levels of the new variable must provided!\n\n")
   }
   
-  # get the current levels of the input vector
-  levels(xvect) <- categories
-
-  return(xvect)
+  # check if the input vector is valid (i.e. respect DataSHIELD conditions)
+  check <- isValid.ds(xvect)
+  
+  if(check){
+    # generate the new variable with the specified levels
+    levels(xvect) <- categories
+    return(xvect)
+  }
 }

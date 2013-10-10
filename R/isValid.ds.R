@@ -38,7 +38,7 @@ isValid.ds <- function(xvect) {
         return(TRUE)
       }
     }else{
-      Stop("\n\nThe variable is not a numeric or a factor!\n\n")
+      stop("\n\nThe variable is not a numeric or a factor!\n\n")
     }
   } 
   
