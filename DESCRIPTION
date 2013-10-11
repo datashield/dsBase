@@ -40,7 +40,9 @@ AssignMethods: log=base::log,
     subset=base::subset,
     product.ds,
     sum=base::sum,
-    as.null=base::as.null
+    as.null=base::as.null,
+    subsetdata.ds,
+    subsetvar.ds
 Collate:
     'checkfactor.ds.R'
     'createfactor.ds.R'
@@ -54,3 +56,5 @@ Collate:
     'table2d.ds.R'
     'mean.ds.R'
     'isValid.ds.R'
+    'subsetdata.ds.R'
+    'subsetvar.ds.R'
