@@ -27,7 +27,9 @@ AggregateMethods: length=base::length,
     isValid.ds,
     class=base::class,
     levels=base::levels,
-    is.factor=base::is.factor
+    is.factor=base::is.factor,
+    lapply.ds,
+    var=base::var
 AssignMethods: log=base::log,
     cbind=base::cbind,
     exp=base::exp,
@@ -42,7 +44,8 @@ AssignMethods: log=base::log,
     sum=base::sum,
     as.null=base::as.null,
     subsetdata.ds,
-    subsetvar.ds
+    subsetvar.ds,
+    list=base::list
 Collate:
     'checkfactor.ds.R'
     'createfactor.ds.R'
@@ -58,3 +61,4 @@ Collate:
     'isValid.ds.R'
     'subsetdata.ds.R'
     'subsetvar.ds.R'
+    'lapply.ds.R'

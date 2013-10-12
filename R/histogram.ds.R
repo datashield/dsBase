@@ -6,7 +6,7 @@
 #' the nearing bin; this process iterates until all bins have count >=5.
 #' @param xvect the numeric vector for which the histogram is desired.
 #' @param brks a numerical vector giving the breakpoints between histogram cells
-#' @return a list with an object of class \code{histogram} and a vector of x-positions
+#' @return a list with an object of class \code{histogram} and the number of invalid cells
 #' @export
 #' @author Gaye, A.
 #' @examples 
@@ -40,13 +40,13 @@ histogram.ds <- function (xvect, brks) {
     histout$intensities[indx] <- 0   
     
     # get the midpoints corresponding to the above indices
-    # these midpoint will be used to put '*' in the final plot
-    axterixpos <- histout$mids[indx]
+    # these midpoint correspond to the invalid categories
+    invalidcells <- histout$mids[indx]
   }else{
-    axterixpos <- NULL
+    invalidcells <- NULL
   }
   
   # return a list with the histogram object and the vector 'axterispos'
-  return(list("histobject"=histout, "aterix2plot"=axterixpos))
+  return(list("histobject"=histout, "invalidcells"=length(invalidcells)))
   
 }

@@ -12,8 +12,8 @@
   between histogram cells}
 }
 \value{
-  a list with an object of class \code{histogram} and a
-  vector of x-positions
+  a list with an object of class \code{histogram} and the
+  number of invalid cells
 }
 \description{
   this functions produces the information required to plot

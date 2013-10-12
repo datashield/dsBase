@@ -39,8 +39,8 @@ opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 var <- quote(D$PM_BMI_CONTINUOUS)
 operator <- 3
 threshold <- 70
-cally <-  call("subsetvar.ds", var, as.vector(operator), as.vector(70))
-output <- datashield.assign(datasources=opals, cally)
+cally <-  call("subsetvar.ds", var, as.numeric(operator), as.numeric(70))
+datashield.assign(datasources=opals, "subset", cally)
 }
 }
 \author{

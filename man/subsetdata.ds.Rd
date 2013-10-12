@@ -28,7 +28,7 @@ myvar <- list("DIS_DIAB","PM_BMI_CONTINUOUS","LAB_HDL", "GENDER")
 opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
 # get the subsets from the table assigned above (by default is 'D')
-output <- datashield.assign(datasources=opals, quote(subsetdata.ds(D)))
+datashield.assign(opals, "Subsets", quote(subsetdata.ds(D)))
 }
 }
 \author{
