@@ -38,7 +38,7 @@ for(i in 1:length(opals)){
 
 # now append 'lab_hdl.c' to the initially assigned dataframe 'D'
 # and replace the initial dataframe 'D' by the new dataframe
-call.object <- call("append2df.ds", quote(lab_hdl.cL), quote(as.character("lab_hdl.c")))
+call.object <- call("append2df.ds", quote(D), quote(lab_hdl.c), quote(as.character("lab_hdl.c")))
 datashield.assign(opals, "Dnew", call.object)
 datashield.assign(opals, "D", quote(Dnew))
 }
