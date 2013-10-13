@@ -29,7 +29,7 @@ AggregateMethods: length=base::length,
     levels=base::levels,
     is.factor=base::is.factor,
     lapply.ds,
-    var=stats::var
+    var.ds
 AssignMethods: log=base::log,
     cbind=base::cbind,
     exp=base::exp,
@@ -62,3 +62,5 @@ Collate:
     'subsetdata.ds.R'
     'subsetvar.ds.R'
     'lapply.ds.R'
+    'append2df.ds.R'
+    'var.ds.R'

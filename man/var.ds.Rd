@@ -1,18 +1,17 @@
-\name{mean.ds}
-\alias{mean.ds}
-\title{Computes statistical mean of vector with more than 4 entries}
+\name{var.ds}
+\alias{var.ds}
+\title{Computes the variance of a numeric vector}
 \usage{
-  mean.ds(xvect)
+  var.ds(xvect)
 }
 \arguments{
-  \item{xvect}{a vector}
+  \item{xvect}{a numeric vector}
 }
 \value{
-  a numeric, the statistical mean
+  a numeric, the variance
 }
 \description{
-  Computes statistical mean of vector with more than 4
-  entries
+  Computes the variance of a numeric vector
 }
 \examples{
 \dontrun{
@@ -22,7 +21,7 @@ data(logindata)
 library(opal)
 opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
-# compute the statistical mean
+# compute the variance
 stat.mean <- datashield.aggregate(opals, quote(mean.ds(D$LAB_TSC)))
 }
 }
