@@ -38,6 +38,7 @@ append2df.ds <- function (dataset, column) {
       cat("Warning: no name provided for the appended column!")
     }else{
     colnames(new.dataset)[length(new.dataset)] <- names(column)[1]
+    colnames(new.dataset)[length(new.dataset)] <- names(column)[[1]]
     }
     return(new.dataset)
   }else{
