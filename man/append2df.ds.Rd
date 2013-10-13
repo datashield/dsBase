@@ -7,7 +7,8 @@
 \arguments{
   \item{dataset}{a dataframe}
 
-  \item{column}{a column/vector to append to the dataframe}
+  \item{column}{a list which contains the column/vector to
+  append to the dataframe}
 }
 \value{
   a new dataframe is assigned to the datasources
@@ -29,12 +30,12 @@ mean.lab_hdl <- datashield.aggregate(opals, quote(mean.ds(D$LAB_HDL)))
 # center LAB_HDL for each study
 for(i in 1:length(opals)){
   call.object <- call("-", quote(D$LAB_HDL), mean.lab_hdl[[i]])
-  datashield.assign(opals[i], "lab_hdl.c", cally)
+  datashield.assign(opals[i], "lab_hdl.c", call.object)
 }
 
 # now append 'lab_hdl.c' to the initially assigned dataframe 'D'
 # and replace the initial dataframe 'D' by the new dataframe
-datashield.assign(opals, "Dnew", quote(append2df.ds(D,lab_hdl.c)))
+datashield.assign(opals, "Dnew", quote(append2df.ds(D,list("lab_hdl.c"=lab_hdl.c))))
 datashield.assign(opals, "D", quote(Dnew))
 }
 }

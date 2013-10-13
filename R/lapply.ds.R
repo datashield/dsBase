@@ -6,7 +6,8 @@
 #' each category. 
 #' @param xvect a numeric vector
 #' @param yvect a factor vector
-#' @param fun the function to apply, \code{mean.ds} or \code{var.ds}.
+#' @param fun a list that holds the charcater name of the function to apply.
+#' The functions to apply are restricted to \code{mean.ds} and \code{var.ds}.
 #' @return a list which contains the results of the applied function 
 #' for each category.
 #' @author Gaye, A.
@@ -22,10 +23,12 @@
 #' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
 #' # compute the mean for the BMI categories that correspond to the two GENDER levels
-#' datashield.aggregate(opals, quote(lapply.ds(D$PM_BMI_CATEGORICAL, D$GENDER, fun=mean.ds)))
+#' call.object <- call("lapply.ds", quote(D$LAB_TSC), quote(D$GENDER), quote(list("mean.ds")))
+#' datashield.aggregate(opals, call.object)
 #'
 #' # compute the variance for the BMI categories that correspond to the two GENDER levels
-#' datashield.aggregate(opals, quote(lapply.ds(D$PM_BMI_CATEGORICAL, D$GENDER, fun=var.ds)))
+#' call.object <- call("lapply.ds", quote(D$LAB_TSC), quote(D$GENDER), quote(list("var.ds")))
+#' datashield.aggregate(opals, call.object)
 #'  }
 #'
 lapply.ds <- function (xvect=NULL, yvect=NULL, fun=NULL){
@@ -54,10 +57,19 @@ lapply.ds <- function (xvect=NULL, yvect=NULL, fun=NULL){
   ll <- levels(yvect)
   results <- c()
   labels <- c()
-  for(i in 1:length(ll)){
-    x <- dt[which(dt[,2]==as.numeric(ll[i])), 1] 
-    res <- fun(x, na.rm=TRUE)
-    results <- append(results, round((res),3))
+  if(fun[[1]] == "mean.ds"){
+    for(i in 1:length(ll)){
+      x <- dt[which(dt[,2]==as.numeric(ll[i])), 1] 
+      res <- mean.ds(x)
+      results <- append(results, round((res),3))
+    }
+  }
+  if(fun[[1]] == "var.ds"){
+    for(i in 1:length(ll)){
+      x <- dt[which(dt[,2]==as.numeric(ll[i])), 1] 
+      res <- var.ds(x)
+      results <- append(results, round((res),3))
+    }
   }
   return(results)
 }

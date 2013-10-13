@@ -9,8 +9,9 @@
 
   \item{yvect}{a factor vector}
 
-  \item{fun}{the function to apply, \code{mean.ds} or
-  \code{var.ds}.}
+  \item{fun}{a list that holds the charcater name of the
+  function to apply. The functions to apply are restricted
+  to \code{mean.ds} and \code{var.ds}.}
 }
 \value{
   a list which contains the results of the applied function
@@ -36,10 +37,12 @@ myvar <- list("PM_BMI_CATEGORICAL", "GENDER")
 opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
 # compute the mean for the BMI categories that correspond to the two GENDER levels
-datashield.aggregate(opals, quote(lapply.ds(D$PM_BMI_CATEGORICAL, D$GENDER, fun=mean.ds)))
+call.object <- call("lapply.ds", quote(D$LAB_TSC), quote(D$GENDER), quote(list("mean.ds")))
+datashield.aggregate(opals, call.object)
 
 # compute the variance for the BMI categories that correspond to the two GENDER levels
-datashield.aggregate(opals, quote(lapply.ds(D$PM_BMI_CATEGORICAL, D$GENDER, fun=var.ds)))
+call.object <- call("lapply.ds", quote(D$LAB_TSC), quote(D$GENDER), quote(list("var.ds")))
+datashield.aggregate(opals, call.object)
  }
 }
 \author{
