@@ -19,7 +19,7 @@
 #' 
 #' # login and assign specific variable(s)
 #' library(opal)
-#' myvar <- list("PM_BMI_CATEGORICAL", "GENDER")
+#' myvar <- list("LAB_TSC", "GENDER")
 #' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
 #' # compute the mean for the BMI categories that correspond to the two GENDER levels
