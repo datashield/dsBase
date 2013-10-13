@@ -1,7 +1,7 @@
 #'
 #' @title Appends a column(s) to a dataframe
 #' @param dataset a dataframe
-#' @param columns a column/vector to append to the dataframe
+#' @param column a column/vector to append to the dataframe
 #' @return a new dataframe is assigned to the datasources
 #' @author Gaye, A.
 #' @export
@@ -30,13 +30,10 @@
 #' datashield.assign(opals, "D", quote(Dnew))
 #' }
 #'
-append2df.ds <- function (dataset, columns) {
+append2df.ds <- function (dataset, column) {
   
   if(is.data.frame(dataset)){
-    new.dataset <- dataset
-    for(i in 1:length(columns)){
-      new.dataset <- data.frame(new.dataset, columns[[i]])
-    }
+    new.dataset <- data.frame(dataset, column)
     return(new.dataset)
   }else{
     stop("\n\''xvect'dataset' muxt be a dataframe!\n\n")

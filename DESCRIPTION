@@ -45,7 +45,8 @@ AssignMethods: log=base::log,
     as.null=base::as.null,
     subsetdata.ds,
     subsetvar.ds,
-    list=base::list
+    list=base::list,
+    append2df.ds
 Collate:
     'checkfactor.ds.R'
     'createfactor.ds.R'

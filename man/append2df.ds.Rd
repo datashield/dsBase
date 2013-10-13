@@ -2,13 +2,12 @@
 \alias{append2df.ds}
 \title{Appends a column(s) to a dataframe}
 \usage{
-  append2df.ds(dataset, columns)
+  append2df.ds(dataset, column)
 }
 \arguments{
   \item{dataset}{a dataframe}
 
-  \item{columns}{a column/vector to append to the
-  dataframe}
+  \item{column}{a column/vector to append to the dataframe}
 }
 \value{
   a new dataframe is assigned to the datasources
