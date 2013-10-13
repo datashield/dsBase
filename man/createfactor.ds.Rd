@@ -31,8 +31,8 @@ opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 current.levels <- datashield.aggregate(opals[1], quote(levels(D$PM_BMI_CATEGORICAL)))
 
 #' generate a new factor vector which has an additonal level '4'
-newlevels <- list(c(current.levels[[1]], "4"))
-datashield.assign(opals, "bmi_f", quote(createfactor.ds(D$PM_BMI_CATEGORICAL, newlevels)))
+call.object <- call("createfactor.ds", quote(D$PM_BMI_CATEGORICAL), as.list(current.levels[[1]], "4"))
+datashield.assign(opals, "bmi_f", call.object)
 
  }
 }

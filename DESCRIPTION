@@ -29,7 +29,7 @@ AggregateMethods: length=base::length,
     levels=base::levels,
     is.factor=base::is.factor,
     lapply.ds,
-    var=base::var
+    var=stats::var
 AssignMethods: log=base::log,
     cbind=base::cbind,
     exp=base::exp,
