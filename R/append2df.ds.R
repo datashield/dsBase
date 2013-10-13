@@ -1,7 +1,7 @@
 #'
 #' @title Appends a column(s) to a dataframe
 #' @param dataset a dataframe
-#' @param columns a list of columns/vectors to append to the dataframe
+#' @param columns a column/vector to append to the dataframe
 #' @return a new dataframe is assigned to the datasources
 #' @author Gaye, A.
 #' @export
@@ -18,11 +18,16 @@
 #' # generate a new variable (e.g. a mean centered LAB_HDL)
 #' # get the mean of LAB_HDL
 #' mean.lab_hdl <- datashield.aggregate(opals, quote(mean.ds(D$LAB_HDL)))
-#' datashield.assign(opals, "lab_hdl.c", quote(D$LAB_HDL - mean.lab_hdl))
+#' # center LAB_HDL for each study
+#' for(i in 1:length(opals)){
+#'   call.object <- call("-", quote(D$LAB_HDL), mean.lab_hdl[[i]])
+#'   datashield.assign(opals[i], "lab_hdl.c", cally)
+#' }
 #' 
 #' # now append 'lab_hdl.c' to the initially assigned dataframe 'D'
 #' # and replace the initial dataframe 'D' by the new dataframe
-#' datashield.assign(opals, "D", quote(append2df.ds(D,list(lab_hdl.c))))
+#' datashield.assign(opals, "Dnew", quote(append2df.ds(D,lab_hdl.c)))
+#' datashield.assign(opals, "D", quote(Dnew))
 #' }
 #'
 append2df.ds <- function (dataset, columns) {
