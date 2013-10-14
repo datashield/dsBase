@@ -8,7 +8,7 @@
 #' @param yvect a factor vector
 #' @param fun a character string, the name of the function to apply.
 #' The functions to apply are restricted to \code{mean.ds} and \code{var.ds}.
-#' @return a list which contains the results of the applied function 
+#' @return a list which contains the results of the applied function. 
 #' for each category.
 #' @author Gaye, A.
 #' @export

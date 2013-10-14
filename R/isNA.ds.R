@@ -23,8 +23,8 @@
 isNA.ds <- function(xvect){
   
   out <- is.na(xvect)
-  mm <- mean(out, na.rm=TRUE)
-  if(mm==1){
+  total <- sum(out, na.rm=TRUE)
+  if(total==(1*length(out))){
     return(TRUE)
   }else{
     return(FALSE)

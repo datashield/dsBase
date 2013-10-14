@@ -14,8 +14,8 @@
   \code{mean.ds} and \code{var.ds}.}
 }
 \value{
-  a list which contains the results of the applied function
-  for each category.
+  a list which contains the results of the applied
+  function. for each category.
 }
 \description{
   Applies a function to each of the given categories
