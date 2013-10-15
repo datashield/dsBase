@@ -25,7 +25,7 @@
 #' datashield.assign(opals, "Subsets", quote(subsetdata.ds(D)))
 #' 
 #' #' # Example 2: get the subsets from the table assigned above (by default is 'D')
-#' datashield.assign(opals, "Subsets", quote(subsetdata.ds(D, list(1,4))))
+#' datashield.assign(opals, "Subsets", quote(subsetdata.ds(D, list(4))))
 #' }
 #' 
 subsetdata.ds <- function(dataset=NULL, columns=NULL){
@@ -42,7 +42,6 @@ subsetdata.ds <- function(dataset=NULL, columns=NULL){
     # the names of the variables in the dataset
     indices <- unlist(columns)
     D <- dataset[,indices]
-    colnames(D) <- colnames(dataset)[indices]
     variables <- colnames(D)
   }
   

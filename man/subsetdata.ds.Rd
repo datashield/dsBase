@@ -38,7 +38,7 @@ opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 datashield.assign(opals, "Subsets", quote(subsetdata.ds(D)))
 
 #' # Example 2: get the subsets from the table assigned above (by default is 'D')
-datashield.assign(opals, "Subsets", quote(subsetdata.ds(D, list(1,4))))
+datashield.assign(opals, "Subsets", quote(subsetdata.ds(D, list(4))))
 }
 }
 \author{
