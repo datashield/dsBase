@@ -49,7 +49,8 @@ AssignMethods: log=base::log,
     list=base::list,
     append2df.ds,
     rowcolCalc.ds,
-    nais1.ds
+    nais1.ds,
+    is.na=base::is.na
 Collate:
     'checkfactor.ds.R'
     'createfactor.ds.R'
