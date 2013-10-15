@@ -29,7 +29,6 @@ AggregateMethods: length=base::length,
     class=base::class,
     levels=base::levels,
     is.factor=base::is.factor,
-    lapply.ds,
     var.ds
 AssignMethods: log=base::log,
     cbind=base::cbind,
@@ -65,7 +64,6 @@ Collate:
     'isValid.ds.R'
     'subsetdata.ds.R'
     'subsetvar.ds.R'
-    'lapply.ds.R'
     'append2df.ds.R'
     'var.ds.R'
     'rowcolCalc.ds.R'

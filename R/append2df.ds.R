@@ -39,6 +39,6 @@ append2df.ds <- function (dataset, column, colname) {
     colnames(new.dataset)[length(new.dataset)] <- colname
     return(new.dataset)
   }else{
-    stop("\n\''xvect'dataset' muxt be a dataframe!\n\n")
+    stop("\n\'dataset' must be a dataframe!\n\n")
   }
 }
