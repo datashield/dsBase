@@ -41,4 +41,5 @@ append2df.ds <- function (dataset, column, colname) {
   }else{
     stop("\n\'dataset' must be a dataframe!\n\n")
   }
+  
 }

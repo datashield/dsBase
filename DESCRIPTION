@@ -51,7 +51,8 @@ AssignMethods: log=base::log,
     append2df.ds,
     rowcolCalc.ds,
     nais1.ds,
-    is.na=base::is.na
+    is.na=base::is.na,
+    rowcolDel.ds
 Collate:
     'checkfactor.ds.R'
     'createfactor.ds.R'
@@ -72,3 +73,4 @@ Collate:
     'rowcolCalc.ds.R'
     'nais1.ds.R'
     'names.ds.R'
+    'rowcolDel.ds.R'
