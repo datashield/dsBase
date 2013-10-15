@@ -53,9 +53,11 @@ subsetdata.ds <- function(dataset=NULL){
           if(!(length(indices) > 0 & length(indices) < 5)){
             count <- count+1
             subD <- D[indices,]
-            subsets[[count]] <- subD
-            name.of.subD <- paste(varname,".level_", categories[j], sep="")
-            names.of.subsets <- append(names.of.subsets, name.of.subD)
+            if(dim(subD)[1] > 5){
+              subsets[[count]] <- subD
+              name.of.subD <- paste(varname,".level_", categories[j], sep="")
+              names.of.subsets <- append(names.of.subsets, name.of.subD)
+            }
           }
         }
       }
