@@ -35,14 +35,14 @@ subsetdata.ds <- function(dataset=NULL, columns=NULL){
   }
   
   if(is.null(columns)){
-    # the names of the variables in the dataset
-    D <- dataset
-    variables <- colnames(D)
+    loop <- c(1:dim(D)[2])
   }else{
-    # the names of the variables in the dataset
     indices <- unlist(columns)
-    D <- dataset[,indices]
-    variables <- colnames(D)
+    if(length(indices) > 1){
+      loop <- indices
+    }else{
+      loop <- 1
+    }
   }
   
   if(is.data.frame(dataset)){
@@ -51,15 +51,12 @@ subsetdata.ds <- function(dataset=NULL, columns=NULL){
     D <- dataset
     variables <- colnames(D)
     
-    # the number of variables in the dataset
-    numvar <- length(variables)
-    
     # loop through the variables and make a subset dataframe for each level
     # of each factor variable and keep the generated subset dataframes in a list
     subsets <- list()
     names.of.subsets <- c()
     count <- 0
-    for(i in 1:numvar){
+    for(i in loop){
       var <- D[,i]
       varname <- variables[i]
       if(is.factor(var)){
