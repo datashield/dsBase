@@ -35,12 +35,9 @@ data(logindata)
 myvar <- list("PM_BMI_CONTINUOUS")
 opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
-# run the function with for the condition '>=70'
-var <- quote(D$PM_BMI_CONTINUOUS)
-operator <- ">="
-threshold <- 70
-cally <-  call("subsetvar.ds", var, as.character(operator), as.numeric(70))
-datashield.assign(datasources=opals, "subset", cally)
+# get a subset of PM_BMI_CONTINUOUS with the '>=70'
+#' call.object <-  call("subsetvar.ds", quote(D$PM_BMI_CONTINUOUS), quote(as.character(">=")), quote(as.numeric(70)))
+datashield.assign(opals, "subset", call.object)
 }
 }
 \author{

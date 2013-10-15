@@ -20,8 +20,8 @@
 #' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
 #' # generate a histogram object without plotting
-#' cally <-  call("rowcolCal.ds", quote(D), as.character("rowSums"))
-#' datashield.assign(opals, "rowsums", cally)
+#' call.object <-  call("rowcolCalc.ds", quote(D), as.character("rowSums"))
+#' datashield.assign(opals, "rowsums", call.object)
 #' }
 #' 
 rowcolCalc.ds <- function (dataset, operation) {

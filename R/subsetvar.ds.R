@@ -19,12 +19,9 @@
 #' myvar <- list("PM_BMI_CONTINUOUS")
 #' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
-#' # run the function with for the condition '>=70'
-#' var <- quote(D$PM_BMI_CONTINUOUS) 
-#' operator <- ">="
-#' threshold <- 70
-#' cally <-  call("subsetvar.ds", var, as.character(operator), as.numeric(70))
-#' datashield.assign(datasources=opals, "subset", cally)
+#' # get a subset of PM_BMI_CONTINUOUS with the '>=70' 
+#' #' call.object <-  call("subsetvar.ds", quote(D$PM_BMI_CONTINUOUS), quote(as.character(">=")), quote(as.numeric(70)))
+#' datashield.assign(opals, "subset", call.object)
 #' }
 #' 
 subsetvar.ds <- function(xvect=NULL, operator=NULL, threshold=NULL){
@@ -42,7 +39,7 @@ subsetvar.ds <- function(xvect=NULL, operator=NULL, threshold=NULL){
   }
   
   # get te indices of the observation where the condition is true
-  cally <- call(operator, xvect, threshold)
+  cally <- call(operator, quote(xvect), threshold)
   indx1 <- which(eval(cally))
   
   # turn all the the value of all the observation that met the condition to 1
