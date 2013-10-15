@@ -21,7 +21,7 @@
 #' 
 #' # generate a histogram object without plotting
 #' cally <-  call("rowcolCal.ds", quote(D), as.character("rowSums"))
-#' datashield.assign(opals, cally)
+#' datashield.assign(opals, "rowsums", cally)
 #' }
 #' 
 rowcolCalc.ds <- function (dataset, operation) {
