@@ -37,9 +37,9 @@ subsetdata.ds <- function(dataset=NULL, columns=NULL){
   if(is.null(columns)){
     loop <- c(1:dim(D)[2])
   }else{
-    indices <- unlist(columns)
-    if(length(indices) > 1){
-      loop <- indices
+    indx <- unlist(columns)
+    if(length(indx) > 1){
+      loop <- indx
     }else{
       loop <- 1
     }
@@ -56,9 +56,30 @@ subsetdata.ds <- function(dataset=NULL, columns=NULL){
     subsets <- list()
     names.of.subsets <- c()
     count <- 0
-    for(i in loop){
-      var <- D[,i]
-      varname <- variables[i]
+    if(length(loop) > 1){
+      for(i in loop){
+        var <- D[,i]
+        varname <- variables[i]
+        if(is.factor(var)){
+          # get the levels
+          categories <- levels(var)
+          # loop through the levels and generate a dataset for each level
+          # if the number of observations for that level > 0 and < 5
+          for(j in 1:length(categories)){
+            indices <- which(var == as.numeric(categories[j]))
+            if(!(length(indices) > 0 & length(indices) < 5)){
+              count <- count+1
+              subD <- D[indices,]
+              subsets[[count]] <- subD
+              name.of.subD <- paste(varname,".level_", categories[j], sep="")
+              names.of.subsets <- append(names.of.subsets, name.of.subD)
+            }
+          }
+        }
+      }
+    }else{
+      var <- D[,indx]
+      varname <- variables[indx]
       if(is.factor(var)){
         # get the levels
         categories <- levels(var)
@@ -75,12 +96,12 @@ subsetdata.ds <- function(dataset=NULL, columns=NULL){
           }
         }
       }
+      
     }
     # now set the names of subsets in the holder list to the names
     # that were generated along with the subsets
     names(subsets) <- names.of.subsets
     return(subsets)
-    
   }else{
     stop("\n\nThe dataset is not a dataframe!\n\n")
   }
