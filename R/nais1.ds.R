@@ -4,6 +4,7 @@
 #' @return a factor
 #' @author Burton, P.; Gaye, A.
 #' @export
+#' 
 nais1.ds <- function(xvect){
   
   indx <- is.na(xvect)*1

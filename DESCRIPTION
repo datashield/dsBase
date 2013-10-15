@@ -29,7 +29,8 @@ AggregateMethods: length=base::length,
     class=base::class,
     levels=base::levels,
     is.factor=base::is.factor,
-    var.ds
+    var.ds,
+    names.ds
 AssignMethods: log=base::log,
     cbind=base::cbind,
     exp=base::exp,
@@ -70,3 +71,4 @@ Collate:
     'var.ds.R'
     'rowcolCalc.ds.R'
     'nais1.ds.R'
+    'names.ds.R'
