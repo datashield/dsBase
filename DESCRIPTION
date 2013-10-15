@@ -48,7 +48,8 @@ AssignMethods: log=base::log,
     subsetvar.ds,
     list=base::list,
     append2df.ds,
-    rowcolCalc.ds
+    rowcolCalc.ds,
+    nais1.ds
 Collate:
     'checkfactor.ds.R'
     'createfactor.ds.R'
@@ -67,3 +68,4 @@ Collate:
     'append2df.ds.R'
     'var.ds.R'
     'rowcolCalc.ds.R'
+    'nais1.ds.R'
