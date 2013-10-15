@@ -1,9 +1,14 @@
 #' 
 #' @title Generates a valid subset of a dataset
-#' @details the function takes a dataframe and generates a subsets
+#' @details The function takes a dataframe and generates a subset
 #' dataframes for all the factor variables if that subset is valid. 
-#' with new levels. This is done for each study.
+#' By default a subset of the dataframe is created for each categorie
+#' of each factor. It is possible to indicate the variable for which
+#' a subset is sought by indicating their columns indices. The variable
+#' at the given indices are not factors no subsets are generated.
 #' @param dataset a dataframe
+#' @param columns a a numeric vector that gives the subsets of the
+#' variables for which subsets are sougth.
 #' @return a list which contains the subsetted datasets 
 #' @author Gaye, A.
 #' @export
@@ -16,14 +21,29 @@
 #' myvar <- list("DIS_DIAB","PM_BMI_CONTINUOUS","LAB_HDL", "GENDER")
 #' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
-#' # get the subsets from the table assigned above (by default is 'D')
+#' # Example 1: get the subsets from the table assigned above (by default is 'D')
 #' datashield.assign(opals, "Subsets", quote(subsetdata.ds(D)))
+#' 
+#' #' # Example 2: get the subsets from the table assigned above (by default is 'D')
+#' datashield.assign(opals, "Subsets", quote(subsetdata.ds(D, list(1,4))))
 #' }
 #' 
-subsetdata.ds <- function(dataset=NULL){
+subsetdata.ds <- function(dataset=NULL, columns=NULL){
   
   if(is.null(dataset)){
     stop("\n\nNo dataset provided!\n\n")
+  }
+  
+  if(is.null(columns)){
+    # the names of the variables in the dataset
+    D <- dataset
+    variables <- colnames(D)
+  }else{
+    # the names of the variables in the dataset
+    indices <- unlist(columns)
+    D <- dataset[,indices]
+    colnames(D) <- colnames(dataset)[indices]
+    variables <- colnames(D)
   }
   
   if(is.data.frame(dataset)){
@@ -68,4 +88,5 @@ subsetdata.ds <- function(dataset=NULL){
   }else{
     stop("\n\nThe dataset is not a dataframe!\n\n")
   }
+
 }

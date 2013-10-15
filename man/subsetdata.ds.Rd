@@ -2,10 +2,13 @@
 \alias{subsetdata.ds}
 \title{Generates a valid subset of a dataset}
 \usage{
-  subsetdata.ds(dataset = NULL)
+  subsetdata.ds(dataset = NULL, columns = NULL)
 }
 \arguments{
   \item{dataset}{a dataframe}
+
+  \item{columns}{a a numeric vector that gives the subsets
+  of the variables for which subsets are sougth.}
 }
 \value{
   a list which contains the subsetted datasets
@@ -14,9 +17,13 @@
   Generates a valid subset of a dataset
 }
 \details{
-  the function takes a dataframe and generates a subsets
+  The function takes a dataframe and generates a subset
   dataframes for all the factor variables if that subset is
-  valid. with new levels. This is done for each study.
+  valid. By default a subset of the dataframe is created
+  for each categorie of each factor. It is possible to
+  indicate the variable for which a subset is sought by
+  indicating their columns indices. The variable at the
+  given indices are not factors no subsets are generated.
 }
 \examples{
 \dontrun{
@@ -27,8 +34,11 @@ data(logindata)
 myvar <- list("DIS_DIAB","PM_BMI_CONTINUOUS","LAB_HDL", "GENDER")
 opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
-# get the subsets from the table assigned above (by default is 'D')
+# Example 1: get the subsets from the table assigned above (by default is 'D')
 datashield.assign(opals, "Subsets", quote(subsetdata.ds(D)))
+
+#' # Example 2: get the subsets from the table assigned above (by default is 'D')
+datashield.assign(opals, "Subsets", quote(subsetdata.ds(D, list(1,4))))
 }
 }
 \author{
