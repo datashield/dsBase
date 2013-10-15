@@ -22,9 +22,9 @@
 \examples{
 \dontrun{
 # load the file that contains the login details
+library(opal)
 data(logindata)
 
-library(opal)
 opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar, symbol="D")
 
 # generate a new variable (e.g. a mean centered LAB_HDL)

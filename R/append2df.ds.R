@@ -9,10 +9,10 @@
 #' @examples 
 #' \dontrun{
 #' # load the file that contains the login details
+#' library(opal)
 #' data(logindata)
 #' 
 #  # login and assign a numeric variable to R
-#' library(opal)
 #  myvar <- list("LAB_TSC", "LAB_HDL")
 #' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar, symbol="D")
 #' 

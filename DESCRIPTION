@@ -70,7 +70,5 @@ Collate:
     'subsetvar.ds.R'
     'append2df.ds.R'
     'var.ds.R'
-    'rowcolCalc.ds.R'
     'nais1.ds.R'
     'names.ds.R'
-    'rowcolDel.ds.R'

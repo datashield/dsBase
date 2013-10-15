@@ -19,7 +19,7 @@
 #' myvar <- list("PM_BMI_CONTINUOUS")
 #' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
-#' # run the function with for the condition '>=70'
+#' # run the function with for the condition '>=30'
 #' var <- quote(D$PM_BMI_CONTINUOUS) 
 #' operator <- 3
 #' threshold <- 30
