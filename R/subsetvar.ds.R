@@ -22,9 +22,9 @@
 #' # run the function with for the condition '>=70'
 #' var <- quote(D$PM_BMI_CONTINUOUS) 
 #' operator <- 3
-#' threshold <- 70
+#' threshold <- 30
 #' call.object <-  call("subsetvar.ds", var, as.numeric(operator), as.numeric(30))
-#' datashield.assign(opals, "bmi.>.30", call.object)
+#' datashield.assign(opals, "bmi30", call.object)
 #' }
 #'  
 subsetvar.ds <- function(xvect=NULL, operator=NULL, threshold=NULL){
