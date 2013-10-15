@@ -8,9 +8,9 @@
 \arguments{
   \item{xvect}{a continuous numeric variable}
 
-  \item{operator}{a string character that represents the
-  logical operator. Six logical operators are possible:
-  '>', '<', '>=', '<=', '==' and '!='.}
+  \item{operator}{an integer that sets the operator 1 for
+  '>', 2 for '<', 3 for '>=', 4 for '<=', 5 for '==' and 6
+  for '!='}
 
   \item{threshold}{a numeric value that sets the threshold}
 }
@@ -24,7 +24,7 @@
 }
 \details{
   This function runs only if the set threshold (i.e. >=) is
-  met or not met by more than one observation.
+  met or not met by 1 single observation.
 }
 \examples{
 \dontrun{
@@ -35,9 +35,12 @@ data(logindata)
 myvar <- list("PM_BMI_CONTINUOUS")
 opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
-# get a subset of PM_BMI_CONTINUOUS with the '>=70'
-#' call.object <-  call("subsetvar.ds", quote(D$PM_BMI_CONTINUOUS), quote(as.character(">=")), quote(as.numeric(70)))
-datashield.assign(opals, "subset", call.object)
+# run the function with for the condition '>=70'
+var <- quote(D$PM_BMI_CONTINUOUS)
+operator <- 3
+threshold <- 70
+call.object <-  call("subsetvar.ds", var, as.numeric(operator), as.numeric(30))
+datashield.assign(opals, "bmi.>.30", call.object)
 }
 }
 \author{
