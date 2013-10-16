@@ -7,9 +7,9 @@
 \arguments{
   \item{dataset}{an array of two or more dimensions.}
 
-  \item{operation}{a string character that indicates the
-  operation to carry out: 'rowSums', 'colSums', 'rowMeans'
-  or 'colMeans'}
+  \item{operation}{an integer that indicates the operation
+  to carry out: 1 for 'rowSums', 2 for 'colSums', 3 for
+  'rowMeans' or 4 for 'colMeans'}
 }
 \value{
   a list that contains the vector of results.

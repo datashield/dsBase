@@ -4,8 +4,8 @@
 #' 'rowMeans' and 'colMeans' but its outcome cannot be returned to the user as it might
 #' be revealing if the array contains only one row or one column. 
 #' @param dataset an array of two or more dimensions.
-#' @param operation a string character that indicates the operation to carry out:
-#' 'rowSums', 'colSums', 'rowMeans' or 'colMeans'
+#' @param operation an integer that indicates the operation to carry out:
+#' 1 for 'rowSums', 2 for 'colSums', 3 for 'rowMeans' or 4 for 'colMeans'
 #' @return a list that contains the vector of results.
 #' @export
 #' @author Gaye, A.
@@ -26,11 +26,19 @@
 #' 
 rowcolCalc.ds <- function (dataset, operation) {
   
-  # contruct the operation to carry out as a call
-  cally <- call(operation, dataset, na.rm=TRUE)
+  if(operation == 1){
+    result <- rowSums(dataset, na.rm=TRUE)
+  }
+  if(operation == 2){
+    result <- colSums(dataset, na.rm=TRUE)
+  }
+  if(operation == 3){
+    result <- rowMeans(dataset, na.rm=TRUE)
+  }
+  if(operation == 4){
+    result <- colMeans(dataset, na.rm=TRUE)
+  }
   
-  # evaluate the call and return it
-  results <- eval(cally)
-  return(results)
+  return(result)
   
 }
