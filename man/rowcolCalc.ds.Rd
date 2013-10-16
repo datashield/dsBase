@@ -33,7 +33,7 @@ data(logindata)
 opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
 # generate a histogram object without plotting
-call.object <-  call("rowcolCalc.ds", quote(D), as.character("rowSums"))
+call.object <-  call("rowcolCalc.ds", quote(D), as.numeric(1))
 datashield.assign(opals, "rowsums", call.object)
 }
 }
