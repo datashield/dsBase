@@ -6,7 +6,6 @@ License: GPL-3
 Title: Base DataSHIELD methods (server)
 Description: Base DataSHIELD methods (server)
 AggregateMethods: length=base::length,
-    c=base::c,
     colnames=base::colnames,
     histogram.ds,
     dim=base::dim,
@@ -15,14 +14,13 @@ AggregateMethods: length=base::length,
     checkfactor.ds,
     isNA.ds,
     range.ds,
-    as.numeric=base::as.numeric,
-    as.character=base::as.character,
+    is.numeric=base::is.numeric,
+    is.character=base::is.character,
     t.test=stats::t.test,
     var=stats::var,
     is.null=base::is.null,
     NROW=base::NROW,
     densitygrid.ds,
-    summary.ds,
     table1d.ds,
     table2d.ds,
     mean.ds,
@@ -31,7 +29,8 @@ AggregateMethods: length=base::length,
     levels=base::levels,
     is.factor=base::is.factor,
     var.ds,
-    names.ds
+    names.ds,
+    is.list=base::is.list
 AssignMethods: log=base::log,
     c=base::c,
     cbind=base::cbind,
@@ -43,7 +42,6 @@ AssignMethods: log=base::log,
     complete.cases=stats::complete.cases,
     data.frame=base::data.frame,
     createfactor.ds,
-    subset=base::subset,
     product.ds,
     sum=base::sum,
     as.null=base::as.null,
@@ -52,9 +50,7 @@ AssignMethods: log=base::log,
     list=base::list,
     append2df.ds,
     rowcolCalc.ds,
-    nais1.ds,
-    is.na=base::is.na,
-    rowcolDel.ds
+    is.na=base::is.na
 Collate:
     'checkfactor.ds.R'
     'createfactor.ds.R'
@@ -72,6 +68,5 @@ Collate:
     'subsetvar.ds.R'
     'append2df.ds.R'
     'var.ds.R'
-    'nais1.ds.R'
     'names.ds.R'
     'rowcolCalc.ds.R'
