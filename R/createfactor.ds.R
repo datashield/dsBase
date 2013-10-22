@@ -34,7 +34,11 @@ createfactor.ds <- function (xvect=NULL, categories=NULL){
   }
 
   if(is.null(categories)){
-    stop("\n\nthe levels of the new variable must provided!\n\n")
+    y = unique(xvect)
+    ind = sort.list(y)
+    y = as.character(y)
+    categories = unique(y[ind])
+    # stop("\n\nthe levels of the new variable must provided!\n\n")
   }
   
   # check if the input vector is valid (i.e. respect DataSHIELD conditions)
