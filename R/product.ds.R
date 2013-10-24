@@ -24,4 +24,5 @@ product.ds <- function (xlist){
   for(i in 1:length(xlist)){
     a <- a * xlist[[i]]
   }
+  return(a)
 }
