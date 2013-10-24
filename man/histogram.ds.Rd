@@ -8,8 +8,9 @@
   \item{xvect}{the numeric vector for which the histogram
   is desired.}
 
-  \item{brks}{a numerical vector giving the breakpoints
-  between histogram cells}
+  \item{brks}{a string character where the break values are
+  concatenated by ','; this is because we can use the R
+  function c() as an aggregate function.}
 }
 \value{
   a list with an object of class \code{histogram} and the

@@ -5,7 +5,8 @@
 #' count of less than 5. If a bin has a count < 5 it is collapsed with 
 #' the nearing bin; this process iterates until all bins have count >=5.
 #' @param xvect the numeric vector for which the histogram is desired.
-#' @param brks a numerical vector giving the breakpoints between histogram cells
+#' @param brks a string character where the break values are concatenated by ',';
+#' this is because we can use the R function c() as an aggregate function.
 #' @return a list with an object of class \code{histogram} and the number of invalid cells
 #' @export
 #' @author Gaye, A.
@@ -25,8 +26,11 @@
 #' 
 histogram.ds <- function (xvect, brks) {
   
+  # turn the brks point given as a character into numricals
+  brks_n <- as.numeric(unlist(strsplit(brks, split=",")))
+  
   # get the histogram object
-  histout <- hist(xvect, breaks=brks, plot=FALSE)
+  histout <- hist(xvect, breaks=brks_n, plot=FALSE)
   
   # check if any of the 'bins' contains a count < 5
   indx <- which(histout$counts > 0 & histout$counts < 5)
