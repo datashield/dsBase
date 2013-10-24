@@ -36,7 +36,8 @@ append2df.ds <- function (dataset, column, colname) {
   
   if(is.data.frame(dataset)){
     new.dataset <- data.frame(dataset, column)
-    colnames(new.dataset)[length(new.dataset)] <- colname
+    old.colnames <- colnames(dataset)
+    colnames(new.dataset) <- c(old.colnames, colname)
     return(new.dataset)
   }else{
     stop("\n\'dataset' must be a dataframe!\n\n")
