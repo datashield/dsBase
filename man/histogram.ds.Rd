@@ -9,7 +9,7 @@
   is desired.}
 
   \item{brks}{a string character where the break values are
-  concatenated by ','; this is because we can use the R
+  concatenated by '_'; this is because we can use the R
   function c() as an aggregate function.}
 }
 \value{
