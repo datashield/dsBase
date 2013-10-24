@@ -30,7 +30,8 @@ AggregateMethods: length=base::length,
     is.factor=base::is.factor,
     var.ds,
     names.ds,
-    is.list=base::is.list
+    is.list=base::is.list,
+    exists=base::exists
 AssignMethods: log=base::log,
     c=base::c,
     cbind=base::cbind,
