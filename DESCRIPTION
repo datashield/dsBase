@@ -6,6 +6,7 @@ License: GPL-3
 Title: Base DataSHIELD methods (server)
 Description: Base DataSHIELD methods (server)
 AggregateMethods: length=base::length,
+    c=base::c,
     colnames=base::colnames,
     histogram.ds,
     dim=base::dim,
