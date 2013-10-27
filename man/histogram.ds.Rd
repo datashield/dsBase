@@ -2,22 +2,27 @@
 \alias{histogram.ds}
 \title{Computes a histogram of the given data values without plotting.}
 \usage{
-  histogram.ds(xvect, brks)
+  histogram.ds(xvect, min, max, seed)
 }
 \arguments{
   \item{xvect}{the numeric vector for which the histogram
   is desired.}
 
-  \item{brks}{a string character where the break values are
-  concatenated by '_'; this is because we can use the R
-  function c() as an aggregate function.}
+  \item{min}{a numeric, the lower limit of the
+  distribution.}
+
+  \item{max}{a numeric, the upper limit of the
+  distribution.}
+
+  \item{seed}{an integer, the value to set the seed at when
+  generating the break points.}
 }
 \value{
   a list with an object of class \code{histogram} and the
   number of invalid cells
 }
 \description{
-  this functions produces the information required to plot
+  This functions produces the information required to plot
   a histogram. This is done without allowing for bins
   (cells) with a count of less than 5. If a bin has a count
   < 5 it is collapsed with the nearing bin; this process
@@ -31,8 +36,13 @@ data(logindata)
 library(opal)
 opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
-# generate a histogram object without plotting
-hist.object <- datashield.aggregate(opals, quote(histogram.ds(D$LAB_TSC)))
+# get the range of the inout vector
+ranges <- datashield.aggregate(datasources, quote(range.ds(xvect)))
+minval <- ranges[[1]]
+maxval <- ranges[[2]]
+seedval <- 333
+# generate a histogram object
+hist.object <- datashield.aggregate(opals, quote(histogram.ds(xvect, minval, maxval, seedval)))
 }
 }
 \author{
