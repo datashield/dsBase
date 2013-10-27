@@ -56,7 +56,7 @@ histogram.ds <- function (xvect, min, max, seed) {
   if(gotbreaks){
     # get the histogram object
     histout <- hist(xvect, breaks=brks, plot=FALSE)
-    histout <- hist(xvect, breaks=brks_n, plot=FALSE)
+    histout <- hist(xvect, breaks=brks, plot=FALSE)
     
     # check if any of the 'bins' contains a count < 5
     indx <- which(histout$counts > 0 & histout$counts < 5)
