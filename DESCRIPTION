@@ -35,6 +35,7 @@ AggregateMethods: length=base::length,
     exists=base::exists
 AssignMethods: log=base::log,
     c=base::c,
+    unlist=base::unlist,
     cbind=base::cbind,
     exp=base::exp,
     as.list=base::as.list,
@@ -73,4 +74,3 @@ Collate:
     'var.ds.R'
     'names.ds.R'
     'rowcolCalc.ds.R'
-    'c.ds.R'

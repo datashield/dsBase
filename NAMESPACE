@@ -1,5 +1,4 @@
 export(append2df.ds)
-export(c.ds)
 export(checkfactor.ds)
 export(createfactor.ds)
 export(densitygrid.ds)
