@@ -26,7 +26,8 @@ opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
 # combine LAB_TSC and LAB_HDL
 mylist <- list("D$LAB_TSC", "D$LAB_HDL")
-datashield.assign(opals, "cvect", quote(c(mylist)))
+cally <- call("c.ds", mylist)
+datashield.assign(opals, "cvect", cally)
 }
 }
 \author{
