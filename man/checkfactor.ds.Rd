@@ -22,13 +22,13 @@
 \examples{
 \dontrun{
 # load the file that contains the login details
+library(opal)
 data(logindata)
 
-library(opal)
 opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
 # check that the factor does not contain categories with count > 0 and < 5
-output <- datashield.aggregate(opals, quote(checkfactor.ds(D$LAB_TSC)))
+output <- datashield.aggregate(opals, quote(checkfactor.ds(D$GENDER)))
 }
 }
 \author{

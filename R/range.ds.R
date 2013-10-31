@@ -8,12 +8,12 @@
 #' @export
 #' @examples 
 #' \dontrun{
+#' library(opal)
 #' # load the login data
 #' data(logindata)
 #' 
 #' # login and assign specific variable(s)
 #' myvar <- list("LAB_HDL")
-#' library(opal)
 #' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
 #' # get the range of the variable 'LAB_HDL'

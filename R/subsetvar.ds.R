@@ -13,6 +13,7 @@
 #' @examples 
 #' \dontrun{
 #' # load the login data
+#' library(opal)
 #' data(logindata)
 #' 
 #' # login and assign some variables to R

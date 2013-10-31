@@ -22,11 +22,11 @@
 }
 \examples{
 \dontrun{
+library(opal)
 # load the file that contains the login details
 data(logindata)
 
 # login and assign a variable to R
-library(opal)
 opals <- datashield.login(logins=logindata,assign=TRUE,variables=list("LAB_HDL"))
 
 # check if the variable LAB_HDL is valid

@@ -20,10 +20,10 @@
 \examples{
 \dontrun{
 # load the login data
+library(opal)
 data(logindata)
 
 # login and assign specific variable(s)
-library(opal)
 myvar <- list("PM_BMI_CATEGORICAL")
 opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 

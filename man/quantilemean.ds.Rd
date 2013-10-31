@@ -17,9 +17,9 @@
 \examples{
 \dontrun{
 # load the file that contains the login details
+library(opal)
 data(logindata)
 
-library(opal)
 opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
 # compute the sample quantiles that correspond to the probabilities specified internally
