@@ -5,7 +5,8 @@
   subsetdata.ds(dataset = NULL, columns = NULL)
 }
 \arguments{
-  \item{dataset}{a dataframe}
+  \item{dataset}{a string character, the name of the
+  dataset.}
 
   \item{columns}{a a numeric vector that gives the subsets
   of the variables for which subsets are sougth.}
@@ -28,6 +29,7 @@
 \examples{
 \dontrun{
 # load the login data
+library(opal)
 data(logindata)
 
 # login and assign some variables to R

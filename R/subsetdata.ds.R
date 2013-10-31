@@ -6,7 +6,7 @@
 #' of each factor. It is possible to indicate the variable for which
 #' a subset is sought by indicating their columns indices. The variable
 #' at the given indices are not factors no subsets are generated.
-#' @param dataset a dataframe
+#' @param dataset a string character, the name of the dataset.
 #' @param columns a a numeric vector that gives the subsets of the
 #' variables for which subsets are sougth.
 #' @return a list which contains the subsetted datasets 
@@ -15,6 +15,7 @@
 #' @examples 
 #' \dontrun{
 #' # load the login data
+#' library(opal)
 #' data(logindata)
 #' 
 #' # login and assign some variables to R
@@ -30,12 +31,15 @@
 #' 
 subsetdata.ds <- function(dataset=NULL, columns=NULL){
   
+  # evaluate the object that is passed on to the function as an object
+  dataset <- eval(parse(text=dataset))
+  
   if(is.null(dataset)){
     stop("\n\nNo dataset provided!\n\n")
   }
   
   if(is.null(columns)){
-    loop <- c(1:dim(D)[2])
+    loop <- c(1:dim(dataset)[2])
   }else{
     indx <- unlist(columns)
     if(length(indx) > 1){
@@ -73,6 +77,10 @@ subsetdata.ds <- function(dataset=NULL, columns=NULL){
               subsets[[count]] <- subD
               name.of.subD <- paste(varname,".level_", categories[j], sep="")
               names.of.subsets <- append(names.of.subsets, name.of.subD)
+            }else{
+              # if any one category has between 1 and 4 observation return NULL and stop
+              return(NULL)
+              stop("\n One of the categories is not valid: it has between 0 and 4 observations!\n")            
             }
           }
         }
@@ -93,6 +101,10 @@ subsetdata.ds <- function(dataset=NULL, columns=NULL){
             subsets[[count]] <- subD
             name.of.subD <- paste(varname,".level_", categories[j], sep="")
             names.of.subsets <- append(names.of.subsets, name.of.subD)
+          }else{
+            # if any one category has between 1 and 4 observation return NULL and stop
+            return(NULL)
+            stop("\n One of the categories is not valid: it has between 0 and 4 observations!\n")            
           }
         }
       }
@@ -103,7 +115,8 @@ subsetdata.ds <- function(dataset=NULL, columns=NULL){
     names(subsets) <- names.of.subsets
     return(subsets)
   }else{
-    stop("\n\nThe dataset is not a dataframe!\n\n")
+    return(NULL)
+    stop("\nThe dataset is not a dataframe!\n")
   }
 
 }
