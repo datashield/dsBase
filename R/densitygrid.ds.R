@@ -64,7 +64,7 @@ densitygrid.ds  <-  function(xvect,yvect, limits=FALSE, x.min=NULL, x.max=NULL, 
   {
     for(k in 1:numints)
     {
-      grid.density[j,k] <- sum(1*(yvect>=y.cuts[j] & yvect<y.cuts[j+1] & xvect >=x.cuts[k] & xvect<x.cuts[k+1]), na.rm=TRUE)
+      grid.density[j,k] <- sum(1*(yvect>=y.cuts[k] & yvect<y.cuts[k+1] & xvect >=x.cuts[j] & xvect<x.cuts[j+1]), na.rm=TRUE)
       
       if ( (grid.density[j,k]>0) & (grid.density[j,k]<=4) ) {
         grid.density[j,k]  <-  0
