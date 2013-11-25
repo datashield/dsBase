@@ -28,6 +28,11 @@ recodelevels.ds <- function(xvect, newlabels){
   
   
   oldlabels = levels(xvect)
+  for (i in 1:length(newlabels)) {
+    dummy = as.character(i-1)
+    newlabels[i] = paste0(dummy, "_", newlabels[i])
+  }
+  
   newlabels = factor(newlabels, levels=newlabels)
   xvect_newlabels = newlabels[match(xvect, oldlabels)]
   return(xvect_newlabels)
