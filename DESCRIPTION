@@ -55,7 +55,8 @@ AssignMethods: log=base::log,
     append2df.ds,
     rowcolCalc.ds,
     is.na=base::is.na,
-    recodelevels.ds
+    recodelevels.ds,
+    changerefgroup.ds
 Collate:
     'checkfactor.ds.R'
     'createfactor.ds.R'
@@ -76,3 +77,4 @@ Collate:
     'names.ds.R'
     'rowcolCalc.ds.R'
     'recodelevels.ds.R'
+    'changerefgroup.ds.R'
