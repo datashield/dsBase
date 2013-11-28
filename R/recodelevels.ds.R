@@ -3,6 +3,7 @@
 #' @description this function recodes levels of a categorical variable with new given labels. 
 #' @param xvect a factor
 #' @param newlabels a string vector with new labels for the levels
+#' If \code{newlabels} is not specified, the naming of original levels is amended - numbering is added (0_..., 1_..., 2_... etc.)
 #' @return  a factor vector with new labels for levels
 #' @author Isaeva, J.
 #' @export
@@ -16,11 +17,11 @@
 #' library(opal)
 #' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
-#' # get the range of the variable 'LAB_HDL'
+#' # rename the levels of PM_BMI_CATEGORICAL
 #' datashield.assign(opals, 'bmi_new', quote(recodelevels.ds(D$PM_BMI_CATEGORICAL, newlabels=c('normal', 'overweight', 'obesity'))))
 #' }
 #'
-recodelevels.ds <- function(xvect, newlabels){
+recodelevels.ds <- function(xvect, newlabels=NULL){
   
   # print an error message if the input vector is not a factor
   if(!(is.factor(xvect)))
@@ -28,10 +29,24 @@ recodelevels.ds <- function(xvect, newlabels){
   
   
   oldlabels = levels(xvect)
-  for (i in 1:length(newlabels)) {
-    dummy = as.character(i-1)
-    newlabels[i] = paste0(dummy, "_", newlabels[i])
+  
+  if (!is.null(newlabels)) {
+    if (length(oldlabels)!=length(newlabels)) {
+      stop('The number of new levels provided is not the same as in the original vector!')
+    } else
+      for (i in 1:length(newlabels)) {
+        dummy = as.character(i-1)
+        newlabels[i] = paste0(dummy, "_", newlabels[i])
+      }
+    
+  } else {
+    newlabels = character(length(oldlabels))
+    for (i in 1:length(newlabels)) {
+      dummy = as.character(i-1)
+      newlabels[i] = paste0(dummy, "_", oldlabels[i])
+    }
   }
+  
   
   newlabels = factor(newlabels, levels=newlabels)
   xvect_newlabels = newlabels[match(xvect, oldlabels)]

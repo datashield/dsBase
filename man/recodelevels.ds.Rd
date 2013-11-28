@@ -2,13 +2,15 @@
 \alias{recodelevels.ds}
 \title{recodes a categorical variable}
 \usage{
-  recodelevels.ds(xvect, newlabels)
+  recodelevels.ds(xvect, newlabels = NULL)
 }
 \arguments{
   \item{xvect}{a factor}
 
   \item{newlabels}{a string vector with new labels for the
-  levels}
+  levels If \code{newlabels} is not specified, the naming
+  of original levels is amended - numbering is added
+  (0_..., 1_..., 2_... etc.)}
 }
 \value{
   a factor vector with new labels for levels
@@ -27,7 +29,7 @@ myvar <- list("PM_BMI_CATEGORICAL")
 library(opal)
 opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
-# get the range of the variable 'LAB_HDL'
+# rename the levels of PM_BMI_CATEGORICAL
 datashield.assign(opals, 'bmi_new', quote(recodelevels.ds(D$PM_BMI_CATEGORICAL, newlabels=c('normal', 'overweight', 'obesity'))))
 }
 }
