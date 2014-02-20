@@ -2,17 +2,20 @@
 \alias{product.ds}
 \title{Computes a product}
 \usage{
-  product.ds(xlist)
+product.ds(xlist)
 }
 \arguments{
   \item{xlist}{a list of numerical to compute a product
   for.}
 }
 \value{
-  a numerical
+a numerical
 }
 \description{
-  Computes a product
+calculates the product of two or more objects.
+}
+\details{
+
 }
 \examples{
 \dontrun{
@@ -31,6 +34,6 @@ datashield.assign(opals, "P", cally)
 }
 }
 \author{
-  Gaye, A.
+Gaye, A.
 }
 

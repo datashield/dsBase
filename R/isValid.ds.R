@@ -1,6 +1,6 @@
 #'
 #' @title Checks if an input is valid
-#' @details This function checks if an input variable is valid. A numeric variable
+#' @description This function checks if an input variable is valid. A numeric variable
 #' is not valid if it has > 0 and < 5 observations and a factor variable is not valid if
 #' any of its levels (classes) has a count of between 1 and 4.
 #' @param xvect a numeric or factor vector.

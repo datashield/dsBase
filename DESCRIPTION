@@ -49,7 +49,7 @@ AssignMethods: log=base::log,
     sum=base::sum,
     as.null=base::as.null,
     subset=base::subset,
-    subsetdata.ds,
+    subclass.ds,
     subsetvar.ds,
     list=base::list,
     append2df.ds,
@@ -57,24 +57,3 @@ AssignMethods: log=base::log,
     is.na=base::is.na,
     recodelevels.ds,
     changerefgroup.ds
-Collate:
-    'checkfactor.ds.R'
-    'createfactor.ds.R'
-    'densitygrid.ds.R'
-    'histogram.ds.R'
-    'isNA.ds.R'
-    'product.ds.R'
-    'quantilemean.ds.R'
-    'range.ds.R'
-    'table1d.ds.R'
-    'table2d.ds.R'
-    'mean.ds.R'
-    'isValid.ds.R'
-    'subsetdata.ds.R'
-    'subsetvar.ds.R'
-    'append2df.ds.R'
-    'var.ds.R'
-    'names.ds.R'
-    'rowcolCalc.ds.R'
-    'recodelevels.ds.R'
-    'changerefgroup.ds.R'

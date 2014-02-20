@@ -2,19 +2,22 @@
 \alias{isNA.ds}
 \title{Checks if a vector is empty}
 \usage{
-  isNA.ds(xvect)
+isNA.ds(xvect)
 }
 \arguments{
   \item{xvect}{a numerical or character vector}
 }
 \value{
-  the integer '1' if the vector contains on NAs and '0'
-  otherwise
+the integer '1' if the vector contains on NAs and '0'
+otherwise
 }
 \description{
-  this function is similar to R function \code{is.na} but
-  instead of a vector of booleans it returns just one
-  boolean to tell if all the element are missing values.
+this function is similar to R function \code{is.na} but
+instead of a vector of booleans it returns just one boolean
+to tell if all the element are missing values.
+}
+\details{
+
 }
 \examples{
 \dontrun{
@@ -31,6 +34,6 @@ datashield.aggregate(opals, quote(isNA.ds(D$LAB_HDL)))
 }
 }
 \author{
-  Gaye, A.
+Gaye, A.
 }
 

@@ -1,5 +1,6 @@
 #' 
 #' @title Generates a density grid with or without a priori defined limits
+#' @description Generates a density grid that can then be used for heatmap or countour plots.
 #' @param xvect a numerical vector
 #' @param yvect a numerical vector
 #' @param limits a logical expression for whether or not limits of the density grid are defined by a user

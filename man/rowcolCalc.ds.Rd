@@ -2,7 +2,7 @@
 \alias{rowcolCalc.ds}
 \title{Computes sums and means of rows or columns of numeric arrays}
 \usage{
-  rowcolCalc.ds(dataset, operation)
+rowcolCalc.ds(dataset, operation)
 }
 \arguments{
   \item{dataset}{an array of two or more dimensions.}
@@ -12,17 +12,16 @@
   'rowMeans' or 4 for 'colMeans'}
 }
 \value{
-  a list that contains the vector of results.
+a list that contains the vector of results.
 }
 \description{
-  Computes sums and means of rows or columns of numeric
-  arrays
+The function is similar to R base functions 'rowSums',
+'colSums', 'rowMeans' and 'colMeans' but its outcome cannot
+be returned to the user as it might be revealing if the
+array contains only one row or one column.
 }
 \details{
-  The function is similar to R base functions 'rowSums',
-  'colSums', 'rowMeans' and 'colMeans' but its outcome
-  cannot be returned to the user as it might be revealing
-  if the array contains only one row or one column.
+
 }
 \examples{
 \dontrun{
@@ -38,6 +37,6 @@ datashield.assign(opals, "rowsums", call.object)
 }
 }
 \author{
-  Gaye, A.
+Gaye, A.
 }
 

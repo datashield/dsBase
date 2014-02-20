@@ -1,8 +1,8 @@
 #' 
 #' @title Generates quantiles and mean information without maximum and minimum
-#' @param xvect a numerical vector
 #' @description the probabilities 5%, 10%, 25%, 50%, 75%, 90%, 95% and the mean
-#' are used to compute the corresponding quantiles 
+#' are used to compute the corresponding quantiles.
+#' @param xvect a numerical vector
 #' @return a numeric vector that represents the sample quantiles 
 #' @export
 #' @author Burton, P.; Gaye, A.

@@ -2,9 +2,8 @@
 \alias{densitygrid.ds}
 \title{Generates a density grid with or without a priori defined limits}
 \usage{
-  densitygrid.ds(xvect, yvect, limits = FALSE,
-    x.min = NULL, x.max = NULL, y.min = NULL, y.max = NULL,
-    numints = 20)
+densitygrid.ds(xvect, yvect, limits = FALSE, x.min = NULL, x.max = NULL,
+  y.min = NULL, y.max = NULL, numints = 20)
 }
 \arguments{
   \item{xvect}{a numerical vector}
@@ -34,13 +33,16 @@
   object, by default is 20}
 }
 \value{
-  a grid density matrix
+a grid density matrix
 }
 \description{
-  Generates a density grid with or without a priori defined
-  limits
+Generates a density grid that can then be used for heatmap
+or countour plots.
+}
+\details{
+
 }
 \author{
-  Isaeva, J. and Gaye, A.
+Isaeva, J. and Gaye, A.
 }
 

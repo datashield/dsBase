@@ -1,5 +1,6 @@
 #'
 #' @title Computes the variance of a numeric vector
+#' @description Calculates variance.
 #' @param xvect a numeric vector
 #' @return a numeric, the variance
 #' @author Gaye, A.

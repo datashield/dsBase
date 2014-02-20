@@ -2,16 +2,19 @@
 \alias{var.ds}
 \title{Computes the variance of a numeric vector}
 \usage{
-  var.ds(xvect)
+var.ds(xvect)
 }
 \arguments{
   \item{xvect}{a numeric vector}
 }
 \value{
-  a numeric, the variance
+a numeric, the variance
 }
 \description{
-  Computes the variance of a numeric vector
+Calculates variance.
+}
+\details{
+
 }
 \examples{
 \dontrun{
@@ -26,6 +29,6 @@ stat.mean <- datashield.aggregate(opals, quote(mean.ds(D$LAB_TSC)))
 }
 }
 \author{
-  Gaye, A.
+Gaye, A.
 }
 

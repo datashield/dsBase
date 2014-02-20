@@ -1,5 +1,6 @@
 #'
 #' @title Computes statistical mean of vector with more than 4 entries
+#' @description Calculates the mean value.
 #' @param xvect a vector
 #' @return a numeric, the statistical mean
 #' @author Gaye, A.

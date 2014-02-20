@@ -2,7 +2,7 @@
 \alias{append2df.ds}
 \title{Appends a column(s) to a dataframe}
 \usage{
-  append2df.ds(dataset, column, colname)
+append2df.ds(dataset, column, colname)
 }
 \arguments{
   \item{dataset}{a dataframe}
@@ -14,10 +14,13 @@
   column}
 }
 \value{
-  a new dataframe is assigned to the datasources
+a new dataframe is assigned to the datasources
 }
 \description{
-  Appends a column(s) to a dataframe
+append a column to a dataframe and creates a new dataframe.
+}
+\details{
+
 }
 \examples{
 \dontrun{
@@ -44,6 +47,6 @@ datashield.assign(opals, "D", quote(Dnew))
 }
 }
 \author{
-  Gaye, A.
+Gaye, A.
 }
 

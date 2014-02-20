@@ -2,7 +2,7 @@
 \alias{createfactor.ds}
 \title{Generates a factor variable}
 \usage{
-  createfactor.ds(xvect = NULL, categories = NULL)
+createfactor.ds(xvect = NULL, categories = NULL)
 }
 \arguments{
   \item{xvect}{a factor vector}
@@ -10,12 +10,15 @@
   \item{categories}{the levels of the factor to generate}
 }
 \value{
-  a factor vector that has the levels of the original
-  vector and some additional levels
+a factor vector that has the levels of the original vector
+and some additional levels
 }
 \description{
-  The functions uses the input factor and generates a new
-  factor with new levels.
+The functions uses the input factor and generates a new
+factor with new levels.
+}
+\details{
+
 }
 \examples{
 \dontrun{
@@ -37,6 +40,6 @@ datashield.assign(opals, "bmi_f", call.object)
  }
 }
 \author{
-  Gaye, A.
+Gaye, A.
 }
 

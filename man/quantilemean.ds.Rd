@@ -2,17 +2,20 @@
 \alias{quantilemean.ds}
 \title{Generates quantiles and mean information without maximum and minimum}
 \usage{
-  quantilemean.ds(xvect)
+quantilemean.ds(xvect)
 }
 \arguments{
   \item{xvect}{a numerical vector}
 }
 \value{
-  a numeric vector that represents the sample quantiles
+a numeric vector that represents the sample quantiles
 }
 \description{
-  the probabilities 5%, 10%, 25%, 50%, 75%, 90%, 95% and
-  the mean are used to compute the corresponding quantiles
+the probabilities 5%, 10%, 25%, 50%, 75%, 90%, 95% and the
+mean are used to compute the corresponding quantiles.
+}
+\details{
+
 }
 \examples{
 \dontrun{
@@ -27,6 +30,6 @@ quantiles <- datashield.aggregate(opals, quote(quantilemean.ds(D$LAB_TSC)))
 }
 }
 \author{
-  Burton, P.; Gaye, A.
+Burton, P.; Gaye, A.
 }
 

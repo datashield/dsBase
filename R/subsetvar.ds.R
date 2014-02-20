@@ -1,6 +1,6 @@
 #' 
 #' @title Derives a valid binary variable from a continuous variable
-#' @details This function runs only if the set threshold (i.e. >=)
+#' @description This function runs only if the set threshold (i.e. >=)
 #' is met or not met by 1 single observation.
 #' @param xvect a continuous numeric variable
 #' @param operator an integer that sets the operator 1 for '>', 2 for '<', 

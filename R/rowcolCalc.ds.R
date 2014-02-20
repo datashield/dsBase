@@ -1,6 +1,6 @@
 #' 
 #' @title Computes sums and means of rows or columns of numeric arrays
-#' @details The function is similar to R base functions 'rowSums', 'colSums',
+#' @description The function is similar to R base functions 'rowSums', 'colSums',
 #' 'rowMeans' and 'colMeans' but its outcome cannot be returned to the user as it might
 #' be revealing if the array contains only one row or one column. 
 #' @param dataset an array of two or more dimensions.

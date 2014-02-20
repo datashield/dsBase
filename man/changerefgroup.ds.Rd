@@ -2,7 +2,7 @@
 \alias{changerefgroup.ds}
 \title{changes a reference level of a factor}
 \usage{
-  changerefgroup.ds(xvect, ref = NULL)
+changerefgroup.ds(xvect, ref = NULL)
 }
 \arguments{
   \item{xvect}{a factor}
@@ -10,13 +10,15 @@
   \item{ref}{the reference level}
 }
 \value{
-  a factor of the same length as xvect
+a factor of the same length as xvect
 }
 \description{
-  this function is similar to R function \code{relevel},
-  but in addition addes numbering to the levels so that
-  they are displayed in the right order when creating
-  cross-tables.
+this function is similar to R function \code{relevel}, but
+in addition addes numbering to the levels so that they are
+displayed in the right order when creating cross-tables.
+}
+\details{
+
 }
 \examples{
 \dontrun{
@@ -39,6 +41,6 @@ ds.levels(opals, quote(bmi_ob))
 }
 }
 \author{
-  Isaeva, J.
+Isaeva, J.
 }
 

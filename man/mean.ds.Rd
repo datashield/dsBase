@@ -2,17 +2,19 @@
 \alias{mean.ds}
 \title{Computes statistical mean of vector with more than 4 entries}
 \usage{
-  mean.ds(xvect)
+\method{mean}{ds}(xvect)
 }
 \arguments{
   \item{xvect}{a vector}
 }
 \value{
-  a numeric, the statistical mean
+a numeric, the statistical mean
 }
 \description{
-  Computes statistical mean of vector with more than 4
-  entries
+Calculates the mean value.
+}
+\details{
+
 }
 \examples{
 \dontrun{
@@ -27,6 +29,6 @@ stat.mean <- datashield.aggregate(opals, quote(mean.ds(D$LAB_TSC)))
 }
 }
 \author{
-  Gaye, A.
+Gaye, A.
 }
 

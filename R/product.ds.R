@@ -1,5 +1,6 @@
 #' 
 #' @title Computes a product
+#' @description calculates the product of two or more objects.
 #' @param xlist a list of numerical to compute a product for.
 #' @return a numerical
 #' @author Gaye, A.

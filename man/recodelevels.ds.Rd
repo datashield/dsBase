@@ -2,7 +2,7 @@
 \alias{recodelevels.ds}
 \title{recodes a categorical variable}
 \usage{
-  recodelevels.ds(xvect, newlabels = NULL)
+recodelevels.ds(xvect, newlabels = NULL)
 }
 \arguments{
   \item{xvect}{a factor}
@@ -13,11 +13,14 @@
   (0_..., 1_..., 2_... etc.)}
 }
 \value{
-  a factor vector with new labels for levels
+a factor vector with new labels for levels
 }
 \description{
-  this function recodes levels of a categorical variable
-  with new given labels.
+this function recodes levels of a categorical variable with
+new given labels.
+}
+\details{
+
 }
 \examples{
 \dontrun{
@@ -34,6 +37,6 @@ datashield.assign(opals, 'bmi_new', quote(recodelevels.ds(D$PM_BMI_CATEGORICAL, 
 }
 }
 \author{
-  Isaeva, J.
+Isaeva, J.
 }
 

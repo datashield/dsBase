@@ -2,8 +2,7 @@
 \alias{subsetvar.ds}
 \title{Derives a valid binary variable from a continuous variable}
 \usage{
-  subsetvar.ds(xvect = NULL, operator = NULL,
-    threshold = NULL)
+subsetvar.ds(xvect = NULL, operator = NULL, threshold = NULL)
 }
 \arguments{
   \item{xvect}{a continuous numeric variable}
@@ -15,16 +14,15 @@
   \item{threshold}{a numeric value that sets the threshold}
 }
 \value{
-  a vector where the entries that met the condition are
-  assigned the value 1 or 0 otherwise
+a vector where the entries that met the condition are
+assigned the value 1 or 0 otherwise
 }
 \description{
-  Derives a valid binary variable from a continuous
-  variable
+This function runs only if the set threshold (i.e. >=) is
+met or not met by 1 single observation.
 }
 \details{
-  This function runs only if the set threshold (i.e. >=) is
-  met or not met by 1 single observation.
+
 }
 \examples{
 \dontrun{
@@ -45,6 +43,6 @@ datashield.assign(opals, "bmi30", call.object)
 }
 }
 \author{
-  Gaye, A.
+Gaye, A.
 }
 

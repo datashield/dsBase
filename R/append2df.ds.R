@@ -1,5 +1,6 @@
 #'
 #' @title Appends a column(s) to a dataframe
+#' @description append a column to a dataframe and creates a new dataframe.
 #' @param dataset a dataframe
 #' @param column a list which contains the column/vector to append to the dataframe
 #' @param colname a character, the name of the appended column
