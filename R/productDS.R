@@ -17,11 +17,11 @@
 #' 
 #' # compute the of 'LAB_TSC' by 'LAB_HDL' and assign it to 'P'
 #' prodinput <- list(D$LAB_TSC, D$LAB_HDL)
-#' cally <- call("product.ds", prodinput)
+#' cally <- call("productDS", prodinput)
 #' datashield.assign(opals, "P", cally)
 #' }
 #' 
-product.ds <- function (xlist){
+productDS <- function (xlist){
   a <- 1
   for(i in 1:length(xlist)){
     a <- a * xlist[[i]]
