@@ -1,8 +1,8 @@
-\name{subclass.ds}
-\alias{subclass.ds}
+\name{subclassDS}
+\alias{subclassDS}
 \title{Generates valid subset(s) of a dataset based on the subclasses.}
 \usage{
-subclass.ds(dataset = NULL, variables = NULL)
+subclassDS(dataset = NULL, variables = NULL)
 }
 \arguments{
   \item{dataset}{a string character, the name of the
@@ -38,11 +38,11 @@ opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
 # Example 1: get the subsets for all categories from the table assigned above
 # (by default the name of the the assigned dataframe is 'D')
-datashield.assign(opals, "Subsets", quote(subclass.ds("D")))
+datashield.assign(opals, "Subsets", quote(subclassDS("D")))
 
 #' # Example 2: get the subsets by gender class from the table assigned above
 # by default the name of the the assigned dataframe is 'D')
-datashield.assign(opals, "Subsets", quote(subclass.ds("D", c("GENDER"))))
+datashield.assign(opals, "Subsets", quote(subclassDS("D", c("GENDER"))))
 }
 }
 \author{

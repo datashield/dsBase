@@ -20,7 +20,7 @@
 #' datashield.aggregate(opals, quote(range.ds(D$LAB_HDL)))
 #' }
 #'
-range.ds <- function(xvect){
+rangeDS <- function(xvect){
   
   # print an error message if the input vector is not a numeric
   if(!(is.numeric(xvect))){

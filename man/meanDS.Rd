@@ -1,8 +1,8 @@
-\name{mean.ds}
-\alias{mean.ds}
+\name{meanDS}
+\alias{meanDS}
 \title{Computes statistical mean of vector with more than 4 entries}
 \usage{
-\method{mean}{ds}(xvect)
+meanDS(xvect)
 }
 \arguments{
   \item{xvect}{a vector}

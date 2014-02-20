@@ -1,8 +1,8 @@
-\name{names.ds}
-\alias{names.ds}
+\name{namesDS}
+\alias{namesDS}
 \title{Returns the names of a list}
 \usage{
-\method{names}{ds}(xlist)
+namesDS(xlist)
 }
 \arguments{
   \item{xlist}{a list}

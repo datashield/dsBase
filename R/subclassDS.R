@@ -24,14 +24,14 @@
 #' 
 #' # Example 1: get the subsets for all categories from the table assigned above 
 #' # (by default the name of the the assigned dataframe is 'D')
-#' datashield.assign(opals, "Subsets", quote(subclass.ds("D")))
+#' datashield.assign(opals, "Subsets", quote(subclassDS("D")))
 #' 
 #' #' # Example 2: get the subsets by gender class from the table assigned above 
 #' # by default the name of the the assigned dataframe is 'D')
-#' datashield.assign(opals, "Subsets", quote(subclass.ds("D", c("GENDER"))))
+#' datashield.assign(opals, "Subsets", quote(subclassDS("D", c("GENDER"))))
 #' }
 #' 
-subclass.ds <- function(dataset=NULL, variables=NULL){
+subclassDS <- function(dataset=NULL, variables=NULL){
   
   # evaluate the string passed on to the function as an object
   D <- eval(parse(text=dataset))

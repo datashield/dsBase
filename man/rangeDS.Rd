@@ -1,8 +1,8 @@
-\name{range.ds}
-\alias{range.ds}
+\name{rangeDS}
+\alias{rangeDS}
 \title{returns the minimum and maximum of a numeric vector}
 \usage{
-\method{range}{ds}(xvect)
+rangeDS(xvect)
 }
 \arguments{
   \item{xvect}{a numerical}

@@ -8,7 +8,7 @@
 #' @author Gaye, A.
 #' @export
 #' 
-names.ds <- function(xlist){
+namesDS <- function(xlist){
   
   if(is.list(xlist)){
     names(xlist)

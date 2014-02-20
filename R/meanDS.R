@@ -19,7 +19,7 @@
 #' stat.mean <- datashield.aggregate(opals, quote(mean.ds(D$LAB_TSC)))
 #' }
 #'
-mean.ds <- function (xvect) {
+meanDS <- function (xvect) {
   if(length(xvect) > 0 & length(xvect) < 5){
     stop("Operation not allowed: argument contains between 1 and 4 observations only!\n")
   }else{
