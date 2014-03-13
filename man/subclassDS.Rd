@@ -51,7 +51,7 @@ datashield.assign(opals, "Subsets", quote(subclassDS("D")))
 # by default the name of the the assigned dataframe is 'D')
 datashield.assign(opals, "Subsets", quote(subclassDS("D", c("GENDER"))))
 
-#' # Example 3: split the variable 'GENDER' into two vectors: males and females
+#' # Example 3: create a single variable 'gender' and split it into two vectors: males and females
 datashield.assign(opals, "gender", quote(D$GENDER))
 datashield.assign(opals, "mf.tables", quote(subclassDS("gender")))
 }
