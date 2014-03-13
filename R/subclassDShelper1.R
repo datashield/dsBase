@@ -7,15 +7,15 @@
 #' @return a list which contains the subsets.
 #' @author Gaye, A.
 #'
-.subclassDShelper1 <- function(xvect=NULL, filter=NULL){
-  vectname <- xvect
+.subclassDShelper1 <- function(xvect=NULL, xname=NULL, filter=NULL){
+  vectname <- xname
   subsets <- list()
   names.of.subsets <- c()
-  classes <- levels(D)
+  classes <- levels(xvect)
   for(i in 1:length(classes)){
-    indices <- which(D == as.numeric(classes[i]))    
+    indices <- which(xvect == as.numeric(classes[i]))    
     if(!(length(indices) > 0 & length(indices) < filter)){
-      subsets[[i]] <- D[indices]
+      subsets[[i]] <- xvect[indices]
       name.of.subD <- paste(vectname,".level_", classes[i], sep="")
       names.of.subsets <- append(names.of.subsets, name.of.subD)
     }else{

@@ -53,7 +53,8 @@ subclassDS <- function(data=NULL, variables=NULL){
       # subsetting is carried out only of the input is of type factor or data.frame
       if(is.factor(D)){
           # call the internal function that generates subsets if the input is a factor variable
-          out.temp <- dsbase:::.subclassDShelper1(D,nfilter)
+          Dname <- as.character(quote(D))
+          out.temp <- dsbase:::.subclassDShelper1(D, Dname, nfilter)
           subsets <- out.temp
       }else{
         if(is.data.frame(D)){
