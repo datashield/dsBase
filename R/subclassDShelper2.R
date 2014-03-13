@@ -21,7 +21,7 @@
   nonfactorvars <- 0
   for(i in iter){
     var <- df[,i]
-    varname <- varnames[i]
+    varname <- colnames(df)[i]
     if(is.factor(var)){        
       # get the levels
       categories <- levels(var)
