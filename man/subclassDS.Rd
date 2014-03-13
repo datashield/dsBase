@@ -1,30 +1,37 @@
 \name{subclassDS}
 \alias{subclassDS}
-\title{Generates valid subset(s) of a dataset based on the subclasses.}
+\title{Generates valid subset(s) of a dataframe or a factor}
 \usage{
-subclassDS(dataset = NULL, variables = NULL)
+subclassDS(data = NULL, variables = NULL)
 }
 \arguments{
-  \item{dataset}{a string character, the name of the
-  dataset.}
+  \item{data}{a string character, the name of the dataframe
+  or the factor vector}
 
   \item{variables}{a vector of string characters, the names
-  of the variables for which subsets are sougth.}
+  of the the variables to subset on.}
 }
 \value{
 a list which contains the subsetted datasets
 }
 \description{
-The function takes a dataframe and generates subset(s)
-dataframes for all (default) or specified factor variables
-if the subsets are valid. By default a subset of the
-dataframe is created for each categorie of each factor. It
-is possible to indicate the variable for which a subset is
-sought by indicating their name. If the variable indicated
-are not factors no subsets are generated.
+The function takes a categorical vector or dataframe as
+input and generates subset(s) vectors or dataframes for
+each category. Subsets are considered invalid if they hold
+between 1 and 4 observations.
 }
 \details{
 
+
+If the input data object is a dataframe it is possible to
+specify the variables to subset on. If a subset is not
+'valid' all its the values are reported as missing (i.e.
+NA), the name of the subsets is labelled as '_INVALID'. If
+no variables are specified to subset on, the dataframe will
+be subset on each of its factor variables. And if none of
+the columns holds a factyopr variable a message is issued
+as output. A message is also issued as output if the input
+vector is not of type factor.
 }
 \examples{
 \dontrun{
@@ -43,6 +50,10 @@ datashield.assign(opals, "Subsets", quote(subclassDS("D")))
 #' # Example 2: get the subsets by gender class from the table assigned above
 # by default the name of the the assigned dataframe is 'D')
 datashield.assign(opals, "Subsets", quote(subclassDS("D", c("GENDER"))))
+
+#' # Example 3: split the variable 'GENDER' into two vectors: males and females
+datashield.assign(opals, "gender", quote(D$GENDER))
+datashield.assign(opals, "mf.tables", quote(subclassDS("gender")))
 }
 }
 \author{

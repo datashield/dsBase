@@ -1,14 +1,16 @@
 #' 
-#' @title Generates valid subset(s) of a dataset based on the subclasses.
-#' @description The function takes a dataframe and generates subset(s)
-#' dataframes for all (default) or specified factor variables if the subsets are valid. 
-#' By default a subset of the dataframe is created for each categorie
-#' of each factor. It is possible to indicate the variable for which
-#' a subset is sought by indicating their name. If the variable
-#' indicated are not factors no subsets are generated.
-#' @param dataset a string character, the name of the dataset.
-#' @param variables a vector of string characters, the names of the
-#' variables for which subsets are sougth.
+#' @title Generates valid subset(s) of a dataframe or a factor
+#' @description The function takes a categorical vector or dataframe as input and generates subset(s)
+#' vectors or dataframes for each category. Subsets are considered invalid if they hold between 1 and 
+#' 4 observations.
+#' @details If the input data object is a dataframe it is possible to specify  the variables  
+#' to subset on. If a subset is not 'valid' all its the values are reported as missing (i.e. NA),
+#' the name of the subsets is labelled as '_INVALID'.
+#' If no variables are specified to subset on, the dataframe will be subset on each of its factor variables.
+#' And if none of the columns holds a factyopr variable a message is issued as output. A message is also
+#' issued as output if the input vector is not of type factor.
+#' @param data a string character, the name of the dataframe or the factor vector
+#' @param variables a vector of string characters, the names of the the variables to subset on.
 #' @return a list which contains the subsetted datasets 
 #' @author Gaye, A.
 #' @export
@@ -29,112 +31,82 @@
 #' #' # Example 2: get the subsets by gender class from the table assigned above 
 #' # by default the name of the the assigned dataframe is 'D')
 #' datashield.assign(opals, "Subsets", quote(subclassDS("D", c("GENDER"))))
+#' 
+#' #' # Example 3: split the variable 'GENDER' into two vectors: males and females
+#' datashield.assign(opals, "gender", quote(D$GENDER))
+#' datashield.assign(opals, "mf.tables", quote(subclassDS("gender")))
 #' }
 #' 
-subclassDS <- function(dataset=NULL, variables=NULL){
+subclassDS <- function(data=NULL, variables=NULL){
   
-  # evaluate the string passed on to the function as an object
-  D <- eval(parse(text=dataset))
+  # this filter sets the minimum number of observations that are allowed 
+  nfilter <- dsbase:::.setFilterDS()
   
-  # get the names of the variables on the dataset
-  varnames <- colnames(D)
-  
-  # set the number of loops depending on the number of variables specified
-  # if no variable was specified then loop through all the variables
-  if(is.null(variables)){
-    loop <- c(1:dim(D)[2])
+  # check if the input object is defined
+  if(!(exists(data))){
+    output <- list("The input data you provided is not defined!"=NULL)
   }else{
-    # if the user specified variables to subset on check if those are in the dataset to subset from,
-    # if none of the variables is on the dataset record a message to inform the user
-    indx1 <- which(varnames %in% variables)
     
-    if(length(indx1) > 1){
-      loop <- indx1
-    }else{
-      loop <- 1
-    }
-  }
-  
-  # subsetting is carried out only of the table is of type data frame
-  if(is.data.frame(D)){
-    
-    # loop through the variables and make a subset dataframe for each level
-    # of each factor variable and keep the generated subset dataframes in a list
-    subsets <- list()
-    names.of.subsets <- c()
-    count <- 0
-    nonfactorvars <- 0
-    if(length(loop) > 1){
-      for(i in loop){
-        var <- D[,i]
-        varname <- varnames[i]
-        if(is.factor(var)){        
-          # get the levels
-          categories <- levels(var)
-          # loop through the levels and generate a dataset for each level
-          # if the number of observations for that level > 0 and < 5
-          for(j in 1:length(categories)){
-            indices <- which(var == as.numeric(categories[j]))
-            if(!(length(indices) > 0 & length(indices) < 100)){
-              count <- count+1
-              subD <- D[indices,]
-              subsets[[count]] <- subD
-              name.of.subD <- paste(varname,".level_", categories[j], sep="")
-              names.of.subsets <- append(names.of.subsets, name.of.subD)
+      # evaluate the string passed on to the function as an object
+      D <- eval(parse(text=data))
+      
+      # subsetting is carried out only of the input is of type factor or data.frame
+      if(is.factor(D)){
+          # call the internal function that generates subsets if the input is a factor variable
+          out.temp <- dsbase:::.subclassDShelper1(D,nfilter)
+          subsets <- out.temp
+      }else{
+        if(is.data.frame(D)){
+          
+         # get the names of the variables on the dataset
+          varnames <- colnames(D)
+          
+          # set the number of loops depending on the number of variables specified
+          # if no variable was specified then loop through all the variables
+          if(is.null(variables)){
+            loop <- c(1:dim(D)[2])
+          }else{
+            # if the user specified variables to subset on check if those are in the dataset to subset from,
+            # if none of the variables is on the dataset record a message to inform the user
+            indx <- which(varnames %in% variables)
+            
+            if(length(indx) > 1){
+              loop <- indx
             }else{
-              # if any one category has between 1 and 4 observation record a message
-              count <- count+1
-              subsets[[count]] <- "Invalid category: it has between 0 and 4 observations"
-              name.of.subD <- paste(varname,".level_", categories[j], "-INVALID",sep="")
-              names.of.subsets <- append(names.of.subsets, name.of.subD)             
+              loop <- 1
             }
           }
-        }else{
-          # if a variable is not a factor increment the below counter
-          nonfactorvars <- nonfactorvars + 1
-        }
-      }
-    }else{
-      var <- D[,indx1]
-      varname <- variables[indx1]
-      if(is.factor(var)){
-        # get the levels
-        categories <- levels(var)
-        # loop through the levels and generate a dataset for each level
-        # if the number of observations for that level > 0 and < 5
-        for(j in 1:length(categories)){
-          indices <- which(var == as.numeric(categories[j]))
-          if(!(length(indices) > 0 & length(indices) < 100)){
-            count <- count+1
-            subD <- D[indices,]
-            subsets[[count]] <- subD
-            name.of.subD <- paste(varname,".level_", categories[j], sep="")
-            names.of.subsets <- append(names.of.subsets, name.of.subD)
+          
+          # loop through the variables and make a subset dataframe for each level
+          # of each factor variable and keep the generated subset dataframes in a list
+          if(length(loop) > 1){
+            # call the function that gets the subsets if the user specified non or more than 1 variable
+            out.temp <- dsbase:::.subclassDShelper2(D,loop,nfilter)
+            subsets <- out.temp[[1]]
+            nonfactorvars <- out.temp[[2]]
           }else{
-            # if any one category has between 1 and 4 observation record a message
-            count <- count+1
-            subsets[[count]] <-"Invalid category: it has between 0 and 4 observations"
-            name.of.subD <- paste(varname,".level_", categories[j], "-INVALID",sep="")
-            names.of.subsets <- append(names.of.subsets, name.of.subD)         
+            # call the function that gets the subsets if the user specified only one variable to subset by
+            out.temp <- dsbase:::.subclassDShelper3(D,indx,nfilter)
+            subsets <- out.temp[[1]]
+            nonfactorvars <- out.temp[[2]]
           }
+          # if non of variables
+          if(nonfactorvars == length(loop)){
+            if(is.null(variables)){
+              subsets <- list("The input table holds no factor variables!"=NULL)
+            }else{
+              subsets <- list("The variables to subset by must be factors!"=NULL)
+            }
+            output <- subsets
+          }else{
+            # now set the names of subsets in the holder list to the names
+            # that were generated along with the subsets
+            output <- subsets
+          }
+        }else{
+          output <- list("The input data must be a factor or a dataframe!"=NULL)
         }
-      }else{
-        # if a variable is not a factor increment the below counter
-        nonfactorvars <- nonfactorvars + 1
-      }
-    }
-    # if non of variable is a factor inform user
-    if(nonfactorvars == length(loop)){
-      stop("There are no factor variables to subset on, in the specified dataset!")
-    }else{
-      # now set the names of subsets in the holder list to the names
-      # that were generated along with the subsets
-      names(subsets) <- names.of.subsets
-      output <- subsets
-    }
-  }else{
-    stop("The dataset to generate the subsets from is not of type dataframe!")
+     }
   }
-  
   return(output)
 }
