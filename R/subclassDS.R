@@ -44,7 +44,7 @@ subclassDS <- function(data=NULL, variables=NULL){
   
   # check if the input object is defined
   if(!(exists(data))){
-    output <- list("The input data you provided is not defined!"=NULL)
+    output <- list("The input data you provided is not defined"=NULL)
   }else{
     
       # evaluate the string passed on to the function as an object
@@ -93,9 +93,9 @@ subclassDS <- function(data=NULL, variables=NULL){
           # if non of variables
           if(nonfactorvars == length(loop)){
             if(is.null(variables)){
-              subsets <- list("The input table holds no factor variables!"=NULL)
+              subsets <- list("The input table holds no factor variables"=NULL)
             }else{
-              subsets <- list("The variables to subset by must be factors!"=NULL)
+              subsets <- list("The variables to subset by must be factors"=NULL)
             }
             output <- subsets
           }else{
@@ -104,7 +104,7 @@ subclassDS <- function(data=NULL, variables=NULL){
             output <- subsets
           }
         }else{
-          output <- list("The input data must be a factor or a dataframe!"=NULL)
+          output <- list("The input data must be a factor or a dataframe"=NULL)
         }
      }
   }

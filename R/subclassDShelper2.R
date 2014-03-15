@@ -29,7 +29,7 @@
       # if the number of observations for that level > 0 and < 'filter'
       for(j in 1:length(categories)){
         indices <- which(var == as.numeric(categories[j]))
-        if(!(length(length(indices) < filter)){
+        if(!(length(indices) < filter)){
           count <- count+1
           subD <- df[indices,]
           subsets[[count]] <- subD
