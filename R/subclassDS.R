@@ -5,8 +5,8 @@
 #' 4 observations.
 #' @details If the input data object is a dataframe it is possible to specify  the variables  
 #' to subset on. If a subset is not 'valid' all its the values are reported as missing (i.e. NA),
-#' the name of the subsets is labelled as '_INVALID'.
-#' If no variables are specified to subset on, the dataframe will be subset on each of its factor variables.
+#' the name of the subsets is labelled as '_INVALID'. If no variables are specified to subset on, 
+#' the dataframe will be subset on each of its factor variables.
 #' And if none of the columns holds a factyopr variable a message is issued as output. A message is also
 #' issued as output if the input vector is not of type factor.
 #' @param data a string character, the name of the dataframe or the factor vector
