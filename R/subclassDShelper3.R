@@ -26,7 +26,7 @@
     # if the number of observations for that level > 0 and < 'filter'
     for(j in 1:length(categories)){
       indices <- which(var == as.numeric(categories[j]))
-      if(!(length(indices) < filter)){
+      if(!(length(indices) > 0 & length(indices) < filter)){
         count <- count+1
         subD <- df[indices,]
         subsets[[count]] <- subD
@@ -34,15 +34,10 @@
         names.of.subsets <- append(names.of.subsets, name.of.subD)
       }else{
         count <- count+1
-        # if any one category is empty set it to an empty 2x2 ttable
-        if(length(indices) == 0){
-          subsets[[count]] <- data.frame(matrix(NA, nrow=2, ncol=2))
-        }else{
-          # if any one category has between 1 and 'filter' number of observations turn subset content into missing values
-          subsets[[count]] <- data.frame(matrix(NA, nrow=dim(df[indices,])[1], ncol=dim(df[indices,])[2]))
-          name.of.subD <- paste(varname,".level_", categories[j], "_INVALID",sep="")
-          names.of.subsets <- append(names.of.subsets, name.of.subD)
-        }
+        # if any one category has between 1 and 'filter' number of observations turn subset content into missing values
+        subsets[[count]] <- data.frame(matrix(NA, nrow=dim(df[indices,])[1], ncol=dim(df[indices,])[2]))
+        name.of.subD <- paste(varname,".level_", categories[j], "_INVALID",sep="")
+        names.of.subsets <- append(names.of.subsets, name.of.subD)
       }
     }
     names(subsets) <- names.of.subsets
