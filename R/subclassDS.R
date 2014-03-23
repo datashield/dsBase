@@ -1,5 +1,5 @@
 #' 
-#' @title Generates valid subset(s) of a dataframe or a factor
+#' @title Breaks down a dataframe or a factor into its sub-classes
 #' @description The function takes a categorical vector or dataframe as input and generates subset(s)
 #' vectors or dataframes for each category. Subsets are considered invalid if they hold between 1 and 
 #' 4 observations.
