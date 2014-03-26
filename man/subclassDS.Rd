@@ -1,6 +1,6 @@
 \name{subclassDS}
 \alias{subclassDS}
-\title{Generates valid subset(s) of a dataframe or a factor}
+\title{Breaks down a dataframe or a factor into its sub-classes}
 \usage{
 subclassDS(data = NULL, variables = NULL)
 }
