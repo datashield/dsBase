@@ -39,7 +39,7 @@
 #' datashield.assign(opals, "subD", quote(subsetDS(dt='D', rs=c(1:500), cs=c(1,2))))
 #' 
 #' #' # Example 2: subset 'D' on bmi values greater than 25
-#' datashield.assign(opals, "subD", quote(subsetDS(dt='D', lg=1, th=25)))
+#' datashield.assign(opals, "subD", quote(subsetDS(dt='D', lg=1, th=25, varname='PM_BMI_CONTINUOUS')))
 #' 
 #' }
 #' 
@@ -95,7 +95,7 @@ subsetDS <- function(dt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, varname=NULL){
       subtable <- eval(parse(text=exprs2))
     }
     
-    if(dim(subtable)[1] < nfilter){
+    if((dim(subtable)[1]) < nfilter){
       emptyTable <- data.frame(matrix(NA, nrow=dim(subtable)[1], ncol=dim(subtable)[2]))
       colnames(emptyTable) <- colnames(subtable)
       output <- list(emptyTable)
