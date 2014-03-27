@@ -90,7 +90,8 @@ subsetDS <- function(dt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, varname=NULL){
         }
       }
     }else{
-      exprs2 <- paste0(dt, "[which(", dt, "[,",varname,"]", lg, th, "),]")
+      idx <- which(colnames(D) == varname)
+      exprs2 <- paste0(dt, "[which(", dt, "[,",idx,"]", lg, th, "),]")
       subtable <- eval(parse(text=exprs2))
     }
     
