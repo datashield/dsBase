@@ -14,14 +14,19 @@
   categories <- levels(xvect)
   for(i in 1:length(categories)){
     indices <- which(xvect == as.numeric(categories[i]))    
-    if(!(length(indices) > 0 & length(indices) < filter)){
+    if(!(length(indices) < filter)){
       subsets[[i]] <- xvect[indices]
       name.of.subD <- paste(vectname,".level_", categories[i], sep="")
       names.of.subsets <- append(names.of.subsets, name.of.subD)
     }else{
-      # if any one category has between 1 and 'filter' observation turn subset content into missing values
-      subsets[[i]] <- rep(NA, length(indices))
-      name.of.subD <- paste(vectname,".level_", categories[i], "_INVALID", sep="")
+      # if any one category has between 0 and 'filter' observation turn subset content into missing values
+      if(length(indices) == 0){
+        subsets[[i]] <- rep(NA, filter)
+        name.of.subD <- paste(vectname,".level_", categories[i], "_EMPTY", sep="")
+      }else{
+        subsets[[i]] <- rep(NA, length(indices))
+        name.of.subD <- paste(vectname,".level_", categories[i], "_INVALID", sep="")
+      }
       names.of.subsets <- append(names.of.subsets, name.of.subD)
     }
     names(subsets) <- names.of.subsets

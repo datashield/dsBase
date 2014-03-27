@@ -75,7 +75,7 @@ opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 datashield.assign(opals, "subD", quote(subsetDS(dt='D', rs=c(1:500), cs=c(1,2))))
 
 #' # Example 2: subset 'D' on bmi values greater than 25
-datashield.assign(opals, "subD", quote(subsetDS(dt='D', lg=1, th=25)))
+datashield.assign(opals, "subD", quote(subsetDS(dt='D', lg=1, th=25, varname='PM_BMI_CONTINUOUS')))
 
 }
 }

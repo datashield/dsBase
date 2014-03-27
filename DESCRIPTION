@@ -8,7 +8,7 @@ Description: Base DataSHIELD methods (server)
 AggregateMethods: length=base::length,
     colnames=base::colnames,
     histogram.ds,
-    dim=base::dim,
+    dimDS,
     quantilemean.ds,
     meanDS,
     checkfactor.ds,

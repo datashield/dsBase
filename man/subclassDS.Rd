@@ -29,8 +29,8 @@ specify the variables to subset on. If a subset is not
 NA), the name of the subsets is labelled as '_INVALID'. If
 no variables are specified to subset on, the dataframe will
 be subset on each of its factor variables. And if none of
-the columns holds a factyopr variable a message is issued
-as output. A message is also issued as output if the input
+the columns holds a factor variable a message is issued as
+output. A message is also issued as output if the input
 vector is not of type factor.
 }
 \examples{
