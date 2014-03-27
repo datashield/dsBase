@@ -19,7 +19,7 @@
 #' operator. This parameter is ignored if the input data is not a vector.
 #' @param th a numeric, the threshold to use in conjunction with the logical parameter. This parameter is ignored 
 #' if the input data is not a vector.
-#' @param var a character, if the input data is a table, if this parameter is provided along with the 'logical' and 'threshold'
+#' @param varname a character, if the input data is a table, if this parameter is provided along with the 'logical' and 'threshold'
 #' parameters, a subtable is based the threshold applied to the speicified variable. This parameter is however ignored if the parameter
 #' 'rows' and/or 'cols' are provided.
 #' @return a no data are return to the user but messages are printed out.
@@ -43,7 +43,7 @@
 #' 
 #' }
 #' 
-subsetDS <- function(dt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, var=NULL){
+subsetDS <- function(dt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, varname=NULL){
   
   # this filter sets the minimum number of observations that are allowed 
   nfilter <- dsbase:::.setFilterDS()
@@ -90,7 +90,7 @@ subsetDS <- function(dt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, var=NULL){
         }
       }
     }else{
-      indx <- which(colnames(D) == var)
+      indx <- which(colnames(D) == varname)
       exprs2 <- paste0(dt, "[which(", dt, "[,",indx,"]", lg, th, "),]")
       subtable <- eval(parse(text=exprs2))
     }

@@ -3,7 +3,7 @@
 \title{Generates a valid subset of a table or a vector}
 \usage{
 subsetDS(dt = NULL, rs = NULL, cs = NULL, lg = NULL, th = NULL,
-  var = NULL)
+  varname = NULL)
 }
 \arguments{
   \item{dt}{a string character, the name of the dataframe
@@ -25,12 +25,12 @@ subsetDS(dt = NULL, rs = NULL, cs = NULL, lg = NULL, th = NULL,
   with the logical parameter. This parameter is ignored if
   the input data is not a vector.}
 
-  \item{var}{a character, if the input data is a table, if
-  this parameter is provided along with the 'logical' and
-  'threshold' parameters, a subtable is based the threshold
-  applied to the speicified variable. This parameter is
-  however ignored if the parameter 'rows' and/or 'cols' are
-  provided.}
+  \item{varname}{a character, if the input data is a table,
+  if this parameter is provided along with the 'logical'
+  and 'threshold' parameters, a subtable is based the
+  threshold applied to the speicified variable. This
+  parameter is however ignored if the parameter 'rows'
+  and/or 'cols' are provided.}
 }
 \value{
 a no data are return to the user but messages are printed
