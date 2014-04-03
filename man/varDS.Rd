@@ -1,20 +1,23 @@
-\name{var.ds}
-\alias{var.ds}
-\title{Computes the variance of a numeric vector}
+\name{varDS}
+\alias{varDS}
+\title{Computes the variance of vector with more than 4 entries}
 \usage{
-var.ds(xvect)
+varDS(xvect)
 }
 \arguments{
-  \item{xvect}{a numeric vector}
+  \item{xvect}{a vector}
 }
 \value{
 a numeric, the variance
 }
 \description{
-Calculates variance.
+Calculates the variance.
 }
 \details{
 
+
+if the length of input vector is less than the set filter a
+missing value is returned.
 }
 \examples{
 \dontrun{
@@ -25,7 +28,7 @@ data(logindata)
 opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
 # compute the variance
-stat.mean <- datashield.aggregate(opals, quote(mean.ds(D$LAB_TSC)))
+variance <- datashield.aggregate(opals, quote(varDS(D$LAB_TSC)))
 }
 }
 \author{

@@ -28,7 +28,7 @@ AggregateMethods: length=base::length,
     class=base::class,
     levels=base::levels,
     is.factor=base::is.factor,
-    var.ds,
+    varDS,
     namesDS,
     is.list=base::is.list,
     exists=base::exists
