@@ -8,7 +8,7 @@
 #' in each variable).
 #' @param df a data frame.
 #' @param iter the indices of columns to loop trough.
-#' @param filter the minimum number observation (i.e. rows) that are allowed.
+#' @param filter the minimum number of observations (i.e. rows) that are allowed.
 #' @return a list which contains the subsets, their names and an integer that indicates how many columns were
 #' not factors.
 #' @author Gaye, A.
@@ -39,7 +39,7 @@
           # if any one category has between 1 and 'filter' number of observation turn subset content into missing values
           count <- count+1
           if(length(indices) == 0){
-            subsets[[count]] <- data.frame(matrix(NA, nrow=filter, ncol=filter))
+            subsets[[count]] <- data.frame(matrix(NA, nrow=filter-1, ncol=filter-1))
             name.of.subD <- paste(varname,".level_", categories[j], "_EMPTY",sep="")
           }else{
             subsets[[count]] <- data.frame(matrix(NA, nrow=dim(df[indices,])[1], ncol=dim(df[indices,])[2]))

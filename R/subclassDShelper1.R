@@ -21,7 +21,7 @@
     }else{
       # if any one category has between 0 and 'filter' observation turn subset content into missing values
       if(length(indices) == 0){
-        subsets[[i]] <- rep(NA, filter)
+        subsets[[i]] <- rep(NA, filter-1)
         name.of.subD <- paste(vectname,".level_", categories[i], "_EMPTY", sep="")
       }else{
         subsets[[i]] <- rep(NA, length(indices))

@@ -6,7 +6,7 @@
 #' function is called if the user specified one variable to subset by.
 #' @param df a data frame.
 #' @param indx1 the column index of the variable specified by the user.
-#' @param filter the minimum number observation (i.e. rows) that are allowed.
+#' @param filter the minimum number of observations (i.e. rows) that are allowed.
 #' @return a list which contains the subsets, their names and an integer that indicates if
 #' the variable specified by user is a factor.
 #' @author Gaye, A.
@@ -36,7 +36,7 @@
         # if any one category has between 1 and 'filter' number of observations turn subset content into missing values
         count <- count+1
         if(length(indices) == 0){
-          subsets[[count]] <- data.frame(matrix(NA, nrow=filter, ncol=filter))
+          subsets[[count]] <- data.frame(matrix(NA, nrow=filter-1, ncol=filter-1))
           name.of.subD <- paste(varname,".level_", categories[j], "_EMPTY",sep="")
         }else{
           subsets[[count]] <- data.frame(matrix(NA, nrow=dim(df[indices,])[1], ncol=dim(df[indices,])[2]))
