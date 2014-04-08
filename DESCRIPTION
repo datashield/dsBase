@@ -1,7 +1,7 @@
 Package: dsbase
 Maintainer: <datashield@obiba.org>
 Author: <datashield@obiba.org>
-Version: 2.4.0
+Version: 2.4.1
 License: GPL-3
 Title: Base DataSHIELD methods (server)
 Description: Base DataSHIELD methods (server)
