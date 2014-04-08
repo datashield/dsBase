@@ -1,7 +1,7 @@
 Package: dsbase
 Maintainer: <datashield@obiba.org>
 Author: <datashield@obiba.org>
-Version: 2.4
+Version: 2.4.0
 License: GPL-3
 Title: Base DataSHIELD methods (server)
 Description: Base DataSHIELD methods (server)
@@ -9,6 +9,7 @@ AggregateMethods: length=base::length,
     colnames=base::colnames,
     histogram.ds,
     dimDS,
+    dim=base::dim,
     quantilemean.ds,
     meanDS,
     checkfactor.ds,
@@ -55,4 +56,5 @@ AssignMethods: log=base::log,
     is.na=base::is.na,
     recodelevels.ds,
     changerefgroup.ds,
-    subsetDS
+    subsetDS,
+    subset=base::subset
