@@ -19,6 +19,7 @@
   names.of.subsets <- c()
   count <- 0  
   nonfactorvars <- 0
+  ncols <- length(colnames(df))
   for(i in iter){
     var <- df[,i]
     varname <- colnames(df)[i]
@@ -39,7 +40,7 @@
           # if any one category has between 1 and 'filter' number of observation turn subset content into missing values
           count <- count+1
           if(length(indices) == 0){
-            subsets[[count]] <- data.frame(matrix(NA, nrow=filter-1, ncol=filter-1))
+            subsets[[count]] <- data.frame(matrix(NA, nrow=filter-1, ncol=ncols))
             name.of.subD <- paste(varname,".level_", categories[j], "_EMPTY",sep="")
           }else{
             subsets[[count]] <- data.frame(matrix(NA, nrow=dim(df[indices,])[1], ncol=dim(df[indices,])[2]))
