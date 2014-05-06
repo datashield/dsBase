@@ -57,4 +57,5 @@ AssignMethods: log=base::log,
     is.na=base::is.na,
     recodelevels.ds,
     changerefgroup.ds,
-    subsetDS
+    subsetDS,
+    asFactorDS
