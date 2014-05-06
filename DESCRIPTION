@@ -32,7 +32,9 @@ AggregateMethods: length=base::length,
     varDS,
     namesDS,
     is.list=base::is.list,
-    exists=base::exists
+    exists=base::exists,
+    cor.test=stats::cor.test,
+    cov=stats::cov
 AssignMethods: log=base::log,
     c=base::c,
     unlist=base::unlist,
