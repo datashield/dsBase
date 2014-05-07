@@ -1,5 +1,5 @@
-export(append2dfDS)
 export(asFactorDS)
+export(cbindDS)
 export(changerefgroup.ds)
 export(checkfactor.ds)
 export(createfactor.ds)
