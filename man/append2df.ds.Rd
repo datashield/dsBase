@@ -1,20 +1,16 @@
 \name{append2df.ds}
 \alias{append2df.ds}
-\title{Appends a column(s) to a dataframe}
+\title{Appends a column to a dataframe}
 \usage{
-append2df.ds(dataset, column, colname)
+append2df.ds(dataset, xvect)
 }
 \arguments{
   \item{dataset}{a dataframe}
 
-  \item{column}{a list which contains the column/vector to
-  append to the dataframe}
-
-  \item{colname}{a character, the name of the appended
-  column}
+  \item{xvect}{the vector to append to the dataframe}
 }
 \value{
-a new dataframe is assigned to the datasources
+a new dataframe
 }
 \description{
 append a column to a dataframe and creates a new dataframe.
@@ -40,10 +36,9 @@ for(i in 1:length(opals)){
 }
 
 # now append 'lab_hdl.c' to the initially assigned dataframe 'D'
-# and replace the initial dataframe 'D' by the new dataframe
-call.object <- call("append2df.ds", quote(D), quote(lab_hdl.c), quote(as.character("lab_hdl.c")))
-datashield.assign(opals, "Dnew", call.object)
-datashield.assign(opals, "D", quote(Dnew))
+# without replacing the initial dataframe 'D'
+call.object <- call("append2df.ds", quote(D), quote(lab_hdl.c))
+datashield.assign(opals, call.object)
 }
 }
 \author{

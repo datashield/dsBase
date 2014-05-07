@@ -1,10 +1,9 @@
 #'
-#' @title Appends a column(s) to a dataframe
+#' @title Appends a column to a dataframe
 #' @description append a column to a dataframe and creates a new dataframe.
 #' @param dataset a dataframe
-#' @param column a list which contains the column/vector to append to the dataframe
-#' @param colname a character, the name of the appended column
-#' @return a new dataframe is assigned to the datasources
+#' @param xvect the vector to append to the dataframe
+#' @return a new dataframe 
 #' @author Gaye, A.
 #' @export
 #' @examples 
@@ -27,18 +26,17 @@
 #' }
 #' 
 #' # now append 'lab_hdl.c' to the initially assigned dataframe 'D'
-#' # and replace the initial dataframe 'D' by the new dataframe
-#' call.object <- call("append2df.ds", quote(D), quote(lab_hdl.c), quote(as.character("lab_hdl.c")))
-#' datashield.assign(opals, "Dnew", call.object)
-#' datashield.assign(opals, "D", quote(Dnew))
+#' # without replacing the initial dataframe 'D'
+#' call.object <- call("append2df.ds", quote(D), quote(lab_hdl.c))
+#' datashield.assign(opals, call.object)
 #' }
 #'
-append2df.ds <- function (dataset, column, colname) {
+append2df.ds <- function (dataset, xvect) {
   
   if(is.data.frame(dataset)){
-    new.dataset <- data.frame(dataset, column)
+    new.dataset <- cbind(dataset, xvect)
     old.colnames <- colnames(dataset)
-    colnames(new.dataset) <- c(old.colnames, colname)
+    colnames(new.dataset) <- c(old.colnames, as.character(quote(xvect)))
     return(new.dataset)
   }else{
     stop("\n\'dataset' must be a dataframe!\n\n")
