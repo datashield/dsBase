@@ -1,8 +1,8 @@
-\name{append2df.ds}
-\alias{append2df.ds}
+\name{append2dfDS}
+\alias{append2dfDS}
 \title{Appends a column to a dataframe}
 \usage{
-append2df.ds(dataset, xvect)
+append2dfDS(dataset, xvect)
 }
 \arguments{
   \item{dataset}{a dataframe}

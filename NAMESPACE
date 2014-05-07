@@ -1,4 +1,4 @@
-export(append2df.ds)
+export(append2dfDS)
 export(asFactorDS)
 export(changerefgroup.ds)
 export(checkfactor.ds)

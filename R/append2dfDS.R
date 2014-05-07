@@ -31,7 +31,7 @@
 #' datashield.assign(opals, call.object)
 #' }
 #'
-append2df.ds <- function (dataset, xvect) {
+append2dfDS <- function (dataset, xvect) {
   
   if(is.data.frame(dataset)){
     new.dataset <- cbind(dataset, xvect)
