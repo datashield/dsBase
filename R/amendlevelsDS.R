@@ -28,7 +28,7 @@
 #'
 #'  }
 #'
-createfactor.ds <- function (xvect=NULL, categories=NULL){
+amendlevelsDS <- function (xvect=NULL, categories=NULL){
   
   if(is.null(xvect)){
     stop("\n\nPlease provide a valid factor vector!\n\n")

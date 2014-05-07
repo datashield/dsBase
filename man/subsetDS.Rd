@@ -2,12 +2,15 @@
 \alias{subsetDS}
 \title{Generates a valid subset of a table or a vector}
 \usage{
-subsetDS(dt = NULL, rs = NULL, cs = NULL, lg = NULL, th = NULL,
-  varname = NULL)
+subsetDS(dt = NULL, complt = FALSE, rs = NULL, cs = NULL, lg = NULL,
+  th = NULL, varname = NULL)
 }
 \arguments{
   \item{dt}{a string character, the name of the dataframe
   or the factor vector and the range of the subset.}
+
+  \item{complt}{a boolean that tells if the subset to
+  subset should include only complete cases}
 
   \item{rs}{a vector of integers, the indices of the rows
   de extract.}
@@ -33,8 +36,8 @@ subsetDS(dt = NULL, rs = NULL, cs = NULL, lg = NULL, th = NULL,
   and/or 'cols' are provided.}
 }
 \value{
-a no data are return to the user but messages are printed
-out.
+a subset of the vector, matric or dataframe as specified is
+stored on the server side
 }
 \description{
 The function uses the R classical subsetting with squared

@@ -12,6 +12,7 @@
 #' number of observations), the subset is not generated, rather a table or a vector of missing values is generated to allow
 #' for any subsequent process using the output of the function to proceed after informing the user via a message.
 #' @param dt a string character, the name of the dataframe or the factor vector and the range of the subset.
+#' @param complt a boolean that tells if the subset to subset should include only complete cases
 #' @param rs a vector of integers, the indices of the rows de extract. 
 #' @param cs a vector of integers or characters; the indices of the columns to extract or the names of the columns (i.e. 
 #' names of the variables to extract).
@@ -22,7 +23,7 @@
 #' @param varname a character, if the input data is a table, if this parameter is provided along with the 'logical' and 'threshold'
 #' parameters, a subtable is based the threshold applied to the speicified variable. This parameter is however ignored if the parameter
 #' 'rows' and/or 'cols' are provided.
-#' @return a no data are return to the user but messages are printed out.
+#' @return a subset of the vector, matric or dataframe as specified is stored on the server side
 #' @author Gaye, A.
 #' @export
 #' @examples 
@@ -43,7 +44,7 @@
 #' 
 #' }
 #' 
-subsetDS <- function(dt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, varname=NULL){
+subsetDS <- function(dt=NULL, complt=FALSE, rs=NULL, cs=NULL, lg=NULL, th=NULL, varname=NULL){
   
   # this filter sets the minimum number of observations that are allowed 
   nfilter <- dsbase:::.setFilterDS()
@@ -61,8 +62,17 @@ subsetDS <- function(dt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, varname=NULL){
   # evaluate the input data object
   D <- eval(parse(text=dt))
   
+  # check what cases are complete and get their indices
+  if(complt){
+    cc <- complete.cases(D)
+    xx <- which(cc == TRUE)
+  }
+
   # carry out the subsetting
   if(is.vector(D) | is.factor(D)){ # if the input data is a vector
+    
+    if(complt){ D <- D[xx] }    
+    
     if(!(is.null(rs))){
       subvect <- D[rs]
     }else{
@@ -85,6 +95,9 @@ subsetDS <- function(dt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, varname=NULL){
       names(output) <- paste0("new_", dt)
     }
   }else{ # if the input data is a table
+    
+    if(complt){ D <- D[xx,] }    
+    
     if(!(is.null(rs)) | !(is.null(cs))){
       if(!(is.null(rs)) & !(is.null(cs))){
         subtable <- D[rs,cs]
@@ -103,7 +116,7 @@ subsetDS <- function(dt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, varname=NULL){
     
     if((dim(subtable)[1]) < nfilter){
       if((dim(subtable)[1]) == 0){
-        emptyTable <- data.frame(matrix(NA, nrow=nfilter, ncol=nfilter))
+        emptyTable <- data.frame(matrix(NA, nrow=nfilter, ncol=dim(subtable)[2]))
         colnames(emptyTable) <- colnames(subtable)
         output <- list(emptyTable)
         names(output) <- paste0("new_", dt, "_EMPTY")
@@ -118,6 +131,6 @@ subsetDS <- function(dt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, varname=NULL){
       names(output) <- paste0("new_",dt)
     }
   }
-
+  
   return(output)
 }

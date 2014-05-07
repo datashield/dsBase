@@ -1,8 +1,8 @@
-\name{createfactor.ds}
-\alias{createfactor.ds}
+\name{amendlevelsDS}
+\alias{amendlevelsDS}
 \title{Generates a factor variable}
 \usage{
-createfactor.ds(xvect = NULL, categories = NULL)
+amendlevelsDS(xvect = NULL, categories = NULL)
 }
 \arguments{
   \item{xvect}{a factor vector}
