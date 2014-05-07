@@ -24,7 +24,7 @@ append a column to a dataframe and creates a new dataframe.
 library(opal)
 data(logindata)
 
-opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar, symbol="D")
+opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 
 # generate a new variable (e.g. a mean centered LAB_HDL)
 # get the mean of LAB_HDL
@@ -37,7 +37,7 @@ for(i in 1:length(opals)){
 
 # now append 'lab_hdl.c' to the initially assigned dataframe 'D'
 # without replacing the initial dataframe 'D'
-call.object <- call("append2df.ds", quote(D), quote(lab_hdl.c))
+call.object <- call("append2dfDS", quote(D), quote(lab_hdl.c))
 datashield.assign(opals, call.object)
 }
 }

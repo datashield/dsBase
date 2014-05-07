@@ -14,7 +14,7 @@
 #' 
 #  # login and assign a numeric variable to R
 #  myvar <- list("LAB_TSC", "LAB_HDL")
-#' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar, symbol="D")
+#' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
 #' 
 #' # generate a new variable (e.g. a mean centered LAB_HDL)
 #' # get the mean of LAB_HDL
@@ -27,7 +27,7 @@
 #' 
 #' # now append 'lab_hdl.c' to the initially assigned dataframe 'D'
 #' # without replacing the initial dataframe 'D'
-#' call.object <- call("append2df.ds", quote(D), quote(lab_hdl.c))
+#' call.object <- call("append2dfDS", quote(D), quote(lab_hdl.c))
 #' datashield.assign(opals, call.object)
 #' }
 #'
