@@ -21,12 +21,13 @@ cbindDS <- function (objs) {
   
   # convert the matrix into a dataframe
   dt <- as.data.frame(mtx)
+  colnames(dt) <- unlist(objs)
   
   # check if the resulting dataframe is valid and output accordingly
   if(dim(dt)[1] < nfilter){
-    return(NULL)
-  }else{
-    return(dt)
+    dt <- as.data.frame(matrix(NA,nrow=dim(dt)[1], ncol=dim(dt)[2]))
   }
+  
+  return(dt)
 
 }
