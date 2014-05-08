@@ -13,9 +13,10 @@ cbindDS <- function (objs) {
   # this filter sets the minimum number of observations that are allowed 
   nfilter <- dsbase:::.setFilterDS()
   
-  mtx <- objs[[1]]
+  mtx <-  eval(parse(text=objs[[1]]))
   for(i in 2:length(objs)){
-    mtx <- cbind(mtx, objs[[i]])
+    oo <- eval(parse(text=objs[[i]]))
+    mtx <- cbind(mtx, oo)
   }
   
   # convert the matrix into a dataframe
