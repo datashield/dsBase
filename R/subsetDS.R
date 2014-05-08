@@ -66,16 +66,13 @@ subsetDS <- function(dt=NULL, complt=FALSE, rs=NULL, cs=NULL, lg=NULL, th=NULL, 
     if(length(subvect) < nfilter){
       if(length(subvect) == 0){
         emptyVect <- rep(NA, nfilter)
-        output <- list(emptyVect)
-        names(output) <- paste0("new_", dt, "_EMPTY")
+        output <- emptyVect
       }else{
         emptyVect <- rep(NA, length(subvect))
-        output <- list(emptyVect)
-        names(output) <- paste0("new_", dt, "_INVALID")
+        output <- emptyVect
       }
     }else{
-      output <- list(subvect)
-      names(output) <- paste0("new_", dt)
+      output <- subvect
     }
   }else{ # if the input data is a table
     
@@ -105,17 +102,14 @@ subsetDS <- function(dt=NULL, complt=FALSE, rs=NULL, cs=NULL, lg=NULL, th=NULL, 
       if((dim(subtable)[1]) == 0){
         emptyTable <- data.frame(matrix(NA, nrow=nfilter, ncol=dim(subtable)[2]))
         colnames(emptyTable) <- colnames(subtable)
-        output <- list(emptyTable)
-        names(output) <- paste0("new_", dt, "_EMPTY")
+        output <- emptyTable
       }else{
         emptyTable <- data.frame(matrix(NA, nrow=dim(subtable)[1], ncol=dim(subtable)[2]))
         colnames(emptyTable) <- colnames(subtable)
-        output <- list(emptyTable)
-        names(output) <- paste0("new_", dt, "_INVALID")
+        output <- emptyTable
       }
     }else{
-      output <- list(subtable)
-      names(output) <- paste0("new_",dt)
+      output <- subtable
     }
   }
   
