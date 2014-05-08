@@ -5,7 +5,8 @@
 cbindDS(objs)
 }
 \arguments{
-  \item{objs}{a list of object to combine}
+  \item{objs}{a list which contains the names of the
+  objects to combine.}
 }
 \value{
 a dataframe
