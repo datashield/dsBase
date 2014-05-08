@@ -12,11 +12,11 @@
 #' number of observations), the subset is not generated, rather a table or a vector of missing values is generated to allow
 #' for any subsequent process using the output of the function to proceed after informing the user via a message.
 #' @param dt a string character, the name of the dataframe or the factor vector and the range of the subset.
-#' @param complt a string that tells if the subset to subset should include only complete cases
-#' @param rs a vector of integers, the indices of the rows de extract. 
-#' @param cs a vector of integers or characters; the indices of the columns to extract or the names of the columns (i.e. 
+#' @param complt a character that tells if the subset to subset should include only complete cases
+#' @param rs a vector of two integers that give the range of rows de extract. 
+#' @param cs a vector of two integers or one or more characters; the indices of the columns to extract or the names of the columns (i.e. 
 #' names of the variables to extract).
-#' @param lg a charcater, the logical parameter to use if the user wishes to subset a vector using a logical 
+#' @param lg a character, the logical parameter to use if the user wishes to subset a vector using a logical 
 #' operator. This parameter is ignored if the input data is not a vector.
 #' @param th a numeric, the threshold to use in conjunction with the logical parameter. This parameter is ignored 
 #' if the input data is not a vector.
@@ -57,7 +57,7 @@ subsetDS <- function(dt=NULL, complt="FALSE", rs=NULL, cs=NULL, lg=NULL, th=NULL
     if(complt=='TRUE'){ D <- D[xx] }    
     
     if(!(is.null(rs))){
-      subvect <- D[rs]
+      subvect <- D[ rs[1]:rs[2] ]
     }else{
       exprs1 <- paste0(dt, "[which(", dt, lg, th, ")]")
       subvect <- eval(parse(text=exprs1))
@@ -80,12 +80,20 @@ subsetDS <- function(dt=NULL, complt="FALSE", rs=NULL, cs=NULL, lg=NULL, th=NULL
     
     if(!(is.null(rs)) | !(is.null(cs))){
       if(!(is.null(rs)) & !(is.null(cs))){
-        subtable <- D[rs,cs]
+        if(class(cs) == character){
+          subtable <- D[ rs[1]:rs[2], cs ]
+        }else{
+          subtable <- D[ rs[1]:rs[2], cs[1]:cs[2] ]
+        }
       }else{
         if(!(is.null(rs)) & is.null(cs)){
-          subtable <- D[rs,]
+          subtable <- D[ rs[1]:rs[2], ]
         }else{
-          subtable <- D[,cs]
+          if(class(cs) == character){
+            subtable <- D[,cs]
+          }else{
+            subtable <- D[, cs[1]:cs[2] ]
+          }
         }
       }
     }else{

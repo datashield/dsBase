@@ -9,17 +9,18 @@ subsetDS(dt = NULL, complt = "FALSE", rs = NULL, cs = NULL, lg = NULL,
   \item{dt}{a string character, the name of the dataframe
   or the factor vector and the range of the subset.}
 
-  \item{complt}{a string that tells if the subset to subset
-  should include only complete cases}
+  \item{complt}{a character that tells if the subset to
+  subset should include only complete cases}
 
-  \item{rs}{a vector of integers, the indices of the rows
-  de extract.}
+  \item{rs}{a vector of two integers that give the range of
+  rows de extract.}
 
-  \item{cs}{a vector of integers or characters; the indices
-  of the columns to extract or the names of the columns
-  (i.e. names of the variables to extract).}
+  \item{cs}{a vector of two integers or one or more
+  characters; the indices of the columns to extract or the
+  names of the columns (i.e. names of the variables to
+  extract).}
 
-  \item{lg}{a charcater, the logical parameter to use if
+  \item{lg}{a character, the logical parameter to use if
   the user wishes to subset a vector using a logical
   operator. This parameter is ignored if the input data is
   not a vector.}
