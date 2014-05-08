@@ -12,7 +12,7 @@
 #' number of observations), the subset is not generated, rather a table or a vector of missing values is generated to allow
 #' for any subsequent process using the output of the function to proceed after informing the user via a message.
 #' @param dt a string character, the name of the dataframe or the factor vector and the range of the subset.
-#' @param complt a boolean that tells if the subset to subset should include only complete cases
+#' @param complt a string that tells if the subset to subset should include only complete cases
 #' @param rs a vector of integers, the indices of the rows de extract. 
 #' @param cs a vector of integers or characters; the indices of the columns to extract or the names of the columns (i.e. 
 #' names of the variables to extract).
@@ -27,7 +27,7 @@
 #' @author Gaye, A.
 #' @export
 #' 
-subsetDS <- function(dt=NULL, complt=FALSE, rs=NULL, cs=NULL, lg=NULL, th=NULL, varname=NULL){
+subsetDS <- function(dt=NULL, complt="FALSE", rs=NULL, cs=NULL, lg=NULL, th=NULL, varname=NULL){
   
   # this filter sets the minimum number of observations that are allowed 
   nfilter <- dsbase:::.setFilterDS()
@@ -46,7 +46,7 @@ subsetDS <- function(dt=NULL, complt=FALSE, rs=NULL, cs=NULL, lg=NULL, th=NULL, 
   D <- eval(parse(text=dt))
   
   # check what cases are complete and get their indices
-  if(complt){
+  if(complt=='TRUE'){
     cc <- complete.cases(D)
     xx <- which(cc == TRUE)
   }
@@ -54,7 +54,7 @@ subsetDS <- function(dt=NULL, complt=FALSE, rs=NULL, cs=NULL, lg=NULL, th=NULL, 
   # carry out the subsetting
   if(is.vector(D) | is.factor(D)){ # if the input data is a vector
     
-    if(complt){ D <- D[xx] }    
+    if(complt=='TRUE'){ D <- D[xx] }    
     
     if(!(is.null(rs))){
       subvect <- D[rs]
@@ -76,7 +76,7 @@ subsetDS <- function(dt=NULL, complt=FALSE, rs=NULL, cs=NULL, lg=NULL, th=NULL, 
     }
   }else{ # if the input data is a table
     
-    if(complt){ D <- D[xx,] }    
+    if(complt=='TRUE'){ D <- D[xx,] }    
     
     if(!(is.null(rs)) | !(is.null(cs))){
       if(!(is.null(rs)) & !(is.null(cs))){

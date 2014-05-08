@@ -2,15 +2,15 @@
 \alias{subsetDS}
 \title{Generates a valid subset of a table or a vector}
 \usage{
-subsetDS(dt = NULL, complt = FALSE, rs = NULL, cs = NULL, lg = NULL,
+subsetDS(dt = NULL, complt = "FALSE", rs = NULL, cs = NULL, lg = NULL,
   th = NULL, varname = NULL)
 }
 \arguments{
   \item{dt}{a string character, the name of the dataframe
   or the factor vector and the range of the subset.}
 
-  \item{complt}{a boolean that tells if the subset to
-  subset should include only complete cases}
+  \item{complt}{a string that tells if the subset to subset
+  should include only complete cases}
 
   \item{rs}{a vector of integers, the indices of the rows
   de extract.}
