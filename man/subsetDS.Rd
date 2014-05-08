@@ -64,24 +64,6 @@ or a vector of missing values is generated to allow for any
 subsequent process using the output of the function to
 proceed after informing the user via a message.
 }
-\examples{
-\dontrun{
-# load the login data
-library(opal)
-data(logindata)
-
-# login and assign some variables to R
-myvar <- list("DIS_DIAB","PM_BMI_CONTINUOUS","LAB_HDL", "GENDER")
-opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
-
-# Example 1: get a table with the first 500 observations on the first two columns of table D
-datashield.assign(opals, "subD", quote(subsetDS(dt='D', rs=c(1:500), cs=c(1,2))))
-
-#' # Example 2: subset 'D' on bmi values greater than 25
-datashield.assign(opals, "subD", quote(subsetDS(dt='D', lg=1, th=25, varname='PM_BMI_CONTINUOUS')))
-
-}
-}
 \author{
 Gaye, A.
 }

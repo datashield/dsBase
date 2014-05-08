@@ -26,23 +26,6 @@
 #' @return a subset of the vector, matric or dataframe as specified is stored on the server side
 #' @author Gaye, A.
 #' @export
-#' @examples 
-#' \dontrun{
-#' # load the login data
-#' library(opal)
-#' data(logindata)
-#' 
-#' # login and assign some variables to R
-#' myvar <- list("DIS_DIAB","PM_BMI_CONTINUOUS","LAB_HDL", "GENDER")
-#' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
-#' 
-#' # Example 1: get a table with the first 500 observations on the first two columns of table D
-#' datashield.assign(opals, "subD", quote(subsetDS(dt='D', rs=c(1:500), cs=c(1,2))))
-#' 
-#' #' # Example 2: subset 'D' on bmi values greater than 25
-#' datashield.assign(opals, "subD", quote(subsetDS(dt='D', lg=1, th=25, varname='PM_BMI_CONTINUOUS')))
-#' 
-#' }
 #' 
 subsetDS <- function(dt=NULL, complt=FALSE, rs=NULL, cs=NULL, lg=NULL, th=NULL, varname=NULL){
   
@@ -109,9 +92,13 @@ subsetDS <- function(dt=NULL, complt=FALSE, rs=NULL, cs=NULL, lg=NULL, th=NULL, 
         }
       }
     }else{
-      idx <- which(colnames(D) == varname)
-      exprs2 <- paste0(dt, "[which(", dt, "[,",idx,"]", lg, th, "),]")
-      subtable <- eval(parse(text=exprs2))
+      if(is.null(varname)){
+        subtable <- D
+      }else{
+        idx <- which(colnames(D) == varname)
+        exprs2 <- paste0(dt, "[which(", dt, "[,",idx,"]", lg, th, "),]")
+        subtable <- eval(parse(text=exprs2))
+      }
     }
     
     if((dim(subtable)[1]) < nfilter){
