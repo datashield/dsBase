@@ -57,7 +57,7 @@ subsetDS <- function(dt=NULL, complt="FALSE", rs=NULL, cs=NULL, lg=NULL, th=NULL
     if(complt=='TRUE'){ D <- D[xx] }    
     
     if(!(is.null(rs))){
-      subvect <- D[ rs[1]:rs[2] ]
+      subvect <- D[rs]
     }else{
       exprs1 <- paste0(dt, "[which(", dt, lg, th, ")]")
       subvect <- eval(parse(text=exprs1))
@@ -80,20 +80,12 @@ subsetDS <- function(dt=NULL, complt="FALSE", rs=NULL, cs=NULL, lg=NULL, th=NULL
     
     if(!(is.null(rs)) | !(is.null(cs))){
       if(!(is.null(rs)) & !(is.null(cs))){
-        if(class(cs) == 'character'){
-          subtable <- D[ rs[1]:rs[2], cs ]
-        }else{
-          subtable <- D[ rs[1]:rs[2], cs[1]:cs[2] ]
-        }
+        subtable <- D[rs, cs]
       }else{
         if(!(is.null(rs)) & is.null(cs)){
-          subtable <- D[ rs[1]:rs[2], ]
+          subtable <- D[rs,]
         }else{
-          if(class(cs) == 'character'){
-            subtable <- D[,cs]
-          }else{
-            subtable <- D[, cs[1]:cs[2] ]
-          }
+          subtable <- D[,cs]
         }
       }
     }else{
