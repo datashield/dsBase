@@ -45,17 +45,21 @@ subsetDS <- function(dt=NULL, complt="FALSE", rs=NULL, cs=NULL, lg=NULL, th=NULL
   # evaluate the input data object
   D <- eval(parse(text=dt))
   
-  # check what cases are complete and get their indices
+  # if 'complt' is set to TRUE, get continue with a dataset with complete cases only
   if(complt=='TRUE'){
     cc <- complete.cases(D)
     xx <- which(cc == TRUE)
+    Dtemp <- D
+    if(is.vector(D) | is.factor(D)){
+      D <- Dtemp[xx]
+    }else{
+      D <- Dtemp[xx,]
+    }
   }
 
   # carry out the subsetting
   if(is.vector(D) | is.factor(D)){ # if the input data is a vector
-    
-    if(complt=='TRUE'){ D <- D[xx] }    
-    
+  
     if(!(is.null(rs))){
       subvect <- D[rs]
     }else{
@@ -75,9 +79,7 @@ subsetDS <- function(dt=NULL, complt="FALSE", rs=NULL, cs=NULL, lg=NULL, th=NULL
       output <- subvect
     }
   }else{ # if the input data is a table
-    
-    if(complt=='TRUE'){ D <- D[xx,] }    
-    
+
     if(!(is.null(rs)) | !(is.null(cs))){
       if(!(is.null(rs)) & !(is.null(cs))){
         subtable <- D[rs, cs]
