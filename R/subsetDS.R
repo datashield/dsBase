@@ -27,7 +27,7 @@
 #' @author Gaye, A.
 #' @export
 #' 
-subsetDS <- function(dt=NULL, complt="FALSE", rs=NULL, cs=NULL, lg=NULL, th=NULL, varname=NULL){
+subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, varname=NULL){
   
   # this filter sets the minimum number of observations that are allowed 
   nfilter <- dsbase:::.setFilterDS()
