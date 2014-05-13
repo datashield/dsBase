@@ -47,6 +47,7 @@ subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, v
   
   # if 'complt' is set to TRUE, get continue with a dataset with complete cases only
   if(complt=='TRUE'){
+    message("SAY YES TO CHECK")
     cc <- complete.cases(D)
     xx <- which(cc == TRUE)
     Dtemp <- D
