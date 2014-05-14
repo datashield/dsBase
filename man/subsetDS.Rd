@@ -2,7 +2,7 @@
 \alias{subsetDS}
 \title{Generates a valid subset of a table or a vector}
 \usage{
-subsetDS(dt = NULL, complt = "FALSE", rs = NULL, cs = NULL, lg = NULL,
+subsetDS(dt = NULL, complt = NULL, rs = NULL, cs = NULL, lg = NULL,
   th = NULL, varname = NULL)
 }
 \arguments{

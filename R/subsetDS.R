@@ -47,7 +47,6 @@ subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, v
   
   # if 'complt' is set to TRUE, get continue with a dataset with complete cases only
   if(complt=='TRUE'){
-    message("SAY YES TO CHECK")
     cc <- complete.cases(D)
     xx <- which(cc == TRUE)
     Dtemp <- D
@@ -60,14 +59,14 @@ subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, v
 
   # carry out the subsetting
   if(is.vector(D) | is.factor(D)){ # if the input data is a vector
-  
-    if(!(is.null(rs))){
-      subvect <- D[rs]
-    }else{
-      exprs1 <- paste0(dt, "[which(", dt, lg, th, ")]")
-      subvect <- eval(parse(text=exprs1))
-    }
     
+    if(is.null(rs)){
+      exprs1 <- paste0("D[which(D", lg, th, "), ]")
+      subvect <- eval(parse(text=exprs1))
+    }else{
+      subvect <- D[rs]
+    }
+
     if(length(subvect) < nfilter){
       if(length(subvect) == 0){
         emptyVect <- rep(NA, nfilter)
@@ -80,15 +79,25 @@ subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, v
       output <- subvect
     }
   }else{ # if the input data is a table
+    
+    # if no columns and/or rows provided
+    if(is.null(cs)){
+      cs <- c(1, dim(D)[2])
+    }
+    if(is.null(rs)){
+      rs <- c(1, dim(D)[1])
+    }
 
     if(!(is.null(rs)) | !(is.null(cs))){
       if(!(is.null(rs)) & !(is.null(cs))){
         subtable <- D[rs, cs]
       }else{
         if(!(is.null(rs)) & is.null(cs)){
-          subtable <- D[rs,]
+          cs <- c(1, dim(D)[2])
+          subtable <- D[rs,cs]
         }else{
-          subtable <- D[,cs]
+          rs <- c(1, dim(D)[1])
+          subtable <- D[rs,cs]
         }
       }
     }else{
@@ -96,7 +105,7 @@ subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, v
         subtable <- D
       }else{
         idx <- which(colnames(D) == varname)
-        exprs2 <- paste0(dt, "[which(", dt, "[,",idx,"]", lg, th, "),]")
+        exprs2 <- paste0('D[which(D[,',idx,']', lg, th, '),]')
         subtable <- eval(parse(text=exprs2))
       }
     }
