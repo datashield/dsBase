@@ -88,13 +88,13 @@ subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, v
       if(!(is.null(rs)) & !(is.null(cs))){
         subtable <- D[rs, cs]
       }else{
-        if(!(is.null(rs)) & is.null(cs)){
+        if(is.null(cs)){
           cs <- c(1:dim(D)[2])
-          subtable <- D[rs,cs]
-        }else{
-          rs <- c(1:dim(D)[1])
-          subtable <- D[rs,cs]
         }
+        if(is.null(rs)){
+          rs <- c(1:dim(D)[1])
+        }
+        subtable <- D[rs,cs]
       }
     }else{
       if(is.null(varname)){
