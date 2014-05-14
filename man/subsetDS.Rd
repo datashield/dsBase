@@ -9,7 +9,7 @@ subsetDS(dt = NULL, complt = NULL, rs = NULL, cs = NULL, lg = NULL,
   \item{dt}{a string character, the name of the dataframe
   or the factor vector and the range of the subset.}
 
-  \item{complt}{a character that tells if the subset to
+  \item{complt}{a boolean that tells if the subset to
   subset should include only complete cases}
 
   \item{rs}{a vector of two integers that give the range of

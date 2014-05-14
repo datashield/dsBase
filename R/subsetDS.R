@@ -12,7 +12,7 @@
 #' number of observations), the subset is not generated, rather a table or a vector of missing values is generated to allow
 #' for any subsequent process using the output of the function to proceed after informing the user via a message.
 #' @param dt a string character, the name of the dataframe or the factor vector and the range of the subset.
-#' @param complt a character that tells if the subset to subset should include only complete cases
+#' @param complt a boolean that tells if the subset to subset should include only complete cases
 #' @param rs a vector of two integers that give the range of rows de extract. 
 #' @param cs a vector of two integers or one or more characters; the indices of the columns to extract or the names of the columns (i.e. 
 #' names of the variables to extract).
@@ -46,7 +46,7 @@ subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, v
   D <- eval(parse(text=dt))
   
   # if 'complt' is set to TRUE, get continue with a dataset with complete cases only
-  if(complt=='TRUE'){
+  if(complt){
     cc <- complete.cases(D)
     xx <- which(cc == TRUE)
     Dtemp <- D
@@ -64,7 +64,7 @@ subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, v
       if(is.null(lg) | is.null(th)){
         subvect <- D
       }else{
-        exprs1 <- paste0("D[which(D", lg, th, "), ]")
+        exprs1 <- paste0("D[which(D", lg, th, ")]")
         subvect <- eval(parse(text=exprs1))
       }
     }else{
