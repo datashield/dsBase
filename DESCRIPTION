@@ -34,8 +34,6 @@ AggregateMethods: length=base::length,
     is.list=base::is.list,
     exists=base::exists,
     cor.test=stats::cor.test,
-    cov=stats::cov,
-    cor=stats::cor,
     corDS,
     covDS
 AssignMethods: log=base::log,
