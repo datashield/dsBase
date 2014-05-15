@@ -12,7 +12,7 @@
 #' number of observations), the subset is not generated, rather a table or a vector of missing values is generated to allow
 #' for any subsequent process using the output of the function to proceed after informing the user via a message.
 #' @param dt a string character, the name of the dataframe or the factor vector and the range of the subset.
-#' @param complt a character that tells if the subset to subset should include only complete cases
+#' @param complt a boolean that tells if the subset to subset should include only complete cases
 #' @param rs a vector of two integers that give the range of rows de extract. 
 #' @param cs a vector of two integers or one or more characters; the indices of the columns to extract or the names of the columns (i.e. 
 #' names of the variables to extract).
@@ -27,7 +27,7 @@
 #' @author Gaye, A.
 #' @export
 #' 
-subsetDS <- function(dt=NULL, complt="FALSE", rs=NULL, cs=NULL, lg=NULL, th=NULL, varname=NULL){
+subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, varname=NULL){
   
   # this filter sets the minimum number of observations that are allowed 
   nfilter <- dsbase:::.setFilterDS()
@@ -45,24 +45,32 @@ subsetDS <- function(dt=NULL, complt="FALSE", rs=NULL, cs=NULL, lg=NULL, th=NULL
   # evaluate the input data object
   D <- eval(parse(text=dt))
   
-  # check what cases are complete and get their indices
-  if(complt=='TRUE'){
+  # if 'complt' is set to TRUE, get continue with a dataset with complete cases only
+  if(complt){
     cc <- complete.cases(D)
     xx <- which(cc == TRUE)
+    Dtemp <- D
+    if(is.vector(D) | is.factor(D)){
+      D <- Dtemp[xx]
+    }else{
+      D <- Dtemp[xx,]
+    }
   }
 
   # carry out the subsetting
   if(is.vector(D) | is.factor(D)){ # if the input data is a vector
     
-    if(complt=='TRUE'){ D <- D[xx] }    
-    
-    if(!(is.null(rs))){
-      subvect <- D[ rs[1]:rs[2] ]
+    if(is.null(rs)){
+      if(is.null(lg) | is.null(th)){
+        subvect <- D
+      }else{
+        exprs1 <- paste0("D[which(D", lg, th, ")]")
+        subvect <- eval(parse(text=exprs1))
+      }
     }else{
-      exprs1 <- paste0(dt, "[which(", dt, lg, th, ")]")
-      subvect <- eval(parse(text=exprs1))
+      subvect <- D[rs]
     }
-    
+
     if(length(subvect) < nfilter){
       if(length(subvect) == 0){
         emptyVect <- rep(NA, nfilter)
@@ -76,32 +84,24 @@ subsetDS <- function(dt=NULL, complt="FALSE", rs=NULL, cs=NULL, lg=NULL, th=NULL
     }
   }else{ # if the input data is a table
     
-    if(complt=='TRUE'){ D <- D[xx,] }    
-    
     if(!(is.null(rs)) | !(is.null(cs))){
       if(!(is.null(rs)) & !(is.null(cs))){
-        if(class(cs) == 'character'){
-          subtable <- D[ rs[1]:rs[2], cs ]
-        }else{
-          subtable <- D[ rs[1]:rs[2], cs[1]:cs[2] ]
-        }
+        subtable <- D[rs, cs]
       }else{
-        if(!(is.null(rs)) & is.null(cs)){
-          subtable <- D[ rs[1]:rs[2], ]
-        }else{
-          if(class(cs) == 'character'){
-            subtable <- D[,cs]
-          }else{
-            subtable <- D[, cs[1]:cs[2] ]
-          }
+        if(is.null(cs)){
+          cs <- c(1:dim(D)[2])
         }
+        if(is.null(rs)){
+          rs <- c(1:dim(D)[1])
+        }
+        subtable <- D[rs,cs]
       }
     }else{
       if(is.null(varname)){
         subtable <- D
       }else{
         idx <- which(colnames(D) == varname)
-        exprs2 <- paste0(dt, "[which(", dt, "[,",idx,"]", lg, th, "),]")
+        exprs2 <- paste0('D[which(D[,',idx,']', lg, th, '),]')
         subtable <- eval(parse(text=exprs2))
       }
     }
