@@ -1,11 +1,11 @@
-\name{recodelevelsDS}
-\alias{recodelevelsDS}
+\name{recodeLevelsDS}
+\alias{recodeLevelsDS}
 \title{Recodes the levels of a categorical variables}
 \usage{
-recodelevelsDS(xvect = NULL, classes = NULL)
+recodeLevelsDS(x = NULL, classes = NULL)
 }
 \arguments{
-  \item{xvect}{a factor vector}
+  \item{x}{a factor vector}
 
   \item{classes}{a character vector the levels of the newt
   factor vector}
