@@ -11,12 +11,12 @@
 recodeLevelsDS <- function (x=NULL, classes=NULL){
   
   # check if the input vector is valid (i.e. respect DataSHIELD conditions)
-  check <- isValid.ds(xvect)
+  check <- isValid.ds(x)
   
   if(check){
     # generate the new variable with the specified levels
-    levels(xvect) <- categories
-    return(xvect)
+    levels(x) <- classes
+    return(x)
   }else{
     return(NULL)
   }
