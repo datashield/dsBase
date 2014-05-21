@@ -20,7 +20,7 @@
 #' datashield.aggregate(opals, quote(isValid.ds(D$LAB_HDL)))
 #'}
 #'
-isValid.ds <- function(xvect) {
+isValidDS <- function(xvect) {
   
   if(class(xvect) == "numeric") {
     if(length(xvect) > 0 & length(xvect)  <5) {

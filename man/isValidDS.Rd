@@ -1,8 +1,8 @@
-\name{isValid.ds}
-\alias{isValid.ds}
+\name{isValidDS}
+\alias{isValidDS}
 \title{Checks if an input is valid}
 \usage{
-isValid.ds(xvect)
+isValidDS(xvect)
 }
 \arguments{
   \item{xvect}{a numeric or factor vector.}
