@@ -1,0 +1,22 @@
+\name{asListDS}
+\alias{asListDS}
+\title{Converts a data.frame or matrix into a list}
+\usage{
+asListDS(input)
+}
+\arguments{
+  \item{input}{the object to turn into list.}
+}
+\value{
+a valid list or an empty list
+}
+\description{
+this function is similar to R function 'as.list'.
+}
+\details{
+
+}
+\author{
+Gaye, A.
+}
+

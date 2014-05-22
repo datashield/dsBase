@@ -10,7 +10,7 @@
 #'
 recodeLevelsDS <- function (x=NULL, classes=NULL){
   
-  # check if the input vector is valid (i.e. respect DataSHIELD conditions)
+  # check if the input vector is valid (i.e. meets DataSHIELD criteria)
   check <- dsbase:::.isValidDS(x)
   
   if(check){
