@@ -48,7 +48,10 @@ asFactorDS <-function (x = character(), levels, labels = levels, exclude = NA, o
   if(invalid.table==0)
   {return(f)}
   
-  if(invalid.table>0)
-  {return(NULL)}
+  if(invalid.table>0){
+    f <- rep(NA, 4)
+    levels(f) <- "NA"
+    return(f)
+  }
   
 }
