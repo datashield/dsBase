@@ -11,10 +11,13 @@ asListDS(input)
 a valid list or an empty list
 }
 \description{
-this function is similar to R function 'as.list'.
+this function is similar to R function 'as.list'
 }
 \details{
 
+
+Unlike the r function 'as.list' some restriction are
+applied.
 }
 \author{
 Gaye, A.

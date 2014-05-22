@@ -1,33 +1,30 @@
 #' 
-#' @title Converts a data.frame or matrix into a list
-#' @description this function is similar to R function 'as.list'
-#' @details Unlike the r function 'as.list' some restriction are applied.
+#' @title Attempts to convert the input into a matrix
+#' @description this function is similar to R function 'as.matrix'
+#' @details Unlike the r function 'as.matrix' some restriction are applied.
 #' @param input the object to turn into list.
 #' @return a valid list or an empty list
 #' @author Gaye, A.
 #' @export
 #' 
-asListDS <-function (input){
+asMatrixDS <-function (input){
   # check if the input is a dataframe or a matrix
   # this should be checked on the client side
-  # but just in case a '***' changes the client code
+  # but just in case an '***' changes the client code
   # to 'hack'. He/she will not be able to reach here
   cl <- class(input)
-  if(cl != 'data.frame' & cl != 'matrix'){
+  if(typ != 'data.frame' & typ != 'factor' & typ != 'character' & typ != 'numeric' & typ != 'integer'){
     output <- as.list(rep(NA, 4))
   }else{
     # check if the input vector is valid (i.e. meets DataSHIELD criteria)
     check <- dsbase:::.isValidDS(input)
     if(check){
-      if(cl == 'matrix'){ 
-        input2 <- as.data.frame(input) 
-      }else{
-        input2 <- input
-      }
-      output <- as.list(input2)
+      output <- as.matrix(input) 
     }else{
       output <- as.list(rep(NA, 4))
     }
   }
+  
   return(output)
+  
 }
