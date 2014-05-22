@@ -13,7 +13,7 @@ asMatrixDS <-function (input){
   # but just in case an '***' changes the client code
   # to 'hack'. He/she will not be able to reach here
   cl <- class(input)
-  if(typ != 'data.frame' & typ != 'factor' & typ != 'character' & typ != 'numeric' & typ != 'integer'){
+  if(cl != 'data.frame' & cl != 'factor' & cl != 'character' & cl != 'numeric' & cl != 'integer'){
     output <- as.list(rep(NA, 4))
   }else{
     # check if the input vector is valid (i.e. meets DataSHIELD criteria)
