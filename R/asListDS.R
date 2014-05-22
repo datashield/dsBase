@@ -19,6 +19,7 @@ asListDS <-function (input){
     check <- dsbase:::.isValidDS(input)
     if(check){
       output <- as.list(input)
+      names(output) <- colnames(input)
     }else{
       output <- as.list(rep(NA, 4))
     }
