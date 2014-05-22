@@ -18,8 +18,13 @@ asListDS <-function (input){
     # check if the input vector is valid (i.e. meets DataSHIELD criteria)
     check <- dsbase:::.isValidDS(input)
     if(check){
-      output <- as.list(input)
-      names(output) <- colnames(input)
+      if(cl == 'matrix'){ 
+        input2 <- as.data.frame(input) 
+      }else{
+        input2 <- input
+      }
+      output <- as.list(input2)
+      names(output) <- colnames(input2)
     }else{
       output <- as.list(rep(NA, 4))
     }
