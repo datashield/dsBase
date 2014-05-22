@@ -24,7 +24,6 @@ asListDS <-function (input){
         input2 <- input
       }
       output <- as.list(input2)
-      names(output) <- colnames(input2)
     }else{
       output <- as.list(rep(NA, 4))
     }
