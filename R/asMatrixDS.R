@@ -17,7 +17,7 @@ asMatrixDS <-function (input){
     output <- as.list(rep(NA, 4))
   }else{
     # check if the input vector is valid (i.e. meets DataSHIELD criteria)
-    check <- dsbase:::.isValidDS(input)
+    check <- isValidDS(input)
     if(check){
       output <- as.matrix(input) 
     }else{

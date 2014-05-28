@@ -36,7 +36,7 @@ AggregateMethods: length=base::length,
     corDS,
     covDS
 AssignMethods: log=base::log,
-    c=base::c,
+    cDS,
     unlist=base::unlist,
     exp=base::exp,
     asListDS,

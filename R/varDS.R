@@ -23,7 +23,7 @@
 #'
 varDS <- function (xvect) {
   # this filter sets the minimum number of observations that are allowed 
-  nfilter <- dsbase:::.setFilterDS()
+  nfilter <- setFilterDS()
   
   if(length(xvect) < nfilter){
     result <- NA

@@ -11,7 +11,7 @@
 #'
 cbindDS <- function (objs) {
   # this filter sets the minimum number of observations that are allowed 
-  nfilter <- dsbase:::.setFilterDS()
+  nfilter <- setFilterDS()
   
   mtx <-  eval(parse(text=objs[[1]]))
   for(i in 2:length(objs)){
@@ -25,7 +25,13 @@ cbindDS <- function (objs) {
   
   # check if the resulting dataframe is valid and output accordingly
   if(dim(dt)[1] < nfilter){
-    dt <- as.data.frame(matrix(NA,nrow=dim(dt)[1], ncol=dim(dt)[2]))
+    if(dim(dt)[1] == 0){
+      dt1 <- as.data.frame(matrix(NA,nrow=1, ncol=dim(dt)[2]))
+      colnames(dt1) <- colnames(dt)
+      dt <- dt1
+    }else{
+      dt <- as.data.frame(matrix(NA,nrow=dim(dt)[1], ncol=dim(dt)[2]))
+    }
   }
   
   return(dt)

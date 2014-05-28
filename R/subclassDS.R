@@ -40,7 +40,7 @@
 subclassDS <- function(data=NULL, variables=NULL){
   
   # this filter sets the minimum number of observations that are allowed 
-  nfilter <- dsbase:::.setFilterDS()
+  nfilter <- setFilterDS()
   
   # check if the input object is defined
   if(!(exists(data))){
@@ -54,7 +54,7 @@ subclassDS <- function(data=NULL, variables=NULL){
       if(is.factor(D)){
           # call the internal function that generates subsets if the input is a factor variable
           Dname <- data
-          output <- dsbase:::.subclassDShelper1(D, Dname, nfilter)
+          output <- subclassDShelper1(D, Dname, nfilter)
       }else{
         if(is.data.frame(D)){
           
@@ -81,12 +81,12 @@ subclassDS <- function(data=NULL, variables=NULL){
           # of each factor variable and keep the generated subset dataframes in a list
           if(length(loop) > 1){
             # call the function that gets the subsets if the user specified non or more than 1 variable
-            out.temp <- dsbase:::.subclassDShelper2(D,loop,nfilter)
+            out.temp <- subclassDShelper2(D,loop,nfilter)
             subsets <- out.temp[[1]]
             nonfactorvars <- out.temp[[2]]
           }else{
             # call the function that gets the subsets if the user specified only one variable to subset by
-            out.temp <- dsbase:::.subclassDShelper3(D,indx,nfilter)
+            out.temp <- subclassDShelper3(D,indx,nfilter)
             subsets <- out.temp[[1]]
             nonfactorvars <- out.temp[[2]]
           }

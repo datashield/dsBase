@@ -5,9 +5,10 @@
 #' @details The function is called by server side functios
 #' @param x a dummy argument
 #' @return an integer between 1 and 5
+#' @keywords internal
 #' @author Gaye, A.
 #'
-.setFilterDS <- function(x=5){
+setFilterDS <- function(x=5){
   a <- x
   return(5)
 }

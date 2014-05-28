@@ -1,6 +1,7 @@
 export(asFactorDS)
 export(asListDS)
 export(asMatrixDS)
+export(cDS)
 export(cbindDS)
 export(changerefgroup.ds)
 export(checkfactor.ds)

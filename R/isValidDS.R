@@ -6,12 +6,13 @@
 #' any of its levels (classes) has a count of between 1 and 4.
 #' @param obj, a vector (numeric, integer, factor, character), data.frame or matrix
 #' @return a boolean TRUE if input is valid or stops the process otherwise
+#' @keywords internal
 #' @author Gaye, A.
 #'
-.isValidDS <- function(obj) {
+isValidDS <- function(obj) {
   
   # this filter sets the minimum number of observations that are allowed 
-  nfilter <- dsbase:::.setFilterDS()
+  nfilter <- setFilterDS()
   
   if(class(obj) == "numeric" | class(obj) == "integer" | class(obj) == "character") {
     if(length(obj) > 0 & length(obj)  < nfilter) {

@@ -11,7 +11,7 @@
 recodeLevelsDS <- function (x=NULL, classes=NULL){
   
   # check if the input vector is valid (i.e. meets DataSHIELD criteria)
-  check <- dsbase:::.isValidDS(x)
+  check <- isValidDS(x)
   
   if(check){
     # generate the new variable with the specified levels
