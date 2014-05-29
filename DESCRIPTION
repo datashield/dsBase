@@ -53,7 +53,7 @@ AssignMethods: log=base::log,
     cbindDS,
     rowcolCalc.ds,
     is.na=base::is.na,
-    changerefgroup.ds,
+    changeRefGroupDS,
     subsetDS,
     asFactorDS,
     recodeLevelsDS

@@ -41,6 +41,5 @@ isValidDS <- function(obj) {
       }
     }
   } 
-  
 
 }

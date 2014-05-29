@@ -13,9 +13,9 @@ cDS <- function (objs) {
   # this filter sets the minimum number of observations that are allowed 
   nfilter <- setFilterDS()
   
-  mtx <-  eval(parse(text=objs[1]))
+  mtx <-  eval(parse(text=objs[[1]]))
   for(i in 2:length(objs)){
-    oo <- eval(parse(text=objs[i]))
+    oo <- eval(parse(text=objs[[i]]))
     mtx <- c(mtx, oo)
   }
 
