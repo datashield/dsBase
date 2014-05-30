@@ -22,8 +22,12 @@ This function is similar to R function \code{relevel},
 
 
 In addition to what the R function does, this function
-allows for the user to re-order the vector putting the
-reference group first.
+allows for the user to re-order the vector, putting the
+reference group first. If the user chooses the re-order a
+warning is issued as this can introduce a mismatch of
+values if the vector is put back into a table that is not
+reordered in the same way. Such mismatch can render the
+results of operations on that table invalid.
 }
 \author{
 Isaeva, J., Gaye, A.

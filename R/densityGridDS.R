@@ -1,6 +1,7 @@
 #' 
 #' @title Generates a density grid with or without a priori defined limits
 #' @description Generates a density grid that can then be used for heatmap or countour plots.
+#' @details Invalid cells (cells with count < to the set filter value) are turn to 0.
 #' @param xvect a numerical vector
 #' @param yvect a numerical vector
 #' @param limits a logical expression for whether or not limits of the density grid are defined by a user
@@ -15,7 +16,7 @@
 #' @author Isaeva, J. and Gaye, A.
 #' @export
 #' 
-densitygrid.ds  <-  function(xvect,yvect, limits=FALSE, x.min=NULL, x.max=NULL, y.min=NULL, y.max=NULL, numints=20){
+densityGridDS  <-  function(xvect,yvect, limits=FALSE, x.min=NULL, x.max=NULL, y.min=NULL, y.max=NULL, numints=20){
   
   xvect.save <- xvect
   yvect.save <- yvect

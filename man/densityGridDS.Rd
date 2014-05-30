@@ -1,8 +1,8 @@
-\name{densitygrid.ds}
-\alias{densitygrid.ds}
+\name{densityGridDS}
+\alias{densityGridDS}
 \title{Generates a density grid with or without a priori defined limits}
 \usage{
-densitygrid.ds(xvect, yvect, limits = FALSE, x.min = NULL, x.max = NULL,
+densityGridDS(xvect, yvect, limits = FALSE, x.min = NULL, x.max = NULL,
   y.min = NULL, y.max = NULL, numints = 20)
 }
 \arguments{
@@ -41,6 +41,9 @@ or countour plots.
 }
 \details{
 
+
+Invalid cells (cells with count < to the set filter value)
+are turn to 0.
 }
 \author{
 Isaeva, J. and Gaye, A.
