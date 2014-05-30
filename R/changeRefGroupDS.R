@@ -1,35 +1,29 @@
 #' 
 #' @title Changes a reference level of a factor
 #' @description This function is similar to R function \code{relevel}, 
-#' but in addition addes numbering to the levels so that they are displayed 
-#' in the right order when creating cross-tables.
-#' @param xvect a factor
-#' @param ref the reference level
+#' @details in addition to what the R function does, this function
+#' allows for the user to re-order the vector putting the reference
+#' group first.
+#' @param xvect a factor vector
+#' @param ref a character, the reference level
+#' @param reorderByRef a boolean that tells whether or not the new 
+#' vector should be ordered by the reference group.
 #' @return  a factor of the same length as xvect
 #' @author Isaeva, J., Gaye, A.
 #' @export
 #'
-changeRefGroupDS <- function(xvect, ref=NULL){
+changeRefGroup.ds <- function(xvect, ref=NULL, reorderByRef=NULL){
   
-  xvect_reordered = relevel(xvect, ref)
-  xvect_levels = levels(xvect_reordered)
-  for (i in 1:length(xvect_levels)) {
-    dummy = as.character(i-1)
-    # xvect_levels[i] = paste0(dummy, "_", xvect_levels[i])
-    levels(xvect_reordered)[i] = paste0(dummy, "_", levels(xvect_reordered)[i])
+  if(reorderByRef){
+    temp_xvect = relevel(xvect, ref)
+    # now reorder puting the ref group first
+    idx1 <- which(xvect == ref)
+    idx2 <- which(xvect != ref)
+    new_xvect <- c(temp_xvect[idx1], temp_xvect[idx2])
+  }else{
+    new_xvect <- relevel(xvect, ref)
   }
   
-  # check if the output vector is valid (i.e. meets DataSHIELD criteria)
-  check <- isValidDS(xvect)
-  
-  # check if the output is valid and output accordingly
-  if(!check){
-    if(length(xvect_reordered == 0)){
-      xvect_reordered <- NA
-    }else{
-      xvect_reordered <- rep(NA, length(xvect_reordered))
-    }
-  }
-  return(xvect_reordered)
+  return(new_xvect)
   
 }
