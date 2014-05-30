@@ -2,23 +2,28 @@
 \alias{changeRefGroupDS}
 \title{Changes a reference level of a factor}
 \usage{
-changeRefGroupDS(xvect, ref = NULL)
+changeRefGroupDS(xvect, ref = NULL, reorderByRef = NULL)
 }
 \arguments{
-  \item{xvect}{a factor}
+  \item{xvect}{a factor vector}
 
-  \item{ref}{the reference level}
+  \item{ref}{a character, the reference level}
+
+  \item{reorderByRef}{a boolean that tells whether or not
+  the new vector should be ordered by the reference group.}
 }
 \value{
 a factor of the same length as xvect
 }
 \description{
-This function is similar to R function \code{relevel}, but
-in addition addes numbering to the levels so that they are
-displayed in the right order when creating cross-tables.
+This function is similar to R function \code{relevel},
 }
 \details{
 
+
+In addition to what the R function does, this function
+allows for the user to re-order the vector putting the
+reference group first.
 }
 \author{
 Isaeva, J., Gaye, A.

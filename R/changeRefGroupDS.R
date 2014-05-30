@@ -1,7 +1,7 @@
 #' 
 #' @title Changes a reference level of a factor
 #' @description This function is similar to R function \code{relevel}, 
-#' @details in addition to what the R function does, this function
+#' @details In addition to what the R function does, this function
 #' allows for the user to re-order the vector putting the reference
 #' group first.
 #' @param xvect a factor vector
@@ -12,7 +12,7 @@
 #' @author Isaeva, J., Gaye, A.
 #' @export
 #'
-changeRefGroup.ds <- function(xvect, ref=NULL, reorderByRef=NULL){
+changeRefGroupDS <- function(xvect, ref=NULL, reorderByRef=NULL){
   
   if(reorderByRef){
     temp_xvect = relevel(xvect, ref)
