@@ -21,8 +21,8 @@ dataframeDS <- function (vectors=NULL,r.names=NULL,ch.rows=FALSE,ch.names=TRUE,c
   if(strAsFactors){
     strAsFactors <- default.stringsAsFactors()
   }
-  if(!(is.null(row.names))){
-    row.names <- unlist(row.names)
+  if(!(is.null(r.names))){
+    r.names <- unlist(r.names)
   }
   
   dt <- data.frame(vectors, row.names=r.names, check.rows=ch.rows, check.names=ch.names, 
