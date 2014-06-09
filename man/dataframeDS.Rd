@@ -3,7 +3,7 @@
 \title{Creates a data frame}
 \usage{
 dataframeDS(vectors = NULL, r.names = NULL, ch.rows = FALSE,
-  ch.names = TRUE, strAsFactors = TRUE)
+  ch.names = TRUE, clnames = NULL, strAsFactors = TRUE)
 }
 \arguments{
   \item{vectors}{a list which contains the vectors to
@@ -19,6 +19,9 @@ dataframeDS(vectors = NULL, r.names = NULL, ch.rows = FALSE,
   of the variables in the data frame are checked to ensure
   that they are syntactically valid variable names and are
   not duplicated.}
+
+  \item{clnames}{a list of charcaters, the column names of
+  the output data frame.}
 
   \item{strAsFactors}{logical, tells if character vectors
   should be converted to factors?}
