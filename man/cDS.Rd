@@ -1,12 +1,12 @@
 \name{cDS}
 \alias{cDS}
-\title{Combines object into a vector or list}
+\title{Concatenates objects into a vector or list}
 \usage{
 cDS(objs)
 }
 \arguments{
-  \item{objs}{a list which contains the names of the
-  objects to combine.}
+  \item{objs}{a list which contains the the objects to
+  concatenate.}
 }
 \value{
 a vector or list
