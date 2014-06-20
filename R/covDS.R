@@ -37,7 +37,7 @@ covDS <-function (x=NULL, y=NULL, use=NULL){
         completeCount[i,j] <- count
       }
     }
-    rownames(completeCount) <- colnames(completeCount)
+    rownames(completeCount) <- cls
     output2 <- completeCount
     output <- list(output1, output2)
   }else{
