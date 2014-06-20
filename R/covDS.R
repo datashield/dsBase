@@ -24,7 +24,22 @@ covDS <-function (x=NULL, y=NULL, use=NULL){
       x[, idx] <- sapply(x[, idx], as.character)
       x[, idx] <- sapply(x[, idx], as.numeric)
     }
-    output <- cov(x,use=todo)
+    output1 <- cov(x,use=todo)
+    completeCount <- x
+    cols <- colnames(x)
+    for(i in 1:dim(completeCount)[2]){
+      for(j in 1:dim(completeCount)[2]){
+        if(i == j){
+          count <- length(which((complete.cases(x[,1])==TRUE)))
+        }else{
+          count <- length(which((complete.cases(cbind(x[,i], x[,j]))==TRUE)))
+        }
+        completeCount[i,j] <- count
+      }
+    }
+    rownames(completeCount) <- colnames(completeCount)
+    output2 <- completeCount
+    output <- list(output1, output2)
   }else{
     if(class(x)=='factor'){
       x <- as.character(x)
@@ -34,7 +49,9 @@ covDS <-function (x=NULL, y=NULL, use=NULL){
       y <- as.character(y)
       y <- as.numeric(y)
     }
-    output <- cov(x,y,use=todo)
+    output1 <- cov(x,y,use=todo)
+    output2 <- count <- length(which((complete.cases(cbind(x, y))==TRUE)))
+    output <- list(output1, output2)
   }
   
   return(output)
