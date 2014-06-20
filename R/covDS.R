@@ -14,7 +14,6 @@ covDS <-function (x=NULL, y=NULL, use=NULL){
   todo <- use
   # check what vectors are factors and turn them into numeric
   if(class(x)=='matrix' | class(x)=='data.frame'){
-    cls <- colnames(x)
     rc <- c()
     for(i in 1:dim(x)[2]){
       rc <- append(rc, class(x[,i]))
@@ -26,7 +25,7 @@ covDS <-function (x=NULL, y=NULL, use=NULL){
     }
     output1 <- cov(x,use=todo)
     completeCount <- x
-    cols <- colnames(x)
+    cls <- colnames(x)
     for(i in 1:dim(completeCount)[2]){
       for(j in 1:dim(completeCount)[2]){
         if(i == j){
@@ -37,7 +36,7 @@ covDS <-function (x=NULL, y=NULL, use=NULL){
         completeCount[i,j] <- count
       }
     }
-    rownames(completeCount) <- cls
+    #rownames(completeCount) <- cls
     output2 <- completeCount
     output <- list(output1, output2)
   }else{
