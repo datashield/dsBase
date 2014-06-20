@@ -24,7 +24,7 @@ covDS <-function (x=NULL, y=NULL, use=NULL){
       x[, idx] <- sapply(x[, idx], as.numeric)
     }
     output1 <- cov(x,use=todo)
-    completeCount <- x
+    completeCount <- output1
     cls <- colnames(x)
     for(i in 1:dim(completeCount)[2]){
       for(j in 1:dim(completeCount)[2]){
@@ -33,10 +33,9 @@ covDS <-function (x=NULL, y=NULL, use=NULL){
         }else{
           count <- length(which((complete.cases(cbind(x[,i], x[,j]))==TRUE)))
         }
-        completeCount[i,j] <- count
+        completeCount[i,j] <- round(count,0)
       }
     }
-    #rownames(completeCount) <- cls
     output2 <- completeCount
     output <- list(output1, output2)
   }else{
