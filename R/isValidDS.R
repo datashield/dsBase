@@ -14,7 +14,7 @@ isValidDS <- function(obj) {
   # this filter sets the minimum number of observations that are allowed 
   nfilter <- setFilterDS()
   
-  if(class(obj) == "numeric" | class(obj) == "integer" | class(obj) == "character") {
+  if(class(obj) == "character" | class(obj) == "integer" | class(obj) == "logical" | class(obj) == "numeric") {
     if(length(obj) > 0 & length(obj)  < nfilter) {
       return(FALSE)
     } else {
