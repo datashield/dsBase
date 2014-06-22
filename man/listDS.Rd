@@ -7,8 +7,8 @@ listDS(input = NULL, eltnames = NULL)
 \arguments{
   \item{input}{a list of objects to coerce into a list}
 
-  \item{eltnames}{a charcater vector, the names of the
-  elements in the list}
+  \item{eltnames}{a character vector, the names of the
+  elements in the list.}
 }
 \value{
 a list
