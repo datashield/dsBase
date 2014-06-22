@@ -1,13 +1,11 @@
 #'
 #' @title Checks if an input is valid
-#' @description Internal function
-#' @details This function checks if an input variable is valid. A numeric variable
-#' is not valid if it has > 0 and < 5 observations and a factor variable is not valid if
-#' any of its levels (classes) has a count of between 1 and 4.
+#' @description Tells if an object on the server side is valid.
+#' @details This function checks if an object is valid.
 #' @param obj, a vector (numeric, integer, factor, character), data.frame or matrix
-#' @return a boolean TRUE if input is valid or stops the process otherwise
-#' @keywords internal
+#' @return a boolean, TRUE if input is valid or FALSE if not.
 #' @author Gaye, A.
+#'@export
 #'
 isValidDS <- function(obj) {
   
