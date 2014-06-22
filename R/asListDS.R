@@ -1,7 +1,7 @@
 #' 
 #' @title Converts a data.frame or matrix into a list
 #' @description this function is similar to R function 'as.list'
-#' @details Unlike the r function 'as.list' some restriction are applied.
+#' @details Unlike the R function 'as.list' some restriction are applied.
 #' @param input the object to turn into list.
 #' @return a valid list or an empty list
 #' @author Gaye, A.

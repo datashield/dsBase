@@ -57,4 +57,5 @@ AssignMethods: log=base::log,
     subsetDS,
     asFactorDS,
     recodeLevelsDS,
-    dataframeDS
+    dataframeDS,
+    listDS

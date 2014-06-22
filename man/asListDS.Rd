@@ -16,7 +16,7 @@ this function is similar to R function 'as.list'
 \details{
 
 
-Unlike the r function 'as.list' some restriction are
+Unlike the R function 'as.list' some restriction are
 applied.
 }
 \author{
