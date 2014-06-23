@@ -7,7 +7,7 @@ listDS(input = NULL, eltnames = NULL)
 \arguments{
   \item{input}{a list of objects to coerce into a list}
 
-  \item{eltnames}{a character vector, the names of the
+  \item{eltnames}{a character list, the names of the
   elements in the list.}
 }
 \value{
