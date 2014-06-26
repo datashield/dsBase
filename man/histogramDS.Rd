@@ -1,8 +1,8 @@
-\name{histogram.ds}
-\alias{histogram.ds}
+\name{histogramDS}
+\alias{histogramDS}
 \title{Computes a histogram of the given data values without plotting.}
 \usage{
-histogram.ds(xvect, min, max, seed)
+histogramDS(xvect, min, max, seed)
 }
 \arguments{
   \item{xvect}{the numeric vector for which the histogram

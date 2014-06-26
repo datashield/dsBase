@@ -37,7 +37,7 @@
 #' hist.object <- datashield.aggregate(opals, cally)
 #' }
 #' 
-histogram.ds <- function (xvect, min, max, seed) {
+histogramDS <- function (xvect, min, max, seed) {
   
   # the same seed is set in each study to ensure all studies have the same break points
   set.seed(seed)

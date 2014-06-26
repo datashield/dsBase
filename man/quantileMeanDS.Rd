@@ -1,8 +1,8 @@
-\name{quantilemean.ds}
-\alias{quantilemean.ds}
+\name{quantileMeanDS}
+\alias{quantileMeanDS}
 \title{Generates quantiles and mean information without maximum and minimum}
 \usage{
-quantilemean.ds(xvect)
+quantileMeanDS(xvect)
 }
 \arguments{
   \item{xvect}{a numerical vector}
