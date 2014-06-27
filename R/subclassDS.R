@@ -21,12 +21,12 @@ subclassDS <- function(data=NULL, variables=NULL){
   nfilter <- setFilterDS()
   
   # evaluate the string passed on to the function as an object
-  input <- data
+  input <- eval(parse(text=data))
   
   # subsetting is carried out only of the input is of type factor or data.frame
   if(is.factor(input)){
     # call the internal function that generates subsets if the input is a factor variable
-    Dname <- as.character(data)
+    Dname <- extract(data)[[2]]
     output <- subclassDShelper1(input, Dname, nfilter)
   }else{
     # get the names of the variables on the dataset
