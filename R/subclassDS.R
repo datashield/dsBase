@@ -26,7 +26,7 @@ subclassDS <- function(data=NULL, variables=NULL){
   # subsetting is carried out only of the input is of type factor or data.frame
   if(is.factor(input)){
     # call the internal function that generates subsets if the input is a factor variable
-    Dname <- data
+    Dname <- as.character(data)
     output <- subclassDShelper1(input, Dname, nfilter)
   }else{
     # get the names of the variables on the dataset
