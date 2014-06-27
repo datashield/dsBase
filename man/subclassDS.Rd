@@ -33,29 +33,6 @@ the columns holds a factor variable a message is issued as
 output. A message is also issued as output if the input
 vector is not of type factor.
 }
-\examples{
-\dontrun{
-# load the login data
-library(opal)
-data(logindata)
-
-# login and assign some variables to R
-myvar <- list("DIS_DIAB","PM_BMI_CONTINUOUS","LAB_HDL", "GENDER")
-opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
-
-# Example 1: get the subsets for all categories from the table assigned above
-# (by default the name of the the assigned dataframe is 'D')
-datashield.assign(opals, "Subsets", quote(subclassDS("D")))
-
-#' # Example 2: get the subsets by gender class from the table assigned above
-# by default the name of the the assigned dataframe is 'D')
-datashield.assign(opals, "Subsets", quote(subclassDS("D", c("GENDER"))))
-
-#' # Example 3: create a single variable 'gender' and split it into two vectors: males and females
-datashield.assign(opals, "gender", quote(D$GENDER))
-datashield.assign(opals, "mf.tables", quote(subclassDS("gender")))
-}
-}
 \author{
 Gaye, A.
 }
