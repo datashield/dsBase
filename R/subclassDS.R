@@ -21,21 +21,21 @@ subclassDS <- function(data=NULL, variables=NULL){
   nfilter <- setFilterDS()
   
   # evaluate the string passed on to the function as an object
-  dataset <- data
+  input <- data
   
   # subsetting is carried out only of the input is of type factor or data.frame
-  if(is.factor(dataset)){
+  if(is.factor(input)){
     # call the internal function that generates subsets if the input is a factor variable
     Dname <- data
-    output <- subclassDShelper1(dataset, Dname, nfilter)
+    output <- subclassDShelper1(input, Dname, nfilter)
   }else{
     # get the names of the variables on the dataset
-    varnames <- colnames(dataset)
+    varnames <- colnames(input)
     
     # set the number of loops depending on the number of variables specified
     # if no variable was specified then loop through all the variables
     if(is.null(variables)){
-      loop <- c(1:dim(dataset)[2])
+      loop <- c(1:dim(input)[2])
     }else{
       # if the user specified variables to subset on check if those are in the dataset to subset from,
       # if none of the variables is on the dataset record a message to inform the user
@@ -52,12 +52,12 @@ subclassDS <- function(data=NULL, variables=NULL){
     # of each factor variable and keep the generated subset dataframes in a list
     if(length(loop) > 1){
       # call the function that gets the subsets if the user specified non or more than 1 variable
-      out.temp <- subclassDShelper2(dataset,loop,nfilter)
+      out.temp <- subclassDShelper2(input,loop,nfilter)
       subsets <- out.temp[[1]]
       nonfactorvars <- out.temp[[2]]
     }else{
       # call the function that gets the subsets if the user specified only one variable to subset by
-      out.temp <- subclassDShelper3(dataset,indx,nfilter)
+      out.temp <- subclassDShelper3(input,indx,nfilter)
       subsets <- out.temp[[1]]
       nonfactorvars <- out.temp[[2]]
     }
