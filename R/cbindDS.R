@@ -9,7 +9,6 @@
 #' @author Gaye, A.
 #' @export
 #' 
-#'
 cbindDS <- function (objs=NULL, clnames=NULL) {
   # this filter sets the minimum number of observations that are allowed 
   nfilter <- setFilterDS()

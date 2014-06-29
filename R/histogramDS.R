@@ -11,31 +11,6 @@
 #' @return a list with an object of class \code{histogram} and the number of invalid cells
 #' @export
 #' @author Gaye, A.
-#' @examples 
-#' \dontrun{
-#' # load the file that contains the login details
-#' library(opal)
-#' data(logindata)
-#' 
-#  # login and assign a numeric variable to R
-#  myvar <- list("LAB_TSC")
-#' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
-#' 
-#' # get the range of the input vector
-#' cally <- call("range.ds", quote(D$LAB_TSC))
-#' ranges <- datashield.aggregate(opals, cally)
-#' minrs <- c()
-#' maxrs <- c()
-#' for(i in 1:length(ranges)){
-#'   minrs <- append(minrs, ranges[[i]][1])
-#'  maxrs <- append(maxrs, ranges[[i]][2])
-#' }
-#' range.arg <- c(min(minrs), max(maxrs))
-#' seedval <- 333
-#' generate a histogram object
-#' cally <- call("histogram.ds", quote(D$LAB_TSC), range.arg[1], range.arg[2], seedval)
-#' hist.object <- datashield.aggregate(opals, cally)
-#' }
 #' 
 histogramDS <- function (xvect, min, max, seed) {
   

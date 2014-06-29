@@ -17,18 +17,6 @@ mean are used to compute the corresponding quantiles.
 \details{
 
 }
-\examples{
-\dontrun{
-# load the file that contains the login details
-library(opal)
-data(logindata)
-
-opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
-
-# compute the sample quantiles that correspond to the probabilities specified internally
-quantiles <- datashield.aggregate(opals, quote(quantilemean.ds(D$LAB_TSC)))
-}
-}
 \author{
 Burton, P.; Gaye, A.
 }

@@ -25,19 +25,6 @@ the output is returned to the user only the number of
 entries in the output vector is greater or equal to the
 allowed size.
 }
-\examples{
-\dontrun{
-# load the file that contains the login details
-library(opal)
-data(logindata)
-
-opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
-
-# generate a histogram object without plotting
-call.object <-  call("rowcolCalc.ds", quote(D), as.numeric(1))
-datashield.assign(opals, "rowsums", call.object)
-}
-}
 \author{
 Gaye, A.
 }

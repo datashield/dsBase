@@ -10,20 +10,6 @@
 #' @return a list that contains the vector of results.
 #' @export
 #' @author Gaye, A.
-#' @examples 
-#' \dontrun{
-#' # load the file that contains the login details
-#' library(opal)
-#' data(logindata)
-#' 
-#  # login and assign a numeric variable to R
-#  myvar <- list("LAB_TSC", "LAB_HDL")
-#' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
-#' 
-#' # generate a histogram object without plotting
-#' call.object <-  call("rowcolCalc.ds", quote(D), as.numeric(1))
-#' datashield.assign(opals, "rowsums", call.object)
-#' }
 #' 
 rowColCalcDS <- function (dataset, operation) {
   

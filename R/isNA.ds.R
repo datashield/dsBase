@@ -6,19 +6,6 @@
 #' @return the integer '1' if the vector contains on NAs and '0'  otherwise
 #' @author Gaye, A.
 #' @export
-#' @examples 
-#' \dontrun{
-#' # load the login data
-#' library(opal)
-#' data(logindata)
-#' 
-#' # login and assign specific variable(s)
-#' myvar <- list("LAB_HDL")
-#' opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
-#' 
-#' # check if the variable 'LAB_HDL' is empty
-#' datashield.aggregate(opals, quote(isNA.ds(D$LAB_HDL)))
-#' }
 #'
 isNA.ds <- function(xvect){
   

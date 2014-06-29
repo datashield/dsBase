@@ -8,7 +8,6 @@
 #' @author Gaye, A.
 #' @export
 #' 
-#'
 cDS <- function (objs) {
   # this filter sets the minimum number of observations that are allowed 
   nfilter <- setFilterDS()

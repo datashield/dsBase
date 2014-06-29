@@ -17,28 +17,8 @@
 #' from study 1 - unsafe data are concealed by converting invalid counts to "-1" and their corresponding catregory identifier to "-9"}
 #' @author Burton, P.
 #' @export
-#' @examples 
-#' \dontrun{
-#' # load the file that contains the login details
-#' library(opal)
-#' data(logindata)
-#' 
-#' # login and assign the required variables to R
-#' myvar  <- list("DIS_CVA", "LAB_HDL")
-#' opals  <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
-#' 
-#' # Example 1: generate a one dimensional table
-#' datashield.aggregate(opals, quote(table1d.ds(D$DIS_CVA)))
-#' 
-#' # Example 2: generate a one dimensional table, outputting study specific and combined contingency tables, see what happens if
-#' you try to tabulate a quantitative variable with unique values for many individuals. The standard table() function in R would print out
-#' all observed "values" as category names in ascending order with a count (generally 1) for each unique number, but ds.table1d prints
-#' out all values where there are between 1 and 4 observations as -1 and gives the category name -9. It is only when the count is 
-#' 5 or more that the actual value can be observed, and then it is non-disclosive
-#' datashield.aggregate(opals, quote(table1d.ds(D$LAB_HDL)))
-#' }
 #'
-table1d.ds  <- function(xvect){
+table1dDS  <- function(xvect){
 
   # get the character name of the variable
   var.name.1_os2=deparse(substitute(xvect))

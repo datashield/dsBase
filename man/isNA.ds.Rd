@@ -19,20 +19,6 @@ to tell if all the element are missing values.
 \details{
 
 }
-\examples{
-\dontrun{
-# load the login data
-library(opal)
-data(logindata)
-
-# login and assign specific variable(s)
-myvar <- list("LAB_HDL")
-opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
-
-# check if the variable 'LAB_HDL' is empty
-datashield.aggregate(opals, quote(isNA.ds(D$LAB_HDL)))
-}
-}
 \author{
 Gaye, A.
 }

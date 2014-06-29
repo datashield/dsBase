@@ -13,7 +13,6 @@
 #' @author Gaye, A.
 #' @export
 #' 
-#'
 dataframeDS <- function (vectors=NULL,r.names=NULL,ch.rows=FALSE,ch.names=TRUE,clnames=NULL,strAsFactors=TRUE) {
   # this filter sets the minimum number of observations that are allowed 
   nfilter <- setFilterDS()
