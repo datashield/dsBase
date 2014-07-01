@@ -7,7 +7,7 @@
 #' @author Gaye, A.
 #' @export
 #'
-isNA.ds <- function(xvect){
+isNaDS <- function(xvect){
   
   out <- is.na(xvect)
   total <- sum(out, na.rm=TRUE)
