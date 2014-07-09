@@ -1,13 +1,12 @@
 Package: dsbase
 Maintainer: <datashield@obiba.org>
 Author: <datashield@obiba.org>
-Version: 2.4.4
+Version: 3.0.0
 License: GPL-3
-Title: Base DataSHIELD methods (server)
-Description: Base DataSHIELD methods (server)
+Title: DataSHIELD base functions for server
+Description: DataSHIELD base functions for server
 AggregateMethods: length=base::length,
     colnames=base::colnames,
-    histogramDS,
     dimDS,
     dim=base::dim,
     quantileMeanDS,
@@ -16,23 +15,16 @@ AggregateMethods: length=base::length,
     rangeDS,
     is.numeric=base::is.numeric,
     is.character=base::is.character,
-    t.test=stats::t.test,
-    var=stats::var,
     is.null=base::is.null,
     NROW=base::NROW,
-    densityGridDS,
     table1dDS,
     table2dDS,
     class=base::class,
     levels=base::levels,
     is.factor=base::is.factor,
-    varDS,
     namesDS,
     is.list=base::is.list,
     exists=base::exists,
-    cor.test=stats::cor.test,
-    corDS,
-    covDS,
     isValidDS
 AssignMethods: log=base::log,
     cDS,
