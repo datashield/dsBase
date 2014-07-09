@@ -1,0 +1,25 @@
+\name{isNaDS}
+\alias{isNaDS}
+\title{Checks if a vector is empty}
+\usage{
+isNaDS(xvect)
+}
+\arguments{
+  \item{xvect}{a numerical or character vector}
+}
+\value{
+the integer '1' if the vector contains on NAs and '0'
+otherwise
+}
+\description{
+this function is similar to R function \code{is.na} but
+instead of a vector of booleans it returns just one boolean
+to tell if all the element are missing values.
+}
+\details{
+
+}
+\author{
+Gaye, A.
+}
+

@@ -19,18 +19,6 @@ Calculates the mean value.
 if the length of input vector is less than the set filter a
 missing value is returned.
 }
-\examples{
-\dontrun{
-# load the file that contains the login details
-library(opal)
-data(logindata)
-
-opals <- datashield.login(logins=logindata,assign=TRUE,variables=myvar)
-
-# compute the statistical mean
-stat.mean <- datashield.aggregate(opals, quote(meanDS(D$LAB_TSC)))
-}
-}
 \author{
 Gaye, A.
 }

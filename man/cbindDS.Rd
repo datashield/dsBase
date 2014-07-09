@@ -2,11 +2,14 @@
 \alias{cbindDS}
 \title{Combines objects by columns}
 \usage{
-cbindDS(objs)
+cbindDS(objs = NULL, clnames = NULL)
 }
 \arguments{
   \item{objs}{a list which contains the names of the
   objects to combine.}
+
+  \item{clnames}{a list of charcaters, the column names of
+  the output data frame.}
 }
 \value{
 a dataframe

@@ -5,9 +5,10 @@
 #' @param xvect a vector of type factor.
 #' @param nfilter the minimum number observation (i.e. rows) that are allowed.
 #' @return a list which contains the subsets.
+#' @keywords internal
 #' @author Gaye, A.
 #'
-.subclassDShelper1 <- function(xvect=NULL, xname=NULL, filter=NULL){
+subclassDShelper1 <- function(xvect=NULL, xname=NULL, filter=NULL){
   vectname <- xname
   subsets <- list()
   names.of.subsets <- c()

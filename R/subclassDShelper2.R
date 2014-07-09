@@ -11,9 +11,10 @@
 #' @param filter the minimum number of observations (i.e. rows) that are allowed.
 #' @return a list which contains the subsets, their names and an integer that indicates how many columns were
 #' not factors.
+#' @keywords internal
 #' @author Gaye, A.
 #'
-.subclassDShelper2 <- function(df=NULL, iter=NULL, filter=NULL){
+subclassDShelper2 <- function(df=NULL, iter=NULL, filter=NULL){
   # various counters and temporary variables to hold info
   subsets <- list()
   names.of.subsets <- c()

@@ -1,61 +1,49 @@
 Package: dsbase
 Maintainer: <datashield@obiba.org>
 Author: <datashield@obiba.org>
-Version: 2.4.5
+Version: 3.0.0
 License: GPL-3
-Title: Base DataSHIELD methods (server)
-Description: Base DataSHIELD methods (server)
+Title: DataSHIELD base functions for server
+Description: DataSHIELD base functions for server
 AggregateMethods: length=base::length,
     colnames=base::colnames,
-    histogram.ds,
     dimDS,
     dim=base::dim,
-    quantilemean.ds,
+    quantileMeanDS,
     meanDS,
-    checkfactor.ds,
-    isNA.ds,
-    is.na=base::is.na,
+    isNaDS,
     rangeDS,
     is.numeric=base::is.numeric,
     is.character=base::is.character,
-    t.test=stats::t.test,
-    var=stats::var,
     is.null=base::is.null,
     NROW=base::NROW,
-    densitygrid.ds,
-    table1d.ds,
-    table2d.ds,
-    isValid.ds,
+    table1dDS,
+    table2dDS,
     class=base::class,
     levels=base::levels,
     is.factor=base::is.factor,
-    varDS,
     namesDS,
     is.list=base::is.list,
     exists=base::exists,
-    cor.test=stats::cor.test,
-    corDS,
-    covDS
+    isValidDS
 AssignMethods: log=base::log,
-    c=base::c,
+    cDS,
     unlist=base::unlist,
     exp=base::exp,
-    as.list=base::as.list,
+    asListDS,
     as.numeric=base::as.numeric,
     as.character=base::as.character,
-    as.matrix=base::as.matrix,
+    asMatrixDS,
     complete.cases=stats::complete.cases,
-    data.frame=base::data.frame,
-    amendlevelsDS,
-    productDS,
     sum=base::sum,
     as.null=base::as.null,
     subclassDS,
     list=base::list,
     cbindDS,
-    rowcolCalc.ds,
-    is.na=base::is.na,
-    recodelevels.ds,
-    changerefgroup.ds,
+    rowColCalcDS,
+    changeRefGroupDS,
     subsetDS,
-    asFactorDS
+    asFactorDS,
+    recodeLevelsDS,
+    dataframeDS,
+    listDS

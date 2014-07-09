@@ -9,9 +9,10 @@
 #' @param filter the minimum number of observations (i.e. rows) that are allowed.
 #' @return a list which contains the subsets, their names and an integer that indicates if
 #' the variable specified by user is a factor.
+#' @keywords internal
 #' @author Gaye, A.
 #'
-.subclassDShelper3 <- function(df=NULL, indx1=NULL, filter=NULL){
+subclassDShelper3 <- function(df=NULL, indx1=NULL, filter=NULL){
   # various counters and temporary variables to hold info
   subsets <- list()
   names.of.subsets <- c()
