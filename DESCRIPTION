@@ -1,10 +1,10 @@
-Package: dsbase
+Package: dsBase
 Maintainer: <datashield@obiba.org>
 Author: <datashield@obiba.org>
 Version: 3.0.0
 License: GPL-3
-Title: DataSHIELD base functions for server
-Description: DataSHIELD base functions for server
+Title: DataSHIELD base functions for the server site
+Description: DataSHIELD base functions for the server site
 AggregateMethods: length=base::length,
     colnames=base::colnames,
     dimDS,
