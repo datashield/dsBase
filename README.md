@@ -1,4 +1,4 @@
-dsbase
+dsBase
 ======
 
-DataSHIELD base methods (server)
+DataSHIELD base functions for the server site
