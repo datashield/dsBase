@@ -27,6 +27,7 @@ AggregateMethods: length=base::length,
     exists=base::exists,
     isValidDS
 AssignMethods: log=base::log,
+    c=base::c,
     cDS,
     unlist=base::unlist,
     exp=base::exp,
