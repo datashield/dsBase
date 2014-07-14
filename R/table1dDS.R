@@ -30,7 +30,7 @@ table1dDS  <- function(xvect){
   var.name.1_is1 <- var.name.1_os2              
  
   # reset to K+1 if the non-allowable range is changed to 1 to K
-  critical.min <- 5 
+  critical.min <- setFilterDS()
   
   factor.valid <- TRUE
   
@@ -38,7 +38,7 @@ table1dDS  <- function(xvect){
   
   for(j in 1:length(table.new))
   {
-    if(table.new[j]<critical.min && table.new[j] > 0)
+    if(table.new[j] < critical.min && table.new[j] > 0)
     {
       table.new[j] <- (-1)
       factor.valid <- FALSE

@@ -38,7 +38,7 @@ table2dDS <- function(xvect,yvect){
   var.name.2_is1 <- var.name.2_os2
 
   # reset to K+1 if the non-allowable range is changed to 1 to K  
-  critical.min <- 5 
+  critical.min <- setFilterDS()
   
   table.valid <- TRUE
   
