@@ -47,4 +47,5 @@ AssignMethods: log=base::log,
     asFactorDS,
     recodeLevelsDS,
     dataframeDS,
-    listDS
+    listDS,
+    attach=base::attach
