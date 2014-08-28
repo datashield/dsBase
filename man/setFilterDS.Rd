@@ -2,7 +2,7 @@
 \alias{setFilterDS}
 \title{Sets the privacy level}
 \usage{
-setFilterDS(x = 5)
+setFilterDS(x = getOption("datashield.privacyLevel", default = 5))
 }
 \arguments{
   \item{x}{a dummy argument}
@@ -12,7 +12,9 @@ an integer between 1 and 5
 }
 \description{
 This is an internal function that set the number of
-observation that are allowed in any table or vector
+observation that are allowed in any table or vector. The
+function gets the value from opal and if no value was set
+in opal it uses the default value 5.
 }
 \details{
 
