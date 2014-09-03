@@ -48,3 +48,4 @@ AssignMethods: log=base::log,
     recodeLevelsDS,
     dataframeDS,
     listDS
+Options: datashield.privacyLevel=5
