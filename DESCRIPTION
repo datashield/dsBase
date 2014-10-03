@@ -1,7 +1,7 @@
 Package: dsBase
 Maintainer: <datashield@obiba.org>
 Author: <datashield@obiba.org>
-Version: 3.0.1
+Version: 3.0.2
 License: GPL-3
 Title: DataSHIELD server site base functions
 Description: DataSHIELD server site base functions
@@ -49,3 +49,4 @@ AssignMethods: log=base::log,
     recodeLevelsDS,
     dataframeDS,
     listDS
+Options: datashield.privacyLevel=5
