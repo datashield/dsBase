@@ -1,7 +1,7 @@
 Package: dsBase
 Maintainer: <datashield@obiba.org>
 Author: <datashield@obiba.org>
-Version: 3.0.2
+Version: 3.0.3
 License: GPL-3
 Title: DataSHIELD server site base functions
 Description: DataSHIELD server site base functions
@@ -26,7 +26,8 @@ AggregateMethods: length=base::length,
     is.list=base::is.list,
     exists=base::exists,
     isValidDS,
-    ls=base::ls
+    ls=base::ls,
+    numNaDS
 AssignMethods: log=base::log,
     c=base::c,
     cDS,
