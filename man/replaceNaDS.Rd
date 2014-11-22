@@ -8,13 +8,12 @@ replaceNaDS(xvect, replacements)
   \item{xvect}{a character, the name of the vector to
   process.}
 
-  \item{replacements}{a list which contains the replacement
-  value(s), a vector one or more values for each study. The
-  length of the list must be equal to the number of servers
-  the analyst is connected to.}
+  \item{replacements}{a vector which contains the
+  replacement value(s), a vector one or more values for
+  each study.}
 }
 \value{
-a new vector or a new table structure with the new vector
+a new vector without missing values
 }
 \description{
 This function identifies missing values and replaces them
@@ -31,8 +30,6 @@ most cases it might be more sensible to replace all missing
 values by one specific value e.g. replace all missing
 values in a vector by the mean or median value. Once the
 missing values have been replaced a new vector is created.
-If the vector is within a table structure such as a data
-frame a new data frame is generated with the new vector.
 }
 \author{
 Gaye, A.

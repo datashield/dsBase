@@ -7,13 +7,11 @@
 #' the number of missing values using the function \code{numNaDS} but in most cases
 #' it might be more sensible to replace all missing values by one specific value e.g. 
 #' replace all missing values in a vector by the mean or median value. Once the missing
-#' values have been replaced a new vector is created. If the vector is within a table 
-#' structure such as a data frame a new data frame is generated with the new vector.
+#' values have been replaced a new vector is created.
 #' @param xvect a character, the name of the vector to process.
-#' @param replacements a list which contains the replacement value(s), a vector one or more values 
-#' for each study. The length of the list must be equal to the number of servers the analyst 
-#' is connected to. 
-#' @return a new vector or a new table structure with the new vector
+#' @param replacements a vector which contains the replacement value(s), a vector one or 
+#' more values for each study. 
+#' @return a new vector without missing values
 #' @author Gaye, A.
 #' @export
 #' 
@@ -24,11 +22,6 @@ replaceNaDS <- function(xvect, replacements){
   # replace missing values by the specified replacement values
   xvect[indx] <- replacements
   
-  # return the new vector or the table if the vector is in a table
-  inputname <- extract(deparse(xvect))
-  if(!is.na(inputname[[1]])){
-    return(eval(parse(text=inputname[[1]])))
-  }else{
-    return(xvect)    
-  }
+  # return the new vector
+  return(xvect)    
 }
