@@ -1,8 +1,8 @@
-\name{subclassDS}
-\alias{subclassDS}
+\name{subsetByClassDS}
+\alias{subsetByClassDS}
 \title{Breaks down a dataframe or a factor into its sub-classes}
 \usage{
-subclassDS(data = NULL, variables = NULL)
+subsetByClassDS(data = NULL, variables = NULL)
 }
 \arguments{
   \item{data}{a string character, the name of the dataframe

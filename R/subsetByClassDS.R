@@ -15,7 +15,7 @@
 #' @author Gaye, A.
 #' @export
 #' 
-subclassDS <- function(data=NULL, variables=NULL){
+subsetByClassDS <- function(data=NULL, variables=NULL){
   
   # this filter sets the minimum number of observations that are allowed 
   nfilter <- setFilterDS()
