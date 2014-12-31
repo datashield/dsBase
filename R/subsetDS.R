@@ -73,11 +73,11 @@ subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, v
 
     if(length(subvect) < nfilter){
       if(length(subvect) == 0){
-        emptyVect <- rep(NA, nfilter)
-        output <- emptyVect
+        output <- D[-c(1:length(D))]
       }else{
-        emptyVect <- rep(NA, length(subvect))
-        output <- emptyVect
+        temp1 <- subvect
+        temp1[1:length(temp1)] <- NA
+        output <- temp1
       }
     }else{
       output <- subvect
@@ -108,13 +108,11 @@ subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, v
     
     if((dim(subtable)[1]) < nfilter){
       if((dim(subtable)[1]) == 0){
-        emptyTable <- data.frame(matrix(NA, nrow=nfilter, ncol=dim(subtable)[2]))
-        colnames(emptyTable) <- colnames(subtable)
-        output <- emptyTable
+        output <- D[-c(1:dim(D)[1]),]
       }else{
-        emptyTable <- data.frame(matrix(NA, nrow=dim(subtable)[1], ncol=dim(subtable)[2]))
-        colnames(emptyTable) <- colnames(subtable)
-        output <- emptyTable
+        subD <- subtable
+        subD[] <- NA
+        output <- subD
       }
     }else{
       output <- subtable
