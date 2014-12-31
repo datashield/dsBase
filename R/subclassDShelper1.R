@@ -23,10 +23,12 @@ subclassDShelper1 <- function(xvect=NULL, xname=NULL, filter=NULL){
     }else{
       # if any one category has between 0 and 'filter' observation turn subset content into missing values
       if(length(indices) == 0){
-        subsets[[i]] <- factor(NULL, levels=categories[i])
+        subsets[[i]] <-  xvect[-c(1:length(xvect))]
         name.of.subD <- paste(vectname,".level_", categories[i], "_EMPTY", sep="")
       }else{
-        subsets[[i]] <- factor(rep(NA,length(indices)), levels=categories[i])
+        temp1 <- xvect[indices]
+        temp1[1:length(temp1)] <- NA
+        subsets[[i]] <- temp1
         name.of.subD <- paste(vectname,".level_", categories[i], "_INVALID", sep="")
       }
       names.of.subsets <- append(names.of.subsets, name.of.subD)
