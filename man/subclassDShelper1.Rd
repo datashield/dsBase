@@ -7,6 +7,8 @@ subclassDShelper1(xvect = NULL, xname = NULL, filter = NULL)
 \arguments{
   \item{xvect}{a vector of type factor.}
 
+  \item{xname}{the name of the vector.}
+
   \item{nfilter}{the minimum number observation (i.e. rows)
   that are allowed.}
 }
