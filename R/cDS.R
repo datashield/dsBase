@@ -17,11 +17,11 @@ cDS <- function (objs) {
   # check if the output is valid and output accordingly
   if(length(x) < nfilter){
     if(length(x == 0)){
-      x <- NA
+      x <- c()
     }else{
       x <- rep(NA, length(x))
     }
   }
-  
+
   return(x)
 }

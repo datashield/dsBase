@@ -11,9 +11,9 @@
 namesDS <- function(xlist){
   
   if(is.list(xlist)){
-    names(xlist)
+    output <- names(xlist)
   }else{
-    stop("\n\nThe input must be a list!\n\n")    
+    output <- "The input object is not of class 'list'"
   }
 
 }

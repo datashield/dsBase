@@ -17,12 +17,10 @@ recodeLevelsDS <- function (x=NULL, classes=NULL){
     # generate the new variable with the specified levels
     levels(x) <- classes
   }else{
-    l <- length(x)
-    if(l == 0){
-      x <- rep(NA, 4)
-    }else{
-      x <- rep(NA, l)
-    }
+    # generate the new variable with the specified levels but with missing values
+    x[1:length(x)] <- NA
   }
+  
   return(x)
+  
 }

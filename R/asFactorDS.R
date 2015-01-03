@@ -45,12 +45,12 @@ asFactorDS <-function (x = character(), levels, labels = levels, exclude = NA, o
   else paste0(labels, seq_along(levels))
   class(f) <- c(if (ordered) "ordered", "factor")
   
-  if(invalid.table==0)
-  {return(f)}
+  if(invalid.table==0){
+    return(f)
+  }
   
   if(invalid.table>0){
-    f <- as.factor(rep(NA, 4))
-    levels(f) <- "NA"
+    f[1:length(f)] <- NA
     return(f)
   }
   

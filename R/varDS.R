@@ -9,13 +9,14 @@
 #' @export
 #'
 varDS <- function (xvect) {
-  # this filter sets the minimum number of observations that are allowed 
-  nfilter <- setFilterDS()
   
-  if(length(xvect) < nfilter){
-    result <- NA
-  }else{
+  # check if the input vector is valid (i.e. meets DataSHIELD privacy criteria)
+  check <- isValidDS(xvect)
+  
+  if(check){
     result <- var(xvect, na.rm=TRUE) 
+  }else{
+    result <- NA
   }
   
   return(result)

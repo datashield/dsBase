@@ -3,7 +3,7 @@
 #' @description This function is similar to the R base function 'data.frame'.
 #' @details an empty data frame is generated if the sought data frame is not valid.
 #' @param vectors a list which contains the vectors to combine.
-#' @param row.names NULL or a character vector specifying the names of the rows.
+#' @param r.names NULL or a character vector specifying the names of the rows.
 #' @param ch.rows logical, if TRUE then the rows are checked for consistency of length and names.
 #' @param ch.names logical, logical. If TRUE then the names of the variables in the data frame 
 #' are checked to ensure that they are syntactically valid variable names and are not duplicated. 
@@ -31,12 +31,10 @@ dataframeDS <- function (vectors=NULL,r.names=NULL,ch.rows=FALSE,ch.names=TRUE,c
   # check if the resulting dataframe is valid and output accordingly
   if(dim(dt)[1] < nfilter){
     if(dim(dt)[1] == 0){
-      dt1 <- as.data.frame(matrix(NA,nrow=1, ncol=dim(dt)[2]))
-      colnames(dt1) <-  unlist(clnames)
+      dt1 <- dt[-c(1:dim(dt)[1]),]
       dt <- dt1
     }else{
-      dt <- as.data.frame(matrix(NA,nrow=dim(dt)[1], ncol=dim(dt)[2]))
-      colnames(dt) <-  unlist(clnames)
+      dt[] <- NA
     }
   }
   

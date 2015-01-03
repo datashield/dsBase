@@ -9,8 +9,8 @@ dataframeDS(vectors = NULL, r.names = NULL, ch.rows = FALSE,
   \item{vectors}{a list which contains the vectors to
   combine.}
 
-  \item{row.names}{NULL or a character vector specifying
-  the names of the rows.}
+  \item{r.names}{NULL or a character vector specifying the
+  names of the rows.}
 
   \item{ch.rows}{logical, if TRUE then the rows are checked
   for consistency of length and names.}

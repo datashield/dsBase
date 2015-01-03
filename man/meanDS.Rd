@@ -1,6 +1,6 @@
 \name{meanDS}
 \alias{meanDS}
-\title{Computes statistical mean of vector with more than 4 entries}
+\title{Computes statistical mean of a vectores}
 \usage{
 meanDS(xvect)
 }

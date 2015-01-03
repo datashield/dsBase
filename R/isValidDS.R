@@ -29,7 +29,7 @@ isValidDS <- function(obj) {
       }
     }else{
       if(class(obj) == "data.frame" | class(obj) == "matrix"){
-        if(dim(obj)[1] < nfilter){
+        if(dim(obj)[1] > 0 & dim(obj)[1] < nfilter){
           return(FALSE)
         }else{
           return(TRUE)

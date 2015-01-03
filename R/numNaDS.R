@@ -11,4 +11,5 @@ numNaDS <- function(xvect){
   
   out <- length(which(is.na(xvect)))
   return (out)
+  
 }

@@ -16,12 +16,22 @@
 #' @export
 #' 
 replaceNaDS <- function(xvect, replacements){
+  
+  # check if the input vector is valid (i.e. meets DataSHIELD criteria)
+  check <- isValidDS(xvect)
+  
   # get the indices of the missing values
   indx <- which(is.na(xvect))
   
-  # replace missing values by the specified replacement values
-  xvect[indx] <- replacements
+  if(check){
+    # if the inpout vector is valid replace missing values
+    xvect[indx] <- replacements
+  }else{
+    # if the inpout vector is not valid and is of size > 0
+    xvect[1:length(xvect)] <- NA
+  }
   
   # return the new vector
-  return(xvect)    
+  return(xvect) 
+  
 }

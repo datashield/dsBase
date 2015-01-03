@@ -7,7 +7,7 @@
 #' @param dataset an array of two or more dimensions.
 #' @param operation an integer that indicates the operation to carry out:
 #' 1 for 'rowSums', 2 for 'colSums', 3 for 'rowMeans' or 4 for 'colMeans'
-#' @return a list that contains the vector of results.
+#' @return a numeric vector
 #' @export
 #' @author Gaye, A.
 #' 
@@ -31,7 +31,8 @@ rowColCalcDS <- function (dataset, operation) {
   if(check){
     return(result)
   }else{
-    return(rep(NA, 4))
+    resultNA <- rep(NA, length(results))
+    return(resultNA)
   }
   
   return(result)

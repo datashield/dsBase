@@ -12,7 +12,7 @@ rowColCalcDS(dataset, operation)
   'rowMeans' or 4 for 'colMeans'}
 }
 \value{
-a list that contains the vector of results.
+a numeric vector
 }
 \description{
 The function is similar to R base functions 'rowSums',
