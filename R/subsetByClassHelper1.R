@@ -1,7 +1,7 @@
 #' 
 #' @title generates subsets vectors from a factor vector
-#' @description This is an internal function called by the function 'subclassDS'.
-#' @details The function generates subsets if the input of 'subclassDS' is a factor vector.
+#' @description This is an internal function called by the function 'subsetByClassDS'.
+#' @details The function generates subsets if the input of 'subsetByClassDS' is a factor vector.
 #' @param xvect a vector of type factor.
 #' @param xname the name of the vector.
 #' @param nfilter the minimum number observation (i.e. rows) that are allowed.
@@ -9,7 +9,7 @@
 #' @keywords internal
 #' @author Gaye, A.
 #'
-subclassDShelper1 <- function(xvect=NULL, xname=NULL, filter=NULL){
+subsetByClassHelper1 <- function(xvect=NULL, xname=NULL, filter=NULL){
   vectname <- xname
   subsets <- list()
   names.of.subsets <- c()

@@ -31,7 +31,7 @@ rowColCalcDS <- function (dataset, operation) {
   if(check){
     return(result)
   }else{
-    resultNA <- rep(NA, length(results))
+    resultNA <- rep(NA, length(result))
     return(resultNA)
   }
   

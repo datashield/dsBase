@@ -1,8 +1,8 @@
-\name{subclassDShelper1}
-\alias{subclassDShelper1}
+\name{subsetByClassHelper1}
+\alias{subsetByClassHelper1}
 \title{generates subsets vectors from a factor vector}
 \usage{
-subclassDShelper1(xvect = NULL, xname = NULL, filter = NULL)
+subsetByClassHelper1(xvect = NULL, xname = NULL, filter = NULL)
 }
 \arguments{
   \item{xvect}{a vector of type factor.}
@@ -17,13 +17,13 @@ a list which contains the subsets.
 }
 \description{
 This is an internal function called by the function
-'subclassDS'.
+'subsetByClassDS'.
 }
 \details{
 
 
-The function generates subsets if the input of 'subclassDS'
-is a factor vector.
+The function generates subsets if the input of
+'subsetByClassDS' is a factor vector.
 }
 \author{
 Gaye, A.

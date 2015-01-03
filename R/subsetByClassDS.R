@@ -27,7 +27,7 @@ subsetByClassDS <- function(data=NULL, variables=NULL){
   if(is.factor(input)){
     # call the internal function that generates subsets if the input is a factor variable
     Dname <- extract(data)[[2]]
-    output <- subclassDShelper1(input, Dname, nfilter)
+    output <- subsetByClassHelper1(input, Dname, nfilter)
   }else{
     # get the names of the variables on the dataset
     varnames <- colnames(input)
@@ -52,12 +52,12 @@ subsetByClassDS <- function(data=NULL, variables=NULL){
     # of each factor variable and keep the generated subset dataframes in a list
     if(length(loop) > 1){
       # call the function that gets the subsets if the user specified non or more than 1 variable
-      out.temp <- subclassDShelper2(input,loop,nfilter)
+      out.temp <- subsetByClassHelper2(input,loop,nfilter)
       subsets <- out.temp[[1]]
       nonfactorvars <- out.temp[[2]]
     }else{
       # call the function that gets the subsets if the user specified only one variable to subset by
-      out.temp <- subclassDShelper3(input,indx,nfilter)
+      out.temp <- subsetByClassHelper3(input,indx,nfilter)
       subsets <- out.temp[[1]]
       nonfactorvars <- out.temp[[2]]
     }

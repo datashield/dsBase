@@ -1,8 +1,8 @@
-\name{subclassDShelper3}
-\alias{subclassDShelper3}
+\name{subsetByClassHelper3}
+\alias{subsetByClassHelper3}
 \title{generates subset tables from a data frame}
 \usage{
-subclassDShelper3(df = NULL, indx1 = NULL, filter = NULL)
+subsetByClassHelper3(df = NULL, indx1 = NULL, filter = NULL)
 }
 \arguments{
   \item{df}{a data frame.}
@@ -20,15 +20,15 @@ a factor.
 }
 \description{
 This is an internal function called by the function
-'subclassDS'
+'subsetByClassDS'
 }
 \details{
 
 
-The function generates subsets if the input of 'subclassDS'
-is a data frame and if the number of variables (columns) to
-subset by is 1; i.e. this function is called if the user
-specified one variable to subset by.
+The function generates subsets if the input of
+'subsetByClassDS' is a data frame and if the number of
+variables (columns) to subset by is 1; i.e. this function
+is called if the user specified one variable to subset by.
 }
 \author{
 Gaye, A.

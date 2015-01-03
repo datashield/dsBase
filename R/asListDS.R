@@ -12,7 +12,7 @@ asListDS <-function (input){
   # check if the input is valid (i.e. meets DataSHIELD criteria)
   check <- isValidDS(input)
   if(check){
-    if(cl == 'matrix'){ 
+    if(class(input) == 'matrix'){ 
       input2 <- as.data.frame(input) 
     }else{
       input2 <- input

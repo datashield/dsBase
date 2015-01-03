@@ -1,10 +1,10 @@
 #' 
 #' @title generates subset tables from a data frame
-#' @description This is an internal function called by the function 'subclassDS'
-#' @details The function generates subsets if the input of 'subclassDS' is a data frame 
+#' @description This is an internal function called by the function 'subsetByClassDS'
+#' @details The function generates subsets if the input of 'subsetByClassDS' is a data frame 
 #' and if the number variables(columns) to subset by are greater than 1; i.e. this 
 #' function is called if the user specified more than one variable or no variable to subset by
-#' (if no variables are specified the function 'subclassDS' produces a subset for each category
+#' (if no variables are specified the function 'subsetByClassDS' produces a subset for each category
 #' in each variable).
 #' @param df a data frame.
 #' @param iter the indices of columns to loop trough.
@@ -14,7 +14,7 @@
 #' @keywords internal
 #' @author Gaye, A.
 #'
-subclassDShelper2 <- function(df=NULL, iter=NULL, filter=NULL){
+subsetByClassHelper2 <- function(df=NULL, iter=NULL, filter=NULL){
   # various counters and temporary variables to hold info
   subsets <- list()
   names.of.subsets <- c()
