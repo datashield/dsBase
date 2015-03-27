@@ -9,11 +9,12 @@
 #' are checked to ensure that they are syntactically valid variable names and are not duplicated. 
 #' @param clnames a list of charcaters, the column names of the output data frame.
 #' @param strAsFactors logical, tells if character vectors should be converted to factors?
+#' @param completeCases a character that tells if only complete cases should be included or not.
 #' @return a dataframe
 #' @author Gaye, A.
 #' @export
 #' 
-dataframeDS <- function (vectors=NULL,r.names=NULL,ch.rows=FALSE,ch.names=TRUE,clnames=NULL,strAsFactors=TRUE) {
+dataframeDS <- function (vectors=NULL,r.names=NULL,ch.rows=FALSE,ch.names=TRUE,clnames=NULL,strAsFactors=TRUE,completeCases=FALSE) {
   # this filter sets the minimum number of observations that are allowed 
   nfilter <- setFilterDS()
   
@@ -24,9 +25,14 @@ dataframeDS <- function (vectors=NULL,r.names=NULL,ch.rows=FALSE,ch.names=TRUE,c
     r.names <- unlist(r.names)
   }
   
-  dt <- data.frame(vectors, row.names=r.names, check.rows=ch.rows, check.names=ch.names, 
+  dtemp <- data.frame(vectors, row.names=r.names, check.rows=ch.rows, check.names=ch.names, 
                     stringsAsFactors=strAsFactors)
-  colnames(dt) <-  unlist(clnames)
+  colnames(dtemp) <-  unlist(clnames)
+  if(completeCases){
+    dt <- dtemp[complete.cases(dtemp),]
+  }else{
+    dt <- dtemp
+  }
   
   # check if the resulting dataframe is valid and output accordingly
   if(dim(dt)[1] < nfilter){

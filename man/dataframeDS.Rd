@@ -3,7 +3,8 @@
 \title{Creates a data frame}
 \usage{
 dataframeDS(vectors = NULL, r.names = NULL, ch.rows = FALSE,
-  ch.names = TRUE, clnames = NULL, strAsFactors = TRUE)
+  ch.names = TRUE, clnames = NULL, strAsFactors = TRUE,
+  completeCases = FALSE)
 }
 \arguments{
   \item{vectors}{a list which contains the vectors to
@@ -25,6 +26,9 @@ dataframeDS(vectors = NULL, r.names = NULL, ch.rows = FALSE,
 
   \item{strAsFactors}{logical, tells if character vectors
   should be converted to factors?}
+
+  \item{completeCases}{a character that tells if only
+  complete cases should be included or not.}
 }
 \value{
 a dataframe
