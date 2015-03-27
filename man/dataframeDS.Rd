@@ -27,7 +27,7 @@ dataframeDS(vectors = NULL, r.names = NULL, ch.rows = FALSE,
   \item{strAsFactors}{logical, tells if character vectors
   should be converted to factors?}
 
-  \item{completeCases}{a character that tells if only
+  \item{completeCases}{a boolean that tells if only
   complete cases should be included or not.}
 }
 \value{

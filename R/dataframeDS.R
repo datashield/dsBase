@@ -9,7 +9,7 @@
 #' are checked to ensure that they are syntactically valid variable names and are not duplicated. 
 #' @param clnames a list of charcaters, the column names of the output data frame.
 #' @param strAsFactors logical, tells if character vectors should be converted to factors?
-#' @param completeCases a character that tells if only complete cases should be included or not.
+#' @param completeCases a boolean that tells if only complete cases should be included or not.
 #' @return a dataframe
 #' @author Gaye, A.
 #' @export
