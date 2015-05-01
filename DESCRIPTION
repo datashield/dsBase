@@ -52,5 +52,6 @@ AssignMethods: log=base::log,
     dataframeDS,
     listDS,
     replaceNaDS,
-    rep=base::rep
+    rep=base::rep,
+    listNaDS,
 Options: datashield.privacyLevel=5
