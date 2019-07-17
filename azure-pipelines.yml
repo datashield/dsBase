@@ -1,0 +1,19 @@
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+steps:
+- bash: |
+    sudo apt-get update
+    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+    sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/'
+    sudo apt-get update
+    sudo apt-get install -qq libxml2-dev libcurl4-openssl-dev libssl-dev -y
+    sudo apt-get install -qq r-base -y
+    sudo R -e "install.packages('devtools', dependencies=TRUE)"
+  displayName: 'Install R Client'
+
+- bash: |
+    R -e "library('devtools'); devtools::check(args = c('--no-examples'))" | tee azure-pipelines_check.Rout
+    grep --quiet "^0 errors" azure-pipelines_check.Rout && grep --quiet " 0 warnings" azure-pipelines_check.Rout
+  displayName: 'Devtools checks'
+  condition: always()
