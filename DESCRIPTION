@@ -54,3 +54,4 @@ AssignMethods: log=base::log,
     replaceNaDS,
     rep=base::rep
 Options: datashield.privacyLevel=5
+RoxygenNote: 6.1.1
