@@ -61,29 +61,29 @@ scoreVectDS <- function(data, formula, family, clusterID, corstr, alpha, phi, st
   alpha[which(alpha <= -1 & alpha > -1.01)] <- -0.999999
   
   # LOAD THE 'nlme' PACKAGE TO USE FUNCTIONS TO CREATE CORRELATION STRUCTURES
-  library("nlme")
+  # library("nlme")
   
   # MATRIX IF THE CORRELATION STRUCTURE IS 'AUTOREGRESSIVE AR (1)'
   if(corstr == "ar1"){
     # THE ORDER OF THE OBSERVATIONS WITHIN A GROUP IS USED AS POSITION VARIABLE 
     # (THE FIRST ARGUMENT OF THE 'FORM' PARAMETER) AND THE IDS ARE USED AS GROUPING PARAMETER 
-    R.mat.AR1 <- corAR1(alpha, form = ~ 1 | id)
+    R.mat.AR1 <- nlme::corAR1(alpha, form = ~ 1 | id)
     R.mat.AR1.i <- Initialize(R.mat.AR1, data=input.table)
-    list.of.matrices <- corMatrix(R.mat.AR1.i)
+    list.of.matrices <- nlme::corMatrix(R.mat.AR1.i)
   }
   
   # MATRIX IF THE CORRELATION STRUCTURE IS 'EXCHANGEABLE'
   if(corstr == "exchangeable"){
-    R.mat.EXCH <- corCompSymm(alpha, form = ~ 1 | id)
+    R.mat.EXCH <- nlme::corCompSymm(alpha, form = ~ 1 | id)
     R.mat.EXCH.i <- Initialize(R.mat.EXCH, data=input.table)
-    list.of.matrices <- corMatrix(R.mat.EXCH.i)
+    list.of.matrices <- nlme::corMatrix(R.mat.EXCH.i)
   }
   
   # MATRIX IF THE CORRELATION STRUCTURE IS 'INDEPENDENT'
   if(corstr == "independence"){
-    R.mat.INDP <- corCompSymm(0, form = ~ 1 | id)
+    R.mat.INDP <- nlme::corCompSymm(0, form = ~ 1 | id)
     R.mat.INDP.i <- Initialize(R.mat.INDP, data=input.table)
-    list.of.matrices <- corMatrix(R.mat.INDP.i)
+    list.of.matrices <- nlme::corMatrix(R.mat.INDP.i)
     
   }
   
@@ -99,9 +99,9 @@ scoreVectDS <- function(data, formula, family, clusterID, corstr, alpha, phi, st
   # MATRIX IF THE CORRELATION STRUCTURE IS 'FIXED' (USER DEFINED)
   if(corstr == "fixed"){
     low.diag.elts <- zcor[col(zcor) < row(zcor)]
-    R.mat.userdef <- corSymm(low.diag.elts, form = ~ 1 | id)
+    R.mat.userdef <- nlme::corSymm(low.diag.elts, form = ~ 1 | id)
     R.mat.userdef.i <- Initialize(R.mat.userdef, data=input.table)
-    list.of.matrices <- corMatrix(R.mat.userdef.i)
+    list.of.matrices <- nlme::corMatrix(R.mat.userdef.i)
   }
   
   R.mat <- list.of.matrices
