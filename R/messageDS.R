@@ -1,13 +1,13 @@
 #'
-#' @title messageDS.o
-#' @description This function allows for error messages arising from the 
+#' @title messageDS
+#' @description This function allows for error messages arising from the
 #' running of a server-side assign function to be returned to the client-side
 #' @details Errors arising from aggregate server-side functions can be returned
 #' directly to the client-side. But this is not possible for server-side assign
 #' functions because they are designed specifically to write objects to the
 #' server-side and to return no meaningful information to the client-side.
 #' Otherwise, users may be able to use assign functions to return disclosive
-#' output to the client-side. ds.message.o calls messageDS.o which looks
+#' output to the client-side. ds.message calls messageDS which looks
 #' specifically for an object called $serversideMessage in a designated list on
 #' the server-side. Server-side functions from which error messages are to be made
 #' available, are designed to be able to write the designated error message to
@@ -18,17 +18,17 @@
 #' $studysideMessage is a string that cannot exceed a length of nfilter.string
 #' a default of 80 characters.
 #' @param message.object.name is a character string, containing the name of the list containing the
-#' message. See the header of the client-side function ds.message.o for more details.
+#' message. See the header of the client-side function ds.message for more details.
 #' @return a list object from each study, containing whatever message has been written by
 #' DataSHIELD into $studysideMessage.
 #' @author Burton PR
 #' @export
-#' 
-messageDS.o <- function(message.object.name){
+#'
+messageDS <- function(message.object.name){
 
 #############################################################
 #MODULE 1: CAPTURE THE nfilter SETTINGS                     #
-thr<-listDisclosureSettingsDS.o()							#
+thr<-listDisclosureSettingsDS()							#
 #nfilter.tab<-as.numeric(thr$nfilter.tab)					#
 #nfilter.glm<-as.numeric(thr$nfilter.glm)					#
 nfilter.subset<-as.numeric(thr$nfilter.subset)          	#
@@ -50,7 +50,7 @@ boole.A1.exists<-eval(parse(text=A1.exists.text))
 
 
 if(!boole.A1.exists) {
-out.obj<-"Error: the object <message.object.name> does not exist in this datasource" 
+out.obj<-"Error: the object <message.object.name> does not exist in this datasource"
 return(out.obj)
 }
 
@@ -63,7 +63,7 @@ message.object.name.active<-eval(parse(text=message.object.name))
 
 
 
-#CASE WHERE PRIMARY OUTPUT OBJECT IS A LIST 
+#CASE WHERE PRIMARY OUTPUT OBJECT IS A LIST
 if(class(message.object.name.active)=="list"){
 
 #A LIST WITH NAMES - could be a studysideMessage
@@ -85,17 +85,15 @@ if(class(message.object.name.active)=="list"){
 	out.obj<-"Outcome object is a list without names. So a studysideMessage may be hidden. Please check output is OK"
 	}
 
-}else{	
+}else{
 #CASE WHERE PRIMARY OUTPUT IS AN OBJECT OF A CLASS OTHER THAN LIST - output object created OK and so no studysideMessage
 	out.obj<-"ALL OK: there are no studysideMessage(s) on this datasource"
 	}
 
-  }  
+  }
 
    return(MESSAGE=out.obj)
 
 }
 #AGGREGATE FUNCTION
-# messageDS.o
-
-
+# messageDS

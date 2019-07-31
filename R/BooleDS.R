@@ -1,5 +1,5 @@
-#' 
-#' @title BooleDS.o
+#'
+#' @title BooleDS
 #' @description Converts the individual elements of a vector or other object into
 #' Boolean indicators.
 #' @details The function converts the input vector into Boolean indicators.
@@ -23,11 +23,11 @@
 #' @author DataSHIELD Development Team
 #' @export
 #'
-BooleDS.o <- function(V1.name=NULL, V2.name=NULL, Boolean.operator.n=NULL, na.assign.text, numeric.output=TRUE){
+BooleDS <- function(V1.name=NULL, V2.name=NULL, Boolean.operator.n=NULL, na.assign.text, numeric.output=TRUE){
 
   #########################################################################
   # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS
-  thr <- listDisclosureSettingsDS.o()
+  thr <- listDisclosureSettingsDS()
   nfilter.tab <- as.numeric(thr$nfilter.tab)
   #nfilter.glm<-as.numeric(thr$nfilter.glm)
   #nfilter.subset<-as.numeric(thr$nfilter.subset)
@@ -57,7 +57,7 @@ BooleDS.o <- function(V1.name=NULL, V2.name=NULL, Boolean.operator.n=NULL, na.as
     return(list(studysideMessage=studysideMessage))
   }
 
-  V1.length <- length(V1)   
+  V1.length <- length(V1)
   V2.length <- length(V2)
 
   if(!((V1.length == V2.length) | (V2.length==1))){
@@ -135,7 +135,7 @@ BooleDS.o <- function(V1.name=NULL, V2.name=NULL, Boolean.operator.n=NULL, na.as
   }
 
   return(Boole.obj)
-	
+
 }
 #ASSIGN FUNCTION
-#BooleDS.o
+#BooleDS

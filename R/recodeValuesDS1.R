@@ -1,44 +1,44 @@
 
-###############################################################################|###################| 80 and 100#' @title recodeValuesDS2.o an assign function called by ds.recodeValues.o
-#' @title recodeValuesDS1.o an aggregate function called by ds.recodeValues.o
-#' @description First serverside function called by ds.recodeValues.o
+###############################################################################|###################| 80 and 100#' @title recodeValuesDS2 an assign function called by ds.recodeValues
+#' @title recodeValuesDS1 an aggregate function called by ds.recodeValues
+#' @description First serverside function called by ds.recodeValues
 #' to convert specified values of elements in a vector into a matched set
 #' of alternative specified values.
-#' @details For all details see the help header for ds.recodeValues.o
+#' @details For all details see the help header for ds.recodeValues
 #' @param var.name.text a character string providing the name for the vector representing the
 #' variable to be recoded. The <var.name.text> argument is generated and passed directly to
-#' recodeValuesDS2.o by ds.recodeValues.o
+#' recodeValuesDS2 by ds.recodeValues
 #' @param values2replace.text a character string specifying the values in the
 #' vector specified by the argument <var.name.text> that are to be replaced by new
 #' values as specified in the new.values.vector. The <values2replace.text> argument
-#' is generated and passed directly to recodeValuesDS2.o by ds.recodeValues.o. In effect, the
-#' <values2replace.vector> argument of the ds.recodeValues.o function is converted
+#' is generated and passed directly to recodeValuesDS2 by ds.recodeValues. In effect, the
+#' <values2replace.vector> argument of the ds.recodeValues function is converted
 #' to a character string format that is acceptable to the DataSHIELD parser in Opal
-#' and so can be accepted by recodeValuesDS1.o
+#' and so can be accepted by recodeValuesDS1
 #' @param new.values.text a character string specifying the new values to which
 #' the specified values in the vector identified by the <var.name> argument
 #' are to be converted.
-#' The <new.values.text> argument is generated and passed directly to recodeValuesDS2.o
-#' by ds.recodeValues.o. In effect, the <new.values.vector> argument of the
-#' ds.recodeValues.o function is converted to a character string format that is
+#' The <new.values.text> argument is generated and passed directly to recodeValuesDS2
+#' by ds.recodeValues. In effect, the <new.values.vector> argument of the
+#' ds.recodeValues function is converted to a character string format that is
 #' acceptable to the DataSHIELD parser in Opal
-#' and so can be used in the call to recodeValuesDS1.o
-#' @return This first serverside function called by ds.recodeValues.o provides
+#' and so can be used in the call to recodeValuesDS1
+#' @return This first serverside function called by ds.recodeValues provides
 #' first level traps for a comprehensive series of disclosure risks which can be
-#' returned directly to the clientside because recodeValuesDS1.o is an aggregate
-#' function. The second serverside function called by ds.dataFrameSubset.o
-#' (recodeValuesDS2.o) carries out some of the same disclosure tests, but it is
+#' returned directly to the clientside because recodeValuesDS1 is an aggregate
+#' function. The second serverside function called by ds.dataFrameSubset
+#' (recodeValuesDS2) carries out some of the same disclosure tests, but it is
 #' an assign function because it writes the recoded vector to the serverside.
 #' In consequence, it records error messages as studysideMessages which can only be
-#' retrieved using ds.message.o
+#' retrieved using ds.message
 #' @author DataSHIELD Development Team
 #' @export
 #'
-recodeValuesDS1.o <- function(var.name.text=NULL, values2replace.text=NULL, new.values.text=NULL){
+recodeValuesDS1 <- function(var.name.text=NULL, values2replace.text=NULL, new.values.text=NULL){
 
 #############################################################
 #MODULE 1: CAPTURE THE nfilter SETTINGS                     #
-thr <- listDisclosureSettingsDS.o()				#
+thr <- listDisclosureSettingsDS()				#
 #nfilter.tab<-as.numeric(thr$nfilter.tab)					#
 #nfilter.glm<-as.numeric(thr$nfilter.glm)					#
 nfilter.subset<-as.numeric(thr$nfilter.subset)          	#
@@ -47,7 +47,7 @@ nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)    #
 nfilter.kNN<-as.numeric(thr$nfilter.kNN)                    #
 #############################################################
 
-  
+
 var.name.text.c<-unlist(strsplit(var.name.text, split=","))
 var2recode<-eval(parse(text=var.name.text.c))
 
@@ -103,7 +103,7 @@ if(non.NA.length.recoded<nfilter.subset){
 ########################################################################
 ##########MODULE WARNING OF POTENTIAL DIFFERENCE ATTACK ################
 ########################################################################
- 
+
 if((difference.non.NA.lengths<nfilter.subset)&&(difference.non.NA.lengths>0)){
    studysideWarning1<-"Warning: DataSHIELD monitors every session for potentially disclosive analytic requests."
    studysideWarning2<-"The analysis you just submitted has generated a recoded variable in which the number of non-missing"
@@ -115,7 +115,7 @@ if((difference.non.NA.lengths<nfilter.subset)&&(difference.non.NA.lengths>0)){
    studysideWarning8<-"malicious attempt to identify individuals by differencing, this will become obvious in the"
    studysideWarning9<-"session log and you will be sanctioned. Possible consequences include loss of future access"
    studysideWarning10<-"to DataSHIELD and/or legal penalties."
-   
+
    return.message<-list(studysideWarning1,studysideWarning2,studysideWarning3,studysideWarning4,
                    studysideWarning5,studysideWarning6,studysideWarning7,studysideWarning8,
 				   studysideWarning9,studysideWarning10)
@@ -129,6 +129,6 @@ if((difference.non.NA.lengths<nfilter.subset)&&(difference.non.NA.lengths>0)){
 
 return(return.message)
 
-}  
+}
 # AGGREGATE FUNCTION
-# recodeValuesDS1.o
+# recodeValuesDS1

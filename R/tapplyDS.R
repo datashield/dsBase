@@ -1,24 +1,24 @@
-#' @title tapplyDS.o called by ds.tapply.o
+#' @title tapplyDS called by ds.tapply
 #' @description Apply one of a selected range of functions to summarize an
 #' outcome variable over one or more indexing factors and write the resultant
 #' summary to the clientside
-#' @details see details for {ds.tapply.o} function
+#' @details see details for {ds.tapply} function
 #' @param X.name, the name of the variable to be summarized. Specified
-#' via argument <X.name> of {ds.tapply.o} function
+#' via argument <X.name> of {ds.tapply} function
 #' @param INDEX.names.transmit, the name of a single factor or a vector of names of factors to
 #' index the variable to be summarized. Specified via argument <INDEX.names>
-#' of {ds.tapply.o} function
+#' of {ds.tapply} function
 #' @param FUN.name, the name of one of the allowable summarizing functions to be applied.
-#' Specified via argument <FUN.name> of {ds.tapply.o} function.
-#' @return an array of the summarized values created by the tapplyDS.o function. This array
+#' Specified via argument <FUN.name> of {ds.tapply} function.
+#' @return an array of the summarized values created by the tapplyDS function. This array
 #' is returned to the clientside. It has the same number of dimensions as INDEX.
 #' @author Paul Burton, Demetris Avraam for DataSHIELD Development Team
 #' @export
-tapplyDS.o <- function(X.name, INDEX.names.transmit, FUN.name){
+tapplyDS <- function(X.name, INDEX.names.transmit, FUN.name){
 
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS           			#
-thr<-listDisclosureSettingsDS.o()							#
+thr<-listDisclosureSettingsDS()							#
 nfilter.tab<-as.numeric(thr$nfilter.tab)								#
 #nfilter.glm<-as.numeric(thr$nfilter.glm)								#
 nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
@@ -83,7 +83,7 @@ X.complete<-X[all.complete]
 for(k in 1:num.factors){
   activation.text.b<-paste0("current.factor <-",INDEX.factors[k])
   eval(parse(text=activation.text.b))
-  
+
   activation.text.c<-paste0(INDEX.factors[k], "<- current.factor[all.complete]")
   eval(parse(text=activation.text.c))
  }
@@ -99,19 +99,19 @@ for(k in 1:num.factors){
  #disclosure traps#
  ##################
     N.count <- tapply(X.complete,INDEX,base::length)
-	
+
    if(min(N.count)<nfilter.tab && min(N.count) > 0){
-   return.message<-"ERROR: at least one group defined by INDEX has < nfilter.tab members. The output cannot therefore be returned to the clientside. But the function ds.tapply.assign.o may still be used to write the output to the data servers with no clientside return"
+   return.message<-"ERROR: at least one group defined by INDEX has < nfilter.tab members. The output cannot therefore be returned to the clientside. But the function ds.tapply.assign may still be used to write the output to the data servers with no clientside return"
    return(return.message)
    }
 
  ##################
  ###other errors###
  ##################
- 
+
 
   #################
-  #Valid functions# 
+  #Valid functions#
   #################
 
   ###MEAN
@@ -122,22 +122,22 @@ for(k in 1:num.factors){
 
    #make output neat if up to two INDEX factors
 		if(num.factors==1){
-		
+
                 factor1.levels <- NA
 		activation.text.e<-paste0("factor1.levels<-levels(",INDEX.factors[1],")")
 		eval(parse(text=activation.text.e))
-		
+
 		factor1.level.names<-factor1.levels
-		
+
 		for(u in 1:length(factor1.levels)){
 		factor1.level.names[u]<-paste0(INDEX.factors[1],".",factor1.levels[u])
 		}
 		dimnames(Mean)[[1]]<-factor1.level.names
-		dimnames(N.count)[[1]]<-factor1.level.names	
+		dimnames(N.count)[[1]]<-factor1.level.names
 		}
 
 		if(num.factors==2){
-		
+
                 factor1.levels <- NA
 		activation.text.f<-paste0("factor1.levels<-levels(",INDEX.factors[1],")")
 		eval(parse(text=activation.text.f))
@@ -145,11 +145,11 @@ for(k in 1:num.factors){
                 factor2.levels <- NA
 		activation.text.g<-paste0("factor2.levels<-levels(",INDEX.factors[2],")")
 		eval(parse(text=activation.text.g))
-		
+
 		factor1.level.names<-factor1.levels
-		
+
 		factor2.level.names<-factor2.levels
-		
+
 		for(u in 1:length(factor1.levels)){
 		factor1.level.names[u]<-paste0(INDEX.factors[1],".",factor1.levels[u])
 		}
@@ -157,7 +157,7 @@ for(k in 1:num.factors){
 		for(v in 1:length(factor2.levels)){
 		factor2.level.names[v]<-paste0(INDEX.factors[2],".",factor2.levels[v])
 		}
-		
+
 
 		dimnames(Mean)[[1]]<-factor1.level.names
 		dimnames(Mean)[[2]]<-factor2.level.names
@@ -165,7 +165,7 @@ for(k in 1:num.factors){
 		dimnames(N.count)[[1]]<-factor1.level.names
 		dimnames(N.count)[[2]]<-factor2.level.names
 		}
-  
+
 
  output<-list(Mean=Mean,N=N.count)
  return(output)
@@ -179,22 +179,22 @@ for(k in 1:num.factors){
 
    #make output neat if up to two INDEX factors
 		if(num.factors==1){
-		
+
                 factor1.levels <- NA
 		activation.text.e<-paste0("factor1.levels<-levels(",INDEX.factors[1],")")
 		eval(parse(text=activation.text.e))
-		
+
 		factor1.level.names<-factor1.levels
-		
+
 		for(u in 1:length(factor1.levels)){
 		factor1.level.names[u]<-paste0(INDEX.factors[1],".",factor1.levels[u])
 		}
 		dimnames(SD)[[1]]<-factor1.level.names
-		dimnames(N.count)[[1]]<-factor1.level.names	
+		dimnames(N.count)[[1]]<-factor1.level.names
 		}
 
 		if(num.factors==2){
-		
+
                 factor1.levels <- NA
 		activation.text.f<-paste0("factor1.levels<-levels(",INDEX.factors[1],")")
 		eval(parse(text=activation.text.f))
@@ -202,11 +202,11 @@ for(k in 1:num.factors){
                 factor2.levels <- NA
 		activation.text.g<-paste0("factor2.levels<-levels(",INDEX.factors[2],")")
 		eval(parse(text=activation.text.g))
-		
+
 		factor1.level.names<-factor1.levels
-		
+
 		factor2.level.names<-factor2.levels
-		
+
 		for(u in 1:length(factor1.levels)){
 		factor1.level.names[u]<-paste0(INDEX.factors[1],".",factor1.levels[u])
 		}
@@ -214,7 +214,7 @@ for(k in 1:num.factors){
 		for(v in 1:length(factor2.levels)){
 		factor2.level.names[v]<-paste0(INDEX.factors[2],".",factor2.levels[v])
 		}
-		
+
 
 		dimnames(SD)[[1]]<-factor1.level.names
 		dimnames(SD)[[2]]<-factor2.level.names
@@ -222,13 +222,13 @@ for(k in 1:num.factors){
 		dimnames(N.count)[[1]]<-factor1.level.names
 		dimnames(N.count)[[2]]<-factor2.level.names
 		}
-  
+
 
  output<-list(SD=SD,N=N.count)
  return(output)
  }
 
- 
+
    ###SUM
   if(FUN.name=="sum" || FUN.name=="Sum" || FUN.name=="SUM"){
    Sum <- tapply(X.complete,INDEX,base::sum)
@@ -236,22 +236,22 @@ for(k in 1:num.factors){
 
    #make output neat if up to two INDEX factors
 		if(num.factors==1){
-		
+
                 factor1.levels <- NA
 		activation.text.e<-paste0("factor1.levels<-levels(",INDEX.factors[1],")")
 		eval(parse(text=activation.text.e))
-		
+
 		factor1.level.names<-factor1.levels
-		
+
 		for(u in 1:length(factor1.levels)){
 		factor1.level.names[u]<-paste0(INDEX.factors[1],".",factor1.levels[u])
 		}
 		dimnames(Sum)[[1]]<-factor1.level.names
-		dimnames(N.count)[[1]]<-factor1.level.names	
+		dimnames(N.count)[[1]]<-factor1.level.names
 		}
 
 		if(num.factors==2){
-		
+
                 factor1.levels <- NA
 		activation.text.f<-paste0("factor1.levels<-levels(",INDEX.factors[1],")")
 		eval(parse(text=activation.text.f))
@@ -259,11 +259,11 @@ for(k in 1:num.factors){
                 factor2.levels <- NA
 		activation.text.g<-paste0("factor2.levels<-levels(",INDEX.factors[2],")")
 		eval(parse(text=activation.text.g))
-		
+
 		factor1.level.names<-factor1.levels
-		
+
 		factor2.level.names<-factor2.levels
-		
+
 		for(u in 1:length(factor1.levels)){
 		factor1.level.names[u]<-paste0(INDEX.factors[1],".",factor1.levels[u])
 		}
@@ -271,7 +271,7 @@ for(k in 1:num.factors){
 		for(v in 1:length(factor2.levels)){
 		factor2.level.names[v]<-paste0(INDEX.factors[2],".",factor2.levels[v])
 		}
-		
+
 
 		dimnames(Sum)[[1]]<-factor1.level.names
 		dimnames(Sum)[[2]]<-factor2.level.names
@@ -279,13 +279,13 @@ for(k in 1:num.factors){
 		dimnames(N.count)[[1]]<-factor1.level.names
 		dimnames(N.count)[[2]]<-factor2.level.names
 		}
-  
+
 
  output<-list(Sum=Sum,N=N.count)
  return(output)
  }
 
- 
+
     ###QUANTILE
   if(FUN.name=="quantile" || FUN.name=="Quantile" || FUN.name=="QUANTILE"){
 
@@ -303,11 +303,9 @@ for(k in 1:num.factors){
  }
 
 
- 
+
  return.message<-"Please specify a valid DataSHIELD tapply function e.g. FUN.name='mean' or FUN.name='sd'"
  return(return.message)
 }
 #AGGREGATE.FUNCTION
-# tapplyDS.o
- 
-
+# tapplyDS

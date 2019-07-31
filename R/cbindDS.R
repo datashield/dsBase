@@ -1,23 +1,23 @@
-#' @title cbindDS.o called by ds.cbind.o c
+#' @title cbindDS called by ds.cbind c
 #' @description serverside assign function that takes a
 #' sequence of vector, matrix or data-frame arguments
 #' and combines them by column to produce a matrix.
 #' @details A sequence of vector, matrix or data-frame arguments
 #' is combined column by column to produce a matrix
-#' which is written to the serverside. For more details see 
-#' help for {ds.cbind.o} and the native R function {cbind}.
+#' which is written to the serverside. For more details see
+#' help for {ds.cbind} and the native R function {cbind}.
 #' @param x.names.transmit This is a vector of character strings
 #' representing the names of the elemental
 #' components to be combined converted into a transmittable
 #' format. This argument is fully specified by the <x> argument
-#' of {ds.cbind.o}
+#' of {ds.cbind}
 #' @param colnames.transmit This is NULL or a vector of character
-#' strings representing forced column names for the output object 
+#' strings representing forced column names for the output object
 #' converted into a transmittable format. This argument is fully
 #' specified by the <force.colnames> argument
-#' of {ds.cbind.o}.
-#' @return the object specified by the <newobj> argument 
-#' of {ds.cbind.o}(or default name <cbind.out>)
+#' of {ds.cbind}.
+#' @return the object specified by the <newobj> argument
+#' of {ds.cbind}(or default name <cbind.out>)
 #' which is written to the serverside. Just like the {cbind} function in
 #' native R, the output object is of class matrix unless one or more
 #' of the input objects is a data.frame in which case the class of the
@@ -26,20 +26,20 @@
 #' indicating whether <newobj> has been created in each data source and if so whether
 #' it is in a valid form. If its form is not valid in at least one study - e.g. because
 #' a disclosure trap was tripped and creation of the full output object was blocked -
-#' ds.cbind.o() also returns any studysideMessages that can explain the error in creating
+#' ds.cbind() also returns any studysideMessages that can explain the error in creating
 #' the full output object. As well as appearing on the screen at run time,if you wish to
-#' see the relevant studysideMessages at a later date you can use the {ds.message.o}
-#' function. If you type ds.message.o("<newobj>") it will print out the relevant
+#' see the relevant studysideMessages at a later date you can use the {ds.message}
+#' function. If you type ds.message("<newobj>") it will print out the relevant
 #' studysideMessage from any datasource in which there was an error in creating <newobj>
 #' and a studysideMessage was saved. If there was no error and <newobj> was created
-#' without problems no studysideMessage will have been saved and ds.message.o("<newobj>")
+#' without problems no studysideMessage will have been saved and ds.message("<newobj>")
 #' will return the message: "ALL OK: there are no studysideMessage(s) on this datasource".
 #' @author Paul Burton for DataSHIELD Development Team
 #' @export
-cbindDS.o <- function(x.names.transmit=NULL,colnames.transmit=NULL){
+cbindDS <- function(x.names.transmit=NULL,colnames.transmit=NULL){
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS           			#
-#thr<-listDisclosureSettingsDS.o()							#
+#thr<-listDisclosureSettingsDS()							#
 #nfilter.tab<-as.numeric(thr$nfilter.tab)								#
 #nfilter.glm<-as.numeric(thr$nfilter.glm)								#
 #nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
@@ -67,7 +67,7 @@ generated.length.colnames.vector<-length(colnames.act1)
 
 if(required.length.colnames.vector!=generated.length.colnames.vector){
 rescue.names.vector<-paste0("V",as.character(1:required.length.colnames.vector))
-studysideMessage<-paste0("Number of column names does not match number of columns in output object. Here ", required.length.colnames.vector, " names are required. Please see help for {ds.cbind.o} function")
+studysideMessage<-paste0("Number of column names does not match number of columns in output object. Here ", required.length.colnames.vector, " names are required. Please see help for {ds.cbind} function")
 return(list(studysideMessage=studysideMessage))
 }
 
@@ -76,7 +76,7 @@ colnames(output.cbind)<-colnames.act1
 output.obj<-output.cbind
 
 return(output.obj)
-}  
- 
+}
+
 # ASSIGN FUNCTION
-# cbindDS.o
+# cbindDS

@@ -1,17 +1,17 @@
-#' @title setSeedDs called by ds.setSeed.o, ds.rNorm.o, ds.rUnif.o,
-#' ds.rPois.o and ds.rBinom.o
+#' @title setSeedDs called by ds.setSeed, ds.rNorm, ds.rUnif,
+#' ds.rPois and ds.rBinom
 #' @description An aggregate serverside function that primes
-#' the pseudorandom number generator in a data source 
+#' the pseudorandom number generator in a data source
 #' @details setSeedDS is effectively equivalent to the native R function
 #' set.seed() and so the help for that function can provide many
 #' additional details. The only very minor difference is that the
 #' first argument of setSeedDS, <seedtext> takes the integer priming
 #' seed in character format. However, for the user that integer is still
 #' specified directly as an integer as the <seed.as.integer> argument
-#' of one of the clientside functions ds.setSeed.o, ds.rNorm.o .....
+#' of one of the clientside functions ds.setSeed, ds.rNorm .....
 #' Each of these clientside functions coerces the integer to character format
 #' calls setSeedDS and the first active line of code in setSeedDS converts
-#' the character string back to an integer and treats it as the first 
+#' the character string back to an integer and treats it as the first
 #' argument <seed> of the native R function set.seed(). The two other
 #' arguments of set.seed() in native R, <kind> and <normal.kind> are both
 #' defaulted by specifying them as NULL. This defaulting is hard wired into
@@ -21,7 +21,7 @@
 #' the development team can be approached, but unless you are actually doing
 #' theoretical work with random number generators it is likely that the
 #' @param seedtext this is simply the value of the <seed.as.integer> argument
-#' of ds.setSeed.o, ds.rNorm.o, ds.rUnif.o, ds.rPois.o of ds.rBinom.o coerced
+#' of ds.setSeed, ds.rNorm, ds.rUnif, ds.rPois of ds.rBinom coerced
 #' into character format. This is done by the clientside functions themselves
 #' and does not require the DataSHIELD user to do anything. Please see the
 #' help for these clientside functions, and in particular, the information
@@ -33,14 +33,11 @@
 #' random seed in each source.
 #' @author Paul Burton for DataSHIELD Development Team
 #' @export
-setSeedDS.o<-function (seedtext=NULL, kind = NULL, normal.kind = NULL) 
+setSeedDS<-function (seedtext=NULL, kind = NULL, normal.kind = NULL)
 {
 seed<-eval(parse(text=seedtext))
 	set.seed(seed,kind,normal.kind)
 	return(list(seed.as.set=.Random.seed))
 }
 #AGGREGATE
-# setSeedDS.o
-
-
-
+# setSeedDS

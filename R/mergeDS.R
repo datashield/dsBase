@@ -1,63 +1,63 @@
-#' @title mergeDS.o (assign function) called by ds.merge.o
+#' @title mergeDS (assign function) called by ds.merge
 #' @description merges (links) two data.frames together based on common
 #' values in defined vectors in each data.frame
 #' @details For further information see details of the native R function {merge}
-#' and the DataSHIELD clientside function {ds.merge.o}.
+#' and the DataSHIELD clientside function {ds.merge}.
 #' @param x.name, the name of the first data.frame to be merged specified in
-#' inverted commas. Specified via argument <x.name> of {ds.merge.o} function
+#' inverted commas. Specified via argument <x.name> of {ds.merge} function
 #' @param y.name, the name of the second data.frame to be merged specified in
-#' inverted commas. Specified via argument <y.name> of {ds.merge.o} function
+#' inverted commas. Specified via argument <y.name> of {ds.merge} function
 #' @param by.x.names.transmit the name of a single variable or a vector of names of
 #' multiple variables (in transmittable form) containing the IDs or other data
 #' on which data.frame x is to be merged/linked
-#' to data.frame y. Specified via argument <by.x.names> of {ds.merge.o} function
+#' to data.frame y. Specified via argument <by.x.names> of {ds.merge} function
 #' @param by.y.names.transmit the name of a single variable or a vector of names of
 #' multiple variables (in transmittable form) containing the IDs or other data
 #' on which data.frame y is to be merged/linked
-#' to data.frame x. Specified via argument <by.y.names> of {ds.merge.o} function
+#' to data.frame x. Specified via argument <by.y.names> of {ds.merge} function
 #' @param all.x	logical, if TRUE, then extra rows will be added to the output,
 #' one for each row in x that has no matching row in y. Specified via argument
-#' <all.x> of {ds.merge.o} function. Default = FALSE.
+#' <all.x> of {ds.merge} function. Default = FALSE.
 #' @param all.y	logical, if TRUE, then extra rows will be added to the output,
 #' one for each row in y that has no matching row in x. Specified via argument
-#' <all.y> of {ds.merge.o} function. Default = FALSE.
+#' <all.y> of {ds.merge} function. Default = FALSE.
 #' @param sort logical, if TRUE the merged result should be sorted on elements
 #' in the by.x.names and by.y.names columns. Specified via
-#' argument <sort> of {ds.merge.o} function. Default = TRUE.
+#' argument <sort> of {ds.merge} function. Default = TRUE.
 #' @param suffixes.transmit a character vector of length 2 (in transmittable form)
 #' specifying the suffixes to be used for making unique common column names
 #' in the two input data.frames when they both appear in the merged data.frame.
-#' Specified via argument <suffixes> of {ds.merge.o} function. Default '.x' and '.y'.
+#' Specified via argument <suffixes> of {ds.merge} function. Default '.x' and '.y'.
 #' @param no.dups logical, when TRUE suffixes are appended in more cases to
 #' rigorously avoid duplicated column names in the merged data.frame.
-#' Specified via argument <no.dups> of {ds.merge.o} function. Default TRUE
+#' Specified via argument <no.dups> of {ds.merge} function. Default TRUE
 #' but was apparently implicitly FALSE before R version 3.5.0.
 #' @param incomparables, values intended for merging on one column
 #' which cannot be matched. See 'match' in help
 #' for Native R {merge} function. Specified via argument <incomparables> of
-#' {ds.merge.o}
+#' {ds.merge}
 #' @return the merged data.frame specified by the <newobj> argument
-#' of ds.merge.o (or by default 'x.name_y.name' if the <newobj> argument
+#' of ds.merge (or by default 'x.name_y.name' if the <newobj> argument
 #' is NULL) which is written to the serverside. In addition,
 #' two validity messages are returned to the clientside
 #' indicating whether <newobj> has been created in each data source and if so whether
 #' it is in a valid form. If its form is not valid in at least one study there may
 #' be a studysideMessage that can explain the error in creating
 #' the full output object. As well as appearing on the screen at run time,if you wish to
-#' see the relevant studysideMessages at a later date you can use the {ds.message.o}
-#' function. If you type ds.message.o(<newobj>) it will print out the relevant
+#' see the relevant studysideMessages at a later date you can use the {ds.message}
+#' function. If you type ds.message(<newobj>) it will print out the relevant
 #' studysideMessage from any datasource in which there was an error in creating <newobj>
 #' and a studysideMessage was saved. If there was no error and <newobj> was created
-#' without problems no studysideMessage will have been saved and ds.message.o(<newobj>)
+#' without problems no studysideMessage will have been saved and ds.message(<newobj>)
 #' will return the message: "ALL OK: there are no studysideMessage(s) on this datasource".
 #' @author Amadou Gaye, Paul Burton, for DataSHIELD Development Team
 #' @export
-mergeDS.o<-function(x.name, y.name, by.x.names.transmit, by.y.names.transmit, all.x, all.y,
-			 sort, suffixes.transmit, no.dups, incomparables)			 			 
+mergeDS<-function(x.name, y.name, by.x.names.transmit, by.y.names.transmit, all.x, all.y,
+			 sort, suffixes.transmit, no.dups, incomparables)
 {
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS           			#
-thr<-listDisclosureSettingsDS.o()							#
+thr<-listDisclosureSettingsDS()							#
 #nfilter.tab<-as.numeric(thr$nfilter.tab)								#
 #nfilter.glm<-as.numeric(thr$nfilter.glm)								#
 #nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
@@ -137,7 +137,7 @@ if(!is.data.frame(y.data.frame)){
 	by.x.colnames<-unlist(strsplit(by.x.names.transmit, split=","))
 	by.y.colnames<-unlist(strsplit(by.y.names.transmit, split=","))
 
-	
+
 #manage suffixes
 	#check text to be activated is not too long because of disclosure risk
 
@@ -164,11 +164,11 @@ if(!is.data.frame(y.data.frame)){
       by.x = by.x.colnames, by.y = by.x.colnames, all=FALSE, all.x = all.x, all.y = all.y,
       sort = sort, suffixes = suffixes.character.vector, no.dups = no.dups,
       incomparables = incomparables)
- 
-				 
+
+
   return(output)
-  
-  
+
+
 }
 #Assign function
-# mergeDS.o
+# mergeDS

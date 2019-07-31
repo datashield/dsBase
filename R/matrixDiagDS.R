@@ -1,7 +1,7 @@
 #' @title matrixDiagDS assign function called by ds.matrixDiag
 #' @description Extracts the diagonal vector from a square matrix A or
 #' creates a diagonal matrix A based on a vector or a scalar value and
-#' writes the output to the serverside 
+#' writes the output to the serverside
 #' @details For details see help for function {ds.matrixDiag}.
 #' @param x1.transmit identifies the input matrix or vector. Fully
 #' specified by <x1> argument of {ds.matrixDiag}. For more details
@@ -21,7 +21,7 @@
 matrixDiagDS <- function(x1.transmit,aim,nrows.transmit){
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS           			#
-thr<-listDisclosureSettingsDS.o()							#
+thr<-listDisclosureSettingsDS()							#
 #nfilter.tab<-as.numeric(thr$nfilter.tab)								#
 #nfilter.glm<-as.numeric(thr$nfilter.glm)								#
 #nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
@@ -100,12 +100,12 @@ nrows<-as.numeric(nrows.c)
 
 		if(aim=="serverside.vector.2.matrix"||aim=="serverside.matrix.2.vector"||aim=="clientside.vector.2.matrix")
 		{
-		output<-diag(x1)		
+		output<-diag(x1)
 		}
-		
-	
 
-		
+
+
+
 		if(aim=="serverside.scalar.2.matrix"||aim=="clientside.scalar.2.matrix")
 		{
 		if(nrows==-9)
@@ -126,7 +126,7 @@ nrows<-as.numeric(nrows.c)
 			studysideMessage<-paste0("FAILED: the aim specified is not valid, please respecify")
 			return(list(studysideMessage=studysideMessage))
 	  }
-		
+
 	return(output)
 }
 

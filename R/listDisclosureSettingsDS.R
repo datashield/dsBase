@@ -1,4 +1,4 @@
-#' 
+#'
 #' @title listDisclosureSettingsDS
 #' @description This serverside function is an aggregate function that is called by the
 #' ds.listDisclosureSettings
@@ -6,7 +6,7 @@
 #' @author Paul Burton, Demetris Avraam for DataSHIELD Development Team
 #' @export
 #'
-listDisclosureSettingsDS.o <- function(){
+listDisclosureSettingsDS <- function(){
 
   nf.tab <- getOption("nfilter.tab")
   if (is.null(nf.tab))
@@ -39,4 +39,4 @@ listDisclosureSettingsDS.o <- function(){
               nfilter.noise=nf.noise,nfilter.privacy.old=nfilter.privacy.old))
 }
 #AGGREGATE FUNCTION
-# listDisclosureSettingsDS.o
+# listDisclosureSettingsDS

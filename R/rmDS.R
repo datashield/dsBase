@@ -1,5 +1,5 @@
-#' @title rmDS.o an aggregate function called by ds.rm.o
-#' @description deletes an R object on the serverside  
+#' @title rmDS an aggregate function called by ds.rm
+#' @description deletes an R object on the serverside
 #' @details this is a serverside function
 #' based on the rm() function in native R. It is an aggregate function
 #' which may be surprising because it modifies an object
@@ -10,7 +10,7 @@
 #' it would be impossible to write it anywhere.
 #' @param x.name.transmit, the name of the object to be deleted converted
 #' into transmissable form. The argument is specified via the <x.name>
-#' argument of ds.rm.o
+#' argument of ds.rm
 #' @return the specified object is deleted from the serverside. If this
 #' is successful the message "Object <x.name> successfully deleted" is returned
 #' to the clientside (where x.name is the name of the object to be deleted).
@@ -19,16 +19,16 @@
 #' does not exist so does not need deleting". Finally, if the specified name
 #' of the object to be deleted is too long (>nfilter.stringShort) there is
 #' a potential disclosure risk (active code hidden in the name) and the
-#' rmDS.o returns a message such as: "Disclosure risk, number of characters
+#' rmDS returns a message such as: "Disclosure risk, number of characters
 #' in x.name must not exceed nfilter.stringShort which is currently set at: 25" where
 #' '25' is the current setting of the R_Option value of nfilter.stringShort.
-#' @author Paul Burton for DataSHIELD Development Team 
+#' @author Paul Burton for DataSHIELD Development Team
 #' @export
-rmDS.o <- function(x.name.transmit)
+rmDS <- function(x.name.transmit)
 {
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS           			#
-thr<-listDisclosureSettingsDS.o()							#
+thr<-listDisclosureSettingsDS()							#
 #nfilter.tab<-as.numeric(thr$nfilter.tab)								#
 #nfilter.glm<-as.numeric(thr$nfilter.glm)								#
 #nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
@@ -79,5 +79,4 @@ if(test.still.exists){
 return(return.message=return.message,x.name=x.name)
 }
 #AGGREGATE FUNCTION
-# rmDS.o
-
+# rmDS

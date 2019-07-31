@@ -6,12 +6,12 @@
 #' @return a numeric, the number of elements of the input vector or list.
 #' @author Demetris Avraam, for DataSHIELD Development Team
 #' @export
-#' 
-lengthDS.o <- function(x){
+#'
+lengthDS <- function(x){
 
  #############################################################
  #MODULE 1: CAPTURE THE nfilter SETTINGS
- #thr <- listDisclosureSettingsDS.o()
+ #thr <- listDisclosureSettingsDS()
  #nfilter.tab<-as.numeric(thr$nfilter.tab)
  #nfilter.glm<-as.numeric(thr$nfilter.glm)
  #nfilter.subset<-as.numeric(thr$nfilter.subset)
@@ -26,4 +26,4 @@ lengthDS.o <- function(x){
 
 }
 #AGGREGATE FUNCTION
-# lengthDS.o
+# lengthDS

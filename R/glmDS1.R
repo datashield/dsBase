@@ -1,6 +1,6 @@
-#' 
-#' @title glmDS1.o
-#' @description This is the first serverside function called by ds.glm.o
+#'
+#' @title glmDS1
+#' @description This is the first serverside function called by ds.glm
 #' @details It is an
 #' aggregation function that sets up the model structure
 #' and creates the starting beta.vector that feeds, via ds.glm, into glmDS2 to enable
@@ -13,46 +13,46 @@
 #' @param weights an optional variable providing regression weights
 #' @param data an
 #' optional character string specifying a data.frame object holding the data to be
-#' analysed under the specified model 
+#' analysed under the specified model
 #' @author Burton PR
 #' @export
 #'
-glmDS1.o <- function(formula, family, weights, data){
-  
+glmDS1 <- function(formula, family, weights, data){
+
   errorMessage <- "No errors"
-  
+
   #############################################################
   #MODULE 1: CAPTURE THE nfilter SETTINGS
-  thr <- listDisclosureSettingsDS.o()
+  thr <- listDisclosureSettingsDS()
   nfilter.tab <- as.numeric(thr$nfilter.tab)
   nfilter.glm <- as.numeric(thr$nfilter.glm)
   #nfilter.subset <- as.numeric(thr$nfilter.subset)
   #nfilter.string <- as.numeric(thr$nfilter.string)
   #############################################################
-   
+
   # get the value of the 'data' and 'weights' parameters provided as character on the client side
   if(is.null(data)){
-    dataTable <- NULL 
+    dataTable <- NULL
   }else{
     dataTable <- eval(parse(text=data))
   }
-  
+
   formulatext <- Reduce(paste, deparse(formula))
   originalFormula <- formulatext
-  
+
   # Convert formula string into separate variable names split by |
   formulatext <- gsub(" ", "", formulatext, fixed=TRUE)
   formulatext <- gsub("~", "|", formulatext, fixed=TRUE)
   formulatext <- gsub("+", "|", formulatext, fixed=TRUE)
   formulatext <- gsub("*", "|", formulatext, fixed=TRUE)
   formulatext <- gsub("||", "|", formulatext, fixed=TRUE)
-  
+
   formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula)))) # here we need the formula as a 'call' object
   mod.glm.ds <- stats::glm(formula2use, family=family, x=TRUE, control=stats::glm.control(maxit=1), contrasts=NULL, data=dataTable)
-  
-  #Remember model.variables and then varnames INCLUDE BOTH yvect AND linear predictor components 
+
+  #Remember model.variables and then varnames INCLUDE BOTH yvect AND linear predictor components
   model.variables <- unlist(strsplit(formulatext, split="|", fixed=TRUE))
-  
+
   varnames <- c()
   for(i in 1:length(model.variables)){
     elt <- unlist(strsplit(model.variables[i], split="$", fixed=TRUE))
@@ -64,58 +64,58 @@ glmDS1.o <- function(formula, family, weights, data){
       varnames <- append(varnames, elt)
     }
   }
-  
-  varnames <- unique(varnames) 
-  
+
+  varnames <- unique(varnames)
+
   X.mat <- as.matrix(mod.glm.ds$x)
-  
+
   dimX <- dim((X.mat))
-    
+
   y.vect <- as.vector(mod.glm.ds$y)
-    
+
   ##############################################################
   #FIRST TYPE OF DISCLOSURE TRAP - TEST FOR OVERSATURATED MODEL#
   #TEST AGAINST nfilter.glm									  #
   ##############################################################
-  
+
   glm.saturation.invalid <- 0
   num.p <- dimX[2]
   num.N <- dimX[1]
-  
+
   if(num.p>nfilter.glm*num.N){
     glm.saturation.invalid <- 1
     errorMessage <- "ERROR: Model has too many parameters, there is a possible risk of disclosure - please simplify model"
-    #DELETE return(errorMessage) 
+    #DELETE return(errorMessage)
   }
-    
+
   coef.names <- names(mod.glm.ds$coefficients)
-  
+
   if(is.null(weights)){
     w.vect <- rep(1,length(y.vect))
   }else{
     ftext <- paste0("cbind(",weights,")")
     w.vect <- eval(parse(text=ftext))
   }
-  
+
   ################################
   #SECOND TYPE OF DISCLOSURE TRAP#
   ################################
-  
+
   #If y, X or w data are invalid but user has modified clientside
   #function (ds.glm) to circumvent trap, model will get to this point without
   #giving a controlled shut down with a warning about invalid data.
   #So as a safety measure, we will now use the same test that is used to
   #trigger a controlled trap in the clientside function to destroy the
   #score.vector and information.matrix in the study with the problem.
-  
+
   #CHECK Y VECTOR VALIDITY
   y.invalid <- 0
-  
+
   #COUNT NUMBER OF UNIQUE NON-MISSING VALUES - DISCLOSURE RISK ONLY ARISES WITH TWO LEVELS
   unique.values.noNA.y <- unique(y.vect[stats::complete.cases(y.vect)])
-  
+
   #IF TWO LEVELS, CHECK WHETHER EITHER LEVEL 0 < n < nfilter.tab
-  
+
   if(length(unique.values.noNA.y)==2){
     tabvar<-table(y.vect)[table(y.vect)>=1]   #tabvar COUNTS N IN ALL CATEGORIES WITH AT LEAST ONE OBSERVATION
     min.category<-min(tabvar)
@@ -124,19 +124,19 @@ glmDS1.o <- function(formula, family, weights, data){
       errorMessage<-"ERROR: y vector is binary with one category less than filter threshold for table cell size"
     }
   }
-  
-  #CHECK X MATRIX VALIDITY 
-  #Check no dichotomous X vectors with between 1 and filter.threshold 
-  #observations at either level 
+
+  #CHECK X MATRIX VALIDITY
+  #Check no dichotomous X vectors with between 1 and filter.threshold
+  #observations at either level
   dimX<-dim((X.mat))
-  
+
   num.Xpar<-dimX[2]
-  
+
   Xpar.invalid<-rep(0,num.Xpar)
-  
+
   for(pj in 1:num.Xpar){
-    unique.values.noNA<-unique((X.mat[,pj])[stats::complete.cases(X.mat[,pj])]) 
-    
+    unique.values.noNA<-unique((X.mat[,pj])[stats::complete.cases(X.mat[,pj])])
+
     if(length(unique.values.noNA)==2){
       tabvar<-table(X.mat[,pj])[table(X.mat[,pj])>=1] #tabvar COUNTS N IN ALL CATEGORIES WITH AT LEAST ONE OBSERVATION
       min.category<-min(tabvar)
@@ -146,13 +146,13 @@ glmDS1.o <- function(formula, family, weights, data){
       }
     }
   }
-  
-  
+
+
   #CHECK W VECTOR VALIDITY
   w.invalid<-0
-  
+
   unique.values.noNA.w<-unique(w.vect[stats::complete.cases(w.vect)])
-  
+
   if(length(unique.values.noNA.w)==2){
     tabvar<-table(w.vect)[table(w.vect)>=1]   #tabvar COUNTS N IN ALL CATEGORIES WITH AT LEAST ONE OBSERVATION
     min.category<-min(tabvar)
@@ -168,11 +168,11 @@ glmDS1.o <- function(formula, family, weights, data){
   #error is only apparent once the main main iterations have started via glmDS2
   #the equivalent tests in glmDS2 will destroy the info.matrix and score.vector in the affected study so
   #the model fitting will simply terminate.
-  
-  
+
+
   return(list(dimX=dimX,coef.names=coef.names,y.invalid=y.invalid,Xpar.invalid=Xpar.invalid,w.invalid=w.invalid,
               glm.saturation.invalid=glm.saturation.invalid,errorMessage=errorMessage))
-  
+
 }
 #AGGREGATE FUNCTION
-# glmDS1.o
+# glmDS1

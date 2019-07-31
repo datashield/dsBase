@@ -20,11 +20,11 @@
 #' @export
 #' @author Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
 #'
-histogramDS.o <- function (xvect, num.breaks, method.indicator, k, noise){
+histogramDS <- function (xvect, num.breaks, method.indicator, k, noise){
 
   #############################################################
   # MODULE 1: CAPTURE THE nfilter SETTINGS                    #
-  thr <- listDisclosureSettingsDS.o()                         #
+  thr <- listDisclosureSettingsDS()                         #
   nfilter.tab <- as.numeric(thr$nfilter.tab)                  #
   #nfilter.glm <- as.numeric(thr$nfilter.glm)                 #
   #nfilter.subset <- as.numeric(thr$nfilter.subset)           #
@@ -40,7 +40,7 @@ histogramDS.o <- function (xvect, num.breaks, method.indicator, k, noise){
     # the study-specific seed for random number generation
     seed <- getOption("datashield.seed")
     if (is.null(seed))
-        stop("histogramDS.o requires Opal 2.14 or higher to operate", call.=FALSE)
+        stop("histogramDS requires Opal 2.14 or higher to operate", call.=FALSE)
     set.seed(seed)
 
     rr <- c(min(xvect, na.rm=TRUE), max(xvect, na.rm=TRUE))
@@ -150,7 +150,7 @@ histogramDS.o <- function (xvect, num.breaks, method.indicator, k, noise){
     # the study-specific seed for random number generation
     seed <- getOption("datashield.seed")
     if (is.null(seed))
-        stop("histogramDS.o requires Opal 2.14 or higher to operate", call.=FALSE)
+        stop("histogramDS requires Opal 2.14 or higher to operate", call.=FALSE)
     set.seed(seed)
 
     # generate the noise-augmented vector
@@ -180,4 +180,4 @@ histogramDS.o <- function (xvect, num.breaks, method.indicator, k, noise){
 
 }
 # AGGREGATE FUNCTION
-# histogramDS.o
+# histogramDS

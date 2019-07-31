@@ -1,57 +1,57 @@
 #'
-#' @title dataFrameSubsetDS1.o an aggregate function called by ds.dataFrameSubset.o
+#' @title dataFrameSubsetDS1 an aggregate function called by ds.dataFrameSubset
 #' @description First serverside function for subsetting a data frame by row or by column.
 #' @details A data frame is a list of variables all with the same number of rows,
-#' which is of class 'data.frame'. For all details see the help header for ds.dataFrameSubset.o
+#' which is of class 'data.frame'. For all details see the help header for ds.dataFrameSubset
 #' @param df.name a character string providing the name for the data.frame
 #' to be sorted. <df.name> argument generated and passed directly to
-#' dataFrameSubsetDS1 by ds.dataFrameSubset.o
+#' dataFrameSubsetDS1 by ds.dataFrameSubset
 #' @param V1.name A character string specifying the name of a subsetting vector
 #' to which a Boolean operator will be applied to define the subset to be created.
 #' <V1.name> argument generated and passed directly to
-#' dataFrameSubsetDS1 by ds.dataFrameSubset.o
+#' dataFrameSubsetDS1 by ds.dataFrameSubset
 #' @param V2.name A character string specifying the name of the vector
 #' or scalar to which the values in the vector specified by the argument <V1.name>
 #' is to be compared.
 #' <V2.name> argument generated and passed directly to
-#' dataFrameSubsetDS1 by ds.dataFrameSubset.o
+#' dataFrameSubsetDS1 by ds.dataFrameSubset
 #' @param Boolean.operator.n A character string specifying one of six possible Boolean operators:
 #' '==', '!=', '>', '>=', '<', '<='
 #' <Boolean.operator.n> argument generated and passed directly to
-#' dataFrameSubsetDS1 by ds.dataFrameSubset.o
+#' dataFrameSubsetDS1 by ds.dataFrameSubset
 #' @param keep.cols a numeric vector specifying the numbers of the columns to be kept in the
 #' final subset when subsetting by column. For example: keep.cols=c(2:5,7,12) will keep
 #' columns 2,3,4,5,7 and 12.
 #' <keep.cols> argument generated and passed directly to
-#' dataFrameSubsetDS1 by ds.dataFrameSubset.o
+#' dataFrameSubsetDS1 by ds.dataFrameSubset
 #' @param rm.cols a numeric vector specifying the numbers of the columns to be removed before
 #' creating the final subset when subsetting by column. For example: rm.cols=c(2:5,7,12)
 #' will remove columns 2,3,4,5,7 and 12.
 #' <rm.cols> argument generated and passed directly to
-#' dataFrameSubsetDS1 by ds.dataFrameSubset.o
+#' dataFrameSubsetDS1 by ds.dataFrameSubset
 #' @param keep.NAs logical, if TRUE any NAs in the vector holding the final Boolean vector
 #' indicating whether a given row should be included in the subset will be converted into
 #' 1s and so they will be included in the subset. Such NAs could be caused by NAs in
 #' either <V1.name> or <V2.name>. If FALSE or NULL NAs in the final Boolean vector will
 #' be converted to 0s and the corresponding row will therefore be excluded from the subset.
 #' <keep.NAs> argument generated and passed directly to
-#' dataFrameSubsetDS1 by ds.dataFrameSubset.o
-#' @return This first serverside function called by ds.dataFrameSubset.o provides
+#' dataFrameSubsetDS1 by ds.dataFrameSubset
+#' @return This first serverside function called by ds.dataFrameSubset provides
 #' first level traps for a comprehensive series of disclosure risks which can be
-#' returned directly to the clientside because dataFrameSubsetDS1.o is an aggregate
-#' function. The second serverside function called by ds.dataFrameSubset.o
-#' (dataFrameSubsetDS2.o) carries out most of the same disclosure tests, but it is
+#' returned directly to the clientside because dataFrameSubsetDS1 is an aggregate
+#' function. The second serverside function called by ds.dataFrameSubset
+#' (dataFrameSubsetDS2) carries out most of the same disclosure tests, but it is
 #' an assign function because it writes the subsetted data.frame to the serverside.
 #' In consequence, it records error messages as studysideMessages which can only be
-#' retrieved using ds.message.o
+#' retrieved using ds.message
 #' @author DataSHIELD Development Team
 #' @export
 #'
-dataFrameSubsetDS1.o <- function(df.name=NULL,V1.name=NULL,V2.name=NULL,Boolean.operator.n=NULL,keep.cols=NULL,rm.cols=NULL,keep.NAs=NULL){
+dataFrameSubsetDS1 <- function(df.name=NULL,V1.name=NULL,V2.name=NULL,Boolean.operator.n=NULL,keep.cols=NULL,rm.cols=NULL,keep.NAs=NULL){
 
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS
-thr <- listDisclosureSettingsDS.o()
+thr <- listDisclosureSettingsDS()
 #nfilter.tab<-as.numeric(thr$nfilter.tab)
 #nfilter.glm<-as.numeric(thr$nfilter.glm)
 nfilter.subset <- as.numeric(thr$nfilter.subset)
@@ -65,7 +65,7 @@ nfilter.string <- as.numeric(thr$nfilter.string)
 #SCRIPT.TO.CHECK.VALIDITY.OF.EVALUATABLE.RCODE#
 ###############################################
 
-#ARGUMENTS TO BE EVALUATED	
+#ARGUMENTS TO BE EVALUATED
 #keep.cols
 if(!is.null(keep.cols)){
 
@@ -97,7 +97,7 @@ if(sum(is.na(keep.code.n))>0){
 }
 
 }
-#ARGUMENTS TO BE EVALUATED	
+#ARGUMENTS TO BE EVALUATED
 #rm.cols
   if(!is.null(rm.cols)){
 
@@ -178,7 +178,7 @@ if(sum(is.na(keep.code.n))>0){
 
   ########### CHECK LENGTHS OF V1, V2 ARE CONSISTENT WITH COLUMN LENGTH OF df TO BE SUBSETTED
   df.col.length <- dim(df2subset)[1]
-  V1.length <- length(V1)   
+  V1.length <- length(V1)
   V2.length <- length(V2)
 
   if(!((df.col.length == V1.length))){
@@ -260,7 +260,7 @@ if(sum(is.na(keep.code.n))>0){
     studysideWarning8<-"malicious attempt to identify individuals by differencing, this will become obvious in the"
     studysideWarning9<-"session log and you will be sanctioned. Possible consequences include loss of future access"
     studysideWarning10<-"to DataSHIELD and/or legal penalties."
-    
+
     return.message <- list(studysideWarning1,studysideWarning2,studysideWarning3,studysideWarning4,
                    studysideWarning5,studysideWarning6,studysideWarning7,studysideWarning8,
 				   studysideWarning9,studysideWarning10)
@@ -276,4 +276,4 @@ if(sum(is.na(keep.code.n))>0){
 
 }
 # AGGREGATE FUNCTION
-# dataFrameSubsetDS1.o
+# dataFrameSubsetDS1

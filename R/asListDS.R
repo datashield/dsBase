@@ -1,5 +1,5 @@
-#' @title asListDS.o a serverside aggregate function called by ds.asList.o
-#' @description Coerces an R object into a list 
+#' @title asListDS a serverside aggregate function called by ds.asList
+#' @description Coerces an R object into a list
 #' @details Unlike most other class coercing functions this is
 #' an aggregate function rather than an assign function. This
 #' is because the {datashield.assign} function in opal deals specially with
@@ -10,9 +10,9 @@
 #' @param x.name the name of the input object to be coerced to class
 #' data.matrix. Must be specified in inverted commas. But this argument is
 #' usually specified directly by <x.name> argument of the clientside function
-#' {ds.asList.o}
+#' {ds.asList}
 #' @param newobj is the object hard assigned '<<-' to be the output of the
-#' function written to the serverside  
+#' function written to the serverside
 #' @return the object specified by the <newobj> argument (or its default name
 #' <x.name>.mat) which is written to the serverside.
 #' In addition, two validity messages are returned. The first confirms an output
@@ -21,7 +21,7 @@
 #' the class of the output object should usually be 'list'
 #' @author Amadou Gaye, Paul Burton for DataSHIELD Development Team
 #' @export
-asListDS.o <- function (x.name,newobj){
+asListDS <- function (x.name,newobj){
 
     newobj.class <- NULL
     if(is.character(x.name)){
@@ -42,4 +42,4 @@ asListDS.o <- function (x.name,newobj){
     return(list(return.message=return.message,class.of.newobj=object.class.text))
 }
 #AGGEGATE FUNCTION
-# asListDS.o
+# asListDS

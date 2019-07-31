@@ -6,12 +6,12 @@
 #' @return the dimension of the input object
 #' @author Demetris Avraam, for DataSHIELD Development Team
 #' @export
-#' 
-dimDS.o <- function(x){
+#'
+dimDS <- function(x){
 
   #############################################################
   #MODULE 1: CAPTURE THE nfilter SETTINGS
-  #thr <- listDisclosureSettingsDS.o()
+  #thr <- listDisclosureSettingsDS()
   #nfilter.tab<-as.numeric(thr$nfilter.tab)
   #nfilter.glm<-as.numeric(thr$nfilter.glm)
   #nfilter.subset<-as.numeric(thr$nfilter.subset)
@@ -26,4 +26,4 @@ dimDS.o <- function(x){
 
 }
 #AGGREGATE FUNCTION
-# dimDS.o
+# dimDS

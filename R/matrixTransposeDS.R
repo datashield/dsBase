@@ -1,6 +1,6 @@
-#' 
-#' @title matrixTransposeDS serverside assign function called by ds.matrixTranspose 
-#' @description Transposes a matrix A and writes the output to the serverside 
+#'
+#' @title matrixTransposeDS serverside assign function called by ds.matrixTranspose
+#' @description Transposes a matrix A and writes the output to the serverside
 #' @details Undertakes standard matrix transposition. This operation converts matrix
 #' A to matrix C where element C[i,j] of matrix C equals element A[j,i] of matrix
 #' A. Matrix A therefore has the same number of rows as matrix C has columns and
@@ -14,7 +14,7 @@
 matrixTransposeDS <- function(M1.name=NULL){
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS           			#
-thr<-listDisclosureSettingsDS.o()							#
+thr<-listDisclosureSettingsDS()							#
 #nfilter.tab<-as.numeric(thr$nfilter.tab)								#
 #nfilter.glm<-as.numeric(thr$nfilter.glm)								#
 #nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
@@ -53,7 +53,7 @@ if(is.data.frame(M1))
 	}
 
  
-	
+
 output<-t(M1)
 
 

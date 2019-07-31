@@ -1,11 +1,11 @@
-#' 
-#' @title matrixMultDS serverside assign function called by ds.matrixMult 
+#'
+#' @title matrixMultDS serverside assign function called by ds.matrixMult
 #' @description Calculates the matrix product of two matrices and writes output to serverside
 #' @details Undertakes standard matrix multiplication where with input matrices A and B with
 #' dimensions A: mxn and B: nxp the output C has dimensions mxp and each elemnt C[i,j] has
 #' value equal to the dot product of row i of A and column j of B where the dot product
 #' is obtained as sum(A[i,1]*B[1,j] + A[i,2]*B[2,j] + .... + A[i,n]*B[n,j]). This calculation
-#' is only valid if the number of columns of A is the same as the number of rows of B 
+#' is only valid if the number of columns of A is the same as the number of rows of B
 #' @param M1.name  A character string specifying the name of the first matrix (M1) argument
 #' specified by the M1 argument in the original call to ds.matrixMult
 #' @param M2.name  A character string specifying the name of the second matrix (M2) argument
@@ -19,7 +19,7 @@ matrixMultDS <- function(M1.name=NULL, M2.name=NULL){
 
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS           			#
-thr<-listDisclosureSettingsDS.o()							#
+thr<-listDisclosureSettingsDS()							#
 #nfilter.tab<-as.numeric(thr$nfilter.tab)								#
 #nfilter.glm<-as.numeric(thr$nfilter.glm)								#
 #nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
@@ -88,7 +88,7 @@ if(ncol(M1)!=nrow(M2))
 	return(list(studysideMessage=studysideMessage))
 	}
 
-	
+
 output<-M1%*%M2
 
 

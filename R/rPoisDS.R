@@ -1,15 +1,15 @@
-#' @title rPoisDS.o serverside assign function
-#' @description primary serverside assign function called by ds.rPois.o
+#' @title rPoisDS serverside assign function
+#' @description primary serverside assign function called by ds.rPois
 #' @details Generates the vector of pseudorandom numbers (non-negative
 #' integers) from a Poisson distribution in each data source as specified
-#' by the arguments of ds.rPois.o. This serverside
+#' by the arguments of ds.rPois. This serverside
 #' function is effectively the same as the function rpois() in native R
 #' and its arguments are the same.
 #' @param n length of the pseudorandom number vector to be generated
-#' as specified by the argument <samp.size> in the function ds.rPois.o
+#' as specified by the argument <samp.size> in the function ds.rPois
 #' @param lambda a numeric scalar specifying the expected count of the Poisson
 #' distribution used to generate the random counts. Specified directly
-#' by the lambda argument in ds.rPois.o. May be a scalar or a vector allowing lambda
+#' by the lambda argument in ds.rPois. May be a scalar or a vector allowing lambda
 #' to vary from observation to observation.
 #' @return Writes the pseudorandom number vector with the characteristics specified
 #' in the function call as a new serverside vector on the data source on which
@@ -21,7 +21,7 @@
 #' created in each source.
 #' @author Paul Burton for DataSHIELD Development Team
 #' @export
-rPoisDS.o<-function (n, lambda = 1){ 
+rPoisDS<-function (n, lambda = 1){
 
 #If lambda is defined by a serverside vector
 #first convert its name into the corresponding active vectors
@@ -30,10 +30,8 @@ rPoisDS.o<-function (n, lambda = 1){
 	command.text<-lambda
 	lambda<-eval(parse(text=command.text))
 	}
-		
+
 	stats::rpois(n, lambda=lambda)
 }
 #ASSIGN FUNCTION
-# rPoisDS.o
-
-
+# rPoisDS

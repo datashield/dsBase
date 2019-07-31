@@ -1,9 +1,9 @@
-#' 
-#' @title matrixInvertDS serverside assign function called by ds.matrixInvert 
+#'
+#' @title matrixInvertDS serverside assign function called by ds.matrixInvert
 #' @description Inverts a square matrix A and writes the output to the serverside
 #' @details Undertakes standard matrix inversion. This operation is only
 #' possible if the number of columns and rows of A are the same and the matrix
-#' is non-singular - positive definite (eg there is no row or column that is all zeros) 
+#' is non-singular - positive definite (eg there is no row or column that is all zeros)
 #' @param M1.name  A character string specifying the name of the matrix to be inverted
 #' @return Output is the matrix representing the inverse of A which is written
 #' to the serverside. For more details see help for ds.matrixInvert
@@ -14,7 +14,7 @@ matrixInvertDS <- function(M1.name=NULL){
 
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS           			#
-thr<-listDisclosureSettingsDS.o()							#
+thr<-listDisclosureSettingsDS()							#
 #nfilter.tab<-as.numeric(thr$nfilter.tab)								#
 #nfilter.glm<-as.numeric(thr$nfilter.glm)								#
 #nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
@@ -61,7 +61,7 @@ if(ncol(M1)!=nrow(M1))
 	studysideMessage<-"FAILED: invalid dimensions M1 must be square: ncol must equal nrow, please respecify"
 	return(list(studysideMessage=studysideMessage))
 	}
-	
+
 #Check can be inverted (not singular)
 if(det(M1)==0.000)
 	{
@@ -70,7 +70,7 @@ if(det(M1)==0.000)
 	}
 
 
-	
+
 output<-solve(M1)
 
 

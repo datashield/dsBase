@@ -1,6 +1,6 @@
 #' @title matrixDetDS assign function called by ds.matrixDet
 #' @description Calculates the determinant of a square matrix A and writes
-#' the output to the serverside 
+#' the output to the serverside
 #' @details Calculates the determinant of a square matrix (for additional
 #' information see help for {det} function in native R). This operation is only
 #' possible if the number of columns and rows of A are the same.
@@ -17,7 +17,7 @@ matrixDetDS2 <- function(M1.name=NULL,logarithm){
 
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS           			#
-thr<-listDisclosureSettingsDS.o()							#
+thr<-listDisclosureSettingsDS()							#
 #nfilter.tab<-as.numeric(thr$nfilter.tab)								#
 #nfilter.glm<-as.numeric(thr$nfilter.glm)								#
 #nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
@@ -61,8 +61,8 @@ if(ncol(M1)!=nrow(M1))
 	studysideMessage<-"FAILED: invalid dimensions M1 must be square: ncol must equal nrow, please respecify"
 	return(list(studysideMessage=studysideMessage))
 	}
-	
-	
+
+
 output<-determinant(M1,logarithm=logarithm)
 
 

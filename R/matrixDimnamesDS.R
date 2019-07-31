@@ -1,6 +1,6 @@
 #' @title matrixDimnamesDS assign function called by ds.matrixDimnames
 #' @description Adds dimnames (row names, column names or both) to
-#' a matrix on the serverside. 
+#' a matrix on the serverside.
 #' @details Adds dimnames (row names, column names or both) to
 #' a matrix on the serverside. Similar to the {dimnames} function
 #' in native R. For more details see help for
@@ -23,7 +23,7 @@ matrixDimnamesDS <- function(M1.name=NULL,dimnames){
 
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS           			#
-thr<-listDisclosureSettingsDS.o()							#
+thr<-listDisclosureSettingsDS()							#
 #nfilter.tab<-as.numeric(thr$nfilter.tab)								#
 #nfilter.glm<-as.numeric(thr$nfilter.glm)								#
 #nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
@@ -44,7 +44,7 @@ if(length.M1.name>nfilter.stringShort)
 	return(list(studysideMessage=studysideMessage))
 	}
 
-	
+
 #Check length of dimnames string not so long as to provide a risk of hidden code
 #This could legitimately be quite long so allow 2*nfilter.string
 
@@ -58,7 +58,7 @@ if(!is.null(dimnames))
 		paste0("FAILED: dimnames is too long it could hide concealed code, please shorten to <= 2 x nfilter.string = ",
 			(nfilter.string*2)," characters")
 		return(list(studysideMessage=studysideMessage))
-		}  
+		}
 	}
 
 #EVAL M1
