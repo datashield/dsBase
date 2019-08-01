@@ -25,7 +25,7 @@ scoreVectDS <- function(data, formula, family, clusterID, corstr, alpha, phi, st
   startBetas <- as.numeric(unlist(strsplit(startBetas,split=',')))
   
   # THESE TWO LINES GET THE 'X' and "Y" WE WERE GETTING THROUGH ONE the geeglm FUNCTION OF 'GEEPACK'
-  X.mat <- model.matrix(formula, data)
+  X.mat <- stats::model.matrix(formula, data)
   outcomeName <- all.vars(formula)[1]
   y.vect <- as.numeric(as.character(data[,which(colnames(data) == outcomeName)]))
   
@@ -46,10 +46,10 @@ scoreVectDS <- function(data, formula, family, clusterID, corstr, alpha, phi, st
   lp.vect <- X.mat%*%startBetas
   
   # VALUES FOR THE INVERSE LINK FUNCTION AND THE RELATED MEAN AND VARIANCE
-  if(family == "binomial"){ famlink <- binomial(link = "logit") }
-  if(family == "gaussian"){ famlink <- gaussian(link = "identity") }
-  if(family == "Gamma"){ famlink <- Gamma(link = "inverse") }
-  if(family == "poisson"){ famlink <- poisson(link = "log") }
+  if(family == "binomial"){ famlink <- stats::binomial(link = "logit") }
+  if(family == "gaussian"){ famlink <- stats::gaussian(link = "identity") }
+  if(family == "Gamma"){ famlink <- stats::Gamma(link = "inverse") }
+  if(family == "poisson"){ famlink <- stats::poisson(link = "log") }
   f <- famlink
   mu.vect <- f$linkinv(lp.vect)
   var.vect <- f$variance(mu.vect)
@@ -68,21 +68,21 @@ scoreVectDS <- function(data, formula, family, clusterID, corstr, alpha, phi, st
     # THE ORDER OF THE OBSERVATIONS WITHIN A GROUP IS USED AS POSITION VARIABLE 
     # (THE FIRST ARGUMENT OF THE 'FORM' PARAMETER) AND THE IDS ARE USED AS GROUPING PARAMETER 
     R.mat.AR1 <- nlme::corAR1(alpha, form = ~ 1 | id)
-    R.mat.AR1.i <- Initialize(R.mat.AR1, data=input.table)
+    R.mat.AR1.i <- nlme::Initialize(R.mat.AR1, data=input.table)
     list.of.matrices <- nlme::corMatrix(R.mat.AR1.i)
   }
   
   # MATRIX IF THE CORRELATION STRUCTURE IS 'EXCHANGEABLE'
   if(corstr == "exchangeable"){
     R.mat.EXCH <- nlme::corCompSymm(alpha, form = ~ 1 | id)
-    R.mat.EXCH.i <- Initialize(R.mat.EXCH, data=input.table)
+    R.mat.EXCH.i <- nlme::Initialize(R.mat.EXCH, data=input.table)
     list.of.matrices <- nlme::corMatrix(R.mat.EXCH.i)
   }
   
   # MATRIX IF THE CORRELATION STRUCTURE IS 'INDEPENDENT'
   if(corstr == "independence"){
     R.mat.INDP <- nlme::corCompSymm(0, form = ~ 1 | id)
-    R.mat.INDP.i <- Initialize(R.mat.INDP, data=input.table)
+    R.mat.INDP.i <- nlme::Initialize(R.mat.INDP, data=input.table)
     list.of.matrices <- nlme::corMatrix(R.mat.INDP.i)
     
   }
@@ -91,16 +91,16 @@ scoreVectDS <- function(data, formula, family, clusterID, corstr, alpha, phi, st
   if(corstr == "unstructured"){
     mt.temp <- matrix(0, nrow=max(table(id)), ncol=max(table(id)))
     num.alpha.vals <- length(mt.temp[col(mt.temp) < row(mt.temp)])
-    R.mat.unstr <- corSymm(alpha[1:num.alpha.vals], form = ~ 1 | id)
-    R.mat.unstr.i <- Initialize(R.mat.unstr, data=input.table)
-    list.of.matrices <- corMatrix(R.mat.unstr.i)
+    R.mat.unstr <- nlme::corSymm(alpha[1:num.alpha.vals], form = ~ 1 | id)
+    R.mat.unstr.i <- nlme::Initialize(R.mat.unstr, data=input.table)
+    list.of.matrices <- nlme::corMatrix(R.mat.unstr.i)
   }
   
   # MATRIX IF THE CORRELATION STRUCTURE IS 'FIXED' (USER DEFINED)
   if(corstr == "fixed"){
     low.diag.elts <- zcor[col(zcor) < row(zcor)]
     R.mat.userdef <- nlme::corSymm(low.diag.elts, form = ~ 1 | id)
-    R.mat.userdef.i <- Initialize(R.mat.userdef, data=input.table)
+    R.mat.userdef.i <- nlme::Initialize(R.mat.userdef, data=input.table)
     list.of.matrices <- nlme::corMatrix(R.mat.userdef.i)
   }
   

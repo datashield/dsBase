@@ -47,7 +47,7 @@ subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, v
   
   # if 'complt' is set to TRUE, get continue with a dataset with complete cases only
   if(complt){
-    cc <- complete.cases(D)
+    cc <- stats::complete.cases(D)
     xx <- which(cc == TRUE)
     Dtemp <- D
     if(is.vector(D) | is.factor(D)){
