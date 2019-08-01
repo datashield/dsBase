@@ -23,8 +23,8 @@ alphaPhiDS <- function (data, formula, family, clusterID, corstr, startBetas){
   startBetas  <- as.numeric(unlist(strsplit(startBetas,split=',')))
   
   # these two lines the 'X' and "Y" obtained through the 'geeglm'function of the package 'geepack'
-  X.mat <- model.matrix(formula, data)
-  Y.vec <- as.vector(model.response(model.frame(formula, data), type="numeric"))
+  X.mat <- stats::model.matrix(formula, data)
+  Y.vec <- as.vector(stats::model.response(stats::model.frame(formula, data), type="numeric"))
   
   npara <- dim(X.mat)[2]
   N <- length(id)
@@ -34,17 +34,17 @@ alphaPhiDS <- function (data, formula, family, clusterID, corstr, startBetas){
   maxclsz <- max(clusz)
 
   # extracting family and similar information
-  if(family == "binomial"){ famlink <- binomial(link = "logit") }
-  if(family == "gaussian"){ famlink <- gaussian(link = "identity") }
-  if(family == "Gamma"){ famlink <- Gamma(link = "inverse") }
-  if(family == "poisson"){ famlink <- poisson(link = "log") }
+  if(family == "binomial"){ famlink <- stats::binomial(link = "logit") }
+  if(family == "gaussian"){ famlink <- stats::gaussian(link = "identity") }
+  if(family == "Gamma"){ famlink <- stats::Gamma(link = "inverse") }
+  if(family == "poisson"){ famlink <- stats::poisson(link = "log") }
   f <- famlink
   LINKS <- c("identity", "logit", "probit", "cloglog", "log", "inverse", "fisherz", "lwybc2", "lwylog")
   VARIANCES <- c("gaussian", "binomial", "poisson", "Gamma")
   mean.link <- f$link
   variance <- f$variance
   mean.link.v <- pmatch(mean.link, LINKS, -1, TRUE)
-  mu <- quasi(LINKS[mean.link.v])$linkinv(X.mat%*%startBetas)
+  mu <- stats::quasi(LINKS[mean.link.v])$linkinv(X.mat%*%startBetas)
   
   # extracting summary statistics to calculate phi
   pr2 <- (as.numeric(Y.vec) - as.numeric(mu))^2/f$variance(mu)

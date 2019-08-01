@@ -18,13 +18,13 @@
 changeRefGroupDS <- function(xvect, ref=NULL, reorderByRef=NULL){
   
   if(reorderByRef){
-    temp_xvect = relevel(xvect, ref)
+    temp_xvect = stats::relevel(xvect, ref)
     # now reorder puting the ref group first
     idx1 <- which(xvect == ref)
     idx2 <- which(xvect != ref)
     new_xvect <- c(temp_xvect[idx1], temp_xvect[idx2])
   }else{
-    new_xvect <- relevel(xvect, ref)
+    new_xvect <- stats::relevel(xvect, ref)
   }
   
   return(new_xvect)

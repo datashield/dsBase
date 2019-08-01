@@ -23,15 +23,15 @@ corDS <-function (x=NULL, y=NULL, use=NULL){
       x[, idx] <- sapply(x[, idx], as.character)
       x[, idx] <- sapply(x[, idx], as.numeric)
     }
-    output1 <- cor(x,use=todo)
+    output1 <- stats::cor(x,use=todo)
     completeCount <- output1
     cls <- colnames(x)
     for(i in 1:dim(completeCount)[2]){
       for(j in 1:dim(completeCount)[2]){
         if(i == j){
-          count <- length(which((complete.cases(x[,1])==TRUE)))
+          count <- length(which((stats::complete.cases(x[,1])==TRUE)))
         }else{
-          count <- length(which((complete.cases(cbind(x[,i], x[,j]))==TRUE)))
+          count <- length(which((stats::complete.cases(cbind(x[,i], x[,j]))==TRUE)))
         }
         completeCount[i,j] <- round(count,0)
       }
@@ -47,8 +47,8 @@ corDS <-function (x=NULL, y=NULL, use=NULL){
       y <- as.character(y)
       y <- as.numeric(y)
     }
-    output1 <- cor(x,y,use=todo)
-    output2 <- count <- length(which((complete.cases(cbind(x, y))==TRUE)))
+    output1 <- stats::cor(x,y,use=todo)
+    output2 <- count <- length(which((stats::complete.cases(cbind(x, y))==TRUE)))
     output <- list(output1, output2)
   }
   
