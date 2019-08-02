@@ -35,6 +35,7 @@ AggregateMethods:
     dimDS,
     lengthDS,
     scatterPlotDS,
+    table1DDS,
     table2DDS,
     matrixDetDS1,
     histogramDS,
