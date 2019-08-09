@@ -359,7 +359,7 @@ if(x.invalid==1)
 	#Keep vector name consistent
 	o.vect<-offsetvar
 
-	unique.values.noNA.o<-unique(o.vect[complete.cases(o.vect)])
+	unique.values.noNA.o<-unique(o.vect[stats::complete.cases(o.vect)])
 
 	if(length(unique.values.noNA.o)==2){
 		tabvar<-table(o.vect)[table(o.vect)>=1]   #tabvar counts n in all categories with at least one observation
