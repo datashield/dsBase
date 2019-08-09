@@ -2,7 +2,7 @@
 % Please edit documentation in R/glmDS2.R
 \name{glmDS2}
 \alias{glmDS2}
-\title{glmDS2}
+\title{glmDS2 called by ds.glm}
 \usage{
 glmDS2(formula, family, beta.vect, offset, weights, dataName)
 }
@@ -24,7 +24,7 @@ vector of regression coefficients at the current iteration}
 the data to be analysed under the specified model same}
 }
 \description{
-This is the second serverside function called by ds.glm.
+This is the second serverside aggregate function called by ds.glm.
 }
 \details{
 It is an
@@ -38,5 +38,5 @@ created and returned to ds.glm on the clientside.
 For more details please see the extensive header for ds.glm.
 }
 \author{
-Burton PR
+Burton PR for DataSHIELD Development Team
 }

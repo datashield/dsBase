@@ -2,9 +2,9 @@
 % Please edit documentation in R/glmDS1.R
 \name{glmDS1}
 \alias{glmDS1}
-\title{glmDS1}
+\title{glmDS1 called by ds.glm}
 \usage{
-glmDS1(formula, family, weights, data)
+glmDS1(formula, family, weights, offset, data)
 }
 \arguments{
 \item{formula}{a glm() formula consistent with R syntax eg U~x+y+Z to regress
@@ -15,12 +15,14 @@ variables U on x,y and Z}
 
 \item{weights}{an optional variable providing regression weights}
 
+\item{offset}{the offset}
+
 \item{data}{an
 optional character string specifying a data.frame object holding the data to be
 analysed under the specified model}
 }
 \description{
-This is the first serverside function called by ds.glm
+This is the first serverside aggregate function called by ds.glm
 }
 \details{
 It is an
@@ -30,5 +32,5 @@ iterative fitting of the generalized linear model that has been
 been specified. For more details please see the extensive header for ds.glm.
 }
 \author{
-Burton PR
+Burton PR for DataSHIELD Development Team
 }
