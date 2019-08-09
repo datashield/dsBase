@@ -25,6 +25,7 @@ AggregateMethods:
     testObjExistsDS,
     listDisclosureSettingsDS,
     dataFrameSubsetDS1,
+    glmSLMADS1,
     glmSLMADS2,
     messageDS,
     setSeedDS,
