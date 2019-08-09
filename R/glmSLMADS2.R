@@ -144,14 +144,14 @@ errorMessage2<-"No errors"
 	
 	Ntotal <- dim(all.data)[1]
 	
-	nomiss.any <- complete.cases(all.data)
+	nomiss.any <- stats::complete.cases(all.data)
 	nomiss.any.data <- all.data[nomiss.any,]
 	N.nomiss.any <- dim(nomiss.any.data)[1]
 
 	Nvalid <- N.nomiss.any
 	Nmissing <- Ntotal-Nvalid
 
-	formula2use <- as.formula(paste0(Reduce(paste, deparse(originalFormula)))) # here we need the formula as a 'call' object
+	formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula)))) # here we need the formula as a 'call' object
 
 	################################################################## 
 	#sort out offset and weights
@@ -184,7 +184,7 @@ errorMessage2<-"No errors"
 
 
 
-	mg <- glm(formula2use, family=family, x=TRUE, offset=offset, weights=weights, data=dataDF)
+	mg <- stats::glm(formula2use, family=family, x=TRUE, offset=offset, weights=weights, data=dataDF)
 	
 y.vect<-mg$y
 X.mat<-mg$x
@@ -219,7 +219,7 @@ errorMessage.gos<-paste0("ERROR: Model is oversaturated (too many model paramete
 	y.invalid<-0
 
 #Count number of unique non-missing values - disclosure risk only arises with two levels
-    unique.values.noNA.y<-unique(y.vect[complete.cases(y.vect)])
+    unique.values.noNA.y<-unique(y.vect[stats::complete.cases(y.vect)])
 
 #If two levels, check whether either level 0 < n < nfilter.tab
 	if(length(unique.values.noNA.y)==2){
@@ -239,8 +239,8 @@ errorMessage.gos<-paste0("ERROR: Model is oversaturated (too many model paramete
 	Xpar.invalid<-rep(0,num.p)
 	x.invalid<-0 #Any x parameter invalud
 
-  	for(pj in 1:num.p){
-	unique.values.noNA<-unique((X.mat[,pj])[complete.cases(X.mat[,pj])]) 
+        for(pj in 1:num.p){
+	unique.values.noNA<-unique((X.mat[,pj])[stats::complete.cases(X.mat[,pj])]) 
 
 	if(length(unique.values.noNA)==2){
 		tabvar<-table(X.mat[,pj])[table(X.mat[,pj])>=1] #tabvar counts n in all categories with at least one observation
@@ -263,7 +263,7 @@ if(!is.null(pw.vect))
 {
 	w.vect<-pw.vect
 
-	unique.values.noNA.w<-unique(w.vect[complete.cases(w.vect)])
+	unique.values.noNA.w<-unique(w.vect[stats::complete.cases(w.vect)])
 
 	if(length(unique.values.noNA.w)==2){
 		tabvar<-table(w.vect)[table(w.vect)>=1]   #tabvar counts n in all categories with at least one observation
@@ -283,7 +283,7 @@ if(!is.null(offset.vect))
 	#Keep vector name consistent
 	o.vect<-offset.vect
 
-	unique.values.noNA.o<-unique(o.vect[complete.cases(o.vect)])
+	unique.values.noNA.o<-unique(o.vect[stats::complete.cases(o.vect)])
 
 	if(length(unique.values.noNA.o)==2){
 		tabvar<-table(o.vect)[table(o.vect)>=1]   #tabvar counts n in all categories with at least one observation
@@ -310,7 +310,7 @@ disclosure.risk<-1
 
 if(disclosure.risk==0)
 {
-	mg <- glm(formula2use, family=family, offset=offset, weights=weights, data=dataDF)
+	mg <- stats::glm(formula2use, family=family, offset=offset, weights=weights, data=dataDF)
 
 	outlist<-list(rank=mg$rank, aic=mg$aic, 
              iter=mg$iter, converged=mg$converged,

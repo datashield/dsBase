@@ -58,8 +58,8 @@ nfilter.glm<-as.numeric(thr$nfilter.glm)                    #
   formulatext <- gsub("*", "|", formulatext, fixed=TRUE)
   formulatext <- gsub("||", "|", formulatext, fixed=TRUE)
 
-   formula2use <- as.formula(paste0(Reduce(paste, deparse(originalFormula)))) # here we need the formula as a 'call' object
-   mod.glm.ds <- glm(formula2use, family=family, x=TRUE, control=glm.control(maxit=1), contrasts=NULL, data=dataTable)
+   formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula)))) # here we need the formula as a 'call' object
+   mod.glm.ds <- stats::glm(formula2use, family=family, x=TRUE, control=stats::glm.control(maxit=1), contrasts=NULL, data=dataTable)
 
   
 #Remember model.variables and then varnames INCLUDE BOTH yvect AND linear predictor components 
@@ -140,7 +140,7 @@ nfilter.glm<-as.numeric(thr$nfilter.glm)                    #
 	y.invalid<-0
 
 #COUNT NUMBER OF UNIQUE NON-MISSING VALUES - DISCLOSURE RISK ONLY ARISES WITH TWO LEVELS
-    unique.values.noNA.y<-unique(y.vect[complete.cases(y.vect)])
+    unique.values.noNA.y<-unique(y.vect[stats::complete.cases(y.vect)])
 
 #IF TWO LEVELS, CHECK WHETHER EITHER LEVEL 0 < n < nfilter.tab
 
@@ -163,7 +163,7 @@ nfilter.glm<-as.numeric(thr$nfilter.glm)                    #
 	Xpar.invalid<-rep(0,num.Xpar)
 
   	for(pj in 1:num.Xpar){
-	unique.values.noNA<-unique((X.mat[,pj])[complete.cases(X.mat[,pj])]) 
+	unique.values.noNA<-unique((X.mat[,pj])[stats::complete.cases(X.mat[,pj])]) 
 
 	if(length(unique.values.noNA)==2){
 		tabvar<-table(X.mat[,pj])[table(X.mat[,pj])>=1] #tabvar COUNTS N IN ALL CATEGORIES WITH AT LEAST ONE OBSERVATION
@@ -200,7 +200,7 @@ if(!is.null(offsetvar))
 	#Keep vector name consistent
 	o.vect<-offsetvar
 
-	unique.values.noNA.o<-unique(o.vect[complete.cases(o.vect)])
+	unique.values.noNA.o<-unique(o.vect[stats::complete.cases(o.vect)])
 
 	if(length(unique.values.noNA.o)==2){
 		tabvar<-table(o.vect)[table(o.vect)>=1]   #tabvar counts n in all categories with at least one observation
