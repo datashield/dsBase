@@ -12,9 +12,9 @@ densityGridDS(xvect, yvect, limits = FALSE, x.min = NULL,
 
 \item{yvect}{a numerical vector}
 
-\item{limits}{a logical expression for whether or not limits of the density grid are defined by a user
-If \code{limits} is set to "FALSE", min and max of xvect and yvect are used as a raneg
-If \code{limits} is st to "TRUE", limits defined by x.min, x.max,y.min and y.max are used}
+\item{limits}{a logical expression for whether or not limits of the density grid are defined by
+a user. If \code{limits} is set to "FALSE", min and max of xvect and yvect are used as a range.
+If \code{limits} is set to "TRUE", limits defined by x.min, x.max, y.min and y.max are used.}
 
 \item{x.min}{a minimum value for the x axis of the grid density object, if needed}
 
@@ -33,8 +33,9 @@ a grid density matrix
 Generates a density grid that can then be used for heatmap or countour plots.
 }
 \details{
-Invalid cells (cells with count < to the set filter value) are turn to 0.
+Invalid cells (cells with count < to the set filter value for the minimum allowed
+counts in table cells) are turn to 0.
 }
 \author{
-Isaeva, J. and Gaye, A.
+Julia Isaeva, Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
 }
