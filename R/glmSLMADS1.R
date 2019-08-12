@@ -58,7 +58,7 @@ nfilter.glm<-as.numeric(thr$nfilter.glm)                    #
   formulatext <- gsub("*", "|", formulatext, fixed=TRUE)
   formulatext <- gsub("||", "|", formulatext, fixed=TRUE)
 
-   formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula)))) # here we need the formula as a 'call' object
+   formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = globalenv()) # here we need the formula as a 'call' object
    mod.glm.ds <- stats::glm(formula2use, family=family, x=TRUE, control=stats::glm.control(maxit=1), contrasts=NULL, data=dataTable)
 
   
