@@ -62,7 +62,6 @@ AggregateMethods:
     is.null=base::is.null,
     is.numeric=base::is.numeric,
     length=base::length,
-    levels=base::levels,
     ls=base::ls,
     NROW=base::NROW
 AssignMethods:
