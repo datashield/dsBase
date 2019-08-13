@@ -151,7 +151,7 @@ errorMessage2<-"No errors"
 	Nvalid <- N.nomiss.any
 	Nmissing <- Ntotal-Nvalid
 
-	formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = globalenv()) # here we need the formula as a 'call' object
+	formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula)))) # here we need the formula as a 'call' object
 
 	################################################################## 
 	#sort out offset and weights
