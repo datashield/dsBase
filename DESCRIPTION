@@ -80,7 +80,6 @@ AssignMethods:
     cbindDS,
     cDS,
     changeRefGroupDS,
-    dataframeDS,
     dataFrameDS,
     dataFrameSortDS,
     dataFrameSubsetDS2,
