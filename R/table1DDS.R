@@ -13,7 +13,7 @@
 #' @author Gaye A.
 #' @export
 #'
-table1dDS  <- function(xvect){
+table1DDS  <- function(xvect){
 
   # tabulate the input vector and output the result in a data frame format
   aa <- t(as.data.frame((table(xvect))))
