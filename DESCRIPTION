@@ -81,6 +81,7 @@ AssignMethods:
     cDS,
     changeRefGroupDS,
     dataFrameDS,
+    dataFrameFillDS,
     dataFrameSortDS,
     dataFrameSubsetDS2,
     listDS,
