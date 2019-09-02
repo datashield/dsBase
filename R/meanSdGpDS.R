@@ -97,10 +97,8 @@ meanSdGpDS <- function (X, INDEX){
   ansmat.count<-table(group)
   
   # Set filter for cell sizes that are too small
-  # the minimum number of observations that are allowed (the below function gets the value from opal)
-  # NEED CORRECT SOURCE FUNCTION SPECIFICATION - NOT: opal::setFilterDS()
-  #    nfilter <- opal::setFilterDS()
-  nfilter <- 5
+  # the minimum number of observations that are allowed
+  nfilter <- setFilterDS()
   any.invalid.cell<-(sum(ansmat.count<nfilter&ansmat.count>0)>=1)
   if(!any.invalid.cell)
   {

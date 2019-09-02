@@ -23,7 +23,7 @@ table1DDS  <- function(xvect){
   cc <- cbind(bb, sum(bb[1,], na.rm=TRUE))
   colnames(cc) <- c(aa[1,], "Total")
 
-  # the minimum number of observations that are allowed (the below function gets the value from opal)
+  # the minimum number of observations that are allowed
   nfilter <- setFilterDS()
   
   # check for invalid cells if any found change them to 'NA' and set the validity message accordingly
