@@ -11,7 +11,7 @@
 #'
 asFactorDS1 <- function(input.var.name=NULL){
 
-  input.var <- eval(parse(text=input.var.name))
+  input.var <- eval(parse(text=input.var.name), envir = parent.frame())
   factor.levels.present.in.source <- levels(factor(input.var))
 
   return(factor.levels.present.in.source)

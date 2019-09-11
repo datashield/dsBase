@@ -74,15 +74,15 @@ nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
 
 
 
- if(is.character(FROM.value.char)&&is.numeric(eval(parse(text=FROM.value.char)))){
-	FROM<-eval(parse(text=FROM.value.char))
+ if(is.character(FROM.value.char)&&is.numeric(eval(parse(text=FROM.value.char), envir = parent.frame()))){
+	FROM<-eval(parse(text=FROM.value.char), envir = parent.frame())
 	}else{
    studysideMessage<-"ERROR: FROM.value.char must be specified as a real number in inverted commas eg '-3.74' or '0'"
    return(list(studysideMessage=studysideMessage))
    }
 
- if(is.character(BY.value.char)&&is.numeric(eval(parse(text=BY.value.char)))){
-	BY<-eval(parse(text=BY.value.char))
+ if(is.character(BY.value.char)&&is.numeric(eval(parse(text=BY.value.char), envir = parent.frame()))){
+	BY<-eval(parse(text=BY.value.char), envir = parent.frame())
 	}else{
    studysideMessage<-"ERROR: BY.value.char must be specified as a real number in inverted commas eg '-3.74' or '0'"
    return(list(studysideMessage=studysideMessage))
@@ -90,8 +90,8 @@ nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
 
 
  if(!is.null(LENGTH.OUT.value.char)){
-		if(is.character(LENGTH.OUT.value.char)&&is.numeric(eval(parse(text=LENGTH.OUT.value.char)))){
-		LENGTH.OUT<-eval(parse(text=LENGTH.OUT.value.char))
+		if(is.character(LENGTH.OUT.value.char)&&is.numeric(eval(parse(text=LENGTH.OUT.value.char), envir = parent.frame()))){
+		LENGTH.OUT<-eval(parse(text=LENGTH.OUT.value.char), envir = parent.frame())
 		}else{
 		studysideMessage<-"ERROR: If LENGTH.OUT.value.char is non-NULL, it must specify a positive integer in inverted commas eg '14'"
 		return(list(studysideMessage=studysideMessage))
@@ -104,7 +104,7 @@ nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
 
  if(!is.null(ALONG.WITH.name)){
 		if(is.character(ALONG.WITH.name)){
-		ALONG.WITH<-eval(parse(text=ALONG.WITH.name))
+		ALONG.WITH<-eval(parse(text=ALONG.WITH.name), envir = parent.frame())
 		}else{
 		studysideMessage<-"ERROR: If ALONG.WITH.name is non-NULL, it must specify the name of a serverside vector in inverted commas"
 		return(list(studysideMessage=studysideMessage))

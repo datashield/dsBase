@@ -40,7 +40,7 @@ glmDS2 <- function (formula, family, beta.vect, offset, weights, dataName) {
   # Same is done for offset and weights lower down function
   
   if(!is.null(dataName)){
-    dataDF <- eval(parse(text=dataName))
+    dataDF <- eval(parse(text=dataName), envir = parent.frame())
   }else{
     dataDF <- NULL
   }
@@ -70,7 +70,7 @@ glmDS2 <- function (formula, family, beta.vect, offset, weights, dataName) {
   for(i in 1:length(model.variables)){
     elt <- unlist(strsplit(model.variables[i], split="$", fixed=TRUE))
     if(length(elt) > 1){
-      assign(elt[length(elt)], eval(parse(text=model.variables[i])))
+      assign(elt[length(elt)], eval(parse(text=model.variables[i]), envir = parent.frame()), envir = parent.frame())
       originalFormula.modified <- gsub(model.variables[i], elt[length(elt)], originalFormula, fixed=TRUE)
       varnames <- append(varnames, elt[length(elt)])
     }else{
@@ -96,7 +96,7 @@ glmDS2 <- function (formula, family, beta.vect, offset, weights, dataName) {
   #Identify and use variable names to count missings
   #	cbindraw.text <- paste0("cbind(", paste(varnames, collapse=","), ")")
   
-  all.data <- eval(parse(text=cbindraw.text))
+  all.data <- eval(parse(text=cbindraw.text), envir = parent.frame())
 
   #WORKS TO HERE
   
@@ -117,7 +117,7 @@ glmDS2 <- function (formula, family, beta.vect, offset, weights, dataName) {
   # and the data that underlie them. This will include a vector of 1s for the intercept and
   # any dummy variables required for factors
   
-  formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula)))) # here we need the formula as a 'call' object
+  formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = parent.frame()) # here we need the formula as a 'call' object
   mod.glm.ds <- stats::glm(formula2use, family=family, x=TRUE, control=stats::glm.control(maxit=1), contrasts=NULL, data=dataDF)
   
   X.mat.orig <- as.matrix(mod.glm.ds$x)
@@ -127,14 +127,14 @@ glmDS2 <- function (formula, family, beta.vect, offset, weights, dataName) {
   # Remove rows of offset or weights which contain NA in any Y or X variable
   # Rows where offset or weights are missing but Y and X are non-NA, remain at this stage
   cbindtext <- paste0("cbind(", paste(varnames, collapse=","), ")")
-  dtemp <- eval(parse(text=cbindtext))
+  dtemp <- eval(parse(text=cbindtext), envir = parent.frame())
   # now get the above table with no missing values (i.e. complete) and grab the offset variable (the last column)
   row.noNA.YX <- stats::complete.cases(dtemp)
   
   #Both weights and offset
   if(!(is.null(weights))&&!(is.null(offset))){
     cbindtext <- paste0("cbind(", paste(varnames, collapse=","), ",", weights, ",", offset,")")
-    dtemp <- eval(parse(text=cbindtext))
+    dtemp <- eval(parse(text=cbindtext), envir = parent.frame())
     # now get the above table with no missing values (i.e. complete) and grab the offset variable (the last column)
     cmplt <- dtemp[row.noNA.YX,]
     offsetvar.orig <- cmplt[, dim(cmplt)[2]] 
@@ -144,7 +144,7 @@ glmDS2 <- function (formula, family, beta.vect, offset, weights, dataName) {
   #Offset no weights 
   if(is.null(weights)&&!(is.null(offset))){
     cbindtext <- paste0("cbind(", paste(varnames, collapse=","), ",", offset, ")")
-    dtemp <- eval(parse(text=cbindtext))
+    dtemp <- eval(parse(text=cbindtext), envir = parent.frame())
     # now get the above table with no missing values (i.e. complete) and grab the offset variable (the last column)
     cmplt <- dtemp[row.noNA.YX,]
     offsetvar.orig <- cmplt[, dim(cmplt)[2]]
@@ -153,7 +153,7 @@ glmDS2 <- function (formula, family, beta.vect, offset, weights, dataName) {
   #Weights no offset
   if(!(is.null(weights))&&(is.null(offset))){
     cbindtext <- paste0("cbind(", paste(varnames, collapse=","), ",", weights, ")")
-    dtemp <- eval(parse(text=cbindtext))
+    dtemp <- eval(parse(text=cbindtext), envir = parent.frame())
     # now get the above table with no missing values (i.e. complete) and grab the offset variable (the last column)
     cmplt <- dtemp[row.noNA.YX,]
     weightsvar.orig <- cmplt[, dim(cmplt)[2]]    

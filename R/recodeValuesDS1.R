@@ -49,7 +49,7 @@ nfilter.kNN<-as.numeric(thr$nfilter.kNN)                    #
 
 
 var.name.text.c<-unlist(strsplit(var.name.text, split=","))
-var2recode<-eval(parse(text=var.name.text.c))
+var2recode<-eval(parse(text=var.name.text.c), envir = parent.frame())
 
 
 values2replace.c<-unlist(strsplit(values2replace.text, split=","))

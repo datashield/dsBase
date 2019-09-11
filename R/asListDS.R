@@ -25,11 +25,11 @@ asListDS <- function (x.name,newobj){
 
     newobj.class <- NULL
     if(is.character(x.name)){
-        active.text<-paste0(newobj,"<<-as.list(",x.name,")")
-        eval(parse(text=active.text))
+        active.text<-paste0(newobj,"<-as.list(",x.name,")")
+        eval(parse(text=active.text), envir = parent.frame())
 
-        active.text2<-paste0("newobj.class<-class(",newobj,")")
-        eval(parse(text=active.text2))
+        active.text2<-paste0("class(",newobj,")")
+        assign("newobj.class", eval(parse(text=active.text2), envir = parent.frame()))
 
     }else{
         studysideMessage<-"ERROR: x.name must be specified as a character string"

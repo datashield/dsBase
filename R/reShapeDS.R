@@ -43,7 +43,7 @@
 reShapeDS <- function(data.name, varying.transmit, v.names.transmit, timevar.name, idvar.name, drop.transmit, direction, sep){
 
   datatext <- paste0("data.frame(",data.name,")")
-  data <- eval(parse(text=datatext))
+  data <- eval(parse(text=datatext), envir = parent.frame())
 
   timevar <- timevar.name
   idvar <- idvar.name

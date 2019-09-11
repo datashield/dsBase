@@ -21,7 +21,7 @@ subsetByClassDS <- function(data=NULL, variables=NULL){
   nfilter <- setFilterDS()
   
   # evaluate the string passed on to the function as an object
-  input <- eval(parse(text=data))
+  input <- eval(parse(text=data), envir = parent.frame())
   
   # subsetting is carried out only of the input is of type factor or data.frame
   if(is.factor(input)){

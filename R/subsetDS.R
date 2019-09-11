@@ -43,7 +43,7 @@ subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, v
   }
   
   # evaluate the input data object
-  D <- eval(parse(text=dt))
+  D <- eval(parse(text=dt), envir = parent.frame())
   
   # if 'complt' is set to TRUE, get continue with a dataset with complete cases only
   if(complt){
@@ -65,7 +65,7 @@ subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, v
         subvect <- D
       }else{
         exprs1 <- paste0("D[which(D", lg, th, ")]")
-        subvect <- eval(parse(text=exprs1))
+        subvect <- eval(parse(text=exprs1), envir = parent.frame())
       }
     }else{
       subvect <- D[rs]
@@ -102,7 +102,7 @@ subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, v
       }else{
         idx <- which(colnames(D) == varname)
         exprs2 <- paste0('D[which(D[,',idx,']', lg, th, '),]')
-        subtable <- eval(parse(text=exprs2))
+        subtable <- eval(parse(text=exprs2), envir = parent.frame())
       }
     }
     
