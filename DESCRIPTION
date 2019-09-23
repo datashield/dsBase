@@ -1,6 +1,6 @@
 Package: dsBase
 Title: DataSHIELD server site base functions
-Version: 5.0.0
+Version: 5.1.0
 Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
 Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
 License: GPL-3
@@ -81,6 +81,7 @@ AssignMethods:
     cDS,
     changeRefGroupDS,
     dataFrameDS,
+    dataFrameFillDS,
     dataFrameSortDS,
     dataFrameSubsetDS2,
     listDS,
