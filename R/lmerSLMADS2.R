@@ -104,8 +104,10 @@ lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE){
   if(!is.null(dataName)){
     for(v in 1:length(varnames)){
       varnames[v]<-paste0(dataName,"$",varnames[v])
-      test.string<-paste0(dataName,"$","1")
-      if(varnames[v]==test.string)varnames[v]<-"1"
+      test.string.0 <- paste0(dataName,"$","0")
+      test.string.1 <- paste0(dataName,"$","1")
+      if(varnames[v]==test.string.0) varnames[v] <- "0"
+      if(varnames[v]==test.string.1) varnames[v] <- "1"
     }
     cbindraw.text <- paste0("cbind(", paste(varnames, collapse=","), ")")		
   }else{
