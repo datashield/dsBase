@@ -300,7 +300,9 @@ lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE){
     #               errorMessage = errorMessage, disclosure.risk = disclosure.risk)
     summary_mg = summary(mg)
     summary_mg$residuals <- NULL
-    outlist = list(summary_mg, errorMessage = errorMessage, disclosure.risk = disclosure.risk)
+    summary_mg$errorMessage = errorMessage
+    summary_mg$disclosure.risk = disclosure.risk
+    outlist = summary_mg
   }
   else{
     errorMessage.d1<-"ERROR: Model failed in this source because of an enhanced risk of disclosure"
