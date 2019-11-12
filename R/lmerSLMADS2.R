@@ -295,7 +295,7 @@ lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE, control
   {
     # set up control object
     
-    control.obj = lmerControl()
+    control.obj = lme4::lmerControl()
     
     if (!is.null(control_opt)){
       control.obj$optimizer = control_opt
