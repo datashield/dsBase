@@ -305,18 +305,14 @@ lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE, control
       control.obj$boundary.tol = control_tol
     }
     
-    mg <- lme4::lmer(formula2use, offset=offset, weights=weights, data=dataDF, REML = REML, verbose = verbose, control = control.obj)
-    # outlist = list(call=summary(mg)$call, AICtab=summary(mg)$AICtab, coefficients=summary(mg)$coefficients, random.effects=summary(mg)$varcor, cov.scaled = summary(mg)$vcov,
-    #                data=dataName, Ntotal=Ntotal, Nvalid=Nvalid, Nmissing=Nmissing, ngrps = summary(mg)$ngrps,offset=varname.offset, weights=varname.weights, REML=REML
-    #                )
-    #outlist = list(Ntotal=Ntotal, Nvalid=Nvalid, Nmissing=Nmissing, call=summary(mg)$call, AICtab=summary(mg)$AICtab, REML=mg@devcomp$cmp[7], 
-    #               coefficients=summary(mg)$coefficients, RE=summary(mg)$varcor, data=dataName,
-    #                cov.scaled=summary(mg)$vcov, ngrps = summary(mg)$ngrps,offset=varname.offset, weights=varname.weights,
-    #               errorMessage = errorMessage, disclosure.risk = disclosure.risk)
+    #mg <- lme4::lmer(formula2use, offset=offset, weights=weights, data=dataDF, REML = REML, verbose = verbose, control = control.obj)
+    iterations <- capture.output(try(mg <- lme4::lmer(formula2use, offset=offset, weights=weights, data=dataDF, REML = REML, verbose = verbose, control = control.obj)))
+    
     summary_mg = summary(mg)
     summary_mg$residuals <- NULL
     summary_mg$errorMessage = errorMessage
     summary_mg$disclosure.risk = disclosure.risk
+    summary_mg$iterations = iterations
     outlist = summary_mg
   }
   else{
