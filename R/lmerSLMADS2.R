@@ -21,13 +21,16 @@
 #' @param dataName an optional character string specifying a data.frame object holding
 #' the data to be analysed under the specified model.
 #' @param REML a boolean indicating whether the model should be fitted using REML
+#' @param control_opt TBC
+#' @param control_tol TBC
+#' @param verbose TBC
 #' @return model components:- lmerDSDLMA2 returns key components of model fit
 #' from each study including parameter estimates and standard errors which
 #' are then processed and reported by ds.lmerSLMA potentially including
 #' random effects meta-analysis using the metafor package if requested
 #' in the call to ds.lmerSLMA
 #' @export
-lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE, control = NULL, verbose = FALSE){
+lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE, control_opt = NULL, control_tol = NULL, verbose = FALSE){
   
   errorMessage <- "No errors"
   
@@ -290,7 +293,19 @@ lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE, control
   
   if(disclosure.risk==0)
   {
-    mg <- lme4::lmer(formula2use, offset=offset, weights=weights, data=dataDF, REML = REML, verbose = verbose, control = control)
+    # set up control object
+    
+    control.obj = lmerControl()
+    
+    if (!is.null(control_opt)){
+      control.obj$optimizer = control_opt
+    }
+    
+    if (!is.null(control_tol)){
+      control.obj$boundary.tol = control_tol
+    }
+    
+    mg <- lme4::lmer(formula2use, offset=offset, weights=weights, data=dataDF, REML = REML, verbose = verbose, control = control.obj)
     # outlist = list(call=summary(mg)$call, AICtab=summary(mg)$AICtab, coefficients=summary(mg)$coefficients, random.effects=summary(mg)$varcor, cov.scaled = summary(mg)$vcov,
     #                data=dataName, Ntotal=Ntotal, Nvalid=Nvalid, Nmissing=Nmissing, ngrps = summary(mg)$ngrps,offset=varname.offset, weights=varname.weights, REML=REML
     #                )

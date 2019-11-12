@@ -5,7 +5,7 @@
 \title{lmeSLMADS2}
 \usage{
 lmerSLMADS2(formula, offset, weights, dataName, REML = TRUE,
-  control = NULL, verbose = FALSE)
+  control_opt = NULL, control_tol = NULL, verbose = FALSE)
 }
 \arguments{
 \item{formula}{a lmer() formula consistent with lme4 syntax eg U~x+y+(1|Z) to regress
@@ -19,6 +19,12 @@ variables U on x and y with a random effect for Z}
 the data to be analysed under the specified model.}
 
 \item{REML}{a boolean indicating whether the model should be fitted using REML}
+
+\item{control_opt}{TBC}
+
+\item{control_tol}{TBC}
+
+\item{verbose}{TBC}
 }
 \value{
 model components:- lmerDSDLMA2 returns key components of model fit
