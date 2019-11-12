@@ -4,7 +4,8 @@
 \alias{lmerSLMADS2}
 \title{lmeSLMADS2}
 \usage{
-lmerSLMADS2(formula, offset, weights, dataName, REML = TRUE)
+lmerSLMADS2(formula, offset, weights, dataName, REML = TRUE,
+  control = NULL, verbose = FALSE)
 }
 \arguments{
 \item{formula}{a lmer() formula consistent with lme4 syntax eg U~x+y+(1|Z) to regress

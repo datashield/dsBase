@@ -27,7 +27,7 @@
 #' random effects meta-analysis using the metafor package if requested
 #' in the call to ds.lmerSLMA
 #' @export
-lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE){
+lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE, control = NULL, verbose = FALSE){
   
   errorMessage <- "No errors"
   
@@ -290,7 +290,7 @@ lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE){
   
   if(disclosure.risk==0)
   {
-    mg <- lme4::lmer(formula2use, offset=offset, weights=weights, data=dataDF, REML = REML)
+    mg <- lme4::lmer(formula2use, offset=offset, weights=weights, data=dataDF, REML = REML, verbose = verbose, control = control)
     # outlist = list(call=summary(mg)$call, AICtab=summary(mg)$AICtab, coefficients=summary(mg)$coefficients, random.effects=summary(mg)$varcor, cov.scaled = summary(mg)$vcov,
     #                data=dataName, Ntotal=Ntotal, Nvalid=Nvalid, Nmissing=Nmissing, ngrps = summary(mg)$ngrps,offset=varname.offset, weights=varname.weights, REML=REML
     #                )
