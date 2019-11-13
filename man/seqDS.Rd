@@ -2,45 +2,43 @@
 % Please edit documentation in R/seqDS.R
 \name{seqDS}
 \alias{seqDS}
-\title{seqDS called by ds.seq}
+\title{seqDS a serverside assign function called by ds.seq}
 \usage{
-seqDS(FROM.value.char, BY.value.char, LENGTH.OUT.value.char,
+seqDS(FROM.value.char, TO.value.char, BY.value.char, LENGTH.OUT.value.char,
   ALONG.WITH.name)
 }
 \arguments{
 \item{FROM.value.char}{the starting value for the sequence expressed as an integer
-in character form. e.g. FROM.value.char="1" will start at 1, FROM.value.char="-10"
-will start at -10. Default = "1". The value of this argument is usually
-specified by the value provided to the argument <FROM.value.char>
-in the function {ds.seq}}
+or real number with a decimal point but 
+in character form. Fully specified by <FROM.value.char> argument
+of {ds.seq}.}
+
+\item{TO.value.char}{the terminal value for the sequence expressed as an integer
+or real number with a decimal point but 
+in character form. Fully specified by <TO.value.char> argument
+of {ds.seq}.}
 
 \item{BY.value.char}{the value to increment each step in the sequence
-expressed as a numeric e.g. BY.value.char="10" will increment by 10,
-while BY.value.char="-3.37" will reduce the value of each sequence
-element by -3.37. Default = "1" but does not have to be integer.
-The value of this argument is usually specified by the value provided
-to the argument <BY.value.char> in the function {ds.seq}}
+expressed as an integer
+or real number with a decimal point but 
+in character form. Fully specified by <BY.value.char> argument
+of {ds.seq}.}
 
-\item{LENGTH.OUT.value.char}{The length of the sequence at which point
-its extension should be stopped. e.g.  LENGTH.OUT.value.char="1000" will
-generate a sequence of length 1000. Default = NULL (must be specified) but
-must be a positive integer. The value of this argument is usually specified
-by the value provided to the argument <LENGTH.OUT.value.char>
-in the function {ds.seq}}
+\item{LENGTH.OUT.value.char}{length of the sequence at which point
+its extension should be stopped, expressed as an integer
+or real number with a decimal point but 
+in character form. Fully specified by <LENGTH.OUT.value.char> argument
+of {ds.seq}.}
 
 \item{ALONG.WITH.name}{For convenience, rather than specifying a value
 for LENGTH.OUT it can often be better to specify a variable name as
-the <ALONG.WITH.name> argument. e.g. ALONG.WITH.name = "vector.name".
-This can be particularly useful in DataSHIELD
-where the length of the sequence you need to generate in each data set
-depends on the standard length of vectors in that data set and this will
-in general vary. The value of this argument is usually specified
-by the value provided to the argument <ALONG.WITH.name>
-in the function {ds.seq}}
+the <ALONG.WITH.name> argument. Fully specified by <ALONG.WITH.name> argument
+of {ds.seq}.}
 }
 \value{
-the object specified by the <newobj> argument of function
-ds.seq (or default name newObj) which is written to the serverside.
+the object specified by the <newobj> argument of
+{ds.seq} (or its default name newObj)
+which is written to the serverside. 
 As well as writing the output object as <newobj>
 on the serverside, two validity messages are returned
 indicating whether <newobj> has been created in each data source and if so whether
@@ -62,17 +60,10 @@ assign function seqDS called by ds.seq
 An assign function that uses the native R function seq() to create
 any one of a flexible range of sequence vectors that can then be used to help
 manage and analyse data. As it is an assign function the resultant vector is
-written as a new object onto all of the specified data source servers. For
-the purposes of creating the DataSHIELD equivalent to seq() in native R we
-have used all of the original arguments (see below) except the <to> argument.
-This simplifies the function and prevents some combinations of arguments that
-lead to an error in native R. The effect of the <to> argument - see help(seq) in
-native R - is to specify the terminal value of the sequence. However,
-when using seq() one can usually specify other arguments (see below) to mimic
-the desire effect of <to>. These include: <from>, the starting value of the
-sequence; <by>, its increment (+ or -), and <length.out> the length of the final vector
-in each data source.
+written as a new object into all of the specified data source servers. Please
+see "details" for {ds.seq} for more information about allowable combinations
+of arguments etc.
 }
 \author{
-Paul Burton for DataSHIELD Development Team
+Paul Burton for DataSHIELD Development Team, 17/9/2019
 }
