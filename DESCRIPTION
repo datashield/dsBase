@@ -20,6 +20,7 @@ AggregateMethods:
     dimDS,
     glmDS1,
     glmDS2,
+    glmerSLMADS2,
     glmSLMADS1,
     glmSLMADS2,
     heatmapPlotDS,
