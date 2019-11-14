@@ -171,7 +171,7 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family, control_opt
   formula2use.glm <- as.formula(paste0(Reduce(paste, deparse(formulatext.glm ))), env = parent.frame()) # here we need the formula as a 'call' object
   
   # mod.glm.ds <- stats::glm(formula2use.glm, family="gaussian", x=TRUE, control=stats::glm.control(maxit=1), contrasts=NULL, data=dataDF)
-  mod.glm.ds <- stats::glm(formula2use.glm, family="gaussian", x=TRUE, offset=offset, weights=weights, data=dataDF)
+  mod.glm.ds <- stats::glm(formula2use.glm, family=family, x=TRUE, offset=offset, weights=weights, data=dataDF)
 
   y.vect<-mod.glm.ds$y
   X.mat<-mod.glm.ds$x
