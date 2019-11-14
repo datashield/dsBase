@@ -317,8 +317,7 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family, control_opt
       theta <- as.numeric(unlist(strsplit(theta, split=",")))
       if(is.null(fixef)){
         start = theta
-      }
-      else{
+      }else{
         start = list(theta=theta, fixef=fixef)
       }
     }
