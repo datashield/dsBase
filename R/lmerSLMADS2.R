@@ -302,7 +302,7 @@ lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE, control
     }
     
     if (!is.null(control_tol)){
-      control.obj$checkConv$check.conv.grad = .makeCC("warning",control_tol)
+      control.obj$checkConv$check.conv.grad = lme4::.makeCC("warning",control_tol)
     }
     
     #mg <- lme4::lmer(formula2use, offset=offset, weights=weights, data=dataDF, REML = REML, verbose = verbose, control = control.obj)
