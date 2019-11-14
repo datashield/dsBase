@@ -30,7 +30,7 @@
 #' random effects meta-analysis using the metafor package if requested
 #' in the call to ds.lmerSLMA
 #' @export
-glmerSLMADS2 <- function(formula, offset, weights, dataName, family, control_opt = NULL, control_tol = NULL, verbose = FALSE, start = NULL, nAGQ = 1){
+glmerSLMADS2 <- function(formula, offset, weights, dataName, family, control_opt = NULL, control_tol = NULL, verbose = FALSE, theta = NULL, fixef = NULL, nAGQ = 1){
   
   errorMessage <- "No errors"
   
@@ -302,11 +302,26 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family, control_opt
     }
     
     if (!is.null(control_tol)){
-      control.obj$boundary.tol = control_tol
+      control.obj$checkConv$check.conv.grad = lme4::.makeCC("warning",control_tol)
+    }
+    
+    # sort out start values
+    start = NULL
+    if(!is.null(fixef)){
+      fixef <- as.numeric(unlist(strsplit(fixef, split=",")))
+    }
+    if(!is.null(theta)){
+      theta <- as.numeric(unlist(strsplit(theta, split=",")))
+      if(is.null(fixef)){
+        start = theta
+      }
+      else{
+        start = list(theta=theta, fixef=fixef)
+      }
     }
     
     #mg <- lme4::lmer(formula2use, offset=offset, weights=weights, data=dataDF, REML = REML, verbose = verbose, control = control.obj)
-    iterations <- capture.output(try(mg <- lme4::glmer(formula2use, offset=offset, weights=weights, data=dataDF, family = family, verbose = verbose, control = control.obj)))
+    iterations <- capture.output(try(mg <- lme4::glmer(formula2use, offset=offset, weights=weights, data=dataDF, family = family, verbose = verbose, control = control.obj, start = start, nAGQ = nAGQ)))
     
     summary_mg = summary(mg)
     summary_mg$residuals <- NULL
