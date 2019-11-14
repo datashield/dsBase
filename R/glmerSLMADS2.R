@@ -295,10 +295,13 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family, control_opt
   {
     # set up control object
     
-    control.obj = lme4::glmerControl()
+    
     
     if (!is.null(control_opt)){
-      control.obj$optimizer = control_opt
+      control.obj = lme4::glmerControl(optimizer=control_opt)
+    }
+    else{
+      control.obj = lme4::glmerControl()
     }
     
     if (!is.null(control_tol)){
