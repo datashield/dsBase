@@ -30,7 +30,7 @@
 #' random effects meta-analysis using the metafor package if requested
 #' in the call to ds.lmerSLMA
 #' @export
-glmerSLMADS2 <- function(formula, offset, weights, dataName, family, control_opt = NULL, control_tol = NULL, verbose = FALSE){
+glmerSLMADS2 <- function(formula, offset, weights, dataName, family, control_opt = NULL, control_tol = NULL, verbose = FALSE, start = NULL, nAGQ = 1){
   
   errorMessage <- "No errors"
   
