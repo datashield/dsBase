@@ -313,7 +313,6 @@ lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE, control
     summary_mg$errorMessage = errorMessage
     summary_mg$disclosure.risk = disclosure.risk
     summary_mg$iterations = iterations
-    summary_mg$control = control.obj
     outlist = summary_mg
   }
   else{
