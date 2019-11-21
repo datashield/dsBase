@@ -44,3 +44,6 @@ This function represents a substantive restructuring of an earlier version
 created by Amadou Gaye. For further details of its working please
 see 'details' in the help for {ds.unList}.
 }
+\author{
+Amadou Gaye (2016), Paul Burton (19/09/2019) for DataSHIELD Development Team
+}
