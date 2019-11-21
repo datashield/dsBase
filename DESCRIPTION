@@ -1,6 +1,6 @@
 Package: dsBase
 Title: DataSHIELD server site base functions
-Version: 5.0.0
+Version: 5.1.0
 Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
 Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
 License: GPL-3
@@ -17,7 +17,6 @@ AggregateMethods:
     dataFrameSubsetDS1,
     densityGridDS,
     dimDS,
-    dimDS,
     glmDS1,
     glmDS2,
     glmSLMADS1,
@@ -32,8 +31,6 @@ AggregateMethods:
     listDisclosureSettingsDS,
     matrixDetDS1,
     meanDS,
-    meanDS,
-    meanSdGpDS,
     meanSdGpDS,
     messageDS,
     namesDS,
@@ -55,6 +52,7 @@ AggregateMethods:
     varDS,
     class=base::class,
     colnames=base::colnames,
+    cor.test=stats::cor.test,
     dim=base::dim,
     exists=base::exists,
     is.character=base::is.character,
@@ -65,7 +63,8 @@ AggregateMethods:
     length=base::length,
     levels=base::levels,
     ls=base::ls,
-    NROW=base::NROW
+    NROW=base::NROW,
+    t.test=stats::t.test
 AssignMethods:
     asCharacterDS,
     asDataMatrixDS,
@@ -75,7 +74,6 @@ AssignMethods:
     asListDS,
     asLogicalDS,
     asMatrixDS,
-    asMatrixDS,
     asNumericDS,
     BooleDS,
     cbindDS,
@@ -83,6 +81,7 @@ AssignMethods:
     changeRefGroupDS,
 	completeCasesDS,
     dataFrameDS,
+    dataFrameFillDS,
     dataFrameSortDS,
     dataFrameSubsetDS2,
     listDS,
@@ -113,10 +112,11 @@ AssignMethods:
     subsetDS,
 	tableDS.assign,
     tapplyDS.assign,
-	unListDS,
+    unListDS,
     as.character=base::as.character,
     as.null=base::as.null,
     as.numeric=base::as.numeric,
+    attach=base::attach,
     c=base::c,
     cbind=base::cbind,
     complete.cases=stats::complete.cases,
