@@ -12,6 +12,15 @@
 #'
 meanSdGpDS <- function (X, INDEX){
   
+  #############################################################
+  # MODULE 1: CAPTURE THE nfilter SETTINGS
+  thr <- listDisclosureSettingsDS()
+  nfilter.tab <- as.numeric(thr$nfilter.tab)
+  #nfilter.glm <- as.numeric(thr$nfilter.glm)
+  #nfilter.subset <- as.numeric(thr$nfilter.subset)
+  #nfilter.string <- as.numeric(thr$nfilter.string)
+  #############################################################
+
   FUN.mean <- function(x) {mean(x,na.rm=TRUE)}
   FUN.var <- function(x)  {stats::var(x,na.rm=TRUE)}
   
@@ -98,10 +107,7 @@ meanSdGpDS <- function (X, INDEX){
   
   # Set filter for cell sizes that are too small
   # the minimum number of observations that are allowed (the below function gets the value from opal)
-  # NEED CORRECT SOURCE FUNCTION SPECIFICATION - NOT: opal::setFilterDS()
-  #    nfilter <- opal::setFilterDS()
-  nfilter <- 5
-  any.invalid.cell<-(sum(ansmat.count<nfilter&ansmat.count>0)>=1)
+  any.invalid.cell<-(sum(ansmat.count<nfilter.tab&ansmat.count>0)>=1)
   if(!any.invalid.cell)
   {
     table.valid<-TRUE
@@ -114,7 +120,7 @@ meanSdGpDS <- function (X, INDEX){
   if(any.invalid.cell)
   {
     table.valid<-FALSE
-    cell.count.warning<-paste0("At least one group has between 1 and ", nfilter-1, " observations. Please change groups") 
+    cell.count.warning<-paste0("At least one group has between 1 and ", nfilter.tab-1, " observations. Please change groups") 
     result<-list(table.valid,Nvalid,Nmissing,Ntotal,cell.count.warning)
     names(result)<-list("Table_valid","Nvalid","Nmissing","Ntotal","Warning")
     return(result)
