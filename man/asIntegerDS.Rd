@@ -10,19 +10,20 @@ asIntegerDS(x.name)
 \item{x.name}{the name of the input object to be coerced to class
 integer. Must be specified in inverted commas. But this argument is
 usually specified directly by <x.name> argument of the clientside function
-{ds.asInteger}}
+\code{ds.asInteger}.}
 }
 \value{
 the object specified by the <newobj> argument (or its default name
 <x.name>.int) which is written to the serverside. For further
-details see help on the clientside function {ds.asInteger}
+details see help on the clientside function \code{ds.asInteger}.
 }
 \description{
-this function is based on the native R function {as.integer}
+This function is based on the native R function \code{as.integer}.
 }
 \details{
-See help for function {as.integer} in native R
+See help for function \code{as.integer} in native R, and details section
+in the help file of the clientside function \code{ds.asInteger}.
 }
 \author{
-Amadou Gaye, Paul Burton for DataSHIELD Development Team
+Amadou Gaye, Paul Burton, Demetris Avraam, for DataSHIELD Development Team
 }

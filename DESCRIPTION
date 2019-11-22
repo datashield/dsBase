@@ -1,6 +1,6 @@
 Package: dsBase
 Title: DataSHIELD server site base functions
-Version: 5.1.0
+Version: 5.2.0
 Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
 Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
 License: GPL-3
@@ -44,8 +44,8 @@ AggregateMethods:
     setSeedDS,
     table1DDS,
     table2DDS,
-	tableDS,
-	tableDS2,
+    tableDS,
+    tableDS2,
     tapplyDS,
     testObjExistsDS,
     tTestFDS2,
@@ -79,7 +79,7 @@ AssignMethods:
     cbindDS,
     cDS,
     changeRefGroupDS,
-	completeCasesDS,
+    completeCasesDS,
     dataFrameDS,
     dataFrameFillDS,
     dataFrameSortDS,
@@ -99,7 +99,7 @@ AssignMethods:
     rBinomDS,
     recodeLevelsDS,
     recodeValuesDS2,
-	repDS,
+    repDS,
     replaceNaDS,
     reShapeDS,
     rNormDS,
@@ -110,7 +110,7 @@ AssignMethods:
     seqDS,
     subsetByClassDS,
     subsetDS,
-	tableDS.assign,
+    tableDS.assign,
     tapplyDS.assign,
     unListDS,
     as.character=base::as.character,
