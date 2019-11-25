@@ -27,15 +27,13 @@
 #' @param verbose an optional variable (integer) to specify fitting information to the client side
 #' @param theta an optional variable (numeric) for specifying the start values of the random effects
 #' @param fixef an optional variable (numeric) for specifying the start values of the fixed effects
-#' @param nAGQ an optional variable (integer)  for specifying the number of points per axis for 
-#' evaluating the adaptive Gauss-Hermite approximation to the log-likelihood
 #' @return model components:- glmerDSDLMA2 returns key components of model fit
 #' from each study including parameter estimates and standard errors which
 #' are then processed and reported by ds.lmerSLMA potentially including
 #' random effects meta-analysis using the metafor package if requested
 #' in the call to ds.glmerSLMA
 #' @export
-glmerSLMADS2 <- function(formula, offset, weights, dataName, family, control_opt = NULL, control_tol = NULL, verbose = 0, theta = NULL, fixef = NULL, nAGQ = 1){
+glmerSLMADS2 <- function(formula, offset, weights, dataName, family, control_opt = NULL, control_tol = NULL, verbose = 0, theta = NULL, fixef = NULL){
   
   errorMessage <- "No errors"
   
@@ -331,7 +329,7 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family, control_opt
     }
     
     #mg <- lme4::lmer(formula2use, offset=offset, weights=weights, data=dataDF, REML = REML, verbose = verbose, control = control.obj)
-    iterations <- capture.output(try(mg <- lme4::glmer(formula2use, offset=offset, weights=weights, data=dataDF, family = family, verbose = verbose, control = control.obj, start = start, nAGQ = nAGQ)))
+    iterations <- capture.output(try(mg <- lme4::glmer(formula2use, offset=offset, weights=weights, data=dataDF, family = family, verbose = verbose, control = control.obj, start = start)))
     
     summary_mg = summary(mg)
     summary_mg$residuals <- NULL
