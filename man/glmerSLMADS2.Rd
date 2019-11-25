@@ -5,10 +5,11 @@
 \title{glmerSLMADS2}
 \usage{
 glmerSLMADS2(formula, offset, weights, dataName, family,
-  control_opt = NULL, control_tol = NULL, verbose = FALSE)
+  control_opt = NULL, control_tol = NULL, verbose = 0,
+  theta = NULL, fixef = NULL, nAGQ = 1)
 }
 \arguments{
-\item{formula}{a lmer() formula consistent with lme4 syntax eg U~x+y+(1|Z) to regress
+\item{formula}{a glmer() formula consistent with lme4 syntax eg U~x+y+(1|Z) to regress
 variables U on x and y with a random effect for Z}
 
 \item{offset}{an optional variable providing a regression offset}
@@ -18,30 +19,38 @@ variables U on x and y with a random effect for Z}
 \item{dataName}{an optional character string specifying a data.frame object holding
 the data to be analysed under the specified model.}
 
-\item{control_opt}{TBC}
+\item{control_opt}{an optional variable (string) for specifying the optimiser. For glmes one or
+two optimisers can be specified}
 
-\item{control_tol}{TBC}
+\item{control_tol}{an optional variable (numeric) to specify the value of check.conv.grad}
 
-\item{verbose}{TBC}
+\item{verbose}{an optional variable (integer) to specify fitting information to the client side}
+
+\item{theta}{an optional variable (numeric) for specifying the start values of the random effects}
+
+\item{fixef}{an optional variable (numeric) for specifying the start values of the fixed effects}
+
+\item{nAGQ}{an optional variable (integer)  for specifying the number of points per axis for 
+evaluating the adaptive Gauss-Hermite approximation to the log-likelihood}
 
 \item{REML}{a boolean indicating whether the model should be fitted using REML}
 }
 \value{
-model components:- lmerDSDLMA2 returns key components of model fit
+model components:- glmerDSDLMA2 returns key components of model fit
 from each study including parameter estimates and standard errors which
 are then processed and reported by ds.lmerSLMA potentially including
 random effects meta-analysis using the metafor package if requested
-in the call to ds.lmerSLMA
+in the call to ds.glmerSLMA
 }
 \description{
-This is the serverside function called by ds.lmerSLMA.
+This is the serverside function called by ds.glmerSLMA.
 }
 \details{
 It is an
-aggregation function that fits the linear mixed effect model (lme) specified
-in the call to ds.lmerSLMA. The model is first converted into a glm format
+aggregation function that fits the generalised linear mixed effect model (glme) specified
+in the call to ds.glmerSLMA. The model is first converted into a glm format
 and disclosure checked using the standard glm process. It is then fitted to convergence
-on each study separately using lmerSLMADS2 to return parameter estimates
+on each study separately using glmerSLMADS2 to return parameter estimates
 and standard errors to the client. These can then be pooled using random
 effects meta-analysis (eg under metafor). This mode of model fitting may
 reasonably be called study level meta-analysis (SLMA) although the analysis
