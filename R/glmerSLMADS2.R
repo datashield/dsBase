@@ -302,7 +302,7 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family, control_opt
     
     # first decode the out optimiser which might be a vector
     if(!is.null(control_opt)){
-      control_opt <- as.numeric(unlist(strsplit(control_opt, split=",")))
+      control_opt <- as.character(unlist(strsplit(control_opt, split=",")))
     }
     
     if (!is.null(control_opt)){

@@ -5,7 +5,7 @@
 \title{lmeSLMADS2}
 \usage{
 lmerSLMADS2(formula, offset, weights, dataName, REML = TRUE,
-  control_opt = NULL, control_tol = NULL, verbose = FALSE)
+  control_opt = NULL, control_tol = NULL, verbose = 0)
 }
 \arguments{
 \item{formula}{a lmer() formula consistent with lme4 syntax eg U~x+y+(1|Z) to regress
@@ -20,11 +20,12 @@ the data to be analysed under the specified model.}
 
 \item{REML}{a boolean indicating whether the model should be fitted using REML}
 
-\item{control_opt}{TBC}
+\item{control_opt}{an optional variable (string) for specifying the optimiser. For glmes one or
+two optimisers can be specified}
 
-\item{control_tol}{TBC}
+\item{control_tol}{an optional variable (numeric) to specify the value of check.conv.grad}
 
-\item{verbose}{TBC}
+\item{verbose}{an optional variable (integer) to specify fitting information to the client side}
 }
 \value{
 model components:- lmerDSDLMA2 returns key components of model fit

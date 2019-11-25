@@ -21,16 +21,17 @@
 #' @param dataName an optional character string specifying a data.frame object holding
 #' the data to be analysed under the specified model.
 #' @param REML a boolean indicating whether the model should be fitted using REML
-#' @param control_opt TBC
-#' @param control_tol TBC
-#' @param verbose TBC
+#' @param control_opt an optional variable (string) for specifying the optimiser. For glmes one or
+#' two optimisers can be specified
+#' @param control_tol an optional variable (numeric) to specify the value of check.conv.grad
+#' @param verbose an optional variable (integer) to specify fitting information to the client side
 #' @return model components:- lmerDSDLMA2 returns key components of model fit
 #' from each study including parameter estimates and standard errors which
 #' are then processed and reported by ds.lmerSLMA potentially including
 #' random effects meta-analysis using the metafor package if requested
 #' in the call to ds.lmerSLMA
 #' @export
-lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE, control_opt = NULL, control_tol = NULL, verbose = FALSE){
+lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE, control_opt = NULL, control_tol = NULL, verbose = 0){
   
   errorMessage <- "No errors"
   
