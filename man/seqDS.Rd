@@ -64,3 +64,6 @@ written as a new object into all of the specified data source servers. Please
 see "details" for {ds.seq} for more information about allowable combinations
 of arguments etc.
 }
+\author{
+Paul Burton for DataSHIELD Development Team, 17/9/2019
+}
