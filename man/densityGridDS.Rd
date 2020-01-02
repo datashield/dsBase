@@ -4,8 +4,16 @@
 \alias{densityGridDS}
 \title{Generates a density grid with or without a priori defined limits}
 \usage{
-densityGridDS(xvect, yvect, limits = FALSE, x.min = NULL,
-  x.max = NULL, y.min = NULL, y.max = NULL, numints = 20)
+densityGridDS(
+  xvect,
+  yvect,
+  limits = FALSE,
+  x.min = NULL,
+  x.max = NULL,
+  y.min = NULL,
+  y.max = NULL,
+  numints = 20
+)
 }
 \arguments{
 \item{xvect}{a numerical vector}
