@@ -129,7 +129,8 @@ errorMessage2<-"No errors"
 
   if(!is.null(dataName)){
       for(v in 1:length(varnames)){
-	varnames[v]<-paste0(dataName,"$",varnames[v])
+	varnames[v] <- paste0(dataName,"$",varnames[v])
+
 	test.string.0 <- paste0(dataName,"$","0")
 	test.string.1 <- paste0(dataName,"$","1")
 	if(varnames[v]==test.string.0) varnames[v] <- "0"

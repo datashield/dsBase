@@ -4,8 +4,12 @@
 \alias{asFactorDS2}
 \title{Converts a numeric vector into a factor}
 \usage{
-asFactorDS2(input.var.name = NULL, all.unique.levels.transmit = NULL,
-  fixed.dummy.vars = NULL, baseline.level = NULL)
+asFactorDS2(
+  input.var.name = NULL,
+  all.unique.levels.transmit = NULL,
+  fixed.dummy.vars = NULL,
+  baseline.level = NULL
+)
 }
 \arguments{
 \item{input.var.name}{the name of the variable that is to be converted to a factor.}
