@@ -136,4 +136,4 @@ Options:
     default.nfilter.tab=3,
     default.nfilter.noise=0.25,
     default.nfilter.levels=0.33
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2

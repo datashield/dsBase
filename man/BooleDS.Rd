@@ -4,8 +4,13 @@
 \alias{BooleDS}
 \title{BooleDS}
 \usage{
-BooleDS(V1.name = NULL, V2.name = NULL, Boolean.operator.n = NULL,
-  na.assign.text, numeric.output = TRUE)
+BooleDS(
+  V1.name = NULL,
+  V2.name = NULL,
+  Boolean.operator.n = NULL,
+  na.assign.text,
+  numeric.output = TRUE
+)
 }
 \arguments{
 \item{V1.name}{A character string specifying the name of the vector to which the

@@ -4,8 +4,7 @@
 \alias{matrixDS}
 \title{matrixDS assign function called by ds.matrix}
 \usage{
-matrixDS(mdata.transmit, from, nrows.transmit, ncols.transmit, byrow,
-  dimnames)
+matrixDS(mdata.transmit, from, nrows.transmit, ncols.transmit, byrow, dimnames)
 }
 \arguments{
 \item{mdata.transmit}{specifies the elements of the matrix to be created. Fully
