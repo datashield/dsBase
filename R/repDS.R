@@ -171,13 +171,13 @@ if(source.x1=="serverside")
 {
 #x1.transmit is the name of a serverside vector or scalar
 
-x1.use<-eval(parse(text=x1.transmit))
+x1.use<-eval(parse(text=x1.transmit), envir = parent.frame())
 }
 
 if(source.x1=="clientside")
 {
 #x1 is a transmission modified clientside vector or scalar
-x1.temp<-eval(parse(text=list(x1.text)))
+x1.temp<-eval(parse(text=list(x1.text)), envir = parent.frame())
 x1.c<-x1.temp[[1]]
 
 #unlike other arguments of ds.rep, x1 can be numeric or characters
@@ -272,7 +272,7 @@ else
 	{
 	#times.transmit is the name of a serverside vector or scalar
 
-	times.use<-eval(parse(text=times.transmit))
+	times.use<-eval(parse(text=times.transmit), envir = parent.frame())
 	}
 
 	if(source.times=="clientside")
@@ -281,7 +281,7 @@ else
 
 	times.text<-strsplit(times.transmit, split=",")
 
-	times.c<-eval(parse(text=times.text))
+	times.c<-eval(parse(text=times.text), envir = parent.frame())
 
 	times.use<-as.numeric(times.c)
 	
@@ -360,7 +360,7 @@ else
 	if(source.length.out=="serverside")
 	{
 	#length.out.transmit is the name of the serverside vector or scalar
-	length.out.temp<-eval(parse(text=length.out.transmit))
+	length.out.temp<-eval(parse(text=length.out.transmit), envir = parent.frame())
 	
 	arg.is.vector<-FALSE
 	if(length(length.out.temp)>=2)arg.is.vector<-TRUE
@@ -378,7 +378,7 @@ else
 	{
 	#length.out.transmit is a clientside scalar
 	length.out.text<-strsplit(length.out.transmit, split=",")
-	length.out.c<-eval(parse(text=length.out.text))
+	length.out.c<-eval(parse(text=length.out.text), envir = parent.frame())
 	length.out.use<-as.numeric(length.out.c)
 	}
 }
@@ -456,14 +456,14 @@ else
 	if(source.each=="serverside")
 	{
 	#each.transmit is the name of the serverside vector or scalar
-	each.use<-eval(parse(text=each.transmit))
+	each.use<-eval(parse(text=each.transmit), envir = parent.frame())
 	}
 
 	if(source.each=="clientside")
 	{
 	#each.transmit is a clientside vector or scalar
 	each.text<-strsplit(each.transmit, split=",")
-	each.c<-eval(parse(text=each.text))
+	each.c<-eval(parse(text=each.text), envir = parent.frame())
 	each.use<-as.numeric(each.c)
 	}
 }

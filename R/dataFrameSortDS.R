@@ -56,9 +56,9 @@ nfilter.stringShort <- as.numeric(thr$nfilter.stringShort)
   }
 
   df.text2 <- paste0("data.frame(",df.text,")")
-  df2sort <- eval(parse(text=df.text2))
+  df2sort <- eval(parse(text=df.text2), envir = parent.frame())
 
-  sort.key <- eval(parse(text=sort.key.text))
+  sort.key <- eval(parse(text=sort.key.text), envir = parent.frame())
 
   if(dim(df2sort)[1]<nfilter.subset){
     studysideMessage <- "specified data.frame to sort is shorter than minimum subset size"

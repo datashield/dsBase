@@ -45,7 +45,7 @@ histogramDS1 <- function(xvect, method.indicator, k, noise){
       # the study-specific seed for random number generation
       seed <- getOption("datashield.seed")
       if (is.null(seed))
-        stop("histogramDS1 requires Opal 2.14 or higher to operate", call.=FALSE)
+        stop("histogramDS1 requires 'datashield.seed' R option to operate", call.=FALSE)
       set.seed(seed)
       
       rr <- c(min(xvect, na.rm=TRUE), max(xvect, na.rm=TRUE))
@@ -121,7 +121,7 @@ histogramDS1 <- function(xvect, method.indicator, k, noise){
       # the study-specific seed for random number generation
       seed <- getOption("datashield.seed")
       if (is.null(seed))
-        stop("histogramDS requires Opal 2.14 or higher to operate", call.=FALSE)
+        stop("histogramDS requires 'datashield.seed' R option to operate", call.=FALSE)
       set.seed(seed)
       
       # generate the noise-augmented vector

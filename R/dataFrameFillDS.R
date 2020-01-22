@@ -18,7 +18,7 @@
 dataFrameFillDS <- function(df.name, allNames.transmit){
   
   datatext <- paste0("data.frame(",df.name,")")
-  data <- eval(parse(text=datatext))
+  data <- eval(parse(text=datatext), envir = parent.frame())
 
   if(!is.null(allNames.transmit)){
     allNames <- unlist(strsplit(allNames.transmit, split=","))

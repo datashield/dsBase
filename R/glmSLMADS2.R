@@ -84,7 +84,7 @@ errorMessage2<-"No errors"
 # Same is done for offset and weights lower down function
 
   if(!is.null(dataName)){
-    dataDF <- eval(parse(text=dataName))
+    dataDF <- eval(parse(text=dataName), envir = parent.frame())
   }else{
 	dataDF<-NULL
 	}
@@ -118,7 +118,7 @@ errorMessage2<-"No errors"
   for(i in 1:length(model.variables)){
     elt <- unlist(strsplit(model.variables[i], split="$", fixed=TRUE))
     if(length(elt) > 1){
-      assign(elt[length(elt)], eval(parse(text=model.variables[i])))
+      assign(elt[length(elt)], eval(parse(text=model.variables[i]), envir = parent.frame()), envir = parent.frame())
       originalFormula.modified <- gsub(model.variables[i], elt[length(elt)], originalFormula, fixed=TRUE)
       varnames <- append(varnames, elt[length(elt)])
     }else{
@@ -142,7 +142,7 @@ errorMessage2<-"No errors"
  
 	#Identify and use variable names to count missings
 
-	all.data <- eval(parse(text=cbindraw.text))
+	all.data <- eval(parse(text=cbindraw.text), envir = parent.frame())
 	
 	Ntotal <- dim(all.data)[1]
 	
@@ -153,7 +153,7 @@ errorMessage2<-"No errors"
 	Nvalid <- N.nomiss.any
 	Nmissing <- Ntotal-Nvalid
 
-	formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula)))) # here we need the formula as a 'call' object
+	formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = parent.frame()) # here we need the formula as a 'call' object
 
 	################################################################## 
 	#sort out offset and weights
@@ -167,7 +167,7 @@ errorMessage2<-"No errors"
 	if(!(is.null(offset)))
 		{
 		cbindtext.offset <- paste0("cbind(", offset,")")
-		offset <- eval(parse(text=cbindtext.offset))
+		offset <- eval(parse(text=cbindtext.offset), envir = parent.frame())
 		}
 
 	if(is.null(weights))
@@ -181,10 +181,8 @@ errorMessage2<-"No errors"
 	if(!(is.null(weights)))
 		{
 		cbindtext.weights <- paste0("cbind(", weights,")")
-		weights <- eval(parse(text=cbindtext.weights))
+		weights <- eval(parse(text=cbindtext.weights), envir = parent.frame())
 		}
-
-
 
 	mg <- stats::glm(formula2use, family=family, x=TRUE, offset=offset, weights=weights, data=dataDF)
 	

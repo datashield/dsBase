@@ -52,8 +52,8 @@ if(length.M2.name>nfilter.stringShort)
 	return(list(studysideMessage=studysideMessage))
 	}
 
-M1<-eval(parse(text=M1.name))
-M2<-eval(parse(text=M2.name))
+M1<-eval(parse(text=M1.name), envir = parent.frame())
+M2<-eval(parse(text=M2.name), envir = parent.frame())
 
 
 

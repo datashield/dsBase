@@ -49,7 +49,7 @@ nfilter.tab<-as.numeric(thr$nfilter.tab)								#
 
 if(!is.null(force.nfilter.transmit))
 {
-force.nfilter.active<-eval(parse(text=force.nfilter.transmit))
+force.nfilter.active<-eval(parse(text=force.nfilter.transmit), envir = parent.frame())
 
 	if(force.nfilter.active<nfilter.tab)
 	{
@@ -71,7 +71,7 @@ nfilter.tab<-force.nfilter.active
 
 #Activate via eval when needed
 #rvar
-rvar<-eval(parse(text=rvar.transmit))
+rvar<-eval(parse(text=rvar.transmit), envir = parent.frame())
 if(!is.factor(rvar))
 	{
 	rvar<-as.factor(rvar)
@@ -80,7 +80,7 @@ if(!is.factor(rvar))
 #cvar
 if(!is.null(cvar.transmit))
 {
-cvar<-eval(parse(text=cvar.transmit))
+cvar<-eval(parse(text=cvar.transmit), envir = parent.frame())
 
 if(!is.factor(cvar))
 	{
@@ -95,7 +95,7 @@ cvar<-NULL
 #stvar
 if(!is.null(stvar.transmit))
 {
-stvar<-eval(parse(text=stvar.transmit))
+stvar<-eval(parse(text=stvar.transmit), envir = parent.frame())
 
 if(!is.factor(stvar))
 	{
@@ -114,7 +114,7 @@ stvar<-NULL
 if(!is.null(exclude.transmit))
 {
 exclude.text<-strsplit(exclude.transmit, split=",")
-exclude<-eval(parse(text=exclude.text))
+exclude<-eval(parse(text=exclude.text), envir = parent.frame())
 }
 else
 {

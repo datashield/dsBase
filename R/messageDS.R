@@ -44,7 +44,7 @@ nfilter.kNN<-as.numeric(thr$nfilter.kNN)                    #
 
 A1.exists.text<-paste0("exists('",message.object.name,"')")
 
-boole.A1.exists<-eval(parse(text=A1.exists.text))
+boole.A1.exists<-eval(parse(text=A1.exists.text), envir = parent.frame())
 
 
 
@@ -59,7 +59,7 @@ return(out.obj)
 #IF message.object.name EXISTS, CHECK WHETHER IT CURRENTLY CONTAINS A studysideMessage
 
 if(boole.A1.exists){
-message.object.name.active<-eval(parse(text=message.object.name))
+message.object.name.active<-eval(parse(text=message.object.name), envir = parent.frame())
 
 
 

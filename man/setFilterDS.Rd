@@ -14,8 +14,8 @@ an integer between 1 and 5
 }
 \description{
 This is an internal function that set the number of observation
-that are allowed in any table or vector. The function gets the value from opal
-and if no value was set in opal it uses the default value 5.
+that are allowed in any table or vector. The function gets the value from the data repository
+and if no value was set it uses the default value 5.
 }
 \details{
 The function is called by server side functios

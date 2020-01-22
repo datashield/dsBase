@@ -114,7 +114,7 @@ if(!string.safe)
 #Activate target object
 #x1.transmit is the name of a serverside data.frame,matrix or vector
 
-x1.use<-eval(parse(text=x1.transmit))
+x1.use<-eval(parse(text=x1.transmit), envir = parent.frame())
 
 complete.rows<-stats::complete.cases(x1.use)
 
