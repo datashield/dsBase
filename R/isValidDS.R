@@ -10,10 +10,18 @@
 isValidDS <- function(obj) {
   
   # this filter sets the minimum number of observations that are allowed 
-  nfilter <- setFilterDS()
+
+  #############################################################
+  # MODULE 1: CAPTURE THE nfilter SETTINGS
+  thr <- listDisclosureSettingsDS()
+  nfilter.tab <- as.numeric(thr$nfilter.tab)
+  #nfilter.glm <- as.numeric(thr$nfilter.glm)
+  #nfilter.subset <- as.numeric(thr$nfilter.subset)
+  #nfilter.string <- as.numeric(thr$nfilter.string)
+  #############################################################
   
   if(class(obj) == "character" | class(obj) == "integer" | class(obj) == "logical" | class(obj) == "numeric") {
-    if(length(obj) > 0 & length(obj)  < nfilter) {
+    if(length(obj) > 0 & length(obj)  < nfilter.tab) {
       return(FALSE)
     } else {
       return(TRUE)
@@ -21,7 +29,7 @@ isValidDS <- function(obj) {
   }else{
     if(class(obj) == "factor"){
       tt <- tabulate(obj)
-      xx <- which(tt > 0 & tt < nfilter)
+      xx <- which(tt > 0 & tt < nfilter.tab)
       if(length(xx) > 0) {
         return(FALSE)
       } else {
@@ -29,7 +37,7 @@ isValidDS <- function(obj) {
       }
     }else{
       if(class(obj) == "data.frame" | class(obj) == "matrix"){
-        if(dim(obj)[1] > 0 & dim(obj)[1] < nfilter){
+        if(dim(obj)[1] > 0 & dim(obj)[1] < nfilter.tab){
           return(FALSE)
         }else{
           return(TRUE)

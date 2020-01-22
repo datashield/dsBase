@@ -4,8 +4,16 @@
 \alias{reShapeDS}
 \title{reShapeDS (assign function) called by ds.reShape}
 \usage{
-reShapeDS(data.name, varying.transmit, v.names.transmit, timevar.name,
-  idvar.name, drop.transmit, direction, sep)
+reShapeDS(
+  data.name,
+  varying.transmit,
+  v.names.transmit,
+  timevar.name,
+  idvar.name,
+  drop.transmit,
+  direction,
+  sep
+)
 }
 \arguments{
 \item{data.name, }{the name of the data.frame to be reshaped. Specified

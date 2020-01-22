@@ -28,10 +28,10 @@ messageDS <- function(message.object.name){
 
 #############################################################
 #MODULE 1: CAPTURE THE nfilter SETTINGS                     #
-thr<-listDisclosureSettingsDS()							#
-#nfilter.tab<-as.numeric(thr$nfilter.tab)					#
-#nfilter.glm<-as.numeric(thr$nfilter.glm)					#
-nfilter.subset<-as.numeric(thr$nfilter.subset)          	#
+thr<-listDisclosureSettingsDS()                             #
+#nfilter.tab<-as.numeric(thr$nfilter.tab)                   #
+#nfilter.glm<-as.numeric(thr$nfilter.glm)                   #
+nfilter.subset<-as.numeric(thr$nfilter.subset)              #
 nfilter.string<-as.numeric(thr$nfilter.string)              #
 nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)    #
 nfilter.kNN<-as.numeric(thr$nfilter.kNN)                    #
@@ -72,7 +72,7 @@ if(class(message.object.name.active)=="list"){
 		for(j in length(names(message.object.name.active))){
 			if(names(message.object.name.active)[j]=="studysideMessage"){
 			s.message.available<-TRUE
-			out.obj<-message.object.name.active$studysideMessage
+			out.obj<-"NOT ALL OK: there are studysideMessage(s) on this datasource"
 			}
 		}
 		if(!s.message.available){

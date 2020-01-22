@@ -4,8 +4,16 @@
 \alias{lexisDS2}
 \title{lexisDS2}
 \usage{
-lexisDS2(datatext = NULL, intervalWidth, maxmaxtime, idCol, entryCol,
-  exitCol, statusCol, vartext = NULL)
+lexisDS2(
+  datatext = NULL,
+  intervalWidth,
+  maxmaxtime,
+  idCol,
+  entryCol,
+  exitCol,
+  statusCol,
+  vartext = NULL
+)
 }
 \arguments{
 \item{datatext}{a clientside provided character string specifying the data.frame
