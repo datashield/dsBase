@@ -2,7 +2,7 @@
 % Please edit documentation in R/lmerSLMADS2.R
 \name{lmerSLMADS2}
 \alias{lmerSLMADS2}
-\title{lmeSLMADS2}
+\title{Fitting linear mixed effect models - serverside function}
 \usage{
 lmerSLMADS2(
   formula,
@@ -17,47 +17,48 @@ lmerSLMADS2(
 )
 }
 \arguments{
-\item{formula}{a lmer() formula consistent with lme4 syntax eg U~x+y+(1|Z) to regress
-variables U on x and y with a random effect for Z}
+\item{formula}{see help for ds.lmerSLMA}
 
-\item{offset}{an optional variable providing a regression offset}
+\item{offset}{see help for ds.lmerSLMA}
 
-\item{weights}{an optional variable providing regression weights}
+\item{weights}{see help for ds.lmerSLMA}
 
-\item{dataName}{an optional character string specifying a data.frame object holding
-the data to be analysed under the specified model.}
+\item{dataName}{see help for ds.lmerSLMA}
 
-\item{REML}{a boolean indicating whether the model should be fitted using REML}
+\item{REML}{see help for ds.lmerSLMA}
 
-\item{verbose}{an optional variable (integer) to specify fitting information to the client side}
+\item{control_type}{see help for ds.lmerSLMA}
 
-\item{control_opt}{an optional variable (string) for specifying the optimiser. For glmes one or
-two optimisers can be specified}
+\item{control_value.transmit}{see help for argument <control_value> for
+function ds.lmerSLMA}
 
-\item{control_tol}{an optional variable (numeric) to specify the value of check.conv.grad}
+\item{optimizer}{see help for ds.lmerSLMA}
+
+\item{verbose}{see help for ds.lmerSLMA}
 }
 \value{
-model components:- lmerDSDLMA2 returns key components of model fit
-from each study including parameter estimates and standard errors which
-are then processed and reported by ds.lmerSLMA potentially including
-random effects meta-analysis using the metafor package if requested
-in the call to ds.lmerSLMA
+all key model components see help for ds.lmerSLMA
 }
 \description{
-This is the serverside function called by ds.lmerSLMA.
+lmerSLMADS2 is a serverside function which fits a linear mixed
+effects model (lme) - i.e. can include both fixed and random effects - on data from
+one or multiple sources with pooling via SLMA (study level meta-analysis)
 }
 \details{
-It is an
-aggregation function that fits the linear mixed effect model (lme) specified
-in the call to ds.lmerSLMA. The model is first converted into a glm format
-and disclosure checked using the standard glm process. It is then fitted to convergence
-on each study separately using lmerSLMADS2 to return parameter estimates
-and standard errors to the client. These can then be pooled using random
-effects meta-analysis (eg under metafor). This mode of model fitting may
-reasonably be called study level meta-analysis (SLMA) although the analysis
-is based on estimates and standard errors derived from direct analysis of
-the individual level data in each study rather than from published study
-summaries.  
-For more details please see the extensive headers for
-ds.lmerSLMA.
+lmerSLMADS2 is a serverside function called by ds.lmerSLMA on the clientside.
+The analytic work engine is the lmer function in R which sits in the lme4 package.
+ds.lmerSLMA fits a linear mixed effects model (lme) - can include both fixed and random
+effects - on data from a single or multiple sources. When there are multiple data sources,
+the lme is fitted to convergence in each data source independently and the
+estimates and standard errors returned to the client thereby enabling cross-study pooling
+using study level meta-analysis (SLMA). By default the SLMA is undertaken
+using the metafor package, but as the SLMA occurs on the clientside which, as far
+as the user is concerned is just a standard R environment, the user can choose to use
+any approach to meta-analysis they choose. For more detailed help about any aspect
+of lmerSLMDS2 please see the extensive help for ds.lmerSLMA. Additional information
+about fitting lmes using the lmer engine can be obtained using R help for lmer and
+the lme4 package
+}
+\author{
+Tom Bishop, with some additions by Paul Burton
 }

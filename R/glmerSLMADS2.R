@@ -1,37 +1,36 @@
-#' 
-#' @title glmerSLMADS2
-#' @description This is the serverside function called by ds.glmerSLMA.
-#' @details It is an
-#' aggregation function that fits the generalised linear mixed effect model (glme) specified
-#' in the call to ds.glmerSLMA. The model is first converted into a glm format
-#' and disclosure checked using the standard glm process. It is then fitted to convergence
-#' on each study separately using glmerSLMADS2 to return parameter estimates
-#' and standard errors to the client. These can then be pooled using random
-#' effects meta-analysis (eg under metafor). This mode of model fitting may
-#' reasonably be called study level meta-analysis (SLMA) although the analysis
-#' is based on estimates and standard errors derived from direct analysis of
-#' the individual level data in each study rather than from published study
-#' summaries.  
-#' For more details please see the extensive headers for
-#' ds.lmerSLMA.
-#' @param formula a glmer() formula consistent with lme4 syntax eg U~x+y+(1|Z) to regress
-#' variables U on x and y with a random effect for Z
-#' @param offset an optional variable providing a regression offset
-#' @param weights an optional variable providing regression weights
-#' @param dataName an optional character string specifying a data.frame object holding
-#' the data to be analysed under the specified model.
-#' @param REML a boolean indicating whether the model should be fitted using REML
-#' @param control_opt an optional variable (string) for specifying the optimiser. For glmes one or
-#' two optimisers can be specified
-#' @param control_tol an optional variable (numeric) to specify the value of check.conv.grad
-#' @param verbose an optional variable (integer) to specify fitting information to the client side
-#' @param theta an optional variable (numeric) for specifying the start values of the random effects
-#' @param fixef an optional variable (numeric) for specifying the start values of the fixed effects
-#' @return model components:- glmerDSDLMA2 returns key components of model fit
-#' from each study including parameter estimates and standard errors which
-#' are then processed and reported by ds.lmerSLMA potentially including
-#' random effects meta-analysis using the metafor package if requested
-#' in the call to ds.glmerSLMA
+#' @title Fitting generalized linear mixed effect models - serverside function
+#' @description glmerSLMADS2 fits a generalized linear mixed effects model
+#' (glme) - e.g. a logistic or Poisson regression model including both fixed and random effects
+#' - on data from one or multiple sources with pooling via SLMA (study level meta-analysis)
+#' @details  glmerSLMA2 is a serverside function called by glmerSLMADS2 on the clientside.
+#' The analytic work engine is the glmer function in R which sits in the lme4 package.
+#' ds.glmerSLMA fits a generalized linear mixed effects model (glme) - e.g. a logistic or
+#' Poisson regression model including both fixed and random effects - on data
+#' from a single or multiple sources. When there are multiple data sources,
+#' the glme is fitted to convergence in each data source independently and the
+#' estimates and standard errors returned to the client thereby enabling cross-study pooling
+#' using study level meta-analysis (SLMA). By default the SLMA is undertaken
+#' using the metafor package, but as the SLMA occurs on the clientside which, as far
+#' as the user is concerned is just a standard R environment, the user can choose to use
+#' any approach to meta-analysis they choose. Additional information about fitting 
+#' glmes using the glmer engine can be obtained using R help for glmer and the lme4 package
+
+
+#' @param formula see help for ds.glmerSLMA
+#' @param offset see help for ds.glmerSLMA
+#' @param weights see help for ds.glmerSLMA
+#' @param dataName see help for ds.glmerSLMA
+#' @param family see help for ds.glmerSLMA
+#' @param control_type see help for ds.glmerSLMA
+#' @param control_value.transmit see help for argument <control_value> for
+#' function ds.glmerSLMA 
+#' @param verbose see help for ds.glmerSLMA
+#' @param theta see help for argument <start_theta> for
+#' function ds.glmerSLMA
+#' @param fixef see help for argument <start_fixef> for
+#' function ds.glmerSLMA
+#' @return all key model components see help for ds.glmerSLMA
+#' @author Tom Bishop, with some additions by Paul Burton
 #' @export
 glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
                 control_type=NULL, control_value.transmit=NULL, verbose = 0, theta = NULL, fixef = NULL){
@@ -438,7 +437,8 @@ if(control_type=="check.conv.grad")
     }
 
     outlist<-list(outlist.1,outlist.2,outlist.gos,outlist.y,outlist.x,outlist.w,outlist.o, disclosure.risk = disclosure.risk)
-  }
+ 
+ }
   return(outlist)
   
 }
