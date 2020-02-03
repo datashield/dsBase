@@ -1,8 +1,7 @@
 #' 
 #' @title glmerSLMADS2
 #' @description This is the serverside function called by ds.glmerSLMA.
-#' @details It is an
-#' aggregation function that fits the generalised linear mixed effect model (glme) specified
+#' @details It is an aggregation function that fits the generalised linear mixed effect model (glme) specified
 #' in the call to ds.glmerSLMA. The model is first converted into a glm format
 #' and disclosure checked using the standard glm process. It is then fitted to convergence
 #' on each study separately using glmerSLMADS2 to return parameter estimates
