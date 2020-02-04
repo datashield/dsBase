@@ -7,8 +7,7 @@ License: GPL-3
 Description: DataSHIELD server site base functions.
 Imports:
     RANN,
-    nlme,
-    lme4
+    nlme
 AggregateMethods:
     alphaPhiDS,
     asFactorDS1,
@@ -20,7 +19,6 @@ AggregateMethods:
     dimDS,
     glmDS1,
     glmDS2,
-    glmerSLMADS2,
     glmSLMADS1,
     glmSLMADS2,
     heatmapPlotDS,
@@ -31,7 +29,6 @@ AggregateMethods:
     lengthDS,
     lexisDS1,
     listDisclosureSettingsDS,
-    lmerSLMADS2,
     matrixDetDS1,
     meanDS,
     meanSdGpDS,
