@@ -4,13 +4,9 @@
 \alias{dataFrameSortDS}
 \title{dataFrameSortDS called by ds.dataFrameSort}
 \usage{
-dataFrameSortDS(
-  df.text = NULL,
-  sort.key.text = NULL,
-  sort.descending = FALSE,
-  sort.alphabetic = FALSE,
-  sort.numeric = FALSE
-)
+dataFrameSortDS(df.text = NULL, sort.key.text = NULL,
+  sort.descending = FALSE, sort.alphabetic = FALSE,
+  sort.numeric = FALSE)
 }
 \arguments{
 \item{df.text}{a character string providing the name for the data.frame
