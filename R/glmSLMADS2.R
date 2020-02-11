@@ -153,13 +153,14 @@ errorMessage2<-"No errors"
 	Nvalid <- N.nomiss.any
 	Nmissing <- Ntotal-Nvalid
 
-	formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = parent.frame()) # here we need the formula as a 'call' object
+	formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula)))) # here we need the formula as a 'call' object
 
 	################################################################## 
 	#sort out offset and weights
 	if(is.null(offset))
 	{
 	varname.offset<-NULL
+	offset.to.use <- NULL
 	}else{
 	varname.offset <- paste0(offset)
 	}
@@ -167,12 +168,13 @@ errorMessage2<-"No errors"
 	if(!(is.null(offset)))
 		{
 		cbindtext.offset <- paste0("cbind(", offset,")")
-		offset <- eval(parse(text=cbindtext.offset), envir = parent.frame())
+		offset.to.use <- eval(parse(text=cbindtext.offset), envir = parent.frame())
 		}
 
 	if(is.null(weights))
 	{
 	varname.weights<-NULL
+	weights.to.use <- NULL
 	}else{
 	varname.weights <- paste0(weights)
 	}
@@ -181,10 +183,10 @@ errorMessage2<-"No errors"
 	if(!(is.null(weights)))
 		{
 		cbindtext.weights <- paste0("cbind(", weights,")")
-		weights <- eval(parse(text=cbindtext.weights), envir = parent.frame())
+		weights.to.use <- eval(parse(text=cbindtext.weights), envir = parent.frame())
 		}
 
-	mg <- stats::glm(formula2use, family=family, x=TRUE, offset=offset, weights=weights, data=dataDF)
+	mg <- stats::glm(formula2use, family=family, x=TRUE, offset=offset.to.use, weights=weights.to.use, data=dataDF)
 	
 y.vect<-mg$y
 X.mat<-mg$x
@@ -310,7 +312,7 @@ disclosure.risk<-1
 
 if(disclosure.risk==0)
 {
-	mg <- stats::glm(formula2use, family=family, offset=offset, weights=weights, data=dataDF)
+	mg <- stats::glm(formula2use, family=family, offset=offset.to.use, weights=weights.to.use, data=dataDF)
 
 	outlist<-list(rank=mg$rank, aic=mg$aic, 
              iter=mg$iter, converged=mg$converged,
