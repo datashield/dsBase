@@ -15,11 +15,13 @@
 testenv <- function(dataName){
   my_search = search()
   my_env = environment()
+  par_env = parent.env(environment())
   fun_env = environment(glmSLMADS1)
   ls_gl = ls(globalenv())
   ls_loc = ls()
-  ls_par = ls(parent.frame())
+  ls_par_fr = ls(parent.frame())
+  ls_par_env = ls(parent.env(environment()))
   sys_status = sys.status()
-  outlist = list(my_search, my_env,fun_env, ls_gl, ls_loc, ls_par, sys_status)
+  outlist = list(my_search, my_env,par_env,fun_env, ls_gl, ls_loc, ls_par_fr,ls_par_env, sys_status)
   return(outlist)
 }
