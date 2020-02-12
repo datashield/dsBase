@@ -72,8 +72,8 @@ all.complete<-stats::complete.cases(X)
 current.factor <- NA
 for(j in 1:num.factors){
 
-activation.text.a<-paste0("current.factor <-",INDEX.factors[j])
-eval(parse(text=activation.text.a), envir = parent.frame())
+activation.text.a<-paste0(INDEX.factors[j])
+current.factor <- eval(parse(text=activation.text.a), envir = parent.frame())
 
 all.complete<-all.complete&stats::complete.cases(current.factor)
 }
@@ -81,11 +81,11 @@ all.complete<-all.complete&stats::complete.cases(current.factor)
 X.complete<-X[all.complete]
 
 for(k in 1:num.factors){
-  activation.text.b<-paste0("current.factor <-",INDEX.factors[k])
-  eval(parse(text=activation.text.b), envir = parent.frame())
+  activation.text.b<-paste0(INDEX.factors[k])
+  current.factor <- eval(parse(text=activation.text.b), envir = parent.frame())
 
   activation.text.c<-paste0(INDEX.factors[k], "<- current.factor[all.complete]")
-  eval(parse(text=activation.text.c), envir = parent.frame())
+  eval(parse(text=activation.text.c))
  }
 
 #Outcome vector and index factors now all reduced to complete cases only
@@ -93,12 +93,12 @@ for(k in 1:num.factors){
 
 #convert INDEX.names format from transmittable to actionable form (a list of vectors)
    INDEX.names.list<-paste0("list(",INDEX.names.transmit,")")
-   INDEX<-eval(parse(text=INDEX.names.list), envir = parent.frame())
+   INDEX<-eval(parse(text=INDEX.names.list))
 
  ##################
  #disclosure traps#
  ##################
-    N.count <- tapply(X.complete,INDEX,base::length)
+   N.count <- tapply(X.complete,INDEX,base::length)
 
    if(min(N.count)<nfilter.tab && min(N.count) > 0){
    return.message<-"ERROR: at least one group defined by INDEX has < nfilter.tab members. The output cannot therefore be returned to the clientside. But the function ds.tapply.assign may still be used to write the output to the data servers with no clientside return"
@@ -125,7 +125,7 @@ for(k in 1:num.factors){
 
                 factor1.levels <- NA
 		activation.text.e<-paste0("factor1.levels<-levels(",INDEX.factors[1],")")
-		eval(parse(text=activation.text.e), envir = parent.frame())
+		eval(parse(text=activation.text.e))
 
 		factor1.level.names<-factor1.levels
 
@@ -140,11 +140,11 @@ for(k in 1:num.factors){
 
                 factor1.levels <- NA
 		activation.text.f<-paste0("factor1.levels<-levels(",INDEX.factors[1],")")
-		eval(parse(text=activation.text.f), envir = parent.frame())
+		eval(parse(text=activation.text.f))
 
                 factor2.levels <- NA
 		activation.text.g<-paste0("factor2.levels<-levels(",INDEX.factors[2],")")
-		eval(parse(text=activation.text.g), envir = parent.frame())
+		eval(parse(text=activation.text.g))
 
 		factor1.level.names<-factor1.levels
 
@@ -182,7 +182,7 @@ for(k in 1:num.factors){
 
                 factor1.levels <- NA
 		activation.text.e<-paste0("factor1.levels<-levels(",INDEX.factors[1],")")
-		eval(parse(text=activation.text.e), envir = parent.frame())
+		eval(parse(text=activation.text.e))
 
 		factor1.level.names<-factor1.levels
 
@@ -197,11 +197,11 @@ for(k in 1:num.factors){
 
                 factor1.levels <- NA
 		activation.text.f<-paste0("factor1.levels<-levels(",INDEX.factors[1],")")
-		eval(parse(text=activation.text.f), envir = parent.frame())
+		eval(parse(text=activation.text.f))
 
                 factor2.levels <- NA
 		activation.text.g<-paste0("factor2.levels<-levels(",INDEX.factors[2],")")
-		eval(parse(text=activation.text.g), envir = parent.frame())
+		eval(parse(text=activation.text.g))
 
 		factor1.level.names<-factor1.levels
 
@@ -239,7 +239,7 @@ for(k in 1:num.factors){
 
                 factor1.levels <- NA
 		activation.text.e<-paste0("factor1.levels<-levels(",INDEX.factors[1],")")
-		eval(parse(text=activation.text.e), envir = parent.frame())
+		eval(parse(text=activation.text.e))
 
 		factor1.level.names<-factor1.levels
 
@@ -254,11 +254,11 @@ for(k in 1:num.factors){
 
                 factor1.levels <- NA
 		activation.text.f<-paste0("factor1.levels<-levels(",INDEX.factors[1],")")
-		eval(parse(text=activation.text.f), envir = parent.frame())
+		eval(parse(text=activation.text.f))
 
                 factor2.levels <- NA
 		activation.text.g<-paste0("factor2.levels<-levels(",INDEX.factors[2],")")
-		eval(parse(text=activation.text.g), envir = parent.frame())
+		eval(parse(text=activation.text.g))
 
 		factor1.level.names<-factor1.levels
 
