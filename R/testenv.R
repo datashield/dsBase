@@ -14,5 +14,9 @@
 
 testenv <- function(dataName){
   mystat = sys.status()
-  return(mystat)
+  pframe = parent.frame()
+  lspframe = ls(envir = parent.frame())
+  lsframe = ls()
+  outlist = list(mystat, pframe, lspframe, lsframe)
+  return(outlist)
 }
