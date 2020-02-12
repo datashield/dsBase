@@ -47,6 +47,7 @@ AggregateMethods:
     tableDS,
     tableDS2,
     tapplyDS,
+    testenv,
     testObjExistsDS,
     tTestFDS2,
     varDS,
