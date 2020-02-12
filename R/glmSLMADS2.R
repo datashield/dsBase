@@ -77,7 +77,7 @@ nfilter.glm <- as.numeric(thr$nfilter.glm)                  #
 #############################################################
 
 
-
+print(sys.status())
 
 errorMessage2<-"No errors"
 # Get the value of the 'data' parameter provided as character on the client side
@@ -118,7 +118,7 @@ errorMessage2<-"No errors"
   for(i in 1:length(model.variables)){
     elt <- unlist(strsplit(model.variables[i], split="$", fixed=TRUE))
     if(length(elt) > 1){
-      assign(elt[length(elt)], eval(parse(text=model.variables[i]), envir = parent.frame()), envir = parent.frame())
+      assign(elt[length(elt)], eval(parse(text=model.variables[i])))
       originalFormula.modified <- gsub(model.variables[i], elt[length(elt)], originalFormula, fixed=TRUE)
       varnames <- append(varnames, elt[length(elt)])
     }else{
