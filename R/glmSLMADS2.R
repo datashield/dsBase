@@ -76,9 +76,6 @@ nfilter.glm <- as.numeric(thr$nfilter.glm)                  #
 #nfilter.string<-as.numeric(thr$nfilter.string)             #
 #############################################################
 
-
-print(sys.status())
-
 errorMessage2<-"No errors"
 # Get the value of the 'data' parameter provided as character on the client side
 # Same is done for offset and weights lower down function
@@ -153,7 +150,7 @@ errorMessage2<-"No errors"
 	Nvalid <- N.nomiss.any
 	Nmissing <- Ntotal-Nvalid
 
-	formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula)))) # here we need the formula as a 'call' object
+	formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = parent.frame()) # here we need the formula as a 'call' object
 
 	################################################################## 
 	#sort out offset and weights

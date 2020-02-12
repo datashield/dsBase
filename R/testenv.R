@@ -13,10 +13,13 @@
 #' @export
 
 testenv <- function(dataName){
-  mystat = sys.status()
-  pframe = parent.frame()
-  lspframe = ls(envir = parent.frame())
-  lsframe = ls()
-  outlist = list(mystat, pframe, lspframe, lsframe)
+  my_search = search()
+  my_env = environment()
+  fun_env = environment(glmSLMADS1)
+  ls_gl = ls(globalenv())
+  ls_loc = ls()
+  ls_par = ls(parent.frame())
+  sys_status = sys.status()
+  outlist = list(my_search, my_env,fun_env, ls_gl, ls_loc, ls_par, sys_status)
   return(outlist)
 }
