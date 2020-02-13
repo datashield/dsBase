@@ -63,21 +63,22 @@ nfilter.glm<-as.numeric(thr$nfilter.glm)                    #
 
   
 #Remember model.variables and then varnames INCLUDE BOTH yvect AND linear predictor components 
-	model.variables <- unlist(strsplit(formulatext, split="|", fixed=TRUE))
- 
-	 varnames <- c()
-	  for(i in 1:length(model.variables)){
-	    elt <- unlist(strsplit(model.variables[i], split="$", fixed=TRUE))
-	    if(length(elt) > 1){
-	      assign(elt[length(elt)], eval(parse(text=model.variables[i])))
-	      originalFormula <- gsub(model.variables[i], elt[length(elt)], originalFormula, fixed=TRUE)
-	      varnames <- append(varnames, elt[length(elt)])
-	    }else{
-	      varnames <- append(varnames, elt)
-	    }
-	  }
-
-	varnames <- unique(varnames) 
+	# model.variables <- unlist(strsplit(formulatext, split="|", fixed=TRUE))
+	# 
+	#  varnames <- c()
+	#   for(i in 1:length(model.variables)){
+	#     elt <- unlist(strsplit(model.variables[i], split="$", fixed=TRUE))
+	#     if(length(elt) > 1){
+	#       assign(elt[length(elt)], eval(parse(text=model.variables[i])))
+	#       print('sdf')
+	#       originalFormula <- gsub(model.variables[i], elt[length(elt)], originalFormula, fixed=TRUE)
+	#       varnames <- append(varnames, elt[length(elt)])
+	#     }else{
+	#       varnames <- append(varnames, elt)
+	#     }
+	#   }
+	# 
+	# varnames <- unique(varnames) 
 
    X.mat <- as.matrix(mod.glm.ds$x)
   

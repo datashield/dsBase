@@ -92,86 +92,84 @@ errorMessage2<-"No errors"
 # Note final product is a list of the variables in the model (yvector and covariates)
 # it is NOT a list of model terms - these are derived later
 
-# Convert formula into an editable character string
-  formulatext <- Reduce(paste, deparse(formula))
+# # Convert formula into an editable character string
+#   formulatext <- Reduce(paste, deparse(formula))
+# 
+# # First save original model formala
+#   originalFormula <- formulatext
+# 
+# # Convert formula string into separate variable names split by |
+#   formulatext <- gsub(" ", "", formulatext, fixed=TRUE)
+#   formulatext <- gsub("~", "|", formulatext, fixed=TRUE)
+#   formulatext <- gsub("+", "|", formulatext, fixed=TRUE)
+#   formulatext <- gsub("*", "|", formulatext, fixed=TRUE)
+#   formulatext <- gsub("||", "|", formulatext, fixed=TRUE)
 
-# First save original model formala
-  originalFormula <- formulatext
+# #Remember model.variables and then varnames INCLUDE BOTH yvect AND linear predictor components 
+# 	model.variables <- unlist(strsplit(formulatext, split="|", fixed=TRUE))
+# 	
+# 	varnames <- c()
+# 	for(i in 1:length(model.variables)){
+#     elt <- unlist(strsplit(model.variables[i], split="$", fixed=TRUE))
+#     varnames <- append(varnames, elt[length(elt)])
+# 	}
+# 	
+# 	varnames <- unique(varnames)
+# 
+#   if(!is.null(dataName)){
+#       for(v in 1:length(varnames)){
+# 	varnames[v] <- paste0(dataName,"$",varnames[v])
+# 	test.string.0 <- paste0(dataName,"$","0")
+# 	test.string.1 <- paste0(dataName,"$","1")
+# 	if(varnames[v]==test.string.0) varnames[v] <- "0"
+# 	if(varnames[v]==test.string.1) varnames[v] <- "1"
+#       }
+# 	  	cbindraw.text <- paste0("cbind(", paste(varnames, collapse=","), ")")	
+#   }else{
+#   	    cbindraw.text <- paste0("cbind(", paste(varnames, collapse=","), ")")
+# 		}
+#  
+# 	#Identify and use variable names to count missings
+# 
+# 	#all.data <- eval(parse(text=cbindraw.text), envir = parent.frame())
+# 	all.data <- eval(parse(text=cbindraw.text))
+# 	
+# 	Ntotal <- dim(all.data)[1]
+# 	
+# 	nomiss.any <- stats::complete.cases(all.data)
+# 	nomiss.any.data <- all.data[nomiss.any,]
+# 	N.nomiss.any <- dim(nomiss.any.data)[1]
+# 
+# 	Nvalid <- N.nomiss.any
+# 	Nmissing <- Ntotal-Nvalid
 
-# Convert formula string into separate variable names split by |
-  formulatext <- gsub(" ", "", formulatext, fixed=TRUE)
-  formulatext <- gsub("~", "|", formulatext, fixed=TRUE)
-  formulatext <- gsub("+", "|", formulatext, fixed=TRUE)
-  formulatext <- gsub("*", "|", formulatext, fixed=TRUE)
-  formulatext <- gsub("||", "|", formulatext, fixed=TRUE)
-
-
-
-
-#Remember model.variables and then varnames INCLUDE BOTH yvect AND linear predictor components 
-	model.variables <- unlist(strsplit(formulatext, split="|", fixed=TRUE))
- 
-	varnames <- c()
-  for(i in 1:length(model.variables)){
-    elt <- unlist(strsplit(model.variables[i], split="$", fixed=TRUE))
-    if(length(elt) > 1){
-      assign(elt[length(elt)], eval(parse(text=model.variables[i])))
-      originalFormula.modified <- gsub(model.variables[i], elt[length(elt)], originalFormula, fixed=TRUE)
-      varnames <- append(varnames, elt[length(elt)])
-    }else{
-      varnames <- append(varnames, elt)
-    }
-  }
-	varnames <- unique(varnames)
-
-  if(!is.null(dataName)){
-      for(v in 1:length(varnames)){
-	varnames[v] <- paste0(dataName,"$",varnames[v])
-	test.string.0 <- paste0(dataName,"$","0")
-	test.string.1 <- paste0(dataName,"$","1")
-	if(varnames[v]==test.string.0) varnames[v] <- "0"
-	if(varnames[v]==test.string.1) varnames[v] <- "1"
-      }
-	  	cbindraw.text <- paste0("cbind(", paste(varnames, collapse=","), ")")	
-  }else{
-  	    cbindraw.text <- paste0("cbind(", paste(varnames, collapse=","), ")")
-		}
- 
-	#Identify and use variable names to count missings
-
-	all.data <- eval(parse(text=cbindraw.text), envir = parent.frame())
-	
-	Ntotal <- dim(all.data)[1]
-	
-	nomiss.any <- stats::complete.cases(all.data)
-	nomiss.any.data <- all.data[nomiss.any,]
-	N.nomiss.any <- dim(nomiss.any.data)[1]
-
-	Nvalid <- N.nomiss.any
-	Nmissing <- Ntotal-Nvalid
-
-	formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = parent.frame()) # here we need the formula as a 'call' object
-
+	#formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = parent.frame()) # here we need the formula as a 'call' object
+  formula2use = formula
+  
 	################################################################## 
 	#sort out offset and weights
 	if(is.null(offset))
 	{
 	varname.offset<-NULL
-	offset.to.use <- NULL
+	#offset.to.use <- NULL
+	cbindtext.offset <- paste0("offset.to.use <- NULL")
+	eval(parse(text=cbindtext.offset), envir = parent.frame())
 	}else{
 	varname.offset <- paste0(offset)
 	}
 
 	if(!(is.null(offset)))
 		{
-		cbindtext.offset <- paste0("cbind(", offset,")")
-		offset.to.use <- eval(parse(text=cbindtext.offset), envir = parent.frame())
+		cbindtext.offset <- paste0("offset.to.use <- cbind(", offset,")")
+		eval(parse(text=cbindtext.offset), envir = parent.frame())
 		}
 
 	if(is.null(weights))
 	{
 	varname.weights<-NULL
-	weights.to.use <- NULL
+	cbindtext.weights <- paste0("weights.to.use <- NULL")
+	eval(parse(text=cbindtext.weights), envir = parent.frame())
+	#weights.to.use <- NULL
 	}else{
 	varname.weights <- paste0(weights)
 	}
@@ -179,8 +177,10 @@ errorMessage2<-"No errors"
 
 	if(!(is.null(weights)))
 		{
-		cbindtext.weights <- paste0("cbind(", weights,")")
-		weights.to.use <- eval(parse(text=cbindtext.weights), envir = parent.frame())
+		cbindtext.weights <- paste0("weights.to.use <- cbind(", weights,")")
+		eval(parse(text=cbindtext.weights), envir = parent.frame())
+		#cbindtext.weights <- paste0("cbind(", weights,")")
+		#weights.to.use <- eval(parse(text=cbindtext.weights), envir = parent.frame())
 		}
 
 	mg <- stats::glm(formula2use, family=family, x=TRUE, offset=offset.to.use, weights=weights.to.use, data=dataDF)
@@ -310,7 +310,11 @@ disclosure.risk<-1
 if(disclosure.risk==0)
 {
 	mg <- stats::glm(formula2use, family=family, offset=offset.to.use, weights=weights.to.use, data=dataDF)
-
+  
+	Ntotal = dim(mg$data)[1]
+	Nvalid = length(mg$residuals)
+	Nmissing = Ntotal-Nvalid
+	
 	outlist<-list(rank=mg$rank, aic=mg$aic, 
              iter=mg$iter, converged=mg$converged,
 			 boundary=mg$boundary, na.action=options("na.action"), call=summary(mg)$call, terms=summary(mg)$terms,
@@ -354,6 +358,9 @@ if(disclosure.risk==0)
 
     outlist<-list(outlist.1,outlist.2,outlist.gos,outlist.y,outlist.x,outlist.w,outlist.o)
 }
+	#tidy up in parent.frame()
+	eval(quote(rm(offset.to.use)), envir = parent.frame())
+	eval(quote(rm(weights.to.use)), envir = parent.frame())
 	return(outlist)
 
 }
