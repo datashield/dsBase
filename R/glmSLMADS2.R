@@ -144,7 +144,7 @@ errorMessage2<-"No errors"
 # 	Nmissing <- Ntotal-Nvalid
 
 	#formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = parent.frame()) # here we need the formula as a 'call' object
-  formula2use = formula
+  formula2use <- formula
   
 	################################################################## 
 	#sort out offset and weights
@@ -311,9 +311,9 @@ if(disclosure.risk==0)
 {
 	mg <- stats::glm(formula2use, family=family, offset=offset.to.use, weights=weights.to.use, data=dataDF)
   
-	Ntotal = dim(mg$data)[1]
-	Nvalid = length(mg$residuals)
-	Nmissing = Ntotal-Nvalid
+	Nvalid <- length(mg$residuals)
+	Nmissing <- length(mg$na.action)
+	Ntotal <- Nvalid+Nmissing
 	
 	outlist<-list(rank=mg$rank, aic=mg$aic, 
              iter=mg$iter, converged=mg$converged,
