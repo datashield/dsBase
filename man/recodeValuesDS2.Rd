@@ -4,14 +4,9 @@
 \alias{recodeValuesDS2}
 \title{recodeValuesDS2 an assign function called by ds.recodeValues}
 \usage{
-recodeValuesDS2(
-  var.name.text = NULL,
-  values2replace.text = NULL,
-  new.values.text = NULL,
-  numeric.output.format.possible,
-  force.output.format = "no",
-  v2r.numeric = NULL
-)
+recodeValuesDS2(var.name.text = NULL, values2replace.text = NULL,
+  new.values.text = NULL, numeric.output.format.possible,
+  force.output.format = "no", v2r.numeric = NULL)
 }
 \arguments{
 \item{var.name.text}{a character string providing the name for the vector representing the

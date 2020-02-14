@@ -4,11 +4,8 @@
 \alias{recodeValuesDS1}
 \title{recodeValuesDS1 an aggregate function called by ds.recodeValues}
 \usage{
-recodeValuesDS1(
-  var.name.text = NULL,
-  values2replace.text = NULL,
-  new.values.text = NULL
-)
+recodeValuesDS1(var.name.text = NULL, values2replace.text = NULL,
+  new.values.text = NULL)
 }
 \arguments{
 \item{var.name.text}{a character string providing the name for the vector representing the

@@ -4,18 +4,8 @@
 \alias{mergeDS}
 \title{mergeDS (assign function) called by ds.merge}
 \usage{
-mergeDS(
-  x.name,
-  y.name,
-  by.x.names.transmit,
-  by.y.names.transmit,
-  all.x,
-  all.y,
-  sort,
-  suffixes.transmit,
-  no.dups,
-  incomparables
-)
+mergeDS(x.name, y.name, by.x.names.transmit, by.y.names.transmit, all.x,
+  all.y, sort, suffixes.transmit, no.dups, incomparables)
 }
 \arguments{
 \item{x.name, }{the name of the first data.frame to be merged specified in

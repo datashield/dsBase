@@ -5,14 +5,8 @@
 \title{tableDS is the first of two serverside aggregate functions
 called by ds.table}
 \usage{
-tableDS(
-  rvar.transmit,
-  cvar.transmit,
-  stvar.transmit,
-  exclude.transmit,
-  useNA.transmit,
-  force.nfilter.transmit
-)
+tableDS(rvar.transmit, cvar.transmit, stvar.transmit, exclude.transmit,
+  useNA.transmit, force.nfilter.transmit)
 }
 \arguments{
 \item{rvar.transmit}{is a character string (in inverted commas) specifiying the
