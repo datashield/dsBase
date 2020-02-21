@@ -48,36 +48,39 @@ nfilter.glm<-as.numeric(thr$nfilter.glm)                    #
     dataTable <- eval(parse(text=data), envir = parent.frame())
   }
    
-   formulatext <- Reduce(paste, deparse(formula))
-   originalFormula <- formulatext
-  
-# Convert formula string into separate variable names split by |
-  formulatext <- gsub(" ", "", formulatext, fixed=TRUE)
-  formulatext <- gsub("~", "|", formulatext, fixed=TRUE)
-  formulatext <- gsub("+", "|", formulatext, fixed=TRUE)
-  formulatext <- gsub("*", "|", formulatext, fixed=TRUE)
-  formulatext <- gsub("||", "|", formulatext, fixed=TRUE)
-
-   formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = parent.frame()) # here we need the formula as a 'call' object
-   mod.glm.ds <- stats::glm(formula2use, family=family, x=TRUE, control=stats::glm.control(maxit=1), contrasts=NULL, data=dataTable)
+#    formulatext <- Reduce(paste, deparse(formula))
+#    originalFormula <- formulatext
+#   
+# # Convert formula string into separate variable names split by |
+#   formulatext <- gsub(" ", "", formulatext, fixed=TRUE)
+#   formulatext <- gsub("~", "|", formulatext, fixed=TRUE)
+#   formulatext <- gsub("+", "|", formulatext, fixed=TRUE)
+#   formulatext <- gsub("*", "|", formulatext, fixed=TRUE)
+#   formulatext <- gsub("||", "|", formulatext, fixed=TRUE)
+# 
+#    formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = parent.frame()) # here we need the formula as a 'call' object
+   
+formula2use <- formula
+mod.glm.ds <- stats::glm(formula2use, family=family, x=TRUE, control=stats::glm.control(maxit=1), contrasts=NULL, data=dataTable)
 
   
 #Remember model.variables and then varnames INCLUDE BOTH yvect AND linear predictor components 
-	model.variables <- unlist(strsplit(formulatext, split="|", fixed=TRUE))
- 
-	 varnames <- c()
-	  for(i in 1:length(model.variables)){
-	    elt <- unlist(strsplit(model.variables[i], split="$", fixed=TRUE))
-	    if(length(elt) > 1){
-	      assign(elt[length(elt)], eval(parse(text=model.variables[i]), envir = parent.frame()), envir = parent.frame())
-	      originalFormula <- gsub(model.variables[i], elt[length(elt)], originalFormula, fixed=TRUE)
-	      varnames <- append(varnames, elt[length(elt)])
-	    }else{
-	      varnames <- append(varnames, elt)
-	    }
-	  }
-
-	varnames <- unique(varnames) 
+	# model.variables <- unlist(strsplit(formulatext, split="|", fixed=TRUE))
+	# 
+	#  varnames <- c()
+	#   for(i in 1:length(model.variables)){
+	#     elt <- unlist(strsplit(model.variables[i], split="$", fixed=TRUE))
+	#     if(length(elt) > 1){
+	#       assign(elt[length(elt)], eval(parse(text=model.variables[i])))
+	#       print('sdf')
+	#       originalFormula <- gsub(model.variables[i], elt[length(elt)], originalFormula, fixed=TRUE)
+	#       varnames <- append(varnames, elt[length(elt)])
+	#     }else{
+	#       varnames <- append(varnames, elt)
+	#     }
+	#   }
+	# 
+	# varnames <- unique(varnames) 
 
    X.mat <- as.matrix(mod.glm.ds$x)
   
