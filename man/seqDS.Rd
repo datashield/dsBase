@@ -4,8 +4,13 @@
 \alias{seqDS}
 \title{seqDS a serverside assign function called by ds.seq}
 \usage{
-seqDS(FROM.value.char, TO.value.char, BY.value.char, LENGTH.OUT.value.char,
-  ALONG.WITH.name)
+seqDS(
+  FROM.value.char,
+  TO.value.char,
+  BY.value.char,
+  LENGTH.OUT.value.char,
+  ALONG.WITH.name
+)
 }
 \arguments{
 \item{FROM.value.char}{the starting value for the sequence expressed as an integer

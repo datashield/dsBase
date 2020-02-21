@@ -5,8 +5,13 @@
 \title{tableDS.assign is the serverside assign function
 called by ds.table}
 \usage{
-tableDS.assign(rvar.transmit, cvar.transmit, stvar.transmit,
-  exclude.transmit, useNA.transmit)
+tableDS.assign(
+  rvar.transmit,
+  cvar.transmit,
+  stvar.transmit,
+  exclude.transmit,
+  useNA.transmit
+)
 }
 \arguments{
 \item{rvar.transmit}{is a character string (in inverted commas) specifiying the
