@@ -4,9 +4,17 @@
 \alias{repDS}
 \title{repDS called by ds.rep}
 \usage{
-repDS(x1.transmit, times.transmit, length.out.transmit, each.transmit,
-  x1.includes.characters, source.x1, source.times, source.length.out,
-  source.each)
+repDS(
+  x1.transmit,
+  times.transmit,
+  length.out.transmit,
+  each.transmit,
+  x1.includes.characters,
+  source.x1,
+  source.times,
+  source.length.out,
+  source.each
+)
 }
 \arguments{
 \item{x1.transmit}{This argument determines the input scalar, vector or list.
