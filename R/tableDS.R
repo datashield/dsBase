@@ -19,6 +19,9 @@
 #' tables in the output if the call specifies a 3 dimensional table.
 #' Fully specified by <stvar> argument in {ds.table}.
 #' For more information see help for {ds.table}
+#' @param rvar.all.unique.levels.transmit
+#' @param cvar.all.unique.levels.transmit
+#' @param stvar.all.unique.levels.transmit
 #' @param exclude.transmit for information see help on <exclude> argument 
 #' of {ds.table}. Fully specified by <exclude> argument of {ds.table}
 #' @param useNA.transmit for information see help on <useNA> argument 
@@ -28,8 +31,8 @@
 #' @return For information see help for {ds.table}
 #' @author Paul Burton for DataSHIELD Development Team, 13/11/2019
 #' @export
-tableDS<-function(rvar.transmit, cvar.transmit, stvar.transmit,
-                    exclude.transmit, useNA.transmit, force.nfilter.transmit){
+tableDS<-function(rvar.transmit, cvar.transmit, stvar.transmit, rvar.all.unique.levels.transmit, cvar.all.unique.levels.transmit, 
+                  stvar.all.unique.levels.transmit, exclude.transmit, useNA.transmit, force.nfilter.transmit){
 
 
 #########################################################################
@@ -71,43 +74,58 @@ nfilter.tab<-force.nfilter.active
 
 #Activate via eval when needed
 #rvar
-rvar<-eval(parse(text=rvar.transmit), envir = parent.frame())
-if(!is.factor(rvar))
+print(rvar.all.unique.levels.transmit)
+  rvar<-eval(parse(text=rvar.transmit), envir = parent.frame())
+  if(!is.factor(rvar))
 	{
-	rvar<-as.factor(rvar)
-	}
-
+  	rvar.all.unique.levels<- strsplit(rvar.all.unique.levels.transmit,split=",")
+  	rvar<-factor(as.factor(rvar), levels=rvar.all.unique.levels)
+  }else{
+    rvar.all.unique.levels<- strsplit(rvar.all.unique.levels.transmit,split=",")
+    rvar<-factor(rvar, levels=rvar.all.unique.levels)
+  }
+print(rvar)  
 #cvar
-if(!is.null(cvar.transmit))
-{
-cvar<-eval(parse(text=cvar.transmit), envir = parent.frame())
+print(cvar.all.unique.levels.transmit)
 
-if(!is.factor(cvar))
-	{
-	cvar<-as.factor(cvar)
-	}
+  if(!is.null(cvar.transmit))
+{
+    cvar<-eval(parse(text=cvar.transmit), envir = parent.frame())
+    if(!is.factor(cvar))
+    {
+      cvar.all.unique.levels<- strsplit(cvar.all.unique.levels.transmit,split=",")
+      cvar<-factor(as.factor(cvar), levels=cvar.all.unique.levels)
+    }else{
+      cvar.all.unique.levels<- strsplit(cvar.all.unique.levels.transmit,split=",")
+      cvar<-factor(rvar, levels=cvar.all.unique.levels)
+    }
+
 }
 else
 {
 cvar<-NULL
 }
-
+print(cvar)
 #stvar
+print(stvar.all.unique.levels.transmit)
+
 if(!is.null(stvar.transmit))
 {
-stvar<-eval(parse(text=stvar.transmit), envir = parent.frame())
-
-if(!is.factor(stvar))
-	{
-	stvar<-as.factor(stvar)
-	}
-
+  stvar<-eval(parse(text=stvar.transmit), envir = parent.frame())
+  if(!is.factor(stvar))
+  {
+    stvar.all.unique.levels<- strsplit(stvar.all.unique.levels.transmit,split=",")
+    stvar<-factor(as.factor(stvar), levels=stvar.all.unique.levels)
+  }else{
+    stvar.all.unique.levels<- strsplit(stvar.all.unique.levels.transmit,split=",")
+    stvar<-factor(rvar, levels=stvar.all.unique.levels)
+  }
 }
 else
 {
 stvar<-NULL
 }
-
+print(stvar)
 
 
 #exclude
@@ -195,6 +213,7 @@ numcells<-length(test.outobj)
 	return(return.message)
 	}else{
 	outobj<-table(rvar,exclude=exclude,useNA=useNA.transmit)	
+	
 	}
 
 }
