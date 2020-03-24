@@ -26,6 +26,7 @@ AggregateMethods:
     heatmapPlotDS,
     histogramDS1,
     histogramDS2,
+    lsDS,
     isNaDS,
     isValidDS,
     lengthDS,
