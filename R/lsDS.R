@@ -26,14 +26,14 @@
 #' @export
 lsDS<-function(search.filter=NULL,env.to.search){
 #########################################################################
-# DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS           			#
-thr <- dsBase::listDisclosureSettingsDS()								#
-#nfilter.tab<-as.numeric(thr$nfilter.tab)								#
-#nfilter.glm<-as.numeric(thr$nfilter.glm)								#
-#nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
-nfilter.string<-as.numeric(thr$nfilter.string)              			#
-#nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)    			#
-#nfilter.kNN<-as.numeric(thr$nfilter.kNN)								#
+# DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
+thr <- dsBase::listDisclosureSettingsDS()                               #
+#nfilter.tab<-as.numeric(thr$nfilter.tab)                               #
+#nfilter.glm<-as.numeric(thr$nfilter.glm)                               #
+#nfilter.subset<-as.numeric(thr$nfilter.subset)                         #
+nfilter.string<-as.numeric(thr$nfilter.string)                          #
+#nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)               #
+#nfilter.kNN<-as.numeric(thr$nfilter.kNN)                               #
 #datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)       #
 #########################################################################
 
@@ -53,7 +53,7 @@ if(is.null(search.filter))
 {
 outobj<-ls(pos=env.to.search)
 
-outlist<-list(environment.searched=envir.2.search,objects.found=outobj)
+outlist<-list(environment.searched=environmentName(envir.2.search),objects.found=outobj)
 
 return(outlist)
   
@@ -99,7 +99,7 @@ return(outlist)
    search.filter.final<-search.filter
   }
 
-outlist<-list(environment.searched=envir.2.search, objects.found=outobj,search.filter.final=search.filter.final)
+outlist<-list(environment.searched=environmentName(envir.2.search), objects.found=outobj,search.filter.final=search.filter.final)
 
 return(outlist)
 }
