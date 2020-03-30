@@ -26,6 +26,7 @@ AggregateMethods:
     heatmapPlotDS,
     histogramDS1,
     histogramDS2,
+    lsDS,
     isNaDS,
     isValidDS,
     lengthDS,
@@ -65,7 +66,6 @@ AggregateMethods:
     is.numeric=base::is.numeric,
     length=base::length,
     levels=base::levels,
-    ls=base::ls,
     NROW=base::NROW,
     t.test=stats::t.test
 AssignMethods:
