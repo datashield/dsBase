@@ -36,14 +36,14 @@ tableDS<-function(rvar.transmit, cvar.transmit, stvar.transmit, rvar.all.unique.
 
 
 #########################################################################
-# DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS           			#
-thr<-dsBase::listDisclosureSettingsDS() 								#
-nfilter.tab<-as.numeric(thr$nfilter.tab)								#
-#nfilter.glm<-as.numeric(thr$nfilter.glm)								#
-#nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
-#nfilter.string<-as.numeric(thr$nfilter.string)              			#
-#nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)    			#
-#nfilter.kNN<-as.numeric(thr$nfilter.kNN)								#
+# DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
+thr<-dsBase::listDisclosureSettingsDS()                                 #
+nfilter.tab<-as.numeric(thr$nfilter.tab)                                #
+#nfilter.glm<-as.numeric(thr$nfilter.glm)                               #
+#nfilter.subset<-as.numeric(thr$nfilter.subset)                         #
+#nfilter.string<-as.numeric(thr$nfilter.string)                         #
+#nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)               #
+#nfilter.kNN<-as.numeric(thr$nfilter.kNN)                               #
 #datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)       #
 #########################################################################
 
@@ -74,18 +74,21 @@ nfilter.tab<-force.nfilter.active
 
 #Activate via eval when needed
 #rvar
+print("==== ( 1) ====")
 print(rvar.all.unique.levels.transmit)
   rvar<-eval(parse(text=rvar.transmit), envir = parent.frame())
   if(!is.factor(rvar))
-	{
-  	rvar.all.unique.levels<- strsplit(rvar.all.unique.levels.transmit,split=",")
-  	rvar<-factor(as.factor(rvar), levels=rvar.all.unique.levels)
+  {
+    rvar.all.unique.levels<- strsplit(rvar.all.unique.levels.transmit,split=",")
+    rvar<-factor(as.factor(rvar), levels=rvar.all.unique.levels)
   }else{
     rvar.all.unique.levels<- strsplit(rvar.all.unique.levels.transmit,split=",")
     rvar<-factor(rvar, levels=rvar.all.unique.levels)
   }
+print("==== ( 2) ====")
 print(rvar)  
 #cvar
+print("==== ( 3) ====")
 print(cvar.all.unique.levels.transmit)
 
   if(!is.null(cvar.transmit))
@@ -105,8 +108,10 @@ else
 {
 cvar<-NULL
 }
+print("==== ( 4) ====")
 print(cvar)
 #stvar
+print("==== ( 5) ====")
 print(stvar.all.unique.levels.transmit)
 
 if(!is.null(stvar.transmit))
@@ -125,8 +130,9 @@ else
 {
 stvar<-NULL
 }
+print("==== ( 6) ====")
 print(stvar)
-
+print("==============")
 
 #exclude
 if(!is.null(exclude.transmit))
