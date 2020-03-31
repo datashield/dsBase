@@ -77,11 +77,15 @@ nfilter.tab<-force.nfilter.active
 print("==== ( 1) ====")
 print(rvar.all.unique.levels.transmit)
   rvar<-eval(parse(text=rvar.transmit), envir = parent.frame())
+print("==== (1a) ====")
+print(rvar)
   if(!is.factor(rvar))
   {
+    print("==== (1b) ====")
     rvar.all.unique.levels<- strsplit(rvar.all.unique.levels.transmit,split=",")
     rvar<-factor(as.factor(rvar), levels=rvar.all.unique.levels)
   }else{
+    print("==== (1c) ====")
     rvar.all.unique.levels<- strsplit(rvar.all.unique.levels.transmit,split=",")
     rvar<-factor(rvar, levels=rvar.all.unique.levels)
   }
