@@ -83,10 +83,13 @@ print(rvar)
   {
     print("==== (1b) ====")
     rvar.all.unique.levels<- strsplit(rvar.all.unique.levels.transmit,split=",")
+    print(rvar.all.unique.levels)
     rvar<-factor(as.factor(rvar), levels=rvar.all.unique.levels)
   }else{
     print("==== (1c) ====")
     rvar.all.unique.levels<- strsplit(rvar.all.unique.levels.transmit,split=",")
+    print(rvar.all.unique.levels)
+    print(class(rvar.all.unique.levels))
     rvar<-factor(rvar, levels=rvar.all.unique.levels)
   }
 print("==== ( 2) ====")
