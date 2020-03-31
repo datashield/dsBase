@@ -42,13 +42,7 @@ eval(parse(text=calltext2), envir = parent.frame())
 calltext3<-paste0("out.table.dimnames<-",newobj,"[[4]]")
 eval(parse(text=calltext3), envir = parent.frame())
 
-print(out.table.cell.IDs)
-print(out.table.dim)
-print(out.table.dimnames)
-
 out.table.structure<-array(out.table.cell.IDs,dim=out.table.dim,dimnames=out.table.dimnames)
-
-print(out.table.structure)
 
 #table dimension names
 if(!is.null(rvar.transmit)&&!is.null(cvar.transmit)&&!is.null(stvar.transmit))
