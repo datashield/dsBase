@@ -84,6 +84,7 @@ print(rvar)
     print("==== (1b) ====")
     rvar.all.unique.levels <- unlist(strsplit(rvar.all.unique.levels.transmit,split=","))
     print(rvar.all.unique.levels)
+    print(class(rvar.all.unique.levels))
     rvar<-factor(as.factor(rvar), levels=rvar.all.unique.levels)
   }else{
     print("==== (1c) ====")
@@ -103,11 +104,17 @@ print(cvar.all.unique.levels.transmit)
     cvar<-eval(parse(text=cvar.transmit), envir = parent.frame())
     if(!is.factor(cvar))
     {
+      print("==== (3a) ====")
       cvar.all.unique.levels <- unlist(strsplit(cvar.all.unique.levels.transmit,split=","))
+      print(cvar.all.unique.levels)
+      print(class(cvar.all.unique.levels))
       cvar<-factor(as.factor(cvar), levels=cvar.all.unique.levels)
     }else{
+      print("==== (3b) ====")
       cvar.all.unique.levels <- unlist(strsplit(cvar.all.unique.levels.transmit,split=","))
-      cvar<-factor(rvar, levels=cvar.all.unique.levels)
+      print(cvar.all.unique.levels)
+      print(class(cvar.all.unique.levels))
+      cvar<-factor(cvar, levels=cvar.all.unique.levels)
     }
 
 }
@@ -126,11 +133,17 @@ if(!is.null(stvar.transmit))
   stvar<-eval(parse(text=stvar.transmit), envir = parent.frame())
   if(!is.factor(stvar))
   {
+      print("==== (5a) ====")
     stvar.all.unique.levels<- unlist(strsplit(stvar.all.unique.levels.transmit,split=","))
+      print(stvar.all.unique.levels)
+      print(class(stvar.all.unique.levels))
     stvar<-factor(as.factor(stvar), levels=stvar.all.unique.levels)
   }else{
+      print("==== (5b) ====")
     stvar.all.unique.levels<- unlist(strsplit(stvar.all.unique.levels.transmit,split=","))
-    stvar<-factor(rvar, levels=stvar.all.unique.levels)
+      print(stvar.all.unique.levels)
+      print(class(stvar.all.unique.levels))
+    stvar<-factor(stvar, levels=stvar.all.unique.levels)
   }
 }
 else
