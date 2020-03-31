@@ -82,12 +82,12 @@ print(rvar)
   if(!is.factor(rvar))
   {
     print("==== (1b) ====")
-    rvar.all.unique.levels<- strsplit(rvar.all.unique.levels.transmit,split=",")
+    rvar.all.unique.levels <- unlist(strsplit(rvar.all.unique.levels.transmit,split=","))
     print(rvar.all.unique.levels)
     rvar<-factor(as.factor(rvar), levels=rvar.all.unique.levels)
   }else{
     print("==== (1c) ====")
-    rvar.all.unique.levels<- strsplit(rvar.all.unique.levels.transmit,split=",")
+    rvar.all.unique.levels <- unlist(strsplit(rvar.all.unique.levels.transmit,split=","))
     print(rvar.all.unique.levels)
     print(class(rvar.all.unique.levels))
     rvar<-factor(rvar, levels=rvar.all.unique.levels)
@@ -103,10 +103,10 @@ print(cvar.all.unique.levels.transmit)
     cvar<-eval(parse(text=cvar.transmit), envir = parent.frame())
     if(!is.factor(cvar))
     {
-      cvar.all.unique.levels<- strsplit(cvar.all.unique.levels.transmit,split=",")
+      cvar.all.unique.levels <- unlist(strsplit(cvar.all.unique.levels.transmit,split=","))
       cvar<-factor(as.factor(cvar), levels=cvar.all.unique.levels)
     }else{
-      cvar.all.unique.levels<- strsplit(cvar.all.unique.levels.transmit,split=",")
+      cvar.all.unique.levels <- unlist(strsplit(cvar.all.unique.levels.transmit,split=","))
       cvar<-factor(rvar, levels=cvar.all.unique.levels)
     }
 
@@ -126,10 +126,10 @@ if(!is.null(stvar.transmit))
   stvar<-eval(parse(text=stvar.transmit), envir = parent.frame())
   if(!is.factor(stvar))
   {
-    stvar.all.unique.levels<- strsplit(stvar.all.unique.levels.transmit,split=",")
+    stvar.all.unique.levels<- unlist(strsplit(stvar.all.unique.levels.transmit,split=","))
     stvar<-factor(as.factor(stvar), levels=stvar.all.unique.levels)
   }else{
-    stvar.all.unique.levels<- strsplit(stvar.all.unique.levels.transmit,split=",")
+    stvar.all.unique.levels<- unlist(strsplit(stvar.all.unique.levels.transmit,split=","))
     stvar<-factor(rvar, levels=stvar.all.unique.levels)
   }
 }
