@@ -45,8 +45,8 @@ thr <- listDisclosureSettingsDS()                                       #
 
 ##########CHECK NOT LONG SPECIFIED VECTOR##############
 
-V1<-eval(parse(text=V1.name), envir = parent.frame())
-V2<-eval(parse(text=V2.name), envir = parent.frame())
+V1<-eval(parse(text=V1.name))
+V2<-eval(parse(text=V2.name))
 
 
 if(is.character(V1)){
@@ -88,15 +88,15 @@ Boolean.indicator<-integer(length=V1.length)
 #EVALUATE DIFFERENTLY IF V2 IS SAME LENGTH AS V1 OR OF LENGTH 1
 if(V2.length==V1.length){
 for(j in 1:V1.length){
-command.text<-paste0(V1.name,"[",j,"]",Boolean.operator,V2.name,"[",j,"]")
-Boolean.indicator[j]<-eval(parse(text=command.text), envir = parent.frame())*1
+command.text<-paste0(V1.name,"[",j,"]",Boolean.operator,"(",V2.name,"[",j,"]",")")
+Boolean.indicator[j]<-eval(parse(text=command.text))*1
 }
 }
 
 if(V2.length==1){
 for(j in 1:V1.length){
-command.text<-paste0(V1.name,"[",j,"]",Boolean.operator,V2.name)
-Boolean.indicator[j]<-eval(parse(text=command.text), envir = parent.frame())*1
+command.text<-paste0(V1.name,"[",j,"]",Boolean.operator,"(",V2,")")
+Boolean.indicator[j]<-eval(parse(text=command.text))*1
 }
 }
 
@@ -114,32 +114,6 @@ Boolean.indicator[is.na(Boolean.indicator)==1]<-0
 
 outobj.b<-as.logical(Boolean.indicator)
 outobj<-Boolean.indicator
-
-
-
-#COMMENT OUT THIS CODE BLOCK BECAUSE TESTS OF MINIMUM CELL SIZE SHOULD ALL BE
-#ENACTED IN AGGREGATE FUNCTIONS. NO VECTOR IS DISCLOSIVE UNTIL IT RETURNS
-#SOMETHING TO THE CLIENTSIDE. I AM LEAVING THIS COMMENTED BUT UNDELETED
-#IN CASE WE LATER DECIDE TO CHANGE THIS STRATEGY
-#CHECK OUTPUT VECTOR VALIDITY
-#	outobj.invalid<-0
-#
-#	unique.values.outobj<-unique(outobj)
-#	unique.values.noNA.outobj<-unique.values.outobj[complete.cases(unique.values.outobj)]
-#
-#	#Boolean and can therefore only be binary so check this:
-#	if(length(unique.values.noNA.outobj)>2) outobj.invalid<-1
-#
-#	tabvar<-table(outobj,useNA="no")[table(outobj,useNA="no")>=1]
-#	min.category<-min(tabvar)
-#	if(min.category<nfilter.tab)outobj.invalid<-1
-#
-#TERMINATE CALCULATION IF outobj.invalid==1
-#if(outobj.invalid==1){
-#   studysideMessage<-"FAILED: outobj has at least one category below table filter limit"
-#   return(list(studysideMessage=studysideMessage))
-#}
-
 
 
 if(numeric.output==TRUE){
