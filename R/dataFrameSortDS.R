@@ -82,27 +82,30 @@ dataFrameSortDS <- function(df.name=NULL,sort.key.name=NULL,sort.descending,sort
   if(sort.method=="numeric")
   {
      sort.key.2.use<-as.numeric(sort.key)
+  }
 
-     #PUT na.last in here
+  if(sort.method=="alphabetic"){
+     sort.key.2.use<-as.character(sort.key)
+  }
+#PUT na.last in here
      if(sort.descending){
         key.ranks <- rank(sort.key.2.use,ties.method="average",na.last=FALSE)
          key.ranks <-(length(key.ranks)+1)-key.ranks
      }else{
         key.ranks <- rank(sort.key.2.use,ties.method="average",na.last=TRUE)
      }
-
+    key.order <- order(key.ranks)
+    if(sort.method=="numeric")
+    {
      key.order <- order(key.ranks)
-
-     df.sorted <- df2sort[key.order,]
-  }
-
-  if(sort.method=="alphabetic"){
-     sort.key.2.use<-as.character(sort.key)
-
-     df.sorted <- stringr::str_sort(sort.key.2.use, decending=sort.decending, na.last=!sort.decending)
-  }
-
-
+    }
+  
+   if(sort.method=="alphabetic")
+    {
+     key.order <- stringr::str_order(key.ranks)
+    }
+  
+   df.sorted <- df2sort[key.order,]
   return(df.sorted)
 }
 # ASSIGN FUNCTION
