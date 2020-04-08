@@ -98,10 +98,7 @@ dataFrameSortDS <- function(df.name=NULL,sort.key.name=NULL,sort.descending,sort
 
    if(sort.method=="alphabetic")
     {
-     key.order <- stringr::str_order(sort.key.2.use)
-     if(sort.descending){
-     key.order <- stringr::str_order(sort.key.2.use, decreasing = TRUE, na_last = FALSE)
-       }
+     key.order <- stringr::str_order(sort.key.2.use, decreasing = sort.descending, na_last = !sort.descending)
     } else {
     key.order <- order(key.ranks)
     }
