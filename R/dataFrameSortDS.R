@@ -98,7 +98,6 @@ dataFrameSortDS <- function(df.name=NULL,sort.key.name=NULL,sort.descending,sort
      }
       key.order <- order(key.ranks)
       }
-    }
     df.sorted <- df2sort[key.order,]  
     return(df.sorted)
 }
