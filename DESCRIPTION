@@ -109,6 +109,7 @@ AssignMethods:
     rowColCalcDS,
     rPoisDS,
     rUnifDS,
+    sampleDS,
     seedDS,
     seqDS,
     subsetByClassDS,
