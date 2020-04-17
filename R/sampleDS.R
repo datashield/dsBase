@@ -53,7 +53,7 @@ string.safe<-TRUE
 if(is.character(x.transmit))
 {
 	x.text<-strsplit(x.transmit, split="")
-	string.2.test<-x.text
+	string.2.test<-unlist(x.text)
 	if(length(string.2.test)>nfilter.stringShort) string.safe<-FALSE
 }
 
@@ -69,7 +69,7 @@ string.safe<-TRUE
 if(is.character(prob.transmit))
 {
 	prob.text<-strsplit(prob.transmit, split="")
-	string.2.test<-prob.text
+	string.2.test<-unlist(prob.text)
 	if(length(string.2.test)>nfilter.stringShort) string.safe<-FALSE
 }
 
