@@ -12,6 +12,7 @@ glmerSLMADS2(
   family,
   control_type = NULL,
   control_value.transmit = NULL,
+  nAGQ = 1L,
   verbose = 0,
   theta = NULL,
   fixef = NULL
@@ -32,6 +33,14 @@ glmerSLMADS2(
 
 \item{control_value.transmit}{see help for argument <control_value> for
 function ds.glmerSLMA}
+
+\item{nAGQ}{integer scalar, defaulting to 1L. IN PRACTICE, IT MAY BE NECESSARY
+TO SET nAGQ TO 0L when the model appears to converge perfectly well (e.g. verbose=2
+demonstrates good initial convergence of both the log-likelihood and
+regression coefficients) but formal convergence does not get declared - 
+so no output is produced - despite running the model for many iterations.
+The nAGQ argument is set by the nAGQ argument for ds.glmerSLMA and further
+details can be found in help(ds.glmerSLMA) and in the native R help for glmer()}
 
 \item{verbose}{see help for ds.glmerSLMA}
 
