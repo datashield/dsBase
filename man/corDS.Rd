@@ -2,25 +2,40 @@
 % Please edit documentation in R/corDS.R
 \name{corDS}
 \alias{corDS}
-\title{Computes correlation between two or more vectors}
+\title{Computes the sum of each variable and the sum of products for each pair of variables}
 \usage{
 corDS(x = NULL, y = NULL, use = NULL)
 }
 \arguments{
-\item{x}{a character, the name of a vector, dataframe or matrix}
+\item{x}{a character, the name of a vector, matrix or dataframe of variable(s) for which the covariance(s) and the
+correlation(s) is (are) going to calculated for.}
 
-\item{y}{(optional) a character, the name of a vector, dataframe or matrix}
+\item{y}{NULL (default) or the name of a vector, matrix or dataframe with compatible dimensions to x.}
 
-\item{use}{a character string giving a method for computing covariances in the 
-presence of missing values. This must be one of the strings: "everything", "all.obs", 
-"complete.obs", "na.or.complete", or "pairwise.complete.obs".}
+\item{use}{a character string giving a method for computing covariances in the presence of missing values.
+This must be one of the strings "casewise.complete" or "pairwise.complete". If \code{use} is set to
+'casewise.complete' then any rows with missing values are omitted from the vector, matrix or dataframe before the
+calculations of the sums. If \code{use} is set to 'pairwise.complete' (which is the default case set on the client-side),
+then the sums of products are computed for each two variables using only the complete pairs of observations on the
+two variables.}
 }
 \value{
-correlation
+a list tha includes a matrix with elements the sum of products between each two variables, a matrix with
+elements the sum of the values of each variable, a matrix with elements the number of complete cases in each
+pair of variables, a list with the number of missing values in each variable separately (columnwise) and the number
+of missing values casewise or pairwise depending on the arqument \code{use}, and an error message which indicates
+whether or not the input variables pass the disclosure control (i.e. none of them is dichotomous with a level
+having less counts than the pre-specified threshold). If any of the input variables does not pass the disclosure
+control then all the output values are replaced with NAs
 }
 \description{
-this function is similar to R function 'cor'
+This function computes the sum of each vector of variable and the sum of the products of each two
+variables (i.e. the scalar product of each two vectors).
+}
+\details{
+computes the sum of each vector of variable and the sum of the products of each two
+variables
 }
 \author{
-Gaye, A.
+Gaye A., Avraam D., Burton P.
 }
