@@ -20,7 +20,7 @@
 #' whether or not the input variables pass the disclosure control (i.e. none of them is dichotomous with a level
 #' having less counts than the pre-specified threshold). If any of the input variables does not pass the disclosure
 #' control then all the output values are replaced with NAs
-#' @author Gaye A., Avraam D., Burton P.
+#' @author Amadou Gaye, Paul Burton, and Demetris Avraam for DataSHIELD Development Team
 #' @export
 #'
 covDS <- function(x=NULL, y=NULL, use=NULL){
@@ -33,38 +33,41 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
   #nfilter.subset <- as.numeric(thr$nfilter.subset)
   #nfilter.string <- as.numeric(thr$nfilter.string)
   #############################################################
-
+  
+  x.val <- base::get(x, envir = parent.frame())
+  if (!is.null(y)){
+    y.val <- base::get(y, envir = parent.frame())
+  }
+  else{
+    y.val <- NULL
+  }
+  
   # create a data frame for the variables
-  if (is.null(y)){
-    dataframe <- as.data.frame(x)
+  if (is.null(y.val)){
+    dataframe <- as.data.frame(x.val)
   }else{
-    dataframe <- as.data.frame(cbind(x,y))
+    dataframe <- as.data.frame(cbind(x.val,y.val))
   }
 
   # names of the variables
   cls <- colnames(dataframe)
 
   # number of the input variables
-  N.vars <- dim(dataframe)[2]
-
+  N.vars <- ncol(dataframe)
 
   ######################
   # DISCLOSURE CONTROL #
   ######################
 
   # CHECK X MATRIX VALIDITY
-  # Check no dichotomous X vectors with between 1 and filter.threshold
+  # Check no dichotomous X vectors with between 1 and nfilter.tab value
   # observations at either level
 
   X.mat <- as.matrix(dataframe)
 
-  dimX <- dim((X.mat))
+  Xpar.invalid <- rep(0, N.vars)
 
-  num.Xpar <- dimX[2]
-
-  Xpar.invalid <- rep(0, num.Xpar)
-
-  for(pj in 1:num.Xpar){
+  for(pj in 1:N.vars){
     unique.values.noNA <- unique((X.mat[,pj])[stats::complete.cases(X.mat[,pj])])
     if(length(unique.values.noNA)==2){
       tabvar <- table(X.mat[,pj])[table(X.mat[,pj])>=1] #tabvar COUNTS N IN ALL CATEGORIES WITH AT LEAST ONE OBSERVATION
@@ -101,7 +104,11 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
     colnames(pairwise.NAs) <- cls
     
     if (use=='casewise.complete'){
+<<<<<<< Updated upstream
     	na.counts <- list(column.NAs, casewise.NAs)
+=======
+	    na.counts <- list(column.NAs, casewise.NAs)
+>>>>>>> Stashed changes
       names(na.counts) <- list(paste0("Number of NAs in each column"), paste0("Number of NAs casewise"))
     }
     if (use=='pairwise.complete'){
@@ -126,7 +133,8 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
     	column.NAs[1,i] <- length(dataframe[,i])-length(dataframe[stats::complete.cases(dataframe[,i]),i])
     }
 
-    # if use is casewise.complete first remove any rows from the dataframe that include NAs
+    # if use argument is set to 'casewise.complete', then remove any rows from the dataframe that include 
+    # any NAs
     casewise.dataframe <- dataframe[stats::complete.cases(dataframe),]
 
     # calculate the number of NAs casewise
@@ -156,7 +164,11 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
       sums[m,1] <- sum(as.numeric(as.character(casewise.dataframe[,m])))
     }
 
+<<<<<<< Updated upstream
 	  # A matrix with elements the sum of squares of each variable after removing missing values casewise
+=======
+   	# A matrix with elements the sum of squares of each variable after removing missing values casewise
+>>>>>>> Stashed changes
     sums.of.squares <- matrix(ncol=N.vars, nrow=N.vars)
     rownames(sums.of.squares) <- cls
     colnames(sums.of.squares) <- cls
@@ -197,7 +209,7 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
     column.NAs <- matrix(ncol=N.vars, nrow=1)
     colnames(column.NAs) <- cls
     for(i in 1:N.vars){
-	  column.NAs[1,i] <- length(dataframe[,i])-length(dataframe[stats::complete.cases(dataframe[,i]),i])
+	    column.NAs[1,i] <- length(dataframe[,i]) - length(dataframe[stats::complete.cases(dataframe[,i]),i])
     }
 
     # calculate the number of NAs in each pair of variables
@@ -206,7 +218,11 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
     colnames(pairwise.NAs) <- cls
     for(i in 1:N.vars){
 	    for(j in 1:N.vars){
+<<<<<<< Updated upstream
 	      pairwise.NAs[i,j] <- dim(pair[[i]][[j]])[1]-dim(cleaned.pair[[i]][[j]])[1]
+=======
+	      pairwise.NAs[i,j] <- nrow(pair[[i]][[j]]) - nrow(cleaned.pair[[i]][[j]])
+>>>>>>> Stashed changes
 	    }
     }
 
@@ -261,7 +277,7 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
     colnames(complete.counts) <- cls
     for(m in 1:N.vars){
       for(p in 1:N.vars){
-        complete.counts[m,p] <- dim(cleaned.pair[[m]][[p]])[1]
+        complete.counts[m,p] <- nrow(cleaned.pair[[m]][[p]])
       }
     }
 
