@@ -27,16 +27,16 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
 
   #############################################################
   #MODULE 1: CAPTURE THE nfilter SETTINGS
-  thr <- ds.Base::listDisclosureSettingsDS()
+  thr <- listDisclosureSettingsDS()
   nfilter.tab <- as.numeric(thr$nfilter.tab)
   #nfilter.glm <- as.numeric(thr$nfilter.glm)
   #nfilter.subset <- as.numeric(thr$nfilter.subset)
   #nfilter.string <- as.numeric(thr$nfilter.string)
   #############################################################
   
-  x.val <- base::get(x, envir = parent.frame())
+  x.val <- eval(parse(text=x), envir = parent.frame())
   if (!is.null(y)){
-    y.val <- base::get(y, envir = parent.frame())
+    y.val <- eval(parse(text=y), envir = parent.frame())
   }
   else{
     y.val <- NULL
