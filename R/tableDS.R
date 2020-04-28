@@ -19,9 +19,12 @@
 #' tables in the output if the call specifies a 3 dimensional table.
 #' Fully specified by <stvar> argument in {ds.table}.
 #' For more information see help for {ds.table}
-#' @param rvar.all.unique.levels.transmit
-#' @param cvar.all.unique.levels.transmit
-#' @param stvar.all.unique.levels.transmit
+#' @param rvar.all.unique.levels.transmit is a character string containing all 
+#' unique level in rvar, across the studies, separated by ','.
+#' @param cvar.all.unique.levels.transmit is a character string containing all               
+#' unique level in cvar, across the studies, separated by ','.
+#' @param stvar.all.unique.levels.transmit is a character string containing all               
+#' unique level in stvar, across the studies, separated by ','.
 #' @param exclude.transmit for information see help on <exclude> argument 
 #' of {ds.table}. Fully specified by <exclude> argument of {ds.table}
 #' @param useNA.transmit for information see help on <useNA> argument 
@@ -203,8 +206,7 @@ numcells<-length(test.outobj)
 	return.message<-paste0("Failed: at least one cell has a non-zero count less than nfilter.tab i.e. ",nfilter.tab)  
 	return(return.message)
 	}else{
-	outobj<-table(rvar,exclude=exclude,useNA=useNA.transmit)	
-	
+	outobj<-table(rvar,exclude=exclude,useNA=useNA.transmit)
 	}
 
 }
