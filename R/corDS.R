@@ -34,11 +34,19 @@ corDS <- function(x=NULL, y=NULL, use=NULL){
   #nfilter.string <- as.numeric(thr$nfilter.string)
   #############################################################
   
+  x.val <- eval(parse(text=x), envir = parent.frame())
+  if (!is.null(y)){
+    y.val <- eval(parse(text=y), envir = parent.frame())
+  }
+  else{
+    y.val <- NULL
+  }
+  
   # create a data frame for the variables
-  if (is.null(y)){
-    dataframe <- as.data.frame(x)
+  if (is.null(y.val)){
+    dataframe <- as.data.frame(x.val)
   }else{
-    dataframe <- as.data.frame(cbind(x,y))
+    dataframe <- as.data.frame(cbind(x.val,y.val))
   }
   
   # names of the variables
