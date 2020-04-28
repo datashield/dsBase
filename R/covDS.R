@@ -70,7 +70,7 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
       tabvar <- table(X.mat[,pj])[table(X.mat[,pj])>=1] #tabvar COUNTS N IN ALL CATEGORIES WITH AT LEAST ONE OBSERVATION
       min.category <- min(tabvar)
       if(min.category < nfilter.tab){
-	Xpar.invalid[pj] <- 1
+	      Xpar.invalid[pj] <- 1
       }
     }
   }
@@ -101,12 +101,12 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
     colnames(pairwise.NAs) <- cls
     
     if (use=='casewise.complete'){
-	na.counts <- list(column.NAs, casewise.NAs)
+    	na.counts <- list(column.NAs, casewise.NAs)
       names(na.counts) <- list(paste0("Number of NAs in each column"), paste0("Number of NAs casewise"))
     }
     if (use=='pairwise.complete'){
-	na.counts <- list(column.NAs, pairwise.NAs)
-	names(na.counts) <- list(paste0("Number of NAs in each column"), paste0("Number of NAs pairwise"))
+	    na.counts <- list(column.NAs, pairwise.NAs)
+    	names(na.counts) <- list(paste0("Number of NAs in each column"), paste0("Number of NAs pairwise"))
     }
 
     errorMessage <- "ERROR: at least one variable is binary with one category less than the filter threshold for table cell size"
@@ -123,7 +123,7 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
     column.NAs <- matrix(ncol=N.vars, nrow=1)
     colnames(column.NAs) <- cls
     for(i in 1:N.vars){
-	column.NAs[1,i] <- length(dataframe[,i])-length(dataframe[stats::complete.cases(dataframe[,i]),i])
+    	column.NAs[1,i] <- length(dataframe[,i])-length(dataframe[stats::complete.cases(dataframe[,i]),i])
     }
 
     # if use is casewise.complete first remove any rows from the dataframe that include NAs
@@ -156,7 +156,7 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
       sums[m,1] <- sum(as.numeric(as.character(casewise.dataframe[,m])))
     }
 
-	# A matrix with elements the sum of squares of each variable after removing missing values casewise
+	  # A matrix with elements the sum of squares of each variable after removing missing values casewise
     sums.of.squares <- matrix(ncol=N.vars, nrow=N.vars)
     rownames(sums.of.squares) <- cls
     colnames(sums.of.squares) <- cls
@@ -205,9 +205,9 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
     rownames(pairwise.NAs) <- cls
     colnames(pairwise.NAs) <- cls
     for(i in 1:N.vars){
-	for(j in 1:N.vars){
-	  pairwise.NAs[i,j] <- dim(pair[[i]][[j]])[1]-dim(cleaned.pair[[i]][[j]])[1]
-	}
+	    for(j in 1:N.vars){
+	      pairwise.NAs[i,j] <- dim(pair[[i]][[j]])[1]-dim(cleaned.pair[[i]][[j]])[1]
+	    }
     }
 
     # counts for NAs to be returned to the client:
@@ -231,12 +231,12 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
     rownames(sums) <- cls
     colnames(sums) <- cls
     for(m in 1:N.vars){
-	for(p in 1:N.vars){
+	    for(p in 1:N.vars){
         sums[m,p] <- sum(as.numeric(as.character(cleaned.pair[[m]][[p]][,1])))
       }
     }
 
-	# A matrix with elements the sum of squares of each variable after removing missing values pairwise
+	  # A matrix with elements the sum of squares of each variable after removing missing values pairwise
     sums.of.squares <- matrix(ncol=N.vars, nrow=N.vars)
     rownames(sums.of.squares) <- cls
     colnames(sums.of.squares) <- cls
@@ -247,7 +247,7 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
     }
 
     # Calculate the variance of each variable after removing missing values pairwise
-	vars <- matrix(ncol=N.vars, nrow=N.vars)
+	  vars <- matrix(ncol=N.vars, nrow=N.vars)
     rownames(sums) <- cls
     colnames(sums) <- cls
     for(m in 1:N.vars){
