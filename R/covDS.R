@@ -27,7 +27,7 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
 
   #############################################################
   #MODULE 1: CAPTURE THE nfilter SETTINGS
-  thr <- listDisclosureSettingsDS()
+  thr <- ds.Base::listDisclosureSettingsDS()
   nfilter.tab <- as.numeric(thr$nfilter.tab)
   #nfilter.glm <- as.numeric(thr$nfilter.glm)
   #nfilter.subset <- as.numeric(thr$nfilter.subset)
@@ -218,11 +218,7 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
     colnames(pairwise.NAs) <- cls
     for(i in 1:N.vars){
 	    for(j in 1:N.vars){
-<<<<<<< Updated upstream
-	      pairwise.NAs[i,j] <- dim(pair[[i]][[j]])[1]-dim(cleaned.pair[[i]][[j]])[1]
-=======
 	      pairwise.NAs[i,j] <- nrow(pair[[i]][[j]]) - nrow(cleaned.pair[[i]][[j]])
->>>>>>> Stashed changes
 	    }
     }
 
