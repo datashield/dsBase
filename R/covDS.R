@@ -104,11 +104,7 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
     colnames(pairwise.NAs) <- cls
     
     if (use=='casewise.complete'){
-<<<<<<< Updated upstream
-    	na.counts <- list(column.NAs, casewise.NAs)
-=======
 	    na.counts <- list(column.NAs, casewise.NAs)
->>>>>>> Stashed changes
       names(na.counts) <- list(paste0("Number of NAs in each column"), paste0("Number of NAs casewise"))
     }
     if (use=='pairwise.complete'){
@@ -164,11 +160,8 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
       sums[m,1] <- sum(as.numeric(as.character(casewise.dataframe[,m])))
     }
 
-<<<<<<< Updated upstream
-	  # A matrix with elements the sum of squares of each variable after removing missing values casewise
-=======
+
    	# A matrix with elements the sum of squares of each variable after removing missing values casewise
->>>>>>> Stashed changes
     sums.of.squares <- matrix(ncol=N.vars, nrow=N.vars)
     rownames(sums.of.squares) <- cls
     colnames(sums.of.squares) <- cls
