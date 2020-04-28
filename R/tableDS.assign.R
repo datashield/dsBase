@@ -21,7 +21,7 @@
 #' tables in the output if the call specifies a 3 dimensional table.
 #' Fully specified by <stvar> argument in {ds.table}.
 #' For more information see help for {ds.table}
-#' @param rvar.all.unique.levels.transmit is a character string containing all 
+#' @param rvar.all.unique.levels.transmit is a character string containing all
 #' unique level in rvar, across the studies, separated by ','.
 #' @param cvar.all.unique.levels.transmit is a character string containing all
 #' unique level in cvar, across the studies, separated by ','.

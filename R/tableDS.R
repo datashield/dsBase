@@ -19,15 +19,15 @@
 #' tables in the output if the call specifies a 3 dimensional table.
 #' Fully specified by <stvar> argument in {ds.table}.
 #' For more information see help for {ds.table}
-#' @param rvar.all.unique.levels.transmit is a character string containing all 
+#' @param rvar.all.unique.levels.transmit is a character string containing all
 #' unique level in rvar, across the studies, separated by ','.
-#' @param cvar.all.unique.levels.transmit is a character string containing all               
+#' @param cvar.all.unique.levels.transmit is a character string containing all
 #' unique level in cvar, across the studies, separated by ','.
-#' @param stvar.all.unique.levels.transmit is a character string containing all               
+#' @param stvar.all.unique.levels.transmit is a character string containing all
 #' unique level in stvar, across the studies, separated by ','.
-#' @param exclude.transmit for information see help on <exclude> argument 
+#' @param exclude.transmit for information see help on <exclude> argument
 #' of {ds.table}. Fully specified by <exclude> argument of {ds.table}
-#' @param useNA.transmit for information see help on <useNA> argument 
+#' @param useNA.transmit for information see help on <useNA> argument
 #' of {ds.table}. Fully specified by <useNA> argument of {ds.table}
 #' @param force.nfilter.transmit for information see help on <force.nfilter> argument 
 #' of {ds.table}. Fully specified by <force.nfilter> argument of {ds.table}
