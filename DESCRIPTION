@@ -14,6 +14,7 @@ AggregateMethods:
     asFactorDS1,
     asListDS,
     checkNegValueDS,
+    corDS,
     covDS,
     dataFrameSubsetDS1,
     densityGridDS,
