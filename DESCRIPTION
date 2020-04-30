@@ -1,6 +1,6 @@
 Package: dsBase
 Title: DataSHIELD server site base functions
-Version: 6.0.0-02
+Version: 6.0.0-03
 Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
 Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
 License: GPL-3
@@ -26,6 +26,7 @@ AggregateMethods:
     heatmapPlotDS,
     histogramDS1,
     histogramDS2,
+    lsDS,
     isNaDS,
     isValidDS,
     lengthDS,
@@ -65,7 +66,6 @@ AggregateMethods:
     is.numeric=base::is.numeric,
     length=base::length,
     levels=base::levels,
-    ls=base::ls,
     NROW=base::NROW,
     t.test=stats::t.test
 AssignMethods:
@@ -109,6 +109,7 @@ AssignMethods:
     rowColCalcDS,
     rPoisDS,
     rUnifDS,
+    sampleDS,
     seedDS,
     seqDS,
     subsetByClassDS,
@@ -139,4 +140,4 @@ Options:
     default.nfilter.tab=3,
     default.nfilter.noise=0.25,
     default.nfilter.levels=0.33
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
