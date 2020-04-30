@@ -30,6 +30,7 @@ AggregateMethods:
     isNaDS,
     isValidDS,
     lengthDS,
+    levelsDS,
     lexisDS1,
     listDisclosureSettingsDS,
     lmerSLMADS2,
@@ -65,7 +66,6 @@ AggregateMethods:
     is.null=base::is.null,
     is.numeric=base::is.numeric,
     length=base::length,
-    levels=base::levels,
     NROW=base::NROW,
     t.test=stats::t.test
 AssignMethods:
