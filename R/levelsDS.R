@@ -20,11 +20,21 @@ levelsDS <- function(x){
   
   # find the levels of the input vector
   out <- levels(x)
-  # out.totN <- length(x)
+  input.length <- length(x)
+  output.length <- length(out)
+  studysideMessage <- "VALID ANALYSIS"
   
-  # return output levels
-  return(out)
+  if(input.length < nfilter.tab){
+    out <- NA
+    studysideMessage <- "FAILED: Input less than nfilter.tab"
+  }
+  if(output.length < nfilter.subset){
+    out <- NA
+    studysideMessage <- "FAILED: Result less than nfilter.subset"
+  }
   
+  out.obj <- list(Levels=out,ValidityMessage=studysideMessage)
+  return(out.obj)
 }
 #AGGREGATE FUNCTION
 # levelsDS
