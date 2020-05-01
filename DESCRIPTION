@@ -1,5 +1,5 @@
 Package: dsBase
-Title: DataSHIELD server site base functions (experimental)
+Title: DataSHIELD server site base functions
 Version: 6.0.0-03
 Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
 Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
@@ -8,13 +8,13 @@ Description: DataSHIELD server site base functions.
 Imports:
     RANN,
     nlme,
-    lme4,
-    stringr
+    lme4
 AggregateMethods:
     alphaPhiDS,
     asFactorDS1,
     asListDS,
     checkNegValueDS,
+    corDS,
     covDS,
     dataFrameSubsetDS1,
     densityGridDS,
@@ -31,6 +31,7 @@ AggregateMethods:
     isNaDS,
     isValidDS,
     lengthDS,
+    levelsDS,
     lexisDS1,
     listDisclosureSettingsDS,
     lmerSLMADS2,
@@ -66,7 +67,6 @@ AggregateMethods:
     is.null=base::is.null,
     is.numeric=base::is.numeric,
     length=base::length,
-    levels=base::levels,
     NROW=base::NROW,
     t.test=stats::t.test
 AssignMethods:
@@ -110,6 +110,7 @@ AssignMethods:
     rowColCalcDS,
     rPoisDS,
     rUnifDS,
+    sampleDS,
     seedDS,
     seqDS,
     subsetByClassDS,
