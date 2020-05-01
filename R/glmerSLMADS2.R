@@ -14,8 +14,6 @@
 #' as the user is concerned is just a standard R environment, the user can choose to use
 #' any approach to meta-analysis they choose. Additional information about fitting 
 #' glmes using the glmer engine can be obtained using R help for glmer and the lme4 package
-
-
 #' @param formula see help for ds.glmerSLMA
 #' @param offset see help for ds.glmerSLMA
 #' @param weights see help for ds.glmerSLMA
@@ -24,6 +22,13 @@
 #' @param control_type see help for ds.glmerSLMA
 #' @param control_value.transmit see help for argument <control_value> for
 #' function ds.glmerSLMA 
+#' @param nAGQ integer scalar, defaulting to 1L. IN PRACTICE, IT MAY BE NECESSARY
+#' TO SET nAGQ TO 0L when the model appears to converge perfectly well (e.g. verbose=2
+#' demonstrates good initial convergence of both the log-likelihood and
+#' regression coefficients) but formal convergence does not get declared - 
+#' so no output is produced - despite running the model for many iterations.
+#' The nAGQ argument is set by the nAGQ argument for ds.glmerSLMA and further
+#' details can be found in help(ds.glmerSLMA) and in the native R help for glmer() 
 #' @param verbose see help for ds.glmerSLMA
 #' @param theta see help for argument <start_theta> for
 #' function ds.glmerSLMA
@@ -33,7 +38,7 @@
 #' @author Tom Bishop, with some additions by Paul Burton
 #' @export
 glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
-                control_type=NULL, control_value.transmit=NULL, verbose = 0, theta = NULL, fixef = NULL){
+                control_type=NULL, control_value.transmit=NULL, nAGQ=1L, verbose = 0, theta = NULL, fixef = NULL){
  
 
   errorMessage <- "No errors"
@@ -42,7 +47,7 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
 
   #############################################################
   #MODULE 1: CAPTURE THE nfilter SETTINGS
-   thr <- dsBase::listDisclosureSettingsDS()
+   thr <- listDisclosureSettingsDS()
    nfilter.tab <- as.numeric(thr$nfilter.tab)
    nfilter.glm <- as.numeric(thr$nfilter.glm)
   #nfilter.subset <- as.numeric(thr$nfilter.subset)
@@ -66,117 +71,102 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
    formula <- gsub("zzz", ")", formula, fixed = TRUE)
    formula <- gsub("ppp", "/", formula, fixed = TRUE)
    formula <- gsub("qqq", ":", formula, fixed = TRUE)
-   formula2use <- stats::as.formula(formula, env = parent.frame())
+   formula <- stats::as.formula(formula)
   
    
-  # # Rewrite formula extracting variables nested in strutures like data frame or list
-  # # (e.g. D$A~D$B will be re-written A~B)
-  # # Note final product is a list of the variables in the model (yvector and covariates)
-  # # it is NOT a list of model terms - these are derived later
-  # 
-  # # Convert formula into an editable character string
-  # formulatext <- Reduce(paste, deparse(formula))
-  # 
-  # # First save original model formala
-  # originalFormula <- formulatext
-  # 
-  # # Convert formula string into separate variable names split by |
-  # formulatext <- gsub(" ", "", formulatext, fixed=TRUE)
-  # formulatext <- gsub("(", "", formulatext, fixed=TRUE)
-  # formulatext <- gsub("(1", "", formulatext, fixed=TRUE)
-  # formulatext <- gsub("(0", "", formulatext, fixed=TRUE)
-  # formulatext <- gsub(")", "", formulatext, fixed=TRUE)
-  # formulatext <- gsub("~", "|", formulatext, fixed=TRUE)
-  # formulatext <- gsub("+", "|", formulatext, fixed=TRUE)
-  # formulatext <- gsub("*", "|", formulatext, fixed=TRUE)
-  # formulatext <- gsub("/", "|", formulatext, fixed=TRUE)
-  # formulatext <- gsub(":", "|", formulatext, fixed=TRUE)
-  # formulatext <- gsub("||", "|", formulatext, fixed=TRUE)
-  # 
-  # 
-  # # Remember model.variables and then varnames INCLUDE BOTH yvect AND linear predictor components 
-  # model.variables <- unlist(strsplit(formulatext, split="|", fixed=TRUE))
-  # 
-  # varnames <- c()
-  # for(i in 1:length(model.variables)){
-  #   elt <- unlist(strsplit(model.variables[i], split="$", fixed=TRUE))
-  #   if(length(elt) > 1){
-  #     assign(elt[length(elt)], eval(parse(text=model.variables[i]), envir = parent.frame()), envir = parent.frame())
-  #     originalFormula.modified <- gsub(model.variables[i], elt[length(elt)], originalFormula, fixed=TRUE)
-  #     varnames <- append(varnames, elt[length(elt)])
-  #   }else{
-  #     varnames <- append(varnames, elt)
-  #   }
-  # }
-  # varnames <- unique(varnames)
-  # 
-  # if(!is.null(dataName)){
-  #   for(v in 1:length(varnames)){
-  #     varnames[v]<-paste0(dataName,"$",varnames[v])
-  #     test.string.0 <- paste0(dataName,"$","0")
-  #     test.string.1 <- paste0(dataName,"$","1")
-  #     if(varnames[v]==test.string.0) varnames[v] <- "0"
-  #     if(varnames[v]==test.string.1) varnames[v] <- "1"
-  #   }
-  #   cbindraw.text <- paste0("cbind(", paste(varnames, collapse=","), ")")		
-  # }else{
-  #   cbindraw.text <- paste0("cbind(", paste(varnames, collapse=","), ")")
-  # }
-  # 
-  # # Identify and use variable names to count missings
-  # all.data <- eval(parse(text=cbindraw.text), envir = parent.frame())
-  # 
-  # Ntotal <- dim(all.data)[1]
-  # 
-  # nomiss.any <- stats::complete.cases(all.data)
-  # nomiss.any.data <- all.data[nomiss.any,]
-  # N.nomiss.any <- dim(nomiss.any.data)[1]
-  # 
-  # Nvalid <- N.nomiss.any
-  # Nmissing <- Ntotal-Nvalid
-  # 
-  # formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = parent.frame()) # here we need the formula as a 'call' object
+  # Rewrite formula extracting variables nested in strutures like data frame or list
+  # (e.g. D$A~D$B will be re-written A~B)
+  # Note final product is a list of the variables in the model (yvector and covariates)
+  # it is NOT a list of model terms - these are derived later
+  
+  # Convert formula into an editable character string
+  formulatext <- Reduce(paste, deparse(formula))
+  
+  # First save original model formala
+  originalFormula <- formulatext
+  
+  # Convert formula string into separate variable names split by |
+  formulatext <- gsub(" ", "", formulatext, fixed=TRUE)
+  formulatext <- gsub("(", "", formulatext, fixed=TRUE)
+  formulatext <- gsub("(1", "", formulatext, fixed=TRUE)
+  formulatext <- gsub("(0", "", formulatext, fixed=TRUE)
+  formulatext <- gsub(")", "", formulatext, fixed=TRUE)
+  formulatext <- gsub("~", "|", formulatext, fixed=TRUE)
+  formulatext <- gsub("+", "|", formulatext, fixed=TRUE)
+  formulatext <- gsub("*", "|", formulatext, fixed=TRUE)
+  formulatext <- gsub("/", "|", formulatext, fixed=TRUE)
+  formulatext <- gsub(":", "|", formulatext, fixed=TRUE)
+  formulatext <- gsub("||", "|", formulatext, fixed=TRUE)
+  
+  
+  # Remember model.variables and then varnames INCLUDE BOTH yvect AND linear predictor components 
+  model.variables <- unlist(strsplit(formulatext, split="|", fixed=TRUE))
+  
+  varnames <- c()
+  for(i in 1:length(model.variables)){
+    elt <- unlist(strsplit(model.variables[i], split="$", fixed=TRUE))
+    if(length(elt) > 1){
+      assign(elt[length(elt)], eval(parse(text=model.variables[i]), envir = parent.frame()), envir = parent.frame())
+      originalFormula.modified <- gsub(model.variables[i], elt[length(elt)], originalFormula, fixed=TRUE)
+      varnames <- append(varnames, elt[length(elt)])
+    }else{
+      varnames <- append(varnames, elt)
+    }
+  }
+  varnames <- unique(varnames)
+  
+  if(!is.null(dataName)){
+    for(v in 1:length(varnames)){
+      varnames[v]<-paste0(dataName,"$",varnames[v])
+      test.string.0 <- paste0(dataName,"$","0")
+      test.string.1 <- paste0(dataName,"$","1")
+      if(varnames[v]==test.string.0) varnames[v] <- "0"
+      if(varnames[v]==test.string.1) varnames[v] <- "1"
+    }
+    cbindraw.text <- paste0("cbind(", paste(varnames, collapse=","), ")")		
+  }else{
+    cbindraw.text <- paste0("cbind(", paste(varnames, collapse=","), ")")
+  }
+  
+  # Identify and use variable names to count missings
+  all.data <- eval(parse(text=cbindraw.text), envir = parent.frame())
+  
+  Ntotal <- dim(all.data)[1]
+  
+  nomiss.any <- stats::complete.cases(all.data)
+  nomiss.any.data <- all.data[nomiss.any,]
+  N.nomiss.any <- dim(nomiss.any.data)[1]
+  
+  Nvalid <- N.nomiss.any
+  Nmissing <- Ntotal-Nvalid
+  
+  formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = parent.frame()) # here we need the formula as a 'call' object
 
   ################################################################## 
-   #sort out offset and weights
-   if(is.null(offset))
-   {
-     varname.offset<-NULL
-     #offset.to.use <- NULL
-     cbindtext.offset <- paste0("offset.to.use <- NULL")
-     eval(parse(text=cbindtext.offset), envir = parent.frame())
-   }else{
-     varname.offset <- paste0(offset)
-   }
-   
-   if(!(is.null(offset)))
-   {
-     cbindtext.offset <- paste0("offset.to.use <- cbind(", offset,")")
-     eval(parse(text=cbindtext.offset), envir = parent.frame())
-   }
-   
-   if(is.null(weights))
-   {
-     varname.weights<-NULL
-     cbindtext.weights <- paste0("weights.to.use <- NULL")
-     eval(parse(text=cbindtext.weights), envir = parent.frame())
-     #weights.to.use <- NULL
-   }else{
-     varname.weights <- paste0(weights)
-   }
-   
-   
-   if(!(is.null(weights)))
-   {
-     cbindtext.weights <- paste0("weights.to.use <- cbind(", weights,")")
-     eval(parse(text=cbindtext.weights), envir = parent.frame())
-     #cbindtext.weights <- paste0("cbind(", weights,")")
-     #weights.to.use <- eval(parse(text=cbindtext.weights), envir = parent.frame())
-   }
+  #sort out offset and weights
+  varname.offset <- paste0(offset)
+  
+  if(!(is.null(offset))){
+    cbindtext.offset <- paste0("cbind(", offset,")")
+    offset <- eval(parse(text=cbindtext.offset), envir = parent.frame())
+  }
+  else{
+    assign(x = 'offset', value = NULL, envir = parent.frame())
+  }
+  
+  varname.weights<-paste0(weights)
+  
+  if(!(is.null(weights))){
+    cbindtext.weights <- paste0("cbind(", weights,")")
+    weights <- eval(parse(text=cbindtext.weights), envir = parent.frame())
+  }
+  else{
+    assign(x = 'weights', value = NULL, envir = parent.frame())
+  }
   
   #### BEFORE going further we use the glm1 checks
   
-  formulatext.glm = formula
+  formulatext.glm = originalFormula
   
   # Convert formula string into formula string that will work for GLM
   formulatext.glm <- gsub(" ", "", formulatext.glm, fixed=TRUE)
@@ -191,7 +181,8 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
   
   formula2use.glm <- stats::as.formula(paste0(Reduce(paste, deparse(formulatext.glm ))), env = parent.frame()) # here we need the formula as a 'call' object
   
-  mod.glm.ds <- stats::glm(formula2use.glm, family="gaussian", x=TRUE, offset=offset.to.use, weights=weights.to.use, data=dataDF)
+  # mod.glm.ds <- stats::glm(formula2use.glm, family="gaussian", x=TRUE, control=stats::glm.control(maxit=1), contrasts=NULL, data=dataDF)
+  mod.glm.ds <- stats::glm(formula2use.glm, family=family, x=TRUE, offset=offset, weights=weights, data=dataDF)
 
   y.vect<-mod.glm.ds$y
   X.mat<-mod.glm.ds$x
@@ -404,15 +395,16 @@ if(control_type=="check.conv.grad")
     
     #mg <- lme4::lmer(formula2use, offset=offset, weights=weights, data=dataDF, REML = REML, verbose = verbose, control = control.obj)
     
-	iterations <- utils::capture.output(try(mg <- lme4::glmer(formula2use, offset=offset.to.use, weights=weights.to.use, data=dataDF,
-	                                       family = family, verbose = verbose, control=control.obj, start = start)))
+	iterations <- utils::capture.output(try(mg <- lme4::glmer(formula2use, offset=offset, weights=weights, data=dataDF,
+	                                       family = family, nAGQ=nAGQ,verbose = verbose, control=control.obj, start = start)))
 
     summary_mg = summary(mg)
     summary_mg$residuals <- NULL
     summary_mg$errorMessage = errorMessage
     summary_mg$disclosure.risk = disclosure.risk
     summary_mg$iterations = iterations
-    summary_mg$control.info = control.obj
+ 	summary_mg$control.info = control.obj
+	summary_mg$nAGQ.info = nAGQ
     outlist = summary_mg
   } 
  
@@ -452,10 +444,7 @@ if(control_type=="check.conv.grad")
 
     outlist<-list(outlist.1,outlist.2,outlist.gos,outlist.y,outlist.x,outlist.w,outlist.o, disclosure.risk = disclosure.risk)
  
-  }
-  #tidy up in parent.frame()
-  eval(quote(rm(offset.to.use)), envir = parent.frame())
-  eval(quote(rm(weights.to.use)), envir = parent.frame())
+ }
   return(outlist)
   
 }
