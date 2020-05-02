@@ -34,7 +34,7 @@ tables in the output if the call specifies a 3 dimensional table.
 Fully specified by <stvar> argument in {ds.table}.
 For more information see help for {ds.table}}
 
-\item{rvar.all.unique.levels.transmit}{is a character string containing all 
+\item{rvar.all.unique.levels.transmit}{is a character string containing all
 unique level in rvar, across the studies, separated by ','.}
 
 \item{cvar.all.unique.levels.transmit}{is a character string containing all
@@ -43,10 +43,10 @@ unique level in cvar, across the studies, separated by ','.}
 \item{stvar.all.unique.levels.transmit}{is a character string containing all
 unique level in stvar, across the studies, separated by ','.}
 
-\item{exclude.transmit}{for information see help on <exclude> argument 
+\item{exclude.transmit}{for information see help on <exclude> argument
 of {ds.table}. Fully specified by <exclude> argument of {ds.table}}
 
-\item{useNA.transmit}{for information see help on <useNA> argument 
+\item{useNA.transmit}{for information see help on <useNA> argument
 of {ds.table}. Fully specified by <useNA> argument of {ds.table}}
 
 \item{force.nfilter.transmit}{for information see help on <force.nfilter> argument 

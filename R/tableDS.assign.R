@@ -27,17 +27,15 @@
 #' unique level in cvar, across the studies, separated by ','.
 #' @param stvar.all.unique.levels.transmit is a character string containing all
 #' unique level in stvar, across the studies, separated by ','.
-#' @param exclude.transmit for information see help on <exclude> argument 
+#' @param exclude.transmit for information see help on <exclude> argument
 #' of {ds.table}. Fully specified by <exclude> argument of {ds.table}
-#' @param useNA.transmit for information see help on <useNA> argument 
+#' @param useNA.transmit for information see help on <useNA> argument
 #' of {ds.table}. Fully specified by <useNA> argument of {ds.table}
 #' @return For information see help for {ds.table}
 #' @author Paul Burton for DataSHIELD Development Team, 13/11/2019
 #' @export
-tableDS.assign<-function(rvar.transmit, cvar.transmit, stvar.transmit, rvar.all.unique.levels.transmit, cvar.all.unique.levels.transmit, 
+tableDS.assign<-function(rvar.transmit, cvar.transmit, stvar.transmit, rvar.all.unique.levels.transmit, cvar.all.unique.levels.transmit,
                   stvar.all.unique.levels.transmit, exclude.transmit, useNA.transmit){
-  
-
 
 #Activate via eval when needed
 #rvar
@@ -132,4 +130,3 @@ return(out.list)
 }
 #ASSIGN FUNCTION
 # tableDS.assign
-
