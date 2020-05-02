@@ -37,5 +37,5 @@ computes the sum of each vector of variable and the sum of the products of each 
 variables
 }
 \author{
-Gaye A., Avraam D., Burton P.
+Amadou Gaye, Paul Burton, and Demetris Avraam for DataSHIELD Development Team
 }
