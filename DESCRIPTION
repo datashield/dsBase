@@ -8,6 +8,7 @@ Description: DataSHIELD server site base functions.
 Imports:
     RANN,
     nlme,
+    stringr,
     lme4
 AggregateMethods:
     alphaPhiDS,

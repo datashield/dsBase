@@ -37,7 +37,7 @@ dataFrameSortDS <- function(df.name=NULL,sort.key.name=NULL,sort.descending,sort
 
   #########################################################################
   # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS
-  thr <- dsBase::listDisclosureSettingsDS()
+  thr <- listDisclosureSettingsDS()
   #nfilter.tab <- as.numeric(thr$nfilter.tab)
   #nfilter.glm <- as.numeric(thr$nfilter.glm)
   nfilter.subset <- as.numeric(thr$nfilter.subset)

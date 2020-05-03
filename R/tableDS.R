@@ -40,7 +40,7 @@ tableDS<-function(rvar.transmit, cvar.transmit, stvar.transmit, rvar.all.unique.
 
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
-thr<-dsBase::listDisclosureSettingsDS()                                 #
+thr<-listDisclosureSettingsDS()                                         #
 nfilter.tab<-as.numeric(thr$nfilter.tab)                                #
 #nfilter.glm<-as.numeric(thr$nfilter.glm)                               #
 #nfilter.subset<-as.numeric(thr$nfilter.subset)                         #
