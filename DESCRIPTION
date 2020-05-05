@@ -58,6 +58,7 @@ AggregateMethods:
     tTestFDS2,
     varDS,
     class=base::class,
+    colnamesDS,
     colnames=base::colnames,
     cor.test=stats::cor.test,
     dim=base::dim,
