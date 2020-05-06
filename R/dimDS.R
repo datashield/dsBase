@@ -9,8 +9,10 @@
 #'
 dimDS <- function(x){
 
+  x.var <- eval(parse(text=x), envir = parent.frame())
+
   # find the dim of the input dataframe or matrix
-  out <- dim(x)
+  out <- dim(x.var)
 
   # return the dimension
   return(out)
