@@ -28,6 +28,12 @@ levelsDS <- function(x){
   output.length    <- length(out)
   studysideMessage <- "VALID ANALYSIS"
   
+  print("====")
+  print(input.length)
+  print(input.length * nfilter.levels)
+  print(output.length)
+  print("====")
+  
   if((input.length * nfilter.levels) < output.length) {
     out <- NA
     studysideMessage <- "FAILED: Result length less than nfilter.levels of input length."
