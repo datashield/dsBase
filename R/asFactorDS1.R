@@ -10,21 +10,24 @@
 #' @export
 #'
 asFactorDS1 <- function(input.var.name=NULL){
-#########################################################################
-# DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
-thr<-dsBetaTest::listDisclosureSettingsDS.o()                           #
-#nfilter.tab<-as.numeric(thr$nfilter.tab)                               #
-nfilter.glm<-as.numeric(thr$nfilter.glm)                                #
-#nfilter.subset<-as.numeric(thr$nfilter.subset)                         #
-#nfilter.string<-as.numeric(thr$nfilter.string)                         #
-#nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)               #
-#nfilter.kNN<-as.numeric(thr$nfilter.kNN)                               #
-#datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)       #
+
+  #############################################################
+  #MODULE 1: CAPTURE THE nfilter SETTINGS                     #
+  thr <- listDisclosureSettingsDS()                           #
+  #nfilter.tab <- as.numeric(thr$nfilter.tab)                 #
+  #nfilter.glm <- as.numeric(thr$nfilter.glm)                 #
+  #nfilter.subset <- as.numeric(thr$nfilter.subset)           #
+  #nfilter.string <- as.numeric(thr$nfilter.string)           #
+  #nfilter.stringShort <- as.numeric(thr$nfilter.stringShort) #
+  #nfilter.kNN <- as.numeric(thr$nfilter.kNN)                 #
+  #nfilter.noise <- as.numeric(thr$nfilter.noise)             #
+  nfilter.levels <- as.numeric(thr$nfilter.levels)            #
+  #############################################################
 
   input.var <- eval(parse(text=input.var.name))
   factor.levels.present.in.source <- levels(factor(input.var))
   num.levels<-length(factor.levels.present.in.source)
-  max.allowed.levels<-length(input.var)*nfilter.glm
+  max.allowed.levels<-length(input.var)*nfilter.levels
   
   if(num.levels>max.allowed.levels)
   {
