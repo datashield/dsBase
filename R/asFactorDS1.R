@@ -1,6 +1,6 @@
-#' 
+#'
 #' @title Determines the levels of the input variable in each single study
-#' @description This function is an aggregate DataSHIELD function that returns the 
+#' @description This function is an aggregate DataSHIELD function that returns the
 #' levels of the input variable from each single study to the client-side function.
 #' @details The function encodes the input vector as factor and returns its levels in
 #' ascending order if the levels are numerical or in alphabetical order if the levels
@@ -24,11 +24,11 @@ asFactorDS1 <- function(input.var.name=NULL){
   nfilter.levels <- as.numeric(thr$nfilter.levels)            #
   #############################################################
 
-  input.var <- eval(parse(text=input.var.name))
+  input.var <- eval(parse(text=input.var.name), envir = parent.frame())
   factor.levels.present.in.source <- levels(factor(input.var))
   num.levels<-length(factor.levels.present.in.source)
   max.allowed.levels<-length(input.var)*nfilter.levels
-  
+
   if(num.levels>max.allowed.levels)
   {
 	error.message<-
