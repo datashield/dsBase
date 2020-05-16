@@ -52,6 +52,7 @@ lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE,
   }
   
    print("1)====")
+   print(class(formula))
    print(formula)
    print("======")
   # Put pipes back into formula
@@ -64,10 +65,15 @@ lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE,
    formula <- gsub("qqq", ":", formula, fixed = TRUE)
 
    print("2)====")
+   print(class(formula))
    print(formula)
    print("======")
    formula2use <- stats::as.formula(formula, env = parent.frame())
-
+   print("3)====")
+   print(class(formula2use))
+   print(formula2use)
+   print("======")
+   
   
   # # Rewrite formula extracting variables nested in strutures like data frame or list
   # # (e.g. D$A~D$B will be re-written A~B)
@@ -175,8 +181,16 @@ lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE,
    }
   
   #### BEFORE going further we use the glm1 checks
-  
+   print("4)====")
+   print(class(formula))
+   print(formula)
+   print("======")
+   
   formulatext.glm = formula
+  print("5)====")
+  print(class(formulatext.glm))
+  print(formulatext.glm)
+  print("======")
   
   # Convert formula string into formula string that will work for GLM
   formulatext.glm <- gsub(" ", "", formulatext.glm, fixed=TRUE)
@@ -189,7 +203,15 @@ lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE,
   formulatext.glm <- gsub("/", "+", formulatext.glm, fixed=TRUE)
   formulatext.glm <- gsub("++", "+", formulatext.glm, fixed=TRUE)
   
+  print("6)====")
+  print(class(formulatext.glm))
+  print(formulatext.glm)
+  print("======")
   formula2use.glm <- stats::as.formula(paste0(Reduce(paste, deparse(formulatext.glm ))), env = parent.frame()) # here we need the formula as a 'call' object
+  print("7)====")
+  print(class(formulatext.glm))
+  print(formulatext.glm)
+  print("======")
   
   mod.glm.ds <- stats::glm(formula2use.glm, family="gaussian", x=TRUE, offset=offset.to.use, weights=weights.to.use, data=dataDF)
 
