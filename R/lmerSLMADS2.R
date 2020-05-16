@@ -51,6 +51,9 @@ lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE,
     dataDF <- NULL
   }
   
+   print("1)====")
+   print(formula)
+   print("======")
   # Put pipes back into formula
   #formula = as.formula(paste(formula,collapse="|"))
    formula <- Reduce(paste, deparse(formula))
@@ -59,6 +62,10 @@ lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE,
    formula <- gsub("zzz", ")", formula, fixed = TRUE)
    formula <- gsub("ppp", "/", formula, fixed = TRUE)
    formula <- gsub("qqq", ":", formula, fixed = TRUE)
+
+   print("2)====")
+   print(formula)
+   print("======")
    formula2use <- stats::as.formula(formula, env = parent.frame())
 
   
