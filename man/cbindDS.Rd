@@ -2,54 +2,38 @@
 % Please edit documentation in R/cbindDS.R
 \name{cbindDS}
 \alias{cbindDS}
-\title{cbindDS called by ds.cbind c}
+\title{cbindDS called by ds.cbind}
 \usage{
 cbindDS(x.names.transmit = NULL, colnames.transmit = NULL)
 }
 \arguments{
 \item{x.names.transmit}{This is a vector of character strings
-representing the names of the elemental
-components to be combined converted into a transmittable
-format. This argument is fully specified by the <x> argument
-of {ds.cbind}}
+representing the names of the elemental components to be combined
+converted into a transmittable format. This argument is fully specified
+by the \code{x} argument of the client-side \code{ds.cbind} function.}
 
-\item{colnames.transmit}{This is NULL or a vector of character
-strings representing forced column names for the output object
-converted into a transmittable format. This argument is fully
-specified by the <force.colnames> argument
-of {ds.cbind}.}
+\item{colnames.transmit}{This is a vector of character strings representing
+column names for the output object converted into a transmittable format.}
 }
 \value{
-the object specified by the <newobj> argument
-of {ds.cbind}(or default name <cbind.out>)
-which is written to the serverside. Just like the {cbind} function in
-native R, the output object is of class matrix unless one or more
-of the input objects is a data.frame in which case the class of the
-output object is data.frame. As well as writing the output object as <newobj>
-on the serverside, two validity messages are returned
-indicating whether <newobj> has been created in each data source and if so whether
-it is in a valid form. If its form is not valid in at least one study - e.g. because
-a disclosure trap was tripped and creation of the full output object was blocked -
-ds.cbind() also returns any studysideMessages that can explain the error in creating
-the full output object. As well as appearing on the screen at run time,if you wish to
-see the relevant studysideMessages at a later date you can use the {ds.message}
-function. If you type ds.message("<newobj>") it will print out the relevant
-studysideMessage from any datasource in which there was an error in creating <newobj>
-and a studysideMessage was saved. If there was no error and <newobj> was created
-without problems no studysideMessage will have been saved and ds.message("<newobj>")
-will return the message: "ALL OK: there are no studysideMessage(s) on this datasource".
+the object specified by the \code{newobj} argument
+of \code{ds.cbind} (or default name \code{cbind.newobj})
+which is written to the serverside. The output object is of class data.frame.
 }
 \description{
 serverside assign function that takes a
 sequence of vector, matrix or data-frame arguments
-and combines them by column to produce a matrix.
+and combines them by column to produce a data-frame.
 }
 \details{
 A sequence of vector, matrix or data-frame arguments
-is combined column by column to produce a matrix
-which is written to the serverside. For more details see
-help for {ds.cbind} and the native R function {cbind}.
+is combined column by column to produce a data-frame
+which is written to the serverside. A critical requirement is that
+the length of all component variables, and the number of rows of the
+component data.frames or matrices must all be the same. The output
+data.frame will then have this same number of rows. For more details 
+see help for \code{ds.cbind} and the native R function \code{cbind}.
 }
 \author{
-Paul Burton for DataSHIELD Development Team
+Paul Burton and Demetris Avraam for DataSHIELD Development Team
 }
