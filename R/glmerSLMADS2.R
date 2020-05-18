@@ -140,7 +140,7 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
   Nvalid <- N.nomiss.any
   Nmissing <- Ntotal-Nvalid
   
-  formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = parent.frame()) # here we need the formula as a 'call' object
+  formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(formula))), env = parent.frame()) # here we need the formula as a 'call' object
 
   ################################################################## 
   #sort out offset and weights
@@ -178,8 +178,9 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
   formulatext.glm <- gsub(":", "+", formulatext.glm, fixed=TRUE)
   formulatext.glm <- gsub("/", "+", formulatext.glm, fixed=TRUE)
   formulatext.glm <- gsub("++", "+", formulatext.glm, fixed=TRUE)
+  formula.glm <- stats::as.formula(formulatext.glm)
   
-  formula2use.glm <- stats::as.formula(paste0(Reduce(paste, deparse(formulatext.glm ))), env = parent.frame()) # here we need the formula as a 'call' object
+  formula2use.glm <- stats::as.formula(paste0(Reduce(paste, deparse(formula.glm ))), env = parent.frame()) # here we need the formula as a 'call' object
   
   # mod.glm.ds <- stats::glm(formula2use.glm, family="gaussian", x=TRUE, control=stats::glm.control(maxit=1), contrasts=NULL, data=dataDF)
   mod.glm.ds <- stats::glm(formula2use.glm, family=family, x=TRUE, offset=offset, weights=weights, data=dataDF)

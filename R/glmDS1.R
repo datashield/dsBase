@@ -51,7 +51,8 @@ nfilter.glm <- as.numeric(thr$nfilter.glm)
   formulatext <- gsub("*", "|", formulatext, fixed=TRUE)
   formulatext <- gsub("||", "|", formulatext, fixed=TRUE)
   
-  formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = parent.frame()) # here we need the formula as a 'call' object
+  originalFormulaFormula <- stats::as.formula(originalFormula)
+  formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormulaFormula))), env = parent.frame()) # here we need the formula as a 'call' object
   mod.glm.ds <- stats::glm(formula2use, family=family, x=TRUE, control=stats::glm.control(maxit=1), contrasts=NULL, data=dataTable)
   
   #Remember model.variables and then varnames INCLUDE BOTH yvect AND linear predictor components 

@@ -114,7 +114,8 @@ glmDS2 <- function (formula, family, beta.vect, offset, weights, dataName) {
   # and the data that underlie them. This will include a vector of 1s for the intercept and
   # any dummy variables required for factors
   
-  formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = parent.frame()) # here we need the formula as a 'call' object
+  originalFormulaFormula <- stats::as.formula(originalFormula)
+  formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormulaFormula))), env = parent.frame()) # here we need the formula as a 'call' object
   mod.glm.ds <- stats::glm(formula2use, family=family, x=TRUE, control=stats::glm.control(maxit=1), contrasts=NULL, data=dataDF)
   
   X.mat.orig <- as.matrix(mod.glm.ds$x)
