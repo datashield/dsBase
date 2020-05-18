@@ -4,7 +4,7 @@
 # Inside the root directory $(Pipeline.Workspace) will be a file tree like:
 # /dsBase               <- Checked out version of datashield/dsBase
 #
-# As of April 2020 this takes ~ 60 mins to run.
+# As of May 2020 this takes ~ 20 mins to run.
 #
 # Nothing should ever need changing in this as the repo will always check itself out.
 #
