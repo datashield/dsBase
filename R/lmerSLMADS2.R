@@ -181,8 +181,9 @@ lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE,
   formulatext.glm <- gsub(":", "+", formulatext.glm, fixed=TRUE)
   formulatext.glm <- gsub("/", "+", formulatext.glm, fixed=TRUE)
   formulatext.glm <- gsub("++", "+", formulatext.glm, fixed=TRUE)
+  formula.glm <- stats::as.formula(formulatext.glm)
   
-  formula2use.glm <- stats::as.formula(paste0(Reduce(paste, deparse(formulatext.glm ))), env = parent.frame()) # here we need the formula as a 'call' object
+  formula2use.glm <- stats::as.formula(paste0(Reduce(paste, deparse(formula.glm ))), env = parent.frame()) # here we need the formula as a 'call' object
   
   mod.glm.ds <- stats::glm(formula2use.glm, family="gaussian", x=TRUE, offset=offset.to.use, weights=weights.to.use, data=dataDF)
 
