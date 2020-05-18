@@ -40,7 +40,10 @@ cbindDS <- function(x.names.transmit=NULL, colnames.transmit=NULL){
   # the '$' sign and any characters before that 
   detect.idx <- grep('[$]', colnames.act1)
   if(length(detect.idx) > 0){
-    detach.names <- strsplit(colnames.act1[detect.idx], "\\$", perl=TRUE)[[1]][2]
+    detach.names <- strsplit(colnames.act1[detect.idx], "\\$", perl=TRUE)
+    for(i in 1:length(detach.names)){
+      detach.names[i] <- detach.names[[i]][2]
+    }
     colnames.act1[detect.idx] <- detach.names
   }
   
