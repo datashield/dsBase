@@ -63,6 +63,10 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
     dataDF <- NULL
   }
   
+  print("1)====")
+  print(formula)
+  print("======")
+
   # Put pipes back into formula
   #formula = as.formula(paste(formula,collapse="|"))
    formula <- Reduce(paste, deparse(formula))
@@ -99,6 +103,10 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
   formulatext <- gsub("||", "|", formulatext, fixed=TRUE)
   
   
+  print("2)====")
+  print(formulatext)
+  print("======")
+
   # Remember model.variables and then varnames INCLUDE BOTH yvect AND linear predictor components 
   model.variables <- unlist(strsplit(formulatext, split="|", fixed=TRUE))
   
@@ -164,6 +172,10 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
     assign(x = 'weights', value = NULL, envir = parent.frame())
   }
   
+  print("2)====")
+  print(originalFormula)
+  print("======")
+
   #### BEFORE going further we use the glm1 checks
   
   formulatext.glm = originalFormula
@@ -179,6 +191,10 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
   formulatext.glm <- gsub("/", "+", formulatext.glm, fixed=TRUE)
   formula.glm <- stats::as.formula(formulatext.glm)
   
+  print("3)====")
+  print(formula.glm)
+  print("======")
+
   formula2use.glm <- stats::as.formula(paste0(Reduce(paste, deparse(formula.glm ))), env = parent.frame()) # here we need the formula as a 'call' object
   
   # mod.glm.ds <- stats::glm(formula2use.glm, family="gaussian", x=TRUE, control=stats::glm.control(maxit=1), contrasts=NULL, data=dataDF)
