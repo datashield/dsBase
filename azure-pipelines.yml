@@ -54,16 +54,16 @@ jobs:
     # If previous steps have failed then don't run.
   - bash: |
       
-    sudo apt-get update
-    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-    sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/'
-    sudo apt-get update
-    sudo apt-get install -qq libxml2-dev libcurl4-openssl-dev libssl-dev -y
-    sudo apt-get install -qq r-base -y
-    sudo R -e "install.packages('devtools', dependencies=TRUE)"
-    sudo R -e "install.packages('RANN', dependencies=TRUE)"
-    sudo R -e "install.packages('nlme', dependencies=TRUE)"
-    sudo R -e "install.packages('lme4', dependencies=TRUE)"
+      sudo apt-get update
+      sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+      sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/'
+      sudo apt-get update
+      sudo apt-get install -qq libxml2-dev libcurl4-openssl-dev libssl-dev -y
+      sudo apt-get install -qq r-base -y
+      sudo R -e "install.packages('devtools', dependencies=TRUE)"
+      sudo R -e "install.packages('RANN', dependencies=TRUE)"
+      sudo R -e "install.packages('nlme', dependencies=TRUE)"
+      sudo R -e "install.packages('lme4', dependencies=TRUE)"
 
     displayName: 'Install all dependencies for dsBase'
     condition: succeeded()
