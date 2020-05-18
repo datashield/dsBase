@@ -148,7 +148,7 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
   Nvalid <- N.nomiss.any
   Nmissing <- Ntotal-Nvalid
   
-  formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = parent.frame()) # here we need the formula as a 'call' object
+  formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(formula))), env = parent.frame()) # here we need the formula as a 'call' object
 
   ################################################################## 
   #sort out offset and weights
@@ -172,7 +172,7 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
     assign(x = 'weights', value = NULL, envir = parent.frame())
   }
   
-  print("2)====")
+  print("3)====")
   print(originalFormula)
   print("======")
 
@@ -191,7 +191,7 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
   formulatext.glm <- gsub("/", "+", formulatext.glm, fixed=TRUE)
   formula.glm <- stats::as.formula(formulatext.glm)
   
-  print("3)====")
+  print("4)====")
   print(formula.glm)
   print("======")
 
