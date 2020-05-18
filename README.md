@@ -1,4 +1,4 @@
 dsBase
 ======
 
-DataSHIELD server site base functions
+DataSHIELD server side base functions
