@@ -17,8 +17,7 @@
 #' 
 dataFrameFillDS <- function(df.name, allNames.transmit){
   
-  datatext <- paste0("data.frame(",df.name,")")
-  data <- eval(parse(text=datatext), envir = parent.frame())
+  data <- eval(parse(text=df.name), envir = parent.frame())
 
   if(!is.null(allNames.transmit)){
     allNames <- unlist(strsplit(allNames.transmit, split=","))
@@ -29,14 +28,13 @@ dataFrameFillDS <- function(df.name, allNames.transmit){
   study.colnames <- colnames(data)
   missingVars <- allNames[-which(allNames %in% study.colnames)]
   
-  numRows <- dim(data)[1]
+  numRows <- nrow(data)
   numCols <- length(missingVars)
   
   mat.new <- matrix(NA, ncol=numCols, nrow=numRows)
   
-  df.new <- as.data.frame(mat.new)
+  df.new <- data.frame(x=mat.new, row.names=NULL)
   colnames(df.new) <- missingVars
-  df.new <- lapply(df.new, as.numeric)
 
   df.out <- cbind(data, df.new)
   
