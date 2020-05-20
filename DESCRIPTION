@@ -60,15 +60,12 @@ AggregateMethods:
     tTestFDS2,
     varDS,
     colnamesDS,
-    colnames=base::colnames,
-    dim=base::dim,
     exists=base::exists,
     is.character=base::is.character,
     is.factor=base::is.factor,
     is.list=base::is.list,
     is.null=base::is.null,
     is.numeric=base::is.numeric,
-    length=base::length,
     NROW=base::NROW,
     t.test=stats::t.test
 AssignMethods:
