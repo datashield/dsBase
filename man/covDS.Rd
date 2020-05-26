@@ -20,7 +20,7 @@ then the sums of products are computed for each two variables using only the com
 two variables.}
 }
 \value{
-a list tha includes a matrix with elements the sum of products between each two variables, a matrix with
+a list that includes a matrix with elements the sum of products between each two variables, a matrix with
 elements the sum of the values of each variable, a matrix with elements the number of complete cases in each
 pair of variables, a list with the number of missing values in each variable separately (columnwise) and the number
 of missing values casewise or pairwise depending on the arqument \code{use}, and an error message which indicates
