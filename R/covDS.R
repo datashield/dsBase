@@ -76,8 +76,15 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
     rownames(sums.of.products) <- cls
     colnames(sums.of.products) <- cls
     
-    sums <- matrix(NA, ncol=1, nrow=N.vars)
-    rownames(sums) <- cls
+    if(use=='casewise.complete'){
+      sums <- matrix(NA, ncol=1, nrow=N.vars)
+      rownames(sums) <- cls
+    }  
+  
+    if(use=='pairwise.complete'){
+      sums <- matrix(NA, ncol=N.vars, nrow=N.vars)
+      rownames(sums) <- cls
+    }
     
     complete.counts <- matrix(NA, ncol=N.vars, nrow=N.vars)
     rownames(complete.counts) <- cls
@@ -131,9 +138,16 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
     sums.of.products <- matrix(NA, ncol=N.vars, nrow=N.vars)
     rownames(sums.of.products) <- cls
     colnames(sums.of.products) <- cls
-
-    sums <- matrix(NA, ncol=1, nrow=N.vars)
-    rownames(sums) <- cls
+    
+    if(use=='casewise.complete'){
+      sums <- matrix(NA, ncol=1, nrow=N.vars)
+      rownames(sums) <- cls
+    }  
+    
+    if(use=='pairwise.complete'){
+      sums <- matrix(NA, ncol=N.vars, nrow=N.vars)
+      rownames(sums) <- cls
+    }
 
     complete.counts <- matrix(NA, ncol=N.vars, nrow=N.vars)
     rownames(complete.counts) <- cls
@@ -265,26 +279,6 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
     for(m in 1:N.vars){
 	    for(p in 1:N.vars){
         sums[m,p] <- sum(as.numeric(as.character(cleaned.pair[[m]][[p]][,1])))
-      }
-    }
-
-	  # A matrix with elements the sum of squares of each variable after removing missing values pairwise
-    sums.of.squares <- matrix(ncol=N.vars, nrow=N.vars)
-    rownames(sums.of.squares) <- cls
-    colnames(sums.of.squares) <- cls
-    for(m in 1:N.vars){
-      for(p in 1:N.vars){
-        sums.of.squares[m,p] <- sum(as.numeric(as.character(cleaned.pair[[m]][[p]][,1]))*as.numeric(as.character(cleaned.pair[[m]][[p]][,1])))
-      }
-    }
-
-    # Calculate the variance of each variable after removing missing values pairwise
-	  vars <- matrix(ncol=N.vars, nrow=N.vars)
-    rownames(sums) <- cls
-    colnames(sums) <- cls
-    for(m in 1:N.vars){
-	  for(p in 1:N.vars){
-        vars[m,p] <- stats::var(as.numeric(as.character(cleaned.pair[[m]][[p]][,1])))
       }
     }
 
