@@ -17,9 +17,11 @@
 #' elements the sum of the values of each variable, a matrix with elements the number of complete cases in each
 #' pair of variables, a list with the number of missing values in each variable separately (columnwise) and the number
 #' of missing values casewise or pairwise depending on the arqument \code{use}, and an error message which indicates
-#' whether or not the input variables pass the disclosure control (i.e. none of them is dichotomous with a level
-#' having less counts than the pre-specified threshold). If any of the input variables does not pass the disclosure
-#' control then all the output values are replaced with NAs
+#' whether or not the input variables pass the disclosure controls. The first disclosure control checks that the number
+#' of variables is not bigger than a percentage of the individual-level records (the allowed percentage is pre-specified
+#' by the 'nfilter.glm'). The second disclosure control checks that none of them is dichotomous with a level having fewer
+#' counts than the pre-specified 'nfilter.tab' threshold. If any of the input variables do not pass the disclosure
+#' controls then all the output values are replaced with NAs.
 #' @author Amadou Gaye, Paul Burton, and Demetris Avraam for DataSHIELD Development Team
 #' @export
 #'
@@ -29,7 +31,7 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
   #MODULE 1: CAPTURE THE nfilter SETTINGS
   thr <- listDisclosureSettingsDS()
   nfilter.tab <- as.numeric(thr$nfilter.tab)
-  #nfilter.glm <- as.numeric(thr$nfilter.glm)
+  nfilter.glm <- as.numeric(thr$nfilter.glm)
   #nfilter.subset <- as.numeric(thr$nfilter.subset)
   #nfilter.string <- as.numeric(thr$nfilter.string)
   #############################################################
@@ -56,9 +58,52 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
   N.vars <- ncol(dataframe)
 
   ######################
-  # DISCLOSURE CONTROL #
+  # DISCLOSURE CONTROLS
   ######################
-
+  
+  ##############################################################
+  # FIRST TYPE OF DISCLOSURE TRAP - TEST FOR OVERSATURATION
+  # TEST AGAINST nfilter.glm								
+  ##############################################################
+  
+  varcov.saturation.invalid <- 0
+  
+  if(N.vars > (nfilter.glm * nrow(dataframe))){
+    
+    varcov.saturation.invalid <- 1
+    
+    sums.of.products <- matrix(NA, ncol=N.vars, nrow=N.vars)
+    rownames(sums.of.products) <- cls
+    colnames(sums.of.products) <- cls
+    
+    sums <- matrix(NA, ncol=1, nrow=N.vars)
+    rownames(sums) <- cls
+    
+    complete.counts <- matrix(NA, ncol=N.vars, nrow=N.vars)
+    rownames(complete.counts) <- cls
+    colnames(complete.counts) <- cls
+    
+    column.NAs <- matrix(NA, ncol=N.vars, nrow=1)
+    colnames(column.NAs) <- cls
+    
+    casewise.NAs <- matrix(NA, ncol=1, nrow=1)
+    
+    pairwise.NAs <- matrix(NA, ncol=N.vars, nrow=N.vars)
+    rownames(pairwise.NAs) <- cls
+    colnames(pairwise.NAs) <- cls
+    
+    if (use=='casewise.complete'){
+      na.counts <- list(column.NAs, casewise.NAs)
+      names(na.counts) <- list(paste0("Number of NAs in each column"), paste0("Number of NAs casewise"))
+    }
+    if (use=='pairwise.complete'){
+      na.counts <- list(column.NAs, pairwise.NAs)
+      names(na.counts) <- list(paste0("Number of NAs in each column"), paste0("Number of NAs pairwise"))
+    }
+    
+    errorMessage <- "ERROR: The ratio of the number of variables over the number of individual-level records exceeds the allowed threshold, there is a possible risk of disclosure"
+  }
+  
   # CHECK X MATRIX VALIDITY
   # Check no dichotomous X vectors with between 1 and nfilter.tab value
   # observations at either level
@@ -81,7 +126,7 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
   # if any of the vectors in X matrix is invalid then the function returns all the
   # outputs by replacing their values with NAs
 
-  if(is.element('1', Xpar.invalid)==TRUE){
+  if(is.element('1', Xpar.invalid)==TRUE & varcov.saturation.invalid==0){
 
     sums.of.products <- matrix(NA, ncol=N.vars, nrow=N.vars)
     rownames(sums.of.products) <- cls
@@ -118,7 +163,7 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
 
   # if all vectors in X matrix are valid then the output matrices are calculated
 
-  if(is.element('1', Xpar.invalid)==FALSE){
+  if(is.element('1', Xpar.invalid)==FALSE & varcov.saturation.invalid==0){
 
   if (use=='casewise.complete'){
 
@@ -158,24 +203,6 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
     rownames(sums) <- cls
     for(m in 1:N.vars){
       sums[m,1] <- sum(as.numeric(as.character(casewise.dataframe[,m])))
-    }
-
-
-   	# A matrix with elements the sum of squares of each variable after removing missing values casewise
-    sums.of.squares <- matrix(ncol=N.vars, nrow=N.vars)
-    rownames(sums.of.squares) <- cls
-    colnames(sums.of.squares) <- cls
-    for(m in 1:N.vars){
-      for(p in 1:N.vars){
-        sums.of.squares[m,p] <- sum(as.numeric(as.character(casewise.dataframe[,m]))*as.numeric(as.character(casewise.dataframe[,m])))
-      }
-    }
-
-    # Calculate the variance of each variable after removing missing values casewise
-    vars <- matrix(ncol=1, nrow=N.vars)
-    rownames(sums) <- cls
-    for(m in 1:N.vars){
-      vars[m,1] <- stats::var(as.numeric(as.character(casewise.dataframe[,m])))
     }
 
     complete.counts <- matrix(dim(casewise.dataframe)[1], ncol=N.vars, nrow=N.vars)
@@ -274,11 +301,11 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
 
   # if all vectors in X matrix are valid then a NA error message is returned
   errorMessage <- NA
-
+  
   }
 
-  return(list(sums.of.products=sums.of.products, sums=sums, complete.counts=complete.counts, na.counts=na.counts, errorMessage=errorMessage, vars=vars, sums.of.squares=sums.of.squares))
+  return(list(sums.of.products=sums.of.products, sums=sums, complete.counts=complete.counts, na.counts=na.counts, errorMessage=errorMessage))
 
 }
-#AGGREGATE FUNCTION
+# AGGREGATE FUNCTION
 # covDS
