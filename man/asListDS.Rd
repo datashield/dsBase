@@ -29,7 +29,7 @@ Coerces an R object into a list
 \details{
 Unlike most other class coercing functions this is
 an aggregate function rather than an assign function. This
-is because the {datashield.assign} function in opal deals specially with
+is because the {datashield.assign} function in the data repository deals specially with
 a created object (newobj) if it is of class list. Reconfiguring the
 function as an aggregate function works around this problem.
 This aggregate function is based on the native R function {as.list}

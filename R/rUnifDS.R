@@ -37,12 +37,12 @@ rUnifDS<-function (n, min = 0, max = 1, force.output.to.k.decimal.places=9){
 
 	if(is.character(min)){
 	command.text<-min
-	min<-eval(parse(text=command.text))
+	min<-eval(parse(text=command.text), envir = parent.frame())
 	}
 
 	if(is.character(max)){
 	command.text<-max
-	max<-eval(parse(text=command.text))
+	max<-eval(parse(text=command.text), envir = parent.frame())
 	}
 
 	random.number.vector<-stats::runif(n, min=min, max=max)

@@ -65,7 +65,7 @@ if(aim=="serverside.vector.2.matrix"||aim=="serverside.scalar.2.matrix"||aim=="s
 {
 #x1 is name of the serverside vector, scalar or matrix
 
-x1<-eval(parse(text=x1.transmit))
+x1<-eval(parse(text=x1.transmit), envir = parent.frame())
 
 #coerce to matrix if x1 is a data.frame
 if(is.data.frame(x1))
@@ -79,7 +79,7 @@ if(aim=="clientside.vector.2.matrix"||aim=="clientside.scalar.2.matrix")
 {
 x1.text<-strsplit(x1.transmit, split=",")
 
-x1.c<-eval(parse(text=x1.text))
+x1.c<-eval(parse(text=x1.text), envir = parent.frame())
 
 x1<-as.numeric(x1.c)
 }
@@ -89,7 +89,7 @@ x1<-as.numeric(x1.c)
 
 nrows.text<-strsplit(nrows.transmit, split=",")
 
-nrows.c<-eval(parse(text=nrows.text))
+nrows.c<-eval(parse(text=nrows.text), envir = parent.frame())
 
 nrows<-as.numeric(nrows.c)
 
