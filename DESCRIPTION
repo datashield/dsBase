@@ -11,7 +11,6 @@ Imports:
     stringr,
     lme4
 AggregateMethods:
-    alphaPhiDS,
     asFactorDS1,
     asListDS,
     checkNegValueDS,
