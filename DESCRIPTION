@@ -50,6 +50,8 @@ AggregateMethods:
     scatterPlotDS,
     scoreVectDS,
     setSeedDS,
+    skewnessDS1,
+    skewnessDS2,
     table1DDS,
     table2DDS,
     tableDS,
