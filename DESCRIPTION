@@ -142,3 +142,5 @@ Options:
     default.nfilter.noise=0.25,
     default.nfilter.levels=0.33
 RoxygenNote: 7.1.0
+Depends: 
+    R (>= 2.10)
