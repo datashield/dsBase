@@ -6,7 +6,7 @@ Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
 Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
 License: GPL-3
 Depends: 
-    R (>= 3.50)
+    R (>= 3.5.0)
 Imports:
     RANN,
     nlme,
