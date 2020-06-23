@@ -12,16 +12,20 @@ skewnessDS2(x, global.mean)
 \item{global.mean}{a numeric, the combined mean of the input variable across all studies.}
 }
 \value{
-a list including the sum of cubes of variable x, the sum of squares of variable x, the number of
-valid observations and a validity message.
+a list including the sum of cubed differences between the values of x and the global mean of x across
+all studies, the sum of squared differences between the values of x and the global mean of x across all studies,
+the number of valid observations (i.e. the length of x after excluding missing values), and a validity message 
+indicating indicating a valid analysis if the number of valid observations are above the protection filter 
+nfilter.tab or invalid analysis otherwise.
 }
 \description{
 This function calculates summary statistics that are returned to the client-side and 
 used for the estimation of the combined skewness of a numeric variable across all studies.
 }
 \details{
-The function calculates the sum of squares, the sum of cubes and the number of valid observations
-of the input variable x.
+The function calculates the sum of squared differences between the values of x and the global
+mean of x across all studies, the sum of cubed differences between the values of x and the global mean
+of x across all studies and the number of valid observations of the input variable x.
 }
 \author{
 Demetris Avraam, for DataSHIELD Development Team
