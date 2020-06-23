@@ -1,10 +1,12 @@
 Package: dsBase
 Title: DataSHIELD server site base functions
-Version: 6.1.0
+Description: DataSHIELD server site base functions.
+Version: 6.1.0-1
 Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
 Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
 License: GPL-3
-Description: DataSHIELD server site base functions.
+Depends: 
+    R (>= 3.5.0)
 Imports:
     RANN,
     nlme,
@@ -142,5 +144,3 @@ Options:
     default.nfilter.noise=0.25,
     default.nfilter.levels=0.33
 RoxygenNote: 7.1.0
-Depends: 
-    R (>= 2.10)

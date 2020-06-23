@@ -19,7 +19,7 @@ skewnessDS2 <- function(x, global.mean){
 
   #############################################################
   # MODULE 1: CAPTURE THE nfilter SETTINGS
-  thr <- dsBase::listDisclosureSettingsDS()
+  thr <- listDisclosureSettingsDS()
   nfilter.tab <- as.numeric(thr$nfilter.tab)
   #############################################################
   
