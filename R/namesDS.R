@@ -57,7 +57,7 @@ nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)                #
 
 
   if(!is.list(list.obj)){
-    error.message <- "The input object is not of class <list>'"
+    error.message <- "The input object is not of class <list>"
     return(list(error.message=error.message,trace.message=trace.message))
   }
 
