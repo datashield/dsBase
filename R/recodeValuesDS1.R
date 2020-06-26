@@ -13,7 +13,7 @@
 #' values as specified in the new.values.vector. The <values2replace.text> argument
 #' is generated and passed directly to recodeValuesDS2 by ds.recodeValues. In effect, the
 #' <values2replace.vector> argument of the ds.recodeValues function is converted
-#' to a character string format that is acceptable to the DataSHIELD parser in Opal
+#' to a character string format that is acceptable to the DataSHIELD R parser in the data repository
 #' and so can be accepted by recodeValuesDS1
 #' @param new.values.text a character string specifying the new values to which
 #' the specified values in the vector identified by the <var.name> argument
@@ -21,7 +21,7 @@
 #' The <new.values.text> argument is generated and passed directly to recodeValuesDS2
 #' by ds.recodeValues. In effect, the <new.values.vector> argument of the
 #' ds.recodeValues function is converted to a character string format that is
-#' acceptable to the DataSHIELD parser in Opal
+#' acceptable to the DataSHIELD R parser in the data repository
 #' and so can be used in the call to recodeValuesDS1
 #' @return This first serverside function called by ds.recodeValues provides
 #' first level traps for a comprehensive series of disclosure risks which can be
@@ -49,7 +49,7 @@ nfilter.kNN<-as.numeric(thr$nfilter.kNN)                    #
 
 
 var.name.text.c<-unlist(strsplit(var.name.text, split=","))
-var2recode<-eval(parse(text=var.name.text.c))
+var2recode<-eval(parse(text=var.name.text.c), envir = parent.frame())
 
 
 values2replace.c<-unlist(strsplit(values2replace.text, split=","))

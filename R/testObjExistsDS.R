@@ -17,9 +17,9 @@ testObjExistsDS <- function(test.obj.name=NULL){
 
   #Restrict tests to settings where name does exist to avoid error termination
 
-  if(exists(test.obj.name)){
+  if(exists(test.obj.name, envir = parent.frame())){
     test.obj.exists <- TRUE
-    test.obj <- eval(parse(text=test.obj.name))
+    test.obj <- get(test.obj.name, envir = parent.frame())
     test.obj.class <- class(test.obj)
   }
 

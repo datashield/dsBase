@@ -28,7 +28,7 @@ rPoisDS<-function (n, lambda = 1){
 
 	if(is.character(lambda)){
 	command.text<-lambda
-	lambda<-eval(parse(text=command.text))
+	lambda<-eval(parse(text=command.text), envir = parent.frame())
 	}
 
 	stats::rpois(n, lambda=lambda)

@@ -9,17 +9,10 @@
 #'
 lengthDS <- function(x){
 
- #############################################################
- #MODULE 1: CAPTURE THE nfilter SETTINGS
- #thr <- listDisclosureSettingsDS()
- #nfilter.tab<-as.numeric(thr$nfilter.tab)
- #nfilter.glm<-as.numeric(thr$nfilter.glm)
- #nfilter.subset<-as.numeric(thr$nfilter.subset)
- #nfilter.string<-as.numeric(thr$nfilter.string)
- #############################################################
+  x.var <- eval(parse(text=x), envir = parent.frame())
 
   # find the length of the input vector or list
-  out <- length(x)
+  out <- length(x.var)
 
   # return output length
   return(out)

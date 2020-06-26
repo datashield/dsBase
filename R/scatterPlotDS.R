@@ -114,7 +114,7 @@ scatterPlotDS <- function(x, y, method.indicator, k, noise){
     # the study-specific seed for random number generation
     seed <- getOption("datashield.seed")
     if (is.null(seed))
-        stop("scatterPlotDS requires Opal 2.14 or higher to operate", call.=FALSE)
+        stop("scatterPlotDS requires 'datashield.seed' R option to operate", call.=FALSE)
     set.seed(seed)
     x.new <- x + stats::rnorm(N.data, mean=0, sd=sqrt(percentage*stats::var(x)))
     y.new <- y + stats::rnorm(N.data, mean=0, sd=sqrt(percentage*stats::var(y)))

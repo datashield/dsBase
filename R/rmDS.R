@@ -53,7 +53,7 @@ if(x.name.numchars>nfilter.stringShort){
 	x.name<-unlist(strsplit(x.name.transmit, split=","))
 
 	#tests whether already exists
-test.already.exists<-exists(x.name)
+test.already.exists<-exists(x.name, envir = parent.frame())
 
 if(!test.already.exists){
    return.message<-
@@ -61,10 +61,10 @@ if(!test.already.exists){
     return(list(return.message=return.message))
 }
 
-rm(list=c(x.name),pos=1)
+rm(list=c(x.name),pos=1, envir = parent.frame())
 
 #test whether still exists
-test.still.exists<-exists(x.name)
+test.still.exists<-exists(x.name, envir = parent.frame())
 
 if(test.still.exists){
    return.message<-paste0("Object to be deleted, i.e. <",x.name, "> , still exists")
