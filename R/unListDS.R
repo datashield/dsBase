@@ -35,7 +35,7 @@ unListDS <- function(x.name){
 
 
 if(is.character(x.name)){
-	listvar<-eval(parse(text=x.name))
+	listvar<-eval(parse(text=x.name), envir = parent.frame())
 
 	}else{
 

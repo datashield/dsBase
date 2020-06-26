@@ -92,7 +92,7 @@ if(!is.null(dimnames))
 
 if(from=="serverside.vector"||from=="serverside.scalar")
 {
-mdata<-eval(parse(text=mdata.transmit))
+mdata<-eval(parse(text=mdata.transmit), envir = parent.frame())
 }
 
 
@@ -100,7 +100,7 @@ if(from=="clientside.scalar")
 {
 mdata.text<-strsplit(mdata.transmit, split=",")
 
-mdata.c<-eval(parse(text=mdata.text))
+mdata.c<-eval(parse(text=mdata.text), envir = parent.frame())
 
 mdata<-as.numeric(mdata.c)
 }
@@ -110,7 +110,7 @@ mdata<-as.numeric(mdata.c)
 
 nrows.text<-strsplit(nrows.transmit, split=",")
 
-nrows.c<-eval(parse(text=nrows.text))
+nrows.c<-eval(parse(text=nrows.text), envir = parent.frame())
 
 nrows<-as.numeric(nrows.c)
 
@@ -119,7 +119,7 @@ nrows<-as.numeric(nrows.c)
 
 ncols.text<-strsplit(ncols.transmit, split=",")
 
-ncols.c<-eval(parse(text=ncols.text))
+ncols.c<-eval(parse(text=ncols.text), envir = parent.frame())
 
 ncols<-as.numeric(ncols.c)
 

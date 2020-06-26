@@ -73,5 +73,5 @@ A data frame is a list of variables all with the same number of rows,
 which is of class 'data.frame'. For all details see the help header for ds.dataFrameSubset
 }
 \author{
-DataSHIELD Development Team
+Paul Burton
 }

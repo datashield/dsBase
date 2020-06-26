@@ -56,7 +56,7 @@ rbindDS<-function(x.names.transmit=NULL,colnames.transmit=NULL){
 
   rbind.matrix<-NULL
   for(k in numobj:1){
-    object.2.rbind<-eval(parse(text=x.names.active[k]))
+    object.2.rbind<-eval(parse(text=x.names.active[k]), envir = parent.frame())
 
     #coerce all input objects to data.matrix (like as.matrix but stays as numeric if numeric)
     object.2.rbind<-data.matrix(object.2.rbind)

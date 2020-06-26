@@ -19,7 +19,7 @@
 #'
 asFactorDS2 <- function(input.var.name=NULL, all.unique.levels.transmit=NULL, fixed.dummy.vars=NULL, baseline.level=NULL){
 
-  input.var <- eval(parse(text=input.var.name))
+  input.var <- eval(parse(text=input.var.name), envir = parent.frame())
 
   code.input <- all.unique.levels.transmit
   code.c <- unlist(strsplit(code.input, split=","))

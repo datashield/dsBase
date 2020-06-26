@@ -23,7 +23,7 @@ vector specified by the argument <var.name.text> that are to be replaced by new
 values as specified in the new.values.vector. The <values2replace.text> argument
 is generated and passed directly to recodeValuesDS2 by ds.recodeValues. In effect, the
 <values2replace.vector> argument of the ds.recodeValues function is converted
-to a character string format that is acceptable to the DataSHIELD parser in Opal
+to a character string format that is acceptable to the DataSHIELD R parser in the data repository
 and so can be accepted by recodeValuesDS2}
 
 \item{new.values.text}{a character string specifying the new values to which
@@ -31,7 +31,7 @@ the specified values in the vector <var.name> are to be converted.
 The <new.values.text> argument is generated and passed directly to recodeValuesDS2
 by ds.recodeValues. In effect, the <new.values.vector> argument of the
 ds.recodeValues function is converted to a character string format that is
-acceptable to the DataSHIELD parser in Opal
+acceptable to the DataSHIELD R parser in the data repository
 and so can be used in the call to recodeValuesDS2}
 
 \item{numeric.output.format.possible}{logical, if TRUE the nature of

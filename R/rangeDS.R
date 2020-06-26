@@ -17,7 +17,7 @@ rangeDS <- function(xvect){
     # the study-specific seed for random number generation
     seed <- getOption("datashield.seed")
     if (is.null(seed))
-      stop("rangeDS requires Opal 2.14 or higher to operate", call.=FALSE)
+      stop("rangeDS requires 'datashield.seed' R option to operate", call.=FALSE)
     set.seed(seed)
     
     rr <- c(min(xvect, na.rm=TRUE), max(xvect, na.rm=TRUE))

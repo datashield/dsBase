@@ -1,34 +1,44 @@
 Package: dsBase
 Title: DataSHIELD server site base functions
-Version: 5.1.0
+Description: DataSHIELD server site base functions.
+Version: 6.0.1
 Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
 Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
 License: GPL-3
-Description: DataSHIELD server site base functions.
+Depends:
+    R (>= 3.5.0)
 Imports:
     RANN,
-    nlme
+    nlme,
+    stringr,
+    lme4
 AggregateMethods:
-    alphaPhiDS,
     asFactorDS1,
     asListDS,
     checkNegValueDS,
+    classDS,
+    corTestDS,
+    corDS,
     covDS,
     dataFrameSubsetDS1,
     densityGridDS,
     dimDS,
     glmDS1,
     glmDS2,
+    glmerSLMADS2,
     glmSLMADS1,
     glmSLMADS2,
     heatmapPlotDS,
     histogramDS1,
     histogramDS2,
+    lsDS,
     isNaDS,
     isValidDS,
     lengthDS,
+    levelsDS,
     lexisDS1,
     listDisclosureSettingsDS,
+    lmerSLMADS2,
     matrixDetDS1,
     meanDS,
     meanSdGpDS,
@@ -44,23 +54,19 @@ AggregateMethods:
     setSeedDS,
     table1DDS,
     table2DDS,
+    tableDS,
+    tableDS2,
     tapplyDS,
     testObjExistsDS,
     tTestFDS2,
     varDS,
-    class=base::class,
-    colnames=base::colnames,
-    cor.test=stats::cor.test,
-    dim=base::dim,
+    colnamesDS,
     exists=base::exists,
     is.character=base::is.character,
     is.factor=base::is.factor,
     is.list=base::is.list,
     is.null=base::is.null,
     is.numeric=base::is.numeric,
-    length=base::length,
-    levels=base::levels,
-    ls=base::ls,
     NROW=base::NROW,
     t.test=stats::t.test
 AssignMethods:
@@ -77,6 +83,7 @@ AssignMethods:
     cbindDS,
     cDS,
     changeRefGroupDS,
+    completeCasesDS,
     dataFrameDS,
     dataFrameFillDS,
     dataFrameSortDS,
@@ -96,16 +103,19 @@ AssignMethods:
     rBinomDS,
     recodeLevelsDS,
     recodeValuesDS2,
+    repDS,
     replaceNaDS,
     reShapeDS,
     rNormDS,
     rowColCalcDS,
     rPoisDS,
     rUnifDS,
+    sampleDS,
     seedDS,
     seqDS,
     subsetByClassDS,
     subsetDS,
+    tableDS.assign,
     tapplyDS.assign,
     unListDS,
     as.character=base::as.character,
@@ -131,4 +141,4 @@ Options:
     default.nfilter.tab=3,
     default.nfilter.noise=0.25,
     default.nfilter.levels=0.33
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
