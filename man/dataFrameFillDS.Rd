@@ -4,7 +4,7 @@
 \alias{dataFrameFillDS}
 \title{dataFrameFillDS}
 \usage{
-dataFrameFillDS(df.name, allNames.transmit)
+dataFrameFillDS(df.name, allNames.transmit, class.vect.transmit)
 }
 \arguments{
 \item{df.name}{a character string representing the name of the input data frame that will be
@@ -13,6 +13,9 @@ compared to the data frames of the other studies used in the analysis.}
 
 \item{allNames.transmit}{unique names of all the variables that are included in the input 
 data frames from all the used datasources.}
+
+\item{class.vect.transmit}{the classes of all the variables that are included in the vector 
+\code{allNames.transmit}}
 }
 \value{
 Nothing is returned to the client. The generated object is written to the serverside.

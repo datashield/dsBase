@@ -11,11 +11,13 @@
 #' compared to the data frames of the other studies used in the analysis.
 #' @param allNames.transmit unique names of all the variables that are included in the input 
 #' data frames from all the used datasources. 
+#' @param class.vect.transmit the classes of all the variables that are included in the vector 
+#' \code{allNames.transmit}
 #' @return Nothing is returned to the client. The generated object is written to the serverside.
 #' @author Demetris Avraam for DataSHIELD Development Team
 #' @export
 #' 
-dataFrameFillDS <- function(df.name, allNames.transmit){
+dataFrameFillDS <- function(df.name, allNames.transmit, class.vect.transmit){
   
   data <- eval(parse(text=df.name), envir = parent.frame())
 
@@ -25,18 +27,34 @@ dataFrameFillDS <- function(df.name, allNames.transmit){
     allNames <- NULL
   }
   
+  if(!is.null(class.vect.transmit)){
+    class.vect <- unlist(strsplit(class.vect.transmit, split=","))
+  }else{
+    class.vect <- NULL
+  }
+  
   study.colnames <- colnames(data)
-  missingVars <- allNames[-which(allNames %in% study.colnames)]
+  missingIndex <- which(!(allNames %in% study.colnames))
   
-  numRows <- nrow(data)
-  numCols <- length(missingVars)
+  if (length(missingIndex) > 0){
+    missingVars <- allNames[missingIndex]
+    missingClass <- class.vect[missingIndex]
   
-  mat.new <- matrix(NA, ncol=numCols, nrow=numRows)
+    numRows <- nrow(data)
+    numCols <- length(missingVars)
   
-  df.new <- data.frame(x=mat.new, row.names=NULL)
-  colnames(df.new) <- missingVars
-
-  df.out <- cbind(data, df.new)
+    mat.new <- matrix(NA, ncol=numCols, nrow=numRows)
+  
+    df.new <- data.frame(x=mat.new, row.names=NULL)
+    colnames(df.new) <- missingVars
+  
+    funs <- sapply(paste0("as.", missingClass), match.fun)
+    df.new[] <- Map(function(dd, f) f(as.character(dd)), df.new, funs)
+      
+    df.out <- cbind(data, df.new)
+  }else{
+    df.out <- data
+  }
   
   return(df.out)
 
