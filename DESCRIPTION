@@ -34,8 +34,8 @@ AggregateMethods:
     lsDS,
     isNaDS,
     isValidDS,
-    kurtosisDS1
-    kurtosisDS2
+    kurtosisDS1,
+    kurtosisDS2,
     lengthDS,
     levelsDS,
     lexisDS1,
