@@ -10,7 +10,7 @@ skewnessDS1(x, method)
 \item{x}{a string character, the name of a numeric variable.}
 
 \item{method}{an integer between 1 and 3 selecting one of the algorithms for computing skewness
-detailed below. The default value is set to 1.}
+detailed in the headers of the client-side \code{ds.skewness} function.}
 }
 \value{
 a list including the skewness of the input numeric variable, the number of valid observations and

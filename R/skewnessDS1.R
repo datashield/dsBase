@@ -5,7 +5,7 @@
 #' The method is specified by the argument \code{method} in the client-side \code{ds.skewness} function. 
 #' @param x a string character, the name of a numeric variable.
 #' @param method an integer between 1 and 3 selecting one of the algorithms for computing skewness
-#' detailed below. The default value is set to 1.
+#' detailed in the headers of the client-side \code{ds.skewness} function.
 #' @return a list including the skewness of the input numeric variable, the number of valid observations and
 #' the study-side validity message.
 #' @author Demetris Avraam, for DataSHIELD Development Team
