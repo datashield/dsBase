@@ -27,11 +27,9 @@ cbindDS <- function(x.names.transmit=NULL, colnames.transmit=NULL){
   x.names.act1 <- unlist(strsplit(x.names.input, split=","))
   x.names.act2 <- paste(x.names.act1, collapse=",")
   
-  eval.code.x.names <- paste0("cbind(", x.names.act2, ")")
+  eval.code.x.names <- paste0("data.frame(", x.names.act2, ")")
   
   output.cbind <- eval(parse(text=eval.code.x.names), envir = parent.frame())
-  # convert the object from a 'matrix' to a 'data.frame'
-  output.cbind <- as.data.frame(output.cbind)
   
   colnames.input <- colnames.transmit
   colnames.act1 <- unlist(strsplit(colnames.input, split=","))
