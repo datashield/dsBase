@@ -59,14 +59,14 @@
 dataFrameSubsetDS2<-function(df.name=NULL,V1.name=NULL, V2.name=NULL, Boolean.operator.n=NULL,keep.cols=NULL, rm.cols=NULL, keep.NAs=NULL){
 
 #########################################################################
-# DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS           			#
-thr <- listDisclosureSettingsDS()							#
-#nfilter.tab<-as.numeric(thr$nfilter.tab)								#
-#nfilter.glm<-as.numeric(thr$nfilter.glm)								#
-nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
-nfilter.string<-as.numeric(thr$nfilter.string)              			#
-#nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)    			#
-#nfilter.kNN<-as.numeric(thr$nfilter.kNN)								#
+# DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
+thr <- listDisclosureSettingsDS()                                       #
+#nfilter.tab<-as.numeric(thr$nfilter.tab)                               #
+#nfilter.glm<-as.numeric(thr$nfilter.glm)                               #
+nfilter.subset<-as.numeric(thr$nfilter.subset)                          #
+nfilter.string<-as.numeric(thr$nfilter.string)                          #
+#nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)               #
+#nfilter.kNN<-as.numeric(thr$nfilter.kNN)                               #
 #datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)       #
 #########################################################################
 
@@ -175,12 +175,26 @@ if(!is.null(V2.name)){
 
 
    df.name.2<-paste0("data.frame(",df.name,")")
-   df2subset <- eval(parse(text=df.name.2), envir = parent.frame())
+   df2subset <- eval(parse(text=df.name.2))
 
-   V1<-eval(parse(text=V1.name), envir = parent.frame())
-
-   V2<-eval(parse(text=V2.name), envir = parent.frame())
-
+   if(V1.name=="ONES"||V2.name=="ONES")
+   {
+     length.ONES<-dim(df2subset)[1]
+     V1<-rep(1,length=length.ONES)
+     V2<-rep(1,length=length.ONES)
+     Boolean.operator.n<-1
+     #if using "ONES" for V1 or V2 then need to ensure a variable called "ONES" exists
+     #when it comes to generating the Boolean indicator below. If it doesn't exist
+     #generate it. If it does exist (for another purpose) then just leave as it is
+     #because its form doesn't matter, it just has to exist
+     if(!exists("ONES"))
+     {
+       ONES<-V1
+     }
+   }else{
+     V1<-eval(parse(text=V1.name))
+     V2<-eval(parse(text=V2.name))
+   }
 
 
 ##########CHECK APPROPRIATE CLASSES ##############
@@ -214,13 +228,13 @@ if(!((df.col.length == V1.length))){
    return(list(studysideMessage=studysideMessage))
 }
 
-if(!((V1.length == V2.length) | (V2.length==1))){
+if(!((V1.length == V2.length) || (V2.length==1))){
    studysideMessage<-"FAILED: V[ii] must either be of length one or of length equal to V[i]"
 
    return(list(studysideMessage=studysideMessage))
 }
 
-if(!is.numeric(Boolean.operator.n) | Boolean.operator.n==0){
+if(!is.numeric(Boolean.operator.n) || Boolean.operator.n==0){
    studysideMessage<-"FAILED: Boolean.operator must be: '==', '!=', '<', '<=', '>' or '>='"
    return(list(studysideMessage=studysideMessage))
 }
@@ -242,14 +256,14 @@ Boolean.indicator<-integer(length=V1.length)
 if(V2.length==V1.length){
 for(j in 1:V1.length){
 command.text<-paste0(V1.name,"[",j,"]",Boolean.operator,V2.name,"[",j,"]")
-Boolean.indicator[j]<-eval(parse(text=command.text), envir = parent.frame())*1
+Boolean.indicator[j]<-eval(parse(text=command.text))*1
 }
 }
 
 if(V2.length==1){
 for(j in 1:V1.length){
 command.text<-paste0(V1.name,"[",j,"]",Boolean.operator,V2.name)
-Boolean.indicator[j]<-eval(parse(text=command.text), envir = parent.frame())*1
+Boolean.indicator[j]<-eval(parse(text=command.text))*1
 }
 }
 

@@ -58,7 +58,7 @@ dataFrameDS <- function(vectors=NULL, r.names=NULL, ch.rows=FALSE, ch.names=TRUE
     r.names <- unlist(r.names)
   }
   
-  eval.code.vectors.names <- paste0("cbind(", vectors, ")")
+  eval.code.vectors.names <- paste0("data.frame(", vectors, ")")
   dtemp0 <- eval(parse(text=eval.code.vectors.names), envir = parent.frame())
   
   dtemp <- data.frame(dtemp0, row.names=r.names, check.rows=ch.rows, check.names=ch.names,

@@ -1,17 +1,18 @@
 Package: dsBase
 Title: DataSHIELD server site base functions
-Version: 6.0.0
+Description: DataSHIELD server site base functions.
+Version: 6.0.1
 Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
 Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
 License: GPL-3
-Description: DataSHIELD server site base functions.
+Depends:
+    R (>= 3.5.0)
 Imports:
     RANN,
     nlme,
     stringr,
     lme4
 AggregateMethods:
-    alphaPhiDS,
     asFactorDS1,
     asListDS,
     checkNegValueDS,
