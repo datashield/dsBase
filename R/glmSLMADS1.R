@@ -1,33 +1,25 @@
-#' @title glmSLMADS1 called by ds.glmSLMA
-#' @description This is the first serverside aggregate function called by ds.glmSLMA
-#' @details It is an
-#' aggregate function that sets up the generalized linear model structure
-#' and feeds this structural information via ds.glmSLMA into the call
-#' to glmSLMADS2 that enacts fitting of the specified generalized linear model
-#' (to completion) in each of the studies to be included in the study-level
-#' meta-analysis. For more details please see the extensive header for ds.glmSLMA
-#' in DataSHIELD and help on the {glm} function in native R.
-#' @param formula a glm() formula consistent with R syntax eg U~x+y+Z to regress
-#' variables U on x,y and Z. Fully specified by <formula> argument in ds.glmSLMA
-#' @param family a glm() family consistent with R syntax eg "gaussian", "poisson",
-#' "binomial". Fully specified by <family> argument in ds.glmSLMA
-#' @param weights an optional variable name (as a character sting)
-#' identifying a vector of prior regression weights. Fully specified by <weights>
-#' argument in ds.glmSLMA
-#' @param offset an optional variable name (as a character string)
-#' identifying an offset vector. Fully specified by <offset> argument in ds.glmSLMA
-#' @param data an optional character string specifying the name of a data.frame
-#' object holding the data to be analysed under the specified model.
-#' Fully specified by <dataName> argument in ds.glmSLMA
-#' @return All quantitative, Boolean, and character objects required by
-#' glmSLMADS2 to fit the glm in each study. Also, returns warning flags
-#' and associated information enabling DataSHIELD to halt analysis in any
-#' given study if a disclosure trap is triggered and to inform the user
-#' what trap has been triggered. 
-#' @author Paul Burton for DataSHIELD Development Team
+#' @title Fit a Generalized Linear Model (GLM) with pooling via Study Level Meta-Analysis (SLMA)
+#' @description Fits a generalized linear model (GLM) on data from single or multiple sources
+#' with pooled co-analysis across studies being based on SLMA (Study Level Meta Analysis).
+#' @details glmSLMADS.assign is an aggregate function called by clientside function ds.glmSLMA.
+#' ds.glmSLMA also calls another aggregate function glmSLMADS2
+#' and an assign function glmSLMADS.assign
+#' For more detailed information see help for ds.glmSLMA.
+#' @param formula a glm formula, specified in call to ds.glmSLMA
+#' @param family a glm family, specified in call to ds.glmSLMA
+#' @param offset a character string specifying a variable to be used as an offset.
+#' Specified in call to ds.glmSLMA.
+#' @param weights a character string specifying a variable to be used as regression weights.
+#' Specified in call to ds.glmSLMA. Specified in call to ds.glmSLMA.
+#' @param data a character string specifying the name of a data.frame
+#' holding the data for the model. Specified as dataName in call to ds.glmSLMA.
+#' @return assesses and returns information about failure to pass disclosure traps
+#' such as test of model complexity (saturation).
+#' For more detailed information see help for ds.glmSLMA.
+#' @author Paul Burton for DataSHIELD Development Team (14/7/20)
 #' @export
 
-glmSLMADS1<-function (formula, family, weights, offset, data){
+glmSLMADS1<- function(formula, family, weights, offset, data){
 
 errorMessage="No errors"
 
@@ -40,6 +32,20 @@ nfilter.glm<-as.numeric(thr$nfilter.glm)                    #
 #nfilter.string<-as.numeric(thr$nfilter.string)             #
 #############################################################
 
+########################################
+############
+#Convert transmitable text for special link variance combinations back to full representation
+if(family=="quasigamma.link_log")
+{family<-"quasi(link=log,variance=mu^2)"}
+
+if(family=="Gamma.link_log")
+{family<-"Gamma(link=log,variance=mu^2)"}
+#############
+
+final.family.object<-eval(parse(text=family))
+#########################################
+
+
 
   # get the value of the 'data' and 'weights' parameters provided as character on the client side
   if(is.null(data)){
@@ -48,39 +54,10 @@ nfilter.glm<-as.numeric(thr$nfilter.glm)                    #
     dataTable <- eval(parse(text=data), envir = parent.frame())
   }
    
-#    formulatext <- Reduce(paste, deparse(formula))
-#    originalFormula <- formulatext
-#   
-# # Convert formula string into separate variable names split by |
-#   formulatext <- gsub(" ", "", formulatext, fixed=TRUE)
-#   formulatext <- gsub("~", "|", formulatext, fixed=TRUE)
-#   formulatext <- gsub("+", "|", formulatext, fixed=TRUE)
-#   formulatext <- gsub("*", "|", formulatext, fixed=TRUE)
-#   formulatext <- gsub("||", "|", formulatext, fixed=TRUE)
-# 
-#    formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = parent.frame()) # here we need the formula as a 'call' object
    
 formula2use <- formula
-mod.glm.ds <- stats::glm(formula2use, family=family, x=TRUE, control=stats::glm.control(maxit=1), contrasts=NULL, data=dataTable)
+mod.glm.ds <- stats::glm(formula2use, family=final.family.object, x=TRUE, control=stats::glm.control(maxit=1), contrasts=NULL, data=dataTable)
 
-  
-#Remember model.variables and then varnames INCLUDE BOTH yvect AND linear predictor components 
-	# model.variables <- unlist(strsplit(formulatext, split="|", fixed=TRUE))
-	# 
-	#  varnames <- c()
-	#   for(i in 1:length(model.variables)){
-	#     elt <- unlist(strsplit(model.variables[i], split="$", fixed=TRUE))
-	#     if(length(elt) > 1){
-	#       assign(elt[length(elt)], eval(parse(text=model.variables[i])))
-	#       print('sdf')
-	#       originalFormula <- gsub(model.variables[i], elt[length(elt)], originalFormula, fixed=TRUE)
-	#       varnames <- append(varnames, elt[length(elt)])
-	#     }else{
-	#       varnames <- append(varnames, elt)
-	#     }
-	#   }
-	# 
-	# varnames <- unique(varnames) 
 
    X.mat <- as.matrix(mod.glm.ds$x)
   
@@ -161,11 +138,11 @@ mod.glm.ds <- stats::glm(formula2use, family=family, x=TRUE, control=stats::glm.
 #observations at either level 
 	dimX<-dim((X.mat))
 
-  	num.Xpar<-dimX[2]
+        num.Xpar<-dimX[2]
 
 	Xpar.invalid<-rep(0,num.Xpar)
 
-  	for(pj in 1:num.Xpar){
+        for(pj in 1:num.Xpar){
 	unique.values.noNA<-unique((X.mat[,pj])[stats::complete.cases(X.mat[,pj])]) 
 
 	if(length(unique.values.noNA)==2){
@@ -236,4 +213,3 @@ if(!is.null(offsetvar))
 }
 #AGGREGATE FUNCTION
 # glmSLMADS1
-

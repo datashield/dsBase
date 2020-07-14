@@ -92,6 +92,7 @@ AssignMethods:
     dataFrameFillDS,
     dataFrameSortDS,
     dataFrameSubsetDS2,
+    glmSLMADS.assign,
     listDS,
     lexisDS2,
     lexisDS3,
