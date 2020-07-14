@@ -2,47 +2,39 @@
 % Please edit documentation in R/glmSLMADS1.R
 \name{glmSLMADS1}
 \alias{glmSLMADS1}
-\title{glmSLMADS1 called by ds.glmSLMA}
+\title{Fit a Generalized Linear Model (GLM) with pooling via Study Level Meta-Analysis (SLMA)}
 \usage{
 glmSLMADS1(formula, family, weights, offset, data)
 }
 \arguments{
-\item{formula}{a glm() formula consistent with R syntax eg U~x+y+Z to regress
-variables U on x,y and Z. Fully specified by <formula> argument in ds.glmSLMA}
+\item{formula}{a glm formula, specified in call to ds.glmSLMA}
 
-\item{family}{a glm() family consistent with R syntax eg "gaussian", "poisson",
-"binomial". Fully specified by <family> argument in ds.glmSLMA}
+\item{family}{a glm family, specified in call to ds.glmSLMA}
 
-\item{weights}{an optional variable name (as a character sting)
-identifying a vector of prior regression weights. Fully specified by <weights>
-argument in ds.glmSLMA}
+\item{weights}{a character string specifying a variable to be used as regression weights.
+Specified in call to ds.glmSLMA. Specified in call to ds.glmSLMA.}
 
-\item{offset}{an optional variable name (as a character string)
-identifying an offset vector. Fully specified by <offset> argument in ds.glmSLMA}
+\item{offset}{a character string specifying a variable to be used as an offset.
+Specified in call to ds.glmSLMA.}
 
-\item{data}{an optional character string specifying the name of a data.frame
-object holding the data to be analysed under the specified model.
-Fully specified by <dataName> argument in ds.glmSLMA}
+\item{data}{a character string specifying the name of a data.frame
+holding the data for the model. Specified as dataName in call to ds.glmSLMA.}
 }
 \value{
-All quantitative, Boolean, and character objects required by
-glmSLMADS2 to fit the glm in each study. Also, returns warning flags
-and associated information enabling DataSHIELD to halt analysis in any
-given study if a disclosure trap is triggered and to inform the user
-what trap has been triggered.
+assesses and returns information about failure to pass disclosure traps
+such as test of model complexity (saturation).
+For more detailed information see help for ds.glmSLMA.
 }
 \description{
-This is the first serverside aggregate function called by ds.glmSLMA
+Fits a generalized linear model (GLM) on data from single or multiple sources
+with pooled co-analysis across studies being based on SLMA (Study Level Meta Analysis).
 }
 \details{
-It is an
-aggregate function that sets up the generalized linear model structure
-and feeds this structural information via ds.glmSLMA into the call
-to glmSLMADS2 that enacts fitting of the specified generalized linear model
-(to completion) in each of the studies to be included in the study-level
-meta-analysis. For more details please see the extensive header for ds.glmSLMA
-in DataSHIELD and help on the {glm} function in native R.
+glmSLMADS.assign is an aggregate function called by clientside function ds.glmSLMA.
+ds.glmSLMA also calls another aggregate function glmSLMADS2
+and an assign function glmSLMADS.assign
+For more detailed information see help for ds.glmSLMA.
 }
 \author{
-Paul Burton for DataSHIELD Development Team
+Paul Burton for DataSHIELD Development Team (14/7/20)
 }
