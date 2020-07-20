@@ -28,6 +28,7 @@ AggregateMethods:
     glmerSLMADS2,
     glmSLMADS1,
     glmSLMADS2,
+    glmSummaryDS.ag,
     heatmapPlotDS,
     histogramDS1,
     histogramDS2,
@@ -93,6 +94,7 @@ AssignMethods:
     dataFrameSortDS,
     dataFrameSubsetDS2,
     glmSLMADS.assign,
+    glmSummaryDS.as,
     listDS,
     lexisDS2,
     lexisDS3,
@@ -146,4 +148,4 @@ Options:
     default.nfilter.tab=3,
     default.nfilter.noise=0.25,
     default.nfilter.levels=0.33
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
