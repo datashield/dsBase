@@ -63,7 +63,7 @@ if (is.null(input.obj)) {
 }
 
 input.obj.class <- class(input.obj)
-if ((! ('glm' %in% input.obj.class)) || (! ('lm' %in% input.obj.class)))
+if ((! ('glm' %in% input.obj.class)) || (! ('lm' %in% input.obj.class))) {
     stop('The specified glm object is not of class "glm" and "lm"', call. = FALSE)
 }
 
