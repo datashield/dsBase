@@ -57,6 +57,11 @@ if(!string.safe)
 
 input.obj<-eval(parse(text=x.transmit))
 
+
+print('------')
+print(class(input.obj))
+print('------')
+
 #block potentially disclosive components of input glm object
 input.obj$residuals<-NA
 input.obj$fitted.values<-NA
