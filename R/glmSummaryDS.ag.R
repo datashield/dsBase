@@ -57,6 +57,16 @@ if(!string.safe)
 
 input.obj<-eval(parse(text=x.transmit))
 
+
+if (is.null(input.obj)) {
+    stop('The specified glm object does not exist', call. = FALSE)
+}
+
+input.obj.class <- class(input.obj)
+if ((! ('glm' %in% input.obj.class)) || (! ('lm' %in% input.obj.class))) {
+    stop('The specified glm object is not of class "glm" and "lm"', call. = FALSE)
+}
+
 #block potentially disclosive components of input glm object
 input.obj$residuals<-NA
 input.obj$fitted.values<-NA
