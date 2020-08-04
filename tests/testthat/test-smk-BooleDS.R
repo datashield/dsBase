@@ -20,7 +20,7 @@ context("BooleDS::smk::setup")
 
 context("BooleDS::smk::simple equal")
 test_that("simple BooleDS, equal numeric", {
-    input = data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
     res <- BooleDS("input$v1", "input$v2", 1, "NA", TRUE)
 
@@ -34,7 +34,7 @@ test_that("simple BooleDS, equal numeric", {
 })
 
 test_that("simple BooleDS, equal logical", {
-    input = data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
     res <- BooleDS("input$v1", "input$v2", 1, "NA", FALSE)
 
@@ -49,7 +49,7 @@ test_that("simple BooleDS, equal logical", {
 
 context("BooleDS::smk::simple not-equal")
 test_that("simple BooleDS, not-equal numeric", {
-    input = data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
     res <- BooleDS("input$v1", "input$v2", 2, "NA", TRUE)
 
@@ -63,7 +63,7 @@ test_that("simple BooleDS, not-equal numeric", {
 })
 
 test_that("simple BooleDS, not-equal logical", {
-    input = data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
     res <- BooleDS("input$v1", "input$v2", 2, "NA", FALSE)
 
@@ -78,7 +78,7 @@ test_that("simple BooleDS, not-equal logical", {
 
 context("BooleDS::smk::simple less-than")
 test_that("simple BooleDS, less-than numeric", {
-    input = data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
     res <- BooleDS("input$v1", "input$v2", 3, "NA", TRUE)
 
@@ -92,7 +92,7 @@ test_that("simple BooleDS, less-than numeric", {
 })
 
 test_that("simple BooleDS, less-than logical", {
-    input = data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
     res <- BooleDS("input$v1", "input$v2", 3, "NA", FALSE)
 
@@ -107,7 +107,7 @@ test_that("simple BooleDS, less-than logical", {
 
 context("BooleDS::smk::simple less-than-equal")
 test_that("simple BooleDS, less-than-equal numeric", {
-    input = data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
     res <- BooleDS("input$v1", "input$v2", 4, "NA", TRUE)
 
@@ -121,7 +121,7 @@ test_that("simple BooleDS, less-than-equal numeric", {
 })
 
 test_that("simple BooleDS, less-than-equal logical", {
-    input = data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
     res <- BooleDS("input$v1", "input$v2", 4, "NA", FALSE)
 
@@ -136,7 +136,7 @@ test_that("simple BooleDS, less-than-equal logical", {
 
 context("BooleDS::smk::simple greater-than")
 test_that("simple BooleDS, greater-than numeric", {
-    input = data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
     res <- BooleDS("input$v1", "input$v2", 5, "NA", TRUE)
 
@@ -150,7 +150,7 @@ test_that("simple BooleDS, greater-than numeric", {
 })
 
 test_that("simple BooleDS, greater-than logical", {
-    input = data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
     res <- BooleDS("input$v1", "input$v2", 5, "NA", FALSE)
 
@@ -165,7 +165,7 @@ test_that("simple BooleDS, greater-than logical", {
 
 context("BooleDS::smk::simple greater-than-equal")
 test_that("simple BooleDS, greater-than-equal numeric", {
-    input = data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
     res <- BooleDS("input$v1", "input$v2", 6, "NA", TRUE)
 
@@ -179,7 +179,7 @@ test_that("simple BooleDS, greater-than-equal numeric", {
 })
 
 test_that("simple BooleDS, greater-than-equal logical", {
-    input = data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
     res <- BooleDS("input$v1", "input$v2", 6, "NA", FALSE)
 
@@ -194,7 +194,7 @@ test_that("simple BooleDS, greater-than-equal logical", {
 
 context("BooleDS::smk::na-check numeric")
 test_that("na-check BooleDS, numeric, NA=NA", {
-    input = data.frame(v1 = c(0.0, NA, 2.0, 3.0, NA), v2 = c(NA, 3.0, 2.0, 1.0, NA))
+    input <- data.frame(v1 = c(0.0, NA, 2.0, 3.0, NA), v2 = c(NA, 3.0, 2.0, 1.0, NA))
 
     res <- BooleDS("input$v1", "input$v2", 1, "NA", TRUE)
 
@@ -208,7 +208,7 @@ test_that("na-check BooleDS, numeric, NA=NA", {
 })
 
 test_that("na-check BooleDS, numeric, NA=0", {
-    input = data.frame(v1 = c(0.0, NA, 2.0, 3.0, NA), v2 = c(NA, 3.0, 2.0, 1.0, NA))
+    input <- data.frame(v1 = c(0.0, NA, 2.0, 3.0, NA), v2 = c(NA, 3.0, 2.0, 1.0, NA))
 
     res <- BooleDS("input$v1", "input$v2", 1, "0", TRUE)
 
@@ -222,7 +222,7 @@ test_that("na-check BooleDS, numeric, NA=0", {
 })
 
 test_that("na-check BooleDS, numeric, NA=1", {
-    input = data.frame(v1 = c(0.0, NA, 2.0, 3.0, NA), v2 = c(NA, 3.0, 2.0, 1.0, NA))
+    input <- data.frame(v1 = c(0.0, NA, 2.0, 3.0, NA), v2 = c(NA, 3.0, 2.0, 1.0, NA))
 
     res <- BooleDS("input$v1", "input$v2", 1, "1", TRUE)
 
@@ -237,7 +237,7 @@ test_that("na-check BooleDS, numeric, NA=1", {
 
 context("BooleDS::smk::na-check logical")
 test_that("na-check BooleDS, logical, NA=NA", {
-    input = data.frame(v1 = c(0.0, NA, 2.0, 3.0, NA), v2 = c(NA, 3.0, 2.0, 1.0, NA))
+    input <- data.frame(v1 = c(0.0, NA, 2.0, 3.0, NA), v2 = c(NA, 3.0, 2.0, 1.0, NA))
 
     res <- BooleDS("input$v1", "input$v2", 1, "NA", FALSE)
 
@@ -251,7 +251,7 @@ test_that("na-check BooleDS, logical, NA=NA", {
 })
 
 test_that("na-check BooleDS, logical, NA=0", {
-    input = data.frame(v1 = c(0.0, NA, 2.0, 3.0, NA), v2 = c(NA, 3.0, 2.0, 1.0, NA))
+    input <- data.frame(v1 = c(0.0, NA, 2.0, 3.0, NA), v2 = c(NA, 3.0, 2.0, 1.0, NA))
 
     res <- BooleDS("input$v1", "input$v2", 1, "0", FALSE)
 
@@ -265,7 +265,7 @@ test_that("na-check BooleDS, logical, NA=0", {
 })
 
 test_that("na-check BooleDS, logical, NA=1", {
-    input = data.frame(v1 = c(0.0, NA, 2.0, 3.0, NA), v2 = c(NA, 3.0, 2.0, 1.0, NA))
+    input <- data.frame(v1 = c(0.0, NA, 2.0, 3.0, NA), v2 = c(NA, 3.0, 2.0, 1.0, NA))
 
     res <- BooleDS("input$v1", "input$v2", 1, "1", FALSE)
 

@@ -7,17 +7,34 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #-------------------------------------------------------------------------------
+
 #
-# Datashield test suite set up
+# Set up
 #
 
-context("setup - start")
+context("rmDS::smk::setup")
 
-library(RANN)
-library(nlme)
-library(stringr)
-library(lme4)
+set.standard.disclosure.settings()
 
-source("disclosure/set_disclosure_settings.R")
+#
+# Tests
+#
 
-context("setup - done")
+context("rmDS::smk::data.frame")
+test_that("simple rmDS, numeric data.frame", {
+#    input <- "value"
+
+#    res <- rmDS("input")
+
+#    expect_equal(class(res), "list")
+#    expect_length(res, 1)
+#    expect_equal(res$return.message, "")
+})
+
+#
+# Done
+#
+
+context("rmDS::smk::shutdown")
+
+context("rmDS::smk::done")
