@@ -6,7 +6,8 @@
 # /testStatus           <- Checked out version of datashield/testStatus
 # /logs                 <- Where results of tests and lots are collated
 #
-# As of May 2020 this takes ~ 20 mins to run.
+# As of May 2020 this takes ~ 15 mins to run.
+#       Jul 2020 this takes ~ 15 mins to run.
 #
 # Nothing should ever need changing in this as the repo will always check itself out.
 #

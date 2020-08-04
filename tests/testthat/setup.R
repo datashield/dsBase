@@ -18,4 +18,6 @@ library(nlme)
 library(stringr)
 library(lme4)
 
+source("disclosure/set_disclosure_settings.R")
+
 context("setup - done")
