@@ -41,7 +41,7 @@ test_that("simple isValidDS, character vector", {
 
 context("isValidDS::smk::integer")
 test_that("simple isValidDS, integer", {
-    input <- integer(1)
+    input <- 1L
 
     res <- isValidDS(input)
 
@@ -51,7 +51,7 @@ test_that("simple isValidDS, integer", {
 })
 
 test_that("simple isValidDS, integer vector", {
-    input <- c(integer(1), integer(2), integer(3), integer(4))
+    input <- c(1L, 2L, 3L, 4L)
 
     res <- isValidDS(input)
 
