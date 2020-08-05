@@ -20,15 +20,15 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("rmDS::smk::data.frame")
-test_that("simple rmDS, numeric data.frame", {
-#    input <- "value"
+context("rmDS::smk::simple")
+test_that("simple rmDS", {
+    input <- "value"
 
-#    res <- rmDS("input")
+    res <- rmDS("input")
 
-#    expect_equal(class(res), "list")
-#    expect_length(res, 1)
-#    expect_equal(res$return.message, "")
+    expect_equal(class(res), "list")
+    expect_length(res, 1)
+    expect_equal(res$return.message, "Object <input> successfully deleted")
 })
 
 #
