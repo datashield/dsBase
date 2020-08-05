@@ -26,6 +26,8 @@ test_that("simple rmDS", {
 
     res <- rmDS("input")
 
+    expect_false(exists("input"))
+
     expect_equal(class(res), "list")
     expect_length(res, 1)
     expect_equal(res$return.message, "Object <input> successfully deleted")

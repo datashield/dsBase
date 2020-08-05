@@ -20,9 +20,9 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("namesDS::smk::data.frame")
+context("namesDS::smk::list of atoms")
 test_that("simple namesDS, data.frame", {
-    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+    input <- list(v1 = 0.0, v2 = 1.0)
 
     res <- namesDS("input")
 
@@ -32,9 +32,9 @@ test_that("simple namesDS, data.frame", {
     expect_true("v2" %in% res)
 })
 
-context("namesDS::smk::data.matrix")
+context("namesDS::smk::list of vectors")
 test_that("simple namesDS, data.matrix", {
-    input <- data.matrix(data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0)))
+    input <- list(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
     res <- namesDS("input")
 
