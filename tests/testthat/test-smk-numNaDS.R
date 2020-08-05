@@ -12,31 +12,37 @@
 # Set up
 #
 
-context("rmDS::smk::setup")
-
-set.standard.disclosure.settings()
+context("numNaDS::smk::setup")
 
 #
 # Tests
 #
 
-context("rmDS::smk::simple")
-test_that("simple rmDS", {
-    input <- "value"
+context("numNaDS::smk::simple")
+test_that("simple numNaDS", {
+    input <- c(NA, 1, NA, 2, NA)
 
-    res <- rmDS("input")
+    res <- numNaDS(input)
 
-    expect_false(exists("input"))
-
-    expect_equal(class(res), "list")
+    expect_equal(class(res), "integer")
     expect_length(res, 1)
-    expect_equal(res$return.message, "Object <input> successfully deleted")
+    expect_equal(res, 3)
+})
+
+test_that("simple numNaDS", {
+    input <- NA
+
+    res <- numNaDS(input)
+
+    expect_equal(class(res), "integer")
+    expect_length(res, 1)
+    expect_equal(res, 1)
 })
 
 #
 # Done
 #
 
-context("rmDS::smk::shutdown")
+context("numNaDS::smk::shutdown")
 
-context("rmDS::smk::done")
+context("numNaDS::smk::done")
