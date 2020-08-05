@@ -237,6 +237,55 @@ jobs:
     condition: succeededOrFailed()
 
 
+    #####################################################################################
+    # Checkout the testStatus repo, add the results from here, push back to GH.
+    # TODO: Automatically pull in better email/name info from somewhere.
+    # TODO: More debug info in commit message
+  - bash: |
+
+      # Git needs some config set to be able to push to a repo.
+      git config --global user.email "you@example.com"
+      git config --global user.name "Azure pipeline"
+
+      # This repo is checked out in detatched head state, so reconnect it here.
+      git checkout master
+      
+      # It is possible that other commits have been made to the testStatus repo since it
+      # was checked out. i.e. other pipeline runs might have finished.
+      git pull
+
+      # Make the directories if they dont already exist
+      mkdir --parents logs/$(projectName)/$(branchName)
+      mkdir --parents docs/$(projectName)/$(branchName)/latest
+
+      cp $(Pipeline.Workspace)/logs/coveragelist.csv logs/$(projectName)/$(branchName)/
+      cp $(Pipeline.Workspace)/logs/coveragelist.csv logs/$(projectName)/$(branchName)/$(datetime).csv
+
+      cp $(Pipeline.Workspace)/logs/test_results.xml logs/$(projectName)/$(branchName)/
+      cp $(Pipeline.Workspace)/logs/test_results.xml logs/$(projectName)/$(branchName)/$(datetime).xml
+
+      cp $(Pipeline.Workspace)/logs/$(datetime).txt logs/$(projectName)/$(branchName)/
+
+      # Run the script to parse the results and build the html pages.
+      # status.py JUnit_file.xml coverage_file.csv output_file.html local_repo_path remote_repo_name branch
+      source/status.py logs/$(projectName)/$(branchName)/$(datetime).xml logs/$(projectName)/$(branchName)/$(datetime).csv logs/$(projectName)/$(branchName)/$(datetime).txt status.html $(Pipeline.Workspace)/$(projectName) $(projectName) $(branchName)
+
+      cp status.html docs/$(projectName)/$(branchName)/latest/index.html
+      git add logs/$(projectName)/$(branchName)/coveragelist.csv
+      git add logs/$(projectName)/$(branchName)/test_results.xml
+      git add logs/$(projectName)/$(branchName)/$(datetime).xml
+      git add logs/$(projectName)/$(branchName)/$(datetime).csv
+      git add logs/$(projectName)/$(branchName)/$(datetime).txt
+      git add docs/$(projectName)/$(branchName)/latest/index.html
+
+      git commit -m "Azure auto test for $(projectName)/$(branchName) @ $(datetime)" -m "Debug info:\nProjectName:$(projectName)\nBranchName:$(branchName)\nDataTime:$(datetime)"
+      git push
+      exit 0
+
+    workingDirectory: $(Pipeline.Workspace)/testStatus
+    displayName: 'Parse test results'
+    condition: and(eq(variables['Build.Repository.Name'], 'datashield/dsBase'), ne(variables['Build.Reason'], 'PullRequest'))
+
 
     #####################################################################################
     # Output the environment information to the console. This is useful for debugging.
