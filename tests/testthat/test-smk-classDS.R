@@ -41,7 +41,7 @@ test_that("simple classDS, character vector", {
 
 context("classDS::smk::integer")
 test_that("simple classDS, integer", {
-    input <- integer(1)
+    input <- 1L
 
     res <- classDS("input")
 
@@ -51,7 +51,7 @@ test_that("simple classDS, integer", {
 })
 
 test_that("simple classDS, integer vector", {
-    input <- c(integer(1), integer(2), integer(3), integer(4))
+    input <- c(1L, 2L, 3L, 4L)
 
     res <- classDS("input")
 
