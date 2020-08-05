@@ -14,8 +14,6 @@
 
 context("classDS::smk::setup")
 
-set.standard.disclosure.settings()
-
 #
 # Tests
 #
