@@ -67,6 +67,11 @@ jobs:
   - checkout: self
     path: 'dsBase'
 
+  - checkout: testStatusRepo
+    path: 'testStatus'
+    persistCredentials: true
+    condition: and(eq(variables['Build.Repository.Name'], 'datashield/dsBase'), ne(variables['Build.Reason'], 'PullRequest'))
+
 
     #####################################################################################
     # The Azure VMs have 2 CPUs, so configure R to use both when compile/install packages.
