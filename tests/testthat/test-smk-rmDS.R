@@ -22,7 +22,11 @@ set.standard.disclosure.settings()
 
 context("rmDS::smk::simple")
 test_that("simple rmDS", {
+    expect_false(exists("input"))
+
     input <- "value"
+
+    expect_true(exists("input"))
 
     res <- rmDS("input")
 
