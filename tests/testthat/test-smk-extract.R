@@ -14,8 +14,6 @@
 
 context("extract::smk::setup")
 
-set.standard.disclosure.settings()
-
 #
 # Tests
 #
