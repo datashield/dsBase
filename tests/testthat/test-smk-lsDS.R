@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("rmDS::smk::setup")
+context("lsDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,27 +20,25 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("rmDS::smk::simple")
-test_that("simple rmDS", {
-    expect_false(exists("input"))
+context("lsDS::smk::simple")
+test_that("simple lsDS", {
+    search.filter <- NULL
+    env.to.search <- 1L
 
-    input <- "value"
-
-    expect_true(exists("input"))
-
-    res <- rmDS("input")
-
-    expect_false(exists("input"))
+    res <- lsDS(search.filter, env.to.search)
 
     expect_equal(class(res), "list")
-    expect_length(res, 1)
-    expect_equal(res$return.message, "Object <input> successfully deleted")
+    expect_length(res, 2)
+    expect_equal(res$environment.searched, "R_GlobalEnv")
+    expect_equal(class(res$objects.found), "character")
+    expect_length(res$objects.found, 1)
+    expect_equal(res$objects.found[1], "set.standard.disclosure.settings")
 })
 
 #
 # Done
 #
 
-context("rmDS::smk::shutdown")
+context("lsDS::smk::shutdown")
 
-context("rmDS::smk::done")
+context("lsDS::smk::done")
