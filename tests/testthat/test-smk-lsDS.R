@@ -22,6 +22,8 @@ set.standard.disclosure.settings()
 
 context("lsDS::smk::simple")
 test_that("simple lsDS", {
+    .GlobalEnv$test.obj <- "value"
+
     search.filter <- NULL
     env.to.search <- 1L
 
@@ -31,8 +33,25 @@ test_that("simple lsDS", {
     expect_length(res, 2)
     expect_equal(res$environment.searched, "R_GlobalEnv")
     expect_equal(class(res$objects.found), "character")
-    expect_length(res$objects.found, 1)
-    expect_equal(res$objects.found[1], "set.standard.disclosure.settings")
+    expect_true("test.obj" %in% res$objects.found)
+})
+
+context("lsDS::smk::simple")
+test_that("simple lsDS", {
+    .GlobalEnv$test.obj <- "value"
+
+    search.filter <- "_:A:_"
+    env.to.search <- 1L
+
+    res <- lsDS(search.filter, env.to.search)
+
+    expect_equal(class(res), "list")
+    expect_length(res, 3)
+    expect_equal(res$environment.searched, "R_GlobalEnv")
+    expect_equal(class(res$objects.found), "character")
+    expect_true("test.obj" %in% res$objects.found)
+    expect_length(res$search.filter.final, 1)
+    expect_equal(res$search.filter.final, "*")
 })
 
 #
