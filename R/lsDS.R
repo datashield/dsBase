@@ -62,7 +62,7 @@ return(outlist)
   length.sf<-length(search.filter.split)
   
   search.filter.temp1<-NULL
-  print(length.sf)
+#  print(length.sf)
 
   if(length.sf>=5)
   { 
