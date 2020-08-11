@@ -18,7 +18,7 @@ context("checkNegValueDS::smk::setup")
 # Tests
 #
 
-context("checkNegValueDS::smk, with no neg")
+context("checkNegValueDS::smk::with no neg")
 test_that("simple checkNegValueDS, with no neg and no NA", {
     input <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
 
@@ -39,7 +39,7 @@ test_that("simple checkNegValueDS, with no neg and NA", {
     expect_equal(res, FALSE)
 })
 
-context("checkNegValueDS::smk, with neg")
+context("checkNegValueDS::smk::with neg")
 test_that("simple checkNegValueDS, with neg and no NA", {
     input <- c(0.0, -1.0, -2.0, 3.0, -4.0, 5.0, -6.0, 7.0)
 
