@@ -73,7 +73,7 @@ subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, v
         subvect <- D
       }else{
         exprs1 <- paste0("D[which(D", lg, th, ")]")
-        subvect <- eval(parse(text=exprs1), envir = parent.frame())
+        subvect <- eval(parse(text=exprs1))
       }
     }else{
       subvect <- D[rs]
@@ -110,7 +110,7 @@ subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, v
       }else{
         idx <- which(colnames(D) == varname)
         exprs2 <- paste0('D[which(D[,',idx,']', lg, th, '),]')
-        subtable <- eval(parse(text=exprs2), envir = parent.frame())
+        subtable <- eval(parse(text=exprs2))
       }
     }
     
