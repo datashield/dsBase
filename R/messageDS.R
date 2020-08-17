@@ -64,7 +64,7 @@ message.object.name.active<-eval(parse(text=message.object.name), envir = parent
 
 
 #CASE WHERE PRIMARY OUTPUT OBJECT IS A LIST
-if(class(message.object.name.active)=="list"){
+if("list" %in% class(message.object.name.active)){
 
 #A LIST WITH NAMES - could be a studysideMessage
 	if(!is.null(names(message.object.name.active)))	{
