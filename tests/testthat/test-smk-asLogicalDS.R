@@ -90,6 +90,82 @@ test_that("simple asLogicalDS numeric vector", {
     expect_equal(res[5], TRUE)
 })
 
+context("asLogicalDS::smk::character")
+test_that("simple asLogicalDS, character - FALSE", {
+    input <- "F"
+
+    res <- asLogicalDS("input")
+
+    expect_equal(class(res), "logical")
+    expect_length(res, 1)
+    expect_equal(res, FALSE)
+})
+
+test_that("simple asLogicalDS, character - FALSE", {
+    input <- "False"
+
+    res <- asLogicalDS("input")
+
+    expect_equal(class(res), "logical")
+    expect_length(res, 1)
+    expect_equal(res, FALSE)
+})
+
+test_that("simple asLogicalDS, character - FALSE", {
+    input <- "FALSE"
+
+    res <- asLogicalDS("input")
+
+    expect_equal(class(res), "logical")
+    expect_length(res, 1)
+    expect_equal(res, FALSE)
+})
+
+test_that("simple asLogicalDS, character - TRUE", {
+    input <- "T"
+
+    res <- asLogicalDS("input")
+
+    expect_equal(class(res), "logical")
+    expect_length(res, 1)
+    expect_equal(res, TRUE)
+})
+
+test_that("simple asLogicalDS, character - TRUE", {
+    input <- "True"
+
+    res <- asLogicalDS("input")
+
+    expect_equal(class(res), "logical")
+    expect_length(res, 1)
+    expect_equal(res, TRUE)
+})
+
+test_that("simple asLogicalDS, character - TRUE", {
+    input <- "TRUE"
+
+    res <- asLogicalDS("input")
+
+    expect_equal(class(res), "logical")
+    expect_length(res, 1)
+    expect_equal(res, TRUE)
+})
+
+test_that("simple asLogicalDS, character vector", {
+     input <- c("T", "True", "TRUE", "F", "False", "FALSE")
+
+     res <- asLogicalDS("input")
+
+     expect_equal(class(res), "logical")
+     expect_length(res, 6)
+     expect_equal(res[1], TRUE)
+     expect_equal(res[2], TRUE)
+     expect_equal(res[3], TRUE)
+     expect_equal(res[4], FALSE)
+     expect_equal(res[5], FALSE)
+     expect_equal(res[6], FALSE)
+})
+
 #
 # Done
 #

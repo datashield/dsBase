@@ -20,9 +20,9 @@ context("changeRefGroupDS::smk::setup")
 
 context("changeRefGroupDS::smk")
 test_that("simple changeRefGroupDS, reorderByRef is FALSE", {
-    x            <- c(8.0, 1.0, 6.0, 1.0, 4.0, 1.0, 2.0, 1.0)
-    xf           <- factor(x)
-    ref          <- 3
+    x            <- c(8, 1, 6, 1, 4, 1, 2, 1)
+    xf           <- as.factor(x)
+    ref          <- 2
     reorderByRef <- FALSE
 
     res <- changeRefGroupDS(xf, ref, reorderByRef)
@@ -39,40 +39,38 @@ test_that("simple changeRefGroupDS, reorderByRef is FALSE", {
     expect_equal(res.num[2], 2)
     expect_equal(res.num[3], 4)
     expect_equal(res.num[4], 2)
-    expect_equal(res.num[5], 1)
+    expect_equal(res.num[5], 3)
     expect_equal(res.num[6], 2)
-    expect_equal(res.num[7], 3)
+    expect_equal(res.num[7], 1)
     expect_equal(res.num[8], 2)
 
     res.levels <- levels(res)
 
     expect_equal(class(res.levels), "character")
     expect_length(res.levels, 5)
-    expect_equal(res.levels[1], "4")
+    expect_equal(res.levels[1], "2")
     expect_equal(res.levels[2], "1")
-    expect_equal(res.levels[3], "2")
+    expect_equal(res.levels[3], "4")
     expect_equal(res.levels[4], "6")
     expect_equal(res.levels[5], "8")
 })
 
 test_that("simple changeRefGroupDS, reorderByRef is TRUE", {
-    x            <- c(8.0, 1.0, 6.0, 1.0, 4.0, 1.0, 2.0, 1.0)
-    xf           <- factor(x)
-    ref          <- 3
+    x            <- rep(8, 1, 6, 1, 4, 1, 2, 1)
+    xf           <- as.factor(x)
+    ref          <- 1
     reorderByRef <- TRUE
 
     res <- changeRefGroupDS(xf, ref, reorderByRef)
 
     expect_equal(class(res), "integer")
-    expect_length(res, 8)
-    expect_equal(res[1], 5)
-    expect_equal(res[2], 2)
-    expect_equal(res[3], 4)
-    expect_equal(res[4], 2)
+    expect_length(res, 6)
+    expect_equal(res[1], 1)
+    expect_equal(res[2], 1)
+    expect_equal(res[3], 1)
+    expect_equal(res[4], 1)
     expect_equal(res[5], 1)
-    expect_equal(res[6], 2)
-    expect_equal(res[7], 3)
-    expect_equal(res[8], 2)
+    expect_equal(res[6], 1)
 
     res.levels <- levels(res)
 

@@ -19,7 +19,7 @@ context("asLogicalDS::arg::setup")
 #
 
 context("asLogicalDS::arg::direct input numeric")
-test_that("simple asLogicalDS character", {
+test_that("simple asLogicalDS non-input", {
     res <- asLogicalDS(1.0)
 
     expect_length(res, 1)
@@ -28,27 +28,28 @@ test_that("simple asLogicalDS character", {
     expect_equal(res$studysideMessage, "ERROR: x.name must be specified as a character string")
 })
 
-context("asLogicalDS::arg::invalid character")
-test_that("simple asLogicalDS character", {
-    input <- "Foo"
+context("asLogicalDS::arg::input NULL")
+test_that("simple asLogicalDS NULL", {
+    input <- NULL
 
     res <- asLogicalDS("input")
 
     expect_length(res, 1)
     expect_equal(class(res), "list")
-    expect_equal(res[[1]], "ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer or matrix")
-    expect_equal(res$studysideMessage, "ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer or matrix")
+    expect_equal(res[[1]], "ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer, character or matrix")
+    expect_equal(res$studysideMessage, "ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer, character or matrix")
 })
 
-test_that("simple asLogicalDS character vector", {
-    input <- c("Foo", "foo", "bar", "bar")
+context("asLogicalDS::arg::input NA")
+test_that("simple asLogicalDS NA", {
+    input <- NA
 
     res <- asLogicalDS("input")
 
     expect_length(res, 1)
     expect_equal(class(res), "list")
-    expect_equal(res[[1]], "ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer or matrix")
-    expect_equal(res$studysideMessage, "ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer or matrix")
+    expect_equal(res[[1]], "ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer, character or matrix")
+    expect_equal(res$studysideMessage, "ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer, character or matrix")
 })
 
 #
