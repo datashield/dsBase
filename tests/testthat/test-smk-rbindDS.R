@@ -28,8 +28,17 @@ test_that("simple rbindDS", {
     res <- rbindDS(inputs, colnames)
 
     res.class <- class(res)
-    expect_true("matrix" %in% res.class)
-    expect_true("array" %in% res.class)
+    if (base::getRversion() < 4.0)
+    {
+        expect_length(res.class, 1)
+        expect_true("matrix" %in% res.class)
+    }
+    else
+    {
+        expect_length(res.class, 2)
+        expect_true("matrix" %in% res.class)
+        expect_true("array" %in% res.class)
+    }
 
     expect_length(res, 8)
     expect_equal(class(res[1]), "numeric")

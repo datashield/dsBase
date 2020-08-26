@@ -55,8 +55,17 @@ test_that("simple asFactorDS2, fixed.dummy.vars is TRUE", {
 
     res.class <- class(res)
 
-    expect_true("matrix" %in% res.class)
-    expect_true("array" %in% res.class)
+    if (base::getRversion() < 4.0)
+    {
+        expect_length(res.class, 1)
+        expect_true("matrix" %in% res.class)
+    }
+    else
+    {
+        expect_length(res.class, 2)
+        expect_true("matrix" %in% res.class)
+        expect_true("array" %in% res.class)
+    }
 
     expect_equal(res[1], 1)
     expect_equal(res[2], 0)
