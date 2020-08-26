@@ -127,9 +127,17 @@ test_that("simple completeCasesDS, data.matrix, with no NAs", {
     res <- completeCasesDS("input")
 
     res.class <- class(res)
-    expect_length(res.class, 2)
-    expect_true("matrix" %in% res.class)
-    expect_true("array" %in% res.class)
+    if (base::getRversion() < 4.0)
+    {
+        expect_length(res.class, 1)
+        expect_true("matrix" %in% res.class)
+    }
+    else
+    {
+        expect_length(res.class, 2)
+        expect_true("matrix" %in% res.class)
+        expect_true("array" %in% res.class)
+    }
 
     expect_length(res, 10)
     expect_equal(res[1], 0.0)
@@ -156,9 +164,17 @@ test_that("simple completeCasesDS, data.matrix, with NAs", {
     res <- completeCasesDS("input")
 
     res.class <- class(res)
-    expect_length(res.class, 2)
-    expect_true("matrix" %in% res.class)
-    expect_true("array" %in% res.class)
+    if (base::getRversion() < 4.0)
+    {
+        expect_length(res.class, 1)
+        expect_true("matrix" %in% res.class)
+    }
+    else
+    {
+        expect_length(res.class, 2)
+        expect_true("matrix" %in% res.class)
+        expect_true("array" %in% res.class)
+    }
 
     expect_length(res, 4)
     expect_equal(res[1], 2.0)

@@ -141,9 +141,17 @@ test_that("simple classDS, matrix", {
     res <- classDS("input")
 
     expect_equal(class(res), "character")
-    expect_length(res, 2)
-    expect_true("matrix" %in% res)
-    expect_true("array" %in% res)
+    if (base::getRversion() < 4.0)
+    {
+        expect_length(res, 1)
+        expect_true("matrix" %in% res)
+    }
+    else
+    {
+        expect_length(res, 2)
+        expect_true("matrix" %in% res)
+        expect_true("array" %in% res)
+    }
 })
 
 context("classDS::smk::data.matrix")
@@ -153,9 +161,17 @@ test_that("simple classDS, data.matrix", {
     res <- classDS("input")
 
     expect_equal(class(res), "character")
-    expect_length(res, 2)
-    expect_true("matrix" %in% res)
-    expect_true("array" %in% res)
+    if (base::getRversion() < 4.0)
+    {
+        expect_length(res, 1)
+        expect_true("matrix" %in% res)
+    }
+    else
+    {
+        expect_length(res, 2)
+        expect_true("matrix" %in% res)
+        expect_true("array" %in% res)
+    }
 })
 
 context("classDS::smk::date")

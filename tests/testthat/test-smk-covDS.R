@@ -31,9 +31,17 @@ test_that("numeric covDS, casewise.complete", {
 
     res.sums.of.products.class <- class(res$sums.of.products)
 
-    expect_length(res.sums.of.products.class, 2)
-    expect_true("matrix" %in% res.sums.of.products.class)
-    expect_true("array" %in% res.sums.of.products.class)
+    if (base::getRversion() < 4.0)
+    {
+        expect_length(res.sums.of.products.class, 1)
+        expect_true("matrix" %in% res.sums.of.products.class)
+    }
+    else
+    {
+        expect_length(res.sums.of.products.class, 2)
+        expect_true("matrix" %in% res.sums.of.products.class)
+        expect_true("array" %in% res.sums.of.products.class)
+    }
 
     expect_length(res$sums.of.products, 4)
     expect_equal(res$sums.of.products[1], 140.0)
@@ -43,9 +51,17 @@ test_that("numeric covDS, casewise.complete", {
 
     res.sums.class <- class(res$sums)
 
-    expect_length(res.sums.class, 2)
-    expect_true("matrix" %in% res.sums.class)
-    expect_true("array" %in% res.sums.class)
+    if (base::getRversion() < 4.0)
+    {
+        expect_length(res.sums.class, 1)
+        expect_true("matrix" %in% res.sums.class)
+    }
+    else
+    {
+        expect_length(res.sums.class, 2)
+        expect_true("matrix" %in% res.sums.class)
+        expect_true("array" %in% res.sums.class)
+    }
 
     expect_length(res$sums, 2)
     expect_equal(res$sums[1], 28.0)
@@ -53,9 +69,17 @@ test_that("numeric covDS, casewise.complete", {
 
     res.complete.counts.class <- class(res$complete.counts)
 
-    expect_length(res.complete.counts.class, 2)
-    expect_true("matrix" %in% res.complete.counts.class)
-    expect_true("array" %in% res.complete.counts.class)
+    if (base::getRversion() < 4.0)
+    {
+        expect_length(res.complete.counts.class, 1)
+        expect_true("matrix" %in% res.complete.counts.class)
+    }
+    else
+    {
+        expect_length(res.complete.counts.class, 2)
+        expect_true("matrix" %in% res.complete.counts.class)
+        expect_true("array" %in% res.complete.counts.class)
+    }
 
     expect_length(res$complete.counts, 4)
     expect_equal(res$complete.counts[1], 8.0)
@@ -110,9 +134,17 @@ test_that("numeric covDS, pairwise.complete", {
 
     res.sums.of.products.class <- class(res$sums.of.products)
 
-    expect_length(res.sums.of.products.class, 2)
-    expect_true("matrix" %in% res.sums.of.products.class)
-    expect_true("array" %in% res.sums.of.products.class)
+    if (base::getRversion() < 4.0)
+    {
+        expect_length(res.sums.of.products.class, 1)
+        expect_true("matrix" %in% res.sums.of.products.class)
+    }
+    else
+    {
+        expect_length(res.sums.of.products.class, 2)
+        expect_true("matrix" %in% res.sums.of.products.class)
+        expect_true("array" %in% res.sums.of.products.class)
+    }
 
     expect_length(res$sums.of.products, 4)
     expect_equal(res$sums.of.products[1], 140.0)
@@ -122,9 +154,17 @@ test_that("numeric covDS, pairwise.complete", {
 
     res.sums.class <- class(res$sums)
 
-    expect_length(res.sums.class, 2)
-    expect_true("matrix" %in% res.sums.class)
-    expect_true("array" %in% res.sums.class)
+    if (base::getRversion() < 4.0)
+    {
+        expect_length(res.sums.class, 1)
+        expect_true("matrix" %in% res.sums.class)
+    }
+    else
+    {
+        expect_length(res.sums.class, 2)
+        expect_true("matrix" %in% res.sums.class)
+        expect_true("array" %in% res.sums.class)
+    }
 
     expect_length(res$sums, 4)
     expect_equal(res$sums[1], 28.0)
@@ -134,9 +174,17 @@ test_that("numeric covDS, pairwise.complete", {
 
     res.complete.counts.class <- class(res$complete.counts)
 
-    expect_length(res.complete.counts.class, 2)
-    expect_true("matrix" %in% res.complete.counts.class)
-    expect_true("array" %in% res.complete.counts.class)
+    if (base::getRversion() < 4.0)
+    {
+        expect_length(res.complete.counts.class, 1)
+        expect_true("matrix" %in% res.complete.counts.class)
+    }
+    else
+    {
+        expect_length(res.complete.counts.class, 2)
+        expect_true("matrix" %in% res.complete.counts.class)
+        expect_true("array" %in% res.complete.counts.class)
+    }
 
     expect_length(res$complete.counts, 4)
     expect_equal(res$complete.counts[1], 8.0)
