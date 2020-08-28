@@ -4,21 +4,18 @@
 \alias{cbindDS}
 \title{cbindDS called by ds.cbind}
 \usage{
-cbindDS(x.names.transmit = NULL, colnames.transmit = NULL)
+cbindDS(x.names.transmit = NULL)
 }
 \arguments{
 \item{x.names.transmit}{This is a vector of character strings
 representing the names of the elemental components to be combined
 converted into a transmittable format. This argument is fully specified
 by the \code{x} argument of the client-side \code{ds.cbind} function.}
-
-\item{colnames.transmit}{This is a vector of character strings representing
-column names for the output object converted into a transmittable format.}
 }
 \value{
 the object specified by the \code{newobj} argument
 of \code{ds.cbind} (or default name \code{cbind.newobj})
-which is written to the serverside. The output object is of class data.frame.
+which is written to the server-side. The output object is of class data.frame.
 }
 \description{
 serverside assign function that takes a
@@ -28,7 +25,7 @@ and combines them by column to produce a data-frame.
 \details{
 A sequence of vector, matrix or data-frame arguments
 is combined column by column to produce a data-frame
-which is written to the serverside. A critical requirement is that
+which is written to the server-side. A critical requirement is that
 the length of all component variables, and the number of rows of the
 component data.frames or matrices must all be the same. The output
 data.frame will then have this same number of rows. For more details 
