@@ -76,6 +76,7 @@ AggregateMethods:
     NROW=base::NROW,
     t.test=stats::t.test
 AssignMethods:
+    absDS,
     asCharacterDS,
     asDataMatrixDS,
     asFactorDS,
