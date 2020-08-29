@@ -118,6 +118,7 @@ AssignMethods:
     sampleDS,
     seedDS,
     seqDS,
+    sqrtDS,
     subsetByClassDS,
     subsetDS,
     tableDS.assign,
