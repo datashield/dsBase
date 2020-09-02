@@ -63,8 +63,8 @@ dataFrameSortDS <- function(df.name=NULL,sort.key.name=NULL,sort.descending,sort
   }
 
   df.name.2 <- paste0("data.frame(",df.name,")")
-  df2sort <- eval(parse(text=df.name.2))
-  sort.key <- eval(parse(text=sort.key.name))
+  df2sort   <- eval(parse(text=df.name.2), envir = parent.frame())
+  sort.key  <- eval(parse(text=sort.key.name), envir = parent.frame())
 
   # DISCLOSURE TRAPS
   if(dim(df2sort)[1]<nfilter.subset){
