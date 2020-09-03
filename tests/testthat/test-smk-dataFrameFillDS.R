@@ -75,9 +75,13 @@ test_that("simple dataFrameFillDS, ascending, numeric", {
 })
 
 #
-# Done
+# Shutdown
 #
 
 context("dataFrameFillDS::smk::shutdown")
+
+#
+# Done
+#
 
 context("dataFrameFillDS::smk::done")
