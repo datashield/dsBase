@@ -28,7 +28,17 @@ test_that("simple listDisclosureSettingsDS", {
     expect_length(res, 9)
 
     res.names <- names(res)
-    expect_length(res, 9)
+    expect_length(res.names, 9)
+
+    expect_true("nfilter.tab" %in% res.names)
+    expect_true("nfilter.subset" %in% res.names)
+    expect_true("nfilter.glm" %in% res.names)
+    expect_true("nfilter.string" %in% res.names)
+    expect_true("nfilter.stringShort" %in% res.names)
+    expect_true("nfilter.kNN" %in% res.names)
+    expect_true("nfilter.levels" %in% res.names)
+    expect_true("nfilter.noise" %in% res.names)
+    expect_true("nfilter.privacy.old" %in% res.names)
 
     expect_equal(class(res$nfilter.tab), "character")
     expect_equal(class(res$nfilter.subset), "character")
