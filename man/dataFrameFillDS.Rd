@@ -15,7 +15,8 @@ compared to the data frames of the other studies used in the analysis.}
 data frames from all the used datasources.}
 
 \item{class.vect.transmit}{the classes of all the variables that are included in the vector 
-\code{allNames.transmit}}
+\code{allNames.transmit}.
+The classes supported are 'numeric', 'integer', 'character', 'factor' and 'logical'.}
 }
 \value{
 Nothing is returned to the client. The generated object is written to the serverside.

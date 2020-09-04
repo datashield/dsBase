@@ -63,7 +63,7 @@ test_that("simple sqrtDS, numeric 10.0", {
 test_that("simple sqrtDS, numeric -10.0", {
     input <- -10.0
 
-    expect_warning(res <- sqrtDS("input"), "NaNs produced", fixed = FALSE)
+    expect_warning(res <- sqrtDS("input"), "NaNs produced", fixed = TRUE)
 
     expect_equal(class(res), "numeric")
     expect_length(res, 1)
@@ -94,7 +94,7 @@ test_that("simple sqrtDS, integer 10L", {
 test_that("simple sqrtDS, integer -10L", {
     input <- -10L
 
-    expect_warning(res <- sqrtDS("input"), "NaNs produced", fixed = FALSE)
+    expect_warning(res <- sqrtDS("input"), "NaNs produced", fixed = TRUE)
 
     expect_equal(class(res), "numeric")
     expect_length(res, 1)
@@ -117,7 +117,7 @@ context("sqrtDS::smk::numeric vector")
 test_that("simple sqrtDS", {
     input <- c(0.0, 4.0, 9.0, -10.0, -50.0, -20.0)
 
-    expect_warning(res <- sqrtDS("input"), "NaNs produced", fixed = FALSE)
+    expect_warning(res <- sqrtDS("input"), "NaNs produced", fixed = TRUE)
 
     expect_equal(class(res), "numeric")
     expect_length(res, 6)
@@ -133,7 +133,7 @@ context("sqrtDS::smk::integer vector")
 test_that("simple sqrtDS", {
     input <- c(0L, 4L, 9L, -10L, -50L, -20L)
 
-    expect_warning(res <- sqrtDS("input"), "NaNs produced", fixed = FALSE)
+    expect_warning(res <- sqrtDS("input"), "NaNs produced", fixed = TRUE)
 
     expect_equal(class(res), "numeric")
     expect_length(res, 6)
