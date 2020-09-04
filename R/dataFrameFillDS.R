@@ -12,7 +12,8 @@
 #' @param allNames.transmit unique names of all the variables that are included in the input 
 #' data frames from all the used datasources. 
 #' @param class.vect.transmit the classes of all the variables that are included in the vector 
-#' \code{allNames.transmit}
+#' \code{allNames.transmit}.
+#' The classes supported are 'numeric', 'integer', 'character', 'factor' and 'logical'.
 #' @return Nothing is returned to the client. The generated object is written to the serverside.
 #' @author Demetris Avraam for DataSHIELD Development Team
 #' @export
@@ -31,6 +32,12 @@ dataFrameFillDS <- function(df.name, allNames.transmit, class.vect.transmit){
     class.vect <- unlist(strsplit(class.vect.transmit, split=","))
   }else{
     class.vect <- NULL
+  }
+
+  for (class.vect.index in 1:length(class.vect)){
+      if (! class.vect[class.vect.index] %in% c('numeric', 'integer', 'character', 'factor' , 'logical')){
+         stop(paste0("Unexpected missing class specified: '", class.vect[class.vect.index], "'"))
+      }
   }
   
   study.colnames <- colnames(data)
