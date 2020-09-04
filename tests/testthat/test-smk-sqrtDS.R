@@ -39,6 +39,26 @@ test_that("simple sqrtDS, NaN", {
     expect_true(is.nan(res))
 })
 
+test_that("simple sqrtDS, Inf", {
+    input <- Inf
+
+    res <- sqrtDS("input")
+
+    expect_equal(class(res), "numeric")
+    expect_length(res, 1)
+    expect_true(is.infinite(res))
+})
+
+test_that("simple sqrtDS, -Inf", {
+    input <- -Inf
+
+    expect_warning(res <- sqrtDS("input"), "NaNs produced", fixed = TRUE)
+
+    expect_equal(class(res), "numeric")
+    expect_length(res, 1)
+    expect_true(is.nan(res))
+})
+
 context("sqrtDS::smk::numeric")
 test_that("simple sqrtDS, numeric 0.0", {
     input <- 0.0
@@ -103,14 +123,15 @@ test_that("simple sqrtDS, integer -10L", {
 
 context("sqrtDS::smk::special vector")
 test_that("simple sqrtDS", {
-    input <- c(NA, NaN)
+    input <- c(NA, NaN, Inf, -Inf)
 
-    res <- sqrtDS("input")
+    expect_warning(res <- sqrtDS("input"), "NaNs produced", fixed = TRUE)
 
     expect_equal(class(res), "numeric")
-    expect_length(res, 2)
+    expect_length(res, 4)
     expect_true(is.na(res[1]))
-    expect_true(is.nan(res[2]))
+    expect_true(is.infinite(res[3]))
+    expect_true(is.nan(res[4]))
 })
 
 context("sqrtDS::smk::numeric vector")

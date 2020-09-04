@@ -39,6 +39,26 @@ test_that("simple absDS, NaN", {
     expect_true(is.nan(res))
 })
 
+test_that("simple absDS, Inf", {
+    input <- Inf
+
+    res <- absDS("input")
+
+    expect_equal(class(res), "numeric")
+    expect_length(res, 1)
+    expect_true(is.infinite(res))
+})
+
+test_that("simple absDS, -Inf", {
+    input <- -Inf
+
+    res <- absDS("input")
+
+    expect_equal(class(res), "numeric")
+    expect_length(res, 1)
+    expect_true(is.infinite(res))
+})
+
 context("absDS::smk::numeric")
 test_that("simple absDS, numeric 0.0", {
     input <- 0.0
@@ -103,14 +123,16 @@ test_that("simple absDS, integer -10L", {
 
 context("absDS::smk::special vector")
 test_that("simple absDS", {
-    input <- c(NA, NaN)
+    input <- c(NA, NaN, Inf, -Inf)
 
     res <- absDS("input")
 
     expect_equal(class(res), "numeric")
-    expect_length(res, 2)
+    expect_length(res, 4)
     expect_true(is.na(res[1]))
     expect_true(is.nan(res[2]))
+    expect_true(is.infinite(res[3]))
+    expect_true(is.infinite(res[4]))
 })
 
 context("absDS::smk::numeric vector")
