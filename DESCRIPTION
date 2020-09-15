@@ -98,6 +98,7 @@ AssignMethods:
     glmPredictDS.as,
     glmSLMADS.assign,
     glmSummaryDS.as,
+    getWGSRDS,
     listDS,
     lexisDS2,
     lexisDS3,
