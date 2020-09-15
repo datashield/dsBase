@@ -20,8 +20,8 @@ if(is.character(x.name)){
    return(list(studysideMessage=studysideMessage))
    }
 
-  if(!is.numeric(x)&&!is.integer(x)&&!is.matrix(x)){
-  studysideMessage<-"ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer or matrix"
+  if(!is.numeric(x)&&!is.integer(x)&&!is.character(x)&&!is.matrix(x)){
+  studysideMessage<-"ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer, character or matrix"
   return(list(studysideMessage=studysideMessage))
   }
 

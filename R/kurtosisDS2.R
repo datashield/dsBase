@@ -23,7 +23,7 @@ kurtosisDS2 <- function(x, global.mean){
   nfilter.tab <- as.numeric(thr$nfilter.tab)
   #############################################################
   
-  x <- eval(parse(text=x))
+  x <- eval(parse(text=x), envir = parent.frame())
   x <- x[stats::complete.cases(x)]
   
   if(length(x) < nfilter.tab){

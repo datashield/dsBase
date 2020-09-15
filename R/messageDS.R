@@ -64,12 +64,12 @@ message.object.name.active<-eval(parse(text=message.object.name), envir = parent
 
 
 #CASE WHERE PRIMARY OUTPUT OBJECT IS A LIST
-if(class(message.object.name.active)=="list"){
+if("list" %in% class(message.object.name.active)){
 
 #A LIST WITH NAMES - could be a studysideMessage
 	if(!is.null(names(message.object.name.active)))	{
 		s.message.available<-FALSE
-		for(j in length(names(message.object.name.active))){
+		for(j in 1:length(names(message.object.name.active))){
 			if(names(message.object.name.active)[j]=="studysideMessage"){
 			s.message.available<-TRUE
 			out.obj<-"NOT ALL OK: there are studysideMessage(s) on this datasource"
