@@ -93,6 +93,7 @@ AssignMethods:
     dataFrameFillDS,
     dataFrameSortDS,
     dataFrameSubsetDS2,
+    getWGSRDS,
     listDS,
     lexisDS2,
     lexisDS3,
