@@ -76,6 +76,7 @@ AggregateMethods:
     NROW=base::NROW,
     t.test=stats::t.test
 AssignMethods:
+    absDS,
     asCharacterDS,
     asDataMatrixDS,
     asFactorDS,
@@ -97,6 +98,7 @@ AssignMethods:
     glmPredictDS.as,
     glmSLMADS.assign,
     glmSummaryDS.as,
+    getWGSRDS,
     listDS,
     lexisDS2,
     lexisDS3,
@@ -122,6 +124,7 @@ AssignMethods:
     sampleDS,
     seedDS,
     seqDS,
+    sqrtDS,
     subsetByClassDS,
     subsetDS,
     tableDS.assign,

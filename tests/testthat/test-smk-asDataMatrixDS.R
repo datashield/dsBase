@@ -25,8 +25,17 @@ test_that("simple asDataMatrixDS", {
     res <- asDataMatrixDS("input")
 
     res.class <- class(res)
-    expect_true("matrix" %in% res.class)
-    expect_true("array" %in% res.class)
+    if (base::getRversion() < 4.0)
+    {
+        expect_length(res.class, 1)
+        expect_true("matrix" %in% res.class)
+    }
+    else
+    {
+        expect_length(res.class, 2)
+        expect_true("matrix" %in% res.class)
+        expect_true("array" %in% res.class)
+    }
 
     expect_length(res, 10)
     expect_equal(res[1], 0)

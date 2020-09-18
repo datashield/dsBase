@@ -154,9 +154,17 @@ test_that("simple testObjExistsDS, matrix", {
     expect_equal(class(res), "list")
     expect_length(res, 2)
     expect_equal(res$test.obj.exists, TRUE)
-    expect_length(res$test.obj.class, 2)
-    expect_true("matrix" %in% res$test.obj.class)
-    expect_true("array" %in% res$test.obj.class)
+    if (base::getRversion() < 4.0)
+    {
+        expect_length(res$test.obj.class, 1)
+        expect_true("matrix" %in% res$test.obj.class)
+    }
+    else
+    {
+        expect_length(res$test.obj.class, 2)
+        expect_true("matrix" %in% res$test.obj.class)
+        expect_true("array" %in% res$test.obj.class)
+    }
 })
 
 context("testObjExistsDS::smk::data.matrix")
@@ -168,9 +176,18 @@ test_that("simple testObjExistsDS, data.matrix", {
     expect_equal(class(res), "list")
     expect_length(res, 2)
     expect_equal(res$test.obj.exists, TRUE)
-    expect_length(res$test.obj.class, 2)
-    expect_true("matrix" %in% res$test.obj.class)
-    expect_true("array" %in% res$test.obj.class)
+
+    if (base::getRversion() < 4.0)
+    {
+        expect_length(res$test.obj.class, 1)
+        expect_true("matrix" %in% res$test.obj.class)
+    }
+    else
+    {
+        expect_length(res$test.obj.class, 2)
+        expect_true("matrix" %in% res$test.obj.class)
+        expect_true("array" %in% res$test.obj.class)
+    }
 })
 
 context("testObjExistsDS::smk::date")

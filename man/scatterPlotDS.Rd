@@ -11,8 +11,8 @@ scatterPlotDS(x, y, method.indicator, k, noise)
 
 \item{y}{the name of a numeric vector, the y-variable.}
 
-\item{method.indicator}{an intiger either 1 or 2. If the user selects the deterministic
-method in the client side function the method.inticator is set to 1 while if the user selects
+\item{method.indicator}{an integer either 1 or 2. If the user selects the deterministic
+method in the client side function the method.indicator is set to 1 while if the user selects
 the probabilistic method this argument is set to 2.}
 
 \item{k}{the number of the nearest neghbours for which their centroid is calculated if the
@@ -29,7 +29,7 @@ This function uses two disclosure control methods to generate non-disclosive
 coordinates that are returned to the client that generates the non-disclosive scatter plots.
 }
 \details{
-If the user chooses the deteministic approach, the function finds the k-1 nearest
+If the user chooses the deterministic approach, the function finds the k-1 nearest
 neighbours of each data point in a 2-dimensional space. The nearest neighbours are the data
 points with the minimum Euclidean distances from the point of interest. Each point of interest
 and its k-1 nearest neighbours are then used for the calculation of the coordinates of the
