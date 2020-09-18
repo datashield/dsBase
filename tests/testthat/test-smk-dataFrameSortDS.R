@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("dataFrameSortDS::smk, numeric input")
+context("dataFrameSortDS::smk::numeric input")
 test_that("simple dataFrameSortDS, ascending, default", {
     df              <- data.frame(v1 = c(-2.0, -3.0, 4.0, 2.0, 1.0, 0.0, -1.0, 3.0), v2 = c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0))
     sort.key.name   <- "df$v1"
@@ -243,7 +243,7 @@ test_that("simple dataFrameSortDS, descending, alphabetic", {
     expect_equal(res$v2[8], 6.0)
 })
 
-context("dataFrameSortDS::smk, string input")
+context("dataFrameSortDS::smk::string input")
 test_that("simple dataFrameSortDS, ascending, default", {
 #    df              <- data.frame(v1 = c("-2.0", "-3.0", "4.0", "2.0", "1.0", "0.0", "-1.0", "3.0"), v2 = c("0.0", "1.0", "2.0", "3.0", "4.0", "5.0", "6.0", "7.0"))
 #    sort.key.name   <- "df$v1"
