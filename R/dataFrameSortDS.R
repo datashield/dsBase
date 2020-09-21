@@ -77,18 +77,13 @@ dataFrameSortDS <- function(df.name=NULL,sort.key.name=NULL,sort.descending,sort
     return(list(studysideMessage=studysideMessage))
   }
 
-  sort.key.2.use<-sort.key
-
-  if(sort.method=="numeric")
-  {
-     sort.key.2.use<-as.numeric(sort.key)
-  }
-
-  if(sort.method=="alphabetic"){
+  if((sort.method=="alphabetic") || ((sort.method=="default") && is.character(sort.key))){
      sort.key.2.use<-as.character(sort.key)
      key.order <- stringr::str_order(sort.key.2.use, decreasing = sort.descending, na_last = TRUE)
   }else{
 #PUT na.last in here
+     sort.key.2.use<-as.numeric(sort.key)
+
      if(sort.descending)
      {
         key.ranks <- rank(sort.key.2.use,ties.method="average",na.last=FALSE)
