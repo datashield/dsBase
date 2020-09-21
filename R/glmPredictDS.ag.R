@@ -167,13 +167,11 @@ if(!is.null(newdataname.transmit))
 
 if(output.type=="terms" && se.fit==FALSE)
 {
-se.fit<-TRUE
+  se.fit<-TRUE
 }
 
 outlist<-stats::predict.glm(object=glmobj,newdata=newdf,type=output.type,
                             se.fit=se.fit,dispersion=dispersion,terms=terms.transmit,na.action=na.action)
-
-term.names<-colnames(outlist$fit)
 
 #ONLY VECTOR OF FITTED VALUES CREATED (LIST OF LENGTH 1)
 if(is.numeric(outlist))
@@ -224,7 +222,8 @@ if(is.numeric(outlist))
 				  residual.scale=predict.outlist$residual.scale)
 	return(list(safe.list=safe.list))
   }else{
- 
+        term.names<-colnames(outlist$fit)
+
 	#fit
 	numterms<-(dim(predict.outlist$fit)[2])
 	
