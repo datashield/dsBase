@@ -29,7 +29,7 @@ test_that("simple lengthDS, numeric data.frame", {
 })
 
 test_that("simple lengthDS, character data.frame", {
-    input <- data.frame(v1 = c("0.0", "1.0", "2.0", "3.0", "4.0"), v2 = c("4.0", "3.0", "2.0", "1.0", "0.0"))
+    input <- data.frame(v1 = c("0.0", "1.0", "2.0", "3.0", "4.0"), v2 = c("4.0", "3.0", "2.0", "1.0", "0.0"), stringsAsFactors = FALSE)
 
     res <- lengthDS("input")
 
