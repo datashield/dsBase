@@ -11,10 +11,14 @@ Imports:
     RANN,
     nlme,
     stringr,
-    lme4
+    lme4,
+    ggplot2,
+    dplyr,
+    reshape2
 AggregateMethods:
     asFactorDS1,
     asListDS,
+    boxPlotGGDS,
     checkNegValueDS,
     classDS,
     corTestDS,
@@ -87,6 +91,8 @@ AssignMethods:
     asMatrixDS,
     asNumericDS,
     BooleDS,
+    boxPlotGG_data_TreatmentDS,
+    boxPlotGG_data_Treatment_numericDS,
     cbindDS,
     cDS,
     changeRefGroupDS,
