@@ -15,6 +15,7 @@ Imports:
 AggregateMethods:
     asFactorDS1,
     asListDS,
+    boxPlotGGDS,
     checkNegValueDS,
     classDS,
     corTestDS,
@@ -87,6 +88,8 @@ AssignMethods:
     asMatrixDS,
     asNumericDS,
     BooleDS,
+    boxPlotGG_data_TreatmentDS,
+    boxPlotGG_data_Treatment_numericDS,
     cbindDS,
     cDS,
     changeRefGroupDS,
