@@ -42,6 +42,7 @@
 #' @export
 
 boxPlotGGDS <- function(data_table, group = NULL, group2 = NULL){
+  x <- NULL
   if (!is.null(group)) {
     if(!is.null(group2)) {
       plot_ret <- ggplot2::ggplot(data_table, ggplot2::aes_string(x = "x", y = "value", fill = "group")) +

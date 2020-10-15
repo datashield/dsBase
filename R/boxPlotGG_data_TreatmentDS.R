@@ -58,6 +58,6 @@ boxPlotGG_data_TreatmentDS <- function(table, variables, group = NULL, group2 = 
   
   
   
-  return(data[complete.cases(data), ])
+  return(data[stats::complete.cases(data), ])
   
 }

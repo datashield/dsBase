@@ -11,7 +11,10 @@ Imports:
     RANN,
     nlme,
     stringr,
-    lme4
+    lme4,
+    ggplot2,
+    dplyr,
+    reshape2
 AggregateMethods:
     asFactorDS1,
     asListDS,
