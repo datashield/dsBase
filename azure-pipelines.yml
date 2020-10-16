@@ -100,6 +100,9 @@ jobs:
       sudo R -e "install.packages('RANN', dependencies=TRUE)"
       sudo R -e "install.packages('nlme', dependencies=TRUE)"
       sudo R -e "install.packages('lme4', dependencies=TRUE)"
+      sudo R -e "install.packages('ggplot2', dependencies=TRUE)"
+      sudo R -e "install.packages('dplyr', dependencies=TRUE)"
+      sudo R -e "install.packages('reshape2', dependencies=TRUE)"
 
     displayName: 'Install all dependencies for dsBase'
     condition: succeeded()
