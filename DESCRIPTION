@@ -1,7 +1,7 @@
 Package: dsBase
 Title: DataSHIELD server site base functions
 Description: DataSHIELD server site base functions.
-Version: 6.1.0
+Version: 6.2.0-1
 Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
 Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
 License: GPL-3
