@@ -82,7 +82,7 @@ sampleDS <- function(x.transmit, size.transmit, replace.transmit=NULL, prob.tran
   #Activate <x> and <prob> if they are character strings
   if(is.character(x.transmit))
   {
-  x.active<-eval(parse(text=x.transmit))
+      x.active<-eval(parse(text=x.transmit), envir = parent.frame())
   
   	if(is.data.frame(x.active)||is.matrix(x.active))
   		{
@@ -152,7 +152,7 @@ sampleDS <- function(x.transmit, size.transmit, replace.transmit=NULL, prob.tran
   prob.active<-NULL
   if(is.character(prob.transmit))
   {
-  prob.active<-eval(parse(text=prob.transmit))
+      prob.active<-eval(parse(text=prob.transmit), envir = parent.frame())
   }
   
   #Check size <= length(x.active) if replace.transmit==FALSE
