@@ -2,86 +2,45 @@
 % Please edit documentation in R/glmSLMADS2.R
 \name{glmSLMADS2}
 \alias{glmSLMADS2}
-\title{glmSLMADS2 called by ds.glmSLMA}
+\title{Fit a Generalized Linear Model (GLM) with pooling via Study Level Meta-Analysis (SLMA)}
 \usage{
-glmSLMADS2(formula, family, offset, weights, dataName)
+glmSLMADS2(formula, family, offset, weights, newobj, dataName)
 }
 \arguments{
-\item{formula}{a glm() formula consistent with R syntax eg U~x+y+Z to regress
-variables U on x,y and Z. Fully specified by <formula> argument in ds.glmSLMA}
+\item{formula}{a glm formula, specified in call to ds.glmSLMA}
 
-\item{family}{a glm() family consistent with R syntax eg "gaussian", "poisson",
-"binomial". Fully specified by <family> argument in ds.glmSLMA}
+\item{family}{a glm family, specified in call to ds.glmSLMA}
 
-\item{offset}{an optional variable name (as a character string)
-identifying an offset vector. Fully specified by <offset> argument in ds.glmSLMA}
+\item{offset}{a character string specifying a variable to be used as an offset.
+Specified in call to ds.glmSLMA.}
 
-\item{weights}{an optional variable name (as a character sting)
-identifying a vector of prior regression weights. Fully specified by <weights>
-argument in ds.glmSLMA}
+\item{weights}{a character string specifying a variable to be used as regression weights.
+Specified in call to ds.glmSLMA. Specified in call to ds.glmSLMA.}
 
-\item{dataName}{an optional character string specifying the name of a data.frame
-object holding the data to be analysed under the specified model.
-Fully specified by <dataName> argument in ds.glmSLMA}
+\item{newobj}{a character string specifying the name of the glm object
+written to the serverside by glmSLMADS.assign. This is either the name
+specified by the newobj argument in ds.glmSLMA or if newobj was unspecified
+or NULL it is called new.glm.obj.}
+
+\item{dataName}{a character string specifying the name of a data.frame
+holding the data for the model. Specified in call to ds.glmSLMA.}
 }
 \value{
 All quantitative, Boolean, and character objects required to
 enable the SLMA pooling of the separate glm models fitted to each study -
 in particular including the study-specific regression coefficients and their corresponding
-standard errors. Also, returns warning flags
-and associated information enabling DataSHIELD to halt analysis and destroy
-model output from any
-given study if a disclosure trap is triggered and to inform the user
-what trap has been triggered.
+standard errors.
 }
 \description{
-This is the second serverside aggregate function
-called by ds.glmSLMA
+Fits a generalized linear model (GLM) on data from single or multiple sources
+with pooled co-analysis across studies being based on SLMA (Study Level Meta Analysis).
 }
 \details{
-ds.glmSLMA specifies the structure of a generalized linear model (glm)
-to be fitted separately on each study. The model is first constructed
-and subject to preliminary disclosure checking
-by glmSLMADS1. This aggregate function then returns this 
-output to ds.glmSLMA which processes the information and uses it in a call to
-glmSLMADS2. This call specifies and fits the required glm in each data source.
-Unlike glmDS2 (called by the more commonly used generalized linear modelling
-client-side function ds.glm) the requested model is then fitted to completion
-on the data in each study rather than iteration by iteration on all studies
-combined. At the end of this SLMA fitting process
-glmSLMADS2 returns study-specific parameter estimates
-and standard errors to the client. These can then be pooled using random
-effects (or fixed effects) meta-analysis - eg using the metafor package.
-This mode of model fitting may
-reasonably be called study level meta-analysis (SLMA) although the analysis
-is based on estimates and standard errors derived from direct analysis of
-the individual level data in each study rather than from published study
-summaries (as is often the case with SLMA of clinical trials etc).
-Furthermore, unlike common approaches to study-level meta-analysis
-adopted by large multi-study research consortia (eg in the combined analysis
-of identical genomic markers across multiple studies), the parallel
-analyses (in every study) under ds.glmSLMA are
-controlled entirely from one client. This avoids the time-consuming
-need to ask each study to run its own analyses and the consequent
-necessity to request additional work from individual studies if
-the modelling is to be extended to include analyses not subsumed
-in the original analytic plan. Additional analyses of this nature
-may, for example, include analyses based on interactions between covariates
-identified as having significant main effects in the original analysis. 
-From a mathematical perspective, the SLMA approach (using ds.glmSLMA)
-differs fundamentally from the usual approach using ds.glm
-in that the latter is mathematically equivalent
-to placing all individual-level data from all sources in
-one central warehouse and analysing those data as one combined dataset using the
-conventional glm() function in R. However, although this
-may sound to be preferable under all circumstances, the SLMA approach
-actually offers key inferential advantages when there is marked heterogeneity
-between sources that cannot simply be corrected with fixed effects each reflecting a study
-or centre-effect. In particular, fixed effects cannot simply be used in this way when there
-there is heterogeneity in the effect that is of scientific interest. 
-For more details please see the extensive header for ds.glmSLMA
-in DataSHIELD and help on the {glm} function in native R.
+glmSLMADS.assign is an aggregate function called by clientside function ds.glmSLMA.
+ds.glmSLMA also calls another aggregate function glmSLMADS2
+and an assign function glmSLMADS.assign
+For more detailed information see help for ds.glmSLMA.
 }
 \author{
-Burton PR
+Paul Burton for DataSHIELD Development Team (14/7/20)
 }

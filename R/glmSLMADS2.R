@@ -1,71 +1,29 @@
-#' @title glmSLMADS2 called by ds.glmSLMA
-#' @description This is the second serverside aggregate function
-#' called by ds.glmSLMA
-#' @details ds.glmSLMA specifies the structure of a generalized linear model (glm)
-#' to be fitted separately on each study. The model is first constructed
-#' and subject to preliminary disclosure checking
-#' by glmSLMADS1. This aggregate function then returns this 
-#' output to ds.glmSLMA which processes the information and uses it in a call to
-#' glmSLMADS2. This call specifies and fits the required glm in each data source.
-#' Unlike glmDS2 (called by the more commonly used generalized linear modelling
-#' client-side function ds.glm) the requested model is then fitted to completion
-#' on the data in each study rather than iteration by iteration on all studies
-#' combined. At the end of this SLMA fitting process
-#' glmSLMADS2 returns study-specific parameter estimates
-#' and standard errors to the client. These can then be pooled using random
-#' effects (or fixed effects) meta-analysis - eg using the metafor package.
-#' This mode of model fitting may
-#' reasonably be called study level meta-analysis (SLMA) although the analysis
-#' is based on estimates and standard errors derived from direct analysis of
-#' the individual level data in each study rather than from published study
-#' summaries (as is often the case with SLMA of clinical trials etc).
-#' Furthermore, unlike common approaches to study-level meta-analysis
-#' adopted by large multi-study research consortia (eg in the combined analysis
-#' of identical genomic markers across multiple studies), the parallel
-#' analyses (in every study) under ds.glmSLMA are
-#' controlled entirely from one client. This avoids the time-consuming
-#' need to ask each study to run its own analyses and the consequent
-#' necessity to request additional work from individual studies if
-#' the modelling is to be extended to include analyses not subsumed
-#' in the original analytic plan. Additional analyses of this nature
-#' may, for example, include analyses based on interactions between covariates
-#' identified as having significant main effects in the original analysis. 
-#' From a mathematical perspective, the SLMA approach (using ds.glmSLMA)
-#' differs fundamentally from the usual approach using ds.glm
-#' in that the latter is mathematically equivalent
-#' to placing all individual-level data from all sources in
-#' one central warehouse and analysing those data as one combined dataset using the
-#' conventional glm() function in R. However, although this
-#' may sound to be preferable under all circumstances, the SLMA approach
-#' actually offers key inferential advantages when there is marked heterogeneity
-#' between sources that cannot simply be corrected with fixed effects each reflecting a study
-#' or centre-effect. In particular, fixed effects cannot simply be used in this way when there
-#' there is heterogeneity in the effect that is of scientific interest. 
-#' For more details please see the extensive header for ds.glmSLMA
-#' in DataSHIELD and help on the {glm} function in native R.
-#' @param formula a glm() formula consistent with R syntax eg U~x+y+Z to regress
-#' variables U on x,y and Z. Fully specified by <formula> argument in ds.glmSLMA
-#' @param family a glm() family consistent with R syntax eg "gaussian", "poisson",
-#' "binomial". Fully specified by <family> argument in ds.glmSLMA
-#' @param offset an optional variable name (as a character string)
-#' identifying an offset vector. Fully specified by <offset> argument in ds.glmSLMA
-#' @param weights an optional variable name (as a character sting)
-#' identifying a vector of prior regression weights. Fully specified by <weights>
-#' argument in ds.glmSLMA
-#' @param dataName an optional character string specifying the name of a data.frame
-#' object holding the data to be analysed under the specified model.
-#' Fully specified by <dataName> argument in ds.glmSLMA
+#' @title Fit a Generalized Linear Model (GLM) with pooling via Study Level Meta-Analysis (SLMA)
+#' @description Fits a generalized linear model (GLM) on data from single or multiple sources
+#' with pooled co-analysis across studies being based on SLMA (Study Level Meta Analysis).
+#' @details glmSLMADS.assign is an aggregate function called by clientside function ds.glmSLMA.
+#' ds.glmSLMA also calls another aggregate function glmSLMADS2
+#' and an assign function glmSLMADS.assign
+#' For more detailed information see help for ds.glmSLMA.
+#' @param formula a glm formula, specified in call to ds.glmSLMA
+#' @param family a glm family, specified in call to ds.glmSLMA
+#' @param offset a character string specifying a variable to be used as an offset.
+#' Specified in call to ds.glmSLMA.
+#' @param weights a character string specifying a variable to be used as regression weights.
+#' Specified in call to ds.glmSLMA. Specified in call to ds.glmSLMA.
+#' @param newobj a character string specifying the name of the glm object
+#' written to the serverside by glmSLMADS.assign. This is either the name
+#' specified by the newobj argument in ds.glmSLMA or if newobj was unspecified
+#' or NULL it is called new.glm.obj.
+#' @param dataName a character string specifying the name of a data.frame
+#' holding the data for the model. Specified in call to ds.glmSLMA.
 #' @return All quantitative, Boolean, and character objects required to
 #' enable the SLMA pooling of the separate glm models fitted to each study -
 #' in particular including the study-specific regression coefficients and their corresponding
-#' standard errors. Also, returns warning flags
-#' and associated information enabling DataSHIELD to halt analysis and destroy
-#' model output from any
-#' given study if a disclosure trap is triggered and to inform the user
-#' what trap has been triggered.
-#' @author Burton PR
+#' standard errors.
+#' @author Paul Burton for DataSHIELD Development Team (14/7/20)
 #' @export
-glmSLMADS2 <- function(formula, family, offset, weights, dataName){
+glmSLMADS2 <- function(formula, family, offset, weights, newobj, dataName){
 
 #############################################################
 #MODULE 1: CAPTURE THE nfilter SETTINGS                     #
@@ -75,6 +33,19 @@ nfilter.glm <- as.numeric(thr$nfilter.glm)                  #
 #nfilter.subset<-as.numeric(thr$nfilter.subset)             #
 #nfilter.string<-as.numeric(thr$nfilter.string)             #
 #############################################################
+
+########################################
+############
+#Convert transmitable text for special link variance combinations back to full representation
+if(family=="quasigamma.link_log")
+{family<-"quasi(link=log,variance=mu^2)"}
+
+if(family=="Gamma.link_log")
+{family<-"Gamma(link=log)"}
+#############
+
+final.family.object<-eval(parse(text=family))
+#########################################
 
 errorMessage2<-"No errors"
 # Get the value of the 'data' parameter provided as character on the client side
@@ -87,62 +58,6 @@ errorMessage2<-"No errors"
 	}
 
  
-# Rewrite formula extracting variables nested in strutures like data frame or list
-# (e.g. D$A~D$B will be re-written A~B)
-# Note final product is a list of the variables in the model (yvector and covariates)
-# it is NOT a list of model terms - these are derived later
-
-# # Convert formula into an editable character string
-#   formulatext <- Reduce(paste, deparse(formula))
-# 
-# # First save original model formala
-#   originalFormula <- formulatext
-# 
-# # Convert formula string into separate variable names split by |
-#   formulatext <- gsub(" ", "", formulatext, fixed=TRUE)
-#   formulatext <- gsub("~", "|", formulatext, fixed=TRUE)
-#   formulatext <- gsub("+", "|", formulatext, fixed=TRUE)
-#   formulatext <- gsub("*", "|", formulatext, fixed=TRUE)
-#   formulatext <- gsub("||", "|", formulatext, fixed=TRUE)
-
-# #Remember model.variables and then varnames INCLUDE BOTH yvect AND linear predictor components 
-# 	model.variables <- unlist(strsplit(formulatext, split="|", fixed=TRUE))
-# 	
-# 	varnames <- c()
-# 	for(i in 1:length(model.variables)){
-#     elt <- unlist(strsplit(model.variables[i], split="$", fixed=TRUE))
-#     varnames <- append(varnames, elt[length(elt)])
-# 	}
-# 	
-# 	varnames <- unique(varnames)
-# 
-#   if(!is.null(dataName)){
-#       for(v in 1:length(varnames)){
-# 	varnames[v] <- paste0(dataName,"$",varnames[v])
-# 	test.string.0 <- paste0(dataName,"$","0")
-# 	test.string.1 <- paste0(dataName,"$","1")
-# 	if(varnames[v]==test.string.0) varnames[v] <- "0"
-# 	if(varnames[v]==test.string.1) varnames[v] <- "1"
-#       }
-# 	  	cbindraw.text <- paste0("cbind(", paste(varnames, collapse=","), ")")	
-#   }else{
-#   	    cbindraw.text <- paste0("cbind(", paste(varnames, collapse=","), ")")
-# 		}
-#  
-# 	#Identify and use variable names to count missings
-# 
-# 	#all.data <- eval(parse(text=cbindraw.text), envir = parent.frame())
-# 	all.data <- eval(parse(text=cbindraw.text))
-# 	
-# 	Ntotal <- dim(all.data)[1]
-# 	
-# 	nomiss.any <- stats::complete.cases(all.data)
-# 	nomiss.any.data <- all.data[nomiss.any,]
-# 	N.nomiss.any <- dim(nomiss.any.data)[1]
-# 
-# 	Nvalid <- N.nomiss.any
-# 	Nmissing <- Ntotal-Nvalid
-
 	#formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula))), env = parent.frame()) # here we need the formula as a 'call' object
   formula2use <- formula
   
@@ -183,7 +98,12 @@ errorMessage2<-"No errors"
 		#weights.to.use <- eval(parse(text=cbindtext.weights), envir = parent.frame())
 		}
 
-	mg <- stats::glm(formula2use, family=family, x=TRUE, offset=offset.to.use, weights=weights.to.use, data=dataDF)
+#This function call now undertaken in glmDS.assign function and is here replaced by
+#bringing back in the mg output saved from that previous call
+#	mg <- stats::glm(formula2use, family=final.family.object, x=TRUE, offset=offset.to.use, weights=weights.to.use, data=dataDF)
+
+activate.text<- paste0("mg<-",newobj)
+eval(parse(text=activate.text))
 	
 y.vect<-mg$y
 X.mat<-mg$x
@@ -309,7 +229,7 @@ disclosure.risk<-1
 
 if(disclosure.risk==0)
 {
-	mg <- stats::glm(formula2use, family=family, offset=offset.to.use, weights=weights.to.use, data=dataDF)
+#	mg <- stats::glm(formula2use, family=final.family.object, offset=offset.to.use, weights=weights.to.use, data=dataDF)
   
 	Nvalid <- length(mg$residuals)
 	Nmissing <- length(mg$na.action)
@@ -366,6 +286,3 @@ if(disclosure.risk==0)
 }
 # AGGREGATE FUNCTION
 # glmSLMADS2
-
-
-

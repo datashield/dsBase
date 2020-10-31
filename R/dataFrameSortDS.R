@@ -63,8 +63,8 @@ dataFrameSortDS <- function(df.name=NULL,sort.key.name=NULL,sort.descending,sort
   }
 
   df.name.2 <- paste0("data.frame(",df.name,")")
-  df2sort <- eval(parse(text=df.name.2))
-  sort.key <- eval(parse(text=sort.key.name))
+  df2sort   <- eval(parse(text=df.name.2), envir = parent.frame())
+  sort.key  <- eval(parse(text=sort.key.name), envir = parent.frame())
 
   # DISCLOSURE TRAPS
   if(dim(df2sort)[1]<nfilter.subset){
@@ -77,18 +77,13 @@ dataFrameSortDS <- function(df.name=NULL,sort.key.name=NULL,sort.descending,sort
     return(list(studysideMessage=studysideMessage))
   }
 
-  sort.key.2.use<-sort.key
-
-  if(sort.method=="numeric")
-  {
-     sort.key.2.use<-as.numeric(sort.key)
-  }
-
-  if(sort.method=="alphabetic"){
+  if((sort.method=="alphabetic") || ((sort.method=="default") && is.character(sort.key))){
      sort.key.2.use<-as.character(sort.key)
      key.order <- stringr::str_order(sort.key.2.use, decreasing = sort.descending, na_last = TRUE)
   }else{
 #PUT na.last in here
+     sort.key.2.use<-as.numeric(sort.key)
+
      if(sort.descending)
      {
         key.ranks <- rank(sort.key.2.use,ties.method="average",na.last=FALSE)

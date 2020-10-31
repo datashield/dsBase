@@ -3,13 +3,44 @@
 # Starts with a vanilla Ubuntu VM, installs R then does devtools::checks()
 # Inside the root directory $(Pipeline.Workspace) will be a file tree like:
 # /dsBase               <- Checked out version of datashield/dsBase
+# /testStatus           <- Checked out version of datashield/testStatus
+# /logs                 <- Where results of tests and lots are collated
 #
-# As of May 2020 this takes ~ 20 mins to run.
+# As of May 2020 this takes ~ 15 mins to run.
+#       Jul 2020 this takes ~ 15 mins to run.
 #
 # Nothing should ever need changing in this as the repo will always check itself out.
 #
 #########################################################################################
 
+
+#####################################################################################
+# These should all be constant, except test_filter. This can be used to test subsets
+# of test files in the testthat directory. Options are like:
+# '*'               <- Run all tests
+# 'asNumericDS*'    <- Run all asNumericDS tests, i.e. all the arg, smk etc tests.
+# '*_smk_*'         <- Run all the smoke tests for all functions.
+variables:
+  datetime:    $[format('{0:yyyyMMddHHmmss}', pipeline.startTime)]
+  repoName:    $(Build.Repository.Name)
+  projectName: 'dsBase'
+  branchName:  $(Build.SourceBranchName)
+  test_filter: '*'
+  _r_check_system_clock_: 0
+
+
+
+#########################################################################################
+# Need to define all the GH repos and their access tokens, see:
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml
+resources:
+  repositories:
+  - repository: testStatusRepo
+    type: github
+    endpoint: datashield-testing
+    name: datashield/testStatus
+    ref: master
+    
 
 #########################################################################################
 # When and under what condition to run the pipeline.
@@ -37,6 +68,11 @@ jobs:
   - checkout: self
     path: 'dsBase'
 
+  - checkout: testStatusRepo
+    path: 'testStatus'
+    persistCredentials: true
+    condition: and(eq(variables['Build.Repository.Name'], 'datashield/dsBase'), ne(variables['Build.Reason'], 'PullRequest'))
+
 
     #####################################################################################
     # The Azure VMs have 2 CPUs, so configure R to use both when compile/install packages.
@@ -56,7 +92,7 @@ jobs:
       
       sudo apt-get update
       sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-      sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/'
+      sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran40/'
       sudo apt-get update
       sudo apt-get install -qq libxml2-dev libcurl4-openssl-dev libssl-dev -y
       sudo apt-get install -qq r-base -y
@@ -64,6 +100,9 @@ jobs:
       sudo R -e "install.packages('RANN', dependencies=TRUE)"
       sudo R -e "install.packages('nlme', dependencies=TRUE)"
       sudo R -e "install.packages('lme4', dependencies=TRUE)"
+      sudo R -e "install.packages('ggplot2', dependencies=TRUE)"
+      sudo R -e "install.packages('dplyr', dependencies=TRUE)"
+      sudo R -e "install.packages('reshape2', dependencies=TRUE)"
 
     displayName: 'Install all dependencies for dsBase'
     condition: succeeded()
@@ -90,8 +129,8 @@ jobs:
         echo "Run devtools::document() locally then commit again."
         exit 1
       else
-       echo "Documentation up to date."
-       exit 0
+        echo "Documentation up to date."
+        exit 0
       fi
       
     workingDirectory: $(Pipeline.Workspace)/dsBase
@@ -114,6 +153,142 @@ jobs:
     condition: succeeded()
     continueOnError: true
 
+
+    #####################################################################################
+    # Essentially run devtools::test() on the checked out code. This is wrapped up with
+    # code coverage. The actual command is vary convoluted as it had to do some things
+    # which are not default behaviour: output the results to a JUnit xml file, not stop
+    # when a small number of errors have happened, run through the code coverage tool.
+    # TODO: Tidy up variable names - use timestamps here.
+  - bash: |
+  
+      # Any of the below makes the tests work.
+      sudo R --verbose -e 'devtools::check()'
+      
+      pwd
+      mkdir $(Pipeline.Workspace)/logs
+
+      # run the coverage tool and output to coveragelist.csv
+      # testthat::testpackage uses a MultiReporter, comprised of a ProgressReporter and JunitReporter
+      # R output and messages are redirected by sink() to test_console_output.txt
+      # junit reporter output is to test_results.xml
+      sudo R -q -e '
+        library(covr);
+        write.csv(
+            coverage_to_list(
+                covr::package_coverage(
+                    type = c("none"),
+                    code = c(
+                        '"'"'library(testthat); 
+                        output_file <- file("test_console_output.txt"); 
+                        sink(output_file); 
+                        sink(output_file, type = "message"); 
+                        library(testthat); 
+                        junit_rep <- JunitReporter$new(file = "test_results.xml"); 
+                        progress_rep <- ProgressReporter$new(max_failures = 999999); 
+                        multi_rep <- MultiReporter$new(reporters = list(progress_rep, junit_rep)); 
+                        testthat::test_package("$(projectName)", filter = "$(test_filter)",reporter = multi_rep, stop_on_failure = FALSE)'"'"'
+                    )
+                )
+            ),
+            "coveragelist.csv"
+        )'
+      
+      # display the test console output
+      cat test_console_output.txt
+      mv coveragelist.csv $(Pipeline.Workspace)/logs
+      mv test_results.xml $(Pipeline.Workspace)/logs
+      mv test_console_output.txt $(Pipeline.Workspace)/logs
+      
+      grep --quiet "Failed:   0" $(Pipeline.Workspace)/logs/test_console_output.txt
+
+    workingDirectory: $(Pipeline.Workspace)/dsBase
+    displayName: 'Code coverage and JUnit report output'
+    condition: succeeded()
+
+
+    #####################################################################################
+    # Parse the JUnit file to see if there are any errors/warnings. If there are then 
+    # echo them so finding bugs should be easier.
+    # This should run even if previous steps have failed.
+  - bash: |
+  
+      # Strip out when error and failure = 0 and count the number of times it does not.
+      issue_count=$(sed 's/failures="0" errors="0"//' test_results.xml | grep --count errors=)
+      echo "Number of testsuites with issues: "$issue_count
+      echo "Testsuites with issues:"
+      sed 's/failures="0" errors="0"//' test_results.xml | grep errors= > issues.log
+      cat issues.log
+      exit $issue_count
+
+    workingDirectory: $(Pipeline.Workspace)/logs
+    displayName: 'Check for errors & Failures in JUnit file'
+    condition: succeededOrFailed()
+
+
+    #####################################################################################
+    # Output some important version numbers to file. This gets added to the testStatus 
+    # commit so it can be parsed and used on the status table.
+  - bash: |
+  
+      echo 'branch:'$(branchName) >> $(datetime).txt
+      echo 'os:'$(lsb_release -ds) >> $(datetime).txt
+      echo 'R:'$(R --version | head -n 1) >> $(datetime).txt
+      echo 'opal:'$(opal system --opal localhost:8080 --user administrator --password "datashield_test&" --version) >> $(datetime).txt
+
+    workingDirectory: $(Pipeline.Workspace)/logs
+    displayName: 'Write versions to file'
+    condition: succeededOrFailed()
+
+
+    #####################################################################################
+    # Checkout the testStatus repo, add the results from here, push back to GH.
+    # TODO: Automatically pull in better email/name info from somewhere.
+    # TODO: More debug info in commit message
+  - bash: |
+
+      # Git needs some config set to be able to push to a repo.
+      git config --global user.email "you@example.com"
+      git config --global user.name "Azure pipeline"
+
+      # This repo is checked out in detatched head state, so reconnect it here.
+      git checkout master
+      
+      # It is possible that other commits have been made to the testStatus repo since it
+      # was checked out. i.e. other pipeline runs might have finished.
+      git pull
+
+      # Make the directories if they dont already exist
+      mkdir --parents logs/$(projectName)/$(branchName)
+      mkdir --parents docs/$(projectName)/$(branchName)/latest
+
+      cp $(Pipeline.Workspace)/logs/coveragelist.csv logs/$(projectName)/$(branchName)/
+      cp $(Pipeline.Workspace)/logs/coveragelist.csv logs/$(projectName)/$(branchName)/$(datetime).csv
+
+      cp $(Pipeline.Workspace)/logs/test_results.xml logs/$(projectName)/$(branchName)/
+      cp $(Pipeline.Workspace)/logs/test_results.xml logs/$(projectName)/$(branchName)/$(datetime).xml
+
+      cp $(Pipeline.Workspace)/logs/$(datetime).txt logs/$(projectName)/$(branchName)/
+
+      # Run the script to parse the results and build the html pages.
+      # status.py JUnit_file.xml coverage_file.csv output_file.html local_repo_path remote_repo_name branch
+      source/status.py logs/$(projectName)/$(branchName)/$(datetime).xml logs/$(projectName)/$(branchName)/$(datetime).csv logs/$(projectName)/$(branchName)/$(datetime).txt status.html $(Pipeline.Workspace)/$(projectName) $(projectName) $(branchName)
+
+      cp status.html docs/$(projectName)/$(branchName)/latest/index.html
+      git add logs/$(projectName)/$(branchName)/coveragelist.csv
+      git add logs/$(projectName)/$(branchName)/test_results.xml
+      git add logs/$(projectName)/$(branchName)/$(datetime).xml
+      git add logs/$(projectName)/$(branchName)/$(datetime).csv
+      git add logs/$(projectName)/$(branchName)/$(datetime).txt
+      git add docs/$(projectName)/$(branchName)/latest/index.html
+
+      git commit -m "Azure auto test for $(projectName)/$(branchName) @ $(datetime)" -m "Debug info:\nProjectName:$(projectName)\nBranchName:$(branchName)\nDataTime:$(datetime)"
+      git push
+      exit 0
+
+    workingDirectory: $(Pipeline.Workspace)/testStatus
+    displayName: 'Parse test results'
+    condition: and(eq(variables['Build.Repository.Name'], 'datashield/dsBase'), ne(variables['Build.Reason'], 'PullRequest'))
 
 
     #####################################################################################

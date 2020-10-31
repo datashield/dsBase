@@ -50,8 +50,7 @@ nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)                #
     return(list(studysideMessage=studysideMessage))
   }
 
-  activate.text<-paste0("list.obj<-",xname.transmit)
-  eval(parse(text=activate.text))
+  list.obj<-eval(parse(text=xname.transmit), envir = parent.frame())
 
   trace.message<-class(list.obj)
 
