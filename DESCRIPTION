@@ -14,7 +14,8 @@ Imports:
     lme4,
     ggplot2,
     dplyr,
-    reshape2
+    reshape2,
+    lspline
 AggregateMethods:
     asFactorDS1,
     asListDS,
