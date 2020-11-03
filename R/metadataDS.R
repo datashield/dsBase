@@ -17,8 +17,8 @@ metadataDS <- function(x)
     if ((! is.character(x)) || (length(x) != 1))
         stop("Variable's name isn't be single character vector", call. = FALSE)
 
-    if (! exists(x))
-        stop(paste0("The variable '", x, "' does not exist"), call. = FALSE)
+    # if (! exists(x))
+    #    stop(paste0("The variable '", x, "' does not exist"), call. = FALSE)
 
     x.var <- eval(parse(text=x), envir = parent.frame())
 
