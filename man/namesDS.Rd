@@ -2,23 +2,33 @@
 % Please edit documentation in R/namesDS.R
 \name{namesDS}
 \alias{namesDS}
-\title{Returns the names of a list}
+\title{Return the names of a list object}
 \usage{
-namesDS(xlist)
+namesDS(xname.transmit)
 }
 \arguments{
-\item{xlist}{a list}
+\item{xname.transmit}{a character string specifying the name of the list.}
 }
 \value{
-a character vector or NULL if the list does not have names
+\code{namesDS} returns to the client-side the names
+of a list object stored on the server-side.
 }
 \description{
-Returns the names of the object in the list.
+Returns the names of a designated server-side list
 }
 \details{
-This is similar to R base function \code{names} but restricted
-to list types only.
+namesDS is an aggregate function called by ds.names.
+This function is similar to the native R function \code{names}
+but it does not subsume all functionality,
+for example, it only works to extract names that already exist,
+not to create new names for objects.
+The function is restricted to objects of type list,
+but this includes objects that have a primary class other than list but which
+return TRUE to the native R function {is.list}. As an example, this includes
+the multi-component object created by fitting a generalized linear model
+using ds.glmSLMA. The resultant object saved on each separate server
+is formally of double class "glm" and "ls" but responds TRUE to is.list(),
 }
 \author{
-Gaye, A.
+Amadou Gaye, updated by Paul Burton 25/06/2020
 }

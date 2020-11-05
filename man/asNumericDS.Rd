@@ -10,19 +10,20 @@ asNumericDS(x.name)
 \item{x.name}{the name of the input object to be coerced to class
 numeric. Must be specified in inverted commas. But this argument is
 usually specified directly by <x.name> argument of the clientside function
-{ds.asNumeric}}
+\code{ds.asNumeric}.}
 }
 \value{
 the object specified by the <newobj> argument (or its default name
 <x.name>.num) which is written to the serverside. For further
-details see help on the clientside function {ds.asNumeric}
+details see help on the clientside function \code{ds.asNumeric}.
 }
 \description{
-this function is based on the native R function {as.numeric}
+This function is based on the native R function \code{as.numeric}.
 }
 \details{
-See help for function {as.numeric} in native R
+See help for function \code{as.numeric} in native R, and details section
+in the help file of the clientside function \code{ds.asNumeric}.
 }
 \author{
-Amadou Gaye, Paul Burton for DataSHIELD Development Team
+Amadou Gaye, Paul Burton, Demetris Avraam, for DataSHIELD Development Team
 }

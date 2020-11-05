@@ -8,7 +8,7 @@ glmDS2(formula, family, beta.vect, offset, weights, dataName)
 }
 \arguments{
 \item{formula}{a glm() formula consistent with R syntax eg U~x+y+Z to regress
-variables U on x,y and Z}
+variables U on x, y and Z}
 
 \item{family}{a glm() family consistent with R syntax eg "gaussian", "poisson",
 "binomial"}
@@ -27,16 +27,14 @@ the data to be analysed under the specified model same}
 This is the second serverside aggregate function called by ds.glm.
 }
 \details{
-It is an
-aggregation function that uses the model structure
-and starting beta.vector constructed by glmDS1 to iteratively fit the generalized
-linear model that has been
-been specified. The function glmDS2 also carries out a series of disclosure
+It is an aggregate function that uses the model structure and starting
+beta.vector constructed by glmDS1 to iteratively fit the generalized linear model
+that has been specified. The function glmDS2 also carries out a series of disclosure
 checks and if the arguments or data fail any of those tests,
 model construction is blocked and an appropriate serverside error message is
 created and returned to ds.glm on the clientside.
 For more details please see the extensive header for ds.glm.
 }
 \author{
-Burton PR for DataSHIELD Development Team
+Paul Burton, for DataSHIELD Development Team
 }

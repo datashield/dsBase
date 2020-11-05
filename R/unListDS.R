@@ -1,57 +1,49 @@
-#' @title unListDS a serverside aggregate function called by ds.unList
-#' @description Coerces an R object back from a list towards
-#' the class it was before being coerced to a list
-#' @details Unlike most other class coercing functions this is
-#' an aggregate function rather than an assign function. This
-#' is because the {datashield.assign} function in opal deals specially with
-#' a created object (newobj) if it is of class list. Reconfiguring the
-#' function as an aggregate function works around this problem.
-#' This aggregate function is based on the native R function {unlist}
-#' and so additional information can be found in the help for {unlist}.
-#' When an object is coerced to a list, depending
-#' on the class of the original object some information may be lost. Thus,
-#' for example, when a data.frame is coerced to a list information that
-#' underpins the structure of the data.frame is lost and when it is
-#' subject to the function {ds.unlist} it is returned to a simpler
-#' class than data.frame eg 'numeric' (basically a numeric vector
-#' containing all of the original data in all variables in the data.frame
-#' but with no structure). If you wish to reconstruct the original
-#' data.frame you therefore need to specify this structure again e.g.
-#' the column names etc
-#' @param x.name the name of the input object to be coerced back from
-#' class list. It must be specified in inverted commas. But this argument is
-#' usually specified directly by <x.name> argument of the clientside function
-#' {ds.unList}
-#' @param recursive argument required for native R unlist function - see
-#' native R help for {unlist} function
-#' @param newobj is the object hard assigned '<<-' to be the output of the
-#' function written to the serverside
-#' @return the object specified by the <newobj> argument (or its default name
-#' <x.name>.mat) which is written to the serverside.
-#' In addition, two validity messages are returned. The first confirms an output
-#' object has been created, the second states its class.
-#' @author Amadou Gaye, Paul Burton for DataSHIELD Development Team
+#' @title unListDS a serverside assign function called by ds.unList
+#' @description this function is based on the native R function {unlist}
+#' which coerces an object of list class back to the class it was when
+#' it was coerced into a list
+#' @details See details of the native R function {unlist}.
+#' This function represents a substantive restructuring of an earlier version
+#' created by Amadou Gaye. For further details of its working please
+#' see 'details' in the help for {ds.unList}.
+#' @param x.name the name of the input object to be unlisted.
+#' It must be specified in inverted commas e.g. x.name="input.object.name". Fully
+#' specified by the <x.name> argument of {ds.unList}
+#' @return the object specified by the <newobj> argument of the 
+#' {ds.unList} function (or by default <x.name>.unlist
+#' if the <newobj> argument is NULL). This is written to the serverside.
+#' As well as writing the output object as <newobj>
+#' on the serverside, two validity messages are returned
+#' indicating whether <newobj> has been created in each data source and if so whether
+#' it is in a valid form. If its form is not valid in at least one study - e.g. because
+#' a disclosure trap was tripped and creation of the full output object was blocked -
+#' {ds.seq()} also returns any studysideMessages that can explain the error in creating
+#' the full output object. As well as appearing on the screen at run time,if you wish to
+#' see the relevant studysideMessages at a later date you can use the {ds.message}
+#' function. If you type ds.message("<newobj>") it will print out the relevant
+#' studysideMessage from any datasource in which there was an error in creating <newobj>
+#' and a studysideMessage was saved. Because the outcome object from ds.unList is
+#' typically a list object with no names, if there are no errors in creating it
+#' the message returned from ds.message("<newobj>") in each study will read
+#' "Outcome object is a list without names. So a studysideMessage may be hidden.
+#' Please check output is OK". This suggests that - in the case of this specific
+#' function - one should check as far as one can
+#' the nature of the output from a call to ds.unList - e.g. ds.class, ds.length etc
+#' @author Amadou Gaye (2016), Paul Burton (19/09/2019) for DataSHIELD Development Team
 #' @export
-unListDS <- function(x.name,recursive,newobj){
+unListDS <- function(x.name) {
 
-    recursive<-recursive
-
-    newobj.class <- NULL
-    if(is.character(x.name)){
-        active.text<-paste0(newobj,"<<-unlist(",x.name,",",recursive,")")
-        eval(parse(text=active.text))
-
-        active.text2<-paste0("newobj.class<-class(",newobj,")")
-        eval(parse(text=active.text2))
-    }else{
+    if (is.character(x.name)) {
+	listvar<-eval(parse(text=x.name), envir = parent.frame())
+    } else {
         studysideMessage<-"ERROR: x.name must be specified as a character string"
         return(list(studysideMessage=studysideMessage))
-    }
+    } 
+ 
+    outvar<-unlist(listvar)
 
-    return.message<-paste0("New object <",newobj,"> created")
-    object.class.text<-paste0("Class of <",newobj,"> is '",newobj.class,"'")
-
-    return(list(return.message=return.message,class.of.newobj=object.class.text))
+    return(outvar)
 }
-#AGGREGATE FUNCTION
+#ASSIGN FUNCTION
 # unListDS
+

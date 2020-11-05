@@ -2,48 +2,56 @@
 % Please edit documentation in R/dataFrameSortDS.R
 \name{dataFrameSortDS}
 \alias{dataFrameSortDS}
-\title{dataFrameSortDS called by ds.dataFrameSort}
+\title{Sorting and reordering data frames, vectors or matrices}
 \usage{
-dataFrameSortDS(df.text = NULL, sort.key.text = NULL,
-  sort.descending = FALSE, sort.alphabetic = FALSE,
-  sort.numeric = FALSE)
+dataFrameSortDS(
+  df.name = NULL,
+  sort.key.name = NULL,
+  sort.descending,
+  sort.method
+)
 }
 \arguments{
-\item{df.text}{a character string providing the name for the data.frame
-to be sorted. This corresponds to the argument <df.name> in ds.dataFrameSort}
+\item{df.name}{a character string providing the name for the serverside
+data.frame to be sorted. This parameter is fully specified by the equivalent
+argument in ds.dataFrameShort and further details can be found at
+help("ds.dataFrameSort").}
 
-\item{sort.key.text}{a character string providing the name for the sort key.
-This corresponds to the argument <sort.key.name> in ds.dataFrameSort}
+\item{sort.key.name}{a character string providing the name for the sort key.
+This will be a serverside vector which may sit inside the data frame to be
+sorted or independently in the serverside analysis environment. But, if it
+sits outside the data frame it must then be the same length as the data frame.
+This parameter is fully specified by the equivalent argument
+in ds.dataFrameShort and further details can be found at help("ds.dataFrameSort").}
 
 \item{sort.descending}{logical, if TRUE the data.frame will be sorted
-by the sort key in descending order. Default = FALSE (sort order ascending)}
+by the sort key in descending order. Default = FALSE (sort order ascending).
+This parameter is fully specified by the equivalent argument
+in ds.dataFrameShort and further details can be found at help("ds.dataFrameSort").}
 
-\item{sort.alphabetic}{logical, if TRUE the sort key is treated as if alphabetic
-Default=FALSE.}
-
-\item{sort.numeric}{logical, if TRUE the sort key is treated as if numeric
-Default=FALSE. The arguments <sort.alphabetic> and <sort.numeric> are both
-derived directly from the corresponding arguments specified in ds.dataFrameSort
-If both sort.alphabetic and sort.numeric are FALSE, the sort.key will
-interpreted naturally: as numeric if it is numeric, otherwise as alphabetic
-ie as if it is a vector of character strings.}
+\item{sort.method}{A character string taking one of the values: "default",
+"d", "alphabetic", "a", "numeric", "n", or NULL. Default value is "default".
+This parameter is fully specified by the equivalent argument
+in ds.dataFrameShort and further details can be found at help("ds.dataFrameSort").}
 }
 \value{
 the appropriately re-sorted data.frame will be written to the serverside
-R environmnet as a data.frame named according to the <newobj> argument in
-ds.dataFrameSortDS (or with default name <df.name>.sorted where <df.name> is the first argument of
-ds.dataFrameSortDS)
+R environment as a data.frame named according to the <newobj> argument(or with
+default name 'dataframesort.newobj') if no name is specified
 }
 \description{
-The serverside function that sorts a data frame using
-a specified sort key.
+Sorts a data frame using a specified alphanumeric or numeric sort key
 }
 \details{
-A data frame is a list of variables all with the same number of rows,
-which is of class 'data.frame'. For details of numeric and alphabetic
-sorting and how ds.dataFrameSort/dataFrameSortDS jointly operate,
-please see help for ds.dataFrameSort.
+Serverside assign function dataFrameSortDS is called by
+clientside function ds.dataFrameSort.  A vector or a matrix can be
+added to, or coerced into, a data frame (using function [ds.dataFrame])
+and this means that they too can be sorted/reordered using ds.dataFrameSort.
+Fundamentally, the function [ds.dataFrameSort] will sort a specified
+data frame on the serverside using a sort key also on the serverside.
+For more details see help for the clientside function: [ds.dataFrameShort]
 }
 \author{
-DataSHIELD Development Team
+Paul Burton, with critical error identification by
+Leire Abarrategui-Martinez, for DataSHIELD Development Team, 2/4/2020
 }

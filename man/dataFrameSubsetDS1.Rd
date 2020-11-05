@@ -4,9 +4,15 @@
 \alias{dataFrameSubsetDS1}
 \title{dataFrameSubsetDS1 an aggregate function called by ds.dataFrameSubset}
 \usage{
-dataFrameSubsetDS1(df.name = NULL, V1.name = NULL, V2.name = NULL,
-  Boolean.operator.n = NULL, keep.cols = NULL, rm.cols = NULL,
-  keep.NAs = NULL)
+dataFrameSubsetDS1(
+  df.name = NULL,
+  V1.name = NULL,
+  V2.name = NULL,
+  Boolean.operator.n = NULL,
+  keep.cols = NULL,
+  rm.cols = NULL,
+  keep.NAs = NULL
+)
 }
 \arguments{
 \item{df.name}{a character string providing the name for the data.frame
@@ -67,5 +73,5 @@ A data frame is a list of variables all with the same number of rows,
 which is of class 'data.frame'. For all details see the help header for ds.dataFrameSubset
 }
 \author{
-DataSHIELD Development Team
+Paul Burton
 }

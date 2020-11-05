@@ -9,17 +9,10 @@
 #'
 dimDS <- function(x){
 
-  #############################################################
-  #MODULE 1: CAPTURE THE nfilter SETTINGS
-  #thr <- listDisclosureSettingsDS()
-  #nfilter.tab<-as.numeric(thr$nfilter.tab)
-  #nfilter.glm<-as.numeric(thr$nfilter.glm)
-  #nfilter.subset<-as.numeric(thr$nfilter.subset)
-  #nfilter.string<-as.numeric(thr$nfilter.string)
-  #############################################################
+  x.var <- eval(parse(text=x), envir = parent.frame())
 
   # find the dim of the input dataframe or matrix
-  out <- dim(x)
+  out <- dim(x.var)
 
   # return the dimension
   return(out)

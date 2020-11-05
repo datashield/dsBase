@@ -10,12 +10,20 @@
 #' 
 cDS <- function (objs) {
   # this filter sets the minimum number of observations that are allowed 
-  nfilter <- setFilterDS()
+
+  #############################################################
+  # MODULE 1: CAPTURE THE nfilter SETTINGS
+  thr <- listDisclosureSettingsDS()
+  nfilter.tab <- as.numeric(thr$nfilter.tab)
+  #nfilter.glm <- as.numeric(thr$nfilter.glm)
+  #nfilter.subset <- as.numeric(thr$nfilter.subset)
+  #nfilter.string <- as.numeric(thr$nfilter.string)
+  #############################################################
   
   x <-  unlist(objs)
 
   # check if the output is valid and output accordingly
-  if(length(x) < nfilter){
+  if(length(x) < nfilter.tab){
     if(length(x == 0)){
       x <- c()
     }else{

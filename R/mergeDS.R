@@ -84,8 +84,8 @@ if(y.name.numchars>nfilter.stringShort){
     return(list(studysideMessage=studysideMessage))
 }
 	#activate data frame names
-x.data.frame<-eval(parse(text=x.name))
-y.data.frame<-eval(parse(text=y.name))
+x.data.frame<-eval(parse(text=x.name), envir = parent.frame())
+y.data.frame<-eval(parse(text=y.name), envir = parent.frame())
 
 #check data.frames are valid data.frames
 

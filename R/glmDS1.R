@@ -38,7 +38,7 @@ nfilter.glm <- as.numeric(thr$nfilter.glm)
   if(is.null(data)){
     dataTable <- NULL 
   }else{
-    dataTable <- eval(parse(text=data))
+    dataTable <- eval(parse(text=data), envir = parent.frame())
   }
   
   formulatext <- Reduce(paste, deparse(formula))
@@ -51,7 +51,8 @@ nfilter.glm <- as.numeric(thr$nfilter.glm)
   formulatext <- gsub("*", "|", formulatext, fixed=TRUE)
   formulatext <- gsub("||", "|", formulatext, fixed=TRUE)
   
-  formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormula)))) # here we need the formula as a 'call' object
+  originalFormulaFormula <- stats::as.formula(originalFormula)
+  formula2use <- stats::as.formula(paste0(Reduce(paste, deparse(originalFormulaFormula))), env = parent.frame()) # here we need the formula as a 'call' object
   mod.glm.ds <- stats::glm(formula2use, family=family, x=TRUE, control=stats::glm.control(maxit=1), contrasts=NULL, data=dataTable)
   
   #Remember model.variables and then varnames INCLUDE BOTH yvect AND linear predictor components 
@@ -61,7 +62,7 @@ nfilter.glm <- as.numeric(thr$nfilter.glm)
   for(i in 1:length(model.variables)){
     elt <- unlist(strsplit(model.variables[i], split="$", fixed=TRUE))
     if(length(elt) > 1){
-      assign(elt[length(elt)], eval(parse(text=model.variables[i])))
+      assign(elt[length(elt)], eval(parse(text=model.variables[i]), envir = parent.frame()), envir = parent.frame())
       originalFormula <- gsub(model.variables[i], elt[length(elt)], originalFormula, fixed=TRUE)
       varnames <- append(varnames, elt[length(elt)])
     }else{
@@ -98,14 +99,14 @@ nfilter.glm <- as.numeric(thr$nfilter.glm)
     w.vect <- rep(1,length(y.vect))
   }else{
     ftext <- paste0("cbind(",weights,")")
-    w.vect <- eval(parse(text=ftext))
+    w.vect <- eval(parse(text=ftext), envir = parent.frame())
   }
   
     if(is.null(offset)){
     offsetvar <- rep(1,length(y.vect))
   }else{
     active.text <- paste0("cbind(",offset,")")
-    offsetvar <- eval(parse(text=active.text))
+    offsetvar <- eval(parse(text=active.text), envir = parent.frame())
   }
 
   ################################

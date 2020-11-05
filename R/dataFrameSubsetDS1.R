@@ -44,7 +44,7 @@
 #' an assign function because it writes the subsetted data.frame to the serverside.
 #' In consequence, it records error messages as studysideMessages which can only be
 #' retrieved using ds.message
-#' @author DataSHIELD Development Team
+#' @author Paul Burton
 #' @export
 #'
 dataFrameSubsetDS1 <- function(df.name=NULL,V1.name=NULL,V2.name=NULL,Boolean.operator.n=NULL,keep.cols=NULL,rm.cols=NULL,keep.NAs=NULL){
@@ -154,11 +154,27 @@ if(sum(is.na(keep.code.n))>0){
     }
   }
 
-   df.name.2 <- paste0("data.frame(",df.name,")")
-   df2subset <- eval(parse(text=df.name.2))
+  df.name.2 <- paste0("data.frame(",df.name,")")
+  df2subset <- eval(parse(text=df.name.2))
 
-   V1 <- eval(parse(text=V1.name))
-   V2 <- eval(parse(text=V2.name))
+  if(V1.name=="ONES"||V2.name=="ONES")
+  {
+    length.ONES<-dim(df2subset)[1]
+    V1<-rep(1,length=length.ONES)
+    V2<-rep(1,length=length.ONES)
+    Boolean.operator.n<-1
+    #if using "ONES" for V1 or V2 then need to ensure a variable called "ONES" exists
+    #when it comes to generating the Boolean indicator below. If it doesn't exist
+    #generate it. If it does exist (for another purpose) then just leave as it is
+    #because its form doesn't matter, it just has to exist
+    if(!exists("ONES"))
+    {
+      ONES<-V1
+    }
+  } else {
+     V1 <- eval(parse(text=V1.name))
+     V2 <- eval(parse(text=V2.name))
+  }
 
   ##########CHECK APPROPRIATE CLASSES ##############
   if(!is.character(df.name) || !is.data.frame(df2subset)){
@@ -186,12 +202,12 @@ if(sum(is.na(keep.code.n))>0){
     return(list(studysideMessage=studysideMessage))
   }
 
-  if(!((V1.length == V2.length) | (V2.length==1))){
+  if(!((V1.length == V2.length) || (V2.length==1))){
     studysideMessage<-"FAILED: V[ii] must either be of length one or of length equal to V[i]"
     return(list(studysideMessage=studysideMessage))
   }
 
-  if(!is.numeric(Boolean.operator.n) | Boolean.operator.n==0){
+  if(!is.numeric(Boolean.operator.n) || Boolean.operator.n==0){
     studysideMessage <- "FAILED: Boolean.operator must be: '==', '!=', '<', '<=', '>' or '>='"
     return(list(studysideMessage=studysideMessage))
   }

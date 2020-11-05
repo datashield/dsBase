@@ -9,14 +9,14 @@
 #' \code{ds.asInteger}.
 #' @return the object specified by the <newobj> argument (or its default name
 #' <x.name>.int) which is written to the serverside. For further
-#' details see help on the clientside function \type{ds.asInteger}.
+#' details see help on the clientside function \code{ds.asInteger}.
 #' @author Amadou Gaye, Paul Burton, Demetris Avraam, for DataSHIELD Development Team
 #' @export
 #'
 asIntegerDS <- function(x.name){
 
   if(is.character(x.name)){
-    x <- eval(parse(text=x.name))
+    x <- eval(parse(text=x.name), envir = parent.frame())
   }else{
     studysideMessage <- "ERROR: x.name must be specified as a character string"
     return(list(studysideMessage=studysideMessage))

@@ -32,12 +32,12 @@ rBinomDS<-function (n, size = 1, prob = 0.5){
 
 	if(is.character(size)){
 	command.text<-size
-	size<-eval(parse(text=command.text))
+	size<-eval(parse(text=command.text), envir = parent.frame())
 	}
 
 	if(is.character(prob)){
 	command.text<-prob
-	prob<-eval(parse(text=command.text))
+	prob<-eval(parse(text=command.text), envir = parent.frame())
 	}
 
 	stats::rbinom(n, size=size, prob=prob)

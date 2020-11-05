@@ -38,7 +38,7 @@ if(length.M1.name>nfilter.stringShort)
 #EVAL M1
 
 
-M1<-eval(parse(text=M1.name))
+M1<-eval(parse(text=M1.name), envir = parent.frame())
 
 if(!is.matrix(M1)&&!is.data.frame(M1))
 	{
