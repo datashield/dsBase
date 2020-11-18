@@ -61,7 +61,7 @@ getWGSRDS <- function(sex, firstPart, secondPart, index, standing=NA, thirdPart=
   }
   
   # access the internal reference data
-  wgsrData <- dsBase:::wgsrData
+  #wgsrData <- dsBase:::wgsrData
   #wgsrData <- zscorer:::wgsrData
   
   ## Avoid missing and impossible values in 'standing' by coding NA and other values to '3'
