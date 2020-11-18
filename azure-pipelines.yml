@@ -200,7 +200,7 @@ jobs:
       mv test_results.xml $(Pipeline.Workspace)/logs
       mv test_console_output.txt $(Pipeline.Workspace)/logs
       
-      grep --quiet "Failed:   0" $(Pipeline.Workspace)/logs/test_console_output.txt
+      grep --quiet " FAIL 0 " $(Pipeline.Workspace)/logs/test_console_output.txt
 
     workingDirectory: $(Pipeline.Workspace)/dsBase
     displayName: 'Code coverage and JUnit report output'
