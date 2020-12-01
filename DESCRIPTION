@@ -13,8 +13,7 @@ Imports:
     stringr,
     lme4,
     dplyr,
-    reshape2,
-    panelaggregation
+    reshape2
 AggregateMethods:
     asFactorDS1,
     asListDS,
