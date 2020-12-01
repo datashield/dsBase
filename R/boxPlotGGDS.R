@@ -15,86 +15,45 @@
 #' @param group \code{character} (default \code{NULL}) Name of the first grouping variable. 
 #' @param group2 \code{character} (default \code{NULL}) Name of the second grouping variable. 
 #'
-#' @return If there are no grouping variables: \cr
+#' @return  \cr
 #' 
 #' \code{list} with: \cr
 #' -\code{data frame} Geometrical parameters (identity stats of ggplot) \cr
-#' -\code{character list} Names of the variables plotted \cr
-#' -\code{tbl} Counts of each variable, output of dplyr::count (used on the client for split/pooled) \cr
-#' 
-#' If there is one grouping variable: \cr
-#' 
-#' \code{list} with: \cr
-#' -\code{data frame} Geometrical parameters (identity stats of ggplot) \cr
-#' -\code{character list} Names of the variables plotted \cr
-#' -\code{character list} Names of the grouping factors \cr
-#' -\code{tbl} Counts of each variable (grouped), output of dplyr::count (used on the client for split/pooled) \cr
-#' 
-#' If there are two grouping variables: \cr
-#' 
-#' \code{list} with: \cr
-#' -\code{data frame} Geometrical parameters (identity stats of ggplot) \cr
-#' -\code{character list} Names of the variables plotted \cr
-#' -\code{character list} Names of the first grouping factors \cr
-#' -\code{character list} Names of the second grouping factors \cr
-#' -\code{tbl} Counts of each variable (grouped), output of dplyr::count (used on the client for split/pooled) \cr
+#' -\code{character} Type of plot (single_group, double_group or no_group) \cr
 #' 
 #' @export
 
 boxPlotGGDS <- function(data_table, group = NULL, group2 = NULL){
-  x <- NULL
-  if (!is.null(group)) {
-    if(!is.null(group2)) {
-      plot_ret <- ggplot2::ggplot(data_table, ggplot2::aes_string(x = "x", y = "value", fill = "group")) +
-      ggplot2::geom_boxplot() +
-      ggplot2::facet_wrap(~group2)
-      
-    } else {
-      plot_ret <- ggplot2::ggplot(data_table, ggplot2::aes_string(x = "x", y = "value", fill = "group")) +
-      ggplot2::geom_boxplot()
-      
-    }
-  } else {
-    plot_ret <- ggplot2::ggplot(data_table, ggplot2::aes_string(x = "x", y = "value")) +
-    ggplot2::geom_boxplot()
-  }
   
-  plot_ret <- plot_ret + ggplot2::scale_fill_brewer()
-  plt <- ggplot2::ggplot_build(plot_ret)
-
   if(!is.null(group) & is.null(group2)){
-    plt$data[[1]]$fill <- unique(data_table$group)
-    return(list(data = plt$data[[1]][, !names(plt$data[[1]]) %in% c("outliers", "ymin_final", "ymax_final", 
-                                                                    "notchupper", "notchlower", "xmin", "xmax",
-                                                                    "weight", "colour", "size", "flipped_aes",
-                                                                    "alpha", "shape", "linetype",
-                                                                    "x", "xid", "newx", "new_width")], unique(data_table$x),
-                unique(data_table$group),
-                counts = dplyr::count(data_table, x, group),
-                "single_group"))
+    stats_full <- stats::aggregate(.~group+x, data_table, function(x){boxplot.stats(x)$stats})
+    stats_n <- stats::aggregate(.~group+x, data_table, function(x){boxplot.stats(x)$n})$value
+    stats <- data.frame(stats_full$value)
+    stats_full$value <- NULL
+    stats_full <- cbind(stats_full, stats, stats_n)
+    colnames(stats_full) <- c("group", "x", "ymin", "lower", "middle", "upper", "ymax", "n")
+    
+    return(list(data = stats_full, "single_group"))
   }
   else if(!is.null(group) & !is.null(group2)){
-    return(plt)
-    plt$data[[1]]$fill <- unique(data_table$group)
-    return(list(data = plt$data[[1]][, !names(plt$data[[1]]) %in% c("outliers", "ymin_final", "ymax_final", 
-                                                                    "notchupper", "notchlower", "xmin", "xmax",
-                                                                    "weight", "colour", "size", "flipped_aes",
-                                                                    "alpha", "shape", "linetype",
-                                                                    "x", "xid", "newx", "new_width")], unique(data_table$x),
-                unique(data_table$group), 
-                unique(data_table$group2),
-                counts = dplyr::count(data_table, x, group, group2),
-                "double_group"))
+    stats_full <- stats::aggregate(.~group+group2+x, data_table, function(x){boxplot.stats(x)$stats})
+    stats_n <- stats::aggregate(.~group+group2+x, data_table, function(x){boxplot.stats(x)$n})$value
+    stats <- data.frame(stats_full$value)
+    stats_full$value <- NULL
+    stats_full <- cbind(stats_full, stats, stats_n)
+    colnames(stats_full) <- c("group", "group2", "x", "ymin", "lower", "middle", "upper", "ymax", "n")
+    
+    return(list(data = stats_full, "double_group"))
   }
   else{
-    plt$data[[1]]$fill <- unique(data_table$group)
-    return(list(data = plt$data[[1]][, !names(plt$data[[1]]) %in% c("outliers", "ymin_final", "ymax_final", 
-                                                                    "notchupper", "notchlower", "xmin", "xmax",
-                                                                    "weight", "colour", "size", "flipped_aes",
-                                                                    "alpha", "shape", "linetype",
-                                                                    "x", "xid", "newx", "new_width")], unique(data_table$x),
-                counts = dplyr::count(data_table, x),
-                "no_group"))
+    stats_full <- stats::aggregate(.~x, data_table, function(x){boxplot.stats(x)$stats})
+    stats_n <- stats::aggregate(.~x, data_table, function(x){boxplot.stats(x)$n})$value
+    stats <- data.frame(stats_full$value)
+    stats_full$value <- NULL
+    stats_full <- cbind(stats_full, stats, stats_n)
+    colnames(stats_full) <- c("x", "ymin", "lower", "middle", "upper", "ymax", "n")
+    
+    return(list(data = stats_full, "no_group"))
   }
   
 }
