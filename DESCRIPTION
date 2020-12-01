@@ -12,7 +12,6 @@ Imports:
     nlme,
     stringr,
     lme4,
-    ggplot2,
     dplyr,
     reshape2,
     panelaggregation
