@@ -51,13 +51,23 @@ boxPlotGG_data_TreatmentDS <- function(table, variables, group = NULL, group2 = 
   if(!is.null(group)){
     names(data)[names(data) == group] <- 'group'
     data[, "group"] <- as.factor(data[, "group"])
+    data <- data[stats::complete.cases(data), ]
   }
-  
-  if(!is.null(group2)){
+  else if(!is.null(group2)){
     names(data)[names(data) == group2] <- 'group2'
     data[, "group2"] <- as.factor(data[, "group2"])
+    data <- data[stats::complete.cases(data), ]
+  }
+  else{
+    if(length(variables) == 1){
+      data <- data[stats::complete.cases(data), ]
+      names(data) <- variables
+    }
+    else{
+      data <- data[stats::complete.cases(data), ]
+    }
   }
 
-  return(data[stats::complete.cases(data), ])
+  return(data)
   
 }
