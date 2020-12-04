@@ -48,7 +48,7 @@ schedules:
   - cron: "0 0 * * 0"
     displayName: Weekly build - master
     branches:
-     include:
+      include:
       - master
     always: true
   - cron: "0 1 * * *"
@@ -57,7 +57,7 @@ schedules:
       include:
       - v6.2-dev
     always: true
-  
+
 jobs:
 - job: run_devtools_check
   timeoutInMinutes: 30
@@ -109,6 +109,7 @@ jobs:
       sudo R -e "install.packages('ggplot2', dependencies=TRUE)"
       sudo R -e "install.packages('dplyr', dependencies=TRUE)"
       sudo R -e "install.packages('reshape2', dependencies=TRUE)"
+      sudo R -e "install.packages('panelaggregation', dependencies=TRUE)"
 
     displayName: 'Install all dependencies for dsBase'
     condition: succeeded()

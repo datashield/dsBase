@@ -46,22 +46,14 @@ boxPlotGGDS <- function(data_table, group = NULL, group2 = NULL){
     return(list(data = stats_full, "double_group"))
   }
   else{
-    if(class(data_table) == "data.frame"){
-      stats_full <- stats::aggregate(.~x, data_table, function(x){grDevices::boxplot.stats(x)$stats})
-      stats_n <- stats::aggregate(.~x, data_table, function(x){grDevices::boxplot.stats(x)$n})$value
-      stats <- data.frame(stats_full$value)
-      stats_full$value <- NULL
-      stats_full <- cbind(stats_full, stats, stats_n)
-      colnames(stats_full) <- c("x", "ymin", "lower", "middle", "upper", "ymax", "n")
-    }
-    else{
-      stats_full <- grDevices::boxplot.stats(data_table)$stats
-      stats_n <- grDevices::boxplot.stats(data_table)$n
-      stats_full <- data.frame(t(stats_full))
-      # stats_full$value <- NULL
-      stats_full <- cbind(names(data_table)[1], stats_full, stats_n)
-      colnames(stats_full) <- c("x", "ymin", "lower", "middle", "upper", "ymax", "n")
-    }
+    stats_full <- stats::aggregate(.~x, data_table, function(x){grDevices::boxplot.stats(x)$stats})
+    stats_n <- stats::aggregate(.~x, data_table, function(x){grDevices::boxplot.stats(x)$n})$value
+    stats <- data.frame(stats_full$value)
+    stats_full$value <- NULL
+    stats_full <- cbind(stats_full, stats, stats_n)
+    colnames(stats_full) <- c("x", "ymin", "lower", "middle", "upper", "ymax", "n")
+    
     return(list(data = stats_full, "no_group"))
   }
+  
 }
