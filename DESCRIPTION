@@ -15,7 +15,8 @@ Imports:
     ggplot2,
     dplyr,
     reshape2,
-    lspline
+    lspline,
+    tibble
 AggregateMethods:
     asFactorDS1,
     asListDS,

@@ -17,6 +17,7 @@ library(RANN)
 library(nlme)
 library(stringr)
 library(lme4)
+library(tibble)
 
 source("disclosure/set_disclosure_settings.R")
 source("random/set_random_seed_settings.R")
