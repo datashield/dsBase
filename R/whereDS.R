@@ -1,8 +1,8 @@
 
 
-whereDS <- function(variable.name = NULL, envir = caller_env(), class.type = NULL)
+whereDS <- function(variable.name = NULL, envir = rlang::caller_env(), class.type = NULL)
 {
-  if (identical(envir, empty_env()))
+  if (identical(envir, rlang::empty_env()))
   {
     # Base case
     return(NULL)
@@ -17,12 +17,12 @@ whereDS <- function(variable.name = NULL, envir = caller_env(), class.type = NUL
     }
     else
     {
-      where(variable.name, env_parent(envir))
+      where(variable.name, rlang::env_parent(envir))
     }
   }
   else
   {
     # Recursive case
-    where(variable.name, env_parent(envir))
+    where(variable.name, rlang::env_parent(envir))
   }
 }
