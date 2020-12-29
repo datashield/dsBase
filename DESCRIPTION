@@ -16,7 +16,8 @@ Imports:
     dplyr,
     reshape2,
     lspline,
-    tibble
+    tibble,
+    rlang
 AggregateMethods:
     asFactorDS1,
     asListDS,

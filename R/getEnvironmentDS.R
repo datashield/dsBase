@@ -11,7 +11,6 @@
 #'}
 #'@details The helper function verifies a environment exists, within another environment  on a dataSHIELD server. By defautl the parent environment used is the
 #'\code{globalenv()}. For testing and other purposes, other parent environment can be specify
-#'@keywords
 #'@author P.Ryser-Welch, Newcastle University, DataSHIELD team
 #
 

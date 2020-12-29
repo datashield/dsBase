@@ -54,11 +54,12 @@
   return(outcome)
 }
 
-#'@name  isNumVariableValidDS
-#'@title checks if a variable or a column of data.frame exists on a DataSHIELD server of type numeric
-#'@return TRUE - if a numerical variable (or column of a dataframe exists). Otherwise, FALSE
-#'@keywords server.function
-#'@exports  isNumVariableValidDS
+#' @name  isNumVariableValidDS
+#' @title checks if a variable or a column of data.frame exists on a DataSHIELD server of type numeric
+#' @param x the variable name
+#' @return TRUE - if a numerical variable (or column of a dataframe exists). Otherwise, FALSE
+#' @keywords server.function
+#' @export isNumVariableValidDS
 #'
  isNumVariableValidDS <- function(x = "")
 {

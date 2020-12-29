@@ -28,10 +28,10 @@ existsDS(
 \item "\code{\link{single}}"
 \item "\code{\link{raw}}"
 \item "\code{\link{vector}}"
-\item  "\code{\link{S4}}"
+\item "\code{\link{S4}}"
 \item "\code{\link{NULL}}"
 \item "\code{\link{function}}"
-\item "\code{\link{externalptr}}"
+\item "\code{externalptr}"
 \item "\code{\link{environment}}"
 }}
 }
@@ -47,7 +47,7 @@ the class of the object correspond to an expected class.
 }
 \details{
 This function uses the \code{\link{new.env}} R function to create an  environment. The default environment should is set to ".GlobalEnv".
-However, any environments available on the search path can be specified; use \code{\link{search()}} function to identify them.
+However, any environments available on the search path can be specified; use \code{\link{search}} function to identify them.
 
 The function \code{\link{class}} verifies the R object has an expected class.
 

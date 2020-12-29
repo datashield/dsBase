@@ -31,13 +31,14 @@ It could also be the name of child environment created in the global enviromment
 \item "\code{\link{single}}"
 \item "\code{\link{raw}}"
 \item "\code{\link{vector}}"
-\item  "\code{\link{S4}}"
+\item "\code{\link{S4}}"
 \item "\code{\link{NULL}}"
 \item "\code{\link{function}}"
-\item "\code{\link{externalptr}}"
+\item "\code{externalptr}"
 \item "\code{\link{environment}}"
-}
-#'@param package.name the name of the package as appearing in \code{\link{search}} (optional)}
+}}
+
+\item{package}{the package as appearing in \code{\link{search}} (optional)}
 }
 \value{
 \itemize{
