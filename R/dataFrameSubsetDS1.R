@@ -150,7 +150,7 @@ if(sum(is.na(keep.code.n))>0){
     V2.name.chars <- strsplit(V2.name,split="")
     if(length(V2.name.chars[[1]])>nfilter.string){
       studysideMessage <- "FAILED: V[ii].name argument > nfilter.string - please shorten"
-      stop(studysideMessage, .call = FALSE))
+      stop(studysideMessage, .call = FALSE)
     }
   }
 
