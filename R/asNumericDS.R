@@ -19,7 +19,7 @@ asNumericDS <- function(x.name){
     x <- eval(parse(text=x.name), envir = parent.frame())
   }else{
     studysideMessage <- "ERROR: x.name must be specified as a character string"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, .call = FALSE)
   }
 
   output <- as.numeric(as.character(x))

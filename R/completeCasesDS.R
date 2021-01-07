@@ -107,7 +107,7 @@ completeCasesDS <- function(x1.transmit){
 
   if(!string.safe){
     studysideMessage <- "FAILED: the object addressed by the x1.transmit argument is of an inappropriate class or it contains characters that could indicate malicious code. Where possible, please use standard alphanumerics in the elements of the clientside scalar/vector, or the name of the serverside scalar/vector, that is addressed by the x1.transmit argument. As a minimum you MUST avoid '=' and '<' as characters" 
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, .call = FALSE)
   }
 
   #Activate target object
@@ -125,7 +125,7 @@ completeCasesDS <- function(x1.transmit){
     output.object <- x1.use[complete.rows]
   }else{
 	  studysideMessage <- "FAILED: is x1 of wrong class. x1 argument must be a character string defining a serverside matrix, data.frame or vector"
-		return(list(studysideMessage=studysideMessage))
+	  stop(studysideMessage, .call = FALSE)
   }
   
   return(output.object)
