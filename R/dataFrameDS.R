@@ -93,7 +93,7 @@ dataFrameDS <- function(vectors=NULL, r.names=NULL, ch.rows=FALSE, ch.names=TRUE
   if(dim(dt)[1] < nfilter.subset){
     dt[] <- NA
     studysideMessage <- "nfilter.trap: dataframe has less than nfilter.subset rows"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, .call = FALSE)
   }
 
   return(dt)

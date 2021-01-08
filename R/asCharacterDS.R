@@ -17,7 +17,7 @@ if(is.character(x.name)){
 
 	}else{
    studysideMessage<-"ERROR: x.name must be specified as a character string"
-   return(list(studysideMessage=studysideMessage))
+   stop(studysideMessage, .call = FALSE)
    }
 
   output <- as.character(x)

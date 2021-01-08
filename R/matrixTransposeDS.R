@@ -32,7 +32,7 @@ if(length.M1.name>nfilter.stringShort)
 	studysideMessage<-
 	paste0("FAILED: M1.name is too long it could hide concealed code, please shorten to <= nfilter.stringShort = ",
 	       nfilter.stringShort," characters")
-	return(list(studysideMessage=studysideMessage))
+	stop(studysideMessage, .call = FALSE)
 	}
 
 
@@ -43,7 +43,7 @@ M1<-eval(parse(text=M1.name), envir = parent.frame())
 if(!is.matrix(M1)&&!is.data.frame(M1))
 	{
 	studysideMessage<-"FAILED: M1 must be of class matrix or data.frame, please respecify"
-	return(list(studysideMessage=studysideMessage))
+	stop(studysideMessage, .call = FALSE)
 	}
 
 #coerce to matrix if a data.frame

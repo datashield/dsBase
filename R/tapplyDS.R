@@ -32,7 +32,7 @@ nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
 	  X<-eval(parse(text=X.name), envir = parent.frame())
 	}else{
     studysideMessage<-"ERROR: X.name must be specified as a character string"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, .call = FALSE)
   }
 
 INDEX.factors<-unlist(strsplit(INDEX.names.transmit, split=","))
