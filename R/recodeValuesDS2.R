@@ -73,19 +73,19 @@ nfilter.kNN<-as.numeric(thr$nfilter.kNN)                    #
 var.name.text.chars<-strsplit(var.name.text,split="")
 if(length(var.name.text.chars[[1]])>nfilter.stringShort){
    studysideMessage<-"Error: var.name.text argument too long (see nfilter.stringShort)"
-   return(list(studysideMessage=studysideMessage))
+   stop(studysideMessage, .call = FALSE)
   }
 
 values2replace.text.chars<-strsplit(values2replace.text,split="")
 if(length(values2replace.text.chars[[1]])>nfilter.stringShort){
    studysideMessage<-"Error: values2replace.text argument too long (see nfilter.stringShort)"
-   return(list(studysideMessage=studysideMessage))
+   stop(studysideMessage, .call = FALSE)
   }
 
   new.values.text.chars<-strsplit(new.values.text,split="")
   if(length(new.values.text.chars[[1]])>nfilter.stringShort){
    studysideMessage<-"Error: new.values.text argument too long(see nfilter.stringShort)"
-   return(list(studysideMessage=studysideMessage))
+   stop(studysideMessage, .call = FALSE)
   }
 
 
@@ -155,7 +155,7 @@ difference.non.NA.lengths<-abs(non.NA.length.recoded-non.NA.length.original)
 #AND RETURN MESSAGE
 if(non.NA.length.recoded<nfilter.subset){
    studysideMessage<-"Error: number of non-NA elements of recoded vector < minimum subset size"
-   return(list(studysideMessage=studysideMessage))
+   stop(studysideMessage, .call = FALSE)
   }
 
 

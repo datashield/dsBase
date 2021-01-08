@@ -99,7 +99,7 @@ lexisDS2 <- function(datatext=NULL, intervalWidth, maxmaxtime, idCol, entryCol, 
   
   if(sum(is.na(code.n))>0){
     studysideMessage<-"FAILED: IntervalWidth argument contains non-numerics"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, .call = FALSE)
   }else{
     
     intervalWidth<-code.n
@@ -121,7 +121,7 @@ lexisDS2 <- function(datatext=NULL, intervalWidth, maxmaxtime, idCol, entryCol, 
   
   if(num.intervals>(nfilter.glm*length.collapseDF)){
     studysideMessage<-"FAILED: IntervalWidth vector is too long. It may be disclosive - please shorten"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, .call = FALSE)
   }
   ###############################################
   #                 END.OF.SCRIPT               #
@@ -299,7 +299,7 @@ lexisDS2 <- function(datatext=NULL, intervalWidth, maxmaxtime, idCol, entryCol, 
   #TERMINATE CALCULATION IF time.intervals.invalid==1
   if(time.intervals.invalid==1){
     studysideMessage<-"FAILED: At least one time interval has too few failures - please change times"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, .call = FALSE)
   }
   
   
