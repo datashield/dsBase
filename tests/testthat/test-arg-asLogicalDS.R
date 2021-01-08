@@ -20,36 +20,21 @@ context("asLogicalDS::arg::setup")
 
 context("asLogicalDS::arg::direct input numeric")
 test_that("simple asLogicalDS non-input", {
-    res <- asLogicalDS(1.0)
-
-    expect_length(res, 1)
-    expect_equal(class(res), "list")
-    expect_equal(res[[1]], "ERROR: x.name must be specified as a character string")
-    expect_equal(res$studysideMessage, "ERROR: x.name must be specified as a character string")
+    expect_error(asLogicalDS(1.0), "ERROR: x.name must be specified as a character string", fixed = TRUE)
 })
 
 context("asLogicalDS::arg::input NULL")
 test_that("simple asLogicalDS NULL", {
     input <- NULL
 
-    res <- asLogicalDS("input")
-
-    expect_length(res, 1)
-    expect_equal(class(res), "list")
-    expect_equal(res[[1]], "ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer, character or matrix")
-    expect_equal(res$studysideMessage, "ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer, character or matrix")
+    expect_error(asLogicalDS("input"), "ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer, character or matrix", fixed = TRUE)
 })
 
 context("asLogicalDS::arg::input NA")
 test_that("simple asLogicalDS NA", {
     input <- NA
 
-    res <- asLogicalDS("input")
-
-    expect_length(res, 1)
-    expect_equal(class(res), "list")
-    expect_equal(res[[1]], "ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer, character or matrix")
-    expect_equal(res$studysideMessage, "ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer, character or matrix")
+    expect_error(asLogicalDS("input"), "ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer, character or matrix", fixed = TRUE)
 })
 
 #

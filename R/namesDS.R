@@ -47,7 +47,7 @@ nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)                #
   if(!string.safe)
   {
     studysideMessage<-"FAILED: the character string denoting the argument <xname> is too long and may be disclosive - please shorten"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, .call = FALSE)
   }
 
   list.obj<-eval(parse(text=xname.transmit), envir = parent.frame())
