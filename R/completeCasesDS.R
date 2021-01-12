@@ -30,7 +30,7 @@
 #' and a studysideMessage was saved. If there was no error and <newobj> was created
 #' without problems no studysideMessage will have been saved and ds.message("newobj")
 #' will return the message: "ALL OK: there are no studysideMessage(s) on this datasource".
-#' @author Paul Burton for DataSHIELD Development Team, 17/10/2019
+#' @author Paul Burton for DataSHIELD Development Team
 #' @export
 #' 
 completeCasesDS <- function(x1.transmit){
@@ -115,13 +115,9 @@ completeCasesDS <- function(x1.transmit){
   x1.use <- eval(parse(text=x1.transmit), envir = parent.frame())
   complete.rows <- stats::complete.cases(x1.use)
   
-  # remove attributes from x1.use to avoid returning FALSE from the is.vector() check
-  x1.use.no.attr <- x1.use
-  attributes(x1.use.no.attr) <- NULL
-  
   if(is.matrix(x1.use) || is.data.frame(x1.use)){
     output.object <- x1.use[complete.rows,]
-  }else if(is.vector(x1.use.no.attr)){
+  }else if(is.atomic(x1.use) || is.factor(x1.use)){
     output.object <- x1.use[complete.rows]
   }else{
 	  studysideMessage <- "FAILED: is x1 of wrong class. x1 argument must be a character string defining a serverside matrix, data.frame or vector"
