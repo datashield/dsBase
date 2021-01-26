@@ -96,7 +96,7 @@ difference.non.NA.lengths<-abs(non.NA.length.recoded-non.NA.length.original)
 #AND RETURN MESSAGE
 if(non.NA.length.recoded<nfilter.subset){
    studysideMessage<-"Error: number of non-NA elements of recoded vector < minimum subset size"
-   stop(studysideMessage, .call = FALSE)
+   stop(studysideMessage, call. = FALSE)
   }
 
 

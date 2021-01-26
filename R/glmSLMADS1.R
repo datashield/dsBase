@@ -130,6 +130,7 @@ mod.glm.ds <- stats::glm(formula2use, family=final.family.object, x=TRUE, contro
 		if(min.category<nfilter.tab){
 		   y.invalid<-1
 		   errorMessage<-"ERROR: y vector is binary with one category less than filter threshold for table cell size"
+		   stop(errorMessage, call. = FALSE)
 		   }
 		}
 
@@ -151,7 +152,8 @@ mod.glm.ds <- stats::glm(formula2use, family=final.family.object, x=TRUE, contro
 		if(min.category<nfilter.tab){
 		    Xpar.invalid[pj]<-1
 		    errorMessage<-"ERROR: at least one column in X matrix is binary with one category less than filter threshold for table cell size"
-            }
+		    stop(errorMessage, call. = FALSE)
+		}
 	   }
 	}
 
@@ -169,6 +171,7 @@ if(!is.null(w.vect))
     if(min.category<nfilter.tab){
       w.invalid<-1
       errorMessage<-"ERROR: w vector is binary with one category less than filter threshold for table cell size"
+      stop(errorMessage, call. = FALSE)
     }
   }
 }
@@ -188,7 +191,8 @@ if(!is.null(offsetvar))
 		if(min.category<nfilter.tab){
         o.invalid<-1
 		errorMessage<-"ERROR: offset vector is binary with one category less than filter threshold for table cell size"
-            }
+		stop(errorMessage, call. = FALSE)
+		}
 	}
 }
  

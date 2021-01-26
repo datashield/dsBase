@@ -47,7 +47,7 @@ nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)                #
   if(!string.safe)
   {
     studysideMessage<-"FAILED: the character string denoting the argument <xname> is too long and may be disclosive - please shorten"
-    stop(studysideMessage, .call = FALSE)
+    stop(studysideMessage, call. = FALSE)
   }
 
   list.obj<-eval(parse(text=xname.transmit), envir = parent.frame())
@@ -57,7 +57,7 @@ nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)                #
 
   if(!is.list(list.obj)){
     error.message <- "The input object is not of class <list>"
-    return(list(error.message=error.message,trace.message=trace.message))
+    stop(paste0(error.message,trace.message), call. = FALSE)
   }
 
 

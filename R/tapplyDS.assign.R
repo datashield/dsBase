@@ -33,7 +33,7 @@ nfilter.subset<-as.numeric(thr$nfilter.subset)                          #
 	  X<-eval(parse(text=X.name), envir = parent.frame())
 	}else{
     studysideMessage<-"ERROR: X.name must be specified as a character string"
-    stop(studysideMessage, .call = FALSE)
+    stop(studysideMessage, call. = FALSE)
   }
 
 
@@ -63,7 +63,7 @@ if(length.2.test!=length.test.vector[h])all.lengths.equal<-FALSE
 
 if(!all.lengths.equal){
 studysideMessage="Error: the output variable and all indexing factors must be of equal length"
-stop(studysideMessage, .call = FALSE)
+stop(studysideMessage, call. = FALSE)
 }
 
 
@@ -320,7 +320,7 @@ for(k in 1:num.factors){
 
 	if(num.factors>1){
 	studysideMessage<-"Quantile will only work with one indexing factor but you can combine several factors into one. e.g. two factors with f1 and f2 levels respectively can be combined into one with f1 x f2 levels"
-	stop(studysideMessage, .call = FALSE)
+	stop(studysideMessage, call. = FALSE)
 	}
   probs.vector <- c(0.05,0.1,0.2,0.25,0.3,0.33,0.4,0.5,0.6,0.67,0.7,0.75,0.8,0.9,0.95)
   Quantile <- tapply(X.complete,INDEX,stats::quantile, probs=probs.vector)
@@ -332,7 +332,7 @@ for(k in 1:num.factors){
  }
 
  studysideMessage<-"No valid analytic function has been found. Please specify a valid DataSHIELD tapply function e.g. FUN.name='mean' or FUN.name='sd'"
- stop(studysideMessage, .call = FALSE)
+ stop(studysideMessage, call. = FALSE)
 }
 #ASSIGN.FUNCTION
 # tapplyDS.assign

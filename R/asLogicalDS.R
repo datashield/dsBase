@@ -17,12 +17,12 @@ if(is.character(x.name)){
 
 	}else{
    studysideMessage<-"ERROR: x.name must be specified as a character string"
-   stop(studysideMessage, .call = FALSE)
+   stop(studysideMessage, call. = FALSE)
    }
 
   if(!is.numeric(x)&&!is.integer(x)&&!is.character(x)&&!is.matrix(x)){
   studysideMessage<-"ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer, character or matrix"
-  stop(studysideMessage, .call = FALSE)
+  stop(studysideMessage, call. = FALSE)
   }
 
   output <- as.logical(x)

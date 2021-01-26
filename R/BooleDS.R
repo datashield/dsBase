@@ -51,12 +51,12 @@ V2<-eval(parse(text=V2.name), envir = parent.frame())
 
 if(is.character(V1)){
    studysideMessage<-"FAILED: V_i is character, please convert to numeric, factor or logical before running Boole"
-   stop(studysideMessage, .call = FALSE)
+   stop(studysideMessage, call. = FALSE)
    }
 
 if(is.character(V2)){
    studysideMessage<-"FAILED: V_ii is character, please convert to numeric, factor or logical before running Boole"
-   stop(studysideMessage, .call = FALSE)
+   stop(studysideMessage, call. = FALSE)
    }
 
 V1.length<-length(V1)   
@@ -64,12 +64,12 @@ V2.length<-length(V2)
 
 if(!((V1.length == V2.length) | (V2.length==1))){
    studysideMessage<-"FAILED: V_ii must either be of length one or of length equal to V_i"
-   stop(studysideMessage, .call = FALSE)
+   stop(studysideMessage, call. = FALSE)
 }
 
 if(!is.numeric(Boolean.operator.n) | Boolean.operator.n==0){
    studysideMessage<-"FAILED: Boolean.operator specified incorrectly. Must be: '==', '!=', '<', '<=', '>' or '>='"
-   stop(studysideMessage, .call = FALSE)
+   stop(studysideMessage, call. = FALSE)
 }
 
 Boolean.operator<-"  "
@@ -137,7 +137,7 @@ outobj<-Boolean.indicator
 #TERMINATE CALCULATION IF outobj.invalid==1
 #if(outobj.invalid==1){
 #   studysideMessage<-"FAILED: outobj has at least one category below table filter limit"
-#   stop(studysideMessage, .call = FALSE)
+#   stop(studysideMessage, call. = FALSE)
 #}
 
 
