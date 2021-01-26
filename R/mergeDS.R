@@ -74,14 +74,14 @@ x.name.numchars<-length(unlist(strsplit(x.name, split="")))
 if(x.name.numchars>nfilter.stringShort){
    studysideMessage<-
    paste0("Disclosure risk, number of characters in x.name must not exceed nfilter.stringShort which is currently set at: ",nfilter.stringShort)
-   stop(studysideMessage, .call = FALSE)
+   stop(studysideMessage, call. = FALSE)
 }
 
 y.name.numchars<-length(unlist(strsplit(y.name, split="")))
 if(y.name.numchars>nfilter.stringShort){
    studysideMessage<-
    paste0("Disclosure risk, number of characters in y.name must not exceed nfilter.stringShort which is currently set at: ",nfilter.stringShort)
-   stop(studysideMessage, .call = FALSE)
+   stop(studysideMessage, call. = FALSE)
 }
 	#activate data frame names
 x.data.frame<-eval(parse(text=x.name), envir = parent.frame())
@@ -91,12 +91,12 @@ y.data.frame<-eval(parse(text=y.name), envir = parent.frame())
 
 if(!is.data.frame(x.data.frame)){
    studysideMessage<-"Error: x.name must specify a data.frame"
-   stop(studysideMessage, .call = FALSE)
+   stop(studysideMessage, call. = FALSE)
 }
 
 if(!is.data.frame(y.data.frame)){
    studysideMessage<-"Error: y.name must specify a data.frame"
-   stop(studysideMessage, .call = FALSE)
+   stop(studysideMessage, call. = FALSE)
 }
 
 
@@ -115,7 +115,7 @@ if(!is.data.frame(y.data.frame)){
 	if(!colnames.x.valid){
     studysideMessage<-
     paste0("Disclosure risk, the number of characters in at least one by.x.name exceeds nfilter.stringShort which is currently set at: ",nfilter.stringShort)
-    stop(studysideMessage, .call = FALSE)
+    stop(studysideMessage, call. = FALSE)
 	}
 
 	colnames.y.valid<-TRUE
@@ -130,7 +130,7 @@ if(!is.data.frame(y.data.frame)){
 	if(!colnames.y.valid){
     studysideMessage<-
     paste0("Disclosure risk, the number of characters in at least one by.y.name exceeds nfilter.stringShort which is currently set at: ",nfilter.stringShort)
-    stop(studysideMessage, .call = FALSE)
+    stop(studysideMessage, call. = FALSE)
 	}
 
 	#convert colname format from transmittable to actionable form (a vector of character strings)
@@ -154,7 +154,7 @@ if(!is.data.frame(y.data.frame)){
 	if(!suffixes.valid){
     studysideMessage<-
     paste0("Disclosure risk, the number of characters in at least one specified suffix exceeds nfilter.stringShort which is currently set at: ",nfilter.stringShort)
-    stop(studysideMessage, .call = FALSE)
+    stop(studysideMessage, call. = FALSE)
 	}
 
 	#convert suffixes format from transmittable to actionable form (a vector of character strings)

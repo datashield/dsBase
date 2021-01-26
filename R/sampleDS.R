@@ -60,7 +60,7 @@ sampleDS <- function(x.transmit, size.transmit, replace.transmit=NULL, prob.tran
   if(!string.safe)
   {
      studysideMessage<-"FAILED: the character string denoting the argument <x> is too long and may be disclosive - please shorten"
-     stop(studysideMessage, .call = FALSE)
+     stop(studysideMessage, call. = FALSE)
   }
   
   #Check character string denoting <prob> argument is not potentially disclosive because of length 
@@ -76,7 +76,7 @@ sampleDS <- function(x.transmit, size.transmit, replace.transmit=NULL, prob.tran
   if(!string.safe)
   {
      studysideMessage<-"FAILED: the character string denoting the argument <prob> is too long and may be disclosive - please shorten"
-     stop(studysideMessage, .call = FALSE)
+     stop(studysideMessage, call. = FALSE)
   }
   
   #Activate <x> and <prob> if they are character strings
@@ -113,7 +113,7 @@ sampleDS <- function(x.transmit, size.transmit, replace.transmit=NULL, prob.tran
   	if(size.transmit>object.length)
   	{
   	studysideMessage<-"FAILED: if sampling without replacement size must be less than or equal to length(x)"
-  	stop(studysideMessage, .call = FALSE)
+  	stop(studysideMessage, call. = FALSE)
   	}
   }
   
@@ -122,7 +122,7 @@ sampleDS <- function(x.transmit, size.transmit, replace.transmit=NULL, prob.tran
   	if(size.transmit>x.active)
   	{
   	studysideMessage<-"FAILED: if sampling without replacement size must be less than or equal to x"
-  	stop(studysideMessage, .call = FALSE)
+  	stop(studysideMessage, call. = FALSE)
   	}
   
   }
@@ -133,13 +133,13 @@ sampleDS <- function(x.transmit, size.transmit, replace.transmit=NULL, prob.tran
   if(subset.length<nfilter.subset && subset.length!=0 && subset.length!=object.length)
   	{
   	studysideMessage<-"FAILED: disclosure risk, as the length of the subset to be created is less than nfilter.subset"
-  	stop(studysideMessage, .call = FALSE)
+  	stop(studysideMessage, call. = FALSE)
   	}
   	
   if(complementary.subset.length<nfilter.subset&& subset.length!=0 && subset.length!=object.length)
   	{
   	studysideMessage<-"FAILED: disclosure risk using differencing: original object length minus subset length less than nfilter.subset"
-  	stop(studysideMessage, .call = FALSE)
+  	stop(studysideMessage, call. = FALSE)
   
   	}
   }
@@ -161,7 +161,7 @@ sampleDS <- function(x.transmit, size.transmit, replace.transmit=NULL, prob.tran
   	if(size.transmit>object.length)
   	{
   	studysideMessage<-"FAILED: if sampling without replacement size must be less than or equal to length(x)"
-  	stop(studysideMessage, .call = FALSE)
+  	stop(studysideMessage, call. = FALSE)
   	}
   }
   
@@ -170,7 +170,7 @@ sampleDS <- function(x.transmit, size.transmit, replace.transmit=NULL, prob.tran
   	if(size.transmit>x.active)
   	{
   	studysideMessage<-"FAILED: if sampling without replacement size must be less than or equal to x"
-  	stop(studysideMessage, .call = FALSE)
+  	stop(studysideMessage, call. = FALSE)
   	}
   
   }

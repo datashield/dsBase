@@ -48,7 +48,7 @@ if(is.character(x.transmit))
 if(!string.safe)
 {
    studysideMessage<-"FAILED: the character string denoting the argument <x.name> is too long and may be disclosive - please shorten"
-   stop(studysideMessage, .call = FALSE)
+   stop(studysideMessage, call. = FALSE)
 }
 
 #######################################################################

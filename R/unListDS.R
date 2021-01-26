@@ -37,7 +37,7 @@ unListDS <- function(x.name) {
 	listvar<-eval(parse(text=x.name), envir = parent.frame())
     } else {
         studysideMessage<-"ERROR: x.name must be specified as a character string"
-        stop(studysideMessage, .call = FALSE)
+        stop(studysideMessage, call. = FALSE)
     } 
  
     outvar<-unlist(listvar)
