@@ -45,7 +45,7 @@ removeDS <- function(variable.name = NULL, environment.name =  "",
 
     if(length(environment) > 1)
     {
-      envir <- getEnvironmentDS(environment.name)
+      envir <- globalenv(environment.name)
     }
     else
     {
