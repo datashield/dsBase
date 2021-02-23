@@ -31,6 +31,9 @@ by ds.recodeValues. In effect, the <new.values.vector> argument of the
 ds.recodeValues function is converted to a character string format that is
 acceptable to the DataSHIELD R parser in the data repository
 and so can be used in the call to recodeValuesDS.}
+
+\item{missing}{if supplied, any missing values in the variable referred to by var.name.text 
+will be replaced by this value.}
 }
 \value{
 the object specified by the <newobj> argument (or default name '<var.name>_recoded')
