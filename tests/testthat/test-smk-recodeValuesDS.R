@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("recodeValuesDS1::smk::setup")
+context("recodeValuesDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,22 +20,27 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-test_that("simple recodeValuesDS1", {
+test_that("simple recodeValuesDS", {
     input          <- c(1, 2, 3, 4, 1, 3)
     values2replace <- "1,3"
     new.values     <- "10,30"
 
-    res <- recodeValuesDS1("input", values2replace, new.values)
+    res <- recodeValuesDS("input", values2replace, new.values)
 
-    expect_equal(class(res), "character")
-    expect_length(res, 1)
-    expect_equal(res[1], "Recoding undertaken without problems")
+    expect_equal(class(res), "numeric")
+    expect_length(res, 6)
+    expect_equal(res[1], 10)
+    expect_equal(res[2], 2)
+    expect_equal(res[3], 30)
+    expect_equal(res[4], 4)
+    expect_equal(res[5], 10)
+    expect_equal(res[6], 30)
 })
 
 #
 # Done
 #
 
-context("recodeValuesDS1::smk::shutdown")
+context("recodeValuesDS::smk::shutdown")
 
-context("recodeValuesDS1::smk::done")
+context("recodeValuesDS::smk::done")
