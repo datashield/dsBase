@@ -32,7 +32,7 @@ nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
 	  X<-eval(parse(text=X.name), envir = parent.frame())
 	}else{
     studysideMessage<-"ERROR: X.name must be specified as a character string"
-    stop(studysideMessage, .call = FALSE)
+    stop(studysideMessage, call. = FALSE)
   }
 
 INDEX.factors<-unlist(strsplit(INDEX.names.transmit, split=","))
@@ -60,7 +60,7 @@ if(length.2.test!=length.test.vector[h])all.lengths.equal<-FALSE
 
 if(!all.lengths.equal){
 return.message="Error: the output variable and all indexing factors must be of equal length"
-return(return.message)
+stop(return.message, call. = FALSE)
 }
 
 
@@ -101,7 +101,7 @@ for(k in 1:num.factors){
 
    if(min(N.count)<nfilter.tab && min(N.count) > 0){
    return.message<-"ERROR: at least one group defined by INDEX has < nfilter.tab members. The output cannot therefore be returned to the clientside. But the function ds.tapply.assign may still be used to write the output to the data servers with no clientside return"
-   return(return.message)
+   stop(return.message, call. = FALSE)
    }
 
  ##################

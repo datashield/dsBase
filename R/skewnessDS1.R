@@ -25,6 +25,7 @@ skewnessDS1 <- function(x, method){
   if(length(x) < nfilter.tab){
     skewness.out <- NA
     studysideMessage <- "FAILED: Nvalid less than nfilter.tab"
+    stop(studysideMessage, call. = FALSE)
   }else{
     
     g1 <- ( sum((x - mean(x))^3) / length(x) ) / ( sum((x - mean(x))^2) / length(x) )^(3/2)

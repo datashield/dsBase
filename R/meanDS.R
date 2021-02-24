@@ -27,7 +27,7 @@ meanDS <- function(xvect){
 
   if(out.validN < nfilter.tab){
     out.mean <- NA
-    studysideMessage <- "FAILED: Nvalid less than nfilter.tab"
+    stop("FAILED: Nvalid less than nfilter.tab", call. = FALSE)
   }
 
   out.obj <- list(EstimatedMean=out.mean,Nmissing=out.numNa,Nvalid=out.validN,Ntotal=out.totN,ValidityMessage=studysideMessage)

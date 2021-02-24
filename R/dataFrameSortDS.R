@@ -51,7 +51,7 @@ dataFrameSortDS <- function(df.name=NULL,sort.key.name=NULL,sort.descending,sort
   df.name.chars <- strsplit(df.name,split="")
   if(length(df.name.chars[[1]])>nfilter.stringShort){
     studysideMessage <- "df.name argument could hide active code - please use shorter name"
-    stop(studysideMessage, .call = FALSE)
+    stop(studysideMessage, call. = FALSE)
   }
 
 
@@ -59,7 +59,7 @@ dataFrameSortDS <- function(df.name=NULL,sort.key.name=NULL,sort.descending,sort
 
   if(length(sort.key.name.chars[[1]])>nfilter.stringShort){
     studysideMessage <- "sort.key.name argument could hide active code - please use shorter name"
-    stop(studysideMessage, .call = FALSE)
+    stop(studysideMessage, call. = FALSE)
   }
 
   df.name.2 <- paste0("data.frame(",df.name,")")
@@ -69,12 +69,12 @@ dataFrameSortDS <- function(df.name=NULL,sort.key.name=NULL,sort.descending,sort
   # DISCLOSURE TRAPS
   if(dim(df2sort)[1]<nfilter.subset){
     studysideMessage <- "specified data.frame to sort is shorter than minimum subset size"
-    stop(studysideMessage, .call = FALSE)
+    stop(studysideMessage, call. = FALSE)
   }
 
   if(length(sort.key)<nfilter.subset){
     studysideMessage <- "specified sort.key variable is shorter than minimum subset size"
-    stop(studysideMessage, .call = FALSE)
+    stop(studysideMessage, call. = FALSE)
   }
 
   if((sort.method=="alphabetic") || ((sort.method=="default") && is.character(sort.key))){

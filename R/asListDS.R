@@ -33,7 +33,7 @@ asListDS <- function (x.name,newobj){
 
     }else{
         studysideMessage<-"ERROR: x.name must be specified as a character string"
-        stop(studysideMessage, .call = FALSE)
+        stop(studysideMessage, call. = FALSE)
     }
 
     return.message<-paste0("New object <",newobj,"> created")

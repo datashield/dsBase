@@ -45,7 +45,7 @@ if(length.x1.transmit>nfilter.string.long)
 	studysideMessage<-
 	paste0("FAILED: x1.transmit is too long it could hide concealed code, please shorten to <= nfilter.string*5 = ",
 	       nfilter.string.long," characters")
-	stop(studysideMessage, .call = FALSE)
+	stop(studysideMessage, call. = FALSE)
 	}
 
 #Check length of nrows.transmit string not so long as to provide a risk of hidden code
@@ -56,7 +56,7 @@ if(length.nrows.transmit>nfilter.stringShort)
 	studysideMessage<-
 	paste0("FAILED: nrows.transmit is too long it could hide concealed code, please shorten to <= nfilter.stringShort = ",
 	       nfilter.stringShort," characters")
-	stop(studysideMessage, .call = FALSE)
+	stop(studysideMessage, call. = FALSE)
 	}
 
 #Evaluate x1.transmit via route depending on aim
@@ -112,7 +112,7 @@ nrows<-as.numeric(nrows.c)
 			{
 			studysideMessage<-
 			paste0("FAILED: if x1 is a scalar you must specify argument <nrows> as an integer to fix matrix dimensions")
-			stop(studysideMessage, .call = FALSE)
+			stop(studysideMessage, call. = FALSE)
 			}
 			else
 			{
@@ -124,7 +124,7 @@ nrows<-as.numeric(nrows.c)
       aim!="clientside.vector.2.matrix"&&aim!="clientside.scalar.2.matrix")
 	  {
 			studysideMessage<-paste0("FAILED: the aim specified is not valid, please respecify")
-			stop(studysideMessage, .call = FALSE)
+			stop(studysideMessage, call. = FALSE)
 	  }
 
 	return(output)

@@ -164,7 +164,7 @@ lencs<-length(chars.separated)
 if(!string.safe)
 {
    studysideMessage<-"FAILED: the object addressed by the x1.transmit argument is of an inappropriate class or it contains characters that could indicate malicious code. Where possible, please use standard alphanumerics in the elements of the clientside scalar/vector, or the name of the serverside scalar/vector, that is addressed by the x1.transmit argument. As a minimum you MUST avoid '=' and '<' as characters" 
-   stop(studysideMessage, .call = FALSE)
+   stop(studysideMessage, call. = FALSE)
 }
 
 if(source.x1=="serverside")
@@ -195,7 +195,7 @@ x1.c<-x1.temp[[1]]
 if(!is.vector(x1.use))
 {
    studysideMessage<-"FAILED: x1 argument must define a clientside or serverside vector or scalar"
-   stop(studysideMessage, .call = FALSE)
+   stop(studysideMessage, call. = FALSE)
 }
 
 
@@ -257,7 +257,7 @@ if(!is.null(times.transmit))
 	if(!string.safe)
 	{
 	studysideMessage<-"FAILED: the object addressed by the times.transmit argument is of an inappropriate class or it contains characters that could indicate malicious code. Where possible, please use standard alphanumerics in the elements of the clientside scalar/vector, or the name of the serverside scalar/vector, that is addressed by the x1.transmit argument. As a minimum you MUST avoid '=' and '<' as characters" 
-	stop(studysideMessage, .call = FALSE)
+	stop(studysideMessage, call. = FALSE)
 	}
 }
 
@@ -345,7 +345,7 @@ if(!is.null(length.out.transmit))
 	if(!string.safe)
 	{
 	studysideMessage<-"FAILED: the object addressed by the length.out.transmit argument is of an inappropriate class or it contains characters that could indicate malicious code. Where possible, please use standard alphanumerics in the elements of the clientside scalar/vector, or the name of the serverside scalar/vector, that is addressed by the x1.transmit argument. As a minimum you MUST avoid '=' and '<' as characters" 
-	stop(studysideMessage, .call = FALSE)
+	stop(studysideMessage, call. = FALSE)
 	}
 }
 
@@ -442,7 +442,7 @@ if(!is.null(each.transmit))
 	if(!string.safe)
 	{
 	studysideMessage<-"FAILED: the object addressed by the each.transmit argument is of an inappropriate class or it contains characters that could indicate malicious code. Where possible, please use standard alphanumerics in the elements of the clientside scalar/vector, or the name of the serverside scalar/vector, that is addressed by the x1.transmit argument. As a minimum you MUST avoid '=' and '<' as characters" 
-	stop(studysideMessage, .call = FALSE)
+	stop(studysideMessage, call. = FALSE)
 	}
 }
 

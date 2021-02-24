@@ -22,8 +22,7 @@ lexisDS1 <- function(exitCol=NULL){
   exitCol.length <- length(strsplit(exitCol,"")[[1]])
   if(exitCol.length>nfilter.string){
     errorMessage <- "ERROR: character string naming exitCol is too long please shorten name"
-    out.obj <- list(errorMessage=errorMessage)
-    return(out.obj)
+    stop(errorMessage, call. = FALSE)
   }
   
   exposure <- eval(parse(text=exitCol), envir = parent.frame())
