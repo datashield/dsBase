@@ -17,12 +17,10 @@
 #' elements the sum of the values of each variable, a matrix with elements the number of complete cases in each
 #' pair of variables, a list with the number of missing values in each variable separately (columnwise) and the number
 #' of missing values casewise or pairwise depending on the arqument \code{use}, a vector with the variances of the input
-#' variables, a vector with elements the sum of squares of each variable, and an error message which indicates
-#' whether or not the input variables pass the disclosure controls. The first disclosure control checks that the number
+#' variables, and a vector with elements the sum of squares of each variable. The first disclosure control checks that the number
 #' of variables is not bigger than a percentage of the individual-level records (the allowed percentage is pre-specified
 #' by the 'nfilter.glm'). The second disclosure control checks that none of them is dichotomous with a level having fewer
-#' counts than the pre-specified 'nfilter.tab' threshold. If any of the input variables do not pass the disclosure
-#' controls then all the output values are replaced with NAs
+#' counts than the pre-specified 'nfilter.tab' threshold.
 #' @author Paul Burton, and Demetris Avraam for DataSHIELD Development Team
 #' @export
 #'
@@ -30,11 +28,9 @@ corDS <- function(x=NULL, y=NULL, use=NULL){
   
   #############################################################
   #MODULE 1: CAPTURE THE nfilter SETTINGS
-  thr <- listDisclosureSettingsDS()
+  thr <- dsBase::listDisclosureSettingsDS()
   nfilter.tab <- as.numeric(thr$nfilter.tab)
   nfilter.glm <- as.numeric(thr$nfilter.glm)
-  #nfilter.subset <- as.numeric(thr$nfilter.subset)
-  #nfilter.string <- as.numeric(thr$nfilter.string)
   #############################################################
   
   x.val <- eval(parse(text=x), envir = parent.frame())
@@ -72,44 +68,10 @@ corDS <- function(x=NULL, y=NULL, use=NULL){
   if(N.vars > (nfilter.glm * nrow(dataframe))){
     
     varcov.saturation.invalid <- 1
-  
-    sums.of.products <- matrix(NA, ncol=N.vars, nrow=N.vars)
-    rownames(sums.of.products) <- cls
-    colnames(sums.of.products) <- cls
     
-    sums <- matrix(NA, ncol=1, nrow=N.vars)
-    rownames(sums) <- cls
-    
-    complete.counts <- matrix(NA, ncol=N.vars, nrow=N.vars)
-    rownames(complete.counts) <- cls
-    colnames(complete.counts) <- cls
-    
-    column.NAs <- matrix(NA, ncol=N.vars, nrow=1)
-    colnames(column.NAs) <- cls
-    
-    casewise.NAs <- matrix(NA, ncol=1, nrow=1)
-    
-    pairwise.NAs <- matrix(NA, ncol=N.vars, nrow=N.vars)
-    rownames(pairwise.NAs) <- cls
-    colnames(pairwise.NAs) <- cls
-    
-    if (use=='casewise.complete'){
-      na.counts <- list(column.NAs, casewise.NAs)
-      names(na.counts) <- list(paste0("Number of NAs in each column"), paste0("Number of NAs casewise"))
-    }
-    if (use=='pairwise.complete'){
-      na.counts <- list(column.NAs, pairwise.NAs)
-      names(na.counts) <- list(paste0("Number of NAs in each column"), paste0("Number of NAs pairwise"))
-    }
-    
-    vars <- matrix(NA, ncol=1, nrow=N.vars)
-    rownames(sums) <- cls
-    
-    sums.of.squares <- matrix(NA, ncol=N.vars, nrow=N.vars)
-    rownames(sums.of.squares) <- cls
-    colnames(sums.of.squares) <- cls
-    
-    errorMessage <- "ERROR: The ratio of the number of variables over the number of individual-level records exceeds the allowed threshold, there is a possible risk of disclosure"
+    studysideMessage <- "ERROR: The ratio of the number of variables over the number of individual-level
+                          records exceeds the allowed threshold, there is a possible risk of disclosure"
+    stop(studysideMessage, call. = FALSE)
     
   }
   
@@ -136,49 +98,13 @@ corDS <- function(x=NULL, y=NULL, use=NULL){
     }
   }
   
-  # if any of the vectors in X matrix is invalid then the function returns all the
-  # outputs by replacing their values with NAs
+  # if any of the vectors in X matrix is invalid then the function returns an error
   
   if(is.element('1', Xpar.invalid)==TRUE & varcov.saturation.invalid==0){
     
-    sums.of.products <- matrix(NA, ncol=N.vars, nrow=N.vars)
-    rownames(sums.of.products) <- cls
-    colnames(sums.of.products) <- cls
-    
-    sums <- matrix(NA, ncol=1, nrow=N.vars)
-    rownames(sums) <- cls
-    
-    complete.counts <- matrix(NA, ncol=N.vars, nrow=N.vars)
-    rownames(complete.counts) <- cls
-    colnames(complete.counts) <- cls
-    
-    column.NAs <- matrix(NA, ncol=N.vars, nrow=1)
-    colnames(column.NAs) <- cls
-    
-    casewise.NAs <- matrix(NA, ncol=1, nrow=1)
-    
-    pairwise.NAs <- matrix(NA, ncol=N.vars, nrow=N.vars)
-    rownames(pairwise.NAs) <- cls
-    colnames(pairwise.NAs) <- cls
-    
-    if (use=='casewise.complete'){
-      na.counts <- list(column.NAs, casewise.NAs)
-      names(na.counts) <- list(paste0("Number of NAs in each column"), paste0("Number of NAs casewise"))
-    }
-    if (use=='pairwise.complete'){
-      na.counts <- list(column.NAs, pairwise.NAs)
-      names(na.counts) <- list(paste0("Number of NAs in each column"), paste0("Number of NAs pairwise"))
-    }
-    
-    vars <- matrix(NA, ncol=1, nrow=N.vars)
-    rownames(sums) <- cls
-    
-    sums.of.squares <- matrix(NA, ncol=N.vars, nrow=N.vars)
-    rownames(sums.of.squares) <- cls
-    colnames(sums.of.squares) <- cls
-    
-    errorMessage <- "ERROR: at least one variable is binary with one category less than the filter threshold for table cell size"
-    
+    studysideMessage <- "ERROR: at least one variable is binary with one category less than the filter threshold for table cell size"
+    stop(studysideMessage, call. = FALSE)
+
   }
   
   # if all vectors in X matrix are valid then the output matrices are calculated
@@ -198,7 +124,10 @@ corDS <- function(x=NULL, y=NULL, use=NULL){
       casewise.dataframe <- dataframe[stats::complete.cases(dataframe),]
       
       # calculate the number of NAs casewise
-      casewise.NAs <- as.matrix(dim(dataframe)[1]-dim(casewise.dataframe)[1])
+      casewise.NAs.all <- dim(dataframe)[1]-dim(casewise.dataframe)[1]
+      casewise.NAs <- matrix(casewise.NAs.all, ncol=N.vars, nrow=N.vars)
+      rownames(casewise.NAs) <- cls
+      colnames(casewise.NAs) <- cls
       
       # counts for NAs to be returned to the client:
       # This is a list with (a) a vector with the number of NAs in each variable (i.e. in each column)
@@ -218,10 +147,13 @@ corDS <- function(x=NULL, y=NULL, use=NULL){
       }
       
       # A matrix with elements the sum of each variable
-      sums <- matrix(ncol=1, nrow=N.vars)
+      sums <- matrix(ncol=N.vars, nrow=N.vars)
       rownames(sums) <- cls
+      colnames(sums) <- cls
       for(m in 1:N.vars){
-        sums[m,1] <- sum(as.numeric(as.character(casewise.dataframe[,m])))
+        for(p in 1:N.vars){
+          sums[m,p] <- sum(as.numeric(as.character(casewise.dataframe[,m])))
+        }  
       }
       
       # A matrix with elements the sum of squares of each variable after removing missing values casewise
@@ -235,10 +167,13 @@ corDS <- function(x=NULL, y=NULL, use=NULL){
       }
       
       # Calculate the variance of each variable after removing missing values casewise
-      vars <- matrix(ncol=1, nrow=N.vars)
-      rownames(sums) <- cls
+      vars <- matrix(ncol=N.vars, nrow=N.vars)
+      rownames(vars) <- cls
+      colnames(vars) <- cls
       for(m in 1:N.vars){
-        vars[m,1] <- stats::var(as.numeric(as.character(casewise.dataframe[,m])))
+        for(p in 1:N.vars){
+          vars[m,p] <- stats::var(as.numeric(as.character(casewise.dataframe[,m])))
+        }  
       }
       
       complete.counts <- matrix(dim(casewise.dataframe)[1], ncol=N.vars, nrow=N.vars)
@@ -316,8 +251,8 @@ corDS <- function(x=NULL, y=NULL, use=NULL){
       
       # Calculate the variance of each variable after removing missing values pairwise
       vars <- matrix(ncol=N.vars, nrow=N.vars)
-      rownames(sums) <- cls
-      colnames(sums) <- cls
+      rownames(vars) <- cls
+      colnames(vars) <- cls
       for(m in 1:N.vars){
         for(p in 1:N.vars){
           vars[m,p] <- stats::var(as.numeric(as.character(cleaned.pair[[m]][[p]][,1])))
@@ -335,13 +270,10 @@ corDS <- function(x=NULL, y=NULL, use=NULL){
       
     }
     
-    # if all vectors in X matrix are valid then a NA error message is returned
-    errorMessage <- NA
-    
   }
   
-  return(list(sums.of.products=sums.of.products, sums=sums, complete.counts=complete.counts, na.counts=na.counts, errorMessage=errorMessage, vars=vars, sums.of.squares=sums.of.squares))
+  return(list(sums.of.products=sums.of.products, sums=sums, complete.counts=complete.counts, na.counts=na.counts, vars=vars, sums.of.squares=sums.of.squares))
   
 }
-#AGGREGATE FUNCTION
+# AGGREGATE FUNCTION
 # corDS
