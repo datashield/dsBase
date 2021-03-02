@@ -23,8 +23,20 @@ test_that("simple dataFrameFillDS, ascending, numeric", {
     df                  <- data.frame(v1 = c(-2.0, -3.0, 4.0, 2.0, 1.0, 0.0, -1.0, 3.0), v2 = c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0))
     allNames.transmit   <- "v1,v2,v3,v4,v5,v6,v7"
     class.vect.transmit <- "numeric,numeric,numeric,foo,bar,factor,logical"
+    levels.vec.transmit <- NULL
 
-    expect_error(res <- dataFrameFillDS("df", allNames.transmit, class.vect.transmit), "Unexpected missing class specified: 'foo'", fixed = TRUE)
+    expect_error(res <- dataFrameFillDS("df", allNames.transmit, class.vect.transmit, levels.vec.transmit), "Unexpected missing class specified: 'foo'", fixed = TRUE)
+
+    expect_true(! exists("res"))
+})
+
+test_that("simple dataFrameFillDS, ascending, numeric", {
+    df                  <- data.frame(v1 = c(-2.0, -3.0, 4.0, 2.0, 1.0, 0.0, -1.0, 3.0), v2 = c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0))
+    allNames.transmit   <- "v1,v2,v3,v4,v5,v6,v7"
+    class.vect.transmit <- "numeric,numeric,numeric,foo,bar,factor,logical"
+    levels.vec.transmit <- NULL
+
+    expect_error(res <- dataFrameFillDS("df", allNames.transmit, class.vect.transmit, levels.vec.transmit), "Unexpected missing class specified: 'foo'", fixed = TRUE)
 
     expect_true(! exists("res"))
 })
