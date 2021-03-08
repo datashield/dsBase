@@ -10,17 +10,16 @@
 #' @param use a character string giving a method for computing covariances in the presence of missing values.
 #' This must be one of the strings "casewise.complete" or "pairwise.complete". If \code{use} is set to
 #' 'casewise.complete' then any rows with missing values are omitted from the vector, matrix or dataframe before the
-#' calculations of the sums. If \code{use} is set to 'pairwise.complete' (which is the default case set on the client-side),
-#' then the sums of products are computed for each two variables using only the complete pairs of observations on the
-#' two variables.
+#' calculations of the sums. If \code{use} is set to 'pairwise.complete', then the sums of products are computed for
+#' each two variables using only the complete pairs of observations on the two variables.
 #' @return a list that includes a matrix with elements the sum of products between each two variables, a matrix with
 #' elements the sum of the values of each variable, a matrix with elements the number of complete cases in each
 #' pair of variables, a list with the number of missing values in each variable separately (columnwise) and the number
-#' of missing values casewise or pairwise depending on the arqument \code{use}, a vector with the variances of the input
-#' variables, and a vector with elements the sum of squares of each variable. The first disclosure control checks that the number
-#' of variables is not bigger than a percentage of the individual-level records (the allowed percentage is pre-specified
-#' by the 'nfilter.glm'). The second disclosure control checks that none of them is dichotomous with a level having fewer
-#' counts than the pre-specified 'nfilter.tab' threshold.
+#' of missing values casewise or pairwise depending on the arqument \code{use}, and a vector with elements the sum of
+#' squares of each variable. The first disclosure control checks that the number of variables is not bigger than a
+#' percentage of the individual-level records (the allowed percentage is pre-specified by the 'nfilter.glm'). The
+#' second disclosure control checks that none of them is dichotomous with a level having fewer counts than the
+#' pre-specified 'nfilter.tab' threshold.
 #' @author Paul Burton, and Demetris Avraam for DataSHIELD Development Team
 #' @export
 #'
@@ -132,7 +131,7 @@ corDS <- function(x=NULL, y=NULL, use=NULL){
       # counts for NAs to be returned to the client:
       # This is a list with (a) a vector with the number of NAs in each variable (i.e. in each column)
       # separately and (b) the number of NAs casewise (i.e. the number of rows deleted from the input dataframe
-      # which are the rows that at least one of their cells includes missing value)
+      # which are the rows that at least one of their cells include a missing value)
       na.counts <- list(column.NAs, casewise.NAs)
       names(na.counts) <- list(paste0("Number of NAs in each column"), paste0("Number of NAs casewise"))
       
@@ -166,16 +165,7 @@ corDS <- function(x=NULL, y=NULL, use=NULL){
         }
       }
       
-      # Calculate the variance of each variable after removing missing values casewise
-      vars <- matrix(ncol=N.vars, nrow=N.vars)
-      rownames(vars) <- cls
-      colnames(vars) <- cls
-      for(m in 1:N.vars){
-        for(p in 1:N.vars){
-          vars[m,p] <- stats::var(as.numeric(as.character(casewise.dataframe[,m])))
-        }  
-      }
-      
+      # A natrix with elements the number of complete cases casewise
       complete.counts <- matrix(dim(casewise.dataframe)[1], ncol=N.vars, nrow=N.vars)
       rownames(complete.counts) <- cls
       colnames(complete.counts) <- cls
@@ -249,16 +239,7 @@ corDS <- function(x=NULL, y=NULL, use=NULL){
         }
       }
       
-      # Calculate the variance of each variable after removing missing values pairwise
-      vars <- matrix(ncol=N.vars, nrow=N.vars)
-      rownames(vars) <- cls
-      colnames(vars) <- cls
-      for(m in 1:N.vars){
-        for(p in 1:N.vars){
-          vars[m,p] <- stats::var(as.numeric(as.character(cleaned.pair[[m]][[p]][,1])))
-        }
-      }
-      
+      # A natrix with elements the number of complete cases pairwise
       complete.counts <- matrix(ncol=N.vars, nrow=N.vars)
       rownames(complete.counts) <- cls
       colnames(complete.counts) <- cls
@@ -272,7 +253,7 @@ corDS <- function(x=NULL, y=NULL, use=NULL){
     
   }
   
-  return(list(sums.of.products=sums.of.products, sums=sums, complete.counts=complete.counts, na.counts=na.counts, vars=vars, sums.of.squares=sums.of.squares))
+  return(list(sums.of.products=sums.of.products, sums=sums, complete.counts=complete.counts, na.counts=na.counts, sums.of.squares=sums.of.squares))
   
 }
 # AGGREGATE FUNCTION
