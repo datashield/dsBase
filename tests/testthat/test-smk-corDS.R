@@ -29,7 +29,7 @@ test_that("simple corDS, pairwise, full", {
     res <- corDS("x", "y", use)
 
     expect_equal(class(res), "list")
-    expect_length(res, 6)
+    expect_length(res, 5)
 
     if (base::getRversion() < 4.0)
     {
@@ -90,24 +90,6 @@ test_that("simple corDS, pairwise, full", {
 
     if (base::getRversion() < 4.0)
     {
-        expect_length(class(res$vars), 1)
-        expect_true("matrix" %in% class(res$vars))
-    }
-    else
-    {
-        expect_length(class(res$vars), 2)
-        expect_true("matrix" %in% class(res$vars))
-        expect_true("array" %in% class(res$vars))
-    }
-    expect_length(res$vars, 4)
-
-    expect_equal(res$vars[1], 6.0)
-    expect_equal(res$vars[2], 6.0)
-    expect_equal(res$vars[3], 6.0)
-    expect_equal(res$vars[4], 6.0)
-
-    if (base::getRversion() < 4.0)
-    {
         expect_length(class(res$sums.of.squares), 1)
         expect_true("matrix" %in% class(res$sums.of.squares))
     }
@@ -133,7 +115,7 @@ test_that("simple corDS, pairwise, neg. full", {
     res <- corDS("x", "y", use)
 
     expect_equal(class(res), "list")
-    expect_length(res, 6)
+    expect_length(res, 5)
 
     if (base::getRversion() < 4.0)
     {
@@ -194,24 +176,6 @@ test_that("simple corDS, pairwise, neg. full", {
 
     if (base::getRversion() < 4.0)
     {
-        expect_length(class(res$vars), 1)
-        expect_true("matrix" %in% class(res$vars))
-    }
-    else
-    {
-        expect_length(class(res$vars), 2)
-        expect_true("matrix" %in% class(res$vars))
-        expect_true("array" %in% class(res$vars))
-    }
-    expect_length(res$vars, 4)
-
-    expect_equal(res$vars[1], 6.0)
-    expect_equal(res$vars[2], 6.0)
-    expect_equal(res$vars[3], 6.0)
-    expect_equal(res$vars[4], 6.0)
-
-    if (base::getRversion() < 4.0)
-    {
         expect_length(class(res$sums.of.squares), 1)
         expect_true("matrix" %in% class(res$sums.of.squares))
     }
@@ -237,7 +201,7 @@ test_that("simple corDS, pairwise, some", {
     res <- corDS("x", "y", use)
 
     expect_equal(class(res), "list")
-    expect_length(res, 6)
+    expect_length(res, 5)
 
     if (base::getRversion() < 4.0)
     {
@@ -299,24 +263,6 @@ test_that("simple corDS, pairwise, some", {
 
     if (base::getRversion() < 4.0)
     {
-        expect_length(class(res$vars), 1)
-        expect_true("matrix" %in% class(res$vars))
-    }
-    else
-    {
-        expect_length(class(res$vars), 2)
-        expect_true("matrix" %in% class(res$vars))
-        expect_true("array" %in% class(res$vars))
-    }
-    expect_length(res$vars, 4)
-
-    expect_equal(res$vars[1], 5.989820,  tolerance = 1e-6)
-    expect_equal(res$vars[2], 5.950714, tolerance = 1e-6)
-    expect_equal(res$vars[3], 5.989820,  tolerance = 1e-6)
-    expect_equal(res$vars[4], 5.950714, tolerance = 1e-6)
-
-    if (base::getRversion() < 4.0)
-    {
         expect_length(class(res$sums.of.squares), 1)
         expect_true("matrix" %in% class(res$sums.of.squares))
     }
@@ -343,7 +289,7 @@ test_that("simple corDS, pairwise, some", {
     res <- corDS("x", "y", use)
 
     expect_equal(class(res), "list")
-    expect_length(res, 6)
+    expect_length(res, 5)
 
     if (base::getRversion() < 4.0)
     {
@@ -404,24 +350,6 @@ test_that("simple corDS, pairwise, some", {
 
     if (base::getRversion() < 4.0)
     {
-        expect_length(class(res$vars), 1)
-        expect_true("matrix" %in% class(res$vars))
-    }
-    else
-    {
-        expect_length(class(res$vars), 2)
-        expect_true("matrix" %in% class(res$vars))
-        expect_true("array" %in% class(res$vars))
-    }
-    expect_length(res$vars, 4)
-
-    expect_equal(res$vars[1], 7.3,       tolerance = 1e-6)
-    expect_equal(res$vars[2], 12.333333, tolerance = 1e-6)
-    expect_equal(res$vars[3], 12.333333, tolerance = 1e-6)
-    expect_equal(res$vars[4], 7.5,       tolerance = 1e-6)
-
-    if (base::getRversion() < 4.0)
-    {
         expect_length(class(res$sums.of.squares), 1)
         expect_true("matrix" %in% class(res$sums.of.squares))
     }
@@ -448,7 +376,7 @@ test_that("simple corDS, casewise, full", {
     res <- corDS("x", "y", use)
 
     expect_equal(class(res), "list")
-    expect_length(res, 6)
+    expect_length(res, 5)
 
     if (base::getRversion() < 4.0)
     {
@@ -509,24 +437,6 @@ test_that("simple corDS, casewise, full", {
 
     if (base::getRversion() < 4.0)
     {
-        expect_length(class(res$vars), 1)
-        expect_true("matrix" %in% class(res$vars))
-    }
-    else
-    {
-        expect_length(class(res$vars), 2)
-        expect_true("matrix" %in% class(res$vars))
-        expect_true("array" %in% class(res$vars))
-    }
-    expect_length(res$vars, 4)
-
-    expect_equal(res$vars[1], 6.0)
-    expect_equal(res$vars[2], 6.0)
-    expect_equal(res$vars[3], 6.0)
-    expect_equal(res$vars[4], 6.0)
-
-    if (base::getRversion() < 4.0)
-    {
         expect_length(class(res$sums.of.squares), 1)
         expect_true("matrix" %in% class(res$sums.of.squares))
     }
@@ -552,7 +462,7 @@ test_that("simple corDS, casewise, neg. full", {
     res <- corDS("x", "y", use)
 
     expect_equal(class(res), "list")
-    expect_length(res, 6)
+    expect_length(res, 5)
 
     if (base::getRversion() < 4.0)
     {
@@ -613,24 +523,6 @@ test_that("simple corDS, casewise, neg. full", {
 
     if (base::getRversion() < 4.0)
     {
-        expect_length(class(res$vars), 1)
-        expect_true("matrix" %in% class(res$vars))
-    }
-    else
-    {
-        expect_length(class(res$vars), 2)
-        expect_true("matrix" %in% class(res$vars))
-        expect_true("array" %in% class(res$vars))
-    }
-    expect_length(res$vars, 4)
-
-    expect_equal(res$vars[1], 6.0)
-    expect_equal(res$vars[2], 6.0)
-    expect_equal(res$vars[3], 6.0)
-    expect_equal(res$vars[4], 6.0)
-
-    if (base::getRversion() < 4.0)
-    {
         expect_length(class(res$sums.of.squares), 1)
         expect_true("matrix" %in% class(res$sums.of.squares))
     }
@@ -656,7 +548,7 @@ test_that("simple corDS, casewise, some", {
     res <- corDS("x", "y", use)
 
     expect_equal(class(res), "list")
-    expect_length(res, 6)
+    expect_length(res, 5)
 
     if (base::getRversion() < 4.0)
     {
@@ -717,24 +609,6 @@ test_that("simple corDS, casewise, some", {
 
     if (base::getRversion() < 4.0)
     {
-        expect_length(class(res$vars), 1)
-        expect_true("matrix" %in% class(res$vars))
-    }
-    else
-    {
-        expect_length(class(res$vars), 2)
-        expect_true("matrix" %in% class(res$vars))
-        expect_true("array" %in% class(res$vars))
-    }
-    expect_length(res$vars, 4)
-
-    expect_equal(res$vars[1], 5.989820, tolerance = 1e-6)
-    expect_equal(res$vars[2], 5.950714, tolerance = 1e-6)
-    expect_equal(res$vars[3], 5.989820, tolerance = 1e-6)
-    expect_equal(res$vars[4], 5.950714, tolerance = 1e-6)
-
-    if (base::getRversion() < 4.0)
-    {
         expect_length(class(res$sums.of.squares), 1)
         expect_true("matrix" %in% class(res$sums.of.squares))
     }
@@ -761,7 +635,7 @@ test_that("simple corDS, casewise, some", {
     res <- corDS("x", "y", use)
 
     expect_equal(class(res), "list")
-    expect_length(res, 6)
+    expect_length(res, 5)
 
     if (base::getRversion() < 4.0)
     {
@@ -819,24 +693,6 @@ test_that("simple corDS, casewise, some", {
 
     expect_equal(class(res$na.counts), "list")
     expect_length(res$na.counts, 2)
-
-    if (base::getRversion() < 4.0)
-    {
-        expect_length(class(res$vars), 1)
-        expect_true("matrix" %in% class(res$vars))
-    }
-    else
-    {
-        expect_length(class(res$vars), 2)
-        expect_true("matrix" %in% class(res$vars))
-        expect_true("array" %in% class(res$vars))
-    }
-    expect_length(res$vars, 4)
-
-    expect_equal(res$vars[1], 12.333333, tolerance = 1e-6)
-    expect_equal(res$vars[2], 12.333333, tolerance = 1e-6)
-    expect_equal(res$vars[3], 12.333333, tolerance = 1e-6)
-    expect_equal(res$vars[4], 12.333333, tolerance = 1e-6)
 
     if (base::getRversion() < 4.0)
     {
