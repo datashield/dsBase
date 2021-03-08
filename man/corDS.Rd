@@ -15,19 +15,18 @@ correlation(s) is (are) going to calculated for.}
 \item{use}{a character string giving a method for computing covariances in the presence of missing values.
 This must be one of the strings "casewise.complete" or "pairwise.complete". If \code{use} is set to
 'casewise.complete' then any rows with missing values are omitted from the vector, matrix or dataframe before the
-calculations of the sums. If \code{use} is set to 'pairwise.complete' (which is the default case set on the client-side),
-then the sums of products are computed for each two variables using only the complete pairs of observations on the
-two variables.}
+calculations of the sums. If \code{use} is set to 'pairwise.complete', then the sums of products are computed for
+each two variables using only the complete pairs of observations on the two variables.}
 }
 \value{
 a list that includes a matrix with elements the sum of products between each two variables, a matrix with
 elements the sum of the values of each variable, a matrix with elements the number of complete cases in each
 pair of variables, a list with the number of missing values in each variable separately (columnwise) and the number
-of missing values casewise or pairwise depending on the arqument \code{use}, a vector with the variances of the input
-variables, and a vector with elements the sum of squares of each variable. The first disclosure control checks that the number
-of variables is not bigger than a percentage of the individual-level records (the allowed percentage is pre-specified
-by the 'nfilter.glm'). The second disclosure control checks that none of them is dichotomous with a level having fewer
-counts than the pre-specified 'nfilter.tab' threshold.
+of missing values casewise or pairwise depending on the arqument \code{use}, and a vector with elements the sum of
+squares of each variable. The first disclosure control checks that the number of variables is not bigger than a
+percentage of the individual-level records (the allowed percentage is pre-specified by the 'nfilter.glm'). The
+second disclosure control checks that none of them is dichotomous with a level having fewer counts than the
+pre-specified 'nfilter.tab' threshold.
 }
 \description{
 This function computes the sum of each vector of variable and the sum of the products of each two
