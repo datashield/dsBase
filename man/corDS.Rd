@@ -4,33 +4,27 @@
 \alias{corDS}
 \title{Computes the sum of each variable and the sum of products for each pair of variables}
 \usage{
-corDS(x = NULL, y = NULL, use = NULL)
+corDS(x = NULL, y = NULL)
 }
 \arguments{
-\item{x}{a character, the name of a vector, matrix or dataframe of variable(s) for which the covariance(s) and the
+\item{x}{a character, the name of a vector, matrix or dataframe of variables(s) for which the
 correlation(s) is (are) going to calculated for.}
 
 \item{y}{NULL (default) or the name of a vector, matrix or dataframe with compatible dimensions to x.}
-
-\item{use}{a character string giving a method for computing covariances in the presence of missing values.
-This must be one of the strings "casewise.complete" or "pairwise.complete". If \code{use} is set to
-'casewise.complete' then any rows with missing values are omitted from the vector, matrix or dataframe before the
-calculations of the sums. If \code{use} is set to 'pairwise.complete', then the sums of products are computed for
-each two variables using only the complete pairs of observations on the two variables.}
 }
 \value{
-a list that includes a matrix with elements the sum of products between each two variables, a matrix with
-elements the sum of the values of each variable, a matrix with elements the number of complete cases in each
-pair of variables, a list with the number of missing values in each variable separately (columnwise) and the number
-of missing values casewise or pairwise depending on the arqument \code{use}, and a vector with elements the sum of
-squares of each variable. The first disclosure control checks that the number of variables is not bigger than a
-percentage of the individual-level records (the allowed percentage is pre-specified by the 'nfilter.glm'). The
-second disclosure control checks that none of them is dichotomous with a level having fewer counts than the
-pre-specified 'nfilter.tab' threshold.
+a list that includes a matrix with elements the sum of products between each two variables,
+a matrix with elements the sum of the values of each variable, a matrix with elements the number of
+complete cases in each pair of variables, a list with the number of missing values in each variable
+separately (columnwise) and the number of missing values casewise, and a vector with elements the
+sum of squares of each variable. The first disclosure control checks that the number of variables is
+not bigger than a percentage of the individual-level records (the allowed percentage is pre-specified
+by the 'nfilter.glm'). The second disclosure control checks that none of them is dichotomous with a
+level having fewer counts than the pre-specified 'nfilter.tab' threshold.
 }
 \description{
-This function computes the sum of each vector of variable and the sum of the products of each two
-variables (i.e. the scalar product of each two vectors).
+This function computes the sum of each vector of variable and the sum of the products
+of each two variables (i.e. the scalar product of each two vectors).
 }
 \details{
 computes the sum of each vector of variable and the sum of the products of each two
