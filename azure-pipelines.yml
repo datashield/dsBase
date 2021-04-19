@@ -340,8 +340,3 @@ jobs:
 
     displayName: 'Environment info'
     condition: always()
-
-
-
-
-

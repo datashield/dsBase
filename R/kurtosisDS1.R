@@ -25,6 +25,7 @@ kurtosisDS1 <- function (x, method){
   if(length(x) < nfilter.tab){
     kurtosis.out <- NA
     studysideMessage <- "FAILED: Nvalid less than nfilter.tab"
+    stop(studysideMessage, call. = FALSE)
   }else{
     
     g2 <- length(x) * sum((x - mean(x))^4)/(sum((x - mean(x))^2)^2) - 3
