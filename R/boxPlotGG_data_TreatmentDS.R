@@ -15,7 +15,7 @@
 #' @export
 
 boxPlotGG_data_TreatmentDS <- function(table, variables, group = NULL, group2 = NULL){
-  
+
   if(is.null(group) & !is.null(group2)){
     group <- group2
     group2 <- NULL
@@ -26,11 +26,17 @@ boxPlotGG_data_TreatmentDS <- function(table, variables, group = NULL, group2 = 
       data <- table[, c(variables)]
     }
     else{
+      if(class(table[[group]]) != "factor"){
+        stop("Grouping variable must be of class factor")
+      }
       data <- table[, c(variables, group)]
     }
     
   }
   else{
+    if(class(table[[group]]) != "factor" | class(table[[group2]]) != "factor"){
+      stop("Grouping variable must be of class factor")
+    }
     data <- table[, c(variables, group, group2)]
     # Handle case group == group2 
     if(group == group2){
@@ -38,26 +44,30 @@ boxPlotGG_data_TreatmentDS <- function(table, variables, group = NULL, group2 = 
       group2 <- "group2"
     }
   }
-  # return(data)
-  
-  
+
   data <- reshape2::melt(data, measure.vars = variables, rm.na = TRUE,
                  variable.name="x")
-  
-  
+
   if(!is.null(group)){
     names(data)[names(data) == group] <- 'group'
     data[, "group"] <- as.factor(data[, "group"])
+    data <- data[stats::complete.cases(data), ]
   }
-  
+  else{
+    if(length(variables) == 1){
+      data <- data[stats::complete.cases(data), ]
+      names(data) <- variables
+    }
+    else{
+      data <- data[stats::complete.cases(data), ]
+    }
+  }
   if(!is.null(group2)){
     names(data)[names(data) == group2] <- 'group2'
     data[, "group2"] <- as.factor(data[, "group2"])
+    data <- data[stats::complete.cases(data), ]
   }
-  
-  
-  
-  
-  return(data[stats::complete.cases(data), ])
+
+  return(data)
   
 }
