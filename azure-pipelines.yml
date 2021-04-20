@@ -110,6 +110,7 @@ jobs:
       sudo R -e "install.packages('ggplot2', dependencies=TRUE)"
       sudo R -e "install.packages('dplyr', dependencies=TRUE)"
       sudo R -e "install.packages('reshape2', dependencies=TRUE)"
+      sudo R -e "install.packages('panelaggregation', dependencies=TRUE)"
 
     displayName: 'Install all dependencies for dsBase'
     condition: succeeded()
