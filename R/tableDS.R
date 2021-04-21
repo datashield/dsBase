@@ -60,7 +60,7 @@ force.nfilter.active<-eval(parse(text=force.nfilter.transmit), envir = parent.fr
 	if(force.nfilter.active<nfilter.tab)
 	{
 	return.message<-paste0("Failed: if force.nfilter is non-null it must be >= to nfilter.tab i.e.",nfilter.tab)  
-	return(return.message)
+	stop(return.message, call. = FALSE)
 	}
 }
 else
@@ -152,7 +152,7 @@ numcells<-length(test.outobj)
 	if(!counts.valid)
 	{
 	return.message<-paste0("Failed: at least one cell has a non-zero count less than nfilter.tab i.e. ",nfilter.tab)  
-	return(return.message)
+	stop(return.message, call. = FALSE)
 	}else{
 	outobj<-table(rvar,cvar,stvar,exclude=exclude,useNA=useNA.transmit)	
 	}

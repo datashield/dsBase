@@ -31,6 +31,7 @@ levelsDS <- function(x){
   if((input.length * nfilter.levels) < output.length) {
     out <- NA
     studysideMessage <- "FAILED: Result length less than nfilter.levels of input length."
+    stop(studysideMessage, call. = FALSE)
   }
   
   out.obj <- list(Levels=out,ValidityMessage=studysideMessage)

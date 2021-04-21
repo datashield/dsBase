@@ -16,6 +16,7 @@ DataSHIELD server side base R library.
 | v6.2-dev | [![Build Status](https://dev.azure.com/datashield-testing/datashield/_apis/build/status/datashield.dsBase?branchName=v6.2-dev)](https://dev.azure.com/datashield-testing/datashield/_build/latest?definitionId=1&branchName=v6.2-dev) | [Tests](https://datashield.github.io/testStatus/dsBase/v6.2-dev/latest/) | [![Build Status](https://dev.azure.com/datashield-testing/datashield/_apis/build/status/datashield.dsBaseClient?branchName=v6.2-dev)](https://dev.azure.com/datashield-testing/datashield/_build/latest?definitionId=1&branchName=v6.2-dev) | [Tests](https://datashield.github.io/testStatus/dsBaseClient/v6.2-dev/latest/) |
 
 
+
 [![License](https://img.shields.io/badge/license-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 
 

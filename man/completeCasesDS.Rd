@@ -46,5 +46,5 @@ in native R. Limited additional information can therefore be found
 under help("complete.cases") in native R.
 }
 \author{
-Paul Burton for DataSHIELD Development Team, 17/10/2019
+Paul Burton for DataSHIELD Development Team
 }

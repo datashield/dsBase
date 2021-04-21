@@ -30,6 +30,7 @@ skewnessDS2 <- function(x, global.mean){
     sum_cubes.out <- NA
     sum_squares.out <- NA
     studysideMessage <- "FAILED: Nvalid less than nfilter.tab"
+    stop(studysideMessage, call. = FALSE)
   }else{
     sum_cubes.out <- sum((x - global.mean)^3)
     sum_squares.out <- sum((x - global.mean)^2)

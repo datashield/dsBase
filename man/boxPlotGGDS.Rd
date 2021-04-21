@@ -19,29 +19,11 @@ boxPlotGGDS(data_table, group = NULL, group2 = NULL)
 \item{group2}{\code{character} (default \code{NULL}) Name of the second grouping variable.}
 }
 \value{
-If there are no grouping variables: \cr
+\cr
 
 \code{list} with: \cr
 -\code{data frame} Geometrical parameters (identity stats of ggplot) \cr
--\code{character list} Names of the variables plotted \cr
--\code{tbl} Counts of each variable, output of dplyr::count (used on the client for split/pooled) \cr
-
-If there is one grouping variable: \cr
-
-\code{list} with: \cr
--\code{data frame} Geometrical parameters (identity stats of ggplot) \cr
--\code{character list} Names of the variables plotted \cr
--\code{character list} Names of the grouping factors \cr
--\code{tbl} Counts of each variable (grouped), output of dplyr::count (used on the client for split/pooled) \cr
-
-If there are two grouping variables: \cr
-
-\code{list} with: \cr
--\code{data frame} Geometrical parameters (identity stats of ggplot) \cr
--\code{character list} Names of the variables plotted \cr
--\code{character list} Names of the first grouping factors \cr
--\code{character list} Names of the second grouping factors \cr
--\code{tbl} Counts of each variable (grouped), output of dplyr::count (used on the client for split/pooled) \cr
+-\code{character} Type of plot (single_group, double_group or no_group) \cr
 }
 \description{
 In order to create a non disclosive box plot, the data that is passed to the client
