@@ -60,7 +60,7 @@ schedules:
 
 jobs:
 - job: run_devtools_check
-  timeoutInMinutes: 30
+  timeoutInMinutes: 45
   pool:
     vmImage: 'Ubuntu 16.04'
 
