@@ -86,5 +86,5 @@ For further information see details of the native R function {merge}
 and the DataSHIELD clientside function {ds.merge}.
 }
 \author{
-Amadou Gaye, Paul Burton, for DataSHIELD Development Team
+Paul Burton, Demetris Avraam, for DataSHIELD Development Team
 }

@@ -1,19 +1,11 @@
 #' @title Fitting generalized linear mixed effect models - serverside function
-#' @description glmerSLMADS2 fits a generalized linear mixed effects model
-#' (glme) - e.g. a logistic or Poisson regression model including both fixed and random effects
-#' - on data from one or multiple sources with pooling via SLMA (study level meta-analysis)
-#' @details  glmerSLMADS2 is a serverside function called by ds.glmerSLMA on the clientside.
+#' @description glmerSLMADS.assing is the same as glmerSLMADS2 which fits a generalized linear
+#' mixed effects model (glme) per study and saves the outcomes in each study
+#' @details glmerSLMADS.assign is a serverside function called by ds.glmerSLMA on the clientside.
 #' The analytic work engine is the glmer function in R which sits in the lme4 package.
-#' ds.glmerSLMA fits a generalized linear mixed effects model (glme) - e.g. a logistic or
+#' glmerSLMADS.assign fits a generalized linear mixed effects model (glme) - e.g. a logistic or
 #' Poisson regression model including both fixed and random effects - on data
-#' from a single or multiple sources. When there are multiple data sources,
-#' the glme is fitted to convergence in each data source independently and the
-#' estimates and standard errors returned to the client thereby enabling cross-study pooling
-#' using study level meta-analysis (SLMA). By default the SLMA is undertaken
-#' using the metafor package, but as the SLMA occurs on the clientside which, as far
-#' as the user is concerned is just a standard R environment, the user can choose to use
-#' any approach to meta-analysis they choose. Additional information about fitting 
-#' glmes using the glmer engine can be obtained using R help for glmer and the lme4 package
+#' from each single data source and saves the regression outcomes on the serveside.
 #' @param formula see help for ds.glmerSLMA
 #' @param offset see help for ds.glmerSLMA
 #' @param weights see help for ds.glmerSLMA
@@ -34,10 +26,11 @@
 #' function ds.glmerSLMA
 #' @param fixef see help for argument <start_fixef> for
 #' function ds.glmerSLMA
-#' @return all key model components see help for ds.glmerSLMA
-#' @author Tom Bishop, with some additions by Paul Burton
+#' @return writes glmerMod object summarising the fitted model to the serverside.
+#' For more detailed information see help for ds.glmerSLMA.
+#' @author Demetris Avraam for DataSHIELD Development Team
 #' @export
-glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
+glmerSLMADS.assing <- function(formula, offset, weights, dataName, family,
                 control_type=NULL, control_value.transmit=NULL, nAGQ=1L, verbose = 0, theta = NULL, fixef = NULL){
  
   errorMessage <- "No errors"
@@ -389,60 +382,13 @@ if(control_type=="check.conv.grad")
     
     #mg <- lme4::lmer(formula2use, offset=offset, weights=weights, data=dataDF, REML = REML, verbose = verbose, control = control.obj)
     
-	  iterations <- utils::capture.output(try(mg <- lme4::glmer(formula2use, offset=offset, weights=weights, data=dataDF,
-	                                       family = family, nAGQ=nAGQ,verbose = verbose, control=control.obj, start = start)))
-
-    summary_mg <- summary(mg)
-    summary_mg$residuals <- NULL
-    summary_mg$errorMessage <- errorMessage
-    summary_mg$disclosure.risk <- disclosure.risk
-    summary_mg$iterations <- iterations
- 	  summary_mg$control.info <- control.obj
-	  summary_mg$nAGQ.info <- nAGQ
-    outlist <- summary_mg
+	  mg <- lme4::glmer(formula2use, offset=offset, weights=weights, data=dataDF,
+	                                       family = family, nAGQ=nAGQ,verbose = verbose, control=control.obj, start = start)
+    outlist <- mg
     
-    outlist$Ntotal <- Ntotal
-    outlist$Nvalid <- Nvalid
-    outlist$Nmissing <- Nmissing
-    
-  }else{ #i.e. if disclosure.risk !=0
-    
-    errorMessage.d1<-"ERROR: Model failed in this source because of an enhanced risk of disclosure"
-    errorMessage.d2<-"The following message(s) identify the cause of this enhanced risk"
-    
-    outlist.1<-list(errorMessage.1=errorMessage.d1)
-    outlist.2<-list(errorMessage.2=errorMessage.d2)
-    
-    outlist.gos<-NULL
-    if(glm.saturation.invalid==1){
-      outlist.gos<-list(errorMessage.gos=errorMessage.gos)		
-    }
-    
-    outlist.y<-NULL
-    if(y.invalid==1){
-      outlist.y<-list(errorMessage.y=errorMessage.y)		
-    }
-    
-    outlist.x<-NULL
-    if(x.invalid==1){
-      outlist.x<-list(errorMessage.x=errorMessage.x)		
-    }
-    
-    outlist.w<-NULL
-    if(w.invalid==1){
-      outlist.w<-list(errorMessage.w=errorMessage.w)		
-    }
-    
-    outlist.o<-NULL
-    if(o.invalid==1){
-      outlist.o<-list(errorMessage.o=errorMessage.o)		
-    }
-
-    outlist<-list(outlist.1,outlist.2,outlist.gos,outlist.y,outlist.x,outlist.w,outlist.o, disclosure.risk = disclosure.risk)
- 
- }
+  }
   return(outlist)
   
 }
-# AGGREGATE FUNCTION
-# glmerSLMADS2
+# ASSIGN FUNCTION
+# glmerSLMADS.assign

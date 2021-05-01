@@ -43,7 +43,7 @@ histogramDS2 <- function (xvect, num.breaks, min, max, method.indicator, k, nois
     # saturation)
     if (num.breaks > (nfilter.levels * length(xvect))){
       studysideMessage <- "FAILED: Number of breaks is too big. It may be disclosive - please shorten"
-      return(list(studysideMessage=studysideMessage))
+      stop(studysideMessage, call. = FALSE)
     }else{
       # breaks
       brks <- seq(from=min, to=max, by=(max-min)/num.breaks)
@@ -110,7 +110,7 @@ histogramDS2 <- function (xvect, num.breaks, min, max, method.indicator, k, nois
     # saturation)
     if (num.breaks > (nfilter.levels * length(xvect))){
       studysideMessage <- "FAILED: Number of breaks is too big. It may be disclosive - please shorten"
-      return(list(studysideMessage=studysideMessage))
+      stop(studysideMessage, call. = FALSE)
     }else{
       # breaks
       brks <- seq(from=min, to=max, by=(max-min)/num.breaks)
@@ -149,7 +149,7 @@ histogramDS2 <- function (xvect, num.breaks, min, max, method.indicator, k, nois
     # saturation)
     if (num.breaks > (nfilter.levels * length(xvect))){
       studysideMessage <- "FAILED: Number of breaks is too big. It may be disclosive - please shorten"
-      return(list(studysideMessage=studysideMessage))
+      stop(studysideMessage, call. = FALSE)
     }else{
       # breaks
       brks <- seq(from=min, to=max, by=(max-min)/num.breaks)

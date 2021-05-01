@@ -4,7 +4,12 @@
 \alias{dataFrameFillDS}
 \title{dataFrameFillDS}
 \usage{
-dataFrameFillDS(df.name, allNames.transmit, class.vect.transmit)
+dataFrameFillDS(
+  df.name,
+  allNames.transmit,
+  class.vect.transmit,
+  levels.vec.transmit
+)
 }
 \arguments{
 \item{df.name}{a character string representing the name of the input data frame that will be
@@ -15,7 +20,9 @@ compared to the data frames of the other studies used in the analysis.}
 data frames from all the used datasources.}
 
 \item{class.vect.transmit}{the classes of all the variables that are included in the vector 
-\code{allNames.transmit}.
+\code{allNames.transmit}.}
+
+\item{levels.vec.transmit}{the levels of all factor variables.
 The classes supported are 'numeric', 'integer', 'character', 'factor' and 'logical'.}
 }
 \value{

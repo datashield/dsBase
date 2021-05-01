@@ -1,5 +1,6 @@
+
 #-------------------------------------------------------------------------------
-# Copyright (c) 2019-2020 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2019-2021 University of Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -23,8 +24,9 @@ test_that("simple dataFrameFillDS, ascending, numeric", {
     df                  <- data.frame(v1 = c(-2.0, -3.0, 4.0, 2.0, 1.0, 0.0, -1.0, 3.0), v2 = c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0))
     allNames.transmit   <- "v1,v2,v3,v4,v5,v6,v7"
     class.vect.transmit <- "numeric,numeric,numeric,integer,character,factor,logical"
+    levels.vec.transmit <- "1,2,3"
 
-    res <- dataFrameFillDS("df", allNames.transmit, class.vect.transmit)
+    res <- dataFrameFillDS("df", allNames.transmit, class.vect.transmit, levels.vec.transmit)
 
     expect_equal(class(res), "data.frame")
     expect_length(res, 7)
@@ -80,6 +82,12 @@ test_that("simple dataFrameFillDS, ascending, numeric", {
         expect_true(is.na(res$v6[index]), info = paste0('index=', index, ', column=v6'))
         expect_true(is.na(res$v7[index]), info = paste0('index=', index, ', column=v7'))
     }
+
+    res.v6.levels <- levels(res$v6)
+
+    expect_equal(res.v6.levels[1], "1")
+    expect_equal(res.v6.levels[2], "2")
+    expect_equal(res.v6.levels[3], "3")
 })
 
 #

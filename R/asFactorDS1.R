@@ -34,7 +34,7 @@ asFactorDS1 <- function(input.var.name=NULL){
 	error.message<-
 	paste0("FAILED: this variable has too many levels and may be disclosive. The ds.asFactor function allows no more than ",
 			max.allowed.levels," levels in this particular study. This variable has ",num.levels)
-	return(list(error.message=error.message))
+	stop(error.message, call. = FALSE)
   }
 
   return(factor.levels.present.in.source)

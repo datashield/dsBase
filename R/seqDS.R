@@ -67,7 +67,7 @@ nfilter.subset<-as.numeric(thr$nfilter.subset)                          #
 	FROM<-eval(parse(text=FROM.value.char), envir = parent.frame())
 	}else{
    studysideMessage<-"ERROR: FROM.value.char must be specified as a real number in inverted commas eg '-3.74' or '0'"
-   return(list(studysideMessage=studysideMessage))
+   stop(studysideMessage, call. = FALSE)
    }
  
  if(!is.null(TO.value.char))
@@ -77,7 +77,7 @@ nfilter.subset<-as.numeric(thr$nfilter.subset)                          #
 		TO<-eval(parse(text=TO.value.char), envir = parent.frame())
 		}else{
 		studysideMessage<-"ERROR: TO.value.char must be specified as a real number in inverted commas eg '-3.74' or '0'"
-		return(list(studysideMessage=studysideMessage))
+		stop(studysideMessage, call. = FALSE)
 		}
 	}
  
@@ -90,7 +90,7 @@ nfilter.subset<-as.numeric(thr$nfilter.subset)                          #
 	BY<-eval(parse(text=BY.value.char), envir = parent.frame())
 	}else{
    studysideMessage<-"ERROR: BY.value.char must be specified as a real number in inverted commas eg '-3.74' or '0'"
-   return(list(studysideMessage=studysideMessage))
+   stop(studysideMessage, call. = FALSE)
    }
 
  if(!is.null(LENGTH.OUT.value.char)){
@@ -98,7 +98,7 @@ nfilter.subset<-as.numeric(thr$nfilter.subset)                          #
 		LENGTH.OUT<-eval(parse(text=LENGTH.OUT.value.char), envir = parent.frame())
 		}else{
 		studysideMessage<-"ERROR: If LENGTH.OUT.value.char is non-NULL, it must specify a positive integer in inverted commas eg '14'" 
-		return(list(studysideMessage=studysideMessage))
+		stop(studysideMessage, call. = FALSE)
 		}
 	}
 
@@ -111,7 +111,7 @@ nfilter.subset<-as.numeric(thr$nfilter.subset)                          #
 		ALONG.WITH<-eval(parse(text=ALONG.WITH.name), envir = parent.frame())
 		}else{
 		studysideMessage<-"ERROR: If ALONG.WITH.name is non-NULL, it must specify the name of a serverside vector in inverted commas" 
-		return(list(studysideMessage=studysideMessage))
+		stop(studysideMessage, call. = FALSE)
 		}
 	}
  

@@ -1,7 +1,7 @@
 Package: dsBase
 Title: DataSHIELD server site base functions
 Description: DataSHIELD server site base functions.
-Version: 6.2.0-1
+Version: 6.2.0-2
 Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
 Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
 License: GPL-3
@@ -12,7 +12,6 @@ Imports:
     nlme,
     stringr,
     lme4,
-    ggplot2,
     dplyr,
     reshape2,
     lspline
@@ -57,7 +56,6 @@ AggregateMethods:
     numNaDS,
     quantileMeanDS,
     rangeDS,
-    recodeValuesDS1,
     rmDS,
     scatterPlotDS,
     scoreVectDS,
@@ -103,6 +101,7 @@ AssignMethods:
     dataFrameFillDS,
     dataFrameSortDS,
     dataFrameSubsetDS2,
+    glmerSLMADS.assign,
     glmPredictDS.as,
     glmSLMADS.assign,
     glmSummaryDS.as,
@@ -110,6 +109,7 @@ AssignMethods:
     listDS,
     lexisDS2,
     lexisDS3,
+    lmerSLMADS.assign,
     matrixDetDS2,
     matrixDiagDS,
     matrixDimnamesDS,
@@ -121,7 +121,7 @@ AssignMethods:
     rbindDS,
     rBinomDS,
     recodeLevelsDS,
-    recodeValuesDS2,
+    recodeValuesDS,
     repDS,
     replaceNaDS,
     reShapeDS,

@@ -74,7 +74,7 @@ if(!string.safe)
 {
    studysideMessage<-paste0("FAILED: the argument <glmname> must be a character string no longer than ",
                      "[nfilter.stringShort], i.e. ", nfilter.stringShort," characters")
-   return(list(studysideMessage=studysideMessage))
+   stop(studysideMessage, call. = FALSE)
 }
 
 #Check character string denoting <newdataname.transmit> argument is not potentially disclosive because of length 
@@ -99,7 +99,7 @@ if(!is.null(newdataname.transmit))
 	{
 		studysideMessage<-paste0("FAILED: the argument <newdataname> must be a character string no longer than ",
                      "[nfilter.stringShort], i.e. ", nfilter.stringShort," characters")
-	return(list(studysideMessage=studysideMessage))
+		stop(studysideMessage, call. = FALSE)
 	}
 }
 
@@ -124,7 +124,7 @@ if(!string.safe)
 {
    studysideMessage<-paste0("FAILED: the argument <output.type> must be one of three character strings: ",
                      "'link','response', or 'terms'")
-   return(list(studysideMessage=studysideMessage))
+   stop(studysideMessage, call. = FALSE)
 }
 
 #Check character string denoting <na.action> argument is valid
@@ -144,7 +144,7 @@ if(!string.safe)
 {
    studysideMessage<-paste0("FAILED: the argument <na.action> must be one of four character strings: ",
                      "'na.fail','na.omit', 'na.exclude or 'na.pass'")
-   return(list(studysideMessage=studysideMessage))
+   stop(studysideMessage, call. = FALSE)
 }
 
 #Activate all arguments

@@ -40,6 +40,7 @@ table1DDS  <- function(xvect){
   if(length(indx) > 0){
     cc[1,1:(dim(cc)[2] - 1)] <- NA
     validity <- "invalid table - invalid counts present"
+    stop(validity, call. = FALSE)
   }
   
   # return output table and message
