@@ -16,19 +16,6 @@
 #' @export
 tapplyDS.assign <- function(X.name, INDEX.names.transmit, FUN.name){
 
-#########################################################################
-# DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
-thr<-listDisclosureSettingsDS()                                       #
-nfilter.tab<-as.numeric(thr$nfilter.tab)                                #
-#nfilter.glm<-as.numeric(thr$nfilter.glm)                               #
-nfilter.subset<-as.numeric(thr$nfilter.subset)                          #
-#nfilter.string<-as.numeric(thr$nfilter.string)                         #
-#nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)               #
-#nfilter.kNN<-as.numeric(thr$nfilter.kNN)                               #
-#datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)       #
-#########################################################################
-
-
   if(is.character(X.name)){
 	  X<-eval(parse(text=X.name), envir = parent.frame())
 	}else{
@@ -36,11 +23,9 @@ nfilter.subset<-as.numeric(thr$nfilter.subset)                          #
     return(list(studysideMessage=studysideMessage))
   }
 
+  INDEX.factors<-unlist(strsplit(INDEX.names.transmit, split=","))
 
-
-INDEX.factors<-unlist(strsplit(INDEX.names.transmit, split=","))
-
-num.factors<-length(INDEX.factors)
+  num.factors<-length(INDEX.factors)
 
 #test that output vector and indexing factor all have the same length
 length.2.test<-length(X)
@@ -121,7 +106,7 @@ for(k in 1:num.factors){
 		for(u in 1:length(factor1.levels)){
 		factor1.level.names[u]<-paste0(INDEX.factors[1],".",factor1.levels[u])
 		}
-		dimnames(Mean)[[1]]<-factor1.level.names
+		#dimnames(Mean)[[1]]<-factor1.level.names
 		}
 
 		if(num.factors==2){
@@ -147,11 +132,8 @@ for(k in 1:num.factors){
 		}
 
 
-		dimnames(Mean)[[1]]<-factor1.level.names
-		dimnames(Mean)[[2]]<-factor2.level.names
-
-#		dimnames(N.count)[[1]]<-factor1.level.names
-#		dimnames(N.count)[[2]]<-factor2.level.names
+		#dimnames(Mean)[[1]]<-factor1.level.names
+		#dimnames(Mean)[[2]]<-factor2.level.names
 		}
 
  output<-list(Mean=Mean)
@@ -175,7 +157,7 @@ for(k in 1:num.factors){
 		for(u in 1:length(factor1.levels)){
 		factor1.level.names[u]<-paste0(INDEX.factors[1],".",factor1.levels[u])
 		}
-		dimnames(N.count)[[1]]<-factor1.level.names
+		#dimnames(N.count)[[1]]<-factor1.level.names
 		}
 
 		if(num.factors==2){
@@ -201,8 +183,8 @@ for(k in 1:num.factors){
 		}
 
 
-		dimnames(N.count)[[1]]<-factor1.level.names
-		dimnames(N.count)[[2]]<-factor2.level.names
+		#dimnames(N.count)[[1]]<-factor1.level.names
+		#dimnames(N.count)[[2]]<-factor2.level.names
 		}
 
 
@@ -227,7 +209,7 @@ for(k in 1:num.factors){
 		for(u in 1:length(factor1.levels)){
 		factor1.level.names[u]<-paste0(INDEX.factors[1],".",factor1.levels[u])
 		}
-		dimnames(SD)[[1]]<-factor1.level.names
+		#dimnames(SD)[[1]]<-factor1.level.names
 		}
 
 		if(num.factors==2){
@@ -253,8 +235,8 @@ for(k in 1:num.factors){
 		}
 
 
-		dimnames(SD)[[1]]<-factor1.level.names
-		dimnames(SD)[[2]]<-factor2.level.names
+		#dimnames(SD)[[1]]<-factor1.level.names
+		#dimnames(SD)[[2]]<-factor2.level.names
 		}
 
 
@@ -278,7 +260,7 @@ for(k in 1:num.factors){
 		for(u in 1:length(factor1.levels)){
 		factor1.level.names[u]<-paste0(INDEX.factors[1],".",factor1.levels[u])
 		}
-		dimnames(Sum)[[1]]<-factor1.level.names
+		#dimnames(Sum)[[1]]<-factor1.level.names
 		}
 
 		if(num.factors==2){
@@ -304,8 +286,8 @@ for(k in 1:num.factors){
 		}
 
 
-		dimnames(Sum)[[1]]<-factor1.level.names
-		dimnames(Sum)[[2]]<-factor2.level.names
+		#dimnames(Sum)[[1]]<-factor1.level.names
+		#dimnames(Sum)[[2]]<-factor2.level.names
 
 		}
 
