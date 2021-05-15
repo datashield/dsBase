@@ -112,7 +112,7 @@ jobs:
       sudo R -e "install.packages('reshape2', dependencies=TRUE)"
       sudo R -e "install.packages('lspline', dependencies=TRUE)"
       sudo R -e "install.packages('medflex', dependencies=TRUE)"
-      sudo R -e "install.packages('remedint', dependencies=TRUE)"
+      sudo R -e "install.packages('regmedint', dependencies=TRUE)"
       sudo R -e "install.packages('mediation', dependencies=TRUE)"
 
     displayName: 'Install all dependencies for dsBase'
