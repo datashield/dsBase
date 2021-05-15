@@ -50,6 +50,7 @@ AggregateMethods:
     matrixDetDS1,
     meanDS,
     meanSdGpDS,
+    mediationTestDS,
     messageDS,
     namesDS,
     numNaDS,
