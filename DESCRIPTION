@@ -14,7 +14,10 @@ Imports:
     lme4,
     dplyr,
     reshape2,
-    lspline
+    lspline,
+    medflex,
+    regmedint,
+    mediation
 AggregateMethods:
     asFactorDS1,
     asListDS,
