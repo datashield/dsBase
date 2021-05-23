@@ -63,18 +63,48 @@ test_that("simple changeRefGroupDS, reorderByRef is TRUE", {
 
     res <- changeRefGroupDS(xf, ref, reorderByRef)
 
-    expect_equal(class(res), "integer")
-    expect_length(res, 6)
-    expect_equal(res[1], 1)
-    expect_equal(res[2], 1)
-    expect_equal(res[3], 1)
-    expect_equal(res[4], 1)
-    expect_equal(res[5], 1)
-    expect_equal(res[6], 1)
+    if (base::getRversion() < 4.1)
+    {
+        expect_equal(class(res), "integer")
+        expect_length(res, 6)
+        expect_equal(res[1], 1)
+        expect_equal(res[2], 1)
+        expect_equal(res[3], 1)
+        expect_equal(res[4], 1)
+        expect_equal(res[5], 1)
+        expect_equal(res[6], 1)
 
-    res.levels <- levels(res)
+        res.levels <- levels(res)
 
-    expect_true(is.null(res.levels))
+        expect_true(is.null(res.levels))
+    }
+    else
+    {
+        expect_equal(class(res), "factor")
+        expect_length(res, 6)
+
+        res.num <- as.numeric(res)
+
+        expect_equal(class(res.num), "numeric")
+        expect_length(res.num, 6)
+
+        expect_equal(res.num[1], 5)
+        expect_equal(res.num[2], 2)
+        expect_equal(res.num[3], 4)
+        expect_equal(res.num[4], 2)
+        expect_equal(res.num[5], 3)
+        expect_equal(res.num[6], 2)
+
+        res.levels <- levels(res)
+
+        expect_equal(class(res.levels), "character")
+        expect_length(res.levels, 5)
+        expect_equal(res.levels[1], "2")
+        expect_equal(res.levels[2], "1")
+        expect_equal(res.levels[3], "4")
+        expect_equal(res.levels[4], "6")
+        expect_equal(res.levels[5], "8")
+    }
 })
 
 #
