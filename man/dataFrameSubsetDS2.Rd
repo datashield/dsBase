@@ -4,9 +4,15 @@
 \alias{dataFrameSubsetDS2}
 \title{dataFrameSubsetDS2 an assign function called by ds.dataFrameSubset}
 \usage{
-dataFrameSubsetDS2(df.name = NULL, V1.name = NULL, V2.name = NULL,
-  Boolean.operator.n = NULL, keep.cols = NULL, rm.cols = NULL,
-  keep.NAs = NULL)
+dataFrameSubsetDS2(
+  df.name = NULL,
+  V1.name = NULL,
+  V2.name = NULL,
+  Boolean.operator.n = NULL,
+  keep.cols = NULL,
+  rm.cols = NULL,
+  keep.NAs = NULL
+)
 }
 \arguments{
 \item{df.name}{a character string providing the name for the data.frame

@@ -4,8 +4,17 @@
 \alias{scoreVectDS}
 \title{Generates the score vector and information matrix}
 \usage{
-scoreVectDS(data, formula, family, clusterID, corstr, alpha, phi,
-  startBetas, zcor = NULL)
+scoreVectDS(
+  data,
+  formula,
+  family,
+  clusterID,
+  corstr,
+  alpha,
+  phi,
+  startBetas,
+  zcor = NULL
+)
 }
 \arguments{
 \item{data}{the input dataframe which contains the variable specified in the formula.}

@@ -7,7 +7,8 @@ License: GPL-3
 Description: DataSHIELD server site base functions.
 Imports:
     RANN,
-    nlme
+    nlme,
+    dplyr
 AggregateMethods:
     alphaPhiDS,
     asFactorDS1,
@@ -134,4 +135,4 @@ Options:
     default.nfilter.tab=3,
     default.nfilter.noise=0.25,
     default.nfilter.levels=0.33
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1

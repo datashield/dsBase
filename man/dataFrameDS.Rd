@@ -4,9 +4,15 @@
 \alias{dataFrameDS}
 \title{dataFrameDS called by ds.dataFrame}
 \usage{
-dataFrameDS(vectors = NULL, r.names = NULL, ch.rows = FALSE,
-  ch.names = TRUE, clnames = NULL, strAsFactors = TRUE,
-  completeCases = FALSE)
+dataFrameDS(
+  vectors = NULL,
+  r.names = NULL,
+  ch.rows = FALSE,
+  ch.names = TRUE,
+  clnames = NULL,
+  strAsFactors = TRUE,
+  completeCases = FALSE
+)
 }
 \arguments{
 \item{vectors}{a list which contains the elemental components to combine.
