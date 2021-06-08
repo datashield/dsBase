@@ -19,28 +19,34 @@
 #' tables in the output if the call specifies a 3 dimensional table.
 #' Fully specified by <stvar> argument in {ds.table}.
 #' For more information see help for {ds.table}
-#' @param exclude.transmit for information see help on <exclude> argument 
+#' @param rvar.all.unique.levels.transmit is a character string containing all
+#' unique level in rvar, across the studies, separated by ','.
+#' @param cvar.all.unique.levels.transmit is a character string containing all
+#' unique level in cvar, across the studies, separated by ','.
+#' @param stvar.all.unique.levels.transmit is a character string containing all
+#' unique level in stvar, across the studies, separated by ','.
+#' @param exclude.transmit for information see help on <exclude> argument
 #' of {ds.table}. Fully specified by <exclude> argument of {ds.table}
-#' @param useNA.transmit for information see help on <useNA> argument 
+#' @param useNA.transmit for information see help on <useNA> argument
 #' of {ds.table}. Fully specified by <useNA> argument of {ds.table}
 #' @param force.nfilter.transmit for information see help on <force.nfilter> argument 
 #' of {ds.table}. Fully specified by <force.nfilter> argument of {ds.table}
 #' @return For information see help for {ds.table}
 #' @author Paul Burton for DataSHIELD Development Team, 13/11/2019
 #' @export
-tableDS<-function(rvar.transmit, cvar.transmit, stvar.transmit,
-                    exclude.transmit, useNA.transmit, force.nfilter.transmit){
+tableDS<-function(rvar.transmit, cvar.transmit, stvar.transmit, rvar.all.unique.levels.transmit, cvar.all.unique.levels.transmit, 
+                  stvar.all.unique.levels.transmit, exclude.transmit, useNA.transmit, force.nfilter.transmit){
 
 
 #########################################################################
-# DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS           			#
-thr<-dsBase::listDisclosureSettingsDS() 								#
-nfilter.tab<-as.numeric(thr$nfilter.tab)								#
-#nfilter.glm<-as.numeric(thr$nfilter.glm)								#
-#nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
-#nfilter.string<-as.numeric(thr$nfilter.string)              			#
-#nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)    			#
-#nfilter.kNN<-as.numeric(thr$nfilter.kNN)								#
+# DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
+thr<-listDisclosureSettingsDS()                                         #
+nfilter.tab<-as.numeric(thr$nfilter.tab)                                #
+#nfilter.glm<-as.numeric(thr$nfilter.glm)                               #
+#nfilter.subset<-as.numeric(thr$nfilter.subset)                         #
+#nfilter.string<-as.numeric(thr$nfilter.string)                         #
+#nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)               #
+#nfilter.kNN<-as.numeric(thr$nfilter.kNN)                               #
 #datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)       #
 #########################################################################
 
@@ -49,12 +55,12 @@ nfilter.tab<-as.numeric(thr$nfilter.tab)								#
 
 if(!is.null(force.nfilter.transmit))
 {
-force.nfilter.active<-eval(parse(text=force.nfilter.transmit))
+force.nfilter.active<-eval(parse(text=force.nfilter.transmit), envir = parent.frame())
 
 	if(force.nfilter.active<nfilter.tab)
 	{
 	return.message<-paste0("Failed: if force.nfilter is non-null it must be >= to nfilter.tab i.e.",nfilter.tab)  
-	return(return.message)
+	stop(return.message, call. = FALSE)
 	}
 }
 else
@@ -71,50 +77,56 @@ nfilter.tab<-force.nfilter.active
 
 #Activate via eval when needed
 #rvar
-rvar<-eval(parse(text=rvar.transmit))
-if(!is.factor(rvar))
-	{
-	rvar<-as.factor(rvar)
-	}
-
+  rvar<-eval(parse(text=rvar.transmit), envir = parent.frame())
+  if(!is.factor(rvar))
+  {
+    rvar.all.unique.levels <- unlist(strsplit(rvar.all.unique.levels.transmit,split=","))
+    rvar<-factor(as.factor(rvar), levels=rvar.all.unique.levels)
+  }else{
+    rvar.all.unique.levels <- unlist(strsplit(rvar.all.unique.levels.transmit,split=","))
+    rvar<-factor(rvar, levels=rvar.all.unique.levels)
+  }
 #cvar
-if(!is.null(cvar.transmit))
+  if(!is.null(cvar.transmit))
 {
-cvar<-eval(parse(text=cvar.transmit))
+    cvar<-eval(parse(text=cvar.transmit), envir = parent.frame())
+    if(!is.factor(cvar))
+    {
+      cvar.all.unique.levels <- unlist(strsplit(cvar.all.unique.levels.transmit,split=","))
+      cvar<-factor(as.factor(cvar), levels=cvar.all.unique.levels)
+    }else{
+      cvar.all.unique.levels <- unlist(strsplit(cvar.all.unique.levels.transmit,split=","))
+      cvar<-factor(cvar, levels=cvar.all.unique.levels)
+    }
 
-if(!is.factor(cvar))
-	{
-	cvar<-as.factor(cvar)
-	}
 }
 else
 {
 cvar<-NULL
 }
-
 #stvar
 if(!is.null(stvar.transmit))
 {
-stvar<-eval(parse(text=stvar.transmit))
-
-if(!is.factor(stvar))
-	{
-	stvar<-as.factor(stvar)
-	}
-
+  stvar<-eval(parse(text=stvar.transmit), envir = parent.frame())
+  if(!is.factor(stvar))
+  {
+    stvar.all.unique.levels<- unlist(strsplit(stvar.all.unique.levels.transmit,split=","))
+    stvar<-factor(as.factor(stvar), levels=stvar.all.unique.levels)
+  }else{
+    stvar.all.unique.levels<- unlist(strsplit(stvar.all.unique.levels.transmit,split=","))
+    stvar<-factor(stvar, levels=stvar.all.unique.levels)
+  }
 }
 else
 {
 stvar<-NULL
 }
 
-
-
 #exclude
 if(!is.null(exclude.transmit))
 {
 exclude.text<-strsplit(exclude.transmit, split=",")
-exclude<-eval(parse(text=exclude.text))
+exclude<-eval(parse(text=exclude.text), envir = parent.frame())
 }
 else
 {
@@ -140,7 +152,7 @@ numcells<-length(test.outobj)
 	if(!counts.valid)
 	{
 	return.message<-paste0("Failed: at least one cell has a non-zero count less than nfilter.tab i.e. ",nfilter.tab)  
-	return(return.message)
+	stop(return.message, call. = FALSE)
 	}else{
 	outobj<-table(rvar,cvar,stvar,exclude=exclude,useNA=useNA.transmit)	
 	}
@@ -194,7 +206,7 @@ numcells<-length(test.outobj)
 	return.message<-paste0("Failed: at least one cell has a non-zero count less than nfilter.tab i.e. ",nfilter.tab)  
 	return(return.message)
 	}else{
-	outobj<-table(rvar,exclude=exclude,useNA=useNA.transmit)	
+	outobj<-table(rvar,exclude=exclude,useNA=useNA.transmit)
 	}
 
 }

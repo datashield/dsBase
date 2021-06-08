@@ -37,19 +37,19 @@
 #' @author DataSHIELD Development Team
 #' @export
 #'
-dataFrameDS <- function (vectors=NULL,r.names=NULL,ch.rows=FALSE,ch.names=TRUE,clnames=NULL,strAsFactors=TRUE,completeCases=FALSE){
+dataFrameDS <- function(vectors=NULL, r.names=NULL, ch.rows=FALSE, ch.names=TRUE, clnames=NULL, strAsFactors=TRUE, completeCases=FALSE){
 
-#########################################################################
-# DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS
-thr <- listDisclosureSettingsDS()
-#nfilter.tab<-as.numeric(thr$nfilter.tab)
-#nfilter.glm<-as.numeric(thr$nfilter.glm)
-nfilter.subset <- as.numeric(thr$nfilter.subset)
-#nfilter.string<-as.numeric(thr$nfilter.string)
-#nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)
-#nfilter.kNN<-as.numeric(thr$nfilter.kNN)
-#datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)
-#########################################################################
+  #########################################################################
+  # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS
+  thr <- listDisclosureSettingsDS()
+  #nfilter.tab<-as.numeric(thr$nfilter.tab)
+  #nfilter.glm<-as.numeric(thr$nfilter.glm)
+  nfilter.subset <- as.numeric(thr$nfilter.subset)
+  #nfilter.string<-as.numeric(thr$nfilter.string)
+  #nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)
+  #nfilter.kNN<-as.numeric(thr$nfilter.kNN)
+  #datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)
+  #########################################################################
 
   if(strAsFactors){
     strAsFactors <- default.stringsAsFactors()
@@ -57,10 +57,32 @@ nfilter.subset <- as.numeric(thr$nfilter.subset)
   if(!(is.null(r.names))){
     r.names <- unlist(r.names)
   }
-
-  dtemp <- data.frame(vectors, row.names=r.names, check.rows=ch.rows, check.names=ch.names,
+  
+  eval.code.vectors.names <- paste0("data.frame(", vectors, ")")
+  dtemp0 <- eval(parse(text=eval.code.vectors.names), envir = parent.frame())
+  
+  dtemp <- data.frame(dtemp0, row.names=r.names, check.rows=ch.rows, check.names=ch.names,
                     stringsAsFactors=strAsFactors)
-  colnames(dtemp) <-  unlist(clnames)
+  
+  colnames.act1 <- unlist(strsplit(clnames, split=","))
+  
+  # Detects which column names (if any) have the '$' in their string and detach 
+  # the '$' sign and any characters before that 
+  detect.idx <- grep('[$]', colnames.act1)
+  if(length(detect.idx) > 0){
+    detach.names <- strsplit(colnames.act1[detect.idx], "\\$", perl=TRUE)
+    for(i in 1:length(detach.names)){
+      detach.names[i] <- detach.names[[i]][2]
+    }
+    colnames.act1[detect.idx] <- detach.names
+  }
+  
+  # Check if any column names are duplicated and add a suffix ".k" to the kth replicate
+  colnames.act1 <- make.names(colnames.act1, unique=TRUE)
+  
+  colnames(dtemp) <- colnames.act1
+  
+  # remove any rows with missing values if completeCases is TRUE
   if(completeCases){
     dt <- dtemp[stats::complete.cases(dtemp),]
   }else{
@@ -70,8 +92,8 @@ nfilter.subset <- as.numeric(thr$nfilter.subset)
   # check if the resulting dataframe is of valid length and output accordingly
   if(dim(dt)[1] < nfilter.subset){
     dt[] <- NA
-    studysideMessage <- "nfilter.trap: dataframe has less then nfilter.subset rows"
-    return(list(studysideMessage=studysideMessage))
+    studysideMessage <- "nfilter.trap: dataframe has less than nfilter.subset rows"
+    stop(studysideMessage, call. = FALSE)
   }
 
   return(dt)

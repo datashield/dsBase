@@ -30,8 +30,16 @@
 subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, varname=NULL){
   
   # this filter sets the minimum number of observations that are allowed 
-  nfilter <- setFilterDS()
-  
+
+  #############################################################
+  # MODULE 1: CAPTURE THE nfilter SETTINGS
+  thr <- listDisclosureSettingsDS()
+  nfilter.tab <- as.numeric(thr$nfilter.tab)
+  #nfilter.glm <- as.numeric(thr$nfilter.glm)
+  #nfilter.subset <- as.numeric(thr$nfilter.subset)
+  #nfilter.string <- as.numeric(thr$nfilter.string)
+  #############################################################
+
   # the logical operators are given as integers change them into characters
   if(!(is.null(lg))){
     if(lg == 1){lg <- ">"}
@@ -43,7 +51,7 @@ subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, v
   }
   
   # evaluate the input data object
-  D <- eval(parse(text=dt))
+  D <- eval(parse(text=dt), envir = parent.frame())
   
   # if 'complt' is set to TRUE, get continue with a dataset with complete cases only
   if(complt){
@@ -71,7 +79,7 @@ subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, v
       subvect <- D[rs]
     }
 
-    if(length(subvect) < nfilter){
+    if(length(subvect) < nfilter.tab){
       if(length(subvect) == 0){
         output <- D[-c(1:length(D))]
       }else{
@@ -106,7 +114,7 @@ subsetDS <- function(dt=NULL, complt=NULL, rs=NULL, cs=NULL, lg=NULL, th=NULL, v
       }
     }
     
-    if((dim(subtable)[1]) < nfilter){
+    if((dim(subtable)[1]) < nfilter.tab){
       if((dim(subtable)[1]) == 0){
         output <- D[-c(1:dim(D)[1]),]
       }else{

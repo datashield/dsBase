@@ -45,7 +45,7 @@ if(length.x1.transmit>nfilter.string.long)
 	studysideMessage<-
 	paste0("FAILED: x1.transmit is too long it could hide concealed code, please shorten to <= nfilter.string*5 = ",
 	       nfilter.string.long," characters")
-	return(list(studysideMessage=studysideMessage))
+	stop(studysideMessage, call. = FALSE)
 	}
 
 #Check length of nrows.transmit string not so long as to provide a risk of hidden code
@@ -56,7 +56,7 @@ if(length.nrows.transmit>nfilter.stringShort)
 	studysideMessage<-
 	paste0("FAILED: nrows.transmit is too long it could hide concealed code, please shorten to <= nfilter.stringShort = ",
 	       nfilter.stringShort," characters")
-	return(list(studysideMessage=studysideMessage))
+	stop(studysideMessage, call. = FALSE)
 	}
 
 #Evaluate x1.transmit via route depending on aim
@@ -65,7 +65,7 @@ if(aim=="serverside.vector.2.matrix"||aim=="serverside.scalar.2.matrix"||aim=="s
 {
 #x1 is name of the serverside vector, scalar or matrix
 
-x1<-eval(parse(text=x1.transmit))
+x1<-eval(parse(text=x1.transmit), envir = parent.frame())
 
 #coerce to matrix if x1 is a data.frame
 if(is.data.frame(x1))
@@ -79,7 +79,7 @@ if(aim=="clientside.vector.2.matrix"||aim=="clientside.scalar.2.matrix")
 {
 x1.text<-strsplit(x1.transmit, split=",")
 
-x1.c<-eval(parse(text=x1.text))
+x1.c<-eval(parse(text=x1.text), envir = parent.frame())
 
 x1<-as.numeric(x1.c)
 }
@@ -89,7 +89,7 @@ x1<-as.numeric(x1.c)
 
 nrows.text<-strsplit(nrows.transmit, split=",")
 
-nrows.c<-eval(parse(text=nrows.text))
+nrows.c<-eval(parse(text=nrows.text), envir = parent.frame())
 
 nrows<-as.numeric(nrows.c)
 
@@ -112,7 +112,7 @@ nrows<-as.numeric(nrows.c)
 			{
 			studysideMessage<-
 			paste0("FAILED: if x1 is a scalar you must specify argument <nrows> as an integer to fix matrix dimensions")
-			return(list(studysideMessage=studysideMessage))
+			stop(studysideMessage, call. = FALSE)
 			}
 			else
 			{
@@ -124,7 +124,7 @@ nrows<-as.numeric(nrows.c)
       aim!="clientside.vector.2.matrix"&&aim!="clientside.scalar.2.matrix")
 	  {
 			studysideMessage<-paste0("FAILED: the aim specified is not valid, please respecify")
-			return(list(studysideMessage=studysideMessage))
+			stop(studysideMessage, call. = FALSE)
 	  }
 
 	return(output)

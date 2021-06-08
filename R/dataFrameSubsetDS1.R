@@ -44,7 +44,7 @@
 #' an assign function because it writes the subsetted data.frame to the serverside.
 #' In consequence, it records error messages as studysideMessages which can only be
 #' retrieved using ds.message
-#' @author DataSHIELD Development Team
+#' @author Paul Burton
 #' @export
 #'
 dataFrameSubsetDS1 <- function(df.name=NULL,V1.name=NULL,V2.name=NULL,Boolean.operator.n=NULL,keep.cols=NULL,rm.cols=NULL,keep.NAs=NULL){
@@ -79,7 +79,7 @@ keep.code.n<-as.numeric(keep.code.c)
 
 if(sum(is.na(keep.code.n))>0){
    studysideMessage<-"FAILED: keep.cols argument contains non-numerics (disclosure risk)"
-   return(list(studysideMessage=studysideMessage))
+   stop(studysideMessage, call. = FALSE)
 }else{
 
 keep.cols<-keep.code.n
@@ -91,7 +91,7 @@ keep.cols<-keep.code.n
 
 if(sum(is.na(keep.code.n))>0){
    studysideMessage <- "FAILED: keep.cols argument contains non-numerics (disclosure risk)"
-   return(list(studysideMessage=studysideMessage))
+   stop(studysideMessage, call. = FALSE)
 }else{
   keep.cols <- keep.code.n
 }
@@ -111,7 +111,7 @@ if(sum(is.na(keep.code.n))>0){
 
     if(sum(is.na(rm.code.n))>0){
       studysideMessage <- "FAILED: rm.cols argument contains non-numerics (disclosure risk)"
-      return(list(studysideMessage=studysideMessage))
+      stop(studysideMessage, call. = FALSE)
     }else{
       rm.cols <- rm.code.n
     }
@@ -122,7 +122,7 @@ if(sum(is.na(keep.code.n))>0){
 
     if(sum(is.na(rm.code.n))>0){
       studysideMessage <- "FAILED: rm.cols argument contains non-numerics (disclosure risk)"
-      return(list(studysideMessage=studysideMessage))
+      stop(studysideMessage, call. = FALSE)
     }else{
       rm.cols <- rm.code.n
     }
@@ -134,7 +134,7 @@ if(sum(is.na(keep.code.n))>0){
     df.name.chars <- strsplit(df.name,split="")
     if(length(df.name.chars[[1]])>nfilter.string){
       studysideMessage <- "FAILED: df.name argument > nfilter.string - please shorten"
-      return(list(studysideMessage=studysideMessage))
+      stop(studysideMessage, call. = FALSE)
     }
   }
 
@@ -142,7 +142,7 @@ if(sum(is.na(keep.code.n))>0){
     V1.name.chars <- strsplit(V1.name,split="")
     if(length(V1.name.chars[[1]])>nfilter.string){
       studysideMessage <- "FAILED: V[i].name argument > nfilter.string - please shorten"
-      return(list(studysideMessage=studysideMessage))
+      stop(studysideMessage, call. = FALSE)
     }
   }
 
@@ -150,30 +150,46 @@ if(sum(is.na(keep.code.n))>0){
     V2.name.chars <- strsplit(V2.name,split="")
     if(length(V2.name.chars[[1]])>nfilter.string){
       studysideMessage <- "FAILED: V[ii].name argument > nfilter.string - please shorten"
-      return(list(studysideMessage=studysideMessage))
+      stop(studysideMessage, call. = FALSE)
     }
   }
 
-   df.name.2 <- paste0("data.frame(",df.name,")")
-   df2subset <- eval(parse(text=df.name.2))
+  df.name.2 <- paste0("data.frame(",df.name,")")
+  df2subset <- eval(parse(text=df.name.2), envir = parent.frame())
 
-   V1 <- eval(parse(text=V1.name))
-   V2 <- eval(parse(text=V2.name))
+  if(V1.name=="ONES"||V2.name=="ONES")
+  {
+    length.ONES<-dim(df2subset)[1]
+    V1<-rep(1,length=length.ONES)
+    V2<-rep(1,length=length.ONES)
+    Boolean.operator.n<-1
+    #if using "ONES" for V1 or V2 then need to ensure a variable called "ONES" exists
+    #when it comes to generating the Boolean indicator below. If it doesn't exist
+    #generate it. If it does exist (for another purpose) then just leave as it is
+    #because its form doesn't matter, it just has to exist
+    if(!exists("ONES"))
+    {
+      ONES<-V1
+    }
+  } else {
+     V1 <- eval(parse(text=V1.name), envir = parent.frame())
+     V2 <- eval(parse(text=V2.name), envir = parent.frame())
+  }
 
   ##########CHECK APPROPRIATE CLASSES ##############
   if(!is.character(df.name) || !is.data.frame(df2subset)){
     studysideMessage <- "FAILED: df.name argument must be character and must name a data.frame"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, call. = FALSE)
   }
 
   if(!is.character(V1.name)){
     studysideMessage <- "FAILED: V[i].name must be character"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, call. = FALSE)
   }
 
   if(!is.character(V2.name)){
     studysideMessage <- "FAILED: V[ii].name must be character"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, call. = FALSE)
   }
 
   ########### CHECK LENGTHS OF V1, V2 ARE CONSISTENT WITH COLUMN LENGTH OF df TO BE SUBSETTED
@@ -183,17 +199,17 @@ if(sum(is.na(keep.code.n))>0){
 
   if(!((df.col.length == V1.length))){
     studysideMessage<-"FAILED: V[i] must of length equal to column length of df to be subsetted"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, call. = FALSE)
   }
 
-  if(!((V1.length == V2.length) | (V2.length==1))){
+  if(!((V1.length == V2.length) || (V2.length==1))){
     studysideMessage<-"FAILED: V[ii] must either be of length one or of length equal to V[i]"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, call. = FALSE)
   }
 
-  if(!is.numeric(Boolean.operator.n) | Boolean.operator.n==0){
+  if(!is.numeric(Boolean.operator.n) || Boolean.operator.n==0){
     studysideMessage <- "FAILED: Boolean.operator must be: '==', '!=', '<', '<=', '>' or '>='"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, call. = FALSE)
   }
 
   Boolean.operator <- "  "
@@ -211,13 +227,13 @@ if(sum(is.na(keep.code.n))>0){
   if(V2.length==V1.length){
     for(j in 1:V1.length){
       command.text <- paste0(V1.name,"[",j,"]",Boolean.operator,V2.name,"[",j,"]")
-      Boolean.indicator[j] <- eval(parse(text=command.text))*1
+      Boolean.indicator[j] <- eval(parse(text=command.text), envir = parent.frame())*1
     }
   }
   if(V2.length==1){
     for(j in 1:V1.length){
       command.text <- paste0(V1.name,"[",j,"]",Boolean.operator,V2.name)
-      Boolean.indicator[j] <- eval(parse(text=command.text))*1
+      Boolean.indicator[j] <- eval(parse(text=command.text), envir = parent.frame())*1
     }
   }
 
@@ -237,7 +253,7 @@ if(sum(is.na(keep.code.n))>0){
 
   if(subset.size < nfilter.subset){
     studysideMessage <- "Subset to be created is too small (<nfilter.subset)"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, call. = FALSE)
   }
 
   # DISCLOSURE TRAP ON LENGTH OF dim(1) OF ORIGINAL DATA FRAME AND NEW SUBSET

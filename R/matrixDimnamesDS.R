@@ -41,7 +41,7 @@ if(length.M1.name>nfilter.stringShort)
 	studysideMessage<-
 	paste0("FAILED: M1.name is too long it could hide concealed code, please shorten to <= nfilter.stringShort = ",
 	       nfilter.stringShort," characters")
-	return(list(studysideMessage=studysideMessage))
+	stop(studysideMessage, call. = FALSE)
 	}
 
 
@@ -57,18 +57,18 @@ if(!is.null(dimnames))
 		studysideMessage<-
 		paste0("FAILED: dimnames is too long it could hide concealed code, please shorten to <= 2 x nfilter.string = ",
 			(nfilter.string*2)," characters")
-		return(list(studysideMessage=studysideMessage))
+		stop(studysideMessage, call. = FALSE)
 		}
 	}
 
 #EVAL M1
 
-M1<-eval(parse(text=M1.name))
+M1<-eval(parse(text=M1.name), envir = parent.frame())
 
 if(!is.matrix(M1)&&!is.data.frame(M1))
 	{
 	studysideMessage<-"FAILED: M1 must be of class matrix or data.frame, please respecify"
-	return(list(studysideMessage=studysideMessage))
+	stop(studysideMessage, call. = FALSE)
 	}
 
 #coerce to matrix if a data.frame

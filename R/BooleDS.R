@@ -45,18 +45,18 @@ thr <- listDisclosureSettingsDS()                                       #
 
 ##########CHECK NOT LONG SPECIFIED VECTOR##############
 
-V1<-eval(parse(text=V1.name))
-V2<-eval(parse(text=V2.name))
+V1<-eval(parse(text=V1.name), envir = parent.frame())
+V2<-eval(parse(text=V2.name), envir = parent.frame())
 
 
 if(is.character(V1)){
    studysideMessage<-"FAILED: V_i is character, please convert to numeric, factor or logical before running Boole"
-   return(list(studysideMessage=studysideMessage))
+   stop(studysideMessage, call. = FALSE)
    }
 
 if(is.character(V2)){
    studysideMessage<-"FAILED: V_ii is character, please convert to numeric, factor or logical before running Boole"
-   return(list(studysideMessage=studysideMessage))
+   stop(studysideMessage, call. = FALSE)
    }
 
 V1.length<-length(V1)   
@@ -64,12 +64,12 @@ V2.length<-length(V2)
 
 if(!((V1.length == V2.length) | (V2.length==1))){
    studysideMessage<-"FAILED: V_ii must either be of length one or of length equal to V_i"
-   return(list(studysideMessage=studysideMessage))
+   stop(studysideMessage, call. = FALSE)
 }
 
 if(!is.numeric(Boolean.operator.n) | Boolean.operator.n==0){
    studysideMessage<-"FAILED: Boolean.operator specified incorrectly. Must be: '==', '!=', '<', '<=', '>' or '>='"
-   return(list(studysideMessage=studysideMessage))
+   stop(studysideMessage, call. = FALSE)
 }
 
 Boolean.operator<-"  "
@@ -89,14 +89,14 @@ Boolean.indicator<-integer(length=V1.length)
 if(V2.length==V1.length){
 for(j in 1:V1.length){
 command.text<-paste0(V1.name,"[",j,"]",Boolean.operator,V2.name,"[",j,"]")
-Boolean.indicator[j]<-eval(parse(text=command.text))*1
+Boolean.indicator[j]<-eval(parse(text=command.text), envir = parent.frame())*1
 }
 }
 
 if(V2.length==1){
 for(j in 1:V1.length){
 command.text<-paste0(V1.name,"[",j,"]",Boolean.operator,V2.name)
-Boolean.indicator[j]<-eval(parse(text=command.text))*1
+Boolean.indicator[j]<-eval(parse(text=command.text), envir = parent.frame())*1
 }
 }
 
@@ -137,7 +137,7 @@ outobj<-Boolean.indicator
 #TERMINATE CALCULATION IF outobj.invalid==1
 #if(outobj.invalid==1){
 #   studysideMessage<-"FAILED: outobj has at least one category below table filter limit"
-#   return(list(studysideMessage=studysideMessage))
+#   stop(studysideMessage, call. = FALSE)
 #}
 
 

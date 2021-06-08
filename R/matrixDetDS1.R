@@ -35,17 +35,17 @@ if(length.M1.name>nfilter.stringShort)
 	error.message<-
 	paste0("FAILED: M1.name is too long it could hide concealed code, please shorten to <= nfilter.stringShort = ",
 	       nfilter.stringShort," characters")
-	return(list(error.message=error.message))
+	stop(error.message, call. = FALSE)
 	}
 
 #EVAL M1
 
-M1<-eval(parse(text=M1.name))
+M1<-eval(parse(text=M1.name), envir = parent.frame())
 
 if(!is.matrix(M1)&&!is.data.frame(M1))
 	{
 	error.message<-"FAILED: M1 must be of class matrix or data.frame, please respecify"
-	return(list(error.message=error.message))
+	stop(error.message, call. = FALSE)
 	}
 
 #coerce to matrix if a data.frame
@@ -59,7 +59,7 @@ if(is.data.frame(M1))
 if(ncol(M1)!=nrow(M1))
 	{
 	error.message<-"FAILED: invalid dimensions M1 must be square: ncol must equal nrow, please respecify"
-	return(list(error.message=error.message))
+	stop(error.message, call. = FALSE)
 	}
 
 

@@ -8,75 +8,55 @@
 #' would be to write the modified object as newobj. But this would
 #' fail because the effect of the function is to delete the object and so
 #' it would be impossible to write it anywhere.
-#' @param x.name.transmit, the name of the object to be deleted converted
-#' into transmissable form. The argument is specified via the <x.name>
-#' argument of ds.rm
+#' @param x.names.transmit, the names of the objects to be deleted converted
+#' into transmissable form, a comma seperated list of character  string. The
+#' argument is specified via the <x.names> argument of ds.rm
 #' @return the specified object is deleted from the serverside. If this
-#' is successful the message "Object <x.name> successfully deleted" is returned
-#' to the clientside (where x.name is the name of the object to be deleted).
-#' If the object to be deleted is already absent on a given
-#' source, that source will return the message: "Object to be deleted, i.e. <x.name> ,
-#' does not exist so does not need deleting". Finally, if the specified name
-#' of the object to be deleted is too long (>nfilter.stringShort) there is
-#' a potential disclosure risk (active code hidden in the name) and the
-#' rmDS returns a message such as: "Disclosure risk, number of characters
-#' in x.name must not exceed nfilter.stringShort which is currently set at: 25" where
-#' '25' is the current setting of the R_Option value of nfilter.stringShort.
+#' is successful the message "Object <x.names> successfully deleted" is returned
+#' to the clientside (where x.names are the names of the object to be deleted).
+#' If the objects to be deleted is already absent on a given
+#' source, that source will return the message: "Object to be deleted, i.e. <x.names>,
+#' does not exist so does not need deleting".
 #' @author Paul Burton for DataSHIELD Development Team
 #' @export
-rmDS <- function(x.name.transmit)
+
+rmDS <- function(x.names.transmit)
 {
-#########################################################################
-# DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS           			#
-thr<-listDisclosureSettingsDS()							#
-#nfilter.tab<-as.numeric(thr$nfilter.tab)								#
-#nfilter.glm<-as.numeric(thr$nfilter.glm)								#
-#nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
-#nfilter.string<-as.numeric(thr$nfilter.string)              			#
-nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)    			#
-#nfilter.kNN<-as.numeric(thr$nfilter.kNN)								#
-#datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)        #
-#########################################################################
+    #convert x.names.transmit format from transmittable to actionable form (a vector of character strings)
+    x.names<-unlist(strsplit(x.names.transmit, split=","))
 
-#manage x.name
+    deleted.objects <- vector(mode = "character")
+    missing.objects <- vector(mode = "character")
+    problem.objects <- vector(mode = "character")
 
-#check text to be activated is not too long because of disclosure risk
-x.name.numchars<-length(unlist(strsplit(x.name.transmit,split="")))
+    #process request
+    for (x.name in x.names) {
+        if (exists(x.name, envir = parent.frame())) {
+            rm(list = c(x.name), pos = 1, envir = parent.frame())
 
-if(x.name.numchars>nfilter.stringShort){
-   return.message<-
-   paste0("Disclosure risk, number of characters in x.name must not exceed nfilter.stringShort which is currently set at: ",nfilter.stringShort)
-    return(list(return.message=return.message))
-}
+            if (exists(x.name, envir = parent.frame())) {
+                problem.objects <- append(problem.objects, x.name)
+            } else {
+                deleted.objects <- append(deleted.objects, x.name)
+            }
+        } else {
+            missing.objects <- append(missing.objects, x.name)
+        }
+    }
 
-#convert x.name format from transmittable to actionable form (a vector of character strings)
-	x.name<-unlist(strsplit(x.name.transmit, split=","))
+    #create return message
+    return.message <- "Object(s)"
+    if (length(deleted.objects) != 0) {
+        return.message <- paste0(return.message, " '", paste(deleted.objects, collapse=','), "' was deleted.")
+    }
+    if (length(missing.objects) != 0) {
+        return.message <- paste0(return.message, " '", paste(missing.objects, collapse=','), "' which are missing.")
+    }
+    if (length(problem.objects) != 0) {
+        return.message <- paste0(return.message, " '", paste(problem.objects, collapse=','), "' which caused problems.")
+    }
 
-	#tests whether already exists
-test.already.exists<-exists(x.name)
-
-if(!test.already.exists){
-   return.message<-
-   paste0("Object to be deleted, i.e. <",x.name, "> , does not exist so does not need deleting")
-    return(list(return.message=return.message))
-}
-
-rm(list=c(x.name),pos=1)
-
-#test whether still exists
-test.still.exists<-exists(x.name)
-
-if(test.still.exists){
-   return.message<-paste0("Object to be deleted, i.e. <",x.name, "> , still exists")
-	    return(list(return.message=return.message))
-
-	}else{
-		return.message<-paste0("Object <",x.name, "> successfully deleted")
-	    return(list(return.message=return.message))
-	}
-
-
-return(return.message=return.message,x.name=x.name)
+    return(list(return.message = return.message, deleted.objects = paste(deleted.objects, collapse=','), missing.objects = paste(missing.objects, collapse=','), problem.objects = paste(problem.objects, collapse=',')))
 }
 #AGGREGATE FUNCTION
 # rmDS

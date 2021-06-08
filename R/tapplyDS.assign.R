@@ -16,31 +16,16 @@
 #' @export
 tapplyDS.assign <- function(X.name, INDEX.names.transmit, FUN.name){
 
-#########################################################################
-# DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
-thr<-listDisclosureSettingsDS()                                       #
-nfilter.tab<-as.numeric(thr$nfilter.tab)                                #
-#nfilter.glm<-as.numeric(thr$nfilter.glm)                               #
-nfilter.subset<-as.numeric(thr$nfilter.subset)                          #
-#nfilter.string<-as.numeric(thr$nfilter.string)                         #
-#nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)               #
-#nfilter.kNN<-as.numeric(thr$nfilter.kNN)                               #
-#datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)       #
-#########################################################################
-
-
   if(is.character(X.name)){
-	  X<-eval(parse(text=X.name))
+	  X<-eval(parse(text=X.name), envir = parent.frame())
 	}else{
     studysideMessage<-"ERROR: X.name must be specified as a character string"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, call. = FALSE)
   }
 
+  INDEX.factors<-unlist(strsplit(INDEX.names.transmit, split=","))
 
-
-INDEX.factors<-unlist(strsplit(INDEX.names.transmit, split=","))
-
-num.factors<-length(INDEX.factors)
+  num.factors<-length(INDEX.factors)
 
 #test that output vector and indexing factor all have the same length
 length.2.test<-length(X)
@@ -50,7 +35,7 @@ length.test.vector<-rep(NA,num.factors)
 for(g in 1:num.factors){
 activation.text.0<-paste0("INDEX.factors[",g,"]")
 active.factor.name<-eval(parse(text=activation.text.0))
-active.factor<-eval(parse(text=active.factor.name))
+active.factor<-eval(parse(text=active.factor.name), envir = parent.frame())
 active.factor
 length.test.vector[g]<-length(active.factor)
 }
@@ -63,7 +48,7 @@ if(length.2.test!=length.test.vector[h])all.lengths.equal<-FALSE
 
 if(!all.lengths.equal){
 studysideMessage="Error: the output variable and all indexing factors must be of equal length"
-return(list(studysideMessage=studysideMessage))
+stop(studysideMessage, call. = FALSE)
 }
 
 
@@ -74,8 +59,8 @@ all.complete<-stats::complete.cases(X)
 current.factor <- NA
 for(j in 1:num.factors){
 
-activation.text.a<-paste0("current.factor <-",INDEX.factors[j])
-eval(parse(text=activation.text.a))
+activation.text.a<-paste0(INDEX.factors[j])
+current.factor <- eval(parse(text=activation.text.a), envir = parent.frame())
 
 all.complete<-all.complete&stats::complete.cases(current.factor)
 }
@@ -83,8 +68,8 @@ all.complete<-all.complete&stats::complete.cases(current.factor)
 X.complete<-X[all.complete]
 
 for(k in 1:num.factors){
-  activation.text.b<-paste0("current.factor <-",INDEX.factors[k])
-  eval(parse(text=activation.text.b))
+  activation.text.b<-paste0(INDEX.factors[k])
+  current.factor <- eval(parse(text=activation.text.b), envir = parent.frame())
 
   activation.text.c<-paste0(INDEX.factors[k], "<- current.factor[all.complete]")
   eval(parse(text=activation.text.c))
@@ -121,7 +106,7 @@ for(k in 1:num.factors){
 		for(u in 1:length(factor1.levels)){
 		factor1.level.names[u]<-paste0(INDEX.factors[1],".",factor1.levels[u])
 		}
-		dimnames(Mean)[[1]]<-factor1.level.names
+		#dimnames(Mean)[[1]]<-factor1.level.names
 		}
 
 		if(num.factors==2){
@@ -147,11 +132,8 @@ for(k in 1:num.factors){
 		}
 
 
-		dimnames(Mean)[[1]]<-factor1.level.names
-		dimnames(Mean)[[2]]<-factor2.level.names
-
-#		dimnames(N.count)[[1]]<-factor1.level.names
-#		dimnames(N.count)[[2]]<-factor2.level.names
+		#dimnames(Mean)[[1]]<-factor1.level.names
+		#dimnames(Mean)[[2]]<-factor2.level.names
 		}
 
  output<-list(Mean=Mean)
@@ -175,7 +157,7 @@ for(k in 1:num.factors){
 		for(u in 1:length(factor1.levels)){
 		factor1.level.names[u]<-paste0(INDEX.factors[1],".",factor1.levels[u])
 		}
-		dimnames(N.count)[[1]]<-factor1.level.names
+		#dimnames(N.count)[[1]]<-factor1.level.names
 		}
 
 		if(num.factors==2){
@@ -201,8 +183,8 @@ for(k in 1:num.factors){
 		}
 
 
-		dimnames(N.count)[[1]]<-factor1.level.names
-		dimnames(N.count)[[2]]<-factor2.level.names
+		#dimnames(N.count)[[1]]<-factor1.level.names
+		#dimnames(N.count)[[2]]<-factor2.level.names
 		}
 
 
@@ -227,7 +209,7 @@ for(k in 1:num.factors){
 		for(u in 1:length(factor1.levels)){
 		factor1.level.names[u]<-paste0(INDEX.factors[1],".",factor1.levels[u])
 		}
-		dimnames(SD)[[1]]<-factor1.level.names
+		#dimnames(SD)[[1]]<-factor1.level.names
 		}
 
 		if(num.factors==2){
@@ -253,8 +235,8 @@ for(k in 1:num.factors){
 		}
 
 
-		dimnames(SD)[[1]]<-factor1.level.names
-		dimnames(SD)[[2]]<-factor2.level.names
+		#dimnames(SD)[[1]]<-factor1.level.names
+		#dimnames(SD)[[2]]<-factor2.level.names
 		}
 
 
@@ -278,7 +260,7 @@ for(k in 1:num.factors){
 		for(u in 1:length(factor1.levels)){
 		factor1.level.names[u]<-paste0(INDEX.factors[1],".",factor1.levels[u])
 		}
-		dimnames(Sum)[[1]]<-factor1.level.names
+		#dimnames(Sum)[[1]]<-factor1.level.names
 		}
 
 		if(num.factors==2){
@@ -304,8 +286,8 @@ for(k in 1:num.factors){
 		}
 
 
-		dimnames(Sum)[[1]]<-factor1.level.names
-		dimnames(Sum)[[2]]<-factor2.level.names
+		#dimnames(Sum)[[1]]<-factor1.level.names
+		#dimnames(Sum)[[2]]<-factor2.level.names
 
 		}
 
@@ -320,7 +302,7 @@ for(k in 1:num.factors){
 
 	if(num.factors>1){
 	studysideMessage<-"Quantile will only work with one indexing factor but you can combine several factors into one. e.g. two factors with f1 and f2 levels respectively can be combined into one with f1 x f2 levels"
-     return(list(studysideMessage=studysideMessage))
+	stop(studysideMessage, call. = FALSE)
 	}
   probs.vector <- c(0.05,0.1,0.2,0.25,0.3,0.33,0.4,0.5,0.6,0.67,0.7,0.75,0.8,0.9,0.95)
   Quantile <- tapply(X.complete,INDEX,stats::quantile, probs=probs.vector)
@@ -332,7 +314,7 @@ for(k in 1:num.factors){
  }
 
  studysideMessage<-"No valid analytic function has been found. Please specify a valid DataSHIELD tapply function e.g. FUN.name='mean' or FUN.name='sd'"
- return(list(studysideMessage=studysideMessage))
+ stop(studysideMessage, call. = FALSE)
 }
 #ASSIGN.FUNCTION
 # tapplyDS.assign

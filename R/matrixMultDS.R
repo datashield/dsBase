@@ -38,7 +38,7 @@ if(length.M1.name>nfilter.stringShort)
 	studysideMessage<-
 	paste0("FAILED: M1.name is too long it could hide concealed code, please shorten to <= nfilter.stringShort = ",
 	       nfilter.stringShort," characters")
-	return(list(studysideMessage=studysideMessage))
+	stop(studysideMessage, call. = FALSE)
 	}
 
 #Check length of M2.name not so long as to provide a risk of hidden code
@@ -49,24 +49,24 @@ if(length.M2.name>nfilter.stringShort)
 	studysideMessage<-
 	paste0("FAILED: M2.name is too long it could hide concealed code, please shorten to <= nfilter.stringShort = ",
 	       nfilter.stringShort," characters")
-	return(list(studysideMessage=studysideMessage))
+	stop(studysideMessage, call. = FALSE)
 	}
 
-M1<-eval(parse(text=M1.name))
-M2<-eval(parse(text=M2.name))
+M1<-eval(parse(text=M1.name), envir = parent.frame())
+M2<-eval(parse(text=M2.name), envir = parent.frame())
 
 
 
 if(!is.matrix(M1)&&!is.data.frame(M1))
 	{
 	studysideMessage<-"FAILED: M1 must be of class matrix or data.frame, please respecify"
-	return(list(studysideMessage=studysideMessage))
+	stop(studysideMessage, call. = FALSE)
 	}
 
 if(!is.matrix(M2)&&!is.data.frame(M2))
 	{
 	studysideMessage<-"FAILED: M2 must be of class matrix or data.frame, please respecify"
-	return(list(studysideMessage=studysideMessage))
+	stop(studysideMessage, call. = FALSE)
 	}
 
 if(is.data.frame(M1))
@@ -85,7 +85,7 @@ if(is.data.frame(M2))
 if(ncol(M1)!=nrow(M2))
 	{
 	studysideMessage<-"FAILED: invalid dimensions ncol(M1) must equal nrow(M2), please respecify"
-	return(list(studysideMessage=studysideMessage))
+	stop(studysideMessage, call. = FALSE)
 	}
 
 

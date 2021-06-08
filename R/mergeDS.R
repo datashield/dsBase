@@ -50,72 +50,63 @@
 #' and a studysideMessage was saved. If there was no error and <newobj> was created
 #' without problems no studysideMessage will have been saved and ds.message(<newobj>)
 #' will return the message: "ALL OK: there are no studysideMessage(s) on this datasource".
-#' @author Amadou Gaye, Paul Burton, for DataSHIELD Development Team
+#' @author Paul Burton, Demetris Avraam, for DataSHIELD Development Team
 #' @export
-mergeDS<-function(x.name, y.name, by.x.names.transmit, by.y.names.transmit, all.x, all.y,
-			 sort, suffixes.transmit, no.dups, incomparables)
-{
-#########################################################################
-# DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS           			#
-thr<-listDisclosureSettingsDS()							#
-#nfilter.tab<-as.numeric(thr$nfilter.tab)								#
-#nfilter.glm<-as.numeric(thr$nfilter.glm)								#
-#nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
-#nfilter.string<-as.numeric(thr$nfilter.string)              			#
-nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)    			#
-#nfilter.kNN<-as.numeric(thr$nfilter.kNN)								#
-#datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)        #
-#########################################################################
+mergeDS <- function(x.name, y.name, by.x.names.transmit, by.y.names.transmit, all.x, all.y,
+			 sort, suffixes.transmit, no.dups, incomparables){
+  
+  #########################################################################
+  # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS
+  thr <- listDisclosureSettingsDS()
+  nfilter.stringShort <- as.numeric(thr$nfilter.stringShort)
+  #########################################################################
 
-#manage x.name and y.name
-	#check text to be activated is not too long because of disclosure risk
-x.name.numchars<-length(unlist(strsplit(x.name, split="")))
+  # manage x.name and y.name
+  # check text to be activated is not too long because of disclosure risk
+  x.name.numchars <- length(unlist(strsplit(x.name, split="")))
+  if(x.name.numchars > nfilter.stringShort){
+     studysideMessage <-
+     paste0("Disclosure risk, number of characters in x.name must not exceed nfilter.stringShort which is currently set at: ",nfilter.stringShort)
+     stop(studysideMessage, call. = FALSE)
+  }
+  
+  y.name.numchars <- length(unlist(strsplit(y.name, split="")))
+  if(y.name.numchars > nfilter.stringShort){
+     studysideMessage <-
+     paste0("Disclosure risk, number of characters in y.name must not exceed nfilter.stringShort which is currently set at: ",nfilter.stringShort)
+     stop(studysideMessage, call. = FALSE)
+  }
+  
+	# activate data frame names
+  x.data.frame <- eval(parse(text=x.name), envir = parent.frame())
+  y.data.frame <- eval(parse(text=y.name), envir = parent.frame())
 
-if(x.name.numchars>nfilter.stringShort){
-   studysideMessage<-
-   paste0("Disclosure risk, number of characters in x.name must not exceed nfilter.stringShort which is currently set at: ",nfilter.stringShort)
-    return(list(studysideMessage=studysideMessage))
-}
+  # check data.frames are valid data.frames
+  if(!is.data.frame(x.data.frame)){
+    studysideMessage <- "Error: x.name must specify a data.frame"
+    stop(studysideMessage, call. = FALSE)
+  }
+  
+  if(!is.data.frame(y.data.frame)){
+    studysideMessage <- "Error: y.name must specify a data.frame"
+    stop(studysideMessage, call. = FALSE)
+  }
 
-y.name.numchars<-length(unlist(strsplit(y.name, split="")))
-if(y.name.numchars>nfilter.stringShort){
-   studysideMessage<-
-   paste0("Disclosure risk, number of characters in y.name must not exceed nfilter.stringShort which is currently set at: ",nfilter.stringShort)
-    return(list(studysideMessage=studysideMessage))
-}
-	#activate data frame names
-x.data.frame<-eval(parse(text=x.name))
-y.data.frame<-eval(parse(text=y.name))
-
-#check data.frames are valid data.frames
-
-if(!is.data.frame(x.data.frame)){
-   studysideMessage<-"Error: x.name must specify a data.frame"
-    return(list(studysideMessage=studysideMessage))
-}
-
-if(!is.data.frame(y.data.frame)){
-   studysideMessage<-"Error: y.name must specify a data.frame"
-    return(list(studysideMessage=studysideMessage))
-}
-
-
-#manage by.x.names and by.y.names
-	#check text to be activated is not too long because of disclosure risk
-
-	colnames.x.valid<-TRUE
+  # manage by.x.names and by.y.names
+	# check text to be activated is not too long because of disclosure risk
+	colnames.x.valid <- TRUE
 	num.cols.x<-length(by.x.names.transmit)
 	colnames.x<-unlist(strsplit(by.x.names.transmit, split=","))
 	for(j in 1:num.cols.x){
 		colnames.x.numchars<-length(unlist(strsplit(colnames.x[j], split="")))
 		if(colnames.x.numchars>nfilter.stringShort){
-		colnames.x.valid<-FALSE
+		  colnames.x.valid <- FALSE
 		}
 	}
 	if(!colnames.x.valid){
-    studysideMessage<-
+    studysideMessage <-
     paste0("Disclosure risk, the number of characters in at least one by.x.name exceeds nfilter.stringShort which is currently set at: ",nfilter.stringShort)
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, call. = FALSE)
 	}
 
 	colnames.y.valid<-TRUE
@@ -130,45 +121,41 @@ if(!is.data.frame(y.data.frame)){
 	if(!colnames.y.valid){
     studysideMessage<-
     paste0("Disclosure risk, the number of characters in at least one by.y.name exceeds nfilter.stringShort which is currently set at: ",nfilter.stringShort)
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, call. = FALSE)
 	}
 
 	#convert colname format from transmittable to actionable form (a vector of character strings)
-	by.x.colnames<-unlist(strsplit(by.x.names.transmit, split=","))
-	by.y.colnames<-unlist(strsplit(by.y.names.transmit, split=","))
+	by.x.colnames <- unlist(strsplit(by.x.names.transmit, split=","))
+	by.y.colnames <- unlist(strsplit(by.y.names.transmit, split=","))
 
-
-#manage suffixes
-	#check text to be activated is not too long because of disclosure risk
-
+  # manage suffixes
+	# check text to be activated is not too long because of disclosure risk
 	suffixes.valid<-TRUE
 	num.suffixes<-length(suffixes.transmit)
 	suffixes.to.use<-unlist(strsplit(suffixes.transmit, split=","))
 	for(j in 1:num.suffixes){
 		suffix.numchars<-length(unlist(strsplit(suffixes.to.use[j], split="")))
 		if(suffix.numchars>nfilter.stringShort){
-		suffixes.valid<-FALSE
+		  suffixes.valid<-FALSE
 		}
 	}
 
 	if(!suffixes.valid){
     studysideMessage<-
     paste0("Disclosure risk, the number of characters in at least one specified suffix exceeds nfilter.stringShort which is currently set at: ",nfilter.stringShort)
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, call. = FALSE)
 	}
 
-	#convert suffixes format from transmittable to actionable form (a vector of character strings)
-	suffixes.character.vector<-unlist(strsplit(suffixes.transmit, split=","))
+	# convert suffixes format from transmittable to actionable form (a vector of character strings)
+	suffixes.character.vector <- unlist(strsplit(suffixes.transmit, split=","))
 
 	output <- merge(x=x.data.frame, y=y.data.frame, by=NULL,
       by.x = by.x.colnames, by.y = by.x.colnames, all=FALSE, all.x = all.x, all.y = all.y,
       sort = sort, suffixes = suffixes.character.vector, no.dups = no.dups,
       incomparables = incomparables)
 
-
   return(output)
 
-
 }
-#Assign function
+# Assign function
 # mergeDS

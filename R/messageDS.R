@@ -28,10 +28,10 @@ messageDS <- function(message.object.name){
 
 #############################################################
 #MODULE 1: CAPTURE THE nfilter SETTINGS                     #
-thr<-listDisclosureSettingsDS()							#
-#nfilter.tab<-as.numeric(thr$nfilter.tab)					#
-#nfilter.glm<-as.numeric(thr$nfilter.glm)					#
-nfilter.subset<-as.numeric(thr$nfilter.subset)          	#
+thr<-listDisclosureSettingsDS()                             #
+#nfilter.tab<-as.numeric(thr$nfilter.tab)                   #
+#nfilter.glm<-as.numeric(thr$nfilter.glm)                   #
+nfilter.subset<-as.numeric(thr$nfilter.subset)              #
 nfilter.string<-as.numeric(thr$nfilter.string)              #
 nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)    #
 nfilter.kNN<-as.numeric(thr$nfilter.kNN)                    #
@@ -44,7 +44,7 @@ nfilter.kNN<-as.numeric(thr$nfilter.kNN)                    #
 
 A1.exists.text<-paste0("exists('",message.object.name,"')")
 
-boole.A1.exists<-eval(parse(text=A1.exists.text))
+boole.A1.exists<-eval(parse(text=A1.exists.text), envir = parent.frame())
 
 
 
@@ -59,20 +59,20 @@ return(out.obj)
 #IF message.object.name EXISTS, CHECK WHETHER IT CURRENTLY CONTAINS A studysideMessage
 
 if(boole.A1.exists){
-message.object.name.active<-eval(parse(text=message.object.name))
+message.object.name.active<-eval(parse(text=message.object.name), envir = parent.frame())
 
 
 
 #CASE WHERE PRIMARY OUTPUT OBJECT IS A LIST
-if(class(message.object.name.active)=="list"){
+if("list" %in% class(message.object.name.active)){
 
 #A LIST WITH NAMES - could be a studysideMessage
 	if(!is.null(names(message.object.name.active)))	{
 		s.message.available<-FALSE
-		for(j in length(names(message.object.name.active))){
+		for(j in 1:length(names(message.object.name.active))){
 			if(names(message.object.name.active)[j]=="studysideMessage"){
 			s.message.available<-TRUE
-			out.obj<-message.object.name.active$studysideMessage
+			out.obj<-"NOT ALL OK: there are studysideMessage(s) on this datasource"
 			}
 		}
 		if(!s.message.available){

@@ -2,7 +2,7 @@
 #' @description Coerces an R object into a list
 #' @details Unlike most other class coercing functions this is
 #' an aggregate function rather than an assign function. This
-#' is because the {datashield.assign} function in opal deals specially with
+#' is because the {datashield.assign} function in the data repository deals specially with
 #' a created object (newobj) if it is of class list. Reconfiguring the
 #' function as an aggregate function works around this problem.
 #' This aggregate function is based on the native R function {as.list}
@@ -25,15 +25,15 @@ asListDS <- function (x.name,newobj){
 
     newobj.class <- NULL
     if(is.character(x.name)){
-        active.text<-paste0(newobj,"<<-as.list(",x.name,")")
-        eval(parse(text=active.text))
+        active.text<-paste0(newobj,"<-as.list(",x.name,")")
+        eval(parse(text=active.text), envir = parent.frame())
 
-        active.text2<-paste0("newobj.class<-class(",newobj,")")
-        eval(parse(text=active.text2))
+        active.text2<-paste0("class(",newobj,")")
+        assign("newobj.class", eval(parse(text=active.text2), envir = parent.frame()))
 
     }else{
         studysideMessage<-"ERROR: x.name must be specified as a character string"
-        return(list(studysideMessage=studysideMessage))
+        stop(studysideMessage, call. = FALSE)
     }
 
     return.message<-paste0("New object <",newobj,"> created")

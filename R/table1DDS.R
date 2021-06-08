@@ -15,6 +15,17 @@
 #'
 table1DDS  <- function(xvect){
 
+  # the minimum number of observations that are allowed (the below function gets the value from opal)
+  
+  #############################################################
+  # MODULE 1: CAPTURE THE nfilter SETTINGS
+  thr <- listDisclosureSettingsDS()
+  nfilter.tab <- as.numeric(thr$nfilter.tab)
+  #nfilter.glm <- as.numeric(thr$nfilter.glm)
+  #nfilter.subset <- as.numeric(thr$nfilter.subset)
+  #nfilter.string <- as.numeric(thr$nfilter.string)
+  #############################################################
+
   # tabulate the input vector and output the result in a data frame format
   aa <- t(as.data.frame((table(xvect))))
   bb <- as.data.frame(t(as.numeric(aa[2,]))) 
@@ -23,15 +34,13 @@ table1DDS  <- function(xvect){
   cc <- cbind(bb, sum(bb[1,], na.rm=TRUE))
   colnames(cc) <- c(aa[1,], "Total")
 
-  # the minimum number of observations that are allowed (the below function gets the value from opal)
-  nfilter <- setFilterDS()
-  
   # check for invalid cells if any found change them to 'NA' and set the validity message accordingly
   validity <- "valid Table"
-  indx <- which(cc[1,1:(dim(cc)[2] - 1)] > 0 & cc[1,1:(dim(cc)[2] - 1)] < nfilter)
+  indx <- which(cc[1,1:(dim(cc)[2] - 1)] > 0 & cc[1,1:(dim(cc)[2] - 1)] < nfilter.tab)
   if(length(indx) > 0){
     cc[1,1:(dim(cc)[2] - 1)] <- NA
     validity <- "invalid table - invalid counts present"
+    stop(validity, call. = FALSE)
   }
   
   # return output table and message

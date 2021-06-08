@@ -33,6 +33,7 @@ varDS <- function(xvect){
     out.sum <- NA
     out.sumSquares <- NA
     studysideMessage <- "FAILED: Nvalid less than nfilter.tab"
+    stop(studysideMessage, call. = FALSE)
   }
 
   out.obj <- list(Sum=out.sum,SumOfSquares=out.sumSquares,Nmissing=out.numNa,Nvalid=out.validN,Ntotal=out.totN,ValidityMessage=studysideMessage)

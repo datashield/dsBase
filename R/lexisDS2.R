@@ -43,10 +43,10 @@ lexisDS2 <- function(datatext=NULL, intervalWidth, maxmaxtime, idCol, entryCol, 
   #nfilter.string<-as.numeric(thr$nfilter.string)
   #############################################################
   
-  starttime <- eval(parse(text=entryCol))
-  endtime <- eval(parse(text=exitCol))
-  cens <- eval(parse(text=statusCol))
-  id.orig <- eval(parse(text=idCol))
+  starttime <- eval(parse(text=entryCol), envir = parent.frame())
+  endtime <- eval(parse(text=exitCol), envir = parent.frame())
+  cens <- eval(parse(text=statusCol), envir = parent.frame())
+  id.orig <- eval(parse(text=idCol), envir = parent.frame())
   
   starttime <- as.numeric(starttime)
   endtime <- as.numeric(endtime)
@@ -72,12 +72,12 @@ lexisDS2 <- function(datatext=NULL, intervalWidth, maxmaxtime, idCol, entryCol, 
   
   if(is.null(vartext)){
     datatext2<-paste0("data.frame(",datatext,")")
-    DF <- eval(parse(text=datatext2))
+    DF <- eval(parse(text=datatext2), envir = parent.frame())
   }
   
   if(!is.null(vartext)){
     vartext2<-paste0("data.frame(",vartext,")")
-    DF<-eval(parse(text=vartext2))
+    DF<-eval(parse(text=vartext2), envir = parent.frame())
   }
   
   if(is.null(datatext)&&is.null(vartext)){
@@ -99,7 +99,7 @@ lexisDS2 <- function(datatext=NULL, intervalWidth, maxmaxtime, idCol, entryCol, 
   
   if(sum(is.na(code.n))>0){
     studysideMessage<-"FAILED: IntervalWidth argument contains non-numerics"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, call. = FALSE)
   }else{
     
     intervalWidth<-code.n
@@ -121,7 +121,7 @@ lexisDS2 <- function(datatext=NULL, intervalWidth, maxmaxtime, idCol, entryCol, 
   
   if(num.intervals>(nfilter.glm*length.collapseDF)){
     studysideMessage<-"FAILED: IntervalWidth vector is too long. It may be disclosive - please shorten"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, call. = FALSE)
   }
   ###############################################
   #                 END.OF.SCRIPT               #
@@ -267,10 +267,9 @@ lexisDS2 <- function(datatext=NULL, intervalWidth, maxmaxtime, idCol, entryCol, 
   ######################################################################
   ##########ERROR NEEDS CORRECTING
   time.id.vector<-stats::ave(idSeq.vector,idSeq.vector,FUN=seq_along)
-  
+  first.int.exposed<-first.int.exposed + (end.breaks[j]<=STARTTIME)
   time.id.vector<-time.id.vector+first.int.exposed[idSeq.vector]-1
   ######################################################################
-  
   
   expanded.template<-cbind(idSeq.vector,time.id.vector,survival.vector,cens.vector)
   
@@ -299,7 +298,7 @@ lexisDS2 <- function(datatext=NULL, intervalWidth, maxmaxtime, idCol, entryCol, 
   #TERMINATE CALCULATION IF time.intervals.invalid==1
   if(time.intervals.invalid==1){
     studysideMessage<-"FAILED: At least one time interval has too few failures - please change times"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, call. = FALSE)
   }
   
   

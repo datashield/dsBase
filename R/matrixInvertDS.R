@@ -32,18 +32,18 @@ if(length.M1.name>nfilter.stringShort)
 	studysideMessage<-
 	paste0("FAILED: M1.name is too long it could hide concealed code, please shorten to <= nfilter.stringShort = ",
 	       nfilter.stringShort," characters")
-	return(list(studysideMessage=studysideMessage))
+	stop(studysideMessage, call. = FALSE)
 	}
 
 #EVAL M1
 
 
-M1<-eval(parse(text=M1.name))
+M1<-eval(parse(text=M1.name), envir = parent.frame())
 
 if(!is.matrix(M1)&&!is.data.frame(M1))
 	{
 	studysideMessage<-"FAILED: M1 must be of class matrix or data.frame, please respecify"
-	return(list(studysideMessage=studysideMessage))
+	stop(studysideMessage, call. = FALSE)
 	}
 
 #coerce to matrix if a data.frame
@@ -59,14 +59,14 @@ if(is.data.frame(M1))
 if(ncol(M1)!=nrow(M1))
 	{
 	studysideMessage<-"FAILED: invalid dimensions M1 must be square: ncol must equal nrow, please respecify"
-	return(list(studysideMessage=studysideMessage))
+	stop(studysideMessage, call. = FALSE)
 	}
 
 #Check can be inverted (not singular)
 if(det(M1)==0.000)
 	{
 	studysideMessage<-"FAILED: matrix singular so cannot be inverted, please respecify"
-	return(list(studysideMessage=studysideMessage))
+	stop(studysideMessage, call. = FALSE)
 	}
 
 

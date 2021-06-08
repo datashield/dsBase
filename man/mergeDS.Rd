@@ -4,8 +4,18 @@
 \alias{mergeDS}
 \title{mergeDS (assign function) called by ds.merge}
 \usage{
-mergeDS(x.name, y.name, by.x.names.transmit, by.y.names.transmit, all.x,
-  all.y, sort, suffixes.transmit, no.dups, incomparables)
+mergeDS(
+  x.name,
+  y.name,
+  by.x.names.transmit,
+  by.y.names.transmit,
+  all.x,
+  all.y,
+  sort,
+  suffixes.transmit,
+  no.dups,
+  incomparables
+)
 }
 \arguments{
 \item{x.name, }{the name of the first data.frame to be merged specified in
@@ -76,5 +86,5 @@ For further information see details of the native R function {merge}
 and the DataSHIELD clientside function {ds.merge}.
 }
 \author{
-Amadou Gaye, Paul Burton, for DataSHIELD Development Team
+Paul Burton, Demetris Avraam, for DataSHIELD Development Team
 }

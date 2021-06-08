@@ -37,12 +37,12 @@ rNormDS<-function (n, mean = 0, sd = 1, force.output.to.k.decimal.places=9){
 
 	if(is.character(mean)){
 	command.text<-mean
-	mean<-eval(parse(text=command.text))
+	mean<-eval(parse(text=command.text), envir = parent.frame())
 	}
 
 	if(is.character(sd)){
 	command.text<-sd
-	sd<-eval(parse(text=command.text))
+	sd<-eval(parse(text=command.text), envir = parent.frame())
 	}
 
 	random.number.vector<-stats::rnorm(n, mean=mean, sd=sd)
