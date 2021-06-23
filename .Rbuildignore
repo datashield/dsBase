@@ -3,3 +3,6 @@
 ^azure-pipelines\.yml$
 ^azure-pipelines_check\.Rout$
 ^LICENSE.md$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
