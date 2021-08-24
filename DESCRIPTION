@@ -100,6 +100,7 @@ AssignMethods:
     dataFrameFillDS,
     dataFrameSortDS,
     dataFrameSubsetDS2,
+    dmtC2SDS,
     glmerSLMADS.assign,
     glmPredictDS.as,
     glmSLMADS.assign,
