@@ -16,10 +16,10 @@ metadataDS <- function(x)
     if ((! is.character(x)) || (length(x) != 1))
         stop("Variable's name isn't be single character vector", call. = FALSE)
 
-#    if (! exists(x, envir = parent.frame()))
-#        stop(paste0("The variable '", x, "' does not exist"), call. = FALSE)
-
     x.var <- eval(parse(text=x), envir = parent.frame())
+
+    if (is.null(x.var))
+        stop("Variable can't be NULL", call. = FALSE)
 
     # find the metadata specified variable
     metadata_attributes       <- attributes(x.var)
