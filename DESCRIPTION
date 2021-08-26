@@ -51,6 +51,7 @@ AggregateMethods:
     meanDS,
     meanSdGpDS,
     messageDS,
+    metadataDS,
     namesDS,
     numNaDS,
     quantileMeanDS,
