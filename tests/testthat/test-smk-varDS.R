@@ -64,6 +64,28 @@ test_that("numeric varDS, with NA", {
     expect_equal(res$ValidityMessage, "VALID ANALYSIS")
 })
 
+context("varDS::smk::numeric with all NA")
+test_that("numeric varDS, with all NA", {
+    input <- c(NA, NA, NA, NA, NA)
+    
+    res <- varDS(input)
+    
+    expect_length(res, 6)
+    expect_equal(class(res), "list")
+    expect_equal(class(res$Sum), "integer")
+    expect_equal(res$Sum, 0)
+    expect_equal(class(res$SumOfSquares), "numeric")
+    expect_equal(res$SumOfSquares, 0)
+    expect_equal(class(res$Nmissing), "integer")
+    expect_equal(res$Nmissing, 5)
+    expect_equal(class(res$Nvalid), "integer")
+    expect_equal(res$Nvalid, 0)
+    expect_equal(class(res$Ntotal), "integer")
+    expect_equal(res$Ntotal, 5)
+    expect_equal(class(res$ValidityMessage), "character")
+    expect_equal(res$ValidityMessage, "VALID ANALYSIS")
+})
+
 #
 # Done
 #
