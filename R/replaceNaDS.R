@@ -12,26 +12,40 @@
 #' @param replacements a vector which contains the replacement value(s), a vector one or 
 #' more values for each study. 
 #' @return a new vector without missing values
-#' @author Gaye, A.
+#' @author Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
 #' @export
 #' 
 replaceNaDS <- function(xvect, replacements){
   
   # check if the input vector is valid (i.e. meets DataSHIELD criteria)
-  check <- isValidDS(xvect)
+  check <- dsBase::isValidDS(xvect)
+  
+  # if the input vector is a factor convert it to numeric
+  cls <- class(xvect)
+  msg <- FALSE
+  if(cls=="factor"){
+    msg <- TRUE
+    xvect <- as.numeric(xvect)
+  }
   
   # get the indices of the missing values
   indx <- which(is.na(xvect))
   
   if(check){
-    # if the inpout vector is valid replace missing values
+    # if the input vector is valid replace missing values
     xvect[indx] <- replacements
   }else{
-    # if the inpout vector is not valid and is of size > 0
+    # if the input vector is not valid and is of size > 0
     xvect[1:length(xvect)] <- NA
+  }
+  
+  if(msg==TRUE){
+    xvect <- as.factor(xvect)
   }
   
   # return the new vector
   return(xvect) 
   
 }
+# ASSIGN FUNCTION
+# replaceNaDS

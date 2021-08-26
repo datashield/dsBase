@@ -30,7 +30,7 @@
 #' For more detailed information see help for ds.glmerSLMA.
 #' @author Demetris Avraam for DataSHIELD Development Team
 #' @export
-glmerSLMADS.assing <- function(formula, offset, weights, dataName, family,
+glmerSLMADS.assign <- function(formula, offset, weights, dataName, family,
                 control_type=NULL, control_value.transmit=NULL, nAGQ=1L, verbose = 0, theta = NULL, fixef = NULL){
  
   errorMessage <- "No errors"
