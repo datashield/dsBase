@@ -161,6 +161,6 @@ Options:
     default.nfilter.stringShort=20,
     default.nfilter.tab=3,
     default.nfilter.noise=0.25,
-    default.nfilter.levels.density=0.33
+    default.nfilter.levels.density=0.33,
     default.nfilter.levels.max=40
 RoxygenNote: 7.1.1
