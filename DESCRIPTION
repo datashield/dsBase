@@ -83,7 +83,6 @@ AssignMethods:
     absDS,
     asCharacterDS,
     asDataMatrixDS,
-    asFactorDS,
     asFactorDS2,
     asFactorSimpleDS,
     asIntegerDS,
