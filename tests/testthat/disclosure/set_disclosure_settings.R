@@ -20,5 +20,6 @@ set.standard.disclosure.settings <- function() {
     options(default.nfilter.stringShort = "20")
     options(default.nfilter.tab = "3")
     options(default.nfilter.noise = "0.25")
-    options(default.nfilter.levels = "0.33")
+    options(default.nfilter.levels.density = "0.33")
+    options(default.nfilter.levels.max = "40")
 }
