@@ -25,10 +25,10 @@ test_that("simple listDisclosureSettingsDS", {
     res <- listDisclosureSettingsDS()
 
     expect_equal(class(res), "list")
-    expect_length(res, 9)
+    expect_length(res, 10)
 
     res.names <- names(res)
-    expect_length(res.names, 9)
+    expect_length(res.names, 10)
 
     expect_true("nfilter.tab" %in% res.names)
     expect_true("nfilter.subset" %in% res.names)
@@ -36,7 +36,8 @@ test_that("simple listDisclosureSettingsDS", {
     expect_true("nfilter.string" %in% res.names)
     expect_true("nfilter.stringShort" %in% res.names)
     expect_true("nfilter.kNN" %in% res.names)
-    expect_true("nfilter.levels" %in% res.names)
+    expect_true("nfilter.levels.density" %in% res.names)
+    expect_true("nfilter.levels.max" %in% res.names)
     expect_true("nfilter.noise" %in% res.names)
     expect_true("nfilter.privacy.old" %in% res.names)
 
@@ -46,7 +47,8 @@ test_that("simple listDisclosureSettingsDS", {
     expect_equal(class(res$nfilter.string), "character")
     expect_equal(class(res$nfilter.stringShort), "character")
     expect_equal(class(res$nfilter.kNN), "character")
-    expect_equal(class(res$nfilter.levels), "character")
+    expect_equal(class(res$nfilter.levels.density), "character")
+    expect_equal(class(res$nfilter.levels.max), "character")
     expect_equal(class(res$nfilter.noise), "character")
     expect_equal(class(res$nfilter.privacy.old), "character")
 
@@ -56,7 +58,8 @@ test_that("simple listDisclosureSettingsDS", {
     expect_equal(res$nfilter.string, "80")
     expect_equal(res$nfilter.stringShort, "20")
     expect_equal(res$nfilter.kNN, "3")
-    expect_equal(res$nfilter.levels, "0.33")
+    expect_equal(res$nfilter.levels.density, "0.33")
+    expect_equal(res$nfilter.levels.max, "40")
     expect_equal(res$nfilter.noise, "0.25")
     expect_equal(res$nfilter.privacy.old, "5")
 })
