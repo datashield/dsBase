@@ -34,6 +34,10 @@
 #' @author Paul Burton for DataSHIELD Development Team
 #' @export
 rbindDS<-function(x.names.transmit=NULL,colnames.transmit=NULL){
+  
+  # Check Permissive Privacy Control Level.
+  checkPermissivePrivacyControlLevel()
+
   #########################################################################
   # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS           			#
   #thr<-listDisclosureSettingsDS()							#

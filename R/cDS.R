@@ -9,6 +9,10 @@
 #' @export
 #' 
 cDS <- function (objs) {
+  
+  # Check Permissive Privacy Control Level.
+  checkPermissivePrivacyControlLevel()
+  
   # this filter sets the minimum number of observations that are allowed 
 
   #############################################################

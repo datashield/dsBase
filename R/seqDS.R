@@ -48,6 +48,9 @@
 #' @export
 seqDS <- function(FROM.value.char,TO.value.char,BY.value.char,LENGTH.OUT.value.char,ALONG.WITH.name)
 {
+  
+  # Check Permissive Privacy Control Level.
+  checkPermissivePrivacyControlLevel()
 
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #

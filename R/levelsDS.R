@@ -9,6 +9,9 @@
 #'
 levelsDS <- function(x){
   
+  # Check Permissive Privacy Control Level.
+  checkPermissivePrivacyControlLevel()
+  
   ##################################################################
   #MODULE 1: CAPTURE THE nfilter SETTINGS                          #
   thr <- listDisclosureSettingsDS()                                #
