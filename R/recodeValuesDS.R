@@ -142,6 +142,9 @@ recodeValuesDS <- function(var.name.text=NULL, values2replace.text=NULL, new.val
     warning(return.message, call. = FALSE)
   }
   
+  # Convert characters "NA" to values NA if any
+  var.recoded <- dplyr::na_if(var.recoded,"NA")
+  
   return(var.recoded)
 
 }
