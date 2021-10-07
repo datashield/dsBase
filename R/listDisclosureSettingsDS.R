@@ -26,17 +26,20 @@ listDisclosureSettingsDS <- function(){
   nf.kNN <- getOption("nfilter.kNN")
   if (is.null(nf.kNN))
     nf.kNN <- getOption("default.nfilter.kNN")
-  nf.levels <- getOption("nfilter.levels")
-  if (is.null(nf.levels))
-    nf.levels <- getOption("default.nfilter.levels")
+  nf.levels.density <- getOption("nfilter.levels.density")
+  if (is.null(nf.levels.density))
+    nf.levels.density <- getOption("default.nfilter.levels.density")
+  nf.levels.max <- getOption("nfilter.levels.max")
+  if (is.null(nf.levels.max))
+    nf.levels.max <- getOption("default.nfilter.levels.max")
   nf.noise <- getOption("nfilter.noise")
   if (is.null(nf.noise))
     nf.noise <- getOption("default.nfilter.noise")
   nfilter.privacy.old <- getOption("datashield.privacyLevel")
 
   return(list(nfilter.tab=nf.tab,nfilter.subset=nf.subset,nfilter.glm=nf.glm,nfilter.string=nf.string,
-              nfilter.stringShort=nf.stringShort,nfilter.kNN=nf.kNN,nfilter.levels=nf.levels,
-              nfilter.noise=nf.noise,nfilter.privacy.old=nfilter.privacy.old))
+              nfilter.stringShort=nf.stringShort,nfilter.kNN=nf.kNN,nfilter.levels.density=nf.levels.density,
+              nfilter.levels.max=nf.levels.max,nfilter.noise=nf.noise,nfilter.privacy.old=nfilter.privacy.old))
 }
 #AGGREGATE FUNCTION
 # listDisclosureSettingsDS

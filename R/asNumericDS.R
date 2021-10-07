@@ -21,9 +21,16 @@ asNumericDS <- function(x.name){
     studysideMessage <- "ERROR: x.name must be specified as a character string"
     stop(studysideMessage, call. = FALSE)
   }
-
-  output <- as.numeric(as.character(x))
-
+  
+  if(is.factor(x)){
+    output <- as.numeric(as.character(x))
+  }
+  if(is.character(x) | attr(x,"label") == "Factor character"){
+    output <- as.numeric(as.factor(x))
+  }else{
+    output <- as.numeric(x)
+  }
+  
   return(output)
 
 }
