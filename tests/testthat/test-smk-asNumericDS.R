@@ -91,6 +91,23 @@ test_that("factor vector asNumericDS", {
     expect_equal(res[5], 101)
 })
 
+context("asNumericDS::smk::factor numeric levels vector")
+test_that("factor numeric levels vector asNumericDS", {
+    vec           <- c("aa", "bb", "cc", "dd", "ee")
+    input         <- as.factor(vec)
+    levels(input) <- c("11", "22", "33", "44", "55") 
+
+    res <- asNumericDS("input")
+
+    expect_length(res, 5)
+    expect_equal(class(res), "numeric")
+    expect_equal(res[1], 11)
+    expect_equal(res[2], 22)
+    expect_equal(res[3], 33)
+    expect_equal(res[4], 44)
+    expect_equal(res[5], 55)
+})
+
 #
 # Done
 #
