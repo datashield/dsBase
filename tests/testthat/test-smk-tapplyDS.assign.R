@@ -24,7 +24,7 @@ context("tapplyDS.assign::smk::simple")
 test_that("simple tapplyDS.assign", {
     x           <- c(1, 2, 1, 2, 1, 2, 1, 2)
     index       <- factor(c(1, 2, 1, 2, 1, 2, 1, 2))
-    INDEX.names <- c('index')
+    INDEX.names <- 'index'
     FUN.name    <- "mean"
 
     res <- tapplyDS.assign("x", INDEX.names, FUN.name)
