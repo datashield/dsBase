@@ -22,10 +22,15 @@ asNumericDS <- function(x.name){
     stop(studysideMessage, call. = FALSE)
   }
   
-  if(is.factor(x)){
+  # Check that it doesn't match any non-number
+  numbers_only <- function(vec) !grepl("\\D", vec)
+  
+  logical <- numbers_only(x)
+  
+  if((is.factor(x) & any(logical==FALSE)==FALSE) | (is.character(x) & any(logical==FALSE)==FALSE)){
     output <- as.numeric(as.character(x))
   }
-  if(is.character(x) | attr(x,"label") == "Factor character"){
+  if((is.factor(x) & any(logical==FALSE)==TRUE) | (is.character(x) & any(logical==FALSE)==TRUE)){
     output <- as.numeric(as.factor(x))
   }else{
     output <- as.numeric(x)
