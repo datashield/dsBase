@@ -44,6 +44,70 @@ test_that("character vector asNumericDS", {
     expect_equal(res[5], 505)
 })
 
+context("asNumericDS::smk::character 'non numeric' vector")
+test_that("character 'non numeric' vector asNumericDS", {
+    input <- c("aa", "bb", "cc", "dd", "ee")
+
+    res <- asNumericDS("input")
+
+    expect_length(res, 5)
+    expect_equal(class(res), "numeric")
+    expect_equal(res[1], 1)
+    expect_equal(res[2], 2)
+    expect_equal(res[3], 3)
+    expect_equal(res[4], 4)
+    expect_equal(res[5], 5)
+})
+
+context("asNumericDS::smk::factor vector")
+test_that("factor vector asNumericDS", {
+    vec   <- c("101", "202", "303", "404", "505")
+    input <- as.factor(vec)
+
+    res <- asNumericDS("input")
+
+    expect_length(res, 5)
+    expect_equal(class(res), "numeric")
+    expect_equal(res[1], 1)
+    expect_equal(res[2], 2)
+    expect_equal(res[3], 3)
+    expect_equal(res[4], 4)
+    expect_equal(res[5], 5)
+})
+
+context("asNumericDS::smk::factor rev vector")
+test_that("factor vector asNumericDS", {
+    vec   <- c("505", "404", "303", "202", "101")
+    input <- as.factor(vec)
+
+    res <- asNumericDS("input")
+
+    expect_length(res, 5)
+    expect_equal(class(res), "numeric")
+    expect_equal(res[1], 5)
+    expect_equal(res[2], 4)
+    expect_equal(res[3], 3)
+    expect_equal(res[4], 2)
+    expect_equal(res[5], 1)
+})
+
+context("asNumericDS::smk::factor numeric levels vector")
+test_that("factor numeric levels vector asNumericDS", {
+    vec           <- c("aa", "bb", "cc", "dd", "ee")
+    input         <- as.factor(vec)
+    levels(input) <- c("11", "22", "33", "44", "55") 
+
+    res <- asNumericDS("input")
+
+    expect_length(res, 5)
+    expect_equal(class(res), "numeric")
+    expect_equal(res[1], 1)
+    expect_equal(res[2], 2)
+    expect_equal(res[3], 3)
+    expect_equal(res[4], 4)
+    expect_equal(res[5], 5)
+})
+
 context("asNumericDS::smk::factor vector with only numbers in its values")
 test_that("factor vector with only numbers in its values asNumericDS", {
     input <- as.factor(c('1','1','2','2','1')) 

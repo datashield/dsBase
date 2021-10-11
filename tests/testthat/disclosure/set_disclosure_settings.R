@@ -13,6 +13,7 @@
 
 set.standard.disclosure.settings <- function() {
     options(datashield.privacyLevel = "5")
+    options(default.datashield.privacyControlLevel = "permissive")
     options(default.nfilter.glm = "0.33")
     options(default.nfilter.kNN = "3")
     options(default.nfilter.string = "80")
