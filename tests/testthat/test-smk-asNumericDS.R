@@ -185,7 +185,7 @@ test_that("character vector with strings having characters and numbers asNumeric
 
 context("asNumericDS::smk::logical vector")
 test_that("logical vector asNumericDS", {
-    input <- c("TRUE", "TRUE", "FALSE", "TRUE")
+    input <- c(TRUE, TRUE, FALSE, TRUE)
     
     res <- asNumericDS("input")
     
@@ -195,6 +195,20 @@ test_that("logical vector asNumericDS", {
     expect_equal(res[2], 1)
     expect_equal(res[3], 0)
     expect_equal(res[4], 1)
+})
+
+context("asNumericDS::smk::logical character vector")
+test_that("logical vector character asNumericDS", {
+    input <- c("TRUE", "TRUE", "FALSE", "TRUE")
+    
+    res <- asNumericDS("input")
+    
+    expect_length(res, 4)
+    expect_equal(class(res), "numeric")
+    expect_equal(res[1], 2)
+    expect_equal(res[2], 2)
+    expect_equal(res[3], 1)
+    expect_equal(res[4], 2)
 })
 
 context("asNumericDS::smk::integer vector")
