@@ -29,8 +29,7 @@ asNumericDS <- function(x.name){
   
   if((is.factor(x) & any(logical==FALSE)==FALSE) | (is.character(x) & any(logical==FALSE)==FALSE)){
     output <- as.numeric(as.character(x))
-  }
-  if((is.factor(x) & any(logical==FALSE)==TRUE) | (is.character(x) & any(logical==FALSE)==TRUE)){
+  }else if((is.factor(x) & any(logical==FALSE)==TRUE) | (is.character(x) & any(logical==FALSE)==TRUE)){
     output <- as.numeric(as.factor(x))
   }else{
     output <- as.numeric(x)
