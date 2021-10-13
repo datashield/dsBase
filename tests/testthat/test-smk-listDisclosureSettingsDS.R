@@ -25,11 +25,12 @@ test_that("simple listDisclosureSettingsDS", {
     res <- listDisclosureSettingsDS()
 
     expect_equal(class(res), "list")
-    expect_length(res, 10)
+    expect_length(res, 11)
 
     res.names <- names(res)
-    expect_length(res.names, 10)
+    expect_length(res.names, 11)
 
+    expect_true("datashield.privacyControlLevel" %in% res.names)
     expect_true("nfilter.tab" %in% res.names)
     expect_true("nfilter.subset" %in% res.names)
     expect_true("nfilter.glm" %in% res.names)
@@ -41,7 +42,7 @@ test_that("simple listDisclosureSettingsDS", {
     expect_true("nfilter.noise" %in% res.names)
     expect_true("nfilter.privacy.old" %in% res.names)
 
-    expect_equal(class(res$nfilter.tab), "character")
+    expect_equal(class(res$datashield.privacyControlLevel), "character")
     expect_equal(class(res$nfilter.subset), "character")
     expect_equal(class(res$nfilter.glm), "character")
     expect_equal(class(res$nfilter.string), "character")
@@ -52,6 +53,7 @@ test_that("simple listDisclosureSettingsDS", {
     expect_equal(class(res$nfilter.noise), "character")
     expect_equal(class(res$nfilter.privacy.old), "character")
 
+    expect_equal(res$datashield.privacyControlLevel, "permissive")
     expect_equal(res$nfilter.tab, "3")
     expect_equal(res$nfilter.subset, "3")
     expect_equal(res$nfilter.glm, "0.33")

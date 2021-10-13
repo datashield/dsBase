@@ -29,7 +29,10 @@
 #' @export
 #'
 recodeValuesDS <- function(var.name.text=NULL, values2replace.text=NULL, new.values.text=NULL, missing=NULL){
-
+  
+  # Check Permissive Privacy Control Level.
+  checkPermissivePrivacyControlLevel()
+  
   #############################################################
   #MODULE 1: CAPTURE THE used nfilter SETTINGS
   thr <- listDisclosureSettingsDS()	

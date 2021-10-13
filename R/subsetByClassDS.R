@@ -17,6 +17,9 @@
 #' 
 subsetByClassDS <- function(data=NULL, variables=NULL){
   
+  # Check Permissive Privacy Control Level.
+  checkPermissivePrivacyControlLevel()
+  
   # this filter sets the minimum number of observations that are allowed 
 
   #############################################################
