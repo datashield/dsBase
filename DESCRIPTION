@@ -1,7 +1,7 @@
 Package: dsBase
 Title: DataSHIELD server site base functions
 Description: DataSHIELD server site base functions.
-Version: 6.2.0-4
+Version: 6.2.0-5
 Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
 Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
 License: GPL-3
@@ -154,7 +154,7 @@ AssignMethods:
     unlist=base::unlist
 Options:
     datashield.privacyLevel=5,
-    default.datashield.privacyControlLevel=permissive,
+    default.datashield.privacyControlLevel="permissive",
     default.nfilter.glm=0.33,
     default.nfilter.kNN=3,
     default.nfilter.string=80,
