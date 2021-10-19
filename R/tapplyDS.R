@@ -71,7 +71,7 @@ tapplyDS <- function(X.name, INDEX.names.transmit, FUN.name){
     names(INDEX.complete.list) <- colnames(INDEX.complete) 
     INDEX <- INDEX.complete.list
   }else{
-    INDEX <- INDEX.complete
+    INDEX <- list(INDEX.complete)
   }   
    
   ##################
@@ -87,151 +87,174 @@ tapplyDS <- function(X.name, INDEX.names.transmit, FUN.name){
   #################
   #Valid functions#
   #################
-
+  
+  # N
+  if(FUN.name=="N" || FUN.name=="length" || FUN.name=="Length" || FUN.name=="LENGTH"){
+    
+    # make output neat if up to two INDEX factors
+    if(num.factors==1){
+      factor1.levels <- levels(factor(INDEX[[1]]))
+      factor1.level.names <- factor1.levels
+      for(u in 1:length(factor1.levels)){
+        factor1.level.names[u] <- paste0(INDEX.factors[1], ".", factor1.levels[u])
+      }
+      dimnames(N.count)[[1]] <- factor1.level.names
+    }
+    
+    if(num.factors==2){
+      factor1.levels <- levels(factor(INDEX[[1]]))
+      factor1.level.names <- factor1.levels
+      factor2.levels <- levels(factor(INDEX[[2]]))
+      factor2.level.names <- factor2.levels
+      for(u in 1:length(factor1.levels)){
+        factor1.level.names[u] <- paste0(INDEX.factors[1], ".", factor1.levels[u])
+      }
+      for(v in 1:length(factor2.levels)){
+        factor2.level.names[v] <- paste0(INDEX.factors[2], ".", factor2.levels[v])
+      }
+      dimnames(N.count)[[1]] <- factor1.level.names
+      dimnames(N.count)[[2]] <- factor2.level.names
+    }
+    
+    output <- list(N=N.count)
+    return(output)
+  }
+  
+  
   # MEAN
   if(FUN.name=="mean" || FUN.name=="Mean" || FUN.name=="MEAN"){
     
     Mean <- tapply(X.complete, INDEX, base::mean)
-
+    
     # make output neat if up to two INDEX factors
-		if(num.factors==1){
-      factor1.levels <- NA
-		  activation.text.e <- paste0("factor1.levels<-levels(",INDEX.factors[1],")")
-		  eval(parse(text=activation.text.e))
+    if(num.factors==1){
+      factor1.levels <- levels(factor(INDEX[[1]]))
       factor1.level.names <- factor1.levels
       for(u in 1:length(factor1.levels)){
-		    factor1.level.names[u]<-paste0(INDEX.factors[1],".",factor1.levels[u])
-		  }
-		  dimnames(Mean)[[1]]<-factor1.level.names
-		  dimnames(N.count)[[1]]<-factor1.level.names
-		}
-
-		if(num.factors==2){
-      factor1.levels <- NA
-		  activation.text.f <- paste0("factor1.levels<-levels(", INDEX.factors[1], ")")
-		  eval(parse(text=activation.text.f))
-      factor2.levels <- NA
-		  activation.text.g <- paste0("factor2.levels<-levels(", INDEX.factors[2], ")")
-		  eval(parse(text=activation.text.g))
+        factor1.level.names[u] <- paste0(INDEX.factors[1], ".", factor1.levels[u])
+      }
+      dimnames(Mean)[[1]] <- factor1.level.names
+      dimnames(N.count)[[1]] <- factor1.level.names
+    }
+    
+    if(num.factors==2){
+      factor1.levels <- levels(factor(INDEX[[1]]))
       factor1.level.names <- factor1.levels
+      factor2.levels <- levels(factor(INDEX[[2]]))
       factor2.level.names <- factor2.levels
       for(u in 1:length(factor1.levels)){
-		    factor1.level.names[u] <- paste0(INDEX.factors[1], ".", factor1.levels[u])
-		  }
-  		for(v in 1:length(factor2.levels)){
-	    	factor2.level.names[v] <- paste0(INDEX.factors[2], ".", factor2.levels[v])
-		  }
-    	dimnames(Mean)[[1]] <- factor1.level.names
-		  dimnames(Mean)[[2]] <- factor2.level.names
+        factor1.level.names[u] <- paste0(INDEX.factors[1], ".", factor1.levels[u])
+      }
+      for(v in 1:length(factor2.levels)){
+        factor2.level.names[v] <- paste0(INDEX.factors[2], ".", factor2.levels[v])
+      }
+      dimnames(Mean)[[1]] <- factor1.level.names
+      dimnames(Mean)[[2]] <- factor2.level.names
       dimnames(N.count)[[1]] <- factor1.level.names
-		  dimnames(N.count)[[2]] <- factor2.level.names
-		}
-
+      dimnames(N.count)[[2]] <- factor2.level.names
+    }
+    
     output <- list(Mean=Mean, N=N.count)
     return(output)
   }
-
+  
   # SD
   if(FUN.name=="sd" || FUN.name=="SD"){
-
+    
     SD <- tapply(X.complete, INDEX, stats::sd)
-
+    
     # make output neat if up to two INDEX factors
-		if(num.factors==1){
-      factor1.levels <- NA
-		  activation.text.e <- paste0("factor1.levels<-levels(", INDEX.factors[1], ")")
-		  eval(parse(text=activation.text.e))
-   		factor1.level.names <- factor1.levels
-  		for(u in 1:length(factor1.levels)){
-	    	factor1.level.names[u] <- paste0(INDEX.factors[1], ".", factor1.levels[u])
-		  }
-		  dimnames(SD)[[1]] <- factor1.level.names
-		  dimnames(N.count)[[1]] <- factor1.level.names
-		}
-
-		if(num.factors==2){
-      factor1.levels <- NA
-		  activation.text.f <- paste0("factor1.levels<-levels(", INDEX.factors[1], ")")
-		  eval(parse(text=activation.text.f))
-      factor2.levels <- NA
-		  activation.text.g <- paste0("factor2.levels<-levels(", INDEX.factors[2], ")")
-		  eval(parse(text=activation.text.g))
-      factor1.level.names<-factor1.levels
-      factor2.level.names<-factor2.levels
+    if(num.factors==1){
+      factor1.levels <- levels(factor(INDEX[[1]]))
+      factor1.level.names <- factor1.levels
       for(u in 1:length(factor1.levels)){
-		    factor1.level.names[u] <- paste0(INDEX.factors[1], ".", factor1.levels[u])
-		  }
-   		for(v in 1:length(factor2.levels)){
-	    	factor2.level.names[v] <- paste0(INDEX.factors[2], ".", factor2.levels[v])
-		  }
-   	  dimnames(SD)[[1]] <- factor1.level.names
-		  dimnames(SD)[[2]] <- factor2.level.names
-		  dimnames(N.count)[[1]] <- factor1.level.names
-		  dimnames(N.count)[[2]] <- factor2.level.names
-		}
-
-  output <- list(SD=SD, N=N.count)
-  return(output)
- }
-
+        factor1.level.names[u] <- paste0(INDEX.factors[1], ".", factor1.levels[u])
+      }
+      dimnames(SD)[[1]] <- factor1.level.names
+      dimnames(N.count)[[1]] <- factor1.level.names
+    }
+    
+    if(num.factors==2){
+      factor1.levels <- levels(factor(INDEX[[1]]))
+      factor1.level.names <- factor1.levels
+      factor2.levels <- levels(factor(INDEX[[2]]))
+      factor2.level.names <- factor2.levels
+      for(u in 1:length(factor1.levels)){
+        factor1.level.names[u] <- paste0(INDEX.factors[1], ".", factor1.levels[u])
+      }
+      for(v in 1:length(factor2.levels)){
+        factor2.level.names[v] <- paste0(INDEX.factors[2], ".", factor2.levels[v])
+      }
+      dimnames(SD)[[1]] <- factor1.level.names
+      dimnames(SD)[[2]] <- factor2.level.names
+      dimnames(N.count)[[1]] <- factor1.level.names
+      dimnames(N.count)[[2]] <- factor2.level.names
+    }
+    
+    output <- list(SD=SD, N=N.count)
+    return(output)
+  }
+  
   # SUM
   if(FUN.name=="sum" || FUN.name=="Sum" || FUN.name=="SUM"){
     
     Sum <- tapply(X.complete, INDEX, base::sum)
-   
+    
     # make output neat if up to two INDEX factors
-	  if(num.factors==1){
-      factor1.levels <- NA
-		  activation.text.e <- paste0("factor1.levels<-levels(", INDEX.factors[1], ")")
-		  eval(parse(text=activation.text.e))
-		  factor1.level.names <- factor1.levels
-		  for(u in 1:length(factor1.levels)){
-  		  factor1.level.names[u] <- paste0(INDEX.factors[1], ".", factor1.levels[u])
-		  }
-		  dimnames(Sum)[[1]] <- factor1.level.names
-		  dimnames(N.count)[[1]] <- factor1.level.names
-	  }
-
-		if(num.factors==2){
-      factor1.levels <- NA
-		  activation.text.f<-paste0("factor1.levels<-levels(", INDEX.factors[1], ")")
-		  eval(parse(text=activation.text.f))
-      factor2.levels <- NA
-		  activation.text.g <- paste0("factor2.levels<-levels(", INDEX.factors[2], ")")
-		  eval(parse(text=activation.text.g))
-   		factor1.level.names <- factor1.levels
-     	factor2.level.names <- factor2.levels
-  		for(u in 1:length(factor1.levels)){
-	    	factor1.level.names[u] <- paste0(INDEX.factors[1], ".", factor1.levels[u])
-		  }
-  		for(v in 1:length(factor2.levels)){
-	    	factor2.level.names[v] <- paste0(INDEX.factors[2], ".", factor2.levels[v])
-		  }
+    if(num.factors==1){
+      factor1.levels <- levels(factor(INDEX[[1]]))
+      factor1.level.names <- factor1.levels
+      for(u in 1:length(factor1.levels)){
+        factor1.level.names[u] <- paste0(INDEX.factors[1], ".", factor1.levels[u])
+      }
       dimnames(Sum)[[1]] <- factor1.level.names
-		  dimnames(Sum)[[2]] <- factor2.level.names
       dimnames(N.count)[[1]] <- factor1.level.names
-		  dimnames(N.count)[[2]] <- factor2.level.names
-		}
-
-    output<-list(Sum=Sum, N=N.count)
+    }
+    
+    if(num.factors==2){
+      factor1.levels <- levels(factor(INDEX[[1]]))
+      factor1.level.names <- factor1.levels
+      factor2.levels <- levels(factor(INDEX[[2]]))
+      factor2.level.names <- factor2.levels
+      for(u in 1:length(factor1.levels)){
+        factor1.level.names[u] <- paste0(INDEX.factors[1], ".", factor1.levels[u])
+      }
+      for(v in 1:length(factor2.levels)){
+        factor2.level.names[v] <- paste0(INDEX.factors[2], ".", factor2.levels[v])
+      }
+      dimnames(Sum)[[1]] <- factor1.level.names
+      dimnames(Sum)[[2]] <- factor2.level.names
+      dimnames(N.count)[[1]] <- factor1.level.names
+      dimnames(N.count)[[2]] <- factor2.level.names
+    }
+    
+    output <- list(Sum=Sum, N=N.count)
     return(output)
   }
-
-
+  
+  
   # QUANTILE
   if(FUN.name=="quantile" || FUN.name=="Quantile" || FUN.name=="QUANTILE"){
-
-  	if(num.factors > 1){
-  	  studysideMessage <- "Quantile will only work with one indexing factor but you can combine several factors into one. e.g. two factors with f1 and f2 levels respectively can be combined into one with f1 x f2 levels"
-  	  stop(studysideMessage, call. = FALSE)
-  	}
+    
+    if(num.factors > 1){
+      studysideMessage <- "Quantile will only work with one indexing factor but you can combine several factors into one. e.g. two factors with f1 and f2 levels respectively can be combined into one with f1 x f2 levels"
+      stop(studysideMessage, call. = FALSE)
+    }
     probs.vector <- c(0.05,0.1,0.2,0.25,0.3,0.33,0.4,0.5,0.6,0.67,0.7,0.75,0.8,0.9,0.95)
     Quantile <- tapply(X.complete, INDEX, stats::quantile, probs=probs.vector)
+    
+    factor1.levels <- levels(factor(INDEX[[1]]))
+    factor1.level.names <- factor1.levels
+    for(u in 1:length(factor1.levels)){
+      factor1.level.names[u] <- paste0(INDEX.factors[1], ".", factor1.levels[u])
+    }
+    dimnames(Quantile)[[1]] <- factor1.level.names
+    
     return(Quantile)
   }
-
- return.message <- "Please specify a valid DataSHIELD tapply function e.g. FUN.name='mean' or FUN.name='sd'"
- return(return.message)
+  
+  return.message <- "Please specify a valid DataSHIELD tapply function e.g. FUN.name='mean' or FUN.name='sd'"
+  return(return.message)
  
 }
 # AGGREGATE.FUNCTION
