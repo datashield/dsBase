@@ -146,7 +146,7 @@ jobs:
   - bash: |
   
       R -q -e "library('devtools'); devtools::check(args = c('--no-examples'))" | tee azure-pipelines_check.Rout
-      grep --quiet "^0 errors" azure-pipelines_check.Rout && grep --quiet " 0 warnings" azure-pipelines_check.Rout
+      grep --quiet "^0 errors" azure-pipelines_check.Rout && grep --quiet " 0 warnings" azure-pipelines_check.Rout && grep --quiet " 0 notes" azure-pipelines_check.Rout
 
     workingDirectory: $(Pipeline.Workspace)/dsBase
     displayName: 'Devtools checks'
@@ -200,7 +200,7 @@ jobs:
       mv test_results.xml $(Pipeline.Workspace)/logs
       mv test_console_output.txt $(Pipeline.Workspace)/logs
       
-      grep --quiet "Failed:   0" $(Pipeline.Workspace)/logs/test_console_output.txt
+      grep --quiet " FAIL 0 " $(Pipeline.Workspace)/logs/test_console_output.txt
 
     workingDirectory: $(Pipeline.Workspace)/dsBase
     displayName: 'Code coverage and JUnit report output'
