@@ -53,8 +53,8 @@ tapplyDS <- function(X.name, INDEX.names.transmit, FUN.name){
 
   # convert INDEX.names format from transmittable to actionable form (a list of vectors)
   INDEX.names.list <- paste0("list(",INDEX.names.transmit,")")
-  INDEX <- eval(parse(text=INDEX.names.list))
-  
+  INDEX <- eval(parse(text=INDEX.names.list), envir = parent.frame())
+
   # select complete cases on X and all INDEX factors only
   df <- as.data.frame(cbind(X, do.call(cbind, INDEX)))
   colnames(df) <- c(X.name, INDEX.factors)
