@@ -16,6 +16,9 @@
 #' @export
 #'
 corTestDS <- function(x, y, method, exact, conf.level){
+  
+  # Check Permissive Privacy Control Level.
+  checkPermissivePrivacyControlLevel()
 
   x.var <- eval(parse(text=x), envir = parent.frame())
   y.var <- eval(parse(text=y), envir = parent.frame())
