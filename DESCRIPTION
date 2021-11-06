@@ -68,7 +68,6 @@ AggregateMethods:
     tableDS2,
     tapplyDS,
     testObjExistsDS,
-    tTestFDS2,
     varDS,
     colnamesDS,
     exists=base::exists,
