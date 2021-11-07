@@ -5,7 +5,9 @@
 #' @param x a character string providing  the name of a numerical vector. 
 #' @param y a character string providing  the name of a numerical vector.
 #' @param method a character string indicating which correlation coefficient is to be
-#' used for the test. One of "pearson", "kendall", or "spearman", can be abbreviated. 
+#' used for the test. One of "pearson", "kendall", or "spearman", can be abbreviated.
+#' @param exact a logical indicating whether an exact p-value should be computed. Used for
+#' Kendall's tau and Spearman's rho.  
 #' @param conf.level confidence level for the returned confidence interval. Currently
 #' only used for the Pearson product moment correlation coefficient if there are at least
 #' 4 complete pairs of observations.
@@ -13,7 +15,7 @@
 #' @author Demetris Avraam, for DataSHIELD Development Team
 #' @export
 #'
-corTestDS <- function(x, y, method, conf.level){
+corTestDS <- function(x, y, method, exact, conf.level){
 
   x.var <- eval(parse(text=x), envir = parent.frame())
   y.var <- eval(parse(text=y), envir = parent.frame())
@@ -22,12 +24,12 @@ corTestDS <- function(x, y, method, conf.level){
   n <- sum(stats::complete.cases(x.var, y.var))
   
   # runs a two-sided correlation test
-  corTest <- stats::cor.test(x=x.var, y=y.var, method=method, conf.level=conf.level)
+  corTest <- stats::cor.test(x=x.var, y=y.var, method=method, exact=exact, conf.level=conf.level)
 
   out <- list(n, corTest)
   names(out) <- c("Number of pairwise complete cases", "Correlation test")
   
-  # return the dimension
+  # return the results
   return(out)
 
 }

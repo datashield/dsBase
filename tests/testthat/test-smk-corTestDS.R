@@ -25,7 +25,7 @@ test_that("simple corTestDS, full, without na, pearson", {
     x   <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
     y   <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
 
-    res <- corTestDS("x", "y", "pearson", 0.95)
+    res <- corTestDS("x", "y", "pearson", NULL, 0.95)
 
     expect_equal(class(res), "list")
     expect_length(res, 2)
@@ -78,7 +78,7 @@ test_that("simple corTestDS, neg. full, without na, pearson", {
     x   <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
     y   <- c(7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.0)
 
-    res <- corTestDS("x", "y", "pearson", 0.95)
+    res <- corTestDS("x", "y", "pearson", NULL, 0.95)
 
     expect_equal(class(res), "list")
     expect_length(res, 2)
@@ -131,7 +131,7 @@ test_that("simple corTestDS, some, pearson, without na, pearson", {
     x   <- c(0.1, 1.0, 1.9, 3.0, 4.0, 5.1, 6.0, 7.0)
     y   <- c(0.0, 1.2, 2.0, 2.9, 4.0, 5.0, 6.1, 7.0)
 
-    res <- corTestDS("x", "y", "pearson", 0.95)
+    res <- corTestDS("x", "y", "pearson", NULL, 0.95)
 
     expect_equal(class(res), "list")
     expect_length(res, 2)
@@ -185,7 +185,7 @@ test_that("simple corTestDS, some, with na, pearson", {
     x   <- c(0.0, NA, 2.0, 3.0, NA, 5.0, NA, 7.0)
     y   <- c(0.0, 1.0, NA, 3.0, 4.0, NA, NA, 7.0)
 
-    res <- corTestDS("x", "y", "pearson", 0.95)
+    res <- corTestDS("x", "y", "pearson", NULL, 0.95)
 
     expect_equal(class(res), "list")
     expect_length(res, 2)
@@ -234,7 +234,7 @@ test_that("simple corTestDS, full, without na, kendall", {
     x   <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
     y   <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
     
-    res <- corTestDS("x", "y", "kendall", 0.95)
+    res <- corTestDS("x", "y", "kendall", NULL, 0.95)
     
     expect_equal(class(res), "list")
     expect_length(res, 2)
@@ -280,7 +280,7 @@ test_that("simple corTestDS, neg. full, without na, kendall", {
     x   <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
     y   <- c(7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.0)
     
-    res <- corTestDS("x", "y", "kendall", 0.95)
+    res <- corTestDS("x", "y", "kendall", NULL, 0.95)
     
     expect_equal(class(res), "list")
     expect_length(res, 2)
@@ -326,7 +326,7 @@ test_that("simple corTestDS, some, kendall, without na, kendall", {
     x   <- c(0.1, 1.0, 1.9, 3.0, 4.0, 5.1, 6.0, 7.0)
     y   <- c(0.0, 1.2, 2.0, 2.9, 4.0, 5.0, 6.1, 7.0)
     
-    res <- corTestDS("x", "y", "kendall", 0.95)
+    res <- corTestDS("x", "y", "kendall", NULL, 0.95)
     
     expect_equal(class(res), "list")
     expect_length(res, 2)
@@ -373,7 +373,7 @@ test_that("simple corTestDS, some, with na, kendall", {
     x   <- c(0.0, NA, 2.0, 3.0, NA, 5.0, NA, 7.0)
     y   <- c(0.0, 1.0, NA, 3.0, 4.0, NA, NA, 7.0)
     
-    res <- corTestDS("x", "y", "kendall", 0.95)
+    res <- corTestDS("x", "y", "kendall", NULL, 0.95)
     
     expect_equal(class(res), "list")
     expect_length(res, 2)
@@ -420,7 +420,7 @@ test_that("simple corTestDS, full, without na, spearman", {
     x   <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
     y   <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
     
-    res <- corTestDS("x", "y", "spearman", 0.95)
+    res <- corTestDS("x", "y", "spearman", NULL, 0.95)
     
     expect_equal(class(res), "list")
     expect_length(res, 2)
@@ -466,7 +466,7 @@ test_that("simple corTestDS, neg. full, without na, spearman", {
     x   <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
     y   <- c(7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.0)
     
-    res <- corTestDS("x", "y", "spearman", 0.95)
+    res <- corTestDS("x", "y", "spearman", NULL, 0.95)
     
     expect_equal(class(res), "list")
     expect_length(res, 2)
@@ -512,7 +512,7 @@ test_that("simple corTestDS, some, spearman, without na, spearman", {
     x   <- c(0.1, 1.0, 1.9, 3.0, 4.0, 5.1, 6.0, 7.0)
     y   <- c(0.0, 1.2, 2.0, 2.9, 4.0, 5.0, 6.1, 7.0)
     
-    res <- corTestDS("x", "y", "spearman", 0.95)
+    res <- corTestDS("x", "y", "spearman", NULL, 0.95)
     
     expect_equal(class(res), "list")
     expect_length(res, 2)
@@ -559,7 +559,7 @@ test_that("simple corTestDS, some, with na, spearman", {
     x   <- c(0.0, NA, 2.0, 3.0, NA, 5.0, NA, 7.0)
     y   <- c(0.0, 1.0, NA, 3.0, 4.0, NA, NA, 7.0)
     
-    res <- corTestDS("x", "y", "spearman", 0.95)
+    res <- corTestDS("x", "y", "spearman", NULL, 0.95)
     
     expect_equal(class(res), "list")
     expect_length(res, 2)

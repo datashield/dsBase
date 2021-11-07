@@ -4,7 +4,7 @@
 \alias{corTestDS}
 \title{Tests for correlation between paired samples}
 \usage{
-corTestDS(x, y, method, conf.level)
+corTestDS(x, y, method, exact, conf.level)
 }
 \arguments{
 \item{x}{a character string providing  the name of a numerical vector.}
@@ -13,6 +13,9 @@ corTestDS(x, y, method, conf.level)
 
 \item{method}{a character string indicating which correlation coefficient is to be
 used for the test. One of "pearson", "kendall", or "spearman", can be abbreviated.}
+
+\item{exact}{a logical indicating whether an exact p-value should be computed. Used for
+Kendall's tau and Spearman's rho.}
 
 \item{conf.level}{confidence level for the returned confidence interval. Currently
 only used for the Pearson product moment correlation coefficient if there are at least
