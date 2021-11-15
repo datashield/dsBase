@@ -32,7 +32,7 @@ boxPlotGGDS <- function(data_table, group = NULL, group2 = NULL){
   ###################################################################
   
   if(!is.null(group) & is.null(group2)){
-    stats_full <- stats::aggregate(.~group+x, data_table, function(x){quantile(x,c(0.05,0.25,0.5,0.75,0.95))})
+    stats_full <- stats::aggregate(.~group+x, data_table, function(x){stats::quantile(x,c(0.05,0.25,0.5,0.75,0.95))})
     stats_n <- stats::aggregate(.~group+x, data_table, function(x){length(x)})$value
     stats <- data.frame(stats_full$value)
     stats_full$value <- NULL
@@ -42,7 +42,7 @@ boxPlotGGDS <- function(data_table, group = NULL, group2 = NULL){
     results <- list(data = stats_full, "single_group")
   }
   else if(!is.null(group) & !is.null(group2)){
-    stats_full <- stats::aggregate(.~group+group2+x, data_table, function(x){quantile(x,c(0.05,0.25,0.5,0.75,0.95))})
+    stats_full <- stats::aggregate(.~group+group2+x, data_table, function(x){stats::quantile(x,c(0.05,0.25,0.5,0.75,0.95))})
     stats_n <- stats::aggregate(.~group+group2+x, data_table, function(x){length(x)})$value
     stats <- data.frame(stats_full$value)
     stats_full$value <- NULL
@@ -53,7 +53,7 @@ boxPlotGGDS <- function(data_table, group = NULL, group2 = NULL){
   }
   else{
     if(class(data_table) == "data.frame"){
-      stats_full <- stats::aggregate(.~x, data_table, function(x){quantile(x,c(0.05,0.25,0.5,0.75,0.95))})
+      stats_full <- stats::aggregate(.~x, data_table, function(x){stats::quantile(x,c(0.05,0.25,0.5,0.75,0.95))})
       stats_n <- stats::aggregate(.~x, data_table, function(x){length(x)})$value
       stats <- data.frame(stats_full$value)
       stats_full$value <- NULL
@@ -61,7 +61,7 @@ boxPlotGGDS <- function(data_table, group = NULL, group2 = NULL){
       colnames(stats_full) <- c("x", "ymin", "lower", "middle", "upper", "ymax", "n")
     }
     else{
-      stats_full <- quantile(data_table,c(0.05,0.25,0.5,0.75,0.95))
+      stats_full <- stats::quantile(data_table,c(0.05,0.25,0.5,0.75,0.95))
       stats_n <- length(data_table)
       stats_full <- data.frame(t(stats_full))
       stats_full <- cbind(names(data_table)[1], stats_full, stats_n)
