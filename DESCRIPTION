@@ -77,8 +77,7 @@ AggregateMethods:
     is.null=base::is.null,
     is.numeric=base::is.numeric,
     NROW=base::NROW,
-    t.test=stats::t.test,
-    columnClassesDS
+    t.test=stats::t.test
 AssignMethods:
     absDS,
     asCharacterDS,
