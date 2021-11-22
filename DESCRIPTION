@@ -94,6 +94,8 @@ AssignMethods:
     asLogicalDS,
     asMatrixDS,
     asNumericDS,
+    blackBoxDS,
+    blackBoxRanksDS,
     BooleDS,
     boxPlotGG_data_TreatmentDS,
     boxPlotGG_data_Treatment_numericDS,
