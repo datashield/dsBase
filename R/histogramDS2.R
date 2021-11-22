@@ -24,24 +24,25 @@
 #' 
 histogramDS2 <- function (xvect, num.breaks, min, max, method.indicator, k, noise){
 
-  #############################################################
-  # MODULE 1: CAPTURE THE nfilter SETTINGS                    #
-  thr <- listDisclosureSettingsDS()                           #
-  nfilter.tab <- as.numeric(thr$nfilter.tab)                  #
-  #nfilter.glm <- as.numeric(thr$nfilter.glm)                 #
-  #nfilter.subset <- as.numeric(thr$nfilter.subset)           #
-  #nfilter.string <- as.numeric(thr$nfilter.string)           #
-  #nfilter.stringShort <- as.numeric(thr$nfilter.stringShort) #
-  nfilter.kNN <- as.numeric(thr$nfilter.kNN)                  #
-  nfilter.noise <- as.numeric(thr$nfilter.noise)              #
-  nfilter.levels <- as.numeric(thr$nfilter.levels)            #
-  #############################################################
+  ##################################################################
+  # MODULE 1: CAPTURE THE nfilter SETTINGS                         #
+  thr <- listDisclosureSettingsDS()                                #
+  nfilter.tab <- as.numeric(thr$nfilter.tab)                       #
+  #nfilter.glm <- as.numeric(thr$nfilter.glm)                      #
+  #nfilter.subset <- as.numeric(thr$nfilter.subset)                #
+  #nfilter.string <- as.numeric(thr$nfilter.string)                #
+  #nfilter.stringShort <- as.numeric(thr$nfilter.stringShort)      #
+  nfilter.kNN <- as.numeric(thr$nfilter.kNN)                       #
+  nfilter.noise <- as.numeric(thr$nfilter.noise)                   #
+  nfilter.levels.density <- as.numeric(thr$nfilter.levels.density) #
+  # nfilter.levels.max <- as.numeric(thr$nfilter.levels.max)       #
+  ##################################################################
   
   if (method.indicator==1){
 
     # Check if the number of breaks meets the DataSHIELD privacy criteria (disclosure control for
     # saturation)
-    if (num.breaks > (nfilter.levels * length(xvect))){
+    if (num.breaks > (nfilter.levels.density * length(xvect))){
       studysideMessage <- "FAILED: Number of breaks is too big. It may be disclosive - please shorten"
       stop(studysideMessage, call. = FALSE)
     }else{
@@ -108,7 +109,7 @@ histogramDS2 <- function (xvect, num.breaks, min, max, method.indicator, k, nois
     
     # Check if the number of breaks meets the DataSHIELD privacy criteria (disclosure control for
     # saturation)
-    if (num.breaks > (nfilter.levels * length(xvect))){
+    if (num.breaks > (nfilter.levels.density * length(xvect))){
       studysideMessage <- "FAILED: Number of breaks is too big. It may be disclosive - please shorten"
       stop(studysideMessage, call. = FALSE)
     }else{
@@ -147,7 +148,7 @@ histogramDS2 <- function (xvect, num.breaks, min, max, method.indicator, k, nois
     
     # Check if the number of breaks meets the DataSHIELD privacy criteria (disclosure control for
     # saturation)
-    if (num.breaks > (nfilter.levels * length(xvect))){
+    if (num.breaks > (nfilter.levels.density * length(xvect))){
       studysideMessage <- "FAILED: Number of breaks is too big. It may be disclosive - please shorten"
       stop(studysideMessage, call. = FALSE)
     }else{

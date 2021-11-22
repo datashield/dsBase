@@ -24,18 +24,19 @@
 #' 
 heatmapPlotDS <- function(x, y, k, noise, method.indicator){
 
-  #############################################################
-  # MODULE 1: CAPTURE THE nfilter SETTINGS                    #
-  thr <- listDisclosureSettingsDS()                           #
-  #nfilter.tab <- as.numeric(thr$nfilter.tab)                 #
-  #nfilter.glm <- as.numeric(thr$nfilter.glm)                 #
-  #nfilter.subset <- as.numeric(thr$nfilter.subset)           #
-  #nfilter.string <- as.numeric(thr$nfilter.string)           #
-  #nfilter.stringShort <- as.numeric(thr$nfilter.stringShort) #
-  nfilter.kNN <- as.numeric(thr$nfilter.kNN)                  #
-  nfilter.noise <- as.numeric(thr$nfilter.noise)              #
-  #nfilter.levels <- as.numeric(thr$nfilter.levels)           #
-  #############################################################
+  ###################################################################
+  # MODULE 1: CAPTURE THE nfilter SETTINGS                          #
+  thr <- listDisclosureSettingsDS()                                 #
+  #nfilter.tab <- as.numeric(thr$nfilter.tab)                       #
+  #nfilter.glm <- as.numeric(thr$nfilter.glm)                       #
+  #nfilter.subset <- as.numeric(thr$nfilter.subset)                 #
+  #nfilter.string <- as.numeric(thr$nfilter.string)                 #
+  #nfilter.stringShort <- as.numeric(thr$nfilter.stringShort)       #
+  nfilter.kNN <- as.numeric(thr$nfilter.kNN)                        #
+  nfilter.noise <- as.numeric(thr$nfilter.noise)                    #
+  #nfilter.levels.density <- as.numeric(thr$nfilter.levels.density) #
+  #nfilter.levels.max <- as.numeric(thr$nfilter.levels.max)         #
+  ###################################################################
   
   # Cbind the columns of the two variables and remove any rows that include NAs
   data.table <- cbind.data.frame(x, y)

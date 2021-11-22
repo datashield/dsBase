@@ -29,7 +29,10 @@
 #' @export
 #'
 recodeValuesDS <- function(var.name.text=NULL, values2replace.text=NULL, new.values.text=NULL, missing=NULL){
-
+  
+  # Check Permissive Privacy Control Level.
+  checkPermissivePrivacyControlLevel()
+  
   #############################################################
   #MODULE 1: CAPTURE THE used nfilter SETTINGS
   thr <- listDisclosureSettingsDS()	
@@ -56,7 +59,6 @@ recodeValuesDS <- function(var.name.text=NULL, values2replace.text=NULL, new.val
     stop(studysideMessage, call. = FALSE)
   }
 
-  
   var2recode <- eval(parse(text=var.name.text), envir = parent.frame())
   
   values2replace <- unlist(strsplit(values2replace.text, split=","))
@@ -88,7 +90,7 @@ recodeValuesDS <- function(var.name.text=NULL, values2replace.text=NULL, new.val
   if (var.class == 'character'){
     expr <- as.list(new.values)
     names(expr) <- values2replace
-    var.recoded <- dplyr::recode(var2recode, !!!(expr), .missing=paste0("'", missing, "'"))
+    var.recoded <- dplyr::recode(var2recode, !!!(expr), .missing=if(is.null(missing)){NULL}else{paste0("'", missing, "'")})
   }
   if (var.class == 'numeric'){
     expr <- as.list(as.numeric(new.values))
@@ -102,7 +104,7 @@ recodeValuesDS <- function(var.name.text=NULL, values2replace.text=NULL, new.val
     var.recoded <- dplyr::recode(var2recode.n, !!!(expr), .missing=missing)
     var.recoded <- as.integer(var.recoded)
   }
-
+  
   # DISCLOSURE TRAP ON LENGTH OF NA AND non-NA ELEMENTS OF ORIGINAL AND RECODED VECTORS
   mark.original <- stats::complete.cases(var2recode)
   non.NA.original.vector <- var2recode[mark.original]
@@ -141,6 +143,9 @@ recodeValuesDS <- function(var.name.text=NULL, values2replace.text=NULL, new.val
                            studysideWarning9, studysideWarning10)
     warning(return.message, call. = FALSE)
   }
+  
+  # Convert characters "NA" to values NA if any
+  var.recoded <- dplyr::na_if(var.recoded,"NA")
   
   return(var.recoded)
 

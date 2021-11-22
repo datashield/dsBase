@@ -62,7 +62,7 @@ jobs:
 - job: run_devtools_check
   timeoutInMinutes: 45
   pool:
-    vmImage: 'Ubuntu 16.04'
+    vmImage: ubuntu-20.04
 
 
   steps:
@@ -96,9 +96,8 @@ jobs:
     # If previous steps have failed then don't run.
   - bash: |
       
-      sudo apt-get update
       sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-      sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran40/'
+      sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
       sudo add-apt-repository ppa:cran/libgit2
       sudo apt-get update
       sudo apt-get install -qq libxml2-dev libcurl4-openssl-dev libssl-dev libgit2-dev -y
@@ -111,9 +110,6 @@ jobs:
       sudo R -e "install.packages('dplyr', dependencies=TRUE)"
       sudo R -e "install.packages('reshape2', dependencies=TRUE)"
       sudo R -e "install.packages('lspline', dependencies=TRUE)"
-      sudo R -e "install.packages('medflex', dependencies=TRUE)"
-      sudo R -e "install.packages('regmedint', dependencies=TRUE)"
-      sudo R -e "install.packages('mediation', dependencies=TRUE)"
 
     displayName: 'Install all dependencies for dsBase'
     condition: succeeded()
