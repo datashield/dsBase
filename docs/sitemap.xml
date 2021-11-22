@@ -49,6 +49,12 @@
     <loc>/reference/asNumericDS.html</loc>
   </url>
   <url>
+    <loc>/reference/blackBoxDS.html</loc>
+  </url>
+  <url>
+    <loc>/reference/blackBoxRanksDS.html</loc>
+  </url>
+  <url>
     <loc>/reference/boxPlotGGDS.html</loc>
   </url>
   <url>
@@ -116,6 +122,12 @@
   </url>
   <url>
     <loc>/reference/extract.html</loc>
+  </url>
+  <url>
+    <loc>/reference/extractQuantilesDS1.html</loc>
+  </url>
+  <url>
+    <loc>/reference/extractQuantilesDS2.html</loc>
   </url>
   <url>
     <loc>/reference/getWGSRDS.html</loc>
@@ -247,6 +259,9 @@
     <loc>/reference/metadataDS.html</loc>
   </url>
   <url>
+    <loc>/reference/minMaxRandDS.html</loc>
+  </url>
+  <url>
     <loc>/reference/namesDS.html</loc>
   </url>
   <url>
@@ -269,6 +284,21 @@
   </url>
   <url>
     <loc>/reference/rangeDS.html</loc>
+  </url>
+  <url>
+    <loc>/reference/ranksSecureDS1.html</loc>
+  </url>
+  <url>
+    <loc>/reference/ranksSecureDS2.html</loc>
+  </url>
+  <url>
+    <loc>/reference/ranksSecureDS3.html</loc>
+  </url>
+  <url>
+    <loc>/reference/ranksSecureDS4.html</loc>
+  </url>
+  <url>
+    <loc>/reference/ranksSecureDS5.html</loc>
   </url>
   <url>
     <loc>/reference/rbindDS.html</loc>
