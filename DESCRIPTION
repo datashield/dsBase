@@ -138,6 +138,7 @@ AssignMethods:
     tableDS.assign,
     tapplyDS.assign,
     unListDS,
+    vectorDS,
     as.character=base::as.character,
     as.null=base::as.null,
     as.numeric=base::as.numeric,
