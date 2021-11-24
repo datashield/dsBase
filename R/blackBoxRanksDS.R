@@ -27,13 +27,13 @@
 #' @param input.var.name a character string specifying the name of the
 #' vector holding the global ranks. This argument is set automatically by
 #' the clientside function ds.ranksSecure
-#' @param max.sd.input.var a numeric value reflecting a small overestimate of
+#' @param max.sd.input.ranks a numeric value reflecting a small overestimate of
 #' the standard deviation of the global ranks variable across all studies.
 #' This value is generated from an analysis that follows calling of the
 #' quantileMeanDS serverside aggregate function that is called earlier by
 #' ds.ranksSecure. It is used in the first stage of encryption which transforms
 #' the ranks vector using a probit function to create a vector of proportions.
-#' @param mean.input.var a numeric value reflecting the mean of the
+#' @param mean.input.ranks a numeric value reflecting the mean of the
 #' global ranks across all studies. This value is generated from an analysis
 #' that follows calling of the quantileMeanDS serverside aggregate function
 #' that is called earlier by ds.ranksSecure. It is used in the first stage of
@@ -58,7 +58,7 @@
 #' @author Paul Burton 9th November, 2021
 #' @export
 #'
-blackBoxRanksDS <- function(input.var.name=NULL, max.sd.input.var, mean.input.var, shared.seedval){ #START FUNC
+blackBoxRanksDS <- function(input.var.name=NULL, max.sd.input.ranks, mean.input.ranks, shared.seedval){ #START FUNC
   
   #######################################################
   #MODULE 1: CAPTURE THE nfilter SETTINGS                 
@@ -74,21 +74,8 @@ blackBoxRanksDS <- function(input.var.name=NULL, max.sd.input.var, mean.input.va
   ########################################################
 
 
-  ###############################  
-  #TO RUN AS SERVERSIDE FUNCTION#
-  input.var <- eval(parse(text=input.var.name), envir = parent.frame())
-  ###############################
-  
-  
-  #########################  
-  #FOR LOCAL RUN          #
-  #shared.seedval<-14381       #
-  #sR5.df<-R.sR5.df
-  #input.var<-sR5.df$global.rank #
-  #mean.input.var<-mixed.list$mean.input.ranks #
-  #max.sd.input.var<-mixed.list$max.sd.input.ranks #
-  #########################
-  
+input.var <- eval(parse(text=input.var.name), envir = parent.frame())
+ 
 
 
 input.global.ranks<-input.var
@@ -147,7 +134,7 @@ set.seed(shared.seedval+restart.seed.other.seed.actions)
 #or large or will have no effect at all. So there is no enhanced disclosure risk
 #and no need for the equivalent disclosure trap.
 
-input.var.probit.temp<-((input.global.ranks-mean.input.var)/max.sd.input.var)
+input.var.probit.temp<-((input.global.ranks-mean.input.ranks)/max.sd.input.ranks)
 input.var.probit<-stats::pnorm(input.var.probit.temp)
 
 
