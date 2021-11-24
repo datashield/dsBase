@@ -4,7 +4,6 @@
 \alias{repDS}
 \title{repDS called by ds.rep}
 \usage{
-<<<<<<< HEAD
 repDS(
   x1.transmit,
   times.transmit,
@@ -16,11 +15,6 @@ repDS(
   source.length.out,
   source.each
 )
-=======
-repDS(x1.transmit, times.transmit, length.out.transmit, each.transmit,
-  x1.includes.characters, source.x1, source.times, source.length.out,
-  source.each)
->>>>>>> altstream/v6.2-dev
 }
 \arguments{
 \item{x1.transmit}{This argument determines the input scalar, vector or list.

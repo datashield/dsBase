@@ -5,7 +5,6 @@
 \title{tableDS.assign is the serverside assign function
 called by ds.table}
 \usage{
-<<<<<<< HEAD
 tableDS.assign(
   rvar.transmit,
   cvar.transmit,
@@ -16,10 +15,6 @@ tableDS.assign(
   exclude.transmit,
   useNA.transmit
 )
-=======
-tableDS.assign(rvar.transmit, cvar.transmit, stvar.transmit,
-  exclude.transmit, useNA.transmit)
->>>>>>> altstream/v6.2-dev
 }
 \arguments{
 \item{rvar.transmit}{is a character string (in inverted commas) specifiying the
@@ -38,7 +33,6 @@ tables in the output if the call specifies a 3 dimensional table.
 Fully specified by <stvar> argument in {ds.table}.
 For more information see help for {ds.table}}
 
-<<<<<<< HEAD
 \item{rvar.all.unique.levels.transmit}{is a character string containing all
 unique level in rvar, across the studies, separated by ','.}
 
@@ -52,12 +46,6 @@ unique level in stvar, across the studies, separated by ','.}
 of {ds.table}. Fully specified by <exclude> argument of {ds.table}}
 
 \item{useNA.transmit}{for information see help on <useNA> argument
-=======
-\item{exclude.transmit}{for information see help on <exclude> argument 
-of {ds.table}. Fully specified by <exclude> argument of {ds.table}}
-
-\item{useNA.transmit}{for information see help on <useNA> argument 
->>>>>>> altstream/v6.2-dev
 of {ds.table}. Fully specified by <useNA> argument of {ds.table}}
 }
 \value{

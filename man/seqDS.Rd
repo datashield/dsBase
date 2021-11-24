@@ -4,7 +4,6 @@
 \alias{seqDS}
 \title{seqDS a serverside assign function called by ds.seq}
 \usage{
-<<<<<<< HEAD
 seqDS(
   FROM.value.char,
   TO.value.char,
@@ -12,10 +11,6 @@ seqDS(
   LENGTH.OUT.value.char,
   ALONG.WITH.name
 )
-=======
-seqDS(FROM.value.char, TO.value.char, BY.value.char, LENGTH.OUT.value.char,
-  ALONG.WITH.name)
->>>>>>> altstream/v6.2-dev
 }
 \arguments{
 \item{FROM.value.char}{the starting value for the sequence expressed as an integer

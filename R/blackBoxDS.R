@@ -83,7 +83,8 @@ blackBoxDS <- function(input.var.name=NULL, max.sd.input.var, mean.input.var,
 
 
  input.var <- eval(parse(text=input.var.name), envir = parent.frame())
-
+ 
+ input.var.orig<-input.var
 
 #manage NAs
 
@@ -165,6 +166,7 @@ study.specific.seed<-round(study.specific.seed,0)
 
 set.seed(shared.seedval+restart.seed.other.seed.actions+study.specific.seed)    
 
+
 #Check that no attempt has been made to enter a fake value for max.sd.input.var
 #via the clientside that is close to zero so that the random component of the
 #sythetic data is always effectively zero
@@ -242,29 +244,16 @@ input.var.synth<-input.var.synth.fixed+input.var.synth.random
 #This can take any values -inf to +inf but to avoid extreme value rounding errors
 #scale input.var to normal 0 1
 
-input.var.real.orig<-input.var
+input.var.real.orig<-input.var.orig
 
 #have to round this because otherwise eg 0.3 -> 0.2999999999999999999
 input.var.real.synth.orig<-round(c(input.var.real.orig,input.var.synth),5)
 
 
 #input.var.probit.temp<-((input.var.real.synth.orig-mean.input.var)/max.sd.input.var)
-input.var.probit.temp<-input.var.real.synth.orig/(max.sd.input.var)
+input.var.probit.temp<-(input.var.real.synth.orig-mean.input.var)/(max.sd.input.var)
 input.var.probit<-stats::pnorm(input.var.probit.temp)
 
-#out.df<-data.frame(cbind(input.var.real.synth.orig,input.var.probit))
-#head(out.df,100)
-#ord<-order(input.var.probit)
-
-#out.df.sort<-out.df[ord,]
-#head(out.df.sort,100)
-#tail(out.df.sort,100)
-#rank.orig<-rank(out.df.sort[,1])
-#rank.probit<-rank(out.df.sort[,2])
-#out2<-cbind(out.df.sort,rank.orig,rank.probit)
-#out2[rank.orig!=rank.probit,]
-#out2[650:800,]
-#options(digits=16)
 
 
 if(min(input.var.probit)<=0 | max(input.var.probit)>=1){
