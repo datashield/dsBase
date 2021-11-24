@@ -59,7 +59,7 @@ glmerSLMADS2 fits a generalized linear mixed effects model
 - on data from one or multiple sources with pooling via SLMA (study level meta-analysis)
 }
 \details{
-glmerSLMA2 is a serverside function called by glmerSLMADS2 on the clientside.
+glmerSLMADS2 is a serverside function called by ds.glmerSLMA on the clientside.
 The analytic work engine is the glmer function in R which sits in the lme4 package.
 ds.glmerSLMA fits a generalized linear mixed effects model (glme) - e.g. a logistic or
 Poisson regression model including both fixed and random effects - on data

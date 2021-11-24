@@ -46,7 +46,7 @@ if(length.mdata.transmit>nfilter.stringShort)
 	studysideMessage<-
 	paste0("FAILED: mdata.transmit is too long it could hide concealed code, please shorten to <= nfilter.stringShort = ",
 	       nfilter.stringShort," characters")
-	return(list(studysideMessage=studysideMessage))
+	stop(studysideMessage, call. = FALSE)
 	}
 
 #Check length of nrows.transmit string not so long as to provide a risk of hidden code
@@ -57,7 +57,7 @@ if(length.nrows.transmit>nfilter.stringShort)
 	studysideMessage<-
 	paste0("FAILED: nrows.transmit is too long it could hide concealed code, please shorten to <= nfilter.stringShort = ",
 	       nfilter.stringShort," characters")
-	return(list(studysideMessage=studysideMessage))
+	stop(studysideMessage, call. = FALSE)
 	}
 
 	#Check length of ncols.transmit string not so long as to provide a risk of hidden code
@@ -68,7 +68,7 @@ if(length.ncols.transmit>nfilter.stringShort)
 	studysideMessage<-
 	paste0("FAILED: ncols.transmit is too long it could hide concealed code, please shorten to <= nfilter.stringShort = ",
 	       nfilter.stringShort," characters")
-	return(list(studysideMessage=studysideMessage))
+	stop(studysideMessage, call. = FALSE)
 	}
 
 #Check length of dimnames string not so long as to provide a risk of hidden code
@@ -83,7 +83,7 @@ if(!is.null(dimnames))
 		studysideMessage<-
 		paste0("FAILED: dimnames is too long it could hide concealed code, please shorten to <= 2 x nfilter.string = ",
 			(nfilter.string*2)," characters")
-		return(list(studysideMessage=studysideMessage))
+		stop(studysideMessage, call. = FALSE)
 		}
 	}
 
@@ -127,7 +127,7 @@ ncols<-as.numeric(ncols.c)
 if(nrows==-9||ncols==-9)
 	{
 	studysideMessage<-"FAILED: must specify both nrows.scalar and ncols.scalar as positive integers"
-	return(list(studysideMessage=studysideMessage))
+	stop(studysideMessage, call. = FALSE)
 	}
 
 
@@ -151,7 +151,7 @@ if(nrows==-9||ncols==-9)
   if(from!="serverside.vector"&&from!="serverside.scalar"&&from!="clientside.scalar")
 	  {
 			studysideMessage<-paste0("FAILED: the <from> argument specified is not valid, please respecify")
-			return(list(studysideMessage=studysideMessage))
+			stop(studysideMessage, call. = FALSE)
 	  }
 
 	return(output)

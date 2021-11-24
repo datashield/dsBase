@@ -2,7 +2,7 @@
 #' @description glmerSLMADS2 fits a generalized linear mixed effects model
 #' (glme) - e.g. a logistic or Poisson regression model including both fixed and random effects
 #' - on data from one or multiple sources with pooling via SLMA (study level meta-analysis)
-#' @details  glmerSLMA2 is a serverside function called by glmerSLMADS2 on the clientside.
+#' @details  glmerSLMADS2 is a serverside function called by ds.glmerSLMA on the clientside.
 #' The analytic work engine is the glmer function in R which sits in the lme4 package.
 #' ds.glmerSLMA fits a generalized linear mixed effects model (glme) - e.g. a logistic or
 #' Poisson regression model including both fixed and random effects - on data
@@ -40,18 +40,13 @@
 glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
                 control_type=NULL, control_value.transmit=NULL, nAGQ=1L, verbose = 0, theta = NULL, fixef = NULL){
  
-
   errorMessage <- "No errors"
 
-
-
   #############################################################
-  #MODULE 1: CAPTURE THE nfilter SETTINGS
-   thr <- listDisclosureSettingsDS()
-   nfilter.tab <- as.numeric(thr$nfilter.tab)
-   nfilter.glm <- as.numeric(thr$nfilter.glm)
-  #nfilter.subset <- as.numeric(thr$nfilter.subset)
-  #nfilter.string <- as.numeric(thr$nfilter.string)
+  # MODULE 1: CAPTURE THE nfilter SETTINGS
+  thr <- listDisclosureSettingsDS()
+  nfilter.tab <- as.numeric(thr$nfilter.tab)
+  nfilter.glm <- as.numeric(thr$nfilter.glm)
   #############################################################
   
   # Get the value of the 'data' parameter provided as character on the client side
@@ -235,7 +230,7 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
   #observations at either level 
   
   Xpar.invalid<-rep(0,num.p)
-  x.invalid<-0 #Any x parameter invalud
+  x.invalid<-0 #Any x parameter invalid
   
   for(pj in 1:num.p){
     unique.values.noNA<-unique((X.mat[,pj])[stats::complete.cases(X.mat[,pj])]) 
@@ -391,27 +386,27 @@ if(control_type=="check.conv.grad")
         start = list(theta=theta, fixef=fixef)
       }
     }
-
-
     
     #mg <- lme4::lmer(formula2use, offset=offset, weights=weights, data=dataDF, REML = REML, verbose = verbose, control = control.obj)
     
-	iterations <- utils::capture.output(try(mg <- lme4::glmer(formula2use, offset=offset, weights=weights, data=dataDF,
+	  iterations <- utils::capture.output(try(mg <- lme4::glmer(formula2use, offset=offset, weights=weights, data=dataDF,
 	                                       family = family, nAGQ=nAGQ,verbose = verbose, control=control.obj, start = start)))
 
-    summary_mg = summary(mg)
+    summary_mg <- summary(mg)
     summary_mg$residuals <- NULL
-    summary_mg$errorMessage = errorMessage
-    summary_mg$disclosure.risk = disclosure.risk
-    summary_mg$iterations = iterations
- 	summary_mg$control.info = control.obj
-	summary_mg$nAGQ.info = nAGQ
-    outlist = summary_mg
-  } 
- 
-
- 
-  else{#i.e. if disclosure.risk !=0
+    summary_mg$errorMessage <- errorMessage
+    summary_mg$disclosure.risk <- disclosure.risk
+    summary_mg$iterations <- iterations
+ 	  summary_mg$control.info <- control.obj
+	  summary_mg$nAGQ.info <- nAGQ
+    outlist <- summary_mg
+    
+    outlist$Ntotal <- Ntotal
+    outlist$Nvalid <- Nvalid
+    outlist$Nmissing <- Nmissing
+    
+  }else{ #i.e. if disclosure.risk !=0
+    
     errorMessage.d1<-"ERROR: Model failed in this source because of an enhanced risk of disclosure"
     errorMessage.d2<-"The following message(s) identify the cause of this enhanced risk"
     

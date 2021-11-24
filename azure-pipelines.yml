@@ -45,18 +45,24 @@ resources:
 #########################################################################################
 # When and under what condition to run the pipeline.
 schedules:
-  - cron: "32 1 * * *"
-    displayName: Nightly build
+  - cron: "0 0 * * 0"
+    displayName: Weekly build - master
     branches:
-     include:
+      include:
       - master
+    always: true
+  - cron: "0 1 * * *"
+    displayName: Nightly build - v6.2-dev
+    branches:
+      include:
+      - v6.2-dev
     always: true
 
 jobs:
 - job: run_devtools_check
-  timeoutInMinutes: 30
+  timeoutInMinutes: 60
   pool:
-    vmImage: 'Ubuntu 16.04'
+    vmImage: ubuntu-20.04
 
 
   steps:
@@ -92,9 +98,10 @@ jobs:
       
       sudo apt-get update
       sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-      sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran40/'
+      sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
+      sudo add-apt-repository ppa:cran/libgit2
       sudo apt-get update
-      sudo apt-get install -qq libxml2-dev libcurl4-openssl-dev libssl-dev -y
+      sudo apt-get install -qq libxml2-dev libcurl4-openssl-dev libssl-dev libgit2-dev -y
       sudo apt-get install -qq r-base -y
       sudo R -e "install.packages('devtools', dependencies=TRUE)"
       sudo R -e "install.packages('RANN', dependencies=TRUE)"
@@ -103,6 +110,7 @@ jobs:
       sudo R -e "install.packages('ggplot2', dependencies=TRUE)"
       sudo R -e "install.packages('dplyr', dependencies=TRUE)"
       sudo R -e "install.packages('reshape2', dependencies=TRUE)"
+      sudo R -e "install.packages('panelaggregation', dependencies=TRUE)"
 
     displayName: 'Install all dependencies for dsBase'
     condition: succeeded()
@@ -200,7 +208,7 @@ jobs:
       mv test_results.xml $(Pipeline.Workspace)/logs
       mv test_console_output.txt $(Pipeline.Workspace)/logs
       
-      grep --quiet "Failed:   0" $(Pipeline.Workspace)/logs/test_console_output.txt
+      grep --quiet " FAIL 0 " $(Pipeline.Workspace)/logs/test_console_output.txt
 
     workingDirectory: $(Pipeline.Workspace)/dsBase
     displayName: 'Code coverage and JUnit report output'

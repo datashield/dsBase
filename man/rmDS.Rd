@@ -4,25 +4,20 @@
 \alias{rmDS}
 \title{rmDS an aggregate function called by ds.rm}
 \usage{
-rmDS(x.name.transmit)
+rmDS(x.names.transmit)
 }
 \arguments{
-\item{x.name.transmit, }{the name of the object to be deleted converted
-into transmissable form. The argument is specified via the <x.name>
-argument of ds.rm}
+\item{x.names.transmit, }{the names of the objects to be deleted converted
+into transmissable form, a comma seperated list of character  string. The
+argument is specified via the <x.names> argument of ds.rm}
 }
 \value{
 the specified object is deleted from the serverside. If this
-is successful the message "Object <x.name> successfully deleted" is returned
-to the clientside (where x.name is the name of the object to be deleted).
-If the object to be deleted is already absent on a given
-source, that source will return the message: "Object to be deleted, i.e. <x.name> ,
-does not exist so does not need deleting". Finally, if the specified name
-of the object to be deleted is too long (>nfilter.stringShort) there is
-a potential disclosure risk (active code hidden in the name) and the
-rmDS returns a message such as: "Disclosure risk, number of characters
-in x.name must not exceed nfilter.stringShort which is currently set at: 25" where
-'25' is the current setting of the R_Option value of nfilter.stringShort.
+is successful the message "Object <x.names> successfully deleted" is returned
+to the clientside (where x.names are the names of the object to be deleted).
+If the objects to be deleted is already absent on a given
+source, that source will return the message: "Object to be deleted, i.e. <x.names>,
+does not exist so does not need deleting".
 }
 \description{
 deletes an R object on the serverside

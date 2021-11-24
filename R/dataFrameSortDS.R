@@ -51,30 +51,36 @@ dataFrameSortDS <- function(df.name=NULL,sort.key.name=NULL,sort.descending,sort
   df.name.chars <- strsplit(df.name,split="")
   if(length(df.name.chars[[1]])>nfilter.stringShort){
     studysideMessage <- "df.name argument could hide active code - please use shorter name"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, call. = FALSE)
   }
 
 
- sort.key.name.chars <- strsplit(sort.key.name,split="")
+  sort.key.name.chars <- strsplit(sort.key.name,split="")
 
   if(length(sort.key.name.chars[[1]])>nfilter.stringShort){
     studysideMessage <- "sort.key.name argument could hide active code - please use shorter name"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, call. = FALSE)
   }
 
   df.name.2 <- paste0("data.frame(",df.name,")")
   df2sort   <- eval(parse(text=df.name.2), envir = parent.frame())
   sort.key  <- eval(parse(text=sort.key.name), envir = parent.frame())
 
+  # TYPE CHECK
+  if(any(class(sort.key) %in% 'factor')){
+    studysideMessage <- "specified sort.key variable is of type 'factor'"
+    stop(studysideMessage, call. = FALSE)
+  }
+
   # DISCLOSURE TRAPS
   if(dim(df2sort)[1]<nfilter.subset){
     studysideMessage <- "specified data.frame to sort is shorter than minimum subset size"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, call. = FALSE)
   }
 
   if(length(sort.key)<nfilter.subset){
     studysideMessage <- "specified sort.key variable is shorter than minimum subset size"
-    return(list(studysideMessage=studysideMessage))
+    stop(studysideMessage, call. = FALSE)
   }
 
   if((sort.method=="alphabetic") || ((sort.method=="default") && is.character(sort.key))){

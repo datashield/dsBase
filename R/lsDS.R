@@ -70,7 +70,7 @@ return(outlist)
     {
       j<-j+1
  
-      print(j)     
+#      print(j)
       add.to<-search.filter.split[j]
       if(search.filter.split[j]=="_"&&search.filter.split[j+1]==":"&&search.filter.split[j+2]=="A"&&
          search.filter.split[j+3]==":"&&search.filter.split[j+4]=="_")
@@ -85,7 +85,7 @@ return(outlist)
     while(j<length.sf)
       {
       j<-j+1
-      print(j)
+#      print(j)
       add.to<-search.filter.split[j]
       search.filter.temp1<-c(search.filter.temp1,add.to)
       }
