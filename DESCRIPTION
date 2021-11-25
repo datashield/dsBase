@@ -152,10 +152,13 @@ AssignMethods:
     as.null=base::as.null,
     as.numeric=base::as.numeric,
     attach=base::attach,
+    c=base::c,
+    cbind=base::cbind,
     complete.cases=stats::complete.cases,
     exp=base::exp,
     list=base::list,
     log=base::log,
+    rep=base::rep,
     sum=base::sum,
     unlist=base::unlist
 Options:
