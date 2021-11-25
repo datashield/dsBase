@@ -29,8 +29,6 @@ test_that("simple tapplyDS.assign", {
 
     res <- tapplyDS.assign("x", INDEX.names, FUN.name)
 
-    print(res)
-    
     expect_equal(class(res), "list")
     expect_length(res, 2)
 
