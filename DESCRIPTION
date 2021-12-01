@@ -1,7 +1,7 @@
 Package: dsBase
 Title: DataSHIELD server site base functions
 Description: DataSHIELD server site base functions.
-Version: 6.1.1
+Version: 6.2.0-5
 Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
 Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
 License: GPL-3
@@ -13,7 +13,8 @@ Imports:
     stringr,
     lme4,
     dplyr,
-    reshape2
+    reshape2,
+    lspline
 AggregateMethods:
     asFactorDS1,
     asListDS,
@@ -50,6 +51,7 @@ AggregateMethods:
     meanDS,
     meanSdGpDS,
     messageDS,
+    metadataDS,
     namesDS,
     numNaDS,
     quantileMeanDS,
@@ -66,7 +68,6 @@ AggregateMethods:
     tableDS2,
     tapplyDS,
     testObjExistsDS,
-    tTestFDS2,
     varDS,
     colnamesDS,
     exists=base::exists,
@@ -81,8 +82,8 @@ AssignMethods:
     absDS,
     asCharacterDS,
     asDataMatrixDS,
-    asFactorDS,
     asFactorDS2,
+    asFactorSimpleDS,
     asIntegerDS,
     asListDS,
     asLogicalDS,
@@ -99,6 +100,7 @@ AssignMethods:
     dataFrameFillDS,
     dataFrameSortDS,
     dataFrameSubsetDS2,
+    dmtC2SDS,
     glmerSLMADS.assign,
     glmPredictDS.as,
     glmSLMADS.assign,
@@ -151,6 +153,7 @@ AssignMethods:
     unlist=base::unlist
 Options:
     datashield.privacyLevel=5,
+    default.datashield.privacyControlLevel="permissive",
     default.nfilter.glm=0.33,
     default.nfilter.kNN=3,
     default.nfilter.string=80,
@@ -158,5 +161,7 @@ Options:
     default.nfilter.stringShort=20,
     default.nfilter.tab=3,
     default.nfilter.noise=0.25,
-    default.nfilter.levels=0.33
-RoxygenNote: 7.1.1
+    default.nfilter.levels.density=0.33,
+    default.nfilter.levels.max=40
+RoxygenNote: 7.1.2
+Encoding: UTF-8

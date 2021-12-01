@@ -10,6 +10,9 @@
 #'
 recodeLevelsDS <- function (x=NULL, classes=NULL){
   
+  # Check Permissive Privacy Control Level.
+  checkPermissivePrivacyControlLevel()
+  
   # check if the input vector is valid (i.e. meets DataSHIELD criteria)
   check <- isValidDS(x)
   
