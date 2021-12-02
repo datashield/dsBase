@@ -27,18 +27,6 @@
 #' @param input.var.name a character string specifying the name of the
 #' vector holding the global ranks. This argument is set automatically by
 #' the clientside function ds.ranksSecure
-#' @param max.sd.input.ranks a numeric value reflecting a small overestimate of
-#' the standard deviation of the global ranks variable across all studies.
-#' This value is generated from an analysis that follows calling of the
-#' quantileMeanDS serverside aggregate function that is called earlier by
-#' ds.ranksSecure. It is used in the first stage of encryption which transforms
-#' the ranks vector using a probit function to create a vector of proportions.
-#' @param mean.input.ranks a numeric value reflecting the mean of the
-#' global ranks across all studies. This value is generated from an analysis
-#' that follows calling of the quantileMeanDS serverside aggregate function
-#' that is called earlier by ds.ranksSecure. It is used in the first stage of
-#' encryption which transforms the ranks vector using a probit function to
-#' create a vector of proportions.
 #' @param shared.seedval a pseudorandom number seed that ensures that the
 #' processes generating the order and parameterisation of the encryption
 #' algorithms are the same in each study. This argument is set by the argument
@@ -58,7 +46,7 @@
 #' @author Paul Burton 9th November, 2021
 #' @export
 #'
-blackBoxRanksDS <- function(input.var.name=NULL, max.sd.input.ranks, mean.input.ranks, shared.seedval){ #START FUNC
+blackBoxRanksDS <- function(input.var.name=NULL, shared.seedval){ #START FUNC
   
   #######################################################
   #MODULE 1: CAPTURE THE nfilter SETTINGS                 
@@ -75,10 +63,12 @@ blackBoxRanksDS <- function(input.var.name=NULL, max.sd.input.ranks, mean.input.
 
 
 input.var <- eval(parse(text=input.var.name), envir = parent.frame())
- 
-
-
 input.global.ranks<-input.var
+
+#ESTIMATED OVERALL MEAN AND SD FROM meanQuantileDS
+#SAVED IN input.mean.sd.df BY ds.dmtC2S
+max.sd.input.ranks<-input.ranks.sd.df$max.sd.input.ranks
+mean.input.ranks<-input.ranks.sd.df$mean.input.ranks
 
 numsubs.real<-length(input.global.ranks)
 

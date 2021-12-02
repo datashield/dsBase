@@ -21,9 +21,9 @@
 #' header for ds.ranksSecure and ds.extractQuantiles functions.
 #' The value of this argument is set in choosing the value of the argument
 #' <quantiles.for.estimation> in ds.ranksSecure.
-#' @param extract.output.ranks.df a character string which specifies an optional
+#' @param extract.summary.output.ranks.df character string specifying optional
 #' name for the data.frame written to the serverside on each data source that
-#' contains 11 of the key output variables from the ranking procedure pertaining
+#' contains 5 of the key output variables from the ranking procedure pertaining
 #' to that particular data source. This data frame represents the key source of
 #' information - including global ranks - that determines the values of V2BR
 #' that are identified as corresponding to the particular set of quantiles to
@@ -41,7 +41,7 @@
 #' warning/error message.  
 #' @author Paul Burton 11th November, 2021
 #' @export
-extractQuantilesDS1 <- function(extract.quantiles,extract.output.ranks.df){ #START FUNC
+extractQuantilesDS1 <- function(extract.quantiles,extract.summary.output.ranks.df){ #START FUNC
 
   
   #############################################################
@@ -59,7 +59,7 @@ extractQuantilesDS1 <- function(extract.quantiles,extract.output.ranks.df){ #STA
  
   #############################################   
  
-  extract.ranks.df <- eval(parse(text=extract.output.ranks.df), envir = parent.frame())
+  extract.summary.ranks.df <- eval(parse(text=extract.summary.output.ranks.df), envir = parent.frame())
   
  #Specify quantiles to evaluate
   if(extract.quantiles=="0.025-0.975"){
@@ -83,14 +83,14 @@ extractQuantilesDS1 <- function(extract.quantiles,extract.output.ranks.df){ #STA
   
   
   numvals<-length(evaluation.quantiles)
-  numsubs.in.study<-nrow(extract.ranks.df)
+  numsubs.in.study<-nrow(extract.summary.ranks.df)
   
   #calculate total number of real data observations in variable to be ranked
   #across all studies to prime disclosure control
 
   #Identify specific observations defining chosen evaluation quantiles
-  quants<-extract.ranks.df$final.quantiles.global
-   ranks<-extract.ranks.df$final.ranks.global
+  quants<-extract.summary.ranks.df$final.quantiles.global
+   ranks<-extract.summary.ranks.df$final.ranks.global
    numsubs.real<-max(ranks/quants)
    
    if((numsubs.real/numvals)<=nfilter.tab){

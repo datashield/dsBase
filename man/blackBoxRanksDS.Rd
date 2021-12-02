@@ -4,31 +4,12 @@
 \alias{blackBoxRanksDS}
 \title{Secure ranking of "V2BR" (vector to be ranked) across all sources}
 \usage{
-blackBoxRanksDS(
-  input.var.name = NULL,
-  max.sd.input.ranks,
-  mean.input.ranks,
-  shared.seedval
-)
+blackBoxRanksDS(input.var.name = NULL, shared.seedval)
 }
 \arguments{
 \item{input.var.name}{a character string specifying the name of the
 vector holding the global ranks. This argument is set automatically by
 the clientside function ds.ranksSecure}
-
-\item{max.sd.input.ranks}{a numeric value reflecting a small overestimate of
-the standard deviation of the global ranks variable across all studies.
-This value is generated from an analysis that follows calling of the
-quantileMeanDS serverside aggregate function that is called earlier by
-ds.ranksSecure. It is used in the first stage of encryption which transforms
-the ranks vector using a probit function to create a vector of proportions.}
-
-\item{mean.input.ranks}{a numeric value reflecting the mean of the
-global ranks across all studies. This value is generated from an analysis
-that follows calling of the quantileMeanDS serverside aggregate function
-that is called earlier by ds.ranksSecure. It is used in the first stage of
-encryption which transforms the ranks vector using a probit function to
-create a vector of proportions.}
 
 \item{shared.seedval}{a pseudorandom number seed that ensures that the
 processes generating the order and parameterisation of the encryption

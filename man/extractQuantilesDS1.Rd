@@ -5,7 +5,7 @@
 \title{Secure ranking of "V2BR" (vector to be ranked) across all sources
 and use of these ranks to estimate global quantiles across all studies}
 \usage{
-extractQuantilesDS1(extract.quantiles, extract.output.ranks.df)
+extractQuantilesDS1(extract.quantiles, extract.summary.output.ranks.df)
 }
 \arguments{
 \item{extract.quantiles}{one of a restricted set of character strings that
@@ -16,9 +16,9 @@ header for ds.ranksSecure and ds.extractQuantiles functions.
 The value of this argument is set in choosing the value of the argument
 <quantiles.for.estimation> in ds.ranksSecure.}
 
-\item{extract.output.ranks.df}{a character string which specifies an optional
+\item{extract.summary.output.ranks.df}{character string specifying optional
 name for the data.frame written to the serverside on each data source that
-contains 11 of the key output variables from the ranking procedure pertaining
+contains 5 of the key output variables from the ranking procedure pertaining
 to that particular data source. This data frame represents the key source of
 information - including global ranks - that determines the values of V2BR
 that are identified as corresponding to the particular set of quantiles to
