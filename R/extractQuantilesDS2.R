@@ -22,9 +22,9 @@
 #' bounding values of V2BR differ, neither can  be the precisely correct single
 #' value of V2BR for that quantile (see above for explanation) and so the mean
 #' of the two is a reasonable interpolated summary.
-#' @param extract.output.ranks.df a character string which specifies an optional
+#' @param extract.summary.output.ranks.df character string specifies an optional
 #' name for the data.frame written to the serverside on each data source that
-#' contains 11 of the key output variables from the ranking procedure pertaining
+#' contains 5 of the key output variables from the ranking procedure pertaining
 #' to that particular data source. This data frame represents the key source of
 #' information - including global ranks - that determines the values of V2BR
 #' that are identified as corresponding to the particular set of quantiles to
@@ -42,7 +42,7 @@
 #' the key quantiles listed in vector 1.
 #' @author Paul Burton 11th November, 2021
 #' @export
-extractQuantilesDS2 <- function(extract.output.ranks.df){ #START FUNC
+extractQuantilesDS2 <- function(extract.summary.output.ranks.df){ #START FUNC
 
   
   #############################################################
@@ -58,8 +58,8 @@ extractQuantilesDS2 <- function(extract.output.ranks.df){ #START FUNC
   #nfilter.levels <- as.numeric(thr$nfilter.levels)            #
   #############################################################
 
-extract.ranks.df.2 <- eval(parse(text=extract.output.ranks.df), envir = parent.frame())
-numsubs<-nrow(extract.ranks.df.2)
+extract.summary.ranks.df2 <- eval(parse(text=extract.summary.output.ranks.df), envir = parent.frame())
+numsubs<-nrow(extract.summary.ranks.df2)
 numvals<-length(global.bounds.df$evaluation.quantiles)
 
 
@@ -67,17 +67,17 @@ relevant.study.specific.input.values.lower<-rep(NA,numvals)
 relevant.study.specific.input.values.upper<-rep(NA,numvals)
 
 for(ww in 1:numvals){
-  if(sum(extract.ranks.df.2$final.quantiles.global==global.bounds.df$lower.bound.vector[ww])>0)
+  if(sum(extract.summary.ranks.df2$final.quantiles.global==global.bounds.df$lower.bound.vector[ww])>0)
   {
     relevant.study.specific.input.values.lower[ww]<-
-    mean(extract.ranks.df.2$input.var.real.orig[extract.ranks.df.2$final.quantiles.global
+    mean(extract.summary.ranks.df2$input.var.real.orig[extract.summary.ranks.df2$final.quantiles.global
                                         ==global.bounds.df$lower.bound.vector[ww]])
   }
 
-  if(sum(extract.ranks.df.2$final.quantiles.global==global.bounds.df$upper.bound.vector[ww])>0)
+  if(sum(extract.summary.ranks.df2$final.quantiles.global==global.bounds.df$upper.bound.vector[ww])>0)
   {
   relevant.study.specific.input.values.upper[ww]<-
-    mean(extract.ranks.df.2$input.var.real.orig[extract.ranks.df.2$final.quantiles.global
+    mean(extract.summary.ranks.df2$input.var.real.orig[extract.summary.ranks.df2$final.quantiles.global
                                         ==global.bounds.df$upper.bound.vector[ww]])
   }
 }

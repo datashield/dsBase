@@ -23,21 +23,6 @@
 #' @param input.var.name a character string specifying the name of V2BR. This
 #' argument is set by the argument with the same name in the clientside function
 #' ds.ranksSecure
-#' @param max.sd.input.var a numeric value reflecting a small overestimate of
-#' the standard deviation of the V2BR across all studies. This is used
-#' to help generate the pseudo-data and ensures that the distribution of the
-#' pseudo-data is slightly wider than the real data. This value is
-#' generated from an analysis that follows calling of the quantileMeanDS
-#' serverside aggregate function that is called earlier by ds.ranksSecure.
-#' It is also used in the first stage of encryption which transforms
-#' the V2BR vector using a probit function to convert it into a proportion.
-#' @param mean.input.var a numeric value reflecting the mean of V2BR across all
-#' studies. This is used to help generate the pseudo-data and ensures that
-#' the distribution of the pseudo-data has a similar mean to V2BR. This value is
-#' generated from an analysis that follows calling of the quantileMeanDS
-#' serverside aggregate function that is called earlier by ds.ranksSecure.
-#' It is also used in the first stage of encryption which transforms
-#' the V2BR vector using a probit function to convert it into a proportion.
 #' @param shared.seedval a pseudorandom number seed that ensures that the
 #' processes generating the order and parameterisation of the encryption
 #' algorithms are the same in each study. This argument is set by the argument
@@ -65,7 +50,7 @@
 #' @author Paul Burton 9th November, 2021
 #' @export
 #'
-blackBoxDS <- function(input.var.name=NULL, max.sd.input.var, mean.input.var,
+blackBoxDS <- function(input.var.name=NULL, 
                        shared.seedval, synth.real.ratio, NA.manage){ #START FUNC
   
   #######################################################
@@ -102,6 +87,11 @@ if(NA.manage=="NA.delete"){
    input.var[is.na(input.var)]<-min.max.df[,2]
    input.var.orig<-input.var
  }
+
+#ESTIMATED OVERALL MEAN AND SD FROM meanQuantileDS
+#SAVED IN input.mean.sd.df BY ds.dmtC2S
+max.sd.input.var<-input.mean.sd.df$max.sd.input.var
+mean.input.var<-input.mean.sd.df$mean.input.var
  
 numsubs.real<-length(input.var.orig)
 numsubs.synth<-length(input.var.orig)*synth.real.ratio

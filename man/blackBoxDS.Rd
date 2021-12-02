@@ -4,36 +4,12 @@
 \alias{blackBoxDS}
 \title{Secure ranking of "V2BR" (vector to be ranked) across all sources}
 \usage{
-blackBoxDS(
-  input.var.name = NULL,
-  max.sd.input.var,
-  mean.input.var,
-  shared.seedval,
-  synth.real.ratio,
-  NA.manage
-)
+blackBoxDS(input.var.name = NULL, shared.seedval, synth.real.ratio, NA.manage)
 }
 \arguments{
 \item{input.var.name}{a character string specifying the name of V2BR. This
 argument is set by the argument with the same name in the clientside function
 ds.ranksSecure}
-
-\item{max.sd.input.var}{a numeric value reflecting a small overestimate of
-the standard deviation of the V2BR across all studies. This is used
-to help generate the pseudo-data and ensures that the distribution of the
-pseudo-data is slightly wider than the real data. This value is
-generated from an analysis that follows calling of the quantileMeanDS
-serverside aggregate function that is called earlier by ds.ranksSecure.
-It is also used in the first stage of encryption which transforms
-the V2BR vector using a probit function to convert it into a proportion.}
-
-\item{mean.input.var}{a numeric value reflecting the mean of V2BR across all
-studies. This is used to help generate the pseudo-data and ensures that
-the distribution of the pseudo-data has a similar mean to V2BR. This value is
-generated from an analysis that follows calling of the quantileMeanDS
-serverside aggregate function that is called earlier by ds.ranksSecure.
-It is also used in the first stage of encryption which transforms
-the V2BR vector using a probit function to convert it into a proportion.}
 
 \item{shared.seedval}{a pseudorandom number seed that ensures that the
 processes generating the order and parameterisation of the encryption
