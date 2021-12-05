@@ -14,7 +14,6 @@ Imports:
     lme4,
     dplyr,
     reshape2,
-    lspline,
     polycor
 AggregateMethods:
     asFactorDS1,
@@ -40,6 +39,7 @@ AggregateMethods:
     histogramDS1,
     histogramDS2,
     lsDS,
+    lsplineDS,
     isNaDS,
     isValidDS,
     kurtosisDS1,
