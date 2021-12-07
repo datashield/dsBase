@@ -14,7 +14,8 @@ Imports:
     lme4,
     dplyr,
     reshape2,
-    polycor
+    polycor (>= 0.8),
+    splines
 AggregateMethods:
     asFactorDS1,
     asListDS,
@@ -121,6 +122,7 @@ AssignMethods:
     matrixMultDS,
     matrixTransposeDS,
     mergeDS,
+    nsDS,
     qsplineDS,
     rbindDS,
     rBinomDS,

@@ -64,7 +64,7 @@ elsplineDS <- function(x = x, n = n, marginal = FALSE, names = NULL){
   for(i in 1:ncol(out)){
     if(length(unique(out[,i])) <= nfilter.tab){
       stop(paste0("One of the spline segments has less than ", nfilter.tab, 
-                  " observations. Please redefine the knot positions"), call.=FALSE)
+                  " observations. Please redefine the value of n"), call.=FALSE)
     }
   }
   
