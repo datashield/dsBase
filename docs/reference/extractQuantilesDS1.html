@@ -47,9 +47,10 @@ and use of these ranks to estimate global quantiles across all studies</h1>
 studies) that relate to a set of quantiles to be evaluated.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">extractQuantilesDS1</span><span class="op">(</span><span class="va">extract.quantiles</span>, <span class="va">extract.output.ranks.df</span><span class="op">)</span></code></pre></div>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">extractQuantilesDS1</span><span class="op">(</span><span class="va">extract.quantiles</span>, <span class="va">extract.summary.output.ranks.df</span><span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>extract.quantiles</dt>
@@ -60,10 +61,10 @@ see the associated document entitled "secure.global.ranking.docx", the
 header for ds.ranksSecure and ds.extractQuantiles functions.
 The value of this argument is set in choosing the value of the argument
 &lt;quantiles.for.estimation&gt; in ds.ranksSecure.</p></dd>
-<dt>extract.output.ranks.df</dt>
-<dd><p>a character string which specifies an optional
+<dt>extract.summary.output.ranks.df</dt>
+<dd><p>character string specifying optional
 name for the data.frame written to the serverside on each data source that
-contains 11 of the key output variables from the ranking procedure pertaining
+contains 5 of the key output variables from the ranking procedure pertaining
 to that particular data source. This data frame represents the key source of
 information - including global ranks - that determines the values of V2BR
 that are identified as corresponding to the particular set of quantiles to
@@ -102,7 +103,6 @@ see the associated document entitled "secure.global.ranking.docx"</p>
     <h2>Author</h2>
     <p>Paul Burton 11th November, 2021</p>
     </div>
-    </div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -116,7 +116,7 @@ see the associated document entitled "secure.global.ranking.docx"</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer></div>
