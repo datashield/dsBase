@@ -109,7 +109,8 @@ jobs:
       sudo R -e "install.packages('lme4', dependencies=TRUE)"
       sudo R -e "install.packages('dplyr', dependencies=TRUE)"
       sudo R -e "install.packages('reshape2', dependencies=TRUE)"
-      sudo R -e "install.packages('lspline', dependencies=TRUE)"
+      sudo R -e "install.packages('polycor', dependencies=TRUE)"
+      sudo R -e "install.packages('splines', dependencies=TRUE)"
 
     displayName: 'Install all dependencies for dsBase'
     condition: succeeded()
