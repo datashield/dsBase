@@ -216,7 +216,7 @@ lexisDS2 <- function(datatext=NULL, intervalWidth, maxmaxtime, idCol, entryCol, 
     ###ERR	numperiods.exposed<-numperiods.exposed+(start.breaks[j]<SURVTIME) #ERROR AS MISCOUNTS IF EXPLICIT (NON 0) STARTIME VECTOR SPECIFIED
     
     first.int.exposed<-first.int.exposed+(end.breaks[j]<=STARTTIME)
-    last.int.exposed<-last.int.exposed+(start.breaks[j]<=ENDTIME)
+    last.int.exposed<-last.int.exposed+(start.breaks[j]<ENDTIME)
   }
   #NEED TO ADD DUMMY COLUMNS TO HARMLESSLY DIRECT NA VALUES IN numperiods.exposed
   

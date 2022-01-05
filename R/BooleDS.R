@@ -25,6 +25,9 @@
 #'
 BooleDS <- function(V1.name=NULL, V2.name=NULL, Boolean.operator.n=NULL, na.assign.text, numeric.output=TRUE){
 
+  # Check Permissive Privacy Control Level.
+  checkPermissivePrivacyControlLevel()
+
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
 thr <- listDisclosureSettingsDS()                                       #

@@ -1,7 +1,7 @@
 Package: dsBase
 Title: DataSHIELD server site base functions
 Description: DataSHIELD server site base functions.
-Version: 6.2.0-5
+Version: 6.2.0-6
 Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
 Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
 License: GPL-3
@@ -144,17 +144,15 @@ AssignMethods:
     tableDS.assign,
     tapplyDS.assign,
     unListDS,
+    vectorDS,
     as.character=base::as.character,
     as.null=base::as.null,
     as.numeric=base::as.numeric,
     attach=base::attach,
-    c=base::c,
-    cbind=base::cbind,
     complete.cases=stats::complete.cases,
     exp=base::exp,
     list=base::list,
     log=base::log,
-    rep=base::rep,
     sum=base::sum,
     unlist=base::unlist
 Options:
