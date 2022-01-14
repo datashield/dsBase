@@ -14,7 +14,8 @@ Imports:
     lme4,
     dplyr,
     reshape2,
-    lspline
+    polycor (>= 0.8),
+    splines
 AggregateMethods:
     asFactorDS1,
     asListDS,
@@ -35,6 +36,7 @@ AggregateMethods:
     glmSLMADS2,
     glmSummaryDS.ag,
     heatmapPlotDS,
+    hetcorDS,
     histogramDS1,
     histogramDS2,
     lsDS,
@@ -101,6 +103,7 @@ AssignMethods:
     dataFrameSortDS,
     dataFrameSubsetDS2,
     dmtC2SDS,
+    elsplineDS,
     glmerSLMADS.assign,
     glmPredictDS.as,
     glmSLMADS.assign,
@@ -110,6 +113,7 @@ AssignMethods:
     lexisDS2,
     lexisDS3,
     lmerSLMADS.assign,
+    lsplineDS,
     matrixDetDS2,
     matrixDiagDS,
     matrixDimnamesDS,
@@ -118,6 +122,8 @@ AssignMethods:
     matrixMultDS,
     matrixTransposeDS,
     mergeDS,
+    nsDS,
+    qsplineDS,
     rbindDS,
     rBinomDS,
     recodeLevelsDS,
