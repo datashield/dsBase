@@ -123,7 +123,7 @@ AssignMethods:
     matrixTransposeDS,
     mergeDS,
     nsDS,
-    qsplineDS,
+    qlsplineDS,
     rbindDS,
     rBinomDS,
     recodeLevelsDS,
