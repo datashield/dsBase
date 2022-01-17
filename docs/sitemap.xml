@@ -121,6 +121,9 @@
     <loc>/reference/dmtC2SDS.html</loc>
   </url>
   <url>
+    <loc>/reference/elsplineDS.html</loc>
+  </url>
+  <url>
     <loc>/reference/extract.html</loc>
   </url>
   <url>
@@ -167,6 +170,9 @@
   </url>
   <url>
     <loc>/reference/heatmapPlotDS.html</loc>
+  </url>
+  <url>
+    <loc>/reference/hetcorDS.html</loc>
   </url>
   <url>
     <loc>/reference/histogramDS1.html</loc>
@@ -220,6 +226,9 @@
     <loc>/reference/lsDS.html</loc>
   </url>
   <url>
+    <loc>/reference/lsplineDS.html</loc>
+  </url>
+  <url>
     <loc>/reference/matrixDS.html</loc>
   </url>
   <url>
@@ -265,7 +274,13 @@
     <loc>/reference/namesDS.html</loc>
   </url>
   <url>
+    <loc>/reference/nsDS.html</loc>
+  </url>
+  <url>
     <loc>/reference/numNaDS.html</loc>
+  </url>
+  <url>
+    <loc>/reference/qlsplineDS.html</loc>
   </url>
   <url>
     <loc>/reference/quantileMeanDS.html</loc>
@@ -392,5 +407,8 @@
   </url>
   <url>
     <loc>/reference/varDS.html</loc>
+  </url>
+  <url>
+    <loc>/reference/vectorDS.html</loc>
   </url>
 </urlset>
