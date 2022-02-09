@@ -91,14 +91,14 @@ Boolean.indicator<-integer(length=V1.length)
 #EVALUATE DIFFERENTLY IF V2 IS SAME LENGTH AS V1 OR OF LENGTH 1
 if(V2.length==V1.length){
 for(j in 1:V1.length){
-command.text<-paste0(V1.name,"[",j,"]",Boolean.operator,V2.name,"[",j,"]")
+command.text<-paste0(V1.name,"[",j,"] ",Boolean.operator," ",V2.name,"[",j,"]")
 Boolean.indicator[j]<-eval(parse(text=command.text), envir = parent.frame())*1
 }
 }
 
 if(V2.length==1){
 for(j in 1:V1.length){
-command.text<-paste0(V1.name,"[",j,"]",Boolean.operator,V2.name)
+command.text<-paste0(V1.name,"[",j,"] ",Boolean.operator," ",V2.name)
 Boolean.indicator[j]<-eval(parse(text=command.text), envir = parent.frame())*1
 }
 }
