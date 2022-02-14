@@ -62,7 +62,7 @@ jobs:
 - job: run_devtools_check
   timeoutInMinutes: 45
   pool:
-    vmImage: ubuntu-20.04
+    vmImage: ubuntu-latest
 
 
   steps:
