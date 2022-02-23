@@ -159,8 +159,7 @@ AssignMethods:
     as.null=base::as.null,
     as.numeric=base::as.numeric,
     attach=base::attach,
-    c=base::c,
-    cbind=base::cbind,
+    c=dsBase::vectorDS,
     complete.cases=stats::complete.cases,
     list=base::list,
     exp=base::exp,
@@ -173,7 +172,6 @@ AssignMethods:
     asin=base::asin,
     acos=base::acos,
     atan=base::atan,
-    rep=base::rep,
     sum=base::sum,
     unlist=base::unlist
 Options:
