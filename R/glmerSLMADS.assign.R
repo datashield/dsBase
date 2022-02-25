@@ -1,5 +1,5 @@
 #' @title Fitting generalized linear mixed effect models - serverside function
-#' @description glmerSLMADS.assing is the same as glmerSLMADS2 which fits a generalized linear
+#' @description glmerSLMADS.assign is the same as glmerSLMADS2 which fits a generalized linear
 #' mixed effects model (glme) per study and saves the outcomes in each study
 #' @details glmerSLMADS.assign is a serverside function called by ds.glmerSLMA on the clientside.
 #' The analytic work engine is the glmer function in R which sits in the lme4 package.
@@ -30,7 +30,7 @@
 #' For more detailed information see help for ds.glmerSLMA.
 #' @author Demetris Avraam for DataSHIELD Development Team
 #' @export
-glmerSLMADS.assing <- function(formula, offset, weights, dataName, family,
+glmerSLMADS.assign <- function(formula, offset, weights, dataName, family,
                 control_type=NULL, control_value.transmit=NULL, nAGQ=1L, verbose = 0, theta = NULL, fixef = NULL){
  
   errorMessage <- "No errors"
@@ -154,24 +154,11 @@ glmerSLMADS.assing <- function(formula, offset, weights, dataName, family,
   
   #### BEFORE going further we use the glm1 checks
   
-  formulatext.glm = originalFormula
+  # This command creates a formula object without the grouping factors for running the standard glm checks
   
-  # Convert formula string into formula string that will work for GLM
-  formulatext.glm <- gsub(" ", "", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub("(", "", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub("(1", "", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub("(0", "", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub(")", "", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub("|", "+", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub(":", "+", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub("/", "+", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub("++", "+", formulatext.glm, fixed=TRUE)
-  formula.glm <- stats::as.formula(formulatext.glm)
+  formula2use.glm <- lme4::nobars(formula2use)
   
-  formula2use.glm <- stats::as.formula(paste0(Reduce(paste, deparse(formula.glm ))), env = parent.frame()) # here we need the formula as a 'call' object
-  
-  # mod.glm.ds <- stats::glm(formula2use.glm, family="gaussian", x=TRUE, control=stats::glm.control(maxit=1), contrasts=NULL, data=dataDF)
-  mod.glm.ds <- stats::glm(formula2use.glm, family=family, x=TRUE, offset=offset, weights=weights, data=dataDF)
+  mod.glm.ds <- stats::glm(formula2use.glm, family="gaussian", x=TRUE, offset=offset, weights=weights, data=dataDF)
 
   y.vect<-mod.glm.ds$y
   X.mat<-mod.glm.ds$x
