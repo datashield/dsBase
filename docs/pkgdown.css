@@ -56,8 +56,15 @@ img.icon {
   float: right;
 }
 
+<<<<<<< HEAD
 img {
   max-width: 100%;
+=======
+/* Ensure in-page images don't run outside their container */
+.contents img {
+  max-width: 100%;
+  height: auto;
+>>>>>>> ad824674cf709a89f4942bbc44f0a419d430dd2b
 }
 
 /* Fix bug in bootstrap (only seen in firefox) */
@@ -78,11 +85,18 @@ dd {
 /* Section anchors ---------------------------------*/
 
 a.anchor {
+<<<<<<< HEAD
   margin-left: -30px;
   display:inline-block;
   width: 30px;
   height: 30px;
   visibility: hidden;
+=======
+  display: none;
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+>>>>>>> ad824674cf709a89f4942bbc44f0a419d430dd2b
 
   background-image: url(./link.svg);
   background-repeat: no-repeat;
@@ -90,6 +104,7 @@ a.anchor {
   background-position: center center;
 }
 
+<<<<<<< HEAD
 .hasAnchor:hover a.anchor {
   visibility: visible;
 }
@@ -101,6 +116,17 @@ a.anchor {
 }
 
 
+=======
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+  display: inline-block;
+}
+
+>>>>>>> ad824674cf709a89f4942bbc44f0a419d430dd2b
 /* Fixes for fixed navbar --------------------------*/
 
 .contents h1, .contents h2, .contents h3, .contents h4 {
@@ -264,6 +290,7 @@ table {
 
 /* Syntax highlighting ---------------------------------------------------- */
 
+<<<<<<< HEAD
 pre {
   word-wrap: normal;
   word-break: normal;
@@ -289,6 +316,28 @@ pre .img img {
   background-color: #fff;
   display: block;
   height: auto;
+=======
+pre, code, pre code {
+  background-color: #f8f8f8;
+  color: #333;
+}
+pre, pre code {
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
+pre {
+  border: 1px solid #eee;
+}
+
+pre .img, pre .r-plt {
+  margin: 5px 0;
+}
+
+pre .img img, pre .r-plt img {
+  background-color: #fff;
+>>>>>>> ad824674cf709a89f4942bbc44f0a419d430dd2b
 }
 
 code a, pre a {
@@ -305,9 +354,14 @@ a.sourceLine:hover {
 .kw      {color: #264D66;} /* keyword */
 .co      {color: #888888;} /* comment */
 
+<<<<<<< HEAD
 .message { color: black;   font-weight: bolder;}
 .error   { color: orange;  font-weight: bolder;}
 .warning { color: #6A0366; font-weight: bolder;}
+=======
+.error   {font-weight: bolder;}
+.warning {font-weight: bolder;}
+>>>>>>> ad824674cf709a89f4942bbc44f0a419d430dd2b
 
 /* Clipboard --------------------------*/
 
@@ -365,3 +419,30 @@ mark {
     content: "";
   }
 }
+<<<<<<< HEAD
+=======
+
+/* Section anchors ---------------------------------
+   Added in pandoc 2.11: https://github.com/jgm/pandoc-templates/commit/9904bf71
+*/
+
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+>>>>>>> ad824674cf709a89f4942bbc44f0a419d430dd2b

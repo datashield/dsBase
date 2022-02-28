@@ -5,4 +5,7 @@
 ^LICENSE.md$
 ^_pkgdown\.yml$
 ^docs$
+<<<<<<< HEAD
 ^pkgdown$
+=======
+>>>>>>> ad824674cf709a89f4942bbc44f0a419d430dd2b
