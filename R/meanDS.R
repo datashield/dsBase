@@ -25,7 +25,7 @@ meanDS <- function(xvect){
   out.validN <- out.totN-out.numNa
   studysideMessage <- "VALID ANALYSIS"
 
-  if(out.validN < nfilter.tab){
+  if((out.validN != 0) && (out.validN < nfilter.tab)){
     out.mean <- NA
     stop("FAILED: Nvalid less than nfilter.tab", call. = FALSE)
   }
