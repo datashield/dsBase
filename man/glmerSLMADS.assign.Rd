@@ -55,7 +55,7 @@ writes glmerMod object summarising the fitted model to the serverside.
 For more detailed information see help for ds.glmerSLMA.
 }
 \description{
-glmerSLMADS.assing is the same as glmerSLMADS2 which fits a generalized linear
+glmerSLMADS.assign is the same as glmerSLMADS2 which fits a generalized linear
 mixed effects model (glme) per study and saves the outcomes in each study
 }
 \details{
