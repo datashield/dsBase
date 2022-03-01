@@ -367,14 +367,24 @@ if(!is.null(optimizer)&&optimizer!="nloptwrap")
 
 
     #mg <- lme4::lmer(formula2use, offset=offset, weights=weights, data=dataDF, REML = REML, verbose = verbose, control = control.obj)
-    iterations <- utils::capture.output(try(mg <- lme4::lmer(formula2use, offset=offset.to.use, weights=weights.to.use, data=dataDF, REML = REML, verbose = verbose, control = control.obj)))
+    #iterations <- utils::capture.output(try(mg <- lme4::lmer(formula2use, offset=offset.to.use, weights=weights.to.use, data=dataDF, REML = REML, verbose = verbose, control = control.obj)))
     
-    summary_mg = summary(mg)
-    summary_mg$residuals <- NULL
-    summary_mg$errorMessage = errorMessage
-    summary_mg$disclosure.risk = disclosure.risk
-    summary_mg$iterations = iterations
-	  summary_mg$control.info = control.obj
+    iterations = utils::capture.output(mg <- try(lme4::lmer(formula2use, offset=offset.to.use, weights=weights.to.use, data=dataDF, REML = REML, verbose = verbose, control = control.obj)))
+
+    if(inherits(mg, "try-error")) {          # error happened
+      summary_mg = list()
+      summary_mg$errorMessage = conditionMessage(attr(mg, "condition"))  # the error message
+      summary_mg$disclosure.risk = 1
+    } else
+    {
+      summary_mg = summary(mg)
+      summary_mg$residuals <- NULL
+      summary_mg$errorMessage = errorMessage
+      summary_mg$disclosure.risk = disclosure.risk
+      summary_mg$iterations = iterations
+      summary_mg$control.info = control.obj
+    }
+
     outlist = summary_mg
     
     outlist$Ntotal <- Ntotal
