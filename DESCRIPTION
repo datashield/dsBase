@@ -153,6 +153,7 @@ AssignMethods:
     subsetDS,
     tableDS.assign,
     tapplyDS.assign,
+    uniqueDS,
     unListDS,
     vectorDS,
     as.character=base::as.character,
