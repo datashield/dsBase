@@ -374,18 +374,29 @@ if(control_type=="check.conv.grad")
       }
     }
     
-    #mg <- lme4::lmer(formula2use, offset=offset, weights=weights, data=dataDF, REML = REML, verbose = verbose, control = control.obj)
     
-	  iterations <- utils::capture.output(try(mg <- lme4::glmer(formula2use, offset=offset, weights=weights, data=dataDF,
-	                                       family = family, nAGQ=nAGQ,verbose = verbose, control=control.obj, start = start)))
+	  #iterations <- utils::capture.output(try(mg <- lme4::glmer(formula2use, offset=offset, weights=weights, data=dataDF,
+	 #                                      family = family, nAGQ=nAGQ,verbose = verbose, control=control.obj, start = start)))
+	  
+	  iterations = utils::capture.output(mg <- try(lme4::glmer(formula2use, offset=offset, weights=weights, data=dataDF,
+	                                                           family = family, nAGQ=nAGQ,verbose = verbose, control=control.obj, start = start)))
+	  
+	  if(inherits(mg, "try-error")) {          # error happened
+	    summary_mg = list()
+	    summary_mg$errorMessage = conditionMessage(attr(mg, "condition"))  # the error message
+	    summary_mg$disclosure.risk = 1
+	  } else
+	  {
+	    summary_mg = summary(mg)
+	    summary_mg$residuals <- NULL
+	    summary_mg$errorMessage <- errorMessage
+	    summary_mg$disclosure.risk <- disclosure.risk
+	    summary_mg$iterations <- iterations
+	    summary_mg$control.info <- control.obj
+	    summary_mg$nAGQ.info <- nAGQ
+	  }
 
-    summary_mg <- summary(mg)
-    summary_mg$residuals <- NULL
-    summary_mg$errorMessage <- errorMessage
-    summary_mg$disclosure.risk <- disclosure.risk
-    summary_mg$iterations <- iterations
- 	  summary_mg$control.info <- control.obj
-	  summary_mg$nAGQ.info <- nAGQ
+
     outlist <- summary_mg
     
     outlist$Ntotal <- Ntotal
