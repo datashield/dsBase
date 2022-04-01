@@ -52,10 +52,10 @@ schedules:
       - master
     always: true
   - cron: "0 1 * * *"
-    displayName: Nightly build - v6.2-dev
+    displayName: Nightly build - v6.2
     branches:
       include:
-      - v6.2-dev
+      - v6.2
     always: true
 
 jobs:
