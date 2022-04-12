@@ -9,18 +9,22 @@
 #'
 levelsDS <- function(x){
   
-  #############################################################
-  #MODULE 1: CAPTURE THE nfilter SETTINGS                     #
-  thr <- listDisclosureSettingsDS()                           #
-  #nfilter.tab <- as.numeric(thr$nfilter.tab)                 #
-  #nfilter.glm <- as.numeric(thr$nfilter.glm)                 #
-  #nfilter.subset <- as.numeric(thr$nfilter.subset)           #
-  #nfilter.string <- as.numeric(thr$nfilter.string)           #
-  #nfilter.stringShort <- as.numeric(thr$nfilter.stringShort) #
-  #nfilter.kNN <- as.numeric(thr$nfilter.kNN)                 #
-  #nfilter.noise <- as.numeric(thr$nfilter.noise)             #
-  nfilter.levels <- as.numeric(thr$nfilter.levels)            #
-  #############################################################
+  # Check Permissive Privacy Control Level.
+  checkPermissivePrivacyControlLevel()
+  
+  ##################################################################
+  #MODULE 1: CAPTURE THE nfilter SETTINGS                          #
+  thr <- listDisclosureSettingsDS()                                #
+  #nfilter.tab <- as.numeric(thr$nfilter.tab)                      #
+  #nfilter.glm <- as.numeric(thr$nfilter.glm)                      #
+  #nfilter.subset <- as.numeric(thr$nfilter.subset)                #
+  #nfilter.string <- as.numeric(thr$nfilter.string)                #
+  #nfilter.stringShort <- as.numeric(thr$nfilter.stringShort)      #
+  #nfilter.kNN <- as.numeric(thr$nfilter.kNN)                      #
+  #nfilter.noise <- as.numeric(thr$nfilter.noise)                  #
+  nfilter.levels.density <- as.numeric(thr$nfilter.levels.density) #
+  #nfilter.levels.max <- as.numeric(thr$nfilter.levels.max)        #
+  ##################################################################
   
   # find the levels of the input vector
   out <- levels(x)
@@ -28,9 +32,9 @@ levelsDS <- function(x){
   output.length    <- length(out)
   studysideMessage <- "VALID ANALYSIS"
 
-  if((input.length * nfilter.levels) < output.length) {
+  if((input.length * nfilter.levels.density) < output.length) {
     out <- NA
-    studysideMessage <- "FAILED: Result length less than nfilter.levels of input length."
+    studysideMessage <- "FAILED: Result length less than nfilter.levels.density of input length."
     stop(studysideMessage, call. = FALSE)
   }
   

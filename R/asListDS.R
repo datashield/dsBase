@@ -21,7 +21,7 @@
 #' the class of the output object should usually be 'list'
 #' @author Amadou Gaye, Paul Burton for DataSHIELD Development Team
 #' @export
-asListDS <- function (x.name,newobj){
+asListDS <- function (x.name, newobj){
 
     newobj.class <- NULL
     if(is.character(x.name)){
@@ -41,5 +41,5 @@ asListDS <- function (x.name,newobj){
 
     return(list(return.message=return.message,class.of.newobj=object.class.text))
 }
-#AGGEGATE FUNCTION
+# AGGEGATE FUNCTION
 # asListDS

@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# Copyright (c) 2019-2021 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -23,7 +23,7 @@ set.standard.disclosure.settings()
 test_that("simple tapplyDS, mean", {
     x           <- c(1, 2, 1, 2, 1, 2, 1, 2)
     index       <- as.factor(c(1, 2, 1, 2, 1, 2, 1, 2))
-    INDEX.names <- c('index')
+    INDEX.names <- 'index'
     FUN.name    <- "mean"
     
     res <- tapplyDS("x", INDEX.names, FUN.name)
@@ -52,7 +52,7 @@ test_that("simple tapplyDS, mean", {
 test_that("simple tapplyDS, sd", {
     x           <- c(1, 2, 1, 2, 1, 2, 1, 2)
     index       <- as.factor(c(1, 2, 1, 2, 1, 2, 1, 2))
-    INDEX.names <- c('index')
+    INDEX.names <- 'index'
     FUN.name    <- "sd"
     
     res <- tapplyDS("x", INDEX.names, FUN.name)
@@ -81,7 +81,7 @@ test_that("simple tapplyDS, sd", {
 test_that("simple tapplyDS, sum", {
     x           <- c(1, 2, 1, 2, 1, 2, 1, 2)
     index       <- as.factor(c(1, 2, 1, 2, 1, 2, 1, 2))
-    INDEX.names <- c('index')
+    INDEX.names <- 'index'
     FUN.name    <- "sum"
     
     res <- tapplyDS("x", INDEX.names, FUN.name)
@@ -110,7 +110,7 @@ test_that("simple tapplyDS, sum", {
 test_that("simple tapplyDS, quantile", {
     x           <- c(1, 2, 1, 2, 1, 2, 1, 2)
     index       <- as.factor(c(1, 2, 1, 2, 1, 2, 1, 2))
-    INDEX.names <- c('index')
+    INDEX.names <- 'index'
     FUN.name    <- "quantile"
     
     res <- tapplyDS("x", INDEX.names, FUN.name)

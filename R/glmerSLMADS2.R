@@ -161,24 +161,11 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
   
   #### BEFORE going further we use the glm1 checks
   
-  formulatext.glm = originalFormula
+  # This command creates a formula object without the grouping factors for running the standard glm checks
   
-  # Convert formula string into formula string that will work for GLM
-  formulatext.glm <- gsub(" ", "", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub("(", "", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub("(1", "", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub("(0", "", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub(")", "", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub("|", "+", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub(":", "+", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub("/", "+", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub("++", "+", formulatext.glm, fixed=TRUE)
-  formula.glm <- stats::as.formula(formulatext.glm)
+  formula2use.glm <- lme4::nobars(formula2use)
   
-  formula2use.glm <- stats::as.formula(paste0(Reduce(paste, deparse(formula.glm ))), env = parent.frame()) # here we need the formula as a 'call' object
-  
-  # mod.glm.ds <- stats::glm(formula2use.glm, family="gaussian", x=TRUE, control=stats::glm.control(maxit=1), contrasts=NULL, data=dataDF)
-  mod.glm.ds <- stats::glm(formula2use.glm, family=family, x=TRUE, offset=offset, weights=weights, data=dataDF)
+  mod.glm.ds <- stats::glm(formula2use.glm, family="gaussian", x=TRUE, offset=offset, weights=weights, data=dataDF)
 
   y.vect<-mod.glm.ds$y
   X.mat<-mod.glm.ds$x
@@ -387,18 +374,29 @@ if(control_type=="check.conv.grad")
       }
     }
     
-    #mg <- lme4::lmer(formula2use, offset=offset, weights=weights, data=dataDF, REML = REML, verbose = verbose, control = control.obj)
     
-	  iterations <- utils::capture.output(try(mg <- lme4::glmer(formula2use, offset=offset, weights=weights, data=dataDF,
-	                                       family = family, nAGQ=nAGQ,verbose = verbose, control=control.obj, start = start)))
+	  #iterations <- utils::capture.output(try(mg <- lme4::glmer(formula2use, offset=offset, weights=weights, data=dataDF,
+	 #                                      family = family, nAGQ=nAGQ,verbose = verbose, control=control.obj, start = start)))
+	  
+	  iterations = utils::capture.output(mg <- try(lme4::glmer(formula2use, offset=offset, weights=weights, data=dataDF,
+	                                                           family = family, nAGQ=nAGQ,verbose = verbose, control=control.obj, start = start)))
+	  
+	  if(inherits(mg, "try-error")) {          # error happened
+	    summary_mg = list()
+	    summary_mg$errorMessage = conditionMessage(attr(mg, "condition"))  # the error message
+	    summary_mg$disclosure.risk = 1
+	  } else
+	  {
+	    summary_mg = summary(mg)
+	    summary_mg$residuals <- NULL
+	    summary_mg$errorMessage <- errorMessage
+	    summary_mg$disclosure.risk <- disclosure.risk
+	    summary_mg$iterations <- iterations
+	    summary_mg$control.info <- control.obj
+	    summary_mg$nAGQ.info <- nAGQ
+	  }
 
-    summary_mg <- summary(mg)
-    summary_mg$residuals <- NULL
-    summary_mg$errorMessage <- errorMessage
-    summary_mg$disclosure.risk <- disclosure.risk
-    summary_mg$iterations <- iterations
- 	  summary_mg$control.info <- control.obj
-	  summary_mg$nAGQ.info <- nAGQ
+
     outlist <- summary_mg
     
     outlist$Ntotal <- Ntotal
