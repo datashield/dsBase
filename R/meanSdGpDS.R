@@ -108,7 +108,15 @@ meanSdGpDS <- function (X, INDEX){
   # Set filter for cell sizes that are too small
   # the minimum number of observations that are allowed (the below function gets the value from opal)
   any.invalid.cell<-(sum(ansmat.count<nfilter.tab&ansmat.count>0)>=1)
-  if(!any.invalid.cell)
+  
+  # set traps for concentration
+  conc.cells <- lapply(X = split(X, group), FUN = function(x){x/sum(x)})
+  if(any(unlist(conc.cells) > 0.9)){
+    conc.cells.invalid <- 1
+  }
+  else {conc.cells.invalid <- 0}
+  
+  if(!any.invalid.cell & !conc.cells.invalid)
   {
     table.valid<-TRUE
     cell.count.warning<-paste0("All tables valid") 
@@ -121,6 +129,15 @@ meanSdGpDS <- function (X, INDEX){
   {
     table.valid<-FALSE
     cell.count.warning<-paste0("At least one group has between 1 and ", nfilter.tab-1, " observations. Please change groups") 
+    result<-list(table.valid,Nvalid,Nmissing,Ntotal,cell.count.warning)
+    names(result)<-list("Table_valid","Nvalid","Nmissing","Ntotal","Warning")
+    return(result)
+  }
+  
+    if(conc.cells.invalid)
+  {
+    table.valid<-FALSE
+    cell.count.warning<-paste0("One value accounts for more than nfilter.conc of the calculation Please change groups") 
     result<-list(table.valid,Nvalid,Nmissing,Ntotal,cell.count.warning)
     names(result)<-list("Table_valid","Nvalid","Nmissing","Ntotal","Warning")
     return(result)
