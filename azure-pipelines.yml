@@ -104,7 +104,6 @@ jobs:
       sudo apt-get install -qq r-base -y
       sudo R -e "install.packages('devtools', dependencies=TRUE)"
       sudo R -e "install.packages('RANN', dependencies=TRUE)"
-      sudo R -e "install.packages('nlme', dependencies=TRUE)"
       sudo R -e "install.packages('stringr', dependencies=TRUE)"
       sudo R -e "install.packages('lme4', dependencies=TRUE)"
       sudo R -e "install.packages('dplyr', dependencies=TRUE)"
