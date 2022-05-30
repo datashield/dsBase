@@ -187,5 +187,6 @@ Options:
     default.nfilter.noise=0.25,
     default.nfilter.levels.density=0.33,
     default.nfilter.levels.max=40
+    default.nfilter.conc=0.4
 RoxygenNote: 7.1.2
 Encoding: UTF-8
