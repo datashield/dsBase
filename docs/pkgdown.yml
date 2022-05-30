@@ -1,14 +1,6 @@
-<<<<<<< HEAD
-pandoc: 2.7.3
-pkgdown: 1.6.1
-pkgdown_sha: ~
-articles: {}
-last_built: 2021-06-23T09:25Z
-=======
 pandoc: 1.19.2.4
-pkgdown: 2.0.2
+pkgdown: 2.0.3
 pkgdown_sha: ~
 articles: {}
-last_built: 2022-04-01T11:28Z
->>>>>>> v6.2.0
+last_built: 2022-05-26T10:37Z
 
