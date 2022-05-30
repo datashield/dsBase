@@ -28,5 +28,5 @@ replace all missing values in a vector by the mean or median value. Once the mis
 values have been replaced a new vector is created.
 }
 \author{
-Gaye, A.
+Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
 }

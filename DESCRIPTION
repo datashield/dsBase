@@ -1,7 +1,7 @@
 Package: dsBase
 Title: DataSHIELD server site base functions
 Description: DataSHIELD server site base functions.
-Version: 6.1.1
+Version: 6.2.0
 Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
 Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
 License: GPL-3
@@ -13,7 +13,9 @@ Imports:
     stringr,
     lme4,
     dplyr,
-    reshape2
+    reshape2,
+    polycor (>= 0.8),
+    splines
 AggregateMethods:
     asFactorDS1,
     asListDS,
@@ -25,6 +27,8 @@ AggregateMethods:
     covDS,
     dataFrameSubsetDS1,
     densityGridDS,
+    extractQuantilesDS1,
+    extractQuantilesDS2,
     dimDS,
     glmDS1,
     glmDS2,
@@ -34,6 +38,7 @@ AggregateMethods:
     glmSLMADS2,
     glmSummaryDS.ag,
     heatmapPlotDS,
+    hetcorDS,
     histogramDS1,
     histogramDS2,
     lsDS,
@@ -50,10 +55,14 @@ AggregateMethods:
     meanDS,
     meanSdGpDS,
     messageDS,
+    metadataDS,
+    minMaxRandDS,
     namesDS,
     numNaDS,
     quantileMeanDS,
     rangeDS,
+    ranksSecureDS1,
+    ranksSecureDS3,
     rmDS,
     scatterPlotDS,
     scoreVectDS,
@@ -66,7 +75,6 @@ AggregateMethods:
     tableDS2,
     tapplyDS,
     testObjExistsDS,
-    tTestFDS2,
     varDS,
     colnamesDS,
     exists=base::exists,
@@ -81,13 +89,15 @@ AssignMethods:
     absDS,
     asCharacterDS,
     asDataMatrixDS,
-    asFactorDS,
     asFactorDS2,
+    asFactorSimpleDS,
     asIntegerDS,
     asListDS,
     asLogicalDS,
     asMatrixDS,
     asNumericDS,
+    blackBoxDS,
+    blackBoxRanksDS,
     BooleDS,
     boxPlotGG_data_TreatmentDS,
     boxPlotGG_data_Treatment_numericDS,
@@ -99,6 +109,8 @@ AssignMethods:
     dataFrameFillDS,
     dataFrameSortDS,
     dataFrameSubsetDS2,
+    dmtC2SDS,
+    elsplineDS,
     glmerSLMADS.assign,
     glmPredictDS.as,
     glmSLMADS.assign,
@@ -108,6 +120,7 @@ AssignMethods:
     lexisDS2,
     lexisDS3,
     lmerSLMADS.assign,
+    lsplineDS,
     matrixDetDS2,
     matrixDiagDS,
     matrixDimnamesDS,
@@ -116,6 +129,11 @@ AssignMethods:
     matrixMultDS,
     matrixTransposeDS,
     mergeDS,
+    nsDS,
+    qlsplineDS,
+    ranksSecureDS2,
+    ranksSecureDS4,
+    ranksSecureDS5,
     rbindDS,
     rBinomDS,
     recodeLevelsDS,
@@ -135,22 +153,31 @@ AssignMethods:
     subsetDS,
     tableDS.assign,
     tapplyDS.assign,
+    uniqueDS,
     unListDS,
+    vectorDS,
     as.character=base::as.character,
     as.null=base::as.null,
     as.numeric=base::as.numeric,
     attach=base::attach,
-    c=base::c,
-    cbind=base::cbind,
+    c=dsBase::vectorDS,
     complete.cases=stats::complete.cases,
-    exp=base::exp,
     list=base::list,
+    exp=base::exp,
     log=base::log,
-    rep=base::rep,
+    sqrt=base::sqrt,
+    abs=base::abs,
+    sin=base::sin,
+    cos=base::cos,
+    tan=base::tan,
+    asin=base::asin,
+    acos=base::acos,
+    atan=base::atan,
     sum=base::sum,
     unlist=base::unlist
 Options:
     datashield.privacyLevel=5,
+    default.datashield.privacyControlLevel="permissive",
     default.nfilter.glm=0.33,
     default.nfilter.kNN=3,
     default.nfilter.string=80,
@@ -158,5 +185,7 @@ Options:
     default.nfilter.stringShort=20,
     default.nfilter.tab=3,
     default.nfilter.noise=0.25,
-    default.nfilter.levels=0.33
-RoxygenNote: 7.1.1
+    default.nfilter.levels.density=0.33,
+    default.nfilter.levels.max=40
+RoxygenNote: 7.1.2
+Encoding: UTF-8

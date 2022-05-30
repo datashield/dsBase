@@ -8,14 +8,14 @@ tapplyDS(X.name, INDEX.names.transmit, FUN.name)
 }
 \arguments{
 \item{X.name, }{the name of the variable to be summarized. Specified
-via argument <X.name> of {ds.tapply} function}
+via argument <X.name> of \code{ds.tapply} function}
 
 \item{INDEX.names.transmit, }{the name of a single factor or a vector of names of factors to
 index the variable to be summarized. Specified via argument <INDEX.names>
-of {ds.tapply} function}
+of \code{ds.tapply} function}
 
 \item{FUN.name, }{the name of one of the allowable summarizing functions to be applied.
-Specified via argument <FUN.name> of {ds.tapply} function.}
+Specified via argument <FUN.name> of \code{ds.tapply} function.}
 }
 \value{
 an array of the summarized values created by the tapplyDS function. This array
@@ -27,7 +27,7 @@ outcome variable over one or more indexing factors and write the resultant
 summary to the clientside
 }
 \details{
-see details for {ds.tapply} function
+see details for \code{ds.tapply} function
 }
 \author{
 Paul Burton, Demetris Avraam for DataSHIELD Development Team

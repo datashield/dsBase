@@ -80,7 +80,11 @@
     $(document).ready(function() {
       var copyButton = "<button type='button' class='btn btn-primary btn-copy-ex' type = 'submit' title='Copy to clipboard' aria-label='Copy to clipboard' data-toggle='tooltip' data-placement='left auto' data-trigger='hover' data-clipboard-copy><i class='fa fa-copy'></i></button>";
 
+<<<<<<< HEAD
       $(".examples, div.sourceCode").addClass("hasCopyButton");
+=======
+      $("div.sourceCode").addClass("hasCopyButton");
+>>>>>>> v6.2.0
 
       // Insert copy buttons:
       $(copyButton).prependTo(".hasCopyButton");
@@ -91,7 +95,11 @@
       // Initialize clipboard:
       var clipboardBtnCopies = new ClipboardJS('[data-clipboard-copy]', {
         text: function(trigger) {
+<<<<<<< HEAD
           return trigger.parentNode.textContent;
+=======
+          return trigger.parentNode.textContent.replace(/\n#>[^\n]*/g, "");
+>>>>>>> v6.2.0
         }
       });
 

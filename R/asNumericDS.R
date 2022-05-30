@@ -21,9 +21,20 @@ asNumericDS <- function(x.name){
     studysideMessage <- "ERROR: x.name must be specified as a character string"
     stop(studysideMessage, call. = FALSE)
   }
-
-  output <- as.numeric(as.character(x))
-
+  
+  # Check that it doesn't match any non-number
+  numbers_only <- function(vec) !grepl("\\D", vec)
+  
+  logical <- numbers_only(x)
+  
+  if((is.factor(x) & any(logical==FALSE)==FALSE) | (is.character(x) & any(logical==FALSE)==FALSE)){
+    output <- as.numeric(as.character(x))
+  }else if((is.factor(x) & any(logical==FALSE)==TRUE) | (is.character(x) & any(logical==FALSE)==TRUE)){
+    output <- as.numeric(as.factor(x))
+  }else{
+    output <- as.numeric(x)
+  }
+  
   return(output)
 
 }

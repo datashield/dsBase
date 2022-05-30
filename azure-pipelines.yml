@@ -52,17 +52,17 @@ schedules:
       - master
     always: true
   - cron: "0 1 * * *"
-    displayName: Nightly build - v6.2-dev
+    displayName: Nightly build - v6.2
     branches:
       include:
-      - v6.2-dev
+      - v6.2
     always: true
 
 jobs:
 - job: run_devtools_check
-  timeoutInMinutes: 60
+  timeoutInMinutes: 45
   pool:
-    vmImage: ubuntu-20.04
+    vmImage: ubuntu-latest
 
 
   steps:
@@ -96,7 +96,6 @@ jobs:
     # If previous steps have failed then don't run.
   - bash: |
       
-      sudo apt-get update
       sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
       sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
       sudo add-apt-repository ppa:cran/libgit2
@@ -106,11 +105,12 @@ jobs:
       sudo R -e "install.packages('devtools', dependencies=TRUE)"
       sudo R -e "install.packages('RANN', dependencies=TRUE)"
       sudo R -e "install.packages('nlme', dependencies=TRUE)"
+      sudo R -e "install.packages('stringr', dependencies=TRUE)"
       sudo R -e "install.packages('lme4', dependencies=TRUE)"
-      sudo R -e "install.packages('ggplot2', dependencies=TRUE)"
       sudo R -e "install.packages('dplyr', dependencies=TRUE)"
       sudo R -e "install.packages('reshape2', dependencies=TRUE)"
-      sudo R -e "install.packages('panelaggregation', dependencies=TRUE)"
+      sudo R -e "install.packages('polycor', dependencies=TRUE)"
+      sudo R -e "install.packages('splines', dependencies=TRUE)"
 
     displayName: 'Install all dependencies for dsBase'
     condition: succeeded()
@@ -340,8 +340,3 @@ jobs:
 
     displayName: 'Environment info'
     condition: always()
-
-
-
-
-

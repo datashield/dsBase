@@ -8,21 +8,21 @@ asCharacterDS(x.name)
 }
 \arguments{
 \item{x.name}{the name of the input object to be coerced to class
-integer. Must be specified in inverted commas. But this argument is
-usually specified directly by <x.name> argument of the clientside function
-{ds.asCharacter}}
+character. Must be specified in inverted commas. But this argument is
+usually specified directly by \code{x.name} argument of the clientside function
+\code{ds.asCharacter}}
 }
 \value{
-the object specified by the <newobj> argument (or its default name
-<x.name>.char) which is written to the serverside. For further
-details see help on the clientside function {ds.asCharacter}
+the object specified by the \code{newobj} argument (or its default name
+"ascharacter.newobj") which is written to the serverside. For further
+details see help on the clientside function \code{ds.asCharacter}
 }
 \description{
-this function is based on the native R function {as.character}
+this function is based on the native R function \code{as.character}
 }
 \details{
-See help for function {as.character} in native R
+See help for function \code{as.character} in native R
 }
 \author{
-Amadou Gaye, Paul Burton for DataSHIELD Development Team
+Amadou Gaye, Paul Burton, Demetris Avraam for DataSHIELD Development Team
 }
