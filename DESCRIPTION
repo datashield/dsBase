@@ -186,5 +186,5 @@ Options:
     default.nfilter.noise=0.25,
     default.nfilter.levels.density=0.33,
     default.nfilter.levels.max=40
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 Encoding: UTF-8
