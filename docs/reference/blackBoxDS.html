@@ -46,7 +46,7 @@ ranking in the client.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">blackBoxDS</span><span class="op">(</span>input.var.name <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">shared.seedval</span>, <span class="va">synth.real.ratio</span>, <span class="va">NA.manage</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">blackBoxDS</span><span class="op">(</span>input.var.name <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">shared.seedval</span>, <span class="va">synth.real.ratio</span>, <span class="va">NA.manage</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -55,6 +55,8 @@ ranking in the client.</p>
 <dd><p>a character string specifying the name of V2BR. This
 argument is set by the argument with the same name in the clientside function
 ds.ranksSecure</p></dd>
+
+
 <dt>shared.seedval</dt>
 <dd><p>a pseudorandom number seed that ensures that the
 processes generating the order and parameterisation of the encryption
@@ -63,6 +65,8 @@ algorithms are the same in each study. This argument is set by the argument
 details, including future plans to share this starting seed in a more secure
 way, please see the associated document entitled "secure.global.ranking.docx"
 and the header file for ds.ranksSecure.</p></dd>
+
+
 <dt>synth.real.ratio</dt>
 <dd><p>an integer value representing
 the ratio of synthetic (pseudo-data) values to the real number of 
@@ -70,6 +74,8 @@ values in V2BR. This argument is set by the argument with the same name
 in the clientside function ds.ranksSecure. For more details, please see the
 associated document entitled "secure.global.ranking.docx" and the header file
 for ds.ranksSecure.</p></dd>
+
+
 <dt>NA.manage</dt>
 <dd><p>character string indicating how missing values (NAs) in
 V2BR should be managed. It takes three possible values: "NA.delete",
@@ -77,10 +83,13 @@ V2BR should be managed. It takes three possible values: "NA.delete",
 in the clientside function ds.ranksSecure. For more details, please see the
 associated document entitled "secure.global.ranking.docx" and the header file
 for ds.ranksSecure.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>writes a data frame object entitled blackbox.output.df to the
+    
+
+<p>writes a data frame object entitled blackbox.output.df to the
 serverside. In each study this contains the encrypted
 "combined real+pseudo data vector" and a range of other key components
 from the first stage of the ranking procedure. For more details see the
@@ -125,7 +134,7 @@ see the header file for ds.ranksSecure</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

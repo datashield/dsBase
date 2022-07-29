@@ -48,7 +48,7 @@ it was coerced into a list</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">unListDS</span><span class="op">(</span><span class="va">x.name</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">unListDS</span><span class="op">(</span><span class="va">x.name</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -57,10 +57,13 @@ it was coerced into a list</p>
 <dd><p>the name of the input object to be unlisted.
 It must be specified in inverted commas e.g. x.name="input.object.name". Fully
 specified by the &lt;x.name&gt; argument of ds.unList</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>the object specified by the &lt;newobj&gt; argument of the 
+    
+
+<p>the object specified by the &lt;newobj&gt; argument of the 
 ds.unList function (or by default &lt;x.name&gt;.unlist
 if the &lt;newobj&gt; argument is NULL). This is written to the serverside.
 As well as writing the output object as &lt;newobj&gt;
@@ -70,7 +73,10 @@ it is in a valid form. If its form is not valid in at least one study - e.g. bec
 a disclosure trap was tripped and creation of the full output object was blocked -
 ds.seq() also returns any studysideMessages that can explain the error in creating
 the full output object. As well as appearing on the screen at run time,if you wish to
-see the relevant studysideMessages at a later date you can use the ds.messagefunction. If you type ds.message("&lt;newobj&gt;") it will print out the relevant
+see the relevant studysideMessages at a later date you can use the ds.message</p>
+
+
+<p>function. If you type ds.message("&lt;newobj&gt;") it will print out the relevant
 studysideMessage from any datasource in which there was an error in creating &lt;newobj&gt;
 and a studysideMessage was saved. Because the outcome object from ds.unList is
 typically a list object with no names, if there are no errors in creating it
@@ -104,7 +110,7 @@ see 'details' in the help for ds.unList.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -44,12 +44,12 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dataFrameSortDS</span><span class="op">(</span>
-  df.name <span class="op">=</span> <span class="cn">NULL</span>,
-  sort.key.name <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">sort.descending</span>,
-  <span class="va">sort.method</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dataFrameSortDS</span><span class="op">(</span></span>
+<span>  df.name <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  sort.key.name <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">sort.descending</span>,</span>
+<span>  <span class="va">sort.method</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -59,6 +59,8 @@
 data.frame to be sorted. This parameter is fully specified by the equivalent
 argument in ds.dataFrameShort and further details can be found at
 help("ds.dataFrameSort").</p></dd>
+
+
 <dt>sort.key.name</dt>
 <dd><p>a character string providing the name for the sort key.
 This will be a serverside vector which may sit inside the data frame to be
@@ -66,20 +68,27 @@ sorted or independently in the serverside analysis environment. But, if it
 sits outside the data frame it must then be the same length as the data frame.
 This parameter is fully specified by the equivalent argument
 in ds.dataFrameShort and further details can be found at help("ds.dataFrameSort").</p></dd>
+
+
 <dt>sort.descending</dt>
 <dd><p>logical, if TRUE the data.frame will be sorted
 by the sort key in descending order. Default = FALSE (sort order ascending).
 This parameter is fully specified by the equivalent argument
 in ds.dataFrameShort and further details can be found at help("ds.dataFrameSort").</p></dd>
+
+
 <dt>sort.method</dt>
 <dd><p>A character string taking one of the values: "default",
 "d", "alphabetic", "a", "numeric", "n", or NULL. Default value is "default".
 This parameter is fully specified by the equivalent argument
 in ds.dataFrameShort and further details can be found at help("ds.dataFrameSort").</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>the appropriately re-sorted data.frame will be written to the serverside
+    
+
+<p>the appropriately re-sorted data.frame will be written to the serverside
 R environment as a data.frame named according to the &lt;newobj&gt; argument(or with
 default name 'dataframesort.newobj') if no name is specified</p>
     </div>
@@ -111,7 +120,7 @@ Leire Abarrategui-Martinez, for DataSHIELD Development Team, 2/4/2020</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

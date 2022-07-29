@@ -46,16 +46,16 @@ that is equivalent to that same data.frame, matrix or tibble (DMT) on the client
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dmtC2SDS</span><span class="op">(</span>
-  <span class="va">dfdata.mat.transmit</span>,
-  <span class="va">inout.object.transmit</span>,
-  <span class="va">from</span>,
-  <span class="va">nrows.transmit</span>,
-  <span class="va">ncols.transmit</span>,
-  <span class="va">colnames.transmit</span>,
-  <span class="va">colclass.transmit</span>,
-  <span class="va">byrow</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dmtC2SDS</span><span class="op">(</span></span>
+<span>  <span class="va">dfdata.mat.transmit</span>,</span>
+<span>  <span class="va">inout.object.transmit</span>,</span>
+<span>  <span class="va">from</span>,</span>
+<span>  <span class="va">nrows.transmit</span>,</span>
+<span>  <span class="va">ncols.transmit</span>,</span>
+<span>  <span class="va">colnames.transmit</span>,</span>
+<span>  <span class="va">colclass.transmit</span>,</span>
+<span>  <span class="va">byrow</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -65,6 +65,8 @@ that is equivalent to that same data.frame, matrix or tibble (DMT) on the client
 the DataSHIELD R parser which specifies the name of the DMT
 to be copied from the clientside to the serverside. Value fully specified by
 &lt;dfdata&gt; argument of ds.dmtC2S.</p></dd>
+
+
 <dt>inout.object.transmit</dt>
 <dd><p>a character string taking values "DF", "MAT" or "TBL".
 The value of this argument is automatically set by ds.dmtC2S depending on
@@ -73,21 +75,31 @@ Correspondingly, its value determines
 whether the object created on the serverside is a data.frame, matrix or tibble.
 This is unlikely to always work (some class misspecifications may occur)
 but it works in all the test cases.</p></dd>
+
+
 <dt>from</dt>
 <dd><p>a character string specifying the source of &lt;dfdata&gt;.
 Fixed by clientside function as "clientside.matdftbl".</p></dd>
+
+
 <dt>nrows.transmit</dt>
 <dd><p>specifies the number of rows in the matrix to be created.
 Fixed by the clientside function as equal to the number of rows in
 the clientside DMT to be transferred.</p></dd>
+
+
 <dt>ncols.transmit</dt>
 <dd><p>specifies the number of columns in the matrix to be created.
 Fixed by the clientside function as equal to the number of columns in
 the clientside DMT to be transferred.</p></dd>
+
+
 <dt>colnames.transmit</dt>
 <dd><p>a parser-transmissable vector specifying the name of each column
 in the DMT being transferred from clientside to serverside.
 Generated automatically by clientside function from colnames of clientside DMT.</p></dd>
+
+
 <dt>colclass.transmit</dt>
 <dd><p>a parser-transmissable vector specifying the class of the
 vector representing each individual column in the DMT to be transferred.
@@ -99,14 +111,19 @@ that you always check the class of the serverside DMT and its individual columns
 (if the latter is important). If a situation arises where the class of the columns
 is crucial and the function cannot do what is needed please contact the DataSHIELD
 forum  and we can try to remedy the problem.</p></dd>
+
+
 <dt>byrow</dt>
 <dd><p>a logical value specifying whether the DMT created on the serverside
 should be filled row by row or column by column. This is fixed by the clientside
 function as FALSE (fill column by column).</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>the object specified by the &lt;newobj&gt; argument (or default name
+    
+
+<p>the object specified by the &lt;newobj&gt; argument (or default name
 "matdftbl.copied.C2S") which is written as a  data.frame, matrix or tibble
 to the serverside.</p>
     </div>
@@ -132,7 +149,7 @@ For more information about how it works see help for ds.dmtC2S</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

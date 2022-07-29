@@ -46,19 +46,24 @@ used for the estimation of the combined kurtosis of a numeric variable across al
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">kurtosisDS2</span><span class="op">(</span><span class="va">x</span>, <span class="va">global.mean</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">kurtosisDS2</span><span class="op">(</span><span class="va">x</span>, <span class="va">global.mean</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>a string character, the name of a numeric variable.</p></dd>
+
+
 <dt>global.mean</dt>
 <dd><p>a numeric, the combined mean of the input variable across all studies.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a list including the sum of quartic differences between the values of x and the global mean of x across
+    
+
+<p>a list including the sum of quartic differences between the values of x and the global mean of x across
 all studies, the sum of squared differences between the values of x and the global mean of x across all studies,
 the number of valid observations (i.e. the length of x after excluding missing values), and a validity message 
 indicating indicating a valid analysis if the number of valid observations are above the protection filter 
@@ -87,7 +92,7 @@ of x across all studies and the number of valid observations of the input variab
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

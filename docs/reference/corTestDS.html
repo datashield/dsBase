@@ -44,29 +44,40 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">corTestDS</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">method</span>, <span class="va">exact</span>, <span class="va">conf.level</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">corTestDS</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">method</span>, <span class="va">exact</span>, <span class="va">conf.level</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>a character string providing  the name of a numerical vector.</p></dd>
+
+
 <dt>y</dt>
 <dd><p>a character string providing  the name of a numerical vector.</p></dd>
+
+
 <dt>method</dt>
 <dd><p>a character string indicating which correlation coefficient is to be
 used for the test. One of "pearson", "kendall", or "spearman", can be abbreviated.</p></dd>
+
+
 <dt>exact</dt>
 <dd><p>a logical indicating whether an exact p-value should be computed. Used for
 Kendall's tau and Spearman's rho.</p></dd>
+
+
 <dt>conf.level</dt>
 <dd><p>confidence level for the returned confidence interval. Currently
 only used for the Pearson product moment correlation coefficient if there are at least
 4 complete pairs of observations.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>the results of the correlation test.</p>
+    
+
+<p>the results of the correlation test.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -89,7 +100,7 @@ only used for the Pearson product moment correlation coefficient if there are at
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

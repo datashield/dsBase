@@ -48,7 +48,7 @@ studies) that relate to a set of quantiles to be evaluated.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">extractQuantilesDS1</span><span class="op">(</span><span class="va">extract.quantiles</span>, <span class="va">extract.summary.output.ranks.df</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">extractQuantilesDS1</span><span class="op">(</span><span class="va">extract.quantiles</span>, <span class="va">extract.summary.output.ranks.df</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -61,6 +61,8 @@ see the associated document entitled "secure.global.ranking.docx", the
 header for ds.ranksSecure and ds.extractQuantiles functions.
 The value of this argument is set in choosing the value of the argument
 &lt;quantiles.for.estimation&gt; in ds.ranksSecure.</p></dd>
+
+
 <dt>extract.summary.output.ranks.df</dt>
 <dd><p>character string specifying optional
 name for the data.frame written to the serverside on each data source that
@@ -71,10 +73,13 @@ that are identified as corresponding to the particular set of quantiles to
 be estimated as specified by the &lt;quantiles.for.estimation&gt; argument of
 function ds.ranksSecure (and the &lt;extract.quantiles&gt; argument of
 ds.extractQuantiles).</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>as a first step in creating the vector of values of values of V2BR
+    
+
+<p>as a first step in creating the vector of values of values of V2BR
 that correspond to each quantile value, extractQuantilesDS1 identifies the
 two closest quantile values across all studies that span each key quantile
 value. These are saved as the data frame "closest.bounds.df" on the
@@ -116,7 +121,7 @@ see the associated document entitled "secure.global.ranking.docx"</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

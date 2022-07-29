@@ -46,38 +46,52 @@ mixed effects model (glme) per study and saves the outcomes in each study</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">glmerSLMADS.assign</span><span class="op">(</span>
-  <span class="va">formula</span>,
-  <span class="va">offset</span>,
-  <span class="va">weights</span>,
-  <span class="va">dataName</span>,
-  <span class="va">family</span>,
-  control_type <span class="op">=</span> <span class="cn">NULL</span>,
-  control_value.transmit <span class="op">=</span> <span class="cn">NULL</span>,
-  nAGQ <span class="op">=</span> <span class="fl">1L</span>,
-  verbose <span class="op">=</span> <span class="fl">0</span>,
-  theta <span class="op">=</span> <span class="cn">NULL</span>,
-  fixef <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">glmerSLMADS.assign</span><span class="op">(</span></span>
+<span>  <span class="va">formula</span>,</span>
+<span>  <span class="va">offset</span>,</span>
+<span>  <span class="va">weights</span>,</span>
+<span>  <span class="va">dataName</span>,</span>
+<span>  <span class="va">family</span>,</span>
+<span>  control_type <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  control_value.transmit <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  nAGQ <span class="op">=</span> <span class="fl">1L</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  theta <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  fixef <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>formula</dt>
 <dd><p>see help for ds.glmerSLMA</p></dd>
+
+
 <dt>offset</dt>
 <dd><p>see help for ds.glmerSLMA</p></dd>
+
+
 <dt>weights</dt>
 <dd><p>see help for ds.glmerSLMA</p></dd>
+
+
 <dt>dataName</dt>
 <dd><p>see help for ds.glmerSLMA</p></dd>
+
+
 <dt>family</dt>
 <dd><p>see help for ds.glmerSLMA</p></dd>
+
+
 <dt>control_type</dt>
 <dd><p>see help for ds.glmerSLMA</p></dd>
+
+
 <dt>control_value.transmit</dt>
 <dd><p>see help for argument &lt;control_value&gt; for
 function ds.glmerSLMA</p></dd>
+
+
 <dt>nAGQ</dt>
 <dd><p>integer scalar, defaulting to 1L. IN PRACTICE, IT MAY BE NECESSARY
 TO SET nAGQ TO 0L when the model appears to converge perfectly well (e.g. verbose=2
@@ -86,18 +100,27 @@ regression coefficients) but formal convergence does not get declared -
 so no output is produced - despite running the model for many iterations.
 The nAGQ argument is set by the nAGQ argument for ds.glmerSLMA and further
 details can be found in help(ds.glmerSLMA) and in the native R help for glmer()</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>see help for ds.glmerSLMA</p></dd>
+
+
 <dt>theta</dt>
 <dd><p>see help for argument &lt;start_theta&gt; for
 function ds.glmerSLMA</p></dd>
+
+
 <dt>fixef</dt>
 <dd><p>see help for argument &lt;start_fixef&gt; for
 function ds.glmerSLMA</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>writes glmerMod object summarising the fitted model to the serverside.
+    
+
+<p>writes glmerMod object summarising the fitted model to the serverside.
 For more detailed information see help for ds.glmerSLMA.</p>
     </div>
     <div id="details">
@@ -125,7 +148,7 @@ from each single data source and saves the regression outcomes on the serveside.
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
