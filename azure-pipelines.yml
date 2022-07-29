@@ -101,7 +101,7 @@ jobs:
       sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
       sudo add-apt-repository ppa:cran/libgit2
       sudo apt-get update
-      sudo apt-get install -qq libxml2-dev libcurl4-openssl-dev libssl-dev libgit2-dev -y
+      sudo apt-get install -qq libxml2-dev libcurl4-openssl-dev libssl-dev libgit2-dev libharfbuzz-dev libfribidi-dev -y
       sudo apt-get install -qq r-base -y
       sudo R -e "install.packages('devtools', dependencies=TRUE)"
       sudo R -e "install.packages('RANN', dependencies=TRUE)"
