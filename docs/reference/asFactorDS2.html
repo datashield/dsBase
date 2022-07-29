@@ -46,33 +46,42 @@ a factor type that presented as a vector or as a matrix with dummy variables.</p
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">asFactorDS2</span><span class="op">(</span>
-  input.var.name <span class="op">=</span> <span class="cn">NULL</span>,
-  all.unique.levels.transmit <span class="op">=</span> <span class="cn">NULL</span>,
-  fixed.dummy.vars <span class="op">=</span> <span class="cn">NULL</span>,
-  baseline.level <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">asFactorDS2</span><span class="op">(</span></span>
+<span>  input.var.name <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  all.unique.levels.transmit <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  fixed.dummy.vars <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  baseline.level <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>input.var.name</dt>
 <dd><p>the name of the variable that is to be converted to a factor.</p></dd>
+
+
 <dt>all.unique.levels.transmit</dt>
 <dd><p>the levels that the variable will be transmitted to.</p></dd>
+
+
 <dt>fixed.dummy.vars</dt>
 <dd><p>a boolean that determines whether the new object will be represented as
 a vector or as a matrix of dummy variables indicating the factor level of each data point.
 If this argyment is set to FALSE (default) then the input variable is converted to a factor and
 assigned as a vector. If is set to TRUE then the input variable is converted to a factor but
 assigned as a matrix of dummy variables.</p></dd>
+
+
 <dt>baseline.level</dt>
 <dd><p>a number indicating the baseline level to be used in the creation of the
 matrix of dummy variables.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>an object of class factor</p>
+    
+
+<p>an object of class factor</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -93,7 +102,7 @@ if the <code>fixed.dummy.vars</code> is set to FALSE or as a matrix with dummy v
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

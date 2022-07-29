@@ -48,15 +48,15 @@ disclosure risk</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">glmPredictDS.ag</span><span class="op">(</span>
-  <span class="va">glmname.transmit</span>,
-  <span class="va">newdataname.transmit</span>,
-  <span class="va">output.type</span>,
-  <span class="va">se.fit</span>,
-  <span class="va">dispersion</span>,
-  <span class="va">terms.transmit</span>,
-  <span class="va">na.action</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">glmPredictDS.ag</span><span class="op">(</span></span>
+<span>  <span class="va">glmname.transmit</span>,</span>
+<span>  <span class="va">newdataname.transmit</span>,</span>
+<span>  <span class="va">output.type</span>,</span>
+<span>  <span class="va">se.fit</span>,</span>
+<span>  <span class="va">dispersion</span>,</span>
+<span>  <span class="va">terms.transmit</span>,</span>
+<span>  <span class="va">na.action</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -65,30 +65,45 @@ disclosure risk</p>
 <dd><p>a character string specifying the name of the
 glm object on the serverside that is to be used for prediction.
 Fully specified by glmname argument in ds.glmPredict</p></dd>
+
+
 <dt>newdataname.transmit</dt>
 <dd><p>a character string specifying an (optional) dataframe on
 the serverside in which to look for (potentially) new covariate values
 on which to base the predictions. Fully specified by newdataname argument in ds.glmPredict.</p></dd>
+
+
 <dt>output.type</dt>
 <dd><p>a character string taking the values 'response', 'link' or 'terms'.
 Fully specified by corresponding argument in ds.glmPredict.</p></dd>
+
+
 <dt>se.fit</dt>
 <dd><p>logical if standard errors for the fitted predictions are required.
 Fully specified by corresponding argument in ds.glmPredict.</p></dd>
+
+
 <dt>dispersion</dt>
 <dd><p>numeric value specifying the dispersion of the GLM fit to be assumed
 in computing the standard errors. Fully specified by corresponding argument in ds.glmPredict.</p></dd>
+
+
 <dt>terms.transmit</dt>
 <dd><p>a character vector specifying a subset of terms to return in the
 prediction. Fully specified by 'terms' argument in ds.glmPredict.</p></dd>
+
+
 <dt>na.action</dt>
 <dd><p>character string determining what should be done with missing
 values in the data.frame identified by &lt;newdataname.transmit&gt;.
 Fully specified by na.action argument in ds.glmPredict.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>components/summarising statistics of a serverside predict_glm object
+    
+
+<p>components/summarising statistics of a serverside predict_glm object
 that can safely be transmitted to the clientside
 without a risk of disclosure. For further details see DataSHIELD help for
 ds.glmPredict and glmPredict.as and help in native R for predict.glm
@@ -122,7 +137,7 @@ ds.glmPredict and glmPredict.as and help in native R for predict.glm</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

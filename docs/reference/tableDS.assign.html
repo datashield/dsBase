@@ -49,16 +49,16 @@ tables using the table function in native R.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">tableDS.assign</span><span class="op">(</span>
-  <span class="va">rvar.transmit</span>,
-  <span class="va">cvar.transmit</span>,
-  <span class="va">stvar.transmit</span>,
-  <span class="va">rvar.all.unique.levels.transmit</span>,
-  <span class="va">cvar.all.unique.levels.transmit</span>,
-  <span class="va">stvar.all.unique.levels.transmit</span>,
-  <span class="va">exclude.transmit</span>,
-  <span class="va">useNA.transmit</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tableDS.assign</span><span class="op">(</span></span>
+<span>  <span class="va">rvar.transmit</span>,</span>
+<span>  <span class="va">cvar.transmit</span>,</span>
+<span>  <span class="va">stvar.transmit</span>,</span>
+<span>  <span class="va">rvar.all.unique.levels.transmit</span>,</span>
+<span>  <span class="va">cvar.all.unique.levels.transmit</span>,</span>
+<span>  <span class="va">stvar.all.unique.levels.transmit</span>,</span>
+<span>  <span class="va">exclude.transmit</span>,</span>
+<span>  <span class="va">useNA.transmit</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -68,36 +68,55 @@ tables using the table function in native R.</p>
 name of the variable defining the rows in all of the 2 dimensional
 tables that form the output. Fully specified by &lt;rvar&gt; argument in ds.table.
 For more information see help for ds.table</p></dd>
+
+
 <dt>cvar.transmit</dt>
 <dd><p>is a character string specifiying the
 name of the variable defining the columns in all of the 2 dimensional
 tables that form the output. Fully specified by &lt;cvar&gt; argument in ds.table.
 For more information see help for ds.table</p></dd>
+
+
 <dt>stvar.transmit</dt>
 <dd><p>is a character string specifiying the
 name of the variable that indexes the separate two dimensional
 tables in the output if the call specifies a 3 dimensional table.
 Fully specified by &lt;stvar&gt; argument in ds.table.
 For more information see help for ds.table</p></dd>
+
+
 <dt>rvar.all.unique.levels.transmit</dt>
 <dd><p>is a character string containing all
 unique level in rvar, across the studies, separated by ','.</p></dd>
+
+
 <dt>cvar.all.unique.levels.transmit</dt>
 <dd><p>is a character string containing all
 unique level in cvar, across the studies, separated by ','.</p></dd>
+
+
 <dt>stvar.all.unique.levels.transmit</dt>
 <dd><p>is a character string containing all
 unique level in stvar, across the studies, separated by ','.</p></dd>
+
+
 <dt>exclude.transmit</dt>
 <dd><p>for information see help on &lt;exclude&gt; argument
 of ds.table. Fully specified by &lt;exclude&gt; argument of ds.table</p></dd>
+
+
 <dt>useNA.transmit</dt>
 <dd><p>for information see help on &lt;useNA&gt; argument
 of ds.table. Fully specified by &lt;useNA&gt; argument of ds.table</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>For information see help for ds.table</p>
+    
+
+<p>For information see help for ds.table</p>
+
+
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -125,7 +144,7 @@ in native R.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

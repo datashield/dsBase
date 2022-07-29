@@ -46,7 +46,7 @@ of each two variables (i.e. the scalar product of each two vectors).</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">corDS</span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">corDS</span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -54,12 +54,17 @@ of each two variables (i.e. the scalar product of each two vectors).</p>
     <dl><dt>x</dt>
 <dd><p>a character, the name of a vector, matrix or dataframe of variables(s) for which the
 correlation(s) is (are) going to calculated for.</p></dd>
+
+
 <dt>y</dt>
 <dd><p>NULL (default) or the name of a vector, matrix or dataframe with compatible dimensions to x.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a list that includes a matrix with elements the sum of products between each two variables,
+    
+
+<p>a list that includes a matrix with elements the sum of products between each two variables,
 a matrix with elements the sum of the values of each variable, a matrix with elements the number of
 complete cases in each pair of variables, a list with the number of missing values in each variable
 separately (columnwise) and the number of missing values casewise, and a vector with elements the
@@ -90,7 +95,7 @@ variables</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

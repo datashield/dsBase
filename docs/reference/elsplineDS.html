@@ -50,24 +50,33 @@ such that, depending on the argument marginal, the coefficients can be interpret
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">elsplineDS</span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, n <span class="op">=</span> <span class="va">n</span>, marginal <span class="op">=</span> <span class="cn">FALSE</span>, names <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">elsplineDS</span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, n <span class="op">=</span> <span class="va">n</span>, marginal <span class="op">=</span> <span class="cn">FALSE</span>, names <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>the name of the input numeric variable</p></dd>
+
+
 <dt>n</dt>
 <dd><p>integer greater than 2, knots are computed such that they cut n equally-spaced
 intervals along the range of x</p></dd>
+
+
 <dt>marginal</dt>
 <dd><p>logical, how to parametrize the spline, see Details</p></dd>
+
+
 <dt>names</dt>
 <dd><p>character, vector of names for constructed variables</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>an object of class "lspline" and "matrix", which its name is specified by the
+    
+
+<p>an object of class "lspline" and "matrix", which its name is specified by the
 <code>newobj</code> argument (or its default name "elspline.newobj"), is assigned on the serverside.</p>
     </div>
     <div id="details">
@@ -96,7 +105,7 @@ range of x into n equal-width intervals.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

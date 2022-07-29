@@ -52,17 +52,17 @@ The sequence is written as a new object to the serverside</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">repDS</span><span class="op">(</span>
-  <span class="va">x1.transmit</span>,
-  <span class="va">times.transmit</span>,
-  <span class="va">length.out.transmit</span>,
-  <span class="va">each.transmit</span>,
-  <span class="va">x1.includes.characters</span>,
-  <span class="va">source.x1</span>,
-  <span class="va">source.times</span>,
-  <span class="va">source.length.out</span>,
-  <span class="va">source.each</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">repDS</span><span class="op">(</span></span>
+<span>  <span class="va">x1.transmit</span>,</span>
+<span>  <span class="va">times.transmit</span>,</span>
+<span>  <span class="va">length.out.transmit</span>,</span>
+<span>  <span class="va">each.transmit</span>,</span>
+<span>  <span class="va">x1.includes.characters</span>,</span>
+<span>  <span class="va">source.x1</span>,</span>
+<span>  <span class="va">source.times</span>,</span>
+<span>  <span class="va">source.length.out</span>,</span>
+<span>  <span class="va">source.each</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -72,6 +72,8 @@ The sequence is written as a new object to the serverside</p>
 for behaviour see help for ds.rep and "details from native R
 help for &lt;rep&gt;" (see above). This parameter is usually fully defined by
 the argument &lt;x1&gt; in the call to ds.rep that itself calls repDS.</p></dd>
+
+
 <dt>times.transmit</dt>
 <dd><p>This argument determines the number of replications
 and the pattern of these replications of the input scalar/vector to
@@ -79,18 +81,24 @@ construct the output repetitive sequence.
 For behaviour see help for ds.rep and "details from native R
 help for &lt;rep&gt;" (see above). This parameter is usually fully defined by
 the argument &lt;times&gt; in the call to ds.rep that itself calls repDS.</p></dd>
+
+
 <dt>length.out.transmit</dt>
 <dd><p>This argument fixes the length of
 the output repetive sequence vector
 For behaviour see help for ds.rep and "details from native R
 help for &lt;rep&gt;" (see above). This parameter is usually fully defined by
 the argument &lt;length.out&gt; in the call to ds.rep that itself calls repDS.</p></dd>
+
+
 <dt>each.transmit</dt>
 <dd><p>This argument specifies the number of replications
 of individual elements rather than replications of the full sequence.
 For behaviour see help for ds.rep and "details from native R
 help for &lt;rep&gt;" (see above). This parameter is usually fully defined by
 the argument &lt;each&gt; in the call to ds.rep that itself calls repDS.</p></dd>
+
+
 <dt>x1.includes.characters</dt>
 <dd><p>Boolean parameter determining
 whether to coerce the final output sequence to numeric. Defaults
@@ -99,6 +107,8 @@ For detailed behaviour see help for ds.rep.
 This parameter is usually fully defined by
 the argument &lt;x1.includes.characters&gt; in the call to ds.rep that
 itself calls repDS.</p></dd>
+
+
 <dt>source.x1</dt>
 <dd><p>This defines the source of the scalar or vector defined
 by the &lt;x1&gt; argument. Four character strings are allowed:
@@ -106,22 +116,31 @@ by the &lt;x1&gt; argument. Four character strings are allowed:
 For behaviour see help for ds.rep and "details from native R
 help for &lt;rep&gt;" (see above). This parameter is usually fully defined by
 the argument &lt;source.x1&gt; in the call to ds.rep that itself calls repDS.</p></dd>
+
+
 <dt>source.times</dt>
 <dd><p>see "param source.x1"
 This parameter is usually fully defined by
 the argument &lt;source.times&gt; in the call to ds.rep that itself calls repDS.</p></dd>
+
+
 <dt>source.length.out</dt>
 <dd><p>see "param source.x1"
 This parameter is usually fully defined by
 the argument &lt;source.length.out&gt; in the call to ds.rep that itself calls repDS.</p></dd>
+
+
 <dt>source.each</dt>
 <dd><p>see "param source.x1"
 This parameter is usually fully defined by
 the argument &lt;source.each&gt; in the call to ds.rep that itself calls repDS.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>the vector containing the specified repetitive sequence
+    
+
+<p>the vector containing the specified repetitive sequence
 and write to the output object defined by the &lt;newobj&gt; argument
 (or default name seq.vect) which is written to the serverside in 
 each source. In addition, two validity messages are returned
@@ -130,7 +149,10 @@ it is in a valid form. If its form is not valid in at least one study - e.g. bec
 a disclosure trap was tripped and creation of the full output object was blocked -
 ds.matrixDiag also returns any studysideMessages that can explain the error in creating
 the full output object. As well as appearing on the screen at run time,if you wish to
-see the relevant studysideMessages at a later date you can use the ds.messagefunction. If you type ds.message("newobj") it will print out the relevant
+see the relevant studysideMessages at a later date you can use the ds.message</p>
+
+
+<p>function. If you type ds.message("newobj") it will print out the relevant
 studysideMessage from any datasource in which there was an error in creating &lt;newobj&gt;
 and a studysideMessage was saved. If there was no error and &lt;newobj&gt; was created
 without problems no studysideMessage will have been saved and ds.message("newobj")
@@ -176,7 +198,7 @@ for each.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

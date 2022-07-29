@@ -44,7 +44,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">glmDS2</span><span class="op">(</span><span class="va">formula</span>, <span class="va">family</span>, <span class="va">beta.vect</span>, <span class="va">offset</span>, <span class="va">weights</span>, <span class="va">dataName</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">glmDS2</span><span class="op">(</span><span class="va">formula</span>, <span class="va">family</span>, <span class="va">beta.vect</span>, <span class="va">offset</span>, <span class="va">weights</span>, <span class="va">dataName</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -52,19 +52,30 @@
     <dl><dt>formula</dt>
 <dd><p>a glm() formula consistent with R syntax eg U~x+y+Z to regress
 variables U on x, y and Z</p></dd>
+
+
 <dt>family</dt>
 <dd><p>a glm() family consistent with R syntax eg "gaussian", "poisson",
 "binomial"</p></dd>
+
+
 <dt>beta.vect</dt>
 <dd><p>a numeric vector created by the clientside function specifying the
 vector of regression coefficients at the current iteration</p></dd>
+
+
 <dt>offset</dt>
 <dd><p>an optional variable providing a regression offset</p></dd>
+
+
 <dt>weights</dt>
 <dd><p>an optional variable providing regression weights</p></dd>
+
+
 <dt>dataName</dt>
 <dd><p>an optional character string specifying a data.frame object holding
 the data to be analysed under the specified model same</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -93,7 +104,7 @@ For more details please see the extensive header for ds.glm.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

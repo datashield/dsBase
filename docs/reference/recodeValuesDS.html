@@ -46,12 +46,12 @@ a matched set of alternative specified values.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">recodeValuesDS</span><span class="op">(</span>
-  var.name.text <span class="op">=</span> <span class="cn">NULL</span>,
-  values2replace.text <span class="op">=</span> <span class="cn">NULL</span>,
-  new.values.text <span class="op">=</span> <span class="cn">NULL</span>,
-  missing <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">recodeValuesDS</span><span class="op">(</span></span>
+<span>  var.name.text <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  values2replace.text <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  new.values.text <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  missing <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -60,6 +60,8 @@ a matched set of alternative specified values.</p>
 <dd><p>a character string providing the name for the vector representing the
 variable to be recoded. &lt;var.name.text&gt; argument generated and passed directly to
 recodeValuesDS by ds.recodeValues</p></dd>
+
+
 <dt>values2replace.text</dt>
 <dd><p>a character string specifying the values in the
 vector specified by the argument &lt;var.name.text&gt; that are to be replaced by new
@@ -68,6 +70,8 @@ is generated and passed directly to recodeValuesDS by ds.recodeValues. In effect
 &lt;values2replace.vector&gt; argument of the ds.recodeValues function is converted
 to a character string format that is acceptable to the DataSHIELD R parser in the data repository
 and so can be accepted by recodeValuesDS</p></dd>
+
+
 <dt>new.values.text</dt>
 <dd><p>a character string specifying the new values to which
 the specified values in the vector &lt;var.name&gt; are to be converted.
@@ -76,13 +80,18 @@ by ds.recodeValues. In effect, the &lt;new.values.vector&gt; argument of the
 ds.recodeValues function is converted to a character string format that is
 acceptable to the DataSHIELD R parser in the data repository
 and so can be used in the call to recodeValuesDS.</p></dd>
+
+
 <dt>missing</dt>
 <dd><p>if supplied, any missing values in the variable referred to by var.name.text 
 will be replaced by this value.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>the object specified by the &lt;newobj&gt; argument (or default name '&lt;var.name&gt;_recoded')
+    
+
+<p>the object specified by the &lt;newobj&gt; argument (or default name '&lt;var.name&gt;_recoded')
 initially specified in calling ds.recodeValues. The output object (the required
 recoded variable called &lt;newobj&gt; is written to the serverside.</p>
     </div>
@@ -107,7 +116,7 @@ recoded variable called &lt;newobj&gt; is written to the serverside.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

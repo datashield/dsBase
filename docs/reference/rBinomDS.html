@@ -44,7 +44,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">rBinomDS</span><span class="op">(</span><span class="va">n</span>, size <span class="op">=</span> <span class="fl">1</span>, prob <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">rBinomDS</span><span class="op">(</span><span class="va">n</span>, size <span class="op">=</span> <span class="fl">1</span>, prob <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -52,21 +52,28 @@
     <dl><dt>n</dt>
 <dd><p>length of the pseudorandom number vector to be generated
 as specified by the argument &lt;samp.size&gt; in the function ds.rBinom</p></dd>
+
+
 <dt>size</dt>
 <dd><p>a scalar that must be a positive integer. Value set directly
 by &lt;size&gt; argument of ds.rBinom - for details see help for ds.rBinom.
 May be a scalar or a vector allowing the size to vary from
 observation to observation.</p></dd>
+
+
 <dt>prob</dt>
 <dd><p>a numeric scalar in range 0 &gt; prob &gt; 1 which specifies the
 probability of a positive response. Value set directly
 by &lt;prob&gt; argument of ds.rBinom - for details see help for ds.rBinom
 May be a scalar or a vector allowing the size to vary from
 observation to observation.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Writes the pseudorandom number vector with the characteristics specified
+    
+
+<p>Writes the pseudorandom number vector with the characteristics specified
 in the function call as a new serverside vector on the data source on which
 it has been called. Also returns key information to the clientside:
 the random seed as specified by you in each
@@ -99,7 +106,7 @@ the function rbinom() in native R and its arguments are the same.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

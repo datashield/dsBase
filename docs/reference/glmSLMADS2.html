@@ -46,33 +46,46 @@ with pooled co-analysis across studies being based on SLMA (Study Level Meta Ana
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">glmSLMADS2</span><span class="op">(</span><span class="va">formula</span>, <span class="va">family</span>, <span class="va">offset</span>, <span class="va">weights</span>, <span class="va">newobj</span>, <span class="va">dataName</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">glmSLMADS2</span><span class="op">(</span><span class="va">formula</span>, <span class="va">family</span>, <span class="va">offset</span>, <span class="va">weights</span>, <span class="va">newobj</span>, <span class="va">dataName</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>formula</dt>
 <dd><p>a glm formula, specified in call to ds.glmSLMA</p></dd>
+
+
 <dt>family</dt>
 <dd><p>a glm family, specified in call to ds.glmSLMA</p></dd>
+
+
 <dt>offset</dt>
 <dd><p>a character string specifying a variable to be used as an offset.
 Specified in call to ds.glmSLMA.</p></dd>
+
+
 <dt>weights</dt>
 <dd><p>a character string specifying a variable to be used as regression weights.
 Specified in call to ds.glmSLMA. Specified in call to ds.glmSLMA.</p></dd>
+
+
 <dt>newobj</dt>
 <dd><p>a character string specifying the name of the glm object
 written to the serverside by glmSLMADS.assign. This is either the name
 specified by the newobj argument in ds.glmSLMA or if newobj was unspecified
 or NULL it is called new.glm.obj.</p></dd>
+
+
 <dt>dataName</dt>
 <dd><p>a character string specifying the name of a data.frame
 holding the data for the model. Specified in call to ds.glmSLMA.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>All quantitative, Boolean, and character objects required to
+    
+
+<p>All quantitative, Boolean, and character objects required to
 enable the SLMA pooling of the separate glm models fitted to each study -
 in particular including the study-specific regression coefficients and their corresponding
 standard errors.</p>
@@ -101,7 +114,7 @@ For more detailed information see help for ds.glmSLMA.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
