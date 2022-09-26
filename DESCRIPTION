@@ -65,7 +65,6 @@ AggregateMethods:
     rmDS,
     scatterPlotDS,
     scoreVectDS,
-    setSeedDS,
     skewnessDS1,
     skewnessDS2,
     table1DDS,
