@@ -35,9 +35,12 @@
 #' @export
 setSeedDS<-function (seedtext=NULL, kind = NULL, normal.kind = NULL)
 {
-seed<-eval(parse(text=seedtext), envir = parent.frame())
-	set.seed(seed,kind,normal.kind)
-	return(list(seed.as.set=.Random.seed))
+    # Check Permissive Privacy Control Level.
+    checkPermissivePrivacyControlLevel()
+
+    seed<-eval(parse(text=seedtext), envir = parent.frame())
+    set.seed(seed,kind,normal.kind)
+    return(list(seed.as.set=.Random.seed))
 }
 #AGGREGATE
 # setSeedDS
