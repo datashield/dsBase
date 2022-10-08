@@ -144,7 +144,7 @@ AssignMethods:
     rPoisDS,
     rUnifDS,
     sampleDS,
-    seedDS,
+    setSeedDS,
     seqDS,
     sqrtDS,
     subsetByClassDS,
