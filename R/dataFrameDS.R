@@ -40,7 +40,7 @@
 dataFrameDS <- function(vectors=NULL, r.names=NULL, ch.rows=FALSE, ch.names=TRUE, clnames=NULL, strAsFactors=TRUE, completeCases=FALSE){
   
   # Check Permissive Privacy Control Level.
-  checkPermissivePrivacyControlLevel()
+  dsBase::checkPermissivePrivacyControlLevel()
   
   #########################################################################
   # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS

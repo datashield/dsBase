@@ -5,6 +5,7 @@
 #' will cause a call to stop() with the message "BLOCKED: The server is running in 'non-permissive' mode which 
 #' has caused this method to be blocked".
 #' @author Wheater, Dr SM., DataSHIELD Team.
+#' @export
 #'
 checkPermissivePrivacyControlLevel <- function(){
 

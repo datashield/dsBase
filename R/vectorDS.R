@@ -10,7 +10,7 @@
 #'
 vectorDS <- function(...){
     # Check Permissive Privacy Control Level.
-    checkPermissivePrivacyControlLevel()
+    dsBase::checkPermissivePrivacyControlLevel()
 
     # compute the vector's value
     out <- c(...)

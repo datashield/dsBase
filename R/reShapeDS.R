@@ -43,7 +43,7 @@
 reShapeDS <- function(data.name, varying.transmit, v.names.transmit, timevar.name, idvar.name, drop.transmit, direction, sep){
   
   # Check Permissive Privacy Control Level.
-  checkPermissivePrivacyControlLevel()
+  dsBase::checkPermissivePrivacyControlLevel()
 
   datatext <- paste0("data.frame(",data.name,")")
   data <- eval(parse(text=datatext), envir = parent.frame())

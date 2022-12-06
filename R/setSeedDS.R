@@ -36,7 +36,7 @@
 setSeedDS<-function (seedtext=NULL, kind = NULL, normal.kind = NULL)
 {
     # Check Permissive Privacy Control Level.
-    checkPermissivePrivacyControlLevel()
+    dsBase::checkPermissivePrivacyControlLevel()
 
     seed<-eval(parse(text=seedtext), envir = parent.frame())
     set.seed(seed,kind,normal.kind)

@@ -50,7 +50,7 @@ seqDS <- function(FROM.value.char,TO.value.char,BY.value.char,LENGTH.OUT.value.c
 {
   
   # Check Permissive Privacy Control Level.
-  checkPermissivePrivacyControlLevel()
+  dsBase::checkPermissivePrivacyControlLevel()
 
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
