@@ -57,7 +57,7 @@ mergeDS <- function(x.name, y.name, by.x.names.transmit, by.y.names.transmit, al
   
   #########################################################################
   # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS
-  thr <- listDisclosureSettingsDS()
+  thr <- dsBase::listDisclosureSettingsDS()
   nfilter.stringShort <- as.numeric(thr$nfilter.stringShort)
   #########################################################################
 

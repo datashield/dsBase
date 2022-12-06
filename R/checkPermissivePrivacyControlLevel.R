@@ -5,10 +5,11 @@
 #' will cause a call to stop() with the message "BLOCKED: The server is running in 'non-permissive' mode which 
 #' has caused this method to be blocked".
 #' @author Wheater, Dr SM., DataSHIELD Team.
+#' @export
 #'
 checkPermissivePrivacyControlLevel <- function(){
 
-    disclosureSettings <- listDisclosureSettingsDS()
+    disclosureSettings <- dsBase::listDisclosureSettingsDS()
     if (is.null(disclosureSettings) || is.null(disclosureSettings$datashield.privacyControlLevel) ||
         (disclosureSettings$datashield.privacyControlLevel != 'permissive')) {
         stop("BLOCKED: The server is running in 'non-permissive' mode which has caused this method to be blocked", call. = TRUE)

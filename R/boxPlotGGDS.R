@@ -27,7 +27,7 @@ boxPlotGGDS <- function(data_table, group = NULL, group2 = NULL){
   
   ###################################################################
   # MODULE 1: CAPTURE THE subset filter SETTINGS                    #
-  thr <- listDisclosureSettingsDS()                                 #
+  thr <- dsBase::listDisclosureSettingsDS()                         #
   nfilter.subset <- as.numeric(thr$nfilter.subset)                  #
   ###################################################################
   

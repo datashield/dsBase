@@ -17,7 +17,7 @@
 tapplyDS.assign <- function(X.name, INDEX.names.transmit, FUN.name){
   
   # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS
-  thr <- listDisclosureSettingsDS()
+  thr <- dsBase::listDisclosureSettingsDS()
   nfilter.tab <- as.numeric(thr$nfilter.tab)
   nfilter.subset <- as.numeric(thr$nfilter.subset)
   
