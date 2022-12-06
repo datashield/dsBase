@@ -37,7 +37,7 @@ glmerSLMADS.assign <- function(formula, offset, weights, dataName, family,
 
   #############################################################
   # MODULE 1: CAPTURE THE nfilter SETTINGS
-  thr <- listDisclosureSettingsDS()
+  thr <- dsBase::listDisclosureSettingsDS()
   nfilter.tab <- as.numeric(thr$nfilter.tab)
   nfilter.glm <- as.numeric(thr$nfilter.glm)
   #############################################################

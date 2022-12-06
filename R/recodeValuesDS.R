@@ -35,7 +35,7 @@ recodeValuesDS <- function(var.name.text=NULL, values2replace.text=NULL, new.val
   
   #############################################################
   #MODULE 1: CAPTURE THE used nfilter SETTINGS
-  thr <- listDisclosureSettingsDS()	
+  thr <- dsBase::listDisclosureSettingsDS()	
   nfilter.subset <- as.numeric(thr$nfilter.subset)
   nfilter.stringShort <- as.numeric(thr$nfilter.stringShort)
   #############################################################

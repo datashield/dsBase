@@ -8,7 +8,7 @@
 #'
 checkPermissivePrivacyControlLevel <- function(){
 
-    disclosureSettings <- listDisclosureSettingsDS()
+    disclosureSettings <- dsBase::listDisclosureSettingsDS()
     if (is.null(disclosureSettings) || is.null(disclosureSettings$datashield.privacyControlLevel) ||
         (disclosureSettings$datashield.privacyControlLevel != 'permissive')) {
         stop("BLOCKED: The server is running in 'non-permissive' mode which has caused this method to be blocked", call. = TRUE)

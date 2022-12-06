@@ -44,7 +44,7 @@ dataFrameDS <- function(vectors=NULL, r.names=NULL, ch.rows=FALSE, ch.names=TRUE
   
   #########################################################################
   # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS
-  thr <- listDisclosureSettingsDS()
+  thr <- dsBase::listDisclosureSettingsDS()
   #nfilter.tab<-as.numeric(thr$nfilter.tab)
   #nfilter.glm<-as.numeric(thr$nfilter.glm)
   nfilter.subset <- as.numeric(thr$nfilter.subset)

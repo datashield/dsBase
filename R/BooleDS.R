@@ -30,7 +30,7 @@ BooleDS <- function(V1.name=NULL, V2.name=NULL, Boolean.operator.n=NULL, na.assi
 
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
-thr <- listDisclosureSettingsDS()                                       #
+thr <- dsBase::listDisclosureSettingsDS()                               #
 #nfilter.tab<-as.numeric(thr$nfilter.tab)                               #
 #nfilter.glm<-as.numeric(thr$nfilter.glm)                               #
 #nfilter.subset<-as.numeric(thr$nfilter.subset)                         #
