@@ -36,7 +36,7 @@
 rbindDS<-function(x.names.transmit=NULL,colnames.transmit=NULL){
   
   # Check Permissive Privacy Control Level.
-  dsBase::checkPermissivePrivacyControlLevel()
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana'))
 
   #########################################################################
   # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #

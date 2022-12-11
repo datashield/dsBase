@@ -24,7 +24,7 @@
 cbindDS <- function(x.names.transmit=NULL, colnames.transmit=NULL){
   
   # Check Permissive Privacy Control Level.
-  dsBase::checkPermissivePrivacyControlLevel()
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana'))
   
   x.names.input <- x.names.transmit
   x.names.act1 <- unlist(strsplit(x.names.input, split=","))

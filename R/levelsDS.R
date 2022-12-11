@@ -10,7 +10,7 @@
 levelsDS <- function(x){
   
   # Check Permissive Privacy Control Level.
-  dsBase::checkPermissivePrivacyControlLevel()
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana'))
   
   ##################################################################
   #MODULE 1: CAPTURE THE nfilter SETTINGS                          #
