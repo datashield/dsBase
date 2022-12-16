@@ -36,7 +36,7 @@
 dataFrameSortDS <- function(df.name=NULL,sort.key.name=NULL,sort.descending,sort.method){
   
   # Check Permissive Privacy Control Level.
-  dsBase::checkPermissivePrivacyControlLevel()
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana'))
   
   #########################################################################
   # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS

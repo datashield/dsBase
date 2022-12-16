@@ -18,7 +18,7 @@
 subsetByClassDS <- function(data=NULL, variables=NULL){
   
   # Check Permissive Privacy Control Level.
-  dsBase::checkPermissivePrivacyControlLevel()
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana'))
   
   # this filter sets the minimum number of observations that are allowed 
 

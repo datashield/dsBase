@@ -11,7 +11,7 @@
 cDS <- function (objs) {
   
   # Check Permissive Privacy Control Level.
-  dsBase::checkPermissivePrivacyControlLevel()
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive'))
   
   # this filter sets the minimum number of observations that are allowed 
 
