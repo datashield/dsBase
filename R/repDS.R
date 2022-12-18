@@ -94,7 +94,7 @@ repDS <- function(x1.transmit, times.transmit, length.out.transmit, each.transmi
                    x1.includes.characters, source.x1, source.times, source.length.out, source.each){
 
   # Check Permissive Privacy Control Level.
-  dsBase::checkPermissivePrivacyControlLevel(c('permissive'))
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'avocado'))
 
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
