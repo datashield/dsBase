@@ -34,10 +34,13 @@
 #' @export
 #'
 dataFrameSortDS <- function(df.name=NULL,sort.key.name=NULL,sort.descending,sort.method){
-
+  
+  # Check Permissive Privacy Control Level.
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana'))
+  
   #########################################################################
   # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS
-  thr <- listDisclosureSettingsDS()
+  thr <- dsBase::listDisclosureSettingsDS()
   #nfilter.tab <- as.numeric(thr$nfilter.tab)
   #nfilter.glm <- as.numeric(thr$nfilter.glm)
   nfilter.subset <- as.numeric(thr$nfilter.subset)

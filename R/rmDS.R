@@ -24,16 +24,16 @@ rmDS <- function(x.names.transmit)
 {
     #convert x.names.transmit format from transmittable to actionable form (a vector of character strings)
     x.names<-unlist(strsplit(x.names.transmit, split=","))
-
+    
     deleted.objects <- vector(mode = "character")
     missing.objects <- vector(mode = "character")
     problem.objects <- vector(mode = "character")
-
+    
     #process request
     for (x.name in x.names) {
         if (exists(x.name, envir = parent.frame())) {
             rm(list = c(x.name), pos = 1, envir = parent.frame())
-
+            
             if (exists(x.name, envir = parent.frame())) {
                 problem.objects <- append(problem.objects, x.name)
             } else {
@@ -43,7 +43,7 @@ rmDS <- function(x.names.transmit)
             missing.objects <- append(missing.objects, x.name)
         }
     }
-
+    
     #create return message
     return.message <- "Object(s)"
     if (length(deleted.objects) != 0) {
@@ -55,7 +55,7 @@ rmDS <- function(x.names.transmit)
     if (length(problem.objects) != 0) {
         return.message <- paste0(return.message, " '", paste(problem.objects, collapse=','), "' which caused problems.")
     }
-
+    
     return(list(return.message = return.message, deleted.objects = paste(deleted.objects, collapse=','), missing.objects = paste(missing.objects, collapse=','), problem.objects = paste(problem.objects, collapse=',')))
 }
 #AGGREGATE FUNCTION

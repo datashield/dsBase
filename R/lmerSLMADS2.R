@@ -35,7 +35,7 @@ lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE,
   
   #############################################################
   #MODULE 1: CAPTURE THE nfilter SETTINGS
-   thr <- listDisclosureSettingsDS()
+   thr <- dsBase::listDisclosureSettingsDS()
    nfilter.tab <- as.numeric(thr$nfilter.tab)
    nfilter.glm <- as.numeric(thr$nfilter.glm)
   #nfilter.subset <- as.numeric(thr$nfilter.subset)
@@ -170,21 +170,9 @@ lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE,
   
   #### BEFORE going further we use the glm1 checks
 
-  formulatext.glm = formula
-
-  # Convert formula string into formula string that will work for GLM
-  formulatext.glm <- gsub(" ", "", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub("(", "", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub("(1", "", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub("(0", "", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub(")", "", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub("|", "+", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub(":", "+", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub("/", "+", formulatext.glm, fixed=TRUE)
-  formulatext.glm <- gsub("++", "+", formulatext.glm, fixed=TRUE)
-  formula.glm <- stats::as.formula(formulatext.glm)
+  # This command creates a formula object without the grouping factors for running the standard glm checks
   
-  formula2use.glm <- stats::as.formula(paste0(Reduce(paste, deparse(formula.glm ))), env = parent.frame()) # here we need the formula as a 'call' object
+  formula2use.glm <- lme4::nobars(formula2use)
   
   mod.glm.ds <- stats::glm(formula2use.glm, family="gaussian", x=TRUE, offset=offset.to.use, weights=weights.to.use, data=dataDF)
 
@@ -379,14 +367,24 @@ if(!is.null(optimizer)&&optimizer!="nloptwrap")
 
 
     #mg <- lme4::lmer(formula2use, offset=offset, weights=weights, data=dataDF, REML = REML, verbose = verbose, control = control.obj)
-    iterations <- utils::capture.output(try(mg <- lme4::lmer(formula2use, offset=offset.to.use, weights=weights.to.use, data=dataDF, REML = REML, verbose = verbose, control = control.obj)))
+    #iterations <- utils::capture.output(try(mg <- lme4::lmer(formula2use, offset=offset.to.use, weights=weights.to.use, data=dataDF, REML = REML, verbose = verbose, control = control.obj)))
     
-    summary_mg = summary(mg)
-    summary_mg$residuals <- NULL
-    summary_mg$errorMessage = errorMessage
-    summary_mg$disclosure.risk = disclosure.risk
-    summary_mg$iterations = iterations
-	  summary_mg$control.info = control.obj
+    iterations = utils::capture.output(mg <- try(lme4::lmer(formula2use, offset=offset.to.use, weights=weights.to.use, data=dataDF, REML = REML, verbose = verbose, control = control.obj)))
+
+    if(inherits(mg, "try-error")) {          # error happened
+      summary_mg = list()
+      summary_mg$errorMessage = conditionMessage(attr(mg, "condition"))  # the error message
+      summary_mg$disclosure.risk = 1
+    } else
+    {
+      summary_mg = summary(mg)
+      summary_mg$residuals <- NULL
+      summary_mg$errorMessage = errorMessage
+      summary_mg$disclosure.risk = disclosure.risk
+      summary_mg$iterations = iterations
+      summary_mg$control.info = control.obj
+    }
+
     outlist = summary_mg
     
     outlist$Ntotal <- Ntotal

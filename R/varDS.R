@@ -15,7 +15,7 @@ varDS <- function(xvect){
 
   #############################################################
   # MODULE 1: CAPTURE THE nfilter SETTINGS
-  thr <- listDisclosureSettingsDS()
+  thr <- dsBase::listDisclosureSettingsDS()
   nfilter.tab <- as.numeric(thr$nfilter.tab)
   #nfilter.glm <- as.numeric(thr$nfilter.glm)
   #nfilter.subset <- as.numeric(thr$nfilter.subset)
@@ -29,7 +29,7 @@ varDS <- function(xvect){
   out.validN <- out.totN-out.numNa
   studysideMessage <- "VALID ANALYSIS"
 
-  if(out.validN < nfilter.tab){
+  if((out.validN != 0) && (out.validN < nfilter.tab)){
     out.sum <- NA
     out.sumSquares <- NA
     studysideMessage <- "FAILED: Nvalid less than nfilter.tab"

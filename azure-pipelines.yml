@@ -40,7 +40,7 @@ resources:
     endpoint: datashield-testing
     name: datashield/testStatus
     ref: master
-    
+
 
 #########################################################################################
 # When and under what condition to run the pipeline.
@@ -52,17 +52,17 @@ schedules:
       - master
     always: true
   - cron: "0 1 * * *"
-    displayName: Nightly build - v6.2-dev
+    displayName: Nightly build - v6.3
     branches:
       include:
-      - v6.2-dev
+      - v6.3
     always: true
 
 jobs:
 - job: run_devtools_check
-  timeoutInMinutes: 30
+  timeoutInMinutes: 45
   pool:
-    vmImage: 'Ubuntu 16.04'
+    vmImage: ubuntu-latest
 
 
   steps:
@@ -95,22 +95,22 @@ jobs:
     # Install R and all the dependencies dsBase requires.
     # If previous steps have failed then don't run.
   - bash: |
-      
-      sudo apt-get update
+
       sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-      sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran40/'
+      sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
       sudo add-apt-repository ppa:cran/libgit2
       sudo apt-get update
-      sudo apt-get install -qq libxml2-dev libcurl4-openssl-dev libssl-dev libgit2-dev -y
+      sudo apt-get install -qq pkg-config -y
+      sudo apt-get install -qq libxml2-dev libcurl4-openssl-dev libssl-dev libgit2-dev libharfbuzz-dev libfribidi-dev -y
       sudo apt-get install -qq r-base -y
       sudo R -e "install.packages('devtools', dependencies=TRUE)"
       sudo R -e "install.packages('RANN', dependencies=TRUE)"
-      sudo R -e "install.packages('nlme', dependencies=TRUE)"
+      sudo R -e "install.packages('stringr', dependencies=TRUE)"
       sudo R -e "install.packages('lme4', dependencies=TRUE)"
-      sudo R -e "install.packages('ggplot2', dependencies=TRUE)"
       sudo R -e "install.packages('dplyr', dependencies=TRUE)"
       sudo R -e "install.packages('reshape2', dependencies=TRUE)"
-      sudo R -e "install.packages('panelaggregation', dependencies=TRUE)"
+      sudo R -e "install.packages('polycor', dependencies=TRUE)"
+      sudo R -e "install.packages('splines', dependencies=TRUE)"
 
     displayName: 'Install all dependencies for dsBase'
     condition: succeeded()
@@ -140,7 +140,7 @@ jobs:
         echo "Documentation up to date."
         exit 0
       fi
-      
+
     workingDirectory: $(Pipeline.Workspace)/dsBase
     displayName: 'Check manual updated before being committed'
     condition: succeeded()
@@ -152,7 +152,7 @@ jobs:
     # If previous steps have failed then don't run.
     # If this step fails still mark as failed, but don't stop the rest of the steps running.    
   - bash: |
-  
+
       R -q -e "library('devtools'); devtools::check(args = c('--no-examples'))" | tee azure-pipelines_check.Rout
       grep --quiet "^0 errors" azure-pipelines_check.Rout && grep --quiet " 0 warnings" azure-pipelines_check.Rout && grep --quiet " 0 notes" azure-pipelines_check.Rout
 
@@ -169,10 +169,10 @@ jobs:
     # when a small number of errors have happened, run through the code coverage tool.
     # TODO: Tidy up variable names - use timestamps here.
   - bash: |
-  
+
       # Any of the below makes the tests work.
       sudo R --verbose -e 'devtools::check()'
-      
+
       pwd
       mkdir $(Pipeline.Workspace)/logs
 
@@ -187,27 +187,27 @@ jobs:
                 covr::package_coverage(
                     type = c("none"),
                     code = c(
-                        '"'"'library(testthat); 
-                        output_file <- file("test_console_output.txt"); 
-                        sink(output_file); 
-                        sink(output_file, type = "message"); 
-                        library(testthat); 
-                        junit_rep <- JunitReporter$new(file = "test_results.xml"); 
-                        progress_rep <- ProgressReporter$new(max_failures = 999999); 
-                        multi_rep <- MultiReporter$new(reporters = list(progress_rep, junit_rep)); 
+                        '"'"'library(testthat);
+                        output_file <- file("test_console_output.txt");
+                        sink(output_file);
+                        sink(output_file, type = "message");
+                        library(testthat);
+                        junit_rep <- JunitReporter$new(file = "test_results.xml");
+                        progress_rep <- ProgressReporter$new(max_failures = 999999);
+                        multi_rep <- MultiReporter$new(reporters = list(progress_rep, junit_rep));
                         testthat::test_package("$(projectName)", filter = "$(test_filter)",reporter = multi_rep, stop_on_failure = FALSE)'"'"'
                     )
                 )
             ),
             "coveragelist.csv"
         )'
-      
+
       # display the test console output
       cat test_console_output.txt
       mv coveragelist.csv $(Pipeline.Workspace)/logs
       mv test_results.xml $(Pipeline.Workspace)/logs
       mv test_console_output.txt $(Pipeline.Workspace)/logs
-      
+
       grep --quiet " FAIL 0 " $(Pipeline.Workspace)/logs/test_console_output.txt
 
     workingDirectory: $(Pipeline.Workspace)/dsBase
@@ -220,7 +220,7 @@ jobs:
     # echo them so finding bugs should be easier.
     # This should run even if previous steps have failed.
   - bash: |
-  
+
       # Strip out when error and failure = 0 and count the number of times it does not.
       issue_count=$(sed 's/failures="0" errors="0"//' test_results.xml | grep --count errors=)
       echo "Number of testsuites with issues: "$issue_count
@@ -238,7 +238,7 @@ jobs:
     # Output some important version numbers to file. This gets added to the testStatus 
     # commit so it can be parsed and used on the status table.
   - bash: |
-  
+
       echo 'branch:'$(branchName) >> $(datetime).txt
       echo 'os:'$(lsb_release -ds) >> $(datetime).txt
       echo 'R:'$(R --version | head -n 1) >> $(datetime).txt
@@ -261,7 +261,7 @@ jobs:
 
       # This repo is checked out in detatched head state, so reconnect it here.
       git checkout master
-      
+
       # It is possible that other commits have been made to the testStatus repo since it
       # was checked out. i.e. other pipeline runs might have finished.
       git pull
@@ -302,32 +302,32 @@ jobs:
     #####################################################################################
     # Output the environment information to the console. This is useful for debugging.
     # Always do this, even if some of the above has failed or the job has been cacelled.
-  - bash: | 
-      
+  - bash: |
+
       echo -e "\n#############################"
       echo -e "ls /: ######################"
       ls $(Pipeline.Workspace)
-    
+
       echo -e "\n#############################"
       echo -e "lscpu: ######################"
       lscpu
-      
+
       echo -e "\n#############################"
       echo -e "memory: #####################"
       free -m
-      
+
       echo -e "\n#############################"
       echo -e "env: ########################"
       env
-           
+
       echo -e "\n#############################"
       echo -e "Rprofile: ###################"
       cat $(Pipeline.Workspace)/dsBase/.Rprofile
-      
+
       echo -e "\n#############################"
       echo -e "R installed.packages(): #####"
       R -e 'installed.packages()'
-      
+
       echo -e "\n#############################"
       echo -e "R sessionInfo(): ############"
       R -e 'sessionInfo()'
@@ -340,8 +340,3 @@ jobs:
 
     displayName: 'Environment info'
     condition: always()
-
-
-
-
-

@@ -57,10 +57,13 @@
 #' @export
 #'
 dataFrameSubsetDS2<-function(df.name=NULL,V1.name=NULL, V2.name=NULL, Boolean.operator.n=NULL,keep.cols=NULL, rm.cols=NULL, keep.NAs=NULL){
-
+   
+  # Check Permissive Privacy Control Level.
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana'))
+   
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
-thr <- listDisclosureSettingsDS()                                       #
+thr <- dsBase::listDisclosureSettingsDS()                               #
 #nfilter.tab<-as.numeric(thr$nfilter.tab)                               #
 #nfilter.glm<-as.numeric(thr$nfilter.glm)                               #
 nfilter.subset<-as.numeric(thr$nfilter.subset)                          #
@@ -175,7 +178,7 @@ if(!is.null(V2.name)){
 
 
    df.name.2<-paste0("data.frame(",df.name,")")
-   df2subset <- eval(parse(text=df.name.2))
+   df2subset <- eval(parse(text=df.name.2), envir = parent.frame())
 
    if(V1.name=="ONES"||V2.name=="ONES")
    {
@@ -192,8 +195,8 @@ if(!is.null(V2.name)){
        ONES<-V1
      }
    }else{
-     V1<-eval(parse(text=V1.name))
-     V2<-eval(parse(text=V2.name))
+     V1<-eval(parse(text=V1.name), envir = parent.frame())
+     V2<-eval(parse(text=V2.name), envir = parent.frame())
    }
 
 
@@ -256,14 +259,14 @@ Boolean.indicator<-integer(length=V1.length)
 if(V2.length==V1.length){
 for(j in 1:V1.length){
 command.text<-paste0(V1.name,"[",j,"]",Boolean.operator,V2.name,"[",j,"]")
-Boolean.indicator[j]<-eval(parse(text=command.text))*1
+Boolean.indicator[j]<-eval(parse(text=command.text), envir = parent.frame())*1
 }
 }
 
 if(V2.length==1){
 for(j in 1:V1.length){
 command.text<-paste0(V1.name,"[",j,"]",Boolean.operator,V2.name)
-Boolean.indicator[j]<-eval(parse(text=command.text))*1
+Boolean.indicator[j]<-eval(parse(text=command.text), envir = parent.frame())*1
 }
 }
 

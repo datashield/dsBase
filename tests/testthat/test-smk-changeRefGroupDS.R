@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# Copyright (c) 2019-2021 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -63,18 +63,44 @@ test_that("simple changeRefGroupDS, reorderByRef is TRUE", {
 
     res <- changeRefGroupDS(xf, ref, reorderByRef)
 
-    expect_equal(class(res), "integer")
-    expect_length(res, 6)
-    expect_equal(res[1], 1)
-    expect_equal(res[2], 1)
-    expect_equal(res[3], 1)
-    expect_equal(res[4], 1)
-    expect_equal(res[5], 1)
-    expect_equal(res[6], 1)
+    if (base::getRversion() < 4.1)
+    {
+        expect_equal(class(res), "integer")
+        expect_length(res, 6)
+        expect_equal(res[1], 1)
+        expect_equal(res[2], 1)
+        expect_equal(res[3], 1)
+        expect_equal(res[4], 1)
+        expect_equal(res[5], 1)
+        expect_equal(res[6], 1)
 
-    res.levels <- levels(res)
+        res.levels <- levels(res)
 
-    expect_true(is.null(res.levels))
+        expect_true(is.null(res.levels))
+    }
+    else
+    {
+        expect_equal(class(res), "factor")
+        expect_length(res, 6)
+
+        res.num <- as.numeric(res)
+
+        expect_equal(class(res.num), "numeric")
+        expect_length(res.num, 6)
+
+        expect_equal(res.num[1], 1)
+        expect_equal(res.num[2], 1)
+        expect_equal(res.num[3], 1)
+        expect_equal(res.num[4], 1)
+        expect_equal(res.num[5], 1)
+        expect_equal(res.num[6], 1)
+
+        res.levels <- levels(res)
+
+        expect_equal(class(res.levels), "character")
+        expect_length(res.levels, 1)
+        expect_equal(res.levels[1], "8")
+    }
 })
 
 #

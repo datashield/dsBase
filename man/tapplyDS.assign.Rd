@@ -8,17 +8,17 @@ tapplyDS.assign(X.name, INDEX.names.transmit, FUN.name)
 }
 \arguments{
 \item{X.name, }{the name of the variable to be summarized. Specified
-via argument <X.name> of {ds.tapply.assign} function}
+via argument <X.name> of \code{ds.tapply.assign} function}
 
 \item{INDEX.names.transmit, }{the name of a single factor or a vector of names of factors to
 index the variable to be summarized. Specified via argument <INDEX.names>
-of {ds.tapply.assign} function}
+of \code{ds.tapply.assign} function}
 
 \item{FUN.name, }{the name of one of the allowable summarizing functions to be applied.
 Specified via argument <FUN.name> of {ds.tapply.assign} function.}
 }
 \value{
-an array of the summarized values created by the {tapplyDS.assign} function. This
+an array of the summarized values created by the \code{tapplyDS.assign} function. This
 array is written as a newobj on the serverside. It has the same number of dimensions as INDEX.
 }
 \description{
@@ -27,7 +27,7 @@ outcome variable over one or more indexing factors and write the resultant
 summary as a newobj on the serverside
 }
 \details{
-see details for {ds.tapply.assign} function
+see details for \code{ds.tapply.assign} function
 }
 \author{
 Paul Burton, Demetris Avraam for DataSHIELD Development Team

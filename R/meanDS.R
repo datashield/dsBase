@@ -12,7 +12,7 @@ meanDS <- function(xvect){
 
   #############################################################
   # MODULE 1: CAPTURE THE nfilter SETTINGS
-  thr <- listDisclosureSettingsDS()
+  thr <- dsBase::listDisclosureSettingsDS()
   nfilter.tab <- as.numeric(thr$nfilter.tab)
   #nfilter.glm <- as.numeric(thr$nfilter.glm)
   #nfilter.subset <- as.numeric(thr$nfilter.subset)
@@ -25,7 +25,7 @@ meanDS <- function(xvect){
   out.validN <- out.totN-out.numNa
   studysideMessage <- "VALID ANALYSIS"
 
-  if(out.validN < nfilter.tab){
+  if((out.validN != 0) && (out.validN < nfilter.tab)){
     out.mean <- NA
     stop("FAILED: Nvalid less than nfilter.tab", call. = FALSE)
   }

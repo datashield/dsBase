@@ -14,7 +14,7 @@ usually specified directly by <x.name> argument of the clientside function
 }
 \value{
 the object specified by the <newobj> argument (or its default name
-<x.name>.int) which is written to the serverside. For further
+"asinteger.newobj") which is written to the serverside. For further
 details see help on the clientside function \code{ds.asInteger}.
 }
 \description{
