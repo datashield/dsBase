@@ -27,6 +27,9 @@
 #' @export
 rBinomDS<-function (n, size = 1, prob = 0.5){
 
+        # Check Permissive Privacy Control Level.
+        dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'avocado'))
+
 #If size or prob are defined by serverside vectors
 #first convert their names into the corresponding active vectors
 

@@ -32,6 +32,9 @@
 #' @export
 rUnifDS<-function (n, min = 0, max = 1, force.output.to.k.decimal.places=9){
 
+        # Check Permissive Privacy Control Level.
+        dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'avocado'))
+
 #If min or max are defined by serverside vectors
 #first convert their names into the corresponding active vectors
 

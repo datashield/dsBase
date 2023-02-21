@@ -32,6 +32,9 @@
 #' @export
 rNormDS<-function (n, mean = 0, sd = 1, force.output.to.k.decimal.places=9){
 
+        # Check Permissive Privacy Control Level.
+        dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'avocado'))
+
 #If mean or sd are defined by serverside vectors
 #first convert their names into the corresponding active vectors
 
