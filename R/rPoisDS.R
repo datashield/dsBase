@@ -23,6 +23,9 @@
 #' @export
 rPoisDS<-function (n, lambda = 1){
 
+        # Check Permissive Privacy Control Level.
+        dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'avocado'))
+
 #If lambda is defined by a serverside vector
 #first convert its name into the corresponding active vectors
 
