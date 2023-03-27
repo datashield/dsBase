@@ -19,20 +19,19 @@ context("aucDS::smk::setup")
 #
 
 test_that("aucDS", {
-    set.seed <- 123
-    y <- rbinom(n=100, size=1, prob=0.4)
-    x1 <- rbinom(n=100, size=1, prob=0.5)
-    x2 <- rnorm(n=100, mean=1, sd=0)
+  
+    D <- read.csv(file = 'tests/testthat/data_files/DASIM/DASIM1.csv')
     
-    mod <- glm(y~x1+x2, family='binomial')
-    pred <- predict(mod, response='link')
-
-    res <- aucDS(pred=pred, y=mod$y)
-
+    model <- glm(formula = D$DIS_DIAB~D$GENDER+D$PM_BMI_CONTINUOUS, family = 'binomial')
+    pred <- predict(object = model, type = "link")
+    res <- aucDS(pred = pred, y = model$y)
+    
     expect_equal(class(res), "list")
     expect_length(res, 2)
-    expect_equal(res$AUC, 0.5191841)
-    expect_equal(res$AUC, 0.06353745)
+    expect_equal(class(res$AUC), "numeric")
+    expect_equal(res$AUC, 0.6767515, tolerance=1e-07)
+    expect_equal(class(res$se), "numeric")
+    expect_equal(res$se, 0.02065186, tolerance=1e-08)
     
 })
 
