@@ -20,7 +20,7 @@ context("aucDS::smk::setup")
 
 test_that("aucDS", {
   
-    D <- read.csv(file = 'tests/testthat/data_files/DASIM/DASIM1.csv')
+    D <- read.csv(file = 'data_files/DASIM/DASIM1.csv')
     
     model <- glm(formula = D$DIS_DIAB~D$GENDER+D$PM_BMI_CONTINUOUS, family = 'binomial')
     pred <- predict(object = model, type = "link")
