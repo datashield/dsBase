@@ -62,7 +62,7 @@ test_that("simple recodeValuesDS, numeric input with missings, replace missings"
   new.values     <- "10,30"
   missing        <- "999"
   
-  res <- recodeValuesDS("input", values2replace, new.values, missing)
+  expect_warning(res <- recodeValuesDS("input", values2replace, new.values, missing))
   
   expect_equal(class(res), "numeric")
   expect_length(res, 7)
@@ -96,7 +96,7 @@ test_that("simple recodeValuesDS, factor input with missings, replace missings",
   missing        <- "999"
   expected_output <- as.factor(c(10, 2, 30, 4, 10, 30, 999))
   
-  res <- recodeValuesDS("input", values2replace, new.values, missing)
+  expect_warning(res <- recodeValuesDS("input", values2replace, new.values, missing))
   
   expect_equal(class(res), "factor")
   expect_length(res, 7)
