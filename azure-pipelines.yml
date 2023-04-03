@@ -111,6 +111,8 @@ jobs:
       sudo R -e "install.packages('reshape2', dependencies=TRUE)"
       sudo R -e "install.packages('polycor', dependencies=TRUE)"
       sudo R -e "install.packages('splines', dependencies=TRUE)"
+      sudo R -e "install.packages('gamlss', dependencies=TRUE)"
+      sudo R -e "install.packages('gamlss.dist', dependencies=TRUE)"
 
     displayName: 'Install all dependencies for dsBase'
     condition: succeeded()
