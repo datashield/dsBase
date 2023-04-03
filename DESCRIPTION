@@ -14,7 +14,9 @@ Imports:
     dplyr,
     reshape2,
     polycor (>= 0.8),
-    splines
+    splines,
+    gamlss,
+    gamlss.dist
 AggregateMethods:
     asFactorDS1,
     asListDS,
@@ -30,6 +32,7 @@ AggregateMethods:
     extractQuantilesDS1,
     extractQuantilesDS2,
     dimDS,
+    gamlssDS,
     glmDS1,
     glmDS2,
     glmerSLMADS2,
