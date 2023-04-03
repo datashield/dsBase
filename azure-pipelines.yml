@@ -55,7 +55,7 @@ schedules:
     displayName: Nightly build - v6.2
     branches:
       include:
-      - v6.2
+      - v6.3.0-dev
     always: true
 
 jobs:
