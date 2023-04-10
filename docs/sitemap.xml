@@ -49,6 +49,9 @@
     <loc>/reference/asNumericDS.html</loc>
   </url>
   <url>
+    <loc>/reference/aucDS.html</loc>
+  </url>
+  <url>
     <loc>/reference/blackBoxDS.html</loc>
   </url>
   <url>
@@ -131,6 +134,9 @@
   </url>
   <url>
     <loc>/reference/extractQuantilesDS2.html</loc>
+  </url>
+  <url>
+    <loc>/reference/gamlssDS.html</loc>
   </url>
   <url>
     <loc>/reference/getWGSRDS.html</loc>
