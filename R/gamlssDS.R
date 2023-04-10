@@ -78,8 +78,6 @@ gamlssDS <- function(formula=formula, sigma.formula=sigma.formula, nu.formula=nu
                      control=control, i.control=i.control, centiles=centiles, xvar=xvar, 
                      newobj=newobj){
   
-  library(gamlss)
-  
   thr <- dsBase::listDisclosureSettingsDS()
   nfilter.glm <- as.numeric(thr$nfilter.glm)
   
