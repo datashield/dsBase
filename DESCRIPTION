@@ -16,7 +16,8 @@ Imports:
     polycor (>= 0.8),
     splines,
     gamlss,
-    gamlss.dist
+    gamlss.dist,
+    mice
 AggregateMethods:
     asFactorDS1,
     asListDS,
@@ -59,6 +60,7 @@ AggregateMethods:
     meanSdGpDS,
     messageDS,
     metadataDS,
+    miceDS,
     minMaxRandDS,
     namesDS,
     numNaDS,
