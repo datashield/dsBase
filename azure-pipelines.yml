@@ -113,6 +113,7 @@ jobs:
       sudo R -e "install.packages('splines', dependencies=TRUE)"
       sudo R -e "install.packages('gamlss', dependencies=TRUE)"
       sudo R -e "install.packages('gamlss.dist', dependencies=TRUE)"
+      sudo R -e "install.packages('mice', dependencies=TRUE)"
 
     displayName: 'Install all dependencies for dsBase'
     condition: succeeded()
