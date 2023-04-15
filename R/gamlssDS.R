@@ -65,8 +65,9 @@
 #' @param newobj a character string that provides the name for the output object
 #' that is stored on the data servers. Default \code{gamlss_residuals}. 
 #' @return a gamlss object with all components as in the native R gamlss function. 
-#' The components y (the response response) and residuals (the normalised quantile 
-#' residuals of the model) are not disclosed to the client-side.
+#' Individual-level information like the components y (the response response) and 
+#' residuals (the normalised quantile residuals of the model) are not disclosed to 
+#' the client-side.
 #' @author Demetris Avraam for DataSHIELD Development Team
 #' @import gamlss
 #' @import gamlss.dist
@@ -192,8 +193,27 @@ gamlssDS <- function(formula=formula, sigma.formula=sigma.formula, nu.formula=nu
     centiles_out <- NA
   }
   
+  # Don't disclose any individual-level information
   results$y <- "The response variable is not disclosed!"
   results$residuals <- "The residuals of the model are not disclosed!"
+  results$mu.fv <- "The fitted values of the mu model are not disclosed!"
+  results$sigma.fv <- "The fitted values of the sigma model are not disclosed!"
+  results$tau.fv <- "The fitted values of the tau model are not disclosed!"
+  results$mu.lp <- "The linear predictors of the mu model are not disclosed!"
+  results$sigma.lp <- "The linear predictors of the sigma model are not disclosed!"
+  results$tau.lp <- "The linear predictors of the tau model are not disclosed!"
+  results$mu.wv <- "The working variable of the mu model are not disclosed!"
+  results$sigma.wv <- "The working variable of the sigma model are not disclosed!"
+  results$tau.wv <- "The working variable of the tau model are not disclosed!"
+  results$mu.wt <- "The working weights of the mu model are not disclosed!"
+  results$sigma.wt <- "The working weights of the sigma model are not disclosed!"
+  results$tau.wt <- "The working weights of the tau model are not disclosed!"
+  results$mu.x <- "The designed matrix of the mu model is not disclosed!"
+  results$sigma.x <- "The designed matrix of the sigma model is not disclosed!"
+  results$tau.x <- "The designed matrix of the tau model is not disclosed!"
+  results$mu.qr <- "The QR decomposition of the mu model is not disclosed!"
+  results$sigma.qr <- "The QR decomposition of the sigma model is not disclosed!"
+  results$tau.qr <- "The QR decomposition of the tau model is not disclosed!"
   
   return(list(results = results, centiles = centiles_out))
   

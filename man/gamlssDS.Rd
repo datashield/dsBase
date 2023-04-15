@@ -97,8 +97,9 @@ that is stored on the data servers. Default \code{gamlss_residuals}.}
 }
 \value{
 a gamlss object with all components as in the native R gamlss function. 
-The components y (the response response) and residuals (the normalised quantile 
-residuals of the model) are not disclosed to the client-side.
+Individual-level information like the components y (the response response) and 
+residuals (the normalised quantile residuals of the model) are not disclosed to 
+the client-side.
 }
 \description{
 This function calls the gamlssDS that is a wrapper function from 
