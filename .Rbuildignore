@@ -4,4 +4,5 @@
 ^azure-pipelines_check\.Rout$
 ^LICENSE.md$
 ^_pkgdown\.yml$
+^data$
 ^docs$
