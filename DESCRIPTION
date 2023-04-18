@@ -5,7 +5,7 @@ Version: 6.3.0
 Author: DataSHIELD Developers <datashield@newcastle.ac.uk>
 Maintainer: DataSHIELD Developers <datashield@newcastle.ac.uk>
 License: GPL-3
-LazyData: yes
+LazyData: true
 Depends: 
     R (>= 3.5.0)
 Imports:
