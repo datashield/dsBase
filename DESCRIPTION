@@ -17,7 +17,8 @@ Imports:
     splines,
     gamlss,
     gamlss.dist,
-    mice
+    mice,
+    data.table (>= 1.13.0)
 AggregateMethods:
     asFactorDS1,
     asListDS,
@@ -106,6 +107,7 @@ AssignMethods:
     BooleDS,
     boxPlotGG_data_TreatmentDS,
     boxPlotGG_data_Treatment_numericDS,
+    bp_standardsDS,
     cbindDS,
     cDS,
     changeRefGroupDS,
