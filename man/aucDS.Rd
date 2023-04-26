@@ -16,8 +16,8 @@ the complete cases that are used in the regression model.}
 returns the AUC and its standard error
 }
 \description{
-This function calculates the C-statistic or AUC (Area under the curve).
-The current version can be used only for logistic regressions.
+This function calculates the C-statistic or AUC for logistic 
+regression models.
 }
 \details{
 The AUC determines the discriminative ability of a model.

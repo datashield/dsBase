@@ -1,7 +1,7 @@
 #'
 #' @title aucDS an aggregate function called by ds.auc
-#' @description This function calculates the C-statistic or AUC (Area under the curve).
-#' The current version can be used only for logistic regressions.
+#' @description This function calculates the C-statistic or AUC for logistic 
+#' regression models.
 #' @details The AUC determines the discriminative ability of a model.
 #' @param pred the name of the vector of the predicted values
 #' @param y the name of the outcome variable. Note that this variable should include 
