@@ -39,6 +39,10 @@ Step 1. Calculates z-score of height according to CDC growth chart (Not the
 WHO growth chart!). Step 2. Calculates z-score of BP according to the fourth
 report on BP management, USA
 }
+\note{
+The z-scores of height are calculated using the code from the CDC-DNPAO/CDCAnthro
+Github repository: https://github.com/CDC-DNPAO/CDCAnthro
+}
 \author{
 Demetris Avraam for DataSHIELD Development Team
 }

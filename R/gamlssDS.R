@@ -87,6 +87,7 @@ gamlssDS <- function(formula=formula, sigma.formula=sigma.formula, nu.formula=nu
   family <- gsub("left_parenthesis", "(", family, fixed = TRUE)
   family <- gsub("right_parenthesis", ")", family, fixed = TRUE)
   family <- gsub("equal_symbol", "=", family, fixed = TRUE)
+  family <- gsub("comma_symbol", ",", family, fixed = TRUE)
   family <- gamlss.dist::as.family(eval(parse(text=family)))
   
   formula <- gsub("left_parenthesis", "(", formula, fixed = TRUE)

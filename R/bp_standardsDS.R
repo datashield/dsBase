@@ -17,8 +17,10 @@
 #' @return assigns a new object on the server-side. The assigned object is a list 
 #' with two elements: the 'Zbp' which is the zscores of the blood pressure and 'perc'
 #' which is the percentiles of the BP zscores.
+#' @note The z-scores of height are calculated using the code from the CDC-DNPAO/CDCAnthro
+#' Github repository: https://github.com/CDC-DNPAO/CDCAnthro
 #' @author Demetris Avraam for DataSHIELD Development Team
-#' @import data.table
+#' @rawNamespace import(data.table, except = c(first, last, between))
 #' @importFrom stats approx pnorm qnorm sigma
 #' @export
 #' 
