@@ -67,6 +67,9 @@
     <loc>/reference/boxPlotGG_data_Treatment_numericDS.html</loc>
   </url>
   <url>
+    <loc>/reference/bp_standardsDS.html</loc>
+  </url>
+  <url>
     <loc>/reference/cDS.html</loc>
   </url>
   <url>
@@ -185,6 +188,9 @@
   </url>
   <url>
     <loc>/reference/histogramDS2.html</loc>
+  </url>
+  <url>
+    <loc>/reference/igb_standardsDS.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>
