@@ -50,7 +50,9 @@ miceDS <- function(data=data, m=m, maxit=maxit, method=method, post=post, seed=s
                    predictorMatrix=predictorMatrix, ncol.pred.mat=ncol.pred.mat, 
                    newobj_mids=newobj_mids, newobj_df=newobj_df){
   
-  if(!is.na(seed)){
+  if(seed %in% c(NA, 'NA')){
+    seed <- NA
+  }else{  
     # the study-specific seed for random number generation
     seed <- getOption("datashield.seed")
   }
