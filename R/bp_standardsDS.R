@@ -60,7 +60,7 @@ bp_standardsDS <- function(sex=sex, age=age, height=height, bp=bp, systolic=syst
     mu[males_idx] <- 61.01217 + 0.68314 * (age[males_idx]-10) - 0.09835 * (age[males_idx]-10)^2 + 
       0.01711 * (age[males_idx]-10)^3 + 0.00045 * (age[males_idx]-10)^4 + 1.46993 * Zht[males_idx] - 
       0.07849 * Zht[males_idx]^2 - 0.03144 * Zht[males_idx]^3 + 0.00967 * Zht[males_idx]^4 
-    mu[females_idx] <- 60.50510 + 1.01301 * (age[females_idx]-10) + 0.01157 * (age[females_idx]-10)^2 - 
+    mu[females_idx] <- 60.50510 + 1.01301 * (age[females_idx]-10) + 0.01157 * (age[females_idx]-10)^2 + 
       0.00424 * (age[females_idx]-10)^3 - 0.00137 * (age[females_idx]-10)^4 + 1.16641 * Zht[females_idx] + 
       0.12795 * Zht[females_idx]^2 - 0.03869 * Zht[females_idx]^3 - 0.00079 * Zht[females_idx]^4 
   }    
