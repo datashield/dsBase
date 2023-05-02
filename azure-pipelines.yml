@@ -115,6 +115,7 @@ jobs:
       sudo R -e "install.packages('gamlss.dist', dependencies=TRUE)"
       sudo R -e "install.packages('mice', dependencies=TRUE)"
       sudo R -e "install.packages('data.table', dependencies=TRUE)"
+      sudo R -e "install.packages('childsds', dependencies=TRUE)"
 
     displayName: 'Install all dependencies for dsBase'
     condition: succeeded()
