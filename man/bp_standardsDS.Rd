@@ -18,7 +18,7 @@ and 2 for females. If it is coded differently (e.g. 0/1), then you can use the
 ds.recodeValues function to recode the categories to 1/2 before the use of 
 ds.bp_standards}
 
-\item{age}{the name of the age variable in months.}
+\item{age}{the name of the age variable in years.}
 
 \item{height}{the name of the height variable in cm}
 
@@ -40,8 +40,8 @@ WHO growth chart!). Step 2. Calculates z-score of BP according to the fourth
 report on BP management, USA
 }
 \note{
-The z-scores of height are calculated using the code from the CDC-DNPAO/CDCAnthro
-Github repository: https://github.com/CDC-DNPAO/CDCAnthro
+The z-scores of height based on CDC growth charts are calculated 
+by the sds function from the childsds R package.
 }
 \author{
 Demetris Avraam for DataSHIELD Development Team

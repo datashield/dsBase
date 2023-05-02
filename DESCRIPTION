@@ -18,7 +18,7 @@ Imports:
     gamlss,
     gamlss.dist,
     mice,
-    data.table (>= 1.13.0)
+    childsds
 AggregateMethods:
     asFactorDS1,
     asListDS,
