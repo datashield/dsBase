@@ -55,7 +55,7 @@ dataFrameDS <- function(vectors=NULL, r.names=NULL, ch.rows=FALSE, ch.names=TRUE
   #########################################################################
 
   if(strAsFactors){
-    strAsFactors <- default.stringsAsFactors()
+    strAsFactors <- FALSE
   }
   if(!(is.null(r.names))){
     r.names <- unlist(r.names)
