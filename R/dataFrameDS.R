@@ -54,9 +54,6 @@ dataFrameDS <- function(vectors=NULL, r.names=NULL, ch.rows=FALSE, ch.names=TRUE
   #datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)
   #########################################################################
 
-  if(strAsFactors){
-    strAsFactors <- FALSE
-  }
   if(!(is.null(r.names))){
     r.names <- unlist(r.names)
   }
