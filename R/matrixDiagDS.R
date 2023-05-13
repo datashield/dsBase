@@ -20,14 +20,14 @@
 #' @export
 matrixDiagDS <- function(x1.transmit,aim,nrows.transmit){
 #########################################################################
-# DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS           			#
-thr<-listDisclosureSettingsDS()							#
-#nfilter.tab<-as.numeric(thr$nfilter.tab)								#
-#nfilter.glm<-as.numeric(thr$nfilter.glm)								#
-#nfilter.subset<-as.numeric(thr$nfilter.subset)          				#
-nfilter.string<-as.numeric(thr$nfilter.string)              			#
-nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)    			#
-#nfilter.kNN<-as.numeric(thr$nfilter.kNN)								#
+# DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
+thr<-dsBase::listDisclosureSettingsDS()                                 #
+#nfilter.tab<-as.numeric(thr$nfilter.tab)                               #
+#nfilter.glm<-as.numeric(thr$nfilter.glm)                               #
+#nfilter.subset<-as.numeric(thr$nfilter.subset)                         #
+nfilter.string<-as.numeric(thr$nfilter.string)                          #
+nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)                #
+#nfilter.kNN<-as.numeric(thr$nfilter.kNN)                               #
 #datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)       #
 #########################################################################
 

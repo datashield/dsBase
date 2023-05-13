@@ -18,7 +18,7 @@ with pooled co-analysis across studies being based on SLMA (Study Level Meta Ana
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dsBase</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.0</span>
       </span>
     </div>
 
@@ -46,28 +46,39 @@ with pooled co-analysis across studies being based on SLMA (Study Level Meta Ana
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">glmSLMADS.assign</span><span class="op">(</span><span class="va">formula</span>, <span class="va">family</span>, <span class="va">offsetName</span>, <span class="va">weightsName</span>, <span class="va">dataName</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">glmSLMADS.assign</span><span class="op">(</span><span class="va">formula</span>, <span class="va">family</span>, <span class="va">offsetName</span>, <span class="va">weightsName</span>, <span class="va">dataName</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>formula</dt>
 <dd><p>a glm formula, specified in call to ds.glmSLMA</p></dd>
+
+
 <dt>family</dt>
 <dd><p>a glm family, specified in call to ds.glmSLMA</p></dd>
+
+
 <dt>offsetName</dt>
 <dd><p>a character string specifying a variable to be used as an offset.
 Specified in call to ds.glmSLMA.</p></dd>
+
+
 <dt>weightsName</dt>
 <dd><p>a character string specifying a variable to be used as regression weights.
 Specified in call to ds.glmSLMA. Specified in call to ds.glmSLMA.</p></dd>
+
+
 <dt>dataName</dt>
 <dd><p>a character string specifying the name of a data.frame
 holding the data for the model. Specified in call to ds.glmSLMA.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>writes glm object summarising the fitted model to the serverside.
+    
+
+<p>writes glm object summarising the fitted model to the serverside.
 For more detailed information see help for ds.glmSLMA.</p>
     </div>
     <div id="details">
@@ -93,7 +104,7 @@ For more detailed information see help for ds.glmSLMA.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

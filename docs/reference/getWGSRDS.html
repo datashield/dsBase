@@ -18,7 +18,7 @@ This function is similar to R function getWGSR from the zscorer package."><!-- m
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dsBase</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.0</span>
       </span>
     </div>
 
@@ -46,7 +46,7 @@ This function is similar to R function <code>getWGSR</code> from the <code>zscor
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">getWGSRDS</span><span class="op">(</span><span class="va">sex</span>, <span class="va">firstPart</span>, <span class="va">secondPart</span>, <span class="va">index</span>, standing <span class="op">=</span> <span class="cn">NA</span>, thirdPart <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">getWGSRDS</span><span class="op">(</span><span class="va">sex</span>, <span class="va">firstPart</span>, <span class="va">secondPart</span>, <span class="va">index</span>, standing <span class="op">=</span> <span class="cn">NA</span>, thirdPart <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -56,6 +56,8 @@ This function is similar to R function <code>getWGSR</code> from the <code>zscor
 be coded as 1 = male and 2 = female. If in your project the variable sex has different
 levels, you should recode the levels to 1 for males and 2 for females using the 
 <code>ds.recodeValues</code> DataSHIELD function before the use of the <code>ds.getWGSR</code>.</p></dd>
+
+
 <dt>firstPart</dt>
 <dd><p>Name of variable specifying:<br>
 Weight (kg) for BMI/A, W/A, W/H, or W/L<br>
@@ -67,6 +69,8 @@ Sub-scapular skinfold (mm) for SSF/A<br>
 Triceps skinfold (mm) for TSF/A<br>
 Give a quoted variable name as in (e.g.) "weight". Be careful with units (weight in kg;
 height, length, head circumference, and MUAC in cm, skinfolds in mm).</p></dd>
+
+
 <dt>secondPart</dt>
 <dd><p>Name of variable specifying:<br>
 Age (days) for H/A, HC/A, L/A, MUAC/A, SSF/A, or TSF/A<br>
@@ -74,6 +78,8 @@ Height (cm) for BMI/A, or W/H<br>
 Length (cm) for W/L<br>
 Give a quoted variable name as in (e.g.) "age". Be careful with units (age in days;
 height and length in cm).</p></dd>
+
+
 <dt>index</dt>
 <dd><p>The index to be calculated and added to data. One of:<br>
 bfa BMI for age<br>
@@ -87,18 +93,25 @@ wfa Weight for age<br>
 wfh Weight for height<br>
 wfl Weight for length<br>
 Give a quoted index name as in (e.g.) "wfh".</p></dd>
+
+
 <dt>standing</dt>
 <dd><p>Variable specifying how stature was measured. If NA (default) then age (for "hfa"
 or "lfa") or height rules (for "wfh" or "wfl") will be applied. This must be coded as
 1 = Standing; 2 = Supine; 3 = Unknown. Missing values will be recoded to 3 = Unknown. 
 Give a single value (e.g."1"). If no value is specified then height and age rules will be applied.</p></dd>
+
+
 <dt>thirdPart</dt>
 <dd><p>Name of variable specifying age (in days) for BMI/A. Give a quoted variable
 name as in (e.g.) "age". Be careful with units (age in days).</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>ds.getWGSR</code> assigns a numeric vector that includes the z-scores for the
+    
+
+<p><code>ds.getWGSR</code> assigns a numeric vector that includes the z-scores for the
 specified index.</p>
     </div>
     <div id="details">
@@ -127,7 +140,7 @@ data.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

@@ -20,7 +20,7 @@ ranks that correspond 1 to 1 with only the real data in V2BR."><!-- mathjax --><
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dsBase</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.0</span>
       </span>
     </div>
 
@@ -50,7 +50,7 @@ ranks that correspond 1 to 1 with only the real data in V2BR.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">blackBoxRanksDS</span><span class="op">(</span>input.var.name <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">shared.seedval</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">blackBoxRanksDS</span><span class="op">(</span>input.var.name <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">shared.seedval</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -59,6 +59,8 @@ ranks that correspond 1 to 1 with only the real data in V2BR.</p>
 <dd><p>a character string specifying the name of the
 vector holding the global ranks. This argument is set automatically by
 the clientside function ds.ranksSecure</p></dd>
+
+
 <dt>shared.seedval</dt>
 <dd><p>a pseudorandom number seed that ensures that the
 processes generating the order and parameterisation of the encryption
@@ -71,10 +73,13 @@ algorithms is deliberately different. For more
 details, including future plans to share this starting seed in a more secure
 way, please see the associated document entitled "secure.global.ranking.docx"
 and the header file for ds.ranksSecure.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>writes a data frame object entitled blackbox.ranks.df to the
+    
+
+<p>writes a data frame object entitled blackbox.ranks.df to the
 serverside. In each study this contains the encrypted global ranks
 and a range of other key components from the second stage (ranking of global
 ranks for real observations only) of the ranking procedure. For more details
@@ -121,7 +126,7 @@ see the header file for ds.ranksSecure and the header file for blackBoxDS</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

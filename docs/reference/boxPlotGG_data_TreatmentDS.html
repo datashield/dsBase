@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dsBase</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.0</span>
       </span>
     </div>
 
@@ -44,23 +44,47 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">boxPlotGG_data_TreatmentDS</span><span class="op">(</span><span class="va">table</span>, <span class="va">variables</span>, group <span class="op">=</span> <span class="cn">NULL</span>, group2 <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">boxPlotGG_data_TreatmentDS</span><span class="op">(</span><span class="va">table</span>, <span class="va">variables</span>, group <span class="op">=</span> <span class="cn">NULL</span>, group2 <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>table</dt>
 <dd><p><code>data frame</code> Table that holds the information to be plotted later</p></dd>
+
+
 <dt>variables</dt>
 <dd><p><code>character vector</code> Name of the column(s) of the data frame to include on the boxplot</p></dd>
+
+
 <dt>group</dt>
 <dd><p><code>character</code> (default <code>NULL</code>) Name of the first grouping variable.</p></dd>
+
+
 <dt>group2</dt>
 <dd><p><code>character</code> (default <code>NULL</code>) Name of the second grouping variable.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>data frame</code> with the following structure: <br> Column 'x': Names on the X axis of the boxplot, aka variables to plot <br> Column 'value': Values for that variable (raw data of columns rbinded) <br> Column 'group': (Optional) Values of the grouping variable <br> Column 'group2': (Optional) Values of the second grouping variable <br></p>
+    
+
+<p><code>data frame</code> with the following structure: <br></p>
+
+
+
+<p>Column 'x': Names on the X axis of the boxplot, aka variables to plot <br></p>
+
+
+<p>Column 'value': Values for that variable (raw data of columns rbinded) <br></p>
+
+
+<p>Column 'group': (Optional) Values of the grouping variable <br></p>
+
+
+<p>Column 'group2': (Optional) Values of the second grouping variable <br></p>
+
+
     </div>
 
   </div>
@@ -75,7 +99,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

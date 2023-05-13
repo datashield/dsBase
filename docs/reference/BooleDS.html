@@ -18,7 +18,7 @@ Boolean indicators."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/a
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dsBase</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.0</span>
       </span>
     </div>
 
@@ -46,13 +46,13 @@ Boolean indicators.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">BooleDS</span><span class="op">(</span>
-  V1.name <span class="op">=</span> <span class="cn">NULL</span>,
-  V2.name <span class="op">=</span> <span class="cn">NULL</span>,
-  Boolean.operator.n <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">na.assign.text</span>,
-  numeric.output <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">BooleDS</span><span class="op">(</span></span>
+<span>  V1.name <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  V2.name <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  Boolean.operator.n <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">na.assign.text</span>,</span>
+<span>  numeric.output <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -60,25 +60,34 @@ Boolean indicators.</p>
     <dl><dt>V1.name</dt>
 <dd><p>A character string specifying the name of the vector to which the
 Boolean operator is to be applied</p></dd>
+
+
 <dt>V2.name</dt>
 <dd><p>A character string specifying the name of the vector or scalar to
 which &lt;V1&gt; is to be compared.</p></dd>
+
+
 <dt>Boolean.operator.n</dt>
 <dd><p>An integer value (1 to 6) providing a numeric coding for
 the character string
 specifying one of six possible Boolean operators: '==', '!=', '&gt;', '&gt;=','&lt;', '&lt;='
 that could legally be passed
 from client to server via DataSHIELD parser</p></dd>
+
+
 <dt>na.assign.text</dt>
 <dd><p>A character string taking values 'NA', '1' or '0'. If 'NA'
 then any NA values in the
 input vector remain as NAs in the output vector. If '1' or '0' NA values in the
 input vector are
 all converted to 1 or 0 respectively.#' @return the levels of the input variable.</p></dd>
+
+
 <dt>numeric.output</dt>
 <dd><p>a TRUE/FALSE indicator defaulting to TRUE determining whether
 the final output variable
 should be of class numeric (1/0) or class logical (TRUE/FALSE).</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -101,7 +110,7 @@ should be of class numeric (1/0) or class logical (TRUE/FALSE).</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

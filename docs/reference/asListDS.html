@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dsBase</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.0</span>
       </span>
     </div>
 
@@ -44,7 +44,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">asListDS</span><span class="op">(</span><span class="va">x.name</span>, <span class="va">newobj</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">asListDS</span><span class="op">(</span><span class="va">x.name</span>, <span class="va">newobj</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -54,16 +54,24 @@
 data.matrix. Must be specified in inverted commas. But this argument is
 usually specified directly by &lt;x.name&gt; argument of the clientside function
 ds.asList</p></dd>
+
+
 <dt>newobj</dt>
 <dd><p>is the object hard assigned '&lt;&lt;-' to be the output of the
 function written to the serverside</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>the object specified by the &lt;newobj&gt; argument (or its default name
+    
+
+<p>the object specified by the &lt;newobj&gt; argument (or its default name
 &lt;x.name&gt;.mat) which is written to the serverside.
 In addition, two validity messages are returned. The first confirms an output
-object has been created, the second states its class. The way that as.listcoerces objects to list depends on the class of the object, but in general
+object has been created, the second states its class. The way that as.list</p>
+
+
+<p>coerces objects to list depends on the class of the object, but in general
 the class of the output object should usually be 'list'</p>
     </div>
     <div id="details">
@@ -93,7 +101,7 @@ and so additional information can be found in the help for as.list</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

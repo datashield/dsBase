@@ -20,8 +20,8 @@
 lsplineDS <- function(x = x, knots = NULL, marginal = FALSE, names = NULL){
   
   # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS
-  thr <- listDisclosureSettingsDS()
-  nfilter.tab <- as.numeric(thr$nfilter.tab) 
+  thr <- dsBase::listDisclosureSettingsDS()
+  nfilter.tab <- as.numeric(thr$nfilter.tab)
   
   # this is a copy of the lspline function from lspline R package (version 1.0-0)
   # we use this copy just to avoid having one more package as a dependency of dsBase

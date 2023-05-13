@@ -49,6 +49,9 @@
     <loc>/reference/asNumericDS.html</loc>
   </url>
   <url>
+    <loc>/reference/aucDS.html</loc>
+  </url>
+  <url>
     <loc>/reference/blackBoxDS.html</loc>
   </url>
   <url>
@@ -62,6 +65,9 @@
   </url>
   <url>
     <loc>/reference/boxPlotGG_data_Treatment_numericDS.html</loc>
+  </url>
+  <url>
+    <loc>/reference/bp_standardsDS.html</loc>
   </url>
   <url>
     <loc>/reference/cDS.html</loc>
@@ -133,6 +139,9 @@
     <loc>/reference/extractQuantilesDS2.html</loc>
   </url>
   <url>
+    <loc>/reference/gamlssDS.html</loc>
+  </url>
+  <url>
     <loc>/reference/getWGSRDS.html</loc>
   </url>
   <url>
@@ -182,6 +191,9 @@
   </url>
   <url>
     <loc>/reference/histogramDS2.html</loc>
+  </url>
+  <url>
+    <loc>/reference/igb_standardsDS.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>
@@ -269,6 +281,9 @@
   </url>
   <url>
     <loc>/reference/metadataDS.html</loc>
+  </url>
+  <url>
+    <loc>/reference/miceDS.html</loc>
   </url>
   <url>
     <loc>/reference/minMaxRandDS.html</loc>

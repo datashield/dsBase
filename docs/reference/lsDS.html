@@ -18,7 +18,7 @@ a specified serverside environment"><!-- mathjax --><script src="https://cdnjs.c
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dsBase</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.0</span>
       </span>
     </div>
 
@@ -46,7 +46,7 @@ a specified serverside environment</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">lsDS</span><span class="op">(</span>search.filter <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">env.to.search</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">lsDS</span><span class="op">(</span>search.filter <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">env.to.search</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -55,14 +55,19 @@ a specified serverside environment</p>
 <dd><p>either NULL or a character string (potentially including '*'
 wildcards) specifying required search criteria. This argument is
 fully specified by its corresponding argument in the clientside function.</p></dd>
+
+
 <dt>env.to.search</dt>
 <dd><p>integer (e.g. in a format such as '2' or '5L' format) specifying
 the position in the search path of the environment to be explored. This argument is
 fully specified by its corresponding argument in the clientside function.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a list containing: (1) the name/details of the serverside R environment
+    
+
+<p>a list containing: (1) the name/details of the serverside R environment
 which ds.ls has searched; (2) a vector of character strings giving the names of
 all objects meeting the naming criteria specified by the argument &lt;search.filter&gt; in this
 specified R serverside environment; (3) the nature of the search filter string as it was
@@ -97,7 +102,7 @@ For further details see help for ds.ls function and for native R function ls</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

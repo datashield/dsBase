@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dsBase</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.0</span>
       </span>
     </div>
 
@@ -44,28 +44,39 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">heatmapPlotDS</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">k</span>, <span class="va">noise</span>, <span class="va">method.indicator</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">heatmapPlotDS</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">k</span>, <span class="va">noise</span>, <span class="va">method.indicator</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>the name of a numeric vector, the x-variable.</p></dd>
+
+
 <dt>y</dt>
 <dd><p>the name of a numeric vector, the y-variable.</p></dd>
+
+
 <dt>k</dt>
 <dd><p>the number of the nearest neghbours for which their centroid is calculated if the 
 <code>method.indicator</code> is equal to 1 (i.e. deterministic method).</p></dd>
+
+
 <dt>noise</dt>
 <dd><p>the percentage of the initial variance that is used as the variance of the embedded
 noise if the <code>method.indicator</code> is equal to 2 (i.e. probabilistic method).</p></dd>
+
+
 <dt>method.indicator</dt>
 <dd><p>a number equal to either 1 or 2. If the value is equal to 1 then the
 'deterministic' method is used. If the value is set to 2 the 'probabilistic' method is used.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a list with the x and y coordinates of the centroids if the deterministic method is used
+    
+
+<p>a list with the x and y coordinates of the centroids if the deterministic method is used
 or the x and y coordinated of the noisy data if the probabilistic method is used.</p>
     </div>
     <div id="details">
@@ -96,7 +107,7 @@ plot of non-disclosive graphs (e.g. scatter plots, heatmap plots, contour plots,
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

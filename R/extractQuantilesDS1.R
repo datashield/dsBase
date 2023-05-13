@@ -47,14 +47,14 @@ extractQuantilesDS1 <- function(extract.quantiles,extract.summary.output.ranks.d
   #############################################################
   #MODULE 1: CAPTURE THE nfilter SETTINGS                     #
   thr<-dsBase::listDisclosureSettingsDS()                     #
-  nfilter.tab <- as.numeric(thr$nfilter.tab)                 #
+  nfilter.tab <- as.numeric(thr$nfilter.tab)                  #
   #nfilter.glm <- as.numeric(thr$nfilter.glm)                 #
-  nfilter.subset <- as.numeric(thr$nfilter.subset)           #
+  nfilter.subset <- as.numeric(thr$nfilter.subset)            #
   #nfilter.string <- as.numeric(thr$nfilter.string)           #
   #nfilter.stringShort <- as.numeric(thr$nfilter.stringShort) #
   #nfilter.kNN <- as.numeric(thr$nfilter.kNN)                 #
   #nfilter.noise <- as.numeric(thr$nfilter.noise)             #
-  #nfilter.levels <- as.numeric(thr$nfilter.levels)            #
+  #nfilter.levels <- as.numeric(thr$nfilter.levels)           #
   #############################################################
  
   #############################################   

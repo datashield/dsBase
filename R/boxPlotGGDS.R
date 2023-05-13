@@ -27,7 +27,7 @@ boxPlotGGDS <- function(data_table, group = NULL, group2 = NULL){
   
   ###################################################################
   # MODULE 1: CAPTURE THE subset filter SETTINGS                    #
-  thr <- listDisclosureSettingsDS()                                 #
+  thr <- dsBase::listDisclosureSettingsDS()                         #
   nfilter.subset <- as.numeric(thr$nfilter.subset)                  #
   ###################################################################
   
@@ -52,7 +52,7 @@ boxPlotGGDS <- function(data_table, group = NULL, group2 = NULL){
     results <- list(data = stats_full, "double_group")
   }
   else{
-    if(class(data_table) == "data.frame"){
+    if("data.frame" %in% class(data_table)){
       stats_full <- stats::aggregate(.~x, data_table, function(x){stats::quantile(x,c(0.05,0.25,0.5,0.75,0.95))})
       stats_n <- stats::aggregate(.~x, data_table, function(x){length(x)})$value
       stats <- data.frame(stats_full$value)

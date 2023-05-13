@@ -18,7 +18,7 @@ otherwise grouped data from 'wide' to 'long' format or vice-versa"><!-- mathjax 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dsBase</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.0</span>
       </span>
     </div>
 
@@ -46,16 +46,16 @@ otherwise grouped data from 'wide' to 'long' format or vice-versa</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">reShapeDS</span><span class="op">(</span>
-  <span class="va">data.name</span>,
-  <span class="va">varying.transmit</span>,
-  <span class="va">v.names.transmit</span>,
-  <span class="va">timevar.name</span>,
-  <span class="va">idvar.name</span>,
-  <span class="va">drop.transmit</span>,
-  <span class="va">direction</span>,
-  <span class="va">sep</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">reShapeDS</span><span class="op">(</span></span>
+<span>  <span class="va">data.name</span>,</span>
+<span>  <span class="va">varying.transmit</span>,</span>
+<span>  <span class="va">v.names.transmit</span>,</span>
+<span>  <span class="va">timevar.name</span>,</span>
+<span>  <span class="va">idvar.name</span>,</span>
+<span>  <span class="va">drop.transmit</span>,</span>
+<span>  <span class="va">direction</span>,</span>
+<span>  <span class="va">sep</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -63,41 +63,58 @@ otherwise grouped data from 'wide' to 'long' format or vice-versa</p>
     <dl><dt>data.name, </dt>
 <dd><p>the name of the data.frame to be reshaped. Specified
 via argument &lt;data.name&gt; of ds.reShape function</p></dd>
+
+
 <dt>varying.transmit, </dt>
 <dd><p>names of sets of variables in the wide format that
 correspond to single variables in long format (typically what may be called
 'time-varying' or 'time-dependent' variables). Specified
 via argument &lt;varying&gt; of ds.reShape function.</p></dd>
+
+
 <dt>v.names.transmit, </dt>
 <dd><p>the names of variables in the long format that correspond
 to multiple variables
 in the wide format - for example, sbp7, sbp11, sbp15 (measured systolic blood pressure
 at ages 7, 11 and 15 years). Specified
 via argument &lt;v.names&gt; of ds.reShape function</p></dd>
+
+
 <dt>timevar.name, </dt>
 <dd><p>the variable in long format that differentiates multiple records
 from the same group or individual. Specified
 via argument &lt;timevar.name&gt; of ds.reShape function</p></dd>
+
+
 <dt>idvar.name, </dt>
 <dd><p>names of one or more variables in long format that identify
 multiple records from
 the same group/individual. This/these variable(s) may also be present in wide format.
 Specified via argument &lt;idvar.name&gt; of ds.reShape function</p></dd>
+
+
 <dt>drop.transmit, </dt>
 <dd><p>a vector of names of variables to drop before reshaping. Specified
 via argument &lt;drop&gt; of ds.reShape function</p></dd>
+
+
 <dt>direction, </dt>
 <dd><p>a character string, partially matched to either "wide" to reshape from
 long to wide format, or "long" to reshape from wide to long format. Specified
 via argument &lt;direction&gt; of ds.reShape function</p></dd>
+
+
 <dt>sep, </dt>
 <dd><p>a character vector of length 1, indicating a separating character in the variable
 names in the wide format. Specified
 via argument &lt;sep&gt; of ds.reShape function</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a reshaped data.frame converted from long to wide format or from wide to
+    
+
+<p>a reshaped data.frame converted from long to wide format or from wide to
 long format which is written to the serverside and given the name provided as the
 &lt;newobj&gt; argument of ds.reShape or 'newObject' if no name is specified.
 In addition, two validity messages are returned to the clientside
@@ -129,7 +146,7 @@ measurements in separate records. The reshaping can be in either direction</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dsBase</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.0</span>
       </span>
     </div>
 
@@ -44,42 +44,59 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">densityGridDS</span><span class="op">(</span>
-  <span class="va">xvect</span>,
-  <span class="va">yvect</span>,
-  limits <span class="op">=</span> <span class="cn">FALSE</span>,
-  x.min <span class="op">=</span> <span class="cn">NULL</span>,
-  x.max <span class="op">=</span> <span class="cn">NULL</span>,
-  y.min <span class="op">=</span> <span class="cn">NULL</span>,
-  y.max <span class="op">=</span> <span class="cn">NULL</span>,
-  numints <span class="op">=</span> <span class="fl">20</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">densityGridDS</span><span class="op">(</span></span>
+<span>  <span class="va">xvect</span>,</span>
+<span>  <span class="va">yvect</span>,</span>
+<span>  limits <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  x.min <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  x.max <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  y.min <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  y.max <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  numints <span class="op">=</span> <span class="fl">20</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>xvect</dt>
 <dd><p>a numerical vector</p></dd>
+
+
 <dt>yvect</dt>
 <dd><p>a numerical vector</p></dd>
+
+
 <dt>limits</dt>
 <dd><p>a logical expression for whether or not limits of the density grid are defined by
 a user. If <code>limits</code> is set to "FALSE", min and max of xvect and yvect are used as a range.
 If <code>limits</code> is set to "TRUE", limits defined by x.min, x.max, y.min and y.max are used.</p></dd>
+
+
 <dt>x.min</dt>
 <dd><p>a minimum value for the x axis of the grid density object, if needed</p></dd>
+
+
 <dt>x.max</dt>
 <dd><p>a maximum value for the x axis of the grid density object, if needed</p></dd>
+
+
 <dt>y.min</dt>
 <dd><p>a minimum value for the y axis of the grid density object, if needed</p></dd>
+
+
 <dt>y.max</dt>
 <dd><p>a maximum value for the y axis of the grid density object, if needed</p></dd>
+
+
 <dt>numints</dt>
 <dd><p>a number of intervals for the grid density object, by default is 20</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a grid density matrix</p>
+    
+
+<p>a grid density matrix</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -103,7 +120,7 @@ counts in table cells) are turn to 0.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

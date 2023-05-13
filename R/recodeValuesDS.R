@@ -31,11 +31,11 @@
 recodeValuesDS <- function(var.name.text=NULL, values2replace.text=NULL, new.values.text=NULL, missing=NULL){
   
   # Check Permissive Privacy Control Level.
-  checkPermissivePrivacyControlLevel()
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana'))
   
   #############################################################
   #MODULE 1: CAPTURE THE used nfilter SETTINGS
-  thr <- listDisclosureSettingsDS()	
+  thr <- dsBase::listDisclosureSettingsDS()	
   nfilter.subset <- as.numeric(thr$nfilter.subset)
   nfilter.stringShort <- as.numeric(thr$nfilter.stringShort)
   #############################################################
@@ -128,15 +128,15 @@ recodeValuesDS <- function(var.name.text=NULL, values2replace.text=NULL, new.val
   ########################################################################
   
   if((difference.non.NA.lengths < nfilter.subset) && (difference.non.NA.lengths > 0)){
-    studysideWarning1 <- "Warning: DataSHIELD monitors every session for potentially disclosive analytic requests."
-    studysideWarning2 <- "The analysis you just submitted has generated a recoded variable in which the number of non-missing"
-    studysideWarning3 <- "elements differs - but only very slightly - from the original variable. This is most likely to be"
-    studysideWarning4 <- "an innocent consequence of your recoding needs. However, it could in theory be one step"
-    studysideWarning5 <- "in a difference-based attack aimed at identifying individuals. This analytic request has"
-    studysideWarning6 <- "therefore been highlighted in the session log file. Please be reassured, if you do not try"
+    studysideWarning1 <- "Warning: DataSHIELD monitors every session for potentially disclosive analytic requests. "
+    studysideWarning2 <- "The analysis you just submitted has generated a recoded variable in which the number of non-missing "
+    studysideWarning3 <- "elements differs - but only very slightly - from the original variable. This is most likely to be "
+    studysideWarning4 <- "an innocent consequence of your recoding needs. However, it could in theory be one step "
+    studysideWarning5 <- "in a difference-based attack aimed at identifying individuals. This analytic request has "
+    studysideWarning6 <- "therefore been highlighted in the session log file. Please be reassured, if you do not try "
     studysideWarning7 <- "to identify individuals this will cause you no difficulty. However, if you do plan a "
-    studysideWarning8 <- "malicious attempt to identify individuals by differencing, this will become obvious in the"
-    studysideWarning9 <- "session log and you will be sanctioned. Possible consequences include loss of future access"
+    studysideWarning8 <- "malicious attempt to identify individuals by differencing, this will become obvious in the "
+    studysideWarning9 <- "session log and you will be sanctioned. Possible consequences include loss of future access "
     studysideWarning10 <- "to DataSHIELD and/or legal penalties."
     return.message <- list(studysideWarning1, studysideWarning2, studysideWarning3, studysideWarning4,
                            studysideWarning5, studysideWarning6, studysideWarning7, studysideWarning8,
@@ -145,7 +145,7 @@ recodeValuesDS <- function(var.name.text=NULL, values2replace.text=NULL, new.val
   }
   
   # Convert characters "NA" to values NA if any
-  var.recoded <- dplyr::na_if(var.recoded,"NA")
+  var.recoded[which(var.recoded == "NA")] <- NA
   
   return(var.recoded)
 

@@ -59,11 +59,11 @@
 dataFrameSubsetDS2<-function(df.name=NULL,V1.name=NULL, V2.name=NULL, Boolean.operator.n=NULL,keep.cols=NULL, rm.cols=NULL, keep.NAs=NULL){
    
   # Check Permissive Privacy Control Level.
-  checkPermissivePrivacyControlLevel()
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana'))
    
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
-thr <- listDisclosureSettingsDS()                                       #
+thr <- dsBase::listDisclosureSettingsDS()                               #
 #nfilter.tab<-as.numeric(thr$nfilter.tab)                               #
 #nfilter.glm<-as.numeric(thr$nfilter.glm)                               #
 nfilter.subset<-as.numeric(thr$nfilter.subset)                          #

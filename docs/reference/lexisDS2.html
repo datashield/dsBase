@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dsBase</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.0</span>
       </span>
     </div>
 
@@ -44,16 +44,16 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">lexisDS2</span><span class="op">(</span>
-  datatext <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">intervalWidth</span>,
-  <span class="va">maxmaxtime</span>,
-  <span class="va">idCol</span>,
-  <span class="va">entryCol</span>,
-  <span class="va">exitCol</span>,
-  <span class="va">statusCol</span>,
-  vartext <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">lexisDS2</span><span class="op">(</span></span>
+<span>  datatext <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">intervalWidth</span>,</span>
+<span>  <span class="va">maxmaxtime</span>,</span>
+<span>  <span class="va">idCol</span>,</span>
+<span>  <span class="va">entryCol</span>,</span>
+<span>  <span class="va">exitCol</span>,</span>
+<span>  <span class="va">statusCol</span>,</span>
+<span>  vartext <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -61,30 +61,45 @@
     <dl><dt>datatext</dt>
 <dd><p>a clientside provided character string specifying the data.frame
 holding the data set to be expanded</p></dd>
+
+
 <dt>intervalWidth</dt>
 <dd><p>a clientside generated character string specifying the width
 of the survival epochs in the
 expanded data</p></dd>
+
+
 <dt>maxmaxtime</dt>
 <dd><p>a clientside generated object specifying the maximum follow up
 time in any of the sources</p></dd>
+
+
 <dt>idCol</dt>
 <dd><p>a clientside generated character string specifying the variable
 holding the IDs of indivuals in the data set to be expanded</p></dd>
+
+
 <dt>entryCol</dt>
 <dd><p>a clientside specified character string identifying the variable
 holding the time that each individual starts follow up</p></dd>
+
+
 <dt>exitCol</dt>
 <dd><p>a clientside specified character string identifying the variable
 holding the time that each individual ends follow up (is censored or fails)</p></dd>
+
+
 <dt>statusCol</dt>
 <dd><p>a clientside specified character string identifying the variable
 holding the final censoring status (failed/censored)</p></dd>
+
+
 <dt>vartext</dt>
 <dd><p>is a clientside provided vector of character strings denoting the
 column names of additional variables to include in the 
 final expanded table. If the 'variables' argument is not set (is null) but the
 'data' argument is set the full data.frame will be expanded and carried forward</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -115,7 +130,7 @@ For more details see the extensive header for ds.lexis.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

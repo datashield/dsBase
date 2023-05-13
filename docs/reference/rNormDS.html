@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dsBase</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.0</span>
       </span>
     </div>
 
@@ -44,7 +44,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">rNormDS</span><span class="op">(</span><span class="va">n</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span>, force.output.to.k.decimal.places <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">rNormDS</span><span class="op">(</span><span class="va">n</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span>, force.output.to.k.decimal.places <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -52,16 +52,22 @@
     <dl><dt>n</dt>
 <dd><p>length of the pseudorandom number vector to be generated
 as specified by the argument &lt;samp.size&gt; in the function ds.rNorm</p></dd>
+
+
 <dt>mean</dt>
 <dd><p>this specifies the mean of the pseudorandom number vector
 to be generated as specified by the argument &lt;mean&gt; in the
 function ds.rNorm. May be a scalar or a vector allowing the mean
 to vary from observation to observation.</p></dd>
+
+
 <dt>sd</dt>
 <dd><p>this specifies the standard deviation of the pseudorandom
 number vector to be generated as specified by the argument &lt;sd&gt; in the
 function ds.rNorm May be a scalar or a vector allowing the sd
 to vary from observation to observation.</p></dd>
+
+
 <dt>force.output.to.k.decimal.places</dt>
 <dd><p>scalar integer. Forces the output random
 number vector to have k decimal places. If 0 rounds it coerces
@@ -69,10 +75,13 @@ decimal random number output to integer, a k in range 1-8 forces output to
 have k decimal places. If k = 9, no rounding occurs of native output.
 Default=9. Value specified by &lt;force.output.to.k.decimal.places&gt; argument
 in ds.rNorm</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Writes the pseudorandom number vector with the characteristics specified
+    
+
+<p>Writes the pseudorandom number vector with the characteristics specified
 in the function call as a new serverside vector on the data source on which
 it has been called. Also returns key information to the clientside:
 the random seed as specified by you in each
@@ -105,7 +114,7 @@ the function rnorm() in native R and its arguments are the same.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

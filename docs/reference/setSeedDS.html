@@ -20,7 +20,7 @@ the pseudorandom number generator in a data source"><!-- mathjax --><script src=
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dsBase</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.0</span>
       </span>
     </div>
 
@@ -49,7 +49,7 @@ the pseudorandom number generator in a data source</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">setSeedDS</span><span class="op">(</span>seedtext <span class="op">=</span> <span class="cn">NULL</span>, kind <span class="op">=</span> <span class="cn">NULL</span>, normal.kind <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">setSeedDS</span><span class="op">(</span>seedtext <span class="op">=</span> <span class="cn">NULL</span>, kind <span class="op">=</span> <span class="cn">NULL</span>, normal.kind <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -61,14 +61,21 @@ into character format. This is done by the clientside functions themselves
 and does not require the DataSHIELD user to do anything. Please see the
 help for these clientside functions, and in particular, the information
 for the argument &lt;seed.as.integer&gt; for more details.</p></dd>
+
+
 <dt>kind</dt>
 <dd><p>see help for set.seed() function in native R</p></dd>
+
+
 <dt>normal.kind</dt>
 <dd><p>see help for set.seed() function in native R</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Sets the values of the vector of integers of length 626 known as
+    
+
+<p>Sets the values of the vector of integers of length 626 known as
 .Random.seed on each data source that is the true current state of the
 random seed in each source.</p>
     </div>
@@ -110,7 +117,7 @@ theoretical work with random number generators it is likely that the</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

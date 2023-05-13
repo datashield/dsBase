@@ -26,7 +26,7 @@ boxPlotGG_data_TreatmentDS <- function(table, variables, group = NULL, group2 = 
       data <- table[, c(variables)]
     }
     else{
-      if(class(table[[group]]) != "factor"){
+      if(! any(c("factor") %in% class(table[[group]]))) {
         stop("Grouping variable must be of class factor")
       }
       data <- table[, c(variables, group)]
@@ -34,7 +34,7 @@ boxPlotGG_data_TreatmentDS <- function(table, variables, group = NULL, group2 = 
     
   }
   else{
-    if(class(table[[group]]) != "factor" | class(table[[group2]]) != "factor"){
+    if((! any(c("factor") %in% class(table[[group]]))) | (! any(c("factor") %in% class(table[[group2]])))){
       stop("Grouping variable must be of class factor")
     }
     data <- table[, c(variables, group, group2)]

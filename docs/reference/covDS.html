@@ -18,7 +18,7 @@ variables (i.e. the scalar product of each two vectors)."><!-- mathjax --><scrip
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dsBase</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.0</span>
       </span>
     </div>
 
@@ -46,7 +46,7 @@ variables (i.e. the scalar product of each two vectors).</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">covDS</span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span>, use <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">covDS</span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span>, use <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -54,8 +54,12 @@ variables (i.e. the scalar product of each two vectors).</p>
     <dl><dt>x</dt>
 <dd><p>a character, the name of a vector, matrix or dataframe of variable(s) for which the covariance(s) and the
 correlation(s) is (are) going to calculated for.</p></dd>
+
+
 <dt>y</dt>
 <dd><p>NULL (default) or the name of a vector, matrix or dataframe with compatible dimensions to x.</p></dd>
+
+
 <dt>use</dt>
 <dd><p>a character string giving a method for computing covariances in the presence of missing values.
 This must be one of the strings "casewise.complete" or "pairwise.complete". If <code>use</code> is set to
@@ -63,10 +67,13 @@ This must be one of the strings "casewise.complete" or "pairwise.complete". If <
 calculations of the sums. If <code>use</code> is set to 'pairwise.complete' (which is the default case set on the client-side),
 then the sums of products are computed for each two variables using only the complete pairs of observations on the
 two variables.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a list that includes a matrix with elements the sum of products between each two variables, a matrix with
+    
+
+<p>a list that includes a matrix with elements the sum of products between each two variables, a matrix with
 elements the sum of the values of each variable, a matrix with elements the number of complete cases in each
 pair of variables, a list with the number of missing values in each variable separately (columnwise) and the number
 of missing values casewise or pairwise depending on the arqument <code>use</code>, and an error message which indicates
@@ -98,7 +105,7 @@ variables</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

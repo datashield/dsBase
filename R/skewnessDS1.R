@@ -15,7 +15,7 @@ skewnessDS1 <- function(x, method){
 
   #############################################################
   # MODULE 1: CAPTURE THE nfilter SETTINGS
-  thr <- listDisclosureSettingsDS()
+  thr <- dsBase::listDisclosureSettingsDS()
   nfilter.tab <- as.numeric(thr$nfilter.tab)
   #############################################################
   

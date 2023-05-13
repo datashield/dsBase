@@ -48,11 +48,11 @@ dmtC2SDS <- function(dfdata.mat.transmit, inout.object.transmit, from, nrows.tra
                              colnames.transmit,colclass.transmit, byrow){
 
     # Check Permissive Privacy Control Level.
-    checkPermissivePrivacyControlLevel()
+    dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'avocado'))
 
 #########################################################################
 # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
-#thr<-dsBetaTest::listDisclosureSettingsDS()                            #
+#thr<-dsBase::listDisclosureSettingsDS()                                #
 #nfilter.tab<-as.numeric(thr$nfilter.tab)                               #
 #nfilter.glm<-as.numeric(thr$nfilter.glm)                               #
 #nfilter.subset<-as.numeric(thr$nfilter.subset)                         #

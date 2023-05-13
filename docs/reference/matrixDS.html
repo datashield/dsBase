@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dsBase</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.0</span>
       </span>
     </div>
 
@@ -44,7 +44,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">matrixDS</span><span class="op">(</span><span class="va">mdata.transmit</span>, <span class="va">from</span>, <span class="va">nrows.transmit</span>, <span class="va">ncols.transmit</span>, <span class="va">byrow</span>, <span class="va">dimnames</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">matrixDS</span><span class="op">(</span><span class="va">mdata.transmit</span>, <span class="va">from</span>, <span class="va">nrows.transmit</span>, <span class="va">ncols.transmit</span>, <span class="va">byrow</span>, <span class="va">dimnames</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -52,29 +52,42 @@
     <dl><dt>mdata.transmit</dt>
 <dd><p>specifies the elements of the matrix to be created. Fully
 specified by &lt;mdata&gt; argument of ds.matrix</p></dd>
+
+
 <dt>from</dt>
 <dd><p>a character string specifying the source and nature of &lt;mdata&gt;.
 Fully specified by &lt;from&gt; argument of ds.matrix</p></dd>
+
+
 <dt>nrows.transmit</dt>
 <dd><p>specifies the number of rows in the matrix to be created.
 Fully specified by &lt;nrows.scalar&gt; argument of ds.matrix</p></dd>
+
+
 <dt>ncols.transmit</dt>
 <dd><p>specifies the number of columns in the matrix to be created.
 Fully specified by &lt;ncols.scalar&gt; argument of ds.matrix</p></dd>
+
+
 <dt>byrow</dt>
 <dd><p>a logical value specifying whether, when &lt;mdata&gt; is a vector,
 the matrix created should be filled row by row or
 column by column.
 Fully specified by &lt;byrow&gt; argument of ds.matrix</p></dd>
+
+
 <dt>dimnames</dt>
 <dd><p>A dimnames attribute for the matrix: NULL or a list of length 2 giving
 the row and column names respectively. An empty list is treated as NULL,
 and a list of length one as row names only.
 Fully specified by &lt;dimnames&gt; argument of ds.matrix</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Output is the matrix A written
+    
+
+<p>Output is the matrix A written
 to the serverside. For more details see help for ds.matrix</p>
     </div>
     <div id="details">
@@ -100,7 +113,7 @@ and assigns the values of all its elements based on the &lt;mdata&gt; argument</
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
