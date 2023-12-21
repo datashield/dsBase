@@ -18,14 +18,15 @@ context("miceDS::smk::setup")
 # Tests
 #
 
+context("miceDS::smk")
 test_that("miceDS", {
   
     load(file = 'data_files/CNSIM/CNSIM1.rda')
     D <- study1
-    
+
     res <- miceDS(data='D', m=1, maxit=5, method=NULL, post=NULL, predictorMatrix=NULL, seed=NA,
                   ncol.pred.mat=NULL, newobj_mids='mids_object', newobj_df='impSet')
-    
+
     expect_equal(class(res), "list")
     expect_length(res, 3)
     expect_true("character" %in% class(res$method))
