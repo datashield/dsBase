@@ -19,6 +19,8 @@ Imports:
     gamlss.dist,
     mice,
     childsds
+Suggests:
+    testthat
 AggregateMethods:
     asFactorDS1,
     asListDS,
@@ -194,5 +196,5 @@ Options:
     default.nfilter.noise=0.25,
     default.nfilter.levels.density=0.33,
     default.nfilter.levels.max=40
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.0
 Encoding: UTF-8
