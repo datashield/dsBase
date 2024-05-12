@@ -31,7 +31,7 @@ set.standard.disclosure.settings()
 #    expect_equal(class(res), "list")
 #    expect_length(res, 5)
 #
-#    if (base::getRversion() < 4.0)
+#    if (base::getRversion() < '4.0.0')
 #    {
 #        expect_length(class(res$sums.of.products), 1)
 #        expect_true("matrix" %in% class(res$sums.of.products))
@@ -49,7 +49,7 @@ set.standard.disclosure.settings()
 #    expect_equal(res$sums.of.products[3], 140.0)
 #    expect_equal(res$sums.of.products[4], 140.0)
 #
-#    if (base::getRversion() < 4.0)
+#    if (base::getRversion() < '4.0.0')
 #    {
 #        expect_length(class(res$sums), 1)
 #        expect_true("matrix" %in% class(res$sums))
@@ -67,7 +67,7 @@ set.standard.disclosure.settings()
 #    expect_equal(res$sums[3], 28.0)
 #    expect_equal(res$sums[4], 28.0)
 #
-#    if (base::getRversion() < 4.0)
+#    if (base::getRversion() < '4.0.0')
 #    {
 #        expect_length(class(res$complete.counts), 1)
 #        expect_true("matrix" %in% class(res$complete.counts))
@@ -88,7 +88,7 @@ set.standard.disclosure.settings()
 #    expect_equal(class(res$na.counts), "list")
 #    expect_length(res$na.counts, 2)
 #
-#    if (base::getRversion() < 4.0)
+#    if (base::getRversion() < '4.0.0')
 #    {
 #        expect_length(class(res$sums.of.squares), 1)
 #        expect_true("matrix" %in% class(res$sums.of.squares))
@@ -117,7 +117,7 @@ set.standard.disclosure.settings()
 #    expect_equal(class(res), "list")
 #    expect_length(res, 5)
 #
-#    if (base::getRversion() < 4.0)
+#    if (base::getRversion() < '4.0.0')
 #    {
 #        expect_length(class(res$sums.of.products), 1)
 #        expect_true("matrix" %in% class(res$sums.of.products))
@@ -135,7 +135,7 @@ set.standard.disclosure.settings()
 #    expect_equal(res$sums.of.products[3], 56.0)
 #    expect_equal(res$sums.of.products[4], 140.0)
 #
-#    if (base::getRversion() < 4.0)
+#    if (base::getRversion() < '4.0.0')
 #    {
 #        expect_length(class(res$sums), 1)
 #        expect_true("matrix" %in% class(res$sums))
@@ -153,7 +153,7 @@ set.standard.disclosure.settings()
 #    expect_equal(res$sums[3], 28.0)
 #    expect_equal(res$sums[4], 28.0)
 #
-#    if (base::getRversion() < 4.0)
+#    if (base::getRversion() < '4.0.0')
 #    {
 #        expect_length(class(res$complete.counts), 1)
 #        expect_true("matrix" %in% class(res$complete.counts))
@@ -174,7 +174,7 @@ set.standard.disclosure.settings()
 #    expect_equal(class(res$na.counts), "list")
 #    expect_length(res$na.counts, 2)
 #
-#    if (base::getRversion() < 4.0)
+#    if (base::getRversion() < '4.0.0')
 #    {
 #        expect_length(class(res$sums.of.squares), 1)
 #        expect_true("matrix" %in% class(res$sums.of.squares))
@@ -203,7 +203,7 @@ set.standard.disclosure.settings()
 #    expect_equal(class(res), "list")
 #    expect_length(res, 5)
 #
-#    if (base::getRversion() < 4.0)
+#    if (base::getRversion() < '4.0.0')
 #    {
 #        expect_length(class(res$sums.of.products), 1)
 #        expect_true("matrix" %in% class(res$sums.of.products))
@@ -221,7 +221,7 @@ set.standard.disclosure.settings()
 #    expect_equal(res$sums.of.products[3], 140.8)
 #    expect_equal(res$sums.of.products[4], 141.06)
 #
-#    if (base::getRversion() < 4.0)
+#    if (base::getRversion() < '4.0.0')
 #    {
 #        expect_length(class(res$sums), 1)
 #        expect_true("matrix" %in% class(res$sums))
@@ -240,7 +240,7 @@ set.standard.disclosure.settings()
 #    expect_equal(res$sums[3], 28.1)
 #    expect_equal(res$sums[4], 28.2)
 #
-#    if (base::getRversion() < 4.0)
+#    if (base::getRversion() < '4.0.0')
 #    {
 #        expect_length(class(res$complete.counts), 1)
 #        expect_true("matrix" %in% class(res$complete.counts))
@@ -261,7 +261,7 @@ set.standard.disclosure.settings()
 #    expect_equal(class(res$na.counts), "list")
 #    expect_length(res$na.counts, 2)
 #
-#    if (base::getRversion() < 4.0)
+#    if (base::getRversion() < '4.0.0')
 #    {
 #        expect_length(class(res$sums.of.squares), 1)
 #        expect_true("matrix" %in% class(res$sums.of.squares))
@@ -291,7 +291,7 @@ set.standard.disclosure.settings()
 #    expect_equal(class(res), "list")
 #    expect_length(res, 5)
 #
-#    if (base::getRversion() < 4.0)
+#    if (base::getRversion() < '4.0.0')
 #    {
 #        expect_length(class(res$sums.of.products), 1)
 #        expect_true("matrix" %in% class(res$sums.of.products))
@@ -309,7 +309,7 @@ set.standard.disclosure.settings()
 #    expect_equal(res$sums.of.products[3], 58.0)
 #    expect_equal(res$sums.of.products[4], 75.0)
 #
-#    if (base::getRversion() < 4.0)
+#    if (base::getRversion() < '4.0.0')
 #    {
 #        expect_length(class(res$sums), 1)
 #        expect_true("matrix" %in% class(res$sums))
@@ -327,7 +327,7 @@ set.standard.disclosure.settings()
 #    expect_equal(res$sums[3], 10.0)
 #    expect_equal(res$sums[4], 15.0)
 #
-#    if (base::getRversion() < 4.0)
+#    if (base::getRversion() < '4.0.0')
 #    {
 #        expect_length(class(res$complete.counts), 1)
 #        expect_true("matrix" %in% class(res$complete.counts))
@@ -348,7 +348,7 @@ set.standard.disclosure.settings()
 #    expect_equal(class(res$na.counts), "list")
 #    expect_length(res$na.counts, 2)
 #
-#    if (base::getRversion() < 4.0)
+#    if (base::getRversion() < '4.0.0')
 #    {
 #        expect_length(class(res$sums.of.squares), 1)
 #        expect_true("matrix" %in% class(res$sums.of.squares))
@@ -379,7 +379,7 @@ test_that("simple corDS, casewise, full", {
     expect_equal(class(res), "list")
     expect_length(res, 5)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(class(res$sums.of.products), 1)
         expect_true("matrix" %in% class(res$sums.of.products))
@@ -397,7 +397,7 @@ test_that("simple corDS, casewise, full", {
     expect_equal(res$sums.of.products[3], 140.0)
     expect_equal(res$sums.of.products[4], 140.0)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(class(res$sums), 1)
         expect_true("matrix" %in% class(res$sums))
@@ -415,7 +415,7 @@ test_that("simple corDS, casewise, full", {
     expect_equal(res$sums[3], 28.0)
     expect_equal(res$sums[4], 28.0)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(class(res$complete.counts), 1)
         expect_true("matrix" %in% class(res$complete.counts))
@@ -436,7 +436,7 @@ test_that("simple corDS, casewise, full", {
     expect_equal(class(res$na.counts), "list")
     expect_length(res$na.counts, 2)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(class(res$sums.of.squares), 1)
         expect_true("matrix" %in% class(res$sums.of.squares))
@@ -466,7 +466,7 @@ test_that("simple corDS, casewise, neg. full", {
     expect_equal(class(res), "list")
     expect_length(res, 5)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(class(res$sums.of.products), 1)
         expect_true("matrix" %in% class(res$sums.of.products))
@@ -484,7 +484,7 @@ test_that("simple corDS, casewise, neg. full", {
     expect_equal(res$sums.of.products[3], 56.0)
     expect_equal(res$sums.of.products[4], 140.0)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(class(res$sums), 1)
         expect_true("matrix" %in% class(res$sums))
@@ -502,7 +502,7 @@ test_that("simple corDS, casewise, neg. full", {
     expect_equal(res$sums[3], 28.0)
     expect_equal(res$sums[4], 28.0)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(class(res$complete.counts), 1)
         expect_true("matrix" %in% class(res$complete.counts))
@@ -523,7 +523,7 @@ test_that("simple corDS, casewise, neg. full", {
     expect_equal(class(res$na.counts), "list")
     expect_length(res$na.counts, 2)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(class(res$sums.of.squares), 1)
         expect_true("matrix" %in% class(res$sums.of.squares))
@@ -553,7 +553,7 @@ test_that("simple corDS, casewise, some", {
     expect_equal(class(res), "list")
     expect_length(res, 5)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(class(res$sums.of.products), 1)
         expect_true("matrix" %in% class(res$sums.of.products))
@@ -571,7 +571,7 @@ test_that("simple corDS, casewise, some", {
     expect_equal(res$sums.of.products[3], 140.8)
     expect_equal(res$sums.of.products[4], 141.06)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(class(res$sums), 1)
         expect_true("matrix" %in% class(res$sums))
@@ -589,7 +589,7 @@ test_that("simple corDS, casewise, some", {
     expect_equal(res$sums[3], 28.1)
     expect_equal(res$sums[4], 28.2)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(class(res$complete.counts), 1)
         expect_true("matrix" %in% class(res$complete.counts))
@@ -610,7 +610,7 @@ test_that("simple corDS, casewise, some", {
     expect_equal(class(res$na.counts), "list")
     expect_length(res$na.counts, 2)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(class(res$sums.of.squares), 1)
         expect_true("matrix" %in% class(res$sums.of.squares))
@@ -641,7 +641,7 @@ test_that("simple corDS, casewise, some", {
     expect_equal(class(res), "list")
     expect_length(res, 5)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(class(res$sums.of.products), 1)
         expect_true("matrix" %in% class(res$sums.of.products))
@@ -659,7 +659,7 @@ test_that("simple corDS, casewise, some", {
     expect_equal(res$sums.of.products[3], 58.0)
     expect_equal(res$sums.of.products[4], 58.0)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(class(res$sums), 1)
         expect_true("matrix" %in% class(res$sums))
@@ -677,7 +677,7 @@ test_that("simple corDS, casewise, some", {
     expect_equal(res$sums[3], 10.0)
     expect_equal(res$sums[4], 10.0)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(class(res$complete.counts), 1)
         expect_true("matrix" %in% class(res$complete.counts))
@@ -698,7 +698,7 @@ test_that("simple corDS, casewise, some", {
     expect_equal(class(res$na.counts), "list")
     expect_length(res$na.counts, 2)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(class(res$sums.of.squares), 1)
         expect_true("matrix" %in% class(res$sums.of.squares))
