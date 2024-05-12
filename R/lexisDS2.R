@@ -129,7 +129,7 @@ lexisDS2 <- function(datatext=NULL, intervalWidth, maxmaxtime, idCol, entryCol, 
   
   
   #intervalWidth IS A SINGLE VALUE
-  if(is.null(intervalWidth)||any(is.na(intervalWidth))||any(intervalWidth==0)){
+  if(any(is.null(intervalWidth))||any(is.na(intervalWidth))||any(intervalWidth==0)){
     return("A VALID NON-ZERO intervalWidth ARGUMENT MUST BE SPECIFIED") 
   }
   
