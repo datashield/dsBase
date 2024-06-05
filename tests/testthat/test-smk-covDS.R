@@ -31,7 +31,7 @@ test_that("numeric covDS, casewise.complete", {
 
     res.sums.of.products.class <- class(res$sums.of.products)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(res.sums.of.products.class, 1)
         expect_true("matrix" %in% res.sums.of.products.class)
@@ -51,7 +51,7 @@ test_that("numeric covDS, casewise.complete", {
 
     res.sums.class <- class(res$sums)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(res.sums.class, 1)
         expect_true("matrix" %in% res.sums.class)
@@ -69,7 +69,7 @@ test_that("numeric covDS, casewise.complete", {
 
     res.complete.counts.class <- class(res$complete.counts)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(res.complete.counts.class, 1)
         expect_true("matrix" %in% res.complete.counts.class)
@@ -134,7 +134,7 @@ test_that("numeric covDS, pairwise.complete", {
 
     res.sums.of.products.class <- class(res$sums.of.products)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(res.sums.of.products.class, 1)
         expect_true("matrix" %in% res.sums.of.products.class)
@@ -154,7 +154,7 @@ test_that("numeric covDS, pairwise.complete", {
 
     res.sums.class <- class(res$sums)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(res.sums.class, 1)
         expect_true("matrix" %in% res.sums.class)
@@ -174,7 +174,7 @@ test_that("numeric covDS, pairwise.complete", {
 
     res.complete.counts.class <- class(res$complete.counts)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(res.complete.counts.class, 1)
         expect_true("matrix" %in% res.complete.counts.class)
