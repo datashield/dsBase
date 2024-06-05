@@ -11,7 +11,7 @@ varDS(xvect)
 }
 \value{
 a list, with the sum of the input variable, the sum of squares of the input variable,
-the number of missing values, the number of valid values, the number of total lenght of the
+the number of missing values, the number of valid values, the number of total length of the
 variable, and a study message indicating whether the number of valid is less than the
 disclosure threshold
 }
