@@ -2,20 +2,20 @@
 #' @description Extracts the diagonal vector from a square matrix A or
 #' creates a diagonal matrix A based on a vector or a scalar value and
 #' writes the output to the serverside
-#' @details For details see help for function {ds.matrixDiag}.
+#' @details For details see help for function \code{ds.matrixDiag}.
 #' @param x1.transmit identifies the input matrix or vector. Fully
-#' specified by <x1> argument of {ds.matrixDiag}. For more details
-#' see help for {ds.matrixDiag}.
+#' specified by <x1> argument of \code{ds.matrixDiag}. For more details
+#' see help for \code{ds.matrixDiag}.
 #' @param aim a character string specifying what behaviour is required
-#' of the function. Fully specified by <aim> argument of {ds.matrixDiag}.
-#' For more details see help for {ds.matrixDiag}.
+#' of the function. Fully specified by <aim> argument of \code{ds.matrixDiag}.
+#' For more details see help for \code{ds.matrixDiag}.
 #' @param nrows.transmit a scalar value forcing the number of rows and
 #' columns in an output matrix.Fully specified by <nrows.scalar>
-#' argument of {ds.matrixDiag}.
-#' For more details see help for {ds.matrixDiag}.
+#' argument of \code{ds.matrixDiag}.
+#' For more details see help for \code{ds.matrixDiag}.
 #' @return Output is the matrix or vector specified by the <newobj> argument
 #' (or default name diag_<x1>) which is written to the serverside.
-#' For more details see help for {ds.matrixDiag}.
+#' For more details see help for \code{ds.matrixDiag}.
 #' @author Paul Burton for DataSHIELD Development Team
 #' @export
 matrixDiagDS <- function(x1.transmit,aim,nrows.transmit){

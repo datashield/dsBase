@@ -11,17 +11,17 @@ rbindDS(x.names.transmit = NULL, colnames.transmit = NULL)
 representing the names of the elemental
 components to be combined converted into a transmittable
 format. This argument is fully specified by the <x> argument
-of {ds.rbind}}
+of \code{ds.rbind}}
 
 \item{colnames.transmit}{This is NULL or a vector of character
 strings representing forced column names for the output object
 converted into a transmittable format. This argument is fully
 specified by the <force.colnames> argument
-of {ds.cbind}.}
+of \code{ds.cbind}.}
 }
 \value{
 the object specified by the <newobj> argument
-of {ds.rbind}(or default name <rbind.out>)
+of \code{ds.rbind}(or default name <rbind.out>)
 which is written to the serverside. As well as writing the output object as <newobj>
 on the serverside, two validity messages are returned
 indicating whether <newobj> has been created in each data source and if so whether
@@ -29,7 +29,7 @@ it is in a valid form. If its form is not valid in at least one study - e.g. bec
 a disclosure trap was tripped and creation of the full output object was blocked -
 ds.cbind() also returns any studysideMessages that can explain the error in creating
 the full output object. As well as appearing on the screen at run time,if you wish to
-see the relevant studysideMessages at a later date you can use the {ds.message}
+see the relevant studysideMessages at a later date you can use the \code{ds.message}
 function. If you type ds.message("<newobj>") it will print out the relevant
 studysideMessage from any datasource in which there was an error in creating <newobj>
 and a studysideMessage was saved. If there was no error and <newobj> was created
@@ -45,7 +45,7 @@ and combines them by row to produce a matrix.
 A sequence of vector, matrix or data-frame arguments
 is combined row by row to produce a matrix
 which is written to the serverside. For more details see
-help for {ds.rbind} and the native R function {rbind}.
+help for \code{ds.rbind} and the native R function \code{rbind}.
 }
 \author{
 Paul Burton for DataSHIELD Development Team
