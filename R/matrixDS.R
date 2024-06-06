@@ -1,6 +1,6 @@
 #' @title matrixDS assign function called by ds.matrix
 #' @description Creates a matrix A on the serverside
-#' @details Similar to the {matrix()} function in native R. Creates a matrix
+#' @details Similar to the \code{matrix()} function in native R. Creates a matrix
 #' with dimensions specified by <nrows.scalar> and <ncols.scalar> arguments
 #' and assigns the values of all its elements based on the <mdata> argument
 #' @param mdata.transmit specifies the elements of the matrix to be created. Fully

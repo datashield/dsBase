@@ -9,14 +9,14 @@ matrixDimnamesDS(M1.name = NULL, dimnames)
 \arguments{
 \item{M1.name}{Specifies the name of the serverside matrix to which
 dimnames are to be added. Fully specified by <M1> argument of
-function {ds.matrixDimnames}. For more details
-see help for {ds.matrixDimnames}.}
+function \code{ds.matrixDimnames}. For more details
+see help for \code{ds.matrixDimnames}.}
 
 \item{dimnames}{A dimnames attribute for the matrix: NULL or a list of
 length 2 giving the row and column names respectively.
 Fully specified by <dimnames> argument of
-function {ds.matrixDimnames}. For more details
-see help for {ds.matrixDimnames}.}
+function \code{ds.matrixDimnames}. For more details
+see help for \code{ds.matrixDimnames}.}
 }
 \value{
 Output is the serverside matrix specified by the <newobj> argument
@@ -29,9 +29,9 @@ a matrix on the serverside.
 }
 \details{
 Adds dimnames (row names, column names or both) to
-a matrix on the serverside. Similar to the {dimnames} function
+a matrix on the serverside. Similar to the \code{dimnames} function
 in native R. For more details see help for
-function {ds.matrixDimnames}
+function \code{ds.matrixDimnames}
 }
 \author{
 Paul Burton for DataSHIELD Development Team

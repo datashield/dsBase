@@ -4,7 +4,7 @@
 #' @details The function generates subsets if the input of 'subsetByClassDS' is a factor vector.
 #' @param xvect a vector of type factor.
 #' @param xname the name of the vector.
-#' @param nfilter the minimum number observation (i.e. rows) that are allowed.
+#' @param filter the minimum number observation (i.e. rows) that are allowed.
 #' @return a list which contains the subsets.
 #' @keywords internal
 #' @author Gaye, A.

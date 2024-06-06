@@ -10,18 +10,18 @@ asMatrixDS(x.name)
 \item{x.name}{the name of the input object to be coerced to class
 matrix. Must be specified in inverted commas. But this argument is
 usually specified directly by <x.name> argument of the clientside function
-{ds.asMatrix}}
+\code{ds.asMatrix}}
 }
 \value{
 the object specified by the <newobj> argument (or its default name
 <x.name>.mat) which is written to the serverside. For further
-details see help on the clientside function {ds.asMatrix}
+details see help on the clientside function \code{ds.asMatrix}
 }
 \description{
-this function is based on the native R function {as.matrix}
+this function is based on the native R function \code{as.matrix}
 }
 \details{
-See help for function {as.matrix} in native R
+See help for function \code{as.matrix} in native R
 }
 \author{
 Amadou Gaye, Paul Burton for DataSHIELD Development Team

@@ -2,12 +2,12 @@
 #' @description An assign function which
 #' creates a repetitive sequence by repeating
 #' an identified scalar, or specified elements of a vector
-#' or list. This is analogous to the {rep} function in native R.
+#' or list. This is analogous to the \code{rep} function in native R.
 #' The sequence is written as a new object to the serverside
 #' @details Further details can be found in the help details
 #' for on ds.rep and the following aspects of the help for
-#' the function {rep} in native R also apply (as explained
-#' in more detail with exceptions identified in help for {ds.rep}):
+#' the function \code{rep} in native R also apply (as explained
+#' in more detail with exceptions identified in help for \code{ds.rep}):
 #'
 #' In addition a Details from R help for <rep>:
 #' 
@@ -31,47 +31,47 @@
 #' for each.
 
 #' @param x1.transmit This argument determines the input scalar, vector or list.
-#' for behaviour see help for {ds.rep} and "details from native R
+#' for behaviour see help for \code{ds.rep} and "details from native R
 #' help for <rep>" (see above). This parameter is usually fully defined by
-#' the argument <x1> in the call to {ds.rep} that itself calls {repDS}.
+#' the argument <x1> in the call to \code{ds.rep} that itself calls \code{repDS}.
 #' @param times.transmit This argument determines the number of replications
 #' and the pattern of these replications of the input scalar/vector to
 #' construct the output repetitive sequence.
-#' For behaviour see help for {ds.rep} and "details from native R
+#' For behaviour see help for \code{ds.rep} and "details from native R
 #' help for <rep>" (see above). This parameter is usually fully defined by
-#' the argument <times> in the call to {ds.rep} that itself calls {repDS}.
+#' the argument <times> in the call to \code{ds.rep} that itself calls \code{repDS}.
 #' @param length.out.transmit This argument fixes the length of
 #' the output repetive sequence vector
-#' For behaviour see help for {ds.rep} and "details from native R
+#' For behaviour see help for \code{ds.rep} and "details from native R
 #' help for <rep>" (see above). This parameter is usually fully defined by
-#' the argument <length.out> in the call to {ds.rep} that itself calls {repDS}.
+#' the argument <length.out> in the call to \code{ds.rep} that itself calls \code{repDS}.
 #' @param each.transmit This argument specifies the number of replications
 #' of individual elements rather than replications of the full sequence.
-#' For behaviour see help for {ds.rep} and "details from native R
+#' For behaviour see help for \code{ds.rep} and "details from native R
 #' help for <rep>" (see above). This parameter is usually fully defined by
-#' the argument <each> in the call to {ds.rep} that itself calls {repDS}.
+#' the argument <each> in the call to \code{ds.rep} that itself calls \code{repDS}.
 #' @param x1.includes.characters Boolean parameter determining
 #' whether to coerce the final output sequence to numeric. Defaults
 #' to FALSE and output is coerced to numeric.
-#' For detailed behaviour see help for {ds.rep}.
+#' For detailed behaviour see help for \code{ds.rep}.
 #' This parameter is usually fully defined by
-#' the argument <x1.includes.characters> in the call to {ds.rep} that
-#' itself calls {repDS}.
+#' the argument <x1.includes.characters> in the call to \code{ds.rep} that
+#' itself calls \code{repDS}.
 #' @param source.x1 This defines the source of the scalar or vector defined
 #' by the <x1> argument. Four character strings are allowed:
 #' "clientside" or "c" and serverside or "s".
-#' For behaviour see help for {ds.rep} and "details from native R
+#' For behaviour see help for \code{ds.rep} and "details from native R
 #' help for <rep>" (see above). This parameter is usually fully defined by
-#' the argument <source.x1> in the call to {ds.rep} that itself calls {repDS}.
+#' the argument <source.x1> in the call to \code{ds.rep} that itself calls \code{repDS}.
 #' @param source.times see "param source.x1"
 #' This parameter is usually fully defined by
-#' the argument <source.times> in the call to {ds.rep} that itself calls {repDS}.
+#' the argument <source.times> in the call to \code{ds.rep} that itself calls \code{repDS}.
 #' @param source.length.out see "param source.x1"
 #' This parameter is usually fully defined by
-#' the argument <source.length.out> in the call to {ds.rep} that itself calls {repDS}.
+#' the argument <source.length.out> in the call to \code{ds.rep} that itself calls \code{repDS}.
 #' @param source.each see "param source.x1"
 #' This parameter is usually fully defined by
-#' the argument <source.each> in the call to {ds.rep} that itself calls {repDS}.
+#' the argument <source.each> in the call to \code{ds.rep} that itself calls \code{repDS}.
 #' @return the vector containing the specified repetitive sequence
 #' and write to the output object defined by the <newobj> argument
 #' (or default name seq.vect) which is written to the serverside in 
@@ -81,7 +81,7 @@
 #' a disclosure trap was tripped and creation of the full output object was blocked -
 #' ds.matrixDiag also returns any studysideMessages that can explain the error in creating
 #' the full output object. As well as appearing on the screen at run time,if you wish to
-#' see the relevant studysideMessages at a later date you can use the {ds.message}
+#' see the relevant studysideMessages at a later date you can use the \code{ds.message}
 #' function. If you type ds.message("newobj") it will print out the relevant
 #' studysideMessage from any datasource in which there was an error in creating <newobj>
 #' and a studysideMessage was saved. If there was no error and <newobj> was created

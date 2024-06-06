@@ -9,7 +9,7 @@
 #' index the variable to be summarized. Specified via argument <INDEX.names>
 #' of \code{ds.tapply.assign} function
 #' @param FUN.name, the name of one of the allowable summarizing functions to be applied.
-#' Specified via argument <FUN.name> of {ds.tapply.assign} function.
+#' Specified via argument <FUN.name> of \code{ds.tapply.assign} function.
 #' @return an array of the summarized values created by the \code{tapplyDS.assign} function. This
 #' array is written as a newobj on the serverside. It has the same number of dimensions as INDEX.
 #' @author Paul Burton, Demetris Avraam for DataSHIELD Development Team
