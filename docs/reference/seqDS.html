@@ -3,7 +3,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dsBase</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.4.0.9000</span>
       </span>
     </div>
 
@@ -29,13 +29,13 @@
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>seqDS a serverside assign function called by ds.seq</h1>
-    
+
     <div class="hidden name"><code>seqDS.Rd</code></div>
     </div>
 
@@ -55,37 +55,39 @@
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>FROM.value.char</dt>
+
+
+<dl><dt id="arg-from-value-char">FROM.value.char<a class="anchor" aria-label="anchor" href="#arg-from-value-char"></a></dt>
 <dd><p>the starting value for the sequence expressed as an integer
-or real number with a decimal point but 
+or real number with a decimal point but
 in character form. Fully specified by &lt;FROM.value.char&gt; argument
 of <code>ds.seq</code>.</p></dd>
 
 
-<dt>TO.value.char</dt>
+<dt id="arg-to-value-char">TO.value.char<a class="anchor" aria-label="anchor" href="#arg-to-value-char"></a></dt>
 <dd><p>the terminal value for the sequence expressed as an integer
-or real number with a decimal point but 
+or real number with a decimal point but
 in character form. Fully specified by &lt;TO.value.char&gt; argument
 of <code>ds.seq</code>.</p></dd>
 
 
-<dt>BY.value.char</dt>
+<dt id="arg-by-value-char">BY.value.char<a class="anchor" aria-label="anchor" href="#arg-by-value-char"></a></dt>
 <dd><p>the value to increment each step in the sequence
 expressed as an integer
-or real number with a decimal point but 
+or real number with a decimal point but
 in character form. Fully specified by &lt;BY.value.char&gt; argument
 of <code>ds.seq</code>.</p></dd>
 
 
-<dt>LENGTH.OUT.value.char</dt>
+<dt id="arg-length-out-value-char">LENGTH.OUT.value.char<a class="anchor" aria-label="anchor" href="#arg-length-out-value-char"></a></dt>
 <dd><p>length of the sequence at which point
 its extension should be stopped, expressed as an integer
-or real number with a decimal point but 
+or real number with a decimal point but
 in character form. Fully specified by &lt;LENGTH.OUT.value.char&gt; argument
 of <code>ds.seq</code>.</p></dd>
 
 
-<dt>ALONG.WITH.name</dt>
+<dt id="arg-along-with-name">ALONG.WITH.name<a class="anchor" aria-label="anchor" href="#arg-along-with-name"></a></dt>
 <dd><p>For convenience, rather than specifying a value
 for LENGTH.OUT it can often be better to specify a variable name as
 the &lt;ALONG.WITH.name&gt; argument. Fully specified by &lt;ALONG.WITH.name&gt; argument
@@ -94,11 +96,9 @@ of <code>ds.seq</code>.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p>the object specified by the &lt;newobj&gt; argument of
+    <p>the object specified by the &lt;newobj&gt; argument of
 <code>ds.seq</code> (or its default name newObj)
-which is written to the serverside. 
+which is written to the serverside.
 As well as writing the output object as &lt;newobj&gt;
 on the serverside, two validity messages are returned
 indicating whether &lt;newobj&gt; has been created in each data source and if so whether
@@ -106,10 +106,8 @@ it is in a valid form. If its form is not valid in at least one study - e.g. bec
 a disclosure trap was tripped and creation of the full output object was blocked -
 <code>ds.seq()</code> also returns any studysideMessages that can explain the error in creating
 the full output object. As well as appearing on the screen at run time,if you wish to
-see the relevant studysideMessages at a later date you can use the <code>ds.message</code></p>
-
-
-<p>function. If you type ds.message("&lt;newobj&gt;") it will print out the relevant
+see the relevant studysideMessages at a later date you can use the <code>ds.message</code>
+function. If you type ds.message("&lt;newobj&gt;") it will print out the relevant
 studysideMessage from any datasource in which there was an error in creating &lt;newobj&gt;
 and a studysideMessage was saved. If there was no error and &lt;newobj&gt; was created
 without problems no studysideMessage will have been saved and ds.message("&lt;newobj&gt;")
@@ -141,15 +139,15 @@ of arguments etc.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
       </footer></div>
 
-  
 
 
-  
+
+
 
   </body></html>
 
