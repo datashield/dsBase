@@ -11,7 +11,7 @@ subsetByClassHelper1(xvect = NULL, xname = NULL, filter = NULL)
 
 \item{xname}{the name of the vector.}
 
-\item{nfilter}{the minimum number observation (i.e. rows) that are allowed.}
+\item{filter}{the minimum number observation (i.e. rows) that are allowed.}
 }
 \value{
 a list which contains the subsets.

@@ -141,7 +141,7 @@ test_that("simple classDS, matrix", {
     res <- classDS("input")
 
     expect_equal(class(res), "character")
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(res, 1)
         expect_true("matrix" %in% res)
@@ -161,7 +161,7 @@ test_that("simple classDS, data.matrix", {
     res <- classDS("input")
 
     expect_equal(class(res), "character")
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(res, 1)
         expect_true("matrix" %in% res)
