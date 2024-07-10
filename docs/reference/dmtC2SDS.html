@@ -4,7 +4,7 @@ that is equivalent to that same data.frame, matrix or tibble (DMT) on the client
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -18,7 +18,7 @@ that is equivalent to that same data.frame, matrix or tibble (DMT) on the client
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dsBase</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.4.0.9000</span>
       </span>
     </div>
 
@@ -30,13 +30,13 @@ that is equivalent to that same data.frame, matrix or tibble (DMT) on the client
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Copy a clientside data.frame, matrix or tibble (DMT) to the serverside.</h1>
-    
+
     <div class="hidden name"><code>dmtC2SDS.Rd</code></div>
     </div>
 
@@ -60,14 +60,16 @@ that is equivalent to that same data.frame, matrix or tibble (DMT) on the client
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>dfdata.mat.transmit</dt>
+
+
+<dl><dt id="arg-dfdata-mat-transmit">dfdata.mat.transmit<a class="anchor" aria-label="anchor" href="#arg-dfdata-mat-transmit"></a></dt>
 <dd><p>a character string in a format that can pass through
 the DataSHIELD R parser which specifies the name of the DMT
 to be copied from the clientside to the serverside. Value fully specified by
 &lt;dfdata&gt; argument of ds.dmtC2S.</p></dd>
 
 
-<dt>inout.object.transmit</dt>
+<dt id="arg-inout-object-transmit">inout.object.transmit<a class="anchor" aria-label="anchor" href="#arg-inout-object-transmit"></a></dt>
 <dd><p>a character string taking values "DF", "MAT" or "TBL".
 The value of this argument is automatically set by ds.dmtC2S depending on
 whether the clientside DMT is a data.frame, matrix or tibble.
@@ -77,30 +79,30 @@ This is unlikely to always work (some class misspecifications may occur)
 but it works in all the test cases.</p></dd>
 
 
-<dt>from</dt>
+<dt id="arg-from">from<a class="anchor" aria-label="anchor" href="#arg-from"></a></dt>
 <dd><p>a character string specifying the source of &lt;dfdata&gt;.
 Fixed by clientside function as "clientside.matdftbl".</p></dd>
 
 
-<dt>nrows.transmit</dt>
+<dt id="arg-nrows-transmit">nrows.transmit<a class="anchor" aria-label="anchor" href="#arg-nrows-transmit"></a></dt>
 <dd><p>specifies the number of rows in the matrix to be created.
 Fixed by the clientside function as equal to the number of rows in
 the clientside DMT to be transferred.</p></dd>
 
 
-<dt>ncols.transmit</dt>
+<dt id="arg-ncols-transmit">ncols.transmit<a class="anchor" aria-label="anchor" href="#arg-ncols-transmit"></a></dt>
 <dd><p>specifies the number of columns in the matrix to be created.
 Fixed by the clientside function as equal to the number of columns in
 the clientside DMT to be transferred.</p></dd>
 
 
-<dt>colnames.transmit</dt>
+<dt id="arg-colnames-transmit">colnames.transmit<a class="anchor" aria-label="anchor" href="#arg-colnames-transmit"></a></dt>
 <dd><p>a parser-transmissable vector specifying the name of each column
 in the DMT being transferred from clientside to serverside.
 Generated automatically by clientside function from colnames of clientside DMT.</p></dd>
 
 
-<dt>colclass.transmit</dt>
+<dt id="arg-colclass-transmit">colclass.transmit<a class="anchor" aria-label="anchor" href="#arg-colclass-transmit"></a></dt>
 <dd><p>a parser-transmissable vector specifying the class of the
 vector representing each individual column in the DMT to be transferred.
 Generated automatically by clientside function. This allows the transmission of DMTs
@@ -113,7 +115,7 @@ is crucial and the function cannot do what is needed please contact the DataSHIE
 forum  and we can try to remedy the problem.</p></dd>
 
 
-<dt>byrow</dt>
+<dt id="arg-byrow">byrow<a class="anchor" aria-label="anchor" href="#arg-byrow"></a></dt>
 <dd><p>a logical value specifying whether the DMT created on the serverside
 should be filled row by row or column by column. This is fixed by the clientside
 function as FALSE (fill column by column).</p></dd>
@@ -121,9 +123,7 @@ function as FALSE (fill column by column).</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p>the object specified by the &lt;newobj&gt; argument (or default name
+    <p>the object specified by the &lt;newobj&gt; argument (or default name
 "matdftbl.copied.C2S") which is written as a  data.frame, matrix or tibble
 to the serverside.</p>
     </div>
@@ -149,15 +149,15 @@ For more information about how it works see help for ds.dmtC2S</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
       </footer></div>
 
-  
 
 
-  
+
+
 
   </body></html>
 
