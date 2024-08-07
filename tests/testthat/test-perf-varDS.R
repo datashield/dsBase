@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("meanDS::perf::setup")
+context("varDS::perf::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,8 +20,8 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("meanDS::perf::numeric")
-test_that("numeric meanDS - performance", {
+context("varDS::perf::numeric")
+test_that("numeric varDS - performance", {
     input <- c(0.0, 1.0, 2.0, 3.0, 4.0)
 
     .durationSec  <- 30 # seconds
@@ -30,18 +30,18 @@ test_that("numeric meanDS - performance", {
     .current.time <- .start.time
 
     while (difftime(.current.time, .start.time, units = "secs")[[1]] < .durationSec) {
-        meanDS(input)
+        varDS(input)
 
         .count <- .count + 1
         .current.time <- Sys.time()
     }
     expect_true(TRUE)
 
-    print(paste("meanDS::perf::number::0:", format(.count / (difftime(.current.time, .start.time, units = "secs")[[1]]), digits = 8)))
+    print(paste("varDS::perf::number::0:", format(.count / (difftime(.current.time, .start.time, units = "secs")[[1]]), digits = 8)))
 })
 
-context("meanDS::perf::numeric with NA")
-test_that("numeric meanDS, with NA - performance", {
+context("varDS::perf::numeric with NA")
+test_that("numeric varDS, with NA - performance", {
     input <- c(0.0, NA, 2.0, NA, 4.0)
 
     .durationSec  <- 30 # seconds
@@ -50,20 +50,20 @@ test_that("numeric meanDS, with NA - performance", {
     .current.time <- .start.time
 
     while (difftime(.current.time, .start.time, units = "secs")[[1]] < .durationSec) {
-        meanDS(input)
+        varDS(input)
 
         .count <- .count + 1
         .current.time <- Sys.time()
     }
     expect_true(TRUE)
 
-    print(paste("meanDS::perf::numberAndNA::0:", format(.count / (difftime(.current.time, .start.time, units = "secs")[[1]]), digits = 8)))
+    print(paste("varDS::perf::numberAndNA::0:", format(.count / (difftime(.current.time, .start.time, units = "secs")[[1]]), digits = 8)))
 })
 
 #
 # Done
 #
 
-context("meanDS::perf::shutdown")
+context("varDS::perf::shutdown")
 
-context("meanDS::perf::done")
+context("varDS::perf::done")
