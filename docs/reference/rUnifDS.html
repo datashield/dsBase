@@ -3,7 +3,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dsBase</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.1</span>
       </span>
     </div>
 
@@ -29,13 +29,13 @@
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>rUnifDS serverside assign function</h1>
-    
+
     <div class="hidden name"><code>rUnifDS.Rd</code></div>
     </div>
 
@@ -49,26 +49,28 @@
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>n</dt>
+
+
+<dl><dt id="arg-n">n<a class="anchor" aria-label="anchor" href="#arg-n"></a></dt>
 <dd><p>length of the pseudorandom number vector to be generated
 as specified by the argument &lt;samp.size&gt; in the function ds.rUnif</p></dd>
 
 
-<dt>min</dt>
+<dt id="arg-min">min<a class="anchor" aria-label="anchor" href="#arg-min"></a></dt>
 <dd><p>a numeric scalar specifying the minimum of the range across which
 the random numbers will be generated in each source. Specified directly
 by the min argument in ds.rUnif. May be a scalar or a vector allowing the min
 to vary from observation to observation.</p></dd>
 
 
-<dt>max</dt>
+<dt id="arg-max">max<a class="anchor" aria-label="anchor" href="#arg-max"></a></dt>
 <dd><p>a numeric scalar specifying the maximum of the range across which
 the random numbers will be generated in each source. Specified directly
 by the max argument in ds.rUnif. May be a scalar or a vector allowing the min
 to vary from observation to observation.</p></dd>
 
 
-<dt>force.output.to.k.decimal.places</dt>
+<dt id="arg-force-output-to-k-decimal-places">force.output.to.k.decimal.places<a class="anchor" aria-label="anchor" href="#arg-force-output-to-k-decimal-places"></a></dt>
 <dd><p>scalar integer. Forces the output random
 number vector to have k decimal places. If 0 rounds it coerces
 decimal random number output to integer, a k in range 1-8 forces output to
@@ -79,9 +81,7 @@ in ds.rUnif</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p>Writes the pseudorandom number vector with the characteristics specified
+    <p>Writes the pseudorandom number vector with the characteristics specified
 in the function call as a new serverside vector on the data source on which
 it has been called. Also returns key information to the clientside:
 the random seed as specified by you in each
@@ -114,15 +114,15 @@ the function runif() in native R and its arguments are the same.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer></div>
 
-  
 
 
-  
+
+
 
   </body></html>
 
