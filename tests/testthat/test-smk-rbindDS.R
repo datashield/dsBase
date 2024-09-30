@@ -28,7 +28,7 @@ test_that("simple rbindDS", {
     res <- rbindDS(inputs, colnames)
 
     res.class <- class(res)
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(res.class, 1)
         expect_true("matrix" %in% res.class)

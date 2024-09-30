@@ -1,19 +1,19 @@
 #' @title completeCasesDS: an assign function called by ds.completeCases
 #' @description Identifies and strips out all rows of a data.frame,
 #' matrix or vector that contain NAs.
-#' @details In the case of a data.frame or matrix, {completeCasesDS} identifies
+#' @details In the case of a data.frame or matrix, \code{completeCasesDS} identifies
 #' all rows containing one or more NAs and deletes those
 #' rows altogether. Any one variable with NA in a given row will lead
-#' to deletion of the whole row. In the case of a vector, {completeCasesDS}
+#' to deletion of the whole row. In the case of a vector, \code{completeCasesDS}
 #' acts in an equivalent manner but there is no equivalent to a 'row'
 #' and so it simply strips out all observations recorded as NA.
-#' {ds.completeCASES} is analogous to the {complete.cases} function
+#' \code{ds.completeCASES} is analogous to the \code{complete.cases} function
 #' in native R. Limited additional information can therefore be found
 #' under help("complete.cases") in native R.
 #' @param x1.transmit This argument determines the input data.frame,
 #' matrix or vector from which rows with NAs are to be stripped. 
 #' The <x1.transmit> argument is fully specified by the <x1> argument
-#' of the {ds.completeCases} function.
+#' of the \code{ds.completeCases} function.
 #' @return a modified data.frame, matrix or vector from which
 #' all rows containing at least one NA have been deleted. This
 #' modified object is written to the serverside in each source.
@@ -24,7 +24,7 @@
 #' ds.completeCases also returns any studysideMessages that can help
 #' explain the error in creating
 #' the full output object. As well as appearing on the screen at run time,if you wish to
-#' see the relevant studysideMessages at a later date you can use the {ds.message}
+#' see the relevant studysideMessages at a later date you can use the \code{ds.message}
 #' function. If you type ds.message("newobj") it will print out the relevant
 #' studysideMessage from any datasource in which there was an error in creating <newobj>
 #' and a studysideMessage was saved. If there was no error and <newobj> was created
