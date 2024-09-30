@@ -4,7 +4,7 @@ ranking in the client."><!-- mathjax --><script src="https://cdnjs.cloudflare.co
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-reference-topic">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -18,7 +18,7 @@ ranking in the client."><!-- mathjax --><script src="https://cdnjs.cloudflare.co
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">dsBase</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">6.3.1</span>
       </span>
     </div>
 
@@ -30,13 +30,13 @@ ranking in the client."><!-- mathjax --><script src="https://cdnjs.cloudflare.co
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Secure ranking of "V2BR" (vector to be ranked) across all sources</h1>
-    
+
     <div class="hidden name"><code>blackBoxDS.Rd</code></div>
     </div>
 
@@ -51,13 +51,15 @@ ranking in the client.</p>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>input.var.name</dt>
+
+
+<dl><dt id="arg-input-var-name">input.var.name<a class="anchor" aria-label="anchor" href="#arg-input-var-name"></a></dt>
 <dd><p>a character string specifying the name of V2BR. This
 argument is set by the argument with the same name in the clientside function
 ds.ranksSecure</p></dd>
 
 
-<dt>shared.seedval</dt>
+<dt id="arg-shared-seedval">shared.seedval<a class="anchor" aria-label="anchor" href="#arg-shared-seedval"></a></dt>
 <dd><p>a pseudorandom number seed that ensures that the
 processes generating the order and parameterisation of the encryption
 algorithms are the same in each study. This argument is set by the argument
@@ -67,16 +69,16 @@ way, please see the associated document entitled "secure.global.ranking.docx"
 and the header file for ds.ranksSecure.</p></dd>
 
 
-<dt>synth.real.ratio</dt>
+<dt id="arg-synth-real-ratio">synth.real.ratio<a class="anchor" aria-label="anchor" href="#arg-synth-real-ratio"></a></dt>
 <dd><p>an integer value representing
-the ratio of synthetic (pseudo-data) values to the real number of 
+the ratio of synthetic (pseudo-data) values to the real number of
 values in V2BR. This argument is set by the argument with the same name
 in the clientside function ds.ranksSecure. For more details, please see the
 associated document entitled "secure.global.ranking.docx" and the header file
 for ds.ranksSecure.</p></dd>
 
 
-<dt>NA.manage</dt>
+<dt id="arg-na-manage">NA.manage<a class="anchor" aria-label="anchor" href="#arg-na-manage"></a></dt>
 <dd><p>character string indicating how missing values (NAs) in
 V2BR should be managed. It takes three possible values: "NA.delete",
 "NA.low","NA.hi". This argument is set by the argument with the same name
@@ -87,9 +89,7 @@ for ds.ranksSecure.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    
-
-<p>writes a data frame object entitled blackbox.output.df to the
+    <p>writes a data frame object entitled blackbox.output.df to the
 serverside. In each study this contains the encrypted
 "combined real+pseudo data vector" and a range of other key components
 from the first stage of the ranking procedure. For more details see the
@@ -97,7 +97,7 @@ associated document entitled "secure.global.ranking.docx"</p>
     </div>
     <div id="details">
     <h2>Details</h2>
-    <p>Severside assign function called by ds.ranksSecure. 
+    <p>Severside assign function called by ds.ranksSecure.
 Creates pseudo-data by using the real distribution of values in V2BR
 to create a large number of synthetic data with a similar distribution to
 the values in V2BR but with a slightly broader distribution at both ends
@@ -134,15 +134,15 @@ see the header file for ds.ranksSecure</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer></div>
 
-  
 
 
-  
+
+
 
   </body></html>
 
