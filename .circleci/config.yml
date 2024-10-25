@@ -1,0 +1,34 @@
+# Copyright (c) 2024 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
+
+version: 2.1
+
+jobs:
+  dsbase:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layout_caching: true
+      - run: |
+          echo "Building"
+          echo "  Repo Name: " $CIRCLE_PROJECT_REPONAME
+          echo "  Branch:    " $CIRCLE_BRANCH
+          echo "  Tag:       " $CIRCLE_TAG
+      - run: |
+          sudo R -q -e "install.packages('RANN', dependencies=TRUE)"
+          sudo R -q -e "install.packages('stringr', dependencies=TRUE)"
+          sudo R -q -e "install.packages('lme4', dependencies=TRUE)"
+          sudo R -q -e "install.packages('dplyr', dependencies=TRUE)"
+          sudo R -q -e "install.packages('reshape2', dependencies=TRUE)"
+          sudo R -q -e "install.packages('polycor', dependencies=TRUE)"
+          sudo R -q -e "install.packages('splines', dependencies=TRUE)"
+          sudo R -q -e "install.packages('gamlss', dependencies=TRUE)"
+          sudo R -q -e "install.packages('gamlss.dist', dependencies=TRUE)"
+          sudo R -q -e "install.packages('mice', dependencies=TRUE)"
+          sudo R -q -e "install.packages('childsds', dependencies=TRUE)"
+workflows:
+  build:
+    jobs:
+      - dsbase
