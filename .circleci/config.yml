@@ -16,18 +16,23 @@ jobs:
           echo "  Repo Name: " $CIRCLE_PROJECT_REPONAME
           echo "  Branch:    " $CIRCLE_BRANCH
           echo "  Tag:       " $CIRCLE_TAG
-      - run: |
-          sudo R -q -e "install.packages('RANN', dependencies=TRUE)"
-          sudo R -q -e "install.packages('stringr', dependencies=TRUE)"
-          sudo R -q -e "install.packages('lme4', dependencies=TRUE)"
-          sudo R -q -e "install.packages('dplyr', dependencies=TRUE)"
-          sudo R -q -e "install.packages('reshape2', dependencies=TRUE)"
-          sudo R -q -e "install.packages('polycor', dependencies=TRUE)"
-          sudo R -q -e "install.packages('splines', dependencies=TRUE)"
-          sudo R -q -e "install.packages('gamlss', dependencies=TRUE)"
-          sudo R -q -e "install.packages('gamlss.dist', dependencies=TRUE)"
-          sudo R -q -e "install.packages('mice', dependencies=TRUE)"
-          sudo R -q -e "install.packages('childsds', dependencies=TRUE)"
+      - run:
+          command: |
+              apt-get update
+              apt-get install r-base-core cmake
+      - run:
+          command: |
+              Rscript -e "install.packages('RANN', dependencies=TRUE)"
+              Rscript -e "install.packages('stringr', dependencies=TRUE)"
+              Rscript -e "install.packages('lme4', dependencies=TRUE)"
+              Rscript -e "install.packages('dplyr', dependencies=TRUE)"
+              Rscript -e "install.packages('reshape2', dependencies=TRUE)"
+              Rscript -e "install.packages('polycor', dependencies=TRUE)"
+              Rscript -e "install.packages('splines', dependencies=TRUE)"
+              Rscript -e "install.packages('gamlss', dependencies=TRUE)"
+              Rscript -e "install.packages('gamlss.dist', dependencies=TRUE)"
+              Rscript -e "install.packages('mice', dependencies=TRUE)"
+              Rscript -e "install.packages('childsds', dependencies=TRUE)"
 workflows:
   build:
     jobs:
