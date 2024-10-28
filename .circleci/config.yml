@@ -22,17 +22,17 @@ jobs:
               sudo apt-get install r-base-core cmake
       - run:
           command: |
-              Rscript -e "install.packages('RANN', dependencies=TRUE)"
-              Rscript -e "install.packages('stringr', dependencies=TRUE)"
-              Rscript -e "install.packages('lme4', dependencies=TRUE)"
-              Rscript -e "install.packages('dplyr', dependencies=TRUE)"
-              Rscript -e "install.packages('reshape2', dependencies=TRUE)"
-              Rscript -e "install.packages('polycor', dependencies=TRUE)"
-              Rscript -e "install.packages('splines', dependencies=TRUE)"
-              Rscript -e "install.packages('gamlss', dependencies=TRUE)"
-              Rscript -e "install.packages('gamlss.dist', dependencies=TRUE)"
-              Rscript -e "install.packages('mice', dependencies=TRUE)"
-              Rscript -e "install.packages('childsds', dependencies=TRUE)"
+              sudo Rscript -e "install.packages('RANN', dependencies=TRUE)"
+              sudo Rscript -e "install.packages('stringr', dependencies=TRUE)"
+              sudo Rscript -e "install.packages('lme4', dependencies=TRUE)"
+              sudo Rscript -e "install.packages('dplyr', dependencies=TRUE)"
+              sudo Rscript -e "install.packages('reshape2', dependencies=TRUE)"
+              sudo Rscript -e "install.packages('polycor', dependencies=TRUE)"
+              sudo Rscript -e "install.packages('splines', dependencies=TRUE)"
+              sudo Rscript -e "install.packages('gamlss', dependencies=TRUE)"
+              sudo Rscript -e "install.packages('gamlss.dist', dependencies=TRUE)"
+              sudo Rscript -e "install.packages('mice', dependencies=TRUE)"
+              sudo Rscript -e "install.packages('childsds', dependencies=TRUE)"
 workflows:
   build:
     jobs:
