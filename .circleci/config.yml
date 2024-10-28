@@ -33,6 +33,9 @@ jobs:
               sudo Rscript -e "install.packages('gamlss.dist', dependencies=TRUE)"
               sudo Rscript -e "install.packages('mice', dependencies=TRUE)"
               sudo Rscript -e "install.packages('childsds', dependencies=TRUE)"
+      - run:
+          command: |
+              sudo Rscript -e "library(covr); codecov()"
 workflows:
   build:
     jobs:
