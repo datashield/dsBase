@@ -33,10 +33,11 @@ jobs:
               sudo Rscript -e "install.packages('gamlss.dist', dependencies=TRUE)"
               sudo Rscript -e "install.packages('mice', dependencies=TRUE)"
               sudo Rscript -e "install.packages('childsds', dependencies=TRUE)"
+              sudo Rscript -e "install.packages('xml2', dependencies=TRUE)"
               sudo Rscript -e "install.packages('covr', dependencies=TRUE)"
       - run:
           command: |
-              sudo Rscript -e "library(covr); covr::codecov()"
+              sudo Rscript -e 'library(covr); covr::codecov(token="$CODECOV_TOKEN")'
 workflows:
   build:
     jobs:
