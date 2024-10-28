@@ -18,8 +18,11 @@ jobs:
           echo "  Tag:       " $CIRCLE_TAG
       - run:
           command: |
-              sudo apt-get update
-              sudo apt-get install r-base-core cmake
+              sudo apt-get update -y
+              sudo apt-get install -y r-base-core cmake
+      - run:
+          command: |
+              sudo apt-get install -y libxml2-dev
       - run:
           command: |
               sudo Rscript -e "install.packages('RANN', dependencies=TRUE)"
