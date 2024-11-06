@@ -161,7 +161,7 @@ jobs:
     # If this step fails still mark as failed, but don't stop the rest of the steps running.    
   - bash: |
 
-      R -q -e "library('devtools'); devtools::check(args = c('--no-examples'))" | tee azure-pipelines_check.Rout
+      R -q -e "library('devtools'); devtools::check(args = c('--no-tests', '--no-examples'))" | tee azure-pipelines_check.Rout
       grep --quiet "^0 errors" azure-pipelines_check.Rout && grep --quiet " 0 warnings" azure-pipelines_check.Rout && grep --quiet " 0 notes" azure-pipelines_check.Rout
 
     workingDirectory: $(Pipeline.Workspace)/dsBase
@@ -179,7 +179,7 @@ jobs:
   - bash: |
 
       # Any of the below makes the tests work.
-      sudo R --verbose -e 'devtools::check()'
+      sudo R --verbose -e 'devtools::reload()'
 
       pwd
       mkdir $(Pipeline.Workspace)/logs
