@@ -7,4 +7,4 @@
 ^data$
 ^docs$
 ^pkgdown$
-^.circleci$
+^\.circleci$
