@@ -18,7 +18,10 @@ Imports:
     gamlss,
     gamlss.dist,
     mice,
-    childsds
+    childsds, 
+    purrr, 
+    tibble, 
+    tidyselect
 Suggests:
     testthat
 AggregateMethods:
