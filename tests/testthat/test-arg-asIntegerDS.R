@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2024 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -7,17 +7,26 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #-------------------------------------------------------------------------------
+
 #
-# Datashield test suite set up
+# Set up
 #
 
-context("setup - start")
+context("asIntegerDS::arg::setup")
 
-library(RANN)
-library(stringr)
-library(lme4)
+#
+# Tests
+#
 
-source("disclosure/set_disclosure_settings.R")
-source("random/set_random_seed_settings.R")
+context("asIntegerDS::arg::direct input numeric")
+test_that("simple asIntegerDS non-input", {
+    expect_error(asIntegerDS(1.0), "ERROR: x.name must be specified as a character string", fixed = TRUE)
+})
 
-context("setup - done")
+#
+# Done
+#
+
+context("asIntegerDS::arg::shutdown")
+
+context("asIntegerDS::arg::done")
