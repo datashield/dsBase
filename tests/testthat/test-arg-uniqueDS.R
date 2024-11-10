@@ -31,8 +31,7 @@ test_that("simple uniqueDS for NULL", {
 
 context("uniqueDS::arg::not character value")
 test_that("simple uniqueDS for NULL", {
-  input <- 17
-  expect_error(uniqueDS("input"), "Variable's name isn't a single character vector", fixed = TRUE)
+  expect_error(uniqueDS(17), "Variable's name isn't a single character vector", fixed = TRUE)
 })
 
 context("uniqueDS::arg::missing value")
