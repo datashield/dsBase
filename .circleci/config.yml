@@ -40,7 +40,7 @@ jobs:
               sudo Rscript -e "install.packages('covr', dependencies=TRUE)"
       - run:
           command: |
-              sudo Rscript -e 'library(covr); covr::codecov(token = "'$CODECOV_TOKEN'")'
+              sudo Rscript -e 'library(covr); covr::codecov(token = "'$CODECOV_TOKEN'", quiet=FALSE)'
 workflows:
   build:
     jobs:
