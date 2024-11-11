@@ -6,7 +6,7 @@ Author: DataSHIELD Developers <datashield@liverpool.ac.uk>
 Maintainer: DataSHIELD Developers <datashield@liverpool.ac.uk>
 License: GPL-3
 Depends: 
-    R (>= 4.4.0)
+    R (>= 4.0.0)
 Imports:
     RANN,
     stringr,
