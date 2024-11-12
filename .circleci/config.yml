@@ -38,6 +38,9 @@ jobs:
               sudo Rscript -e "install.packages('childsds', dependencies=TRUE)"
               sudo Rscript -e "install.packages('xml2', dependencies=TRUE)"
               sudo Rscript -e "install.packages('covr', dependencies=TRUE)"
+              sudo Rscript -e "install.packages('devtools', dependencies=TRUE)"
+              sudo Rscript -e "install.packages('DSI', dependencies=TRUE)"
+              sudo Rscript -e "install.packages('DSLite', dependencies=TRUE)"
       - run:
           command: |
               sudo Rscript -e 'library(covr); covr::codecov(token = "'$CODECOV_TOKEN'")'
