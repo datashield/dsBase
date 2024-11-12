@@ -61,7 +61,7 @@ schedules:
 
 jobs:
 - job: run_devtools_check
-  timeoutInMinutes: 90
+  timeoutInMinutes: 120
   pool:
     vmImage: ubuntu-24.04
 
