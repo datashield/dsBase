@@ -112,6 +112,36 @@ test_that("simple isValidDS, logical vector", {
     expect_equal(res, TRUE)
 })
 
+test_that("simple isValidDS, factor", {
+    input <- as.factor("a")
+
+    res <- isValidDS(input)
+
+    expect_equal(class(res), "logical")
+    expect_length(res, 1)
+    expect_equal(res, FALSE)
+})
+
+test_that("simple isValidDS, factor vector", {
+    input <- as.factor(c("a", "a", "a", "a", "b", "b", "b", "b"))
+
+    res <- isValidDS(input)
+
+    expect_equal(class(res), "logical")
+    expect_length(res, 1)
+    expect_equal(res, TRUE)
+})
+
+test_that("simple isValidDS, factor vector", {
+    input <- as.factor(c("a", "b", "c", "d", "e", "f"))
+
+    res <- isValidDS(input)
+
+    expect_equal(class(res), "logical")
+    expect_length(res, 1)
+    expect_equal(res, FALSE)
+})
+
 context("isValidDS::smk::data.frame")
 test_that("simple isValidDS, data.frame", {
     input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))

@@ -19,19 +19,19 @@ tableDS.assign(
 \arguments{
 \item{rvar.transmit}{is a character string (in inverted commas) specifiying the
 name of the variable defining the rows in all of the 2 dimensional
-tables that form the output. Fully specified by <rvar> argument in {ds.table}.
-For more information see help for {ds.table}}
+tables that form the output. Fully specified by <rvar> argument in \code{ds.table}.
+For more information see help for \code{ds.table}}
 
 \item{cvar.transmit}{is a character string specifiying the
 name of the variable defining the columns in all of the 2 dimensional
-tables that form the output. Fully specified by <cvar> argument in {ds.table}.
-For more information see help for {ds.table}}
+tables that form the output. Fully specified by <cvar> argument in \code{ds.table}.
+For more information see help for \code{ds.table}}
 
 \item{stvar.transmit}{is a character string specifiying the
 name of the variable that indexes the separate two dimensional
 tables in the output if the call specifies a 3 dimensional table.
-Fully specified by <stvar> argument in {ds.table}.
-For more information see help for {ds.table}}
+Fully specified by <stvar> argument in \code{ds.table}.
+For more information see help for \code{ds.table}}
 
 \item{rvar.all.unique.levels.transmit}{is a character string containing all
 unique level in rvar, across the studies, separated by ','.}
@@ -43,24 +43,24 @@ unique level in cvar, across the studies, separated by ','.}
 unique level in stvar, across the studies, separated by ','.}
 
 \item{exclude.transmit}{for information see help on <exclude> argument
-of {ds.table}. Fully specified by <exclude> argument of {ds.table}}
+of \code{ds.table}. Fully specified by <exclude> argument of \code{ds.table}}
 
 \item{useNA.transmit}{for information see help on <useNA> argument
-of {ds.table}. Fully specified by <useNA> argument of {ds.table}}
+of \code{ds.table}. Fully specified by <useNA> argument of \code{ds.table}}
 }
 \value{
-For information see help for {ds.table}
+For information see help for \code{ds.table}
 }
 \description{
 helps creates 1-dimensional, 2-dimensional and 3-dimensional
-tables using the {table} function in native R.
+tables using the \code{table} function in native R.
 }
 \details{
-If the <table.assign> argument of {ds.table} is set to TRUE,
+If the <table.assign> argument of \code{ds.table} is set to TRUE,
 this assign function writes the
-the table requested in the format specified by {ds.table} function
-as an object named by the <newobj> argument of {ds.table}. For more
-information see help for {ds.table} in DataSHIELD and the {table} function
+the table requested in the format specified by \code{ds.table} function
+as an object named by the <newobj> argument of \code{ds.table}. For more
+information see help for \code{ds.table} in DataSHIELD and the \code{table} function
 in native R.
 }
 \author{

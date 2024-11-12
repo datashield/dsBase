@@ -47,22 +47,22 @@
 #' @export
 #'
 miceDS <- function(data=data, m=m, maxit=maxit, method=method, post=post, seed=seed,
-                   predictorMatrix=predictorMatrix, ncol.pred.mat=ncol.pred.mat, 
+                   predictorMatrix=predictorMatrix, ncol.pred.mat=ncol.pred.mat,
                    newobj_mids=newobj_mids, newobj_df=newobj_df){
-  
+
   if(seed %in% c(NA, 'NA')){
     seed <- NA
-  }else{  
+  }else{
     # the study-specific seed for random number generation
     seed <- getOption("datashield.seed")
   }
-  
+
   data <- eval(parse(text=data), envir = parent.frame())
-  
+
   if(!is.null(method)){
     method <- unlist(stringr::str_split(method, pattern=","))
   }
-  
+
   if(!is.null(post)){
     post <- gsub("left_parenthesis", "(", post, fixed = TRUE)
     post <- gsub("right_parenthesis", ")", post, fixed = TRUE)
@@ -73,7 +73,7 @@ miceDS <- function(data=data, m=m, maxit=maxit, method=method, post=post, seed=s
     post <- gsub("comma_symbol", ",", post, fixed = TRUE)
     post <- unlist(stringr::str_split(post, pattern="separ_comma"))
   }
-  
+
   if(!is.null(ncol.pred.mat)){
     predictorMatrix <- as.numeric(unlist(strsplit(predictorMatrix, split=",")))
     if(!all(predictorMatrix %in% 0:1)){
@@ -87,9 +87,9 @@ miceDS <- function(data=data, m=m, maxit=maxit, method=method, post=post, seed=s
   }
 
   # call the mice function to do the imputation
-  imputed <- mice(data=data, m=m, maxit=maxit, method=method, post=post, seed=seed,
+  imputed <- mice::mice(data=data, m=m, maxit=maxit, method=method, post=post, seed=seed,
               predictorMatrix=predictorMatrix)
-  
+
   # save the imputed object
   base::assign(newobj_mids, imputed, envir = parent.frame())
 
@@ -97,10 +97,9 @@ miceDS <- function(data=data, m=m, maxit=maxit, method=method, post=post, seed=s
   for (i in 1:m){
     base::assign(paste0(newobj_df,'.',i), complete(imputed, i), envir = parent.frame())
   }
-  
-  output <- list(method=imputed$method, predictorMatrix=imputed$predictorMatrix, 
+
+  output <- list(method=imputed$method, predictorMatrix=imputed$predictorMatrix,
                  post=imputed$post)
- 
-  return(output) 
-  
-}  
+
+  return(output)
+}

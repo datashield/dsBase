@@ -37,7 +37,7 @@ to the serverside. For more details see help for ds.matrix
 Creates a matrix A on the serverside
 }
 \details{
-Similar to the {matrix()} function in native R. Creates a matrix
+Similar to the \code{matrix()} function in native R. Creates a matrix
 with dimensions specified by <nrows.scalar> and <ncols.scalar> arguments
 and assigns the values of all its elements based on the <mdata> argument
 }

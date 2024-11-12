@@ -7,3 +7,5 @@
 ^data$
 ^docs$
 ^pkgdown$
+^\.circleci$
+^\.circleci/config\.yml$

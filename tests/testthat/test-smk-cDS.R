@@ -20,8 +20,8 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("cDS::smk::numeric")
-test_that("numeric cDS", {
+context("cDS::smk::numeric list")
+test_that("numeric list cDS", {
     input <- list(a=0.0, b=1.0, c=2.0, d=3.0)
 
     res <- cDS(input)
@@ -34,8 +34,8 @@ test_that("numeric cDS", {
     expect_equal(res[[4]], 3.0)
 })
 
-context("cDS::smk::character")
-test_that("character cDS", {
+context("cDS::smk::character list")
+test_that("character list cDS", {
     input <- list(a="0.0", b="1.0", c="2.0", d="3.0")
 
     res <- cDS(input)
@@ -46,6 +46,28 @@ test_that("character cDS", {
     expect_equal(res[[2]], "1.0")
     expect_equal(res[[3]], "2.0")
     expect_equal(res[[4]], "3.0")
+})
+
+context("cDS::smk::numeric list small")
+test_that("single numeric list small cDS", {
+    input <- list(a=0, b=1)
+
+    res <- cDS(input)
+
+    expect_length(res, 2)
+    expect_equal(class(res), "logical")
+    expect_equal(res[[1]], NA)
+    expect_equal(res[[2]], NA)
+})
+
+context("cDS::smk::empty list")
+test_that("empty list cDS", {
+    input <- list()
+
+    res <- cDS(input)
+
+    expect_length(res, 0)
+    expect_equal(class(res), "NULL")
 })
 
 #

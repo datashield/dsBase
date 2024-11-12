@@ -10,18 +10,18 @@ asLogicalDS(x.name)
 \item{x.name}{the name of the input object to be coerced to class
 numeric. Must be specified in inverted commas. But this argument is
 usually specified directly by <x.name> argument of the clientside function
-{ds.aslogical}}
+\code{ds.aslogical}}
 }
 \value{
 the object specified by the <newobj> argument (or its default name
 <x.name>.logic) which is written to the serverside. For further
-details see help on the clientside function {ds.asLogical}
+details see help on the clientside function \code{ds.asLogical}
 }
 \description{
-this function is based on the native R function {as.numeric}
+this function is based on the native R function \code{as.numeric}
 }
 \details{
-See help for function {as.logical} in native R
+See help for function \code{as.logical} in native R
 }
 \author{
 Amadou Gaye, Paul Burton for DataSHIELD Development Team

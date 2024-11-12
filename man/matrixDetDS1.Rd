@@ -23,7 +23,7 @@ the output to the clientside
 }
 \details{
 Calculates the determinant of a square matrix (for additional
-information see help for {det} function in native R). This operation is only
+information see help for \code{det} function in native R). This operation is only
 possible if the number of columns and rows of A are the same.
 }
 \author{
