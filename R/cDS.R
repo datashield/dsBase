@@ -28,7 +28,7 @@ cDS <- function (objs) {
 
   # check if the output is valid and output accordingly
   if(length(x) < nfilter.tab){
-    if(length(x == 0)){
+    if(length(x) == 0){
       x <- c()
     }else{
       x <- rep(NA, length(x))

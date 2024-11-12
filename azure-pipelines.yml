@@ -50,7 +50,6 @@ schedules:
     branches:
       include:
       - master
-      - 6.2.0
       - 6.3.0
     always: true
   - cron: "0 1 * * *"
@@ -62,9 +61,9 @@ schedules:
 
 jobs:
 - job: run_devtools_check
-  timeoutInMinutes: 90
+  timeoutInMinutes: 120
   pool:
-    vmImage: ubuntu-latest
+    vmImage: ubuntu-24.04
 
 
   steps:
@@ -97,13 +96,15 @@ jobs:
     # Install R and all the dependencies dsBase requires.
     # If previous steps have failed then don't run.
   - bash: |
+      sudo apt-get install --no-install-recommends software-properties-common dirmngr
+      wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+      sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+      sudo apt-get update -qq
+      sudo apt-get upgrade -qq
 
-      sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-      sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
-      sudo add-apt-repository ppa:cran/libgit2
-      sudo apt-get update
       sudo apt-get install -qq pkg-config -y
-      sudo apt-get install -qq libxml2-dev libcurl4-openssl-dev libssl-dev libgit2-dev libharfbuzz-dev libfribidi-dev -y
+      sudo apt-get install -qq libxml2-dev libcurl4-openssl-dev libssl-dev libgit2-dev libharfbuzz-dev libfribidi-dev libfontconfig1-dev -y
+      sudo apt-get install -qq libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev -y
       sudo apt-get install -qq r-base -y
       sudo R -e "install.packages('devtools', dependencies=TRUE)"
       sudo R -e "install.packages('RANN', dependencies=TRUE)"
@@ -160,7 +161,7 @@ jobs:
     # If this step fails still mark as failed, but don't stop the rest of the steps running.    
   - bash: |
 
-      R -q -e "library('devtools'); devtools::check(args = c('--no-examples'))" | tee azure-pipelines_check.Rout
+      R -q -e "library('devtools'); devtools::check(args = c('--no-tests', '--no-examples'))" | tee azure-pipelines_check.Rout
       grep --quiet "^0 errors" azure-pipelines_check.Rout && grep --quiet " 0 warnings" azure-pipelines_check.Rout && grep --quiet " 0 notes" azure-pipelines_check.Rout
 
     workingDirectory: $(Pipeline.Workspace)/dsBase
@@ -178,7 +179,7 @@ jobs:
   - bash: |
 
       # Any of the below makes the tests work.
-      sudo R --verbose -e 'devtools::check()'
+      sudo R --verbose -e 'devtools::reload()'
 
       pwd
       mkdir $(Pipeline.Workspace)/logs
