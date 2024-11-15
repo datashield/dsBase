@@ -45,7 +45,12 @@
 <url><loc>/reference/extract.html</loc></url>
 <url><loc>/reference/extractQuantilesDS1.html</loc></url>
 <url><loc>/reference/extractQuantilesDS2.html</loc></url>
+<url><loc>/reference/fixClassDS.html</loc></url>
+<url><loc>/reference/fixColsDS.html</loc></url>
+<url><loc>/reference/fixLevelsDS.html</loc></url>
 <url><loc>/reference/gamlssDS.html</loc></url>
+<url><loc>/reference/getAllLevelsDS.html</loc></url>
+<url><loc>/reference/getClassAllColsDS.html</loc></url>
 <url><loc>/reference/getWGSRDS.html</loc></url>
 <url><loc>/reference/glmDS1.html</loc></url>
 <url><loc>/reference/glmDS2.html</loc></url>
