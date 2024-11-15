@@ -26,8 +26,12 @@ test_that("simple uniqueDS for NULL", {
 context("uniqueDS::arg::null value")
 test_that("simple uniqueDS for NULL", {
     input <- NULL
-
     expect_error(uniqueDS("input"), "Variable can't be NULL", fixed = TRUE)
+})
+
+context("uniqueDS::arg::not character value")
+test_that("simple uniqueDS for NULL", {
+  expect_error(uniqueDS(17), "Variable's name isn't a single character vector", fixed = TRUE)
 })
 
 context("uniqueDS::arg::missing value")
