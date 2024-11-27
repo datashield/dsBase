@@ -154,7 +154,7 @@ test_that("simple testObjExistsDS, matrix", {
     expect_equal(class(res), "list")
     expect_length(res, 2)
     expect_equal(res$test.obj.exists, TRUE)
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(res$test.obj.class, 1)
         expect_true("matrix" %in% res$test.obj.class)
@@ -177,7 +177,7 @@ test_that("simple testObjExistsDS, data.matrix", {
     expect_length(res, 2)
     expect_equal(res$test.obj.exists, TRUE)
 
-    if (base::getRversion() < 4.0)
+    if (base::getRversion() < '4.0.0')
     {
         expect_length(res$test.obj.class, 1)
         expect_true("matrix" %in% res$test.obj.class)

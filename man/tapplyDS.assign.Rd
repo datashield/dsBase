@@ -15,7 +15,7 @@ index the variable to be summarized. Specified via argument <INDEX.names>
 of \code{ds.tapply.assign} function}
 
 \item{FUN.name, }{the name of one of the allowable summarizing functions to be applied.
-Specified via argument <FUN.name> of {ds.tapply.assign} function.}
+Specified via argument <FUN.name> of \code{ds.tapply.assign} function.}
 }
 \value{
 an array of the summarized values created by the \code{tapplyDS.assign} function. This

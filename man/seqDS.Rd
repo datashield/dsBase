@@ -16,42 +16,42 @@ seqDS(
 \item{FROM.value.char}{the starting value for the sequence expressed as an integer
 or real number with a decimal point but 
 in character form. Fully specified by <FROM.value.char> argument
-of {ds.seq}.}
+of \code{ds.seq}.}
 
 \item{TO.value.char}{the terminal value for the sequence expressed as an integer
 or real number with a decimal point but 
 in character form. Fully specified by <TO.value.char> argument
-of {ds.seq}.}
+of \code{ds.seq}.}
 
 \item{BY.value.char}{the value to increment each step in the sequence
 expressed as an integer
 or real number with a decimal point but 
 in character form. Fully specified by <BY.value.char> argument
-of {ds.seq}.}
+of \code{ds.seq}.}
 
 \item{LENGTH.OUT.value.char}{length of the sequence at which point
 its extension should be stopped, expressed as an integer
 or real number with a decimal point but 
 in character form. Fully specified by <LENGTH.OUT.value.char> argument
-of {ds.seq}.}
+of \code{ds.seq}.}
 
 \item{ALONG.WITH.name}{For convenience, rather than specifying a value
 for LENGTH.OUT it can often be better to specify a variable name as
 the <ALONG.WITH.name> argument. Fully specified by <ALONG.WITH.name> argument
-of {ds.seq}.}
+of \code{ds.seq}.}
 }
 \value{
 the object specified by the <newobj> argument of
-{ds.seq} (or its default name newObj)
+\code{ds.seq} (or its default name newObj)
 which is written to the serverside. 
 As well as writing the output object as <newobj>
 on the serverside, two validity messages are returned
 indicating whether <newobj> has been created in each data source and if so whether
 it is in a valid form. If its form is not valid in at least one study - e.g. because
 a disclosure trap was tripped and creation of the full output object was blocked -
-{ds.seq()} also returns any studysideMessages that can explain the error in creating
+\code{ds.seq()} also returns any studysideMessages that can explain the error in creating
 the full output object. As well as appearing on the screen at run time,if you wish to
-see the relevant studysideMessages at a later date you can use the {ds.message}
+see the relevant studysideMessages at a later date you can use the \code{ds.message}
 function. If you type ds.message("<newobj>") it will print out the relevant
 studysideMessage from any datasource in which there was an error in creating <newobj>
 and a studysideMessage was saved. If there was no error and <newobj> was created
@@ -66,7 +66,7 @@ An assign function that uses the native R function seq() to create
 any one of a flexible range of sequence vectors that can then be used to help
 manage and analyse data. As it is an assign function the resultant vector is
 written as a new object into all of the specified data source servers. Please
-see "details" for {ds.seq} for more information about allowable combinations
+see "details" for \code{ds.seq} for more information about allowable combinations
 of arguments etc.
 }
 \author{

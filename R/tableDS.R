@@ -1,24 +1,24 @@
 #' @title tableDS is the first of two serverside aggregate functions
 #' called by ds.table
 #' @description creates 1-dimensional, 2-dimensional and 3-dimensional
-#' tables using the {table} function in native R.
-#' @details this serverside function is the workhorse of {ds.table} - creating
-#' the table requested in the format specified by {ds.table}. For more
-#' information see help for {ds.table} in DataSHIELD and the {table} function
+#' tables using the \code{table} function in native R.
+#' @details this serverside function is the workhorse of \code{ds.table} - creating
+#' the table requested in the format specified by \code{ds.table}. For more
+#' information see help for \code{ds.table} in DataSHIELD and the \code{table} function
 #' in native R.
 #' @param rvar.transmit is a character string (in inverted commas) specifiying the
 #' name of the variable defining the rows in all of the 2 dimensional
-#' tables that form the output. Fully specified by <rvar> argument in {ds.table}.
-#' For more information see help for {ds.table}
+#' tables that form the output. Fully specified by <rvar> argument in \code{ds.table}.
+#' For more information see help for \code{ds.table}
 #' @param cvar.transmit is a character string specifiying the
 #' name of the variable defining the columns in all of the 2 dimensional
-#' tables that form the output. Fully specified by <cvar> argument in {ds.table}.
-#' For more information see help for {ds.table}
+#' tables that form the output. Fully specified by <cvar> argument in \code{ds.table}.
+#' For more information see help for \code{ds.table}
 #' @param stvar.transmit is a character string specifiying the
 #' name of the variable that indexes the separate two dimensional
 #' tables in the output if the call specifies a 3 dimensional table.
-#' Fully specified by <stvar> argument in {ds.table}.
-#' For more information see help for {ds.table}
+#' Fully specified by <stvar> argument in \code{ds.table}.
+#' For more information see help for \code{ds.table}
 #' @param rvar.all.unique.levels.transmit is a character string containing all
 #' unique level in rvar, across the studies, separated by ','.
 #' @param cvar.all.unique.levels.transmit is a character string containing all
@@ -26,12 +26,12 @@
 #' @param stvar.all.unique.levels.transmit is a character string containing all
 #' unique level in stvar, across the studies, separated by ','.
 #' @param exclude.transmit for information see help on <exclude> argument
-#' of {ds.table}. Fully specified by <exclude> argument of {ds.table}
+#' of \code{ds.table}. Fully specified by <exclude> argument of \code{ds.table}
 #' @param useNA.transmit for information see help on <useNA> argument
-#' of {ds.table}. Fully specified by <useNA> argument of {ds.table}
+#' of \code{ds.table}. Fully specified by <useNA> argument of \code{ds.table}
 #' @param force.nfilter.transmit for information see help on <force.nfilter> argument 
-#' of {ds.table}. Fully specified by <force.nfilter> argument of {ds.table}
-#' @return For information see help for {ds.table}
+#' of \code{ds.table}. Fully specified by <force.nfilter> argument of \code{ds.table}
+#' @return For information see help for \code{ds.table}
 #' @author Paul Burton for DataSHIELD Development Team, 13/11/2019
 #' @export
 tableDS<-function(rvar.transmit, cvar.transmit, stvar.transmit, rvar.all.unique.levels.transmit, cvar.all.unique.levels.transmit, 
