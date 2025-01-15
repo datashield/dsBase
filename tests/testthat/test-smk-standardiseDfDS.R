@@ -1,10 +1,18 @@
-library(DSLite)
-library(dsTidyverse)
-library(dsBase)
-library(dsBaseClient)
-library(DSI)
-library(purrr)
-library(dplyr)
+#-------------------------------------------------------------------------------
+# Copyright (c) 2025 University Medical Center Groningen (UCMG), Netherlands. All rights reserved.
+#
+# This program and the accompanying materials
+# are made available under the terms of the GNU Public License v3.0.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#-------------------------------------------------------------------------------
+
+#
+# Set up
+#
+
+context("standardiseDfDS::smk::setup")
 
 df <- create_mixed_dataframe()
 df_list <- create_additional_dataframes(df)
@@ -14,6 +22,7 @@ df_2 <- df_list[[1]]
 df_3 <- df_list[[2]]
 df_4 <- df_list[[3]]
 
+context("standardiseDfDS::smk")
 test_that("getClassAllColsDS returns correct classes", {
   expect_equal(
     getClassAllColsDS("df_1"),
@@ -50,20 +59,20 @@ test_that("fixClassDS sets classes correctly", {
 
 test_that("convert_class calls the correct function", {
 
-result <- .convertClass(c(1, 2, 3), "1")
-expect_true(is.factor(result))
+  result <- .convertClass(c(1, 2, 3), "1")
+  expect_true(is.factor(result))
 
-result <- .convertClass(c(1.5, 2.5, 3.7), "2")
-expect_true(is.integer(result))
+  result <- .convertClass(c(1.5, 2.5, 3.7), "2")
+  expect_true(is.integer(result))
 
-result <- .convertClass(c("1", "2", "3"), "3")
-expect_true(is.numeric(result))
+  result <- .convertClass(c("1", "2", "3"), "3")
+  expect_true(is.numeric(result))
 
-result <- .convertClass(c(1, 2, 3), "4")
-expect_true(is.character(result))
+  result <- .convertClass(c(1, 2, 3), "4")
+  expect_true(is.character(result))
 
-result <- .convertClass(c(0, 1, 0), "5")
-expect_true(is.logical(result))
+  result <- .convertClass(c(0, 1, 0), "5")
+  expect_true(is.logical(result))
 
 })
 
@@ -144,3 +153,11 @@ test_that("fixLevelsDS throws an error for invalid input", {
 
   expect_error(fixLevelsDS("example_df", c("col1", "non_existent_col"), levels))
 })
+
+#
+# Done
+#
+
+context("standardiseDfDS::smk::shutdown")
+
+context("standardiseDfDS::smk::done")

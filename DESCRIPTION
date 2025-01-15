@@ -21,7 +21,9 @@ Imports:
     childsds, 
     purrr, 
     tibble, 
-    tidyselect
+    tidyselect,
+    tidytable,
+    tidyverse
 Suggests:
     testthat
 AggregateMethods:
