@@ -12,38 +12,38 @@ tableDS2(newobj, rvar.transmit, cvar.transmit, stvar.transmit)
 table object to be written to the serverside if <table.assign> is TRUE.
 If no explicit name for the table object is specified, but <table.assign>
 is nevertheless TRUE, the name for the serverside table object defaults
-to 'newObj'. Fully specified by <newobj> argument in {ds.table}.
-For more information see help for {ds.table}}
+to 'newObj'. Fully specified by <newobj> argument in \code{ds.table}.
+For more information see help for \code{ds.table}}
 
 \item{rvar.transmit}{is a character string (in inverted commas) specifiying the
 name of the variable defining the rows in all of the 2 dimensional
-tables that form the output. Fully specified by <rvar> argument in {ds.table}.
-For more information see help for {ds.table}}
+tables that form the output. Fully specified by <rvar> argument in \code{ds.table}.
+For more information see help for \code{ds.table}}
 
 \item{cvar.transmit}{is a character string specifiying the
 name of the variable defining the columns in all of the 2 dimensional
-tables that form the output. Fully specified by <cvar> argument in {ds.table}.
-For more information see help for {ds.table}}
+tables that form the output. Fully specified by <cvar> argument in \code{ds.table}.
+For more information see help for \code{ds.table}}
 
 \item{stvar.transmit}{is a character string specifiying the
 name of the variable that indexes the separate two dimensional
 tables in the output if the call specifies a 3 dimensional table.
-Fully specified by <stvar> argument in {ds.table}.
-For more information see help for {ds.table}}
+Fully specified by <stvar> argument in \code{ds.table}.
+For more information see help for \code{ds.table}}
 }
 \value{
-For information see help for {ds.table}
+For information see help for \code{ds.table}
 }
 \description{
 Helps creates 1-dimensional, 2-dimensional and 3-dimensional
-tables using the {table} function in native R.
+tables using the \code{table} function in native R.
 }
 \details{
-If the <table.assign> argument of {ds.table} is set to TRUE,
+If the <table.assign> argument of \code{ds.table} is set to TRUE,
 this aggregate function returns non-disclosive information about
-the table object written to the serverside by {tableDS.assign}. For more
-information see help for {ds.table}, {tableDS.assign} and {tableDS}
-in DataSHIELD and the {table} function in native R.
+the table object written to the serverside by \code{tableDS.assign}. For more
+information see help for \code{ds.table}, \code{tableDS.assign} and \code{tableDS}
+in DataSHIELD and the \code{table} function in native R.
 }
 \author{
 Paul Burton for DataSHIELD Development Team, 13/11/2019

@@ -2,7 +2,7 @@
 #' @description Calculates the determinant of a square matrix A and returns
 #' the output to the clientside
 #' @details Calculates the determinant of a square matrix (for additional
-#' information see help for {det} function in native R). This operation is only
+#' information see help for \code{det} function in native R). This operation is only
 #' possible if the number of columns and rows of A are the same.
 #' @param M1.name  A character string specifying the name of the matrix for which
 #' determinant to be calculated

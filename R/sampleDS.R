@@ -3,7 +3,7 @@
 #' on the serverside
 #' or - as a special case - randomly permutes a vector, dataframe or matrix.
 #' @details Serverside assign function sampleDS called by clientside
-#' function ds.sample. Based on the native R function {sample()} but deals
+#' function ds.sample. Based on the native R function \code{sample()} but deals
 #' slightly differently with data.frames and matrices. For further details see 
 #' help for ds.sample and native R help for sample().
 #' @param x.transmit Either a character string providing the name for the serverside

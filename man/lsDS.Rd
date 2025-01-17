@@ -17,7 +17,7 @@ fully specified by its corresponding argument in the clientside function.}
 }
 \value{
 a list containing: (1) the name/details of the serverside R environment
-which {ds.ls} has searched; (2) a vector of character strings giving the names of
+which \code{ds.ls} has searched; (2) a vector of character strings giving the names of
 all objects meeting the naming criteria specified by the argument <search.filter> in this
 specified R serverside environment; (3) the nature of the search filter string as it was
 actually applied
@@ -27,15 +27,15 @@ creates a list of the names of all of the objects in
 a specified serverside environment
 }
 \details{
-Serverside aggregate function {lsDS} called by clientside function
-{ds.ls}. When running analyses one may want to know the objects already generated. This 
+Serverside aggregate function \code{lsDS} called by clientside function
+\code{ds.ls}. When running analyses one may want to know the objects already generated. This 
 request is not disclosive as it only returns the names of the objects and not their contents. 
 By default, objects in the current 'active analytic environment' (".GlobalEnv")
 will be displayed. This
 is the environment that contains all of the objects that serverside DataSHIELD 
 is using for the main analysis or has written out to the serverside during the process
 of managing or undertaking the analysis (variables, scalars, matrices, data.frames etc).
-For further details see help for {ds.ls} function and for native R function {ls}
+For further details see help for \code{ds.ls} function and for native R function \code{ls}
 }
 \author{
 Gaye, A (2015). Updated and extended by Paul Burton (2020).

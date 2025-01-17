@@ -14,7 +14,6 @@
 context("setup - start")
 
 library(RANN)
-library(nlme)
 library(stringr)
 library(lme4)
 

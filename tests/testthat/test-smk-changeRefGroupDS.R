@@ -63,7 +63,7 @@ test_that("simple changeRefGroupDS, reorderByRef is TRUE", {
 
     res <- changeRefGroupDS(xf, ref, reorderByRef)
 
-    if (base::getRversion() < 4.1)
+    if (base::getRversion() < '4.1.0')
     {
         expect_equal(class(res), "integer")
         expect_length(res, 6)
