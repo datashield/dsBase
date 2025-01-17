@@ -31,6 +31,6 @@ aucDS <- function(pred=pred, y=y){
   q2 <- 2*AUC^2/(1+AUC)-AUC^2
   se <- sqrt((q0+(n0-1)*q1+(n1-1)*q2)/(n0*n1))
   
-  return(list(AUC=AUC,se=se))
+  return(list(AUC=AUC, se=se))
   
 }

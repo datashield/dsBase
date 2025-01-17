@@ -1,3 +1,4 @@
+#' 
 #' @title asDataMatrixDS a serverside assign function called by ds.asDataMatrix
 #' @description Coerces an R object into a matrix maintaining original
 #' class for all columns in data.frames.
@@ -16,15 +17,16 @@
 #' details see help on the clientside function \code{ds.asDataMatrix}
 #' @author Paul Burton for DataSHIELD Development Team
 #' @export
+#' 
 asDataMatrixDS <- function (x.name){
 
 if(is.character(x.name)){
-	x<-eval(parse(text=x.name), envir = parent.frame())
+	x <- eval(parse(text=x.name), envir = parent.frame())
 
 	}else{
    studysideMessage<-"ERROR: x.name must be specified as a character string"
    stop(studysideMessage, call. = FALSE)
-   }
+  }
 
   output <- data.matrix(x)
 
