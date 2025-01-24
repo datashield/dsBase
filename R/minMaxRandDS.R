@@ -1,3 +1,4 @@
+#' 
 #' @title Secure ranking of "V2BR" (vector to be ranked) across all sources
 #' @description Creates a minimum value that is more negative, and less positive
 #' than any real value in V2BR and a maximum value that is more positive and
@@ -61,9 +62,5 @@ rand.min.max<-c(rand.min,rand.max)
 return(rand.min.max)
 
 }
-#AGGREGATE
+# AGGREGATE
 # minMaxRandDS
-
-  
-
-

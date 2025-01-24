@@ -1,3 +1,4 @@
+#' 
 #' @title tableDS is the first of two serverside aggregate functions
 #' called by ds.table
 #' @description creates 1-dimensional, 2-dimensional and 3-dimensional
@@ -34,153 +35,118 @@
 #' @return For information see help for \code{ds.table}
 #' @author Paul Burton for DataSHIELD Development Team, 13/11/2019
 #' @export
-tableDS<-function(rvar.transmit, cvar.transmit, stvar.transmit, rvar.all.unique.levels.transmit, cvar.all.unique.levels.transmit, 
-                  stvar.all.unique.levels.transmit, exclude.transmit, useNA.transmit, force.nfilter.transmit){
+#' 
+tableDS <- function(rvar.transmit, cvar.transmit, stvar.transmit, rvar.all.unique.levels.transmit, 
+                    cvar.all.unique.levels.transmit, stvar.all.unique.levels.transmit, exclude.transmit, 
+                    useNA.transmit, force.nfilter.transmit){
 
+  # DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS
+  thr <- dsBase::listDisclosureSettingsDS()
+  nfilter.tab <- as.numeric(thr$nfilter.tab)
 
-#########################################################################
-# DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
-thr<-dsBase::listDisclosureSettingsDS()                                 #
-nfilter.tab<-as.numeric(thr$nfilter.tab)                                #
-#nfilter.glm<-as.numeric(thr$nfilter.glm)                               #
-#nfilter.subset<-as.numeric(thr$nfilter.subset)                         #
-#nfilter.string<-as.numeric(thr$nfilter.string)                         #
-#nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)               #
-#nfilter.kNN<-as.numeric(thr$nfilter.kNN)                               #
-#datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)       #
-#########################################################################
-
-#Force higher value of nfilter
-
-
-if(!is.null(force.nfilter.transmit))
-{
-force.nfilter.active<-eval(parse(text=force.nfilter.transmit), envir = parent.frame())
-
-	if(force.nfilter.active<nfilter.tab)
-	{
-	return.message<-paste0("Failed: if force.nfilter is non-null it must be >= to nfilter.tab i.e.",nfilter.tab)  
-	stop(return.message, call. = FALSE)
-	}
-}
-else
-{
-force.nfilter.active<-NULL
-}
-
-if(!is.null(force.nfilter.active)&&!is.na(force.nfilter.active)&&force.nfilter.active>nfilter.tab)
-{
-nfilter.tab<-force.nfilter.active
-}
-
-
-
-#Activate via eval when needed
-#rvar
-  rvar<-eval(parse(text=rvar.transmit), envir = parent.frame())
-  if(!is.factor(rvar))
-  {
-    rvar.all.unique.levels <- unlist(strsplit(rvar.all.unique.levels.transmit,split=","))
-    rvar<-factor(as.factor(rvar), levels=rvar.all.unique.levels)
+  # Force higher value of nfilter
+  if(!is.null(force.nfilter.transmit)){
+    force.nfilter.active <- eval(parse(text=force.nfilter.transmit), envir = parent.frame())
+    if(force.nfilter.active < nfilter.tab){
+    	return.message <- paste0("Failed: if force.nfilter is non-null it must be >= to nfilter.tab i.e.",
+    	                         nfilter.tab)  
+	    stop(return.message, call. = FALSE)
+	  }
   }else{
-    rvar.all.unique.levels <- unlist(strsplit(rvar.all.unique.levels.transmit,split=","))
-    rvar<-factor(rvar, levels=rvar.all.unique.levels)
+    force.nfilter.active <- NULL
   }
-#cvar
-  if(!is.null(cvar.transmit))
-{
-    cvar<-eval(parse(text=cvar.transmit), envir = parent.frame())
-    if(!is.factor(cvar))
-    {
+
+  if(!is.null(force.nfilter.active) && !is.na(force.nfilter.active) && force.nfilter.active>nfilter.tab){
+    nfilter.tab <- force.nfilter.active
+  }
+
+  # Activate via eval when needed
+  
+  # rvar
+  rvar <- eval(parse(text=rvar.transmit), envir = parent.frame())
+  if(!is.factor(rvar)){
+    rvar.all.unique.levels <- unlist(strsplit(rvar.all.unique.levels.transmit, split=","))
+    rvar <- factor(as.factor(rvar), levels=rvar.all.unique.levels)
+  }else{
+    rvar.all.unique.levels <- unlist(strsplit(rvar.all.unique.levels.transmit, split=","))
+    rvar <- factor(rvar, levels=rvar.all.unique.levels)
+  }
+  
+  # cvar
+  if(!is.null(cvar.transmit)){
+    cvar <- eval(parse(text=cvar.transmit), envir = parent.frame())
+    if(!is.factor(cvar)){
       cvar.all.unique.levels <- unlist(strsplit(cvar.all.unique.levels.transmit,split=","))
-      cvar<-factor(as.factor(cvar), levels=cvar.all.unique.levels)
+      cvar <- factor(as.factor(cvar), levels=cvar.all.unique.levels)
     }else{
       cvar.all.unique.levels <- unlist(strsplit(cvar.all.unique.levels.transmit,split=","))
-      cvar<-factor(cvar, levels=cvar.all.unique.levels)
+      cvar <- factor(cvar, levels=cvar.all.unique.levels)
     }
-
-}
-else
-{
-cvar<-NULL
-}
-#stvar
-if(!is.null(stvar.transmit))
-{
-  stvar<-eval(parse(text=stvar.transmit), envir = parent.frame())
-  if(!is.factor(stvar))
-  {
-    stvar.all.unique.levels<- unlist(strsplit(stvar.all.unique.levels.transmit,split=","))
-    stvar<-factor(as.factor(stvar), levels=stvar.all.unique.levels)
   }else{
-    stvar.all.unique.levels<- unlist(strsplit(stvar.all.unique.levels.transmit,split=","))
-    stvar<-factor(stvar, levels=stvar.all.unique.levels)
+    cvar <- NULL
   }
-}
-else
-{
-stvar<-NULL
-}
+  
+  # stvar
+  if(!is.null(stvar.transmit)){
+    stvar <- eval(parse(text=stvar.transmit), envir = parent.frame())
+    if(!is.factor(stvar)){
+      stvar.all.unique.levels <- unlist(strsplit(stvar.all.unique.levels.transmit,split=","))
+      stvar <- factor(as.factor(stvar), levels=stvar.all.unique.levels)
+    }else{
+      stvar.all.unique.levels <- unlist(strsplit(stvar.all.unique.levels.transmit,split=","))
+      stvar <- factor(stvar, levels=stvar.all.unique.levels)
+    }
+  }else{
+    stvar <- NULL
+  }
 
-#exclude
-if(!is.null(exclude.transmit))
-{
-exclude.text<-strsplit(exclude.transmit, split=",")
-exclude<-eval(parse(text=exclude.text), envir = parent.frame())
-}
-else
-{
-exclude<-NULL
-}
+  # exclude
+  if(!is.null(exclude.transmit)){
+    exclude.text <- strsplit(exclude.transmit, split=",")
+    exclude <- eval(parse(text=exclude.text), envir = parent.frame())
+  }else{
+    exclude <- NULL
+  }
 
-if(!is.null(rvar)&&!is.null(cvar)&&!is.null(stvar))
-{
-#Check cell counts valid without NAs or NaNs
-counts.valid<-TRUE
-test.outobj<-table(rvar,cvar,stvar,exclude="NaN",useNA="no")
+  if(!is.null(rvar) && !is.null(cvar) && !is.null(stvar)){
+    #Check cell counts valid without NAs or NaNs
+    counts.valid <- TRUE
+    test.outobj <- table(rvar, cvar, stvar, exclude="NaN", useNA="no")
+    numcells <- length(test.outobj)
 
-numcells<-length(test.outobj)
+	  for (cell in 1:numcells){ 
+	  	if(test.outobj[cell]>0 && test.outobj[cell]<nfilter.tab){
+    		counts.valid <- FALSE
+		  }
+	  }
 
-	for (cell in 1:numcells)
-	{ 
-		if(test.outobj[cell]>0&&test.outobj[cell]<nfilter.tab)
-		{
-		counts.valid<-FALSE
+	if(!counts.valid){
+  	return.message<-paste0("Failed: at least one cell has a non-zero count less than nfilter.tab i.e. ",nfilter.tab)  
+	  stop(return.message, call. = FALSE)
+	}else{
+	  outobj <- table(rvar,cvar,stvar,exclude=exclude,useNA=useNA.transmit)	
+	}
+
+ }
+
+  if(!is.null(rvar) && !is.null(cvar) && is.null(stvar)){
+    #Check cell counts valid without NAs or NaNs
+    counts.valid <- TRUE
+    test.outobj <- table(rvar,cvar,exclude="NaN",useNA="no")
+
+    numcells <- length(test.outobj)
+
+	for (cell in 1:numcells){ 
+		if(test.outobj[cell]>0 && test.outobj[cell]<nfilter.tab){
+   		counts.valid <- FALSE
 		}
 	}
 
-	if(!counts.valid)
-	{
-	return.message<-paste0("Failed: at least one cell has a non-zero count less than nfilter.tab i.e. ",nfilter.tab)  
-	stop(return.message, call. = FALSE)
+	if(!counts.valid){
+	  return.message <- paste0("Failed: at least one cell has a non-zero count less than nfilter.tab i.e. ",nfilter.tab)  
+	  return(return.message)
 	}else{
-	outobj<-table(rvar,cvar,stvar,exclude=exclude,useNA=useNA.transmit)	
-	}
-
-}
-
-if(!is.null(rvar)&&!is.null(cvar)&&is.null(stvar))
-{
-#Check cell counts valid without NAs or NaNs
-counts.valid<-TRUE
-test.outobj<-table(rvar,cvar,exclude="NaN",useNA="no")
-
-numcells<-length(test.outobj)
-
-	for (cell in 1:numcells)
-	{ 
-		if(test.outobj[cell]>0&&test.outobj[cell]<nfilter.tab)
-		{
-		counts.valid<-FALSE
-		}
-	}
-
-	if(!counts.valid)
-	{
-	return.message<-paste0("Failed: at least one cell has a non-zero count less than nfilter.tab i.e. ",nfilter.tab)  
-	return(return.message)
-	}else{
-	outobj<-table(rvar,cvar,exclude=exclude,useNA=useNA.transmit)	
+	  outobj <- table(rvar,cvar,exclude=exclude,useNA=useNA.transmit)	
 	}
 
 }
@@ -210,11 +176,8 @@ numcells<-length(test.outobj)
 	}
 
 }
-return(outobj)
+  return(outobj)
 
 }
-#AGGREGATE FUNCTION
+# AGGREGATE FUNCTION
 # tableDS
-
-
-

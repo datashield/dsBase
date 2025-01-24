@@ -14,7 +14,7 @@
 #' 
 asCharacterDS <- function (x.name){
 
-  x<-eval(parse(text=x.name), envir = parent.frame())
+  x <- eval(parse(text=x.name), envir = parent.frame())
 
   output <- as.character(x)
   return(output)

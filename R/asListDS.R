@@ -1,3 +1,4 @@
+#' 
 #' @title asListDS a serverside aggregate function called by ds.asList
 #' @description Coerces an R object into a list
 #' @details Unlike most other class coercing functions this is
@@ -21,25 +22,26 @@
 #' the class of the output object should usually be 'list'
 #' @author Amadou Gaye, Paul Burton for DataSHIELD Development Team
 #' @export
+#' 
 asListDS <- function (x.name, newobj){
 
     newobj.class <- NULL
     if(is.character(x.name)){
-        active.text<-paste0(newobj,"<-as.list(",x.name,")")
+        active.text <- paste0(newobj,"<-as.list(",x.name,")")
         eval(parse(text=active.text), envir = parent.frame())
 
-        active.text2<-paste0("class(",newobj,")")
+        active.text2 <- paste0("class(",newobj,")")
         assign("newobj.class", eval(parse(text=active.text2), envir = parent.frame()))
 
     }else{
-        studysideMessage<-"ERROR: x.name must be specified as a character string"
+        studysideMessage <- "ERROR: x.name must be specified as a character string"
         stop(studysideMessage, call. = FALSE)
     }
 
-    return.message<-paste0("New object <",newobj,"> created")
-    object.class.text<-paste0("Class of <",newobj,"> is '",newobj.class,"'")
+    return.message <- paste0("New object <", newobj, "> created")
+    object.class.text <- paste0("Class of <", newobj, "> is '", newobj.class, "'")
 
-    return(list(return.message=return.message,class.of.newobj=object.class.text))
+    return(list(return.message=return.message, class.of.newobj=object.class.text))
 }
 # AGGEGATE FUNCTION
 # asListDS

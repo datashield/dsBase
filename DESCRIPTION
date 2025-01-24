@@ -164,7 +164,6 @@ AssignMethods:
     seqDS,
     sqrtDS,
     subsetByClassDS,
-    subsetDS,
     tableDS.assign,
     tapplyDS.assign,
     uniqueDS,

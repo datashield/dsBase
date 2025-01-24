@@ -1,3 +1,4 @@
+#' 
 #' @title Coerces an R object into class numeric
 #' @description this function is based on the native R function \code{as.numeric}
 #' @details See help for function \code{as.logical} in native R
@@ -10,24 +11,25 @@
 #' details see help on the clientside function \code{ds.asLogical}
 #' @author Amadou Gaye, Paul Burton for DataSHIELD Development Team
 #' @export
+#' 
 asLogicalDS <- function (x.name){
 
-if(is.character(x.name)){
-	x<-eval(parse(text=x.name), envir = parent.frame())
+  if(is.character(x.name)){
+	  x <- eval(parse(text=x.name), envir = parent.frame())
 
 	}else{
-   studysideMessage<-"ERROR: x.name must be specified as a character string"
+   studysideMessage <- "ERROR: x.name must be specified as a character string"
    stop(studysideMessage, call. = FALSE)
-   }
+  }
 
-  if(!is.numeric(x)&&!is.integer(x)&&!is.character(x)&&!is.matrix(x)){
-  studysideMessage<-"ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer, character or matrix"
-  stop(studysideMessage, call. = FALSE)
+  if(!is.numeric(x) && !is.integer(x) && !is.character(x) && !is.matrix(x)){
+    studysideMessage <- "ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer, character or matrix"
+    stop(studysideMessage, call. = FALSE)
   }
 
   output <- as.logical(x)
 
   return(output)
 }
-#ASSIGN FUNCTION
+# ASSIGN FUNCTION
 # asLogicalDS
