@@ -20,9 +20,7 @@ Imports:
     mice,
     childsds, 
     purrr, 
-    tibble, 
-    tidyselect,
-    tidytable,
+    tibble,
     tidyverse
 Suggests:
     testthat
@@ -163,7 +161,6 @@ AssignMethods:
     sampleDS,
     seqDS,
     sqrtDS,
-    subsetByClassDS,
     tableDS.assign,
     tapplyDS.assign,
     uniqueDS,
