@@ -1,12 +1,12 @@
 Package: dsBase
-Title: DataSHIELD server site base functions
-Description: DataSHIELD server site base functions.
+Title: DataSHIELD Server Site Base Functions
+Description: DataSHIELD Server Site Base Functions.
 Version: 6.4.0.9000
 Author: DataSHIELD Developers <datashield@liverpool.ac.uk>
 Maintainer: DataSHIELD Developers <datashield@liverpool.ac.uk>
 License: GPL-3
 Depends: 
-    R (>= 3.5.0)
+    R (>= 4.0.0)
 Imports:
     RANN,
     stringr,
@@ -18,7 +18,10 @@ Imports:
     gamlss,
     gamlss.dist,
     mice,
-    childsds
+    childsds, 
+    purrr, 
+    tibble,
+    tidyverse
 Suggests:
     testthat
 AggregateMethods:
@@ -158,8 +161,6 @@ AssignMethods:
     sampleDS,
     seqDS,
     sqrtDS,
-    subsetByClassDS,
-    subsetDS,
     tableDS.assign,
     tapplyDS.assign,
     uniqueDS,

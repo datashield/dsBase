@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2024 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("cDS::smk::setup")
+context("vectorDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,60 +20,60 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("cDS::smk::numeric list")
-test_that("numeric list cDS", {
+context("vectorDS::smk::numeric list")
+test_that("numeric list vectorDS", {
     input <- list(a=0.0, b=1.0, c=2.0, d=3.0)
 
-    res <- cDS(input)
+    res <- vectorDS(input)
 
     expect_length(res, 4)
-    expect_equal(class(res), "numeric")
+    expect_equal(class(res), "list")
     expect_equal(res[[1]], 0.0)
     expect_equal(res[[2]], 1.0)
     expect_equal(res[[3]], 2.0)
     expect_equal(res[[4]], 3.0)
 })
 
-context("cDS::smk::character list")
-test_that("character list cDS", {
+context("vectorDS::smk::character list")
+test_that("character list vectorDS", {
     input <- list(a="0.0", b="1.0", c="2.0", d="3.0")
 
-    res <- cDS(input)
+    res <- vectorDS(input)
 
     expect_length(res, 4)
-    expect_equal(class(res), "character")
+    expect_equal(class(res), "list")
     expect_equal(res[[1]], "0.0")
     expect_equal(res[[2]], "1.0")
     expect_equal(res[[3]], "2.0")
     expect_equal(res[[4]], "3.0")
 })
 
-context("cDS::smk::numeric list small")
-test_that("single numeric list small cDS", {
+context("vectorDS::smk::numeric list small")
+test_that("single numeric list small vectorDS", {
     input <- list(a=0, b=1)
 
-    res <- cDS(input)
+    res <- vectorDS(input)
 
     expect_length(res, 2)
-    expect_equal(class(res), "logical")
-    expect_equal(res[[1]], NA)
-    expect_equal(res[[2]], NA)
+    expect_equal(class(res), "list")
+    expect_equal(res[[1]], 0)
+    expect_equal(res[[2]], 1)
 })
 
-context("cDS::smk::empty list")
-test_that("empty list cDS", {
+context("vectorDS::smk::empty list")
+test_that("empty list vectorDS", {
     input <- list()
 
-    res <- cDS(input)
+    res <- vectorDS(input)
 
     expect_length(res, 0)
-    expect_equal(class(res), "NULL")
+    expect_equal(class(res), "list")
 })
 
 #
 # Done
 #
 
-context("cDS::smk::shutdown")
+context("vectorDS::smk::shutdown")
 
-context("cDS::smk::done")
+context("vectorDS::smk::done")

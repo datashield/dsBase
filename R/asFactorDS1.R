@@ -10,6 +10,7 @@
 #' @export
 #'
 asFactorDS1 <- function(input.var.name=NULL){
+  
   ##################################################################
   #MODULE 1: CAPTURE THE nfilter SETTINGS                          #
   thr<-dsBase::listDisclosureSettingsDS()                          #
@@ -26,27 +27,29 @@ asFactorDS1 <- function(input.var.name=NULL){
 
   input.var <- eval(parse(text=input.var.name), envir = parent.frame())
   factor.levels.present.in.source <- levels(factor(input.var))
-  num.levels<-length(factor.levels.present.in.source)
+  num.levels <- length(factor.levels.present.in.source)
   
   max.levels.by.density<-nfilter.levels.density*length(input.var)
   
-  if(num.levels>nfilter.levels.max)
-  {
-    error.message<-
-      paste0("FAILED: this variable has too many levels and may be disclosive. It exceeds the max number of levels allowed by nfilter.levels.max: that is ",nfilter.levels.max,". In this study this variable has ",num.levels," factor levels")
+  if(num.levels > nfilter.levels.max){
+    error.message <- paste0("FAILED: this variable has too many levels and may be disclosive. 
+                            It exceeds the max number of levels allowed by nfilter.levels.max: 
+                            that is ", nfilter.levels.max, ". In this study this variable has ", 
+                            num.levels," factor levels")
     stop(error.message, call. = FALSE)
   }
   
-  if(num.levels>(length(input.var)*nfilter.levels.density))
-  {
-    error.message<-
-      paste0("FAILED: this variable has too many levels and may be disclosive. The number of factor levels must not exceed ", (nfilter.levels.density*100), "% of the length of the variable being converted to a factor. The max number of levels in this study is therefore ",max.levels.by.density," but this variable has ",num.levels," factor levels")
+  if(num.levels > (length(input.var)*nfilter.levels.density)){
+    error.message <- paste0("FAILED: this variable has too many levels and may be disclosive. 
+                            The number of factor levels must not exceed ", (nfilter.levels.density*100), 
+                            "% of the length of the variable being converted to a factor. The max number 
+                            of levels in this study is therefore ",max.levels.by.density," but this 
+                            variable has ", num.levels, " factor levels")
     stop(error.message, call. = FALSE)
   }
   
   return(factor.levels.present.in.source)
   
 }
-#AGGREGATE FUNCTION
+# AGGREGATE FUNCTION
 # asFactorDS1
-
