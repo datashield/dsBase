@@ -12,17 +12,17 @@
 #' @author Tim Cadman
 #' @export
 asDataFrameDS <- function (x.name){
-
-if(is.character(x.name)){
-	x <- eval(parse(text=x.name), envir = parent.frame())
-
-	}else{
-   studysideMessage<-"ERROR: x.name must be specified as a character string"
-   stop(studysideMessage, call. = FALSE)
+  
+  if(is.character(x.name)){
+    x<-eval(parse(text=x.name), envir = parent.frame())
+    
+  }else{
+    studysideMessage<-"ERROR: x.name must be specified as a character string"
+    stop(studysideMessage, call. = FALSE)
   }
-
+  
   output <- data.frame(x)
-
+  
   return(output)
 }
 # ASSIGN FUNCTION

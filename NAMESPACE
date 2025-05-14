@@ -3,6 +3,7 @@
 export(BooleDS)
 export(absDS)
 export(asCharacterDS)
+export(asDataFrameDS)
 export(asDataMatrixDS)
 export(asFactorDS1)
 export(asFactorDS2)
