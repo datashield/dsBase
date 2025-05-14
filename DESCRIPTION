@@ -21,6 +21,7 @@ Imports:
     childsds, 
     purrr, 
     tibble,
+    tidyselect,
     tidyverse
 Suggests:
     testthat

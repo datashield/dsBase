@@ -18,6 +18,30 @@ context("BooleDS::smk::setup")
 # Tests
 #
 
+context("BooleDS::smk::make errors")
+test_that("make errors, character V1", {
+  input <- data.frame(v1 = c('0.0', '1.0', '2.0', '3.0', '4.0'), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+  expect_error(BooleDS("input$v1", "input$v2", 1, "NA", TRUE), "FAILED: V1 is character, please convert to numeric, factor or logical before running Boole", fixed=TRUE)
+})
+
+test_that("make errors, character V2", {
+  input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c('4.0', '3.0', '2.0', '1.0', '0.0'))
+  expect_error(BooleDS("input$v1", "input$v2", 1, "NA", TRUE), "FAILED: V2 is character, please convert to numeric, factor or logical before running Boole", fixed=TRUE)
+})
+
+test_that("make errors, V1 and V2 are vectors of different length", {
+  v1 = c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0) 
+  v2 = c(4.0, 3.0, 2.0, 1.0, 0.0)
+  expect_error(BooleDS("v1", "v2", 1, "NA", TRUE), "FAILED: V2 must either be of length one or of length equal to V1", fixed=TRUE)
+})
+
+test_that("make errors, incorrect Boolean operator", {
+  v1 = c(0.0, 1.0, 2.0, 3.0, 4.0) 
+  v2 = c(4.0, 3.0, 2.0, 1.0, 0.0)
+  boolean.op = 10
+  expect_error(BooleDS("v1", "v2", boolean.op, "NA", TRUE), "FAILED: Boolean.operator specified incorrectly. Must be: '==', '!=', '<', '<=', '>' or '>='", fixed=TRUE)
+})
+
 context("BooleDS::smk::simple equal")
 test_that("simple BooleDS, equal numeric", {
     input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))

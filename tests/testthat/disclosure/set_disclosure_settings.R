@@ -24,3 +24,27 @@ set.standard.disclosure.settings <- function() {
     options(default.nfilter.levels.density = "0.33")
     options(default.nfilter.levels.max = "40")
 }
+
+set.specific.disclosure.settings <- function(datashield.privacyControlLevel='permissive',
+                                             nfilter.tab='3',
+                                             nfilter.subset='3',
+                                             nfilter.glm='0.33',
+                                             nfilter.string='80',
+                                             nfilter.stringShort='20',
+                                             nfilter.kNN='3',
+                                             nfilter.levels.density='0.33',
+                                             nfilter.levels.max='40',
+                                             nfilter.noise='0.25',
+                                             nfilter.privacy.old='5') {
+  options(datashield.privacyLevel = nfilter.privacy.old)
+  options(default.datashield.privacyControlLevel = datashield.privacyControlLevel)
+  options(default.nfilter.glm = nfilter.glm)
+  options(default.nfilter.kNN = nfilter.kNN)
+  options(default.nfilter.string = nfilter.string)
+  options(default.nfilter.subset = nfilter.subset)
+  options(default.nfilter.stringShort = nfilter.stringShort)
+  options(default.nfilter.tab = nfilter.tab)
+  options(default.nfilter.noise = nfilter.noise)
+  options(default.nfilter.levels.density = nfilter.levels.density)
+  options(default.nfilter.levels.max = nfilter.levels.max)
+}

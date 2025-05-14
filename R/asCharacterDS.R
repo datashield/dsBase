@@ -12,7 +12,7 @@
 #' @author Amadou Gaye, Paul Burton, Demetris Avraam for DataSHIELD Development Team
 #' @export
 #' 
-asCharacterDS <- function (x.name){
+asCharacterDS <- function(x.name){
 
   x <- eval(parse(text=x.name), envir = parent.frame())
 
