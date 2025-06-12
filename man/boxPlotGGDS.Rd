@@ -19,8 +19,6 @@ boxPlotGGDS(data_table, group = NULL, group2 = NULL)
 \item{group2}{\code{character} (default \code{NULL}) Name of the second grouping variable.}
 }
 \value{
-\cr
-
 \code{list} with: \cr
 -\code{data frame} Geometrical parameters (identity stats of ggplot) \cr
 -\code{character} Type of plot (single_group, double_group or no_group) \cr
