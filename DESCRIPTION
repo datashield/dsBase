@@ -1,7 +1,7 @@
 Package: dsBase
 Title: DataSHIELD Server Site Base Functions
 Description: DataSHIELD Server Site Base Functions.
-Version: 6.3.2
+Version: 6.3.3-9000
 Authors@R: c(person(given = "Paul",
                     family = "Burton",
                     role = c("aut")),
@@ -28,6 +28,11 @@ Authors@R: c(person(given = "Paul",
                     family = "Avraam",
                     role = c("aut"),
                     comment = c(ORCID = "0000-0001-8908-2441")),
+             person(given = "Yannick",
+                    family = "Marcon",
+                    role = c("aut"),
+                    email = "yannick.marcon@obiba.org",
+                    comment = c(ORCID = "0000-0003-0138-2023")),
              person(given = "Stuart",
                     family = "Wheater",
                     role = c("aut", "cre"),
