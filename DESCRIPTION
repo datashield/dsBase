@@ -1,7 +1,7 @@
 Package: dsBase
 Title: DataSHIELD Server Site Base Functions
 Description: DataSHIELD Server Site Base Functions.
-Version: 6.3.3-9000
+Version: 6.3.3
 Authors@R: c(person(given = "Paul",
                     family = "Burton",
                     role = c("aut")),
