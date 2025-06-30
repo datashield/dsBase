@@ -20,8 +20,12 @@ upload_testing_dataset_table <- function(opal, project_name, table_name, local_f
 # opal <- opal.login('administrator','datashield_test&', url='https://192.168.56.100:8443/', opts = list(ssl_verifyhost=0, ssl_verifypeer=0))
 opal <- opal.login('administrator','datashield_test&', url='https://localhost:8443/', opts = list(ssl_verifyhost=0, ssl_verifypeer=0))
 
-upload_testing_dataset_table(opal, 'CNSIM', 'CNSIM1', 'CNSIM/CNSIM1.rda')
-upload_testing_dataset_table(opal, 'CNSIM', 'CNSIM2', 'CNSIM/CNSIM2.rda')
-upload_testing_dataset_table(opal, 'CNSIM', 'CNSIM3', 'CNSIM/CNSIM3.rda')
+upload_testing_dataset_table(opal, 'DASIM', 'DASIM1', 'DASIM/DASIM1.rda')
+upload_testing_dataset_table(opal, 'DASIM', 'DASIM2', 'DASIM/DASIM2.rda')
+upload_testing_dataset_table(opal, 'DASIM', 'DASIM3', 'DASIM/DASIM3.rda')
+
+upload_testing_dataset_table(opal, 'DASIM', 'DASIM1', 'DASIM/DASIM1.rda')
+upload_testing_dataset_table(opal, 'DASIM', 'DASIM2', 'DASIM/DASIM2.rda')
+upload_testing_dataset_table(opal, 'DASIM', 'DASIM3', 'DASIM/DASIM3.rda')
 
 opal.logout(opal)
