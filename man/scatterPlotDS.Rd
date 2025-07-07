@@ -15,7 +15,7 @@ scatterPlotDS(x, y, method.indicator, k, noise)
 method in the client side function the method.indicator is set to 1 while if the user selects
 the probabilistic method this argument is set to 2.}
 
-\item{k}{the number of the nearest neghbours for which their centroid is calculated if the
+\item{k}{the number of the nearest neighbours for which their centroid is calculated if the
 deterministic method is selected.}
 
 \item{noise}{the percentage of the initial variance that is used as the variance of the embedded

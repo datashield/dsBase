@@ -23,7 +23,7 @@ two variables.}
 a list that includes a matrix with elements the sum of products between each two variables, a matrix with
 elements the sum of the values of each variable, a matrix with elements the number of complete cases in each
 pair of variables, a list with the number of missing values in each variable separately (columnwise) and the number
-of missing values casewise or pairwise depending on the arqument \code{use}, and an error message which indicates
+of missing values casewise or pairwise depending on the argument \code{use}, and an error message which indicates
 whether or not the input variables pass the disclosure controls. The first disclosure control checks that the number
 of variables is not bigger than a percentage of the individual-level records (the allowed percentage is pre-specified
 by the 'nfilter.glm'). The second disclosure control checks that none of them is dichotomous with a level having fewer

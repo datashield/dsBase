@@ -18,7 +18,7 @@ asFactorDS2(
 
 \item{fixed.dummy.vars}{a boolean that determines whether the new object will be represented as
 a vector or as a matrix of dummy variables indicating the factor level of each data point.
-If this argyment is set to FALSE (default) then the input variable is converted to a factor and
+If this argument is set to FALSE (default) then the input variable is converted to a factor and
 assigned as a vector. If is set to TRUE then the input variable is converted to a factor but
 assigned as a matrix of dummy variables.}
 
