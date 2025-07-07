@@ -38,6 +38,10 @@ histogramDS2 <- function (xvect, num.breaks, min, max, method.indicator, k, nois
   # nfilter.levels.max <- as.numeric(thr$nfilter.levels.max)       #
   ##################################################################
   
+  # back-up current .Random.seed and revert on.exit
+  old_seed <- .Random.seed
+  on.exit(.Random.seed <- old_seed, add = TRUE)
+  
   if (method.indicator==1){
 
     # Check if the number of breaks meets the DataSHIELD privacy criteria (disclosure control for

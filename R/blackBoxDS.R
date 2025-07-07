@@ -65,7 +65,10 @@ blackBoxDS <- function(input.var.name=NULL,
   #nfilter.noise <- as.numeric(thr$nfilter.noise)
   #nfilter.levels <- as.numeric(thr$nfilter.levels)
   ########################################################
-
+  
+  # back-up current .Random.seed and revert on.exit
+  old_seed <- .Random.seed
+  on.exit(.Random.seed <- old_seed, add = TRUE)
 
  input.var <- eval(parse(text=input.var.name), envir = parent.frame())
  

@@ -38,6 +38,10 @@ heatmapPlotDS <- function(x, y, k, noise, method.indicator){
   #nfilter.levels.max <- as.numeric(thr$nfilter.levels.max)         #
   ###################################################################
   
+  # back-up current .Random.seed and revert on.exit
+  old_seed <- .Random.seed
+  on.exit(.Random.seed <- old_seed, add = TRUE)
+  
   # Cbind the columns of the two variables and remove any rows that include NAs
   data.table <- cbind.data.frame(x, y)
   data.complete <- stats::na.omit(data.table)

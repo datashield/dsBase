@@ -36,6 +36,10 @@ histogramDS1 <- function(xvect, method.indicator, k, noise){
   nfilter.levels.max <- as.numeric(thr$nfilter.levels.max)         #
   ##################################################################
   
+  # back-up current .Random.seed and revert on.exit
+  old_seed <- .Random.seed
+  on.exit(.Random.seed <- old_seed, add = TRUE)
+  
   # print an error message if the input vector is not a numeric
   if(!(is.numeric(xvect))){
     output <- "The input vector is not a numeric!"
