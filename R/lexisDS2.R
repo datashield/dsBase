@@ -195,13 +195,13 @@ lexisDS2 <- function(datatext=NULL, intervalWidth, maxmaxtime, idCol, entryCol, 
   period.surv<-end.breaks-start.breaks
   
   
-  print(start.breaks)
-  print(end.breaks)
+  message(paste0(start.breaks, collapse = ", "))
+  message(paste0(end.breaks, collapse = ", "))
   totints<-length(end.breaks)
   totsubs<-dim(DF)[1]
   
-  print(totints)
-  print(totsubs)
+  message(totints)
+  message(totsubs)
   
   
   survival.matrix<-matrix(data=0,totsubs,totints)
