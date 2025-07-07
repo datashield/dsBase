@@ -311,7 +311,7 @@ utils::head(rank.intermediate.value.matrix)
 utils::tail(rank.intermediate.value.matrix)
 
 
-cat("\nRANKS IN ALL COLUMNS ABOVE SHOULD BE THE SAME\n")
+message("\nRANKS IN ALL COLUMNS ABOVE SHOULD BE THE SAME\n")
 
 control.vector
 control.value
@@ -365,7 +365,7 @@ if(sum(round(rank(blackbox.output.df[,3])-rank(blackbox.output.df[,4]),2)==0)!=n
             of memory")
   stop(error.message, call. = FALSE)
 }else{
-  cat("\nPROCESSING SUCCESSFUL, ALL RANKS AGREE FOR ALL TRANSFORMATIONS\n\n")
+  message("\nPROCESSING SUCCESSFUL, ALL RANKS AGREE FOR ALL TRANSFORMATIONS\n\n")
 }
 
 
