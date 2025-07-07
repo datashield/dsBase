@@ -1,4 +1,4 @@
-env = new.env()
+ENV <- new.env()
 
 .onLoad = function(libname, pkgname) {
   
