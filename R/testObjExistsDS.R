@@ -1,13 +1,16 @@
 #'
 #' @title testObjExistsDS
-#' @description The serverside function called by ds.testObjExists
+#' @description The server-side function called by ds.testObjExists
 #' @details Tests whether a given object exists in
 #' all sources. It is called at the end of all
 #' recently written assign functions to check the new (assigned) object has been
 #' created in all sources
-#' @param test.obj.name a clientside provided character string specifying the variable
+#' @param test.obj.name a client-side provided character string specifying the variable
 #' whose presence is to be tested in each data source
+#' 
 #' @author Burton PR
+#' 
+#' @return List with `test.obj.exists` and `test.obj.class`
 #' @export
 #'
 testObjExistsDS <- function(test.obj.name=NULL){

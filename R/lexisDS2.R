@@ -29,7 +29,10 @@
 #' column names of additional variables to include in the 
 #' final expanded table. If the 'variables' argument is not set (is null) but the
 #' 'data' argument is set the full data.frame will be expanded and carried forward
+#' 
 #' @author Burton PR
+#' 
+#' @return List with `expanded.table`
 #' @export
 #'
 lexisDS2 <- function(datatext=NULL, intervalWidth, maxmaxtime, idCol, entryCol, exitCol, statusCol, vartext=NULL){
