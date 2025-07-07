@@ -7,14 +7,17 @@
 meanSdGpDS(X, INDEX)
 }
 \arguments{
-\item{X}{a clientside supplied character string identifying the variable for which
+\item{X}{a client-side supplied character string identifying the variable for which
 means/SDs are to be calculated}
 
-\item{INDEX}{a clientside supplied character string identifying the factor across
+\item{INDEX}{a client-side supplied character string identifying the factor across
 which means/SDs are to be calculated}
 }
+\value{
+List with results from the group statistics
+}
 \description{
-Serverside function called by ds.meanSdGp
+Server-side function called by ds.meanSdGp
 }
 \details{
 Computes the mean and standard deviation across groups defined by one

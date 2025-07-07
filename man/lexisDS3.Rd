@@ -7,6 +7,9 @@ lexisDS3}
 \usage{
 lexisDS3()
 }
+\value{
+Data frame with `messageobj` object
+}
 \description{
 The third serverside function called by ds.lexis.
 }

@@ -43,6 +43,9 @@ column names of additional variables to include in the
 final expanded table. If the 'variables' argument is not set (is null) but the
 'data' argument is set the full data.frame will be expanded and carried forward}
 }
+\value{
+List with `expanded.table`
+}
 \description{
 The second serverside function called by ds.lexis.
 }
