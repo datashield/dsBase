@@ -1,10 +1,10 @@
 #' 
 #' @title Generates a valid subset of a table or a vector
 #' @description The function uses the R classical subsetting with squared brackets '[]' and allows also to 
-#' subset using a logical oprator and a threshold. The object to subset from must be a vector (factor, numeric 
-#' or charcater) or a table (data.frame or matrix).
+#' subset using a logical operator and a threshold. The object to subset from must be a vector (factor, numeric 
+#' or character) or a table (data.frame or matrix).
 #' @details If the input data is a table: The user specifies the rows and/or columns to include in the subset if the input 
-#' object is a table; the columns can be refered to by their names. The name of a vector (i.e. a variable) can also be provided 
+#' object is a table; the columns can be referred to by their names. The name of a vector (i.e. a variable) can also be provided 
 #' with a logical operator and a threshold (see example 3). 
 #' If the input data is a vector:  when the parameters 'rows', 'logical' and 'threshold' are all provided the last two are ignored (
 #' 'rows' has precedence over the other two parameters then).
@@ -21,9 +21,9 @@
 #' @param th a numeric, the threshold to use in conjunction with the logical parameter. This parameter is ignored 
 #' if the input data is not a vector.
 #' @param varname a character, if the input data is a table, if this parameter is provided along with the 'logical' and 'threshold'
-#' parameters, a subtable is based the threshold applied to the speicified variable. This parameter is however ignored if the parameter
+#' parameters, a subtable is based the threshold applied to the specified variable. This parameter is however ignored if the parameter
 #' 'rows' and/or 'cols' are provided.
-#' @return a subset of the vector, matric or dataframe as specified is stored on the server side
+#' @return a subset of the vector, matrix or dataframe as specified is stored on the server side
 #' @author Gaye, A.
 #' @export
 #' 

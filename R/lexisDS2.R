@@ -7,7 +7,7 @@
 #' regression. lexisDS2 also
 #' carries out a series of disclosure checks and if the arguments or data fail any of
 #' those tests,
-#' creation of the exapanded dataframe is blocked and an appropriate serverside error
+#' creation of the expanded dataframe is blocked and an appropriate serverside error
 #' message is stored.
 #' For more details see the extensive header for ds.lexis.
 #' @param datatext a clientside provided character string specifying the data.frame
@@ -18,7 +18,7 @@
 #' @param maxmaxtime a clientside generated object specifying the maximum follow up
 #' time in any of the sources
 #' @param idCol a clientside generated character string specifying the variable
-#' holding the IDs of indivuals in the data set to be expanded
+#' holding the IDs of individuals in the data set to be expanded
 #' @param entryCol a clientside specified character string identifying the variable
 #' holding the time that each individual starts follow up
 #' @param exitCol a clientside specified character string identifying the variable
