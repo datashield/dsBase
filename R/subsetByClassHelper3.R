@@ -10,6 +10,7 @@
 #' @return a list which contains the subsets, their names and an integer that indicates if
 #' the variable specified by user is a factor.
 #' @keywords internal
+#' @noRd
 #' @author Gaye, A.
 #'
 subsetByClassHelper3 <- function(df=NULL, indx1=NULL, filter=NULL){
