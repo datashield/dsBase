@@ -7,6 +7,7 @@
 #' @param filter the minimum number observation (i.e. rows) that are allowed.
 #' @return a list which contains the subsets.
 #' @keywords internal
+#' @noRd
 #' @author Gaye, A.
 #'
 subsetByClassHelper1 <- function(xvect=NULL, xname=NULL, filter=NULL){

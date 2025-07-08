@@ -12,7 +12,7 @@ absDS(x)
 \value{
 the object specified by the \code{newobj} argument
 of \code{ds.abs} (or default name \code{abs.newobj})
-which is written to the serverside. The output object is of class numeric 
+which is written to the serverside. The output object is of class numeric
 or integer.
 }
 \description{

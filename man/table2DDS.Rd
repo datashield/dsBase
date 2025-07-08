@@ -21,7 +21,7 @@ This function generates a 2-dimensional contingency table where potentially disc
 }
 \details{
 It generates 2-dimensional contingency tables where valid (non-disclosive) tables are defined
-as those where none of their cells have counts between 1 and the set threshold "nfilter.tab". When the ouput table
+as those where none of their cells have counts between 1 and the set threshold "nfilter.tab". When the output table
 is invalid all cells except the total counts are replaced by missing values. Only the total counts are visible
 on the table returned to the client side. A message is also returned with the 2-dimensional table; the message
 says "invalid table - invalid counts present" if the table is invalid and 'valid table' otherwise.

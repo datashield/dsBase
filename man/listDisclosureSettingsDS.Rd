@@ -6,6 +6,9 @@
 \usage{
 listDisclosureSettingsDS()
 }
+\value{
+List with DataSHIELD disclosure settings
+}
 \description{
 This serverside function is an aggregate function that is called by the
 ds.listDisclosureSettings

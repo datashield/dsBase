@@ -2,7 +2,7 @@
 #' @title matrixMultDS serverside assign function called by ds.matrixMult
 #' @description Calculates the matrix product of two matrices and writes output to serverside
 #' @details Undertakes standard matrix multiplication where with input matrices A and B with
-#' dimensions A: mxn and B: nxp the output C has dimensions mxp and each elemnt C[i,j] has
+#' dimensions A: mxn and B: nxp the output C has dimensions mxp and each element C[i,j] has
 #' value equal to the dot product of row i of A and column j of B where the dot product
 #' is obtained as sum(A[i,1]*B[1,j] + A[i,2]*B[2,j] + .... + A[i,n]*B[n,j]). This calculation
 #' is only valid if the number of columns of A is the same as the number of rows of B

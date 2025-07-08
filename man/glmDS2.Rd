@@ -23,8 +23,11 @@ vector of regression coefficients at the current iteration}
 \item{dataName}{an optional character string specifying a data.frame object holding
 the data to be analysed under the specified model same}
 }
+\value{
+List with values from GLM model
+}
 \description{
-This is the second serverside aggregate function called by ds.glm.
+This is the second server-side aggregate function called by ds.glm.
 }
 \details{
 It is an aggregate function that uses the model structure and starting

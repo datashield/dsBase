@@ -12,6 +12,7 @@
 #' @return a list which contains the subsets, their names and an integer that indicates how many columns were
 #' not factors.
 #' @keywords internal
+#' @noRd
 #' @author Gaye, A.
 #'
 subsetByClassHelper2 <- function(df=NULL, iter=NULL, filter=NULL){

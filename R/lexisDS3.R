@@ -8,7 +8,8 @@
 #' returned output from ds.lexis. Specifically, without lexisDS3 the output consists of a table within
 #' a list, but lexisDS3 converts this directly into a dataframe.
 #' For more details see the extensive header for ds.lexis.
-#'
+#' 
+#' @return Data frame with `messageobj` object
 #' @export
 #'
 lexisDS3 <- function(){

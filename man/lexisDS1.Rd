@@ -9,8 +9,11 @@ lexisDS1(exitCol = NULL)
 \arguments{
 \item{exitCol}{a character string specifying the variable holding the time that each individual is censored or fails}
 }
+\value{
+List with `max.time`
+}
 \description{
-The first serverside function called by ds.lexis.
+The first server-side function called by ds.lexis.
 }
 \details{
 This is an aggregate function.

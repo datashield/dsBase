@@ -1,4 +1,4 @@
-#' 
+#'
 #' @title Coerces an R object into class character
 #' @description this function is based on the native R function \code{as.character}
 #' @details See help for function \code{as.character} in native R
@@ -11,14 +11,12 @@
 #' details see help on the clientside function \code{ds.asCharacter}
 #' @author Amadou Gaye, Paul Burton, Demetris Avraam for DataSHIELD Development Team
 #' @export
-#' 
-asCharacterDS <- function (x.name){
-
-  x<-eval(parse(text=x.name), envir = parent.frame())
+#'
+asCharacterDS <- function(x.name) {
+  x <- eval(parse(text = x.name), envir = parent.frame())
 
   output <- as.character(x)
   return(output)
-  
 }
 # ASSIGN FUNCTION
 # asCharacterDS

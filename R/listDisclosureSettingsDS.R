@@ -4,6 +4,8 @@
 #' ds.listDisclosureSettings
 #' @details For more details see the extensive header for ds.listDisclosureSettings
 #' @author Paul Burton, Demetris Avraam for DataSHIELD Development Team
+#' 
+#' @return List with DataSHIELD disclosure settings
 #' @export
 #'
 listDisclosureSettingsDS <- function(){
