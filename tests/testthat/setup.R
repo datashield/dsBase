@@ -20,4 +20,6 @@ library(lme4)
 source("disclosure/set_disclosure_settings.R")
 source("random/set_random_seed_settings.R")
 
+source("perf_tests/perf_rate.R")
+
 context("setup - done")

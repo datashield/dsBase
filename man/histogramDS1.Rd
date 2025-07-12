@@ -14,7 +14,7 @@ control that is used for the generation of the histogram. If the value is equal 
 'smallCellsRule' is used. If the value is equal to 2 then the 'deterministic' method is used.
 If the value is set to 3 then the 'probabilistic' method is used.}
 
-\item{k}{the number of the nearest neghbours for which their centroid is calculated if the 
+\item{k}{the number of the nearest neighbours for which their centroid is calculated if the 
 \code{method.indicator} is equal to 2 (i.e. deterministic method).}
 
 \item{noise}{the percentage of the initial variance that is used as the variance of the embedded
@@ -27,7 +27,7 @@ a numeric vector which contains the minimum and the maximum values of the vector
 this function returns the minimum and maximum of the input numeric vector which
 depends on the argument \code{method.indicator}. If the method.indicator is set to 1 (i.e. the 
 'smallCellsRule' is used) the computed minimum and maximum values are multiplied by a very small
-random number. If the method.indicator is set to 2 (i.e. the 'deteministic' method is used) the 
+random number. If the method.indicator is set to 2 (i.e. the 'deterministic' method is used) the 
 function returns the minimum and maximum values of the vector with the scaled centroids. If the
 method.indicator is set to 3 (i.e. the 'probabilistic' method is used) the function returns the
 minimum and maximum values of the generated 'noisy' vector.

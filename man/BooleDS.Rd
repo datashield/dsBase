@@ -26,8 +26,9 @@ that could legally be passed
 from client to server via DataSHIELD parser}
 
 \item{na.assign.text}{A character string taking values 'NA', '1' or '0'. If 'NA'
-then any NA values in the input vector remain as NAs in the output vector. If '1' 
-or '0' NA values in the input vector are all converted to 1 or 0 respectively.}
+then any NA values in the
+input vector remain as NAs in the output vector. If '1' or '0' NA values in the
+input vector are all converted to 1 or 0 respectively.}
 
 \item{numeric.output}{a TRUE/FALSE indicator defaulting to TRUE determining whether
 the final output variable

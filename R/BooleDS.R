@@ -16,10 +16,13 @@
 #' the final output variable
 #' should be of class numeric (1/0) or class logical (TRUE/FALSE).
 #' @param na.assign.text A character string taking values 'NA', '1' or '0'. If 'NA'
-#' then any NA values in the input vector remain as NAs in the output vector. If '1' 
-#' or '0' NA values in the input vector are all converted to 1 or 0 respectively.
-#' @return the levels of the input variable.
+#' then any NA values in the
+#' input vector remain as NAs in the output vector. If '1' or '0' NA values in the
+#' input vector are all converted to 1 or 0 respectively.
+#' 
 #' @author DataSHIELD Development Team
+#' 
+#' @return the levels of the input variable.
 #' @export
 #'
 BooleDS <- function(V1.name=NULL, V2.name=NULL, Boolean.operator.n=NULL, na.assign.text, numeric.output=TRUE){

@@ -11,7 +11,7 @@ heatmapPlotDS(x, y, k, noise, method.indicator)
 
 \item{y}{the name of a numeric vector, the y-variable.}
 
-\item{k}{the number of the nearest neghbours for which their centroid is calculated if the 
+\item{k}{the number of the nearest neighbours for which their centroid is calculated if the 
 \code{method.indicator} is equal to 1 (i.e. deterministic method).}
 
 \item{noise}{the percentage of the initial variance that is used as the variance of the embedded
