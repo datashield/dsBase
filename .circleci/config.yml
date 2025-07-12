@@ -25,6 +25,7 @@ jobs:
               sudo apt-get install -y libxml2-dev
       - run:
           command: |
+              echo "options(Ncpus=4)" >> ~/.Rprofile
               sudo Rscript -e "install.packages('RANN', dependencies=TRUE)"
               sudo Rscript -e "install.packages('stringr', dependencies=TRUE)"
               sudo Rscript -e "install.packages('lme4', dependencies=TRUE)"

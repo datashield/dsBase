@@ -7,11 +7,14 @@
 testObjExistsDS(test.obj.name = NULL)
 }
 \arguments{
-\item{test.obj.name}{a clientside provided character string specifying the variable
+\item{test.obj.name}{a client-side provided character string specifying the variable
 whose presence is to be tested in each data source}
 }
+\value{
+List with `test.obj.exists` and `test.obj.class`
+}
 \description{
-The serverside function called by ds.testObjExists
+The server-side function called by ds.testObjExists
 }
 \details{
 Tests whether a given object exists in

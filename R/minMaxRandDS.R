@@ -20,7 +20,11 @@
 #' @export
 #'
 minMaxRandDS <- function(input.var.name){ #START FUNC
-
+  
+  # back-up current .Random.seed and revert on.exit
+  old_seed <- .Random.seed
+  on.exit(.Random.seed <- old_seed, add = TRUE)
+  
   input.var <- eval(parse(text=input.var.name), envir = parent.frame())
 
     #create seed that is unknown and cannot be repeated 

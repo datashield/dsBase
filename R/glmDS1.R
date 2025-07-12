@@ -1,6 +1,6 @@
 #' 
 #' @title glmDS1 called by ds.glm
-#' @description This is the first serverside aggregate function called by ds.glm
+#' @description This is the first server-side aggregate function called by ds.glm
 #' @details It is an
 #' aggregation function that sets up the model structure
 #' and creates the starting beta.vector that feeds, via ds.glm, into glmDS2 to enable
@@ -14,7 +14,10 @@
 #' @param offset the offset
 #' @param data an
 #' optional character string specifying a data.frame object holding the data to be
-#' analysed under the specified model 
+#' analysed under the specified model
+#' 
+#' @return List with values from GLM model.
+#' 
 #' @author Burton PR for DataSHIELD Development Team
 #' @export
 #'

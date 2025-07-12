@@ -4,6 +4,7 @@
 #' @details Not required
 #' @param input a vector or a list of characters
 #' @keywords internal
+#' @noRd
 #' @return a vector of characters
 #'
 extract <- function(input){
