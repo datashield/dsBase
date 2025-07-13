@@ -59,8 +59,7 @@ Imports:
     childsds, 
     purrr, 
     tibble,
-    tidyselect,
-    tidyverse
+    tidyselect
 Suggests:
     testthat
 RoxygenNote: 7.3.2

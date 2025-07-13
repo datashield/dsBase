@@ -119,6 +119,10 @@ jobs:
       sudo R -e "install.packages('mice', dependencies=TRUE)"
       sudo R -e "install.packages('data.table', dependencies=TRUE)"
       sudo R -e "install.packages('childsds', dependencies=TRUE)"
+      sudo R -e "install.packages('purrr', dependencies=TRUE)"
+      sudo R -e "install.packages('tibble', dependencies=TRUE)"
+      sudo R -e "install.packages('tidyselect', dependencies=TRUE)"
+      sudo R -e "install.packages('tidyverse', dependencies=TRUE)"
 
     displayName: 'Install all dependencies for dsBase'
     condition: succeeded()
