@@ -1,3 +1,6 @@
+bibentry("Manual",
+         other = unlist(citation(auto = meta), recursive = FALSE))
+         
 bibentry(
   bibtype  = "Article",
   title    = "{DataSHIELD: taking the analysis to the data, not the data to the analysis}",
