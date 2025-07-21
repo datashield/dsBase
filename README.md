@@ -1,4 +1,4 @@
-## dsBase: 'DataSHIELD' Server Site Base Functions
+## dsBase: 'DataSHIELD' Server Side Base Functions
 
 [![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 [![](https://www.r-pkg.org/badges/version/dsBase?color=black)](https://cran.r-project.org/package=dsBase)
@@ -45,7 +45,7 @@ Detailed instructions on how to install DataSHIELD are at https://wiki.datashiel
 ## References
 
 [1] Burton P, Wilson R, Butters O, Ryser-Welch P, Westerberg A, Abarrategui L, Villegas-Diaz R,
-  Avraam D, Marcon Y, Wheater S (2025). _dsBase: 'DataSHIELD' Server Site Base Functions_. R
+  Avraam D, Marcon Y, Bishop T, Gaye A, Escribà Montagut X, Wheater S (2025). _dsBase: 'DataSHIELD' Server Side Base Functions_. R
   package version 6.3.3. <https://doi.org/10.32614/CRAN.package.dsBase>.
 
 [2] Gaye A, Marcon Y, Isaeva J, LaFlamme P, Turner A, Jones E, Minion J, Boyd A, Newby C, Nuotio
