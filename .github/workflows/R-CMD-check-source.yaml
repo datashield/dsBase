@@ -1,0 +1,185 @@
+################################################################################
+# DataSHIELD GHA test suite - dsBase
+# Adapted from `azure-pipelines.yml` by Roberto Villegas-Diaz
+# 
+# OVERVIEW
+#
+# Inside the root directory $(Pipeline.Workspace) will be a file tree like:
+# /dsBase               <- Checked out version of datashield/dsBase
+# /testStatus           <- Checked out version of datashield/testStatus
+# /logs                 <- Where results of tests and logs are collated
+#
+# As of Jul 2025 this takes ~ 15 mins to run.
+#
+################################################################################
+name: DataSHIELD GHA test suite
+
+on:
+  push:
+    branches:
+      - master
+      - v6.3.3-dev
+      
+  schedule:
+    - cron: '0 0 * * 0'   # Weekly on master
+    - cron: '0 1 * * *'   # Nightly on v6.3.3-dev
+
+jobs:
+  run_devtools_check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    
+    # These should all be constant, except test_filter. This can be used to test 
+    # subsets of test files in the testthat directory. Options are like:
+    # '*'               <- Run all tests.
+    # 'asNumericDS*'    <- Run all asNumericDS tests, i.e. all the arg, etc. tests.
+    # '*_smk_*'         <- Run all the smoke tests for all functions.
+    env:
+      test_filter: '*'
+      _r_check_system_clock_: 0
+      datetime: ${{ github.run_id }}-${{ github.run_attempt }}
+      projectName: dsBase
+      branchName: ${{ github.ref_name }}
+
+    steps:
+      - name: Checkout dsBase
+        uses: actions/checkout@v4
+        with:
+          path: dsBase
+
+      - name: Checkout testStatus
+        uses: actions/checkout@v4
+        with:
+          repository: datashield/testStatus
+          token: ${{ secrets.TESTSTATUS_TOKEN }}
+          ref: master
+          path: testStatus
+
+      - name: Tweak local R env
+        run: |
+          echo "options(Ncpus=4)" >> ~/.Rprofile
+
+      - name: Install R and dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install --no-install-recommends software-properties-common dirmngr -y
+          wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+          sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+          sudo apt-get update -qq
+          sudo apt-get upgrade -qq
+          sudo apt-get install -qq \
+            pkg-config libxml2-dev libcurl4-openssl-dev libssl-dev libgit2-dev \
+            libharfbuzz-dev libfribidi-dev libfontconfig1-dev libfreetype6-dev \
+            libpng-dev libtiff5-dev libjpeg-dev r-base -y
+          sudo R -e "install.packages(c('devtools','RANN','stringr','lme4','dplyr','reshape2','polycor','splines','gamlss','gamlss.dist','mice','childsds'), dependencies=TRUE)"
+
+      - name: Check man files up-to-date
+        run: |
+          orig_sum=$(find man -type f | sort -u | xargs cat | md5sum)
+          R -e "devtools::document()"
+          new_sum=$(find man -type f | sort -u | xargs cat | md5sum)
+          if [ "$orig_sum" != "$new_sum" ]; then
+            echo "Your committed manual files (man/*.Rd) are out of sync with the R files. Run devtools::document() locally then commit."
+            exit 1
+          else
+            echo "Documentation up-to-date."
+          fi
+        working-directory: dsBase
+        continue-on-error: true
+
+      - name: Run devtools::check
+        run: |
+          R -q -e "library('devtools'); devtools::check(args = c('--no-tests', '--no-examples'))" | tee check.Rout
+          grep -q "^0 errors" check.Rout && grep -q " 0 warnings" check.Rout && grep -q " 0 notes" check.Rout
+        working-directory: dsBase
+        continue-on-error: true
+
+      - name: Run tests with coverage & JUnit report
+        run: |
+          mkdir -p logs
+          sudo R --verbose -e 'devtools::reload()'
+          sudo R -q -e '
+            library(covr);
+            write.csv(
+              coverage_to_list(
+                covr::package_coverage(
+                  type = c("none"),
+                  code = c(
+                    '"'"'library(testthat);
+                    output_file <- file("test_console_output.txt");
+                    sink(output_file);
+                    sink(output_file, type = "message");
+                    junit_rep <- JunitReporter$new(file = "test_results.xml");
+                    progress_rep <- ProgressReporter$new(max_failures = 999999);
+                    multi_rep <- MultiReporter$new(reporters = list(progress_rep, junit_rep));
+                    testthat::test_package("${{ env.projectName }}", filter = "${{ env.test_filter }}", reporter = multi_rep, stop_on_failure = FALSE)'"'"'
+                  )
+                )
+              ),
+              "coveragelist.csv"
+            )'
+          mv coveragelist.csv logs/
+          mv test_results.xml logs/
+          mv test_console_output.txt logs/
+          grep -q " FAIL 0 " logs/test_console_output.txt
+        working-directory: dsBase
+
+      - name: Check for JUnit errors
+        run: |
+          issue_count=$(sed 's/failures="0" errors="0"//' test_results.xml | grep -c errors= || true)
+          echo "Number of testsuites with issues: $issue_count"
+          sed 's/failures="0" errors="0"//' test_results.xml | grep errors= > issues.log || true
+          cat issues.log || true
+          exit $issue_count
+        working-directory: dsBase/logs
+
+      - name: Write versions to file
+        run: |
+          echo "branch:${{ env.branchName }}" > ${{ env.datetime }}.txt
+          echo "os:$(lsb_release -ds)" >> ${{ env.datetime }}.txt
+          echo "R:$(R --version | head -n1)" >> ${{ env.datetime }}.txt
+        working-directory: dsBase/logs
+
+      - name: Commit results to testStatus
+        if: github.repository == 'datashield/dsBase' && github.event_name != 'pull_request'
+        run: |
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git config --global user.name "GitHub Actions"
+          cd testStatus
+          git checkout master
+          git pull
+
+          mkdir -p logs/${{ env.projectName }}/${{ env.branchName }}
+          mkdir -p docs/${{ env.projectName }}/${{ env.branchName }}/latest
+
+          cp ../dsBase/logs/coveragelist.csv logs/${{ env.projectName }}/${{ env.branchName }}/
+          cp ../dsBase/logs/test_results.xml logs/${{ env.projectName }}/${{ env.branchName }}/
+          cp ../dsBase/logs/${{ env.datetime }}.txt logs/${{ env.projectName }}/${{ env.branchName }}/
+
+          # Run status.py script here if applicable
+          # e.g. source/status.py logs/... logs/... status.html ...
+
+          git add .
+          git commit -m "Auto test for ${{ env.projectName }}/${{ env.branchName }} @ ${{ env.datetime }}"
+          git push
+
+      - name: Dump environment info
+        run: |
+          echo -e "\n#############################"
+          echo -e "ls /: ######################"
+          ls -al .
+          echo -e "\n#############################"
+          echo -e "lscpu: ######################"
+          lscpu
+          echo -e "\n#############################"
+          echo -e "memory: #####################"
+          free -m
+          echo -e "\n#############################"
+          echo -e "env: ########################"
+          env
+          echo -e "\n#############################"
+          echo -e "R sessionInfo(): ############"
+          R -e 'sessionInfo()'
+          sudo apt install tree -y
+          tree .
+
