@@ -51,7 +51,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: datashield/testStatus
-          token: ${{ secrets.TESTSTATUS_TOKEN }}
+          token: ${{ secrets.DATASHIELD_DEV }}
           ref: master
           path: testStatus
 
