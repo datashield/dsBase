@@ -55,24 +55,19 @@ jobs:
           ref: master
           path: testStatus
 
-      - name: Tweak local R env
-        run: |
-          echo "options(Ncpus=4)" >> ~/.Rprofile
+      - uses: r-lib/actions/setup-pandoc@v2
 
-      - name: Install R and dependencies
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install --no-install-recommends software-properties-common dirmngr -y
-          wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
-          sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
-          sudo apt-get update -qq
-          sudo apt-get upgrade -qq
-          sudo apt-get install -qq \
-            pkg-config libxml2-dev libcurl4-openssl-dev libssl-dev libgit2-dev \
-            libharfbuzz-dev libfribidi-dev libfontconfig1-dev libfreetype6-dev \
-            libpng-dev libtiff5-dev libjpeg-dev r-base -y
-          sudo R -e "install.packages(c('devtools','RANN','stringr','lme4','dplyr','reshape2','polycor','splines','gamlss','gamlss.dist','mice','childsds'), dependencies=TRUE)"
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+          http-user-agent: release
+          use-public-rspm: true
 
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::rcmdcheck
+          needs: check
+          
       - name: Check man files up-to-date
         run: |
           orig_sum=$(find man -type f | sort -u | xargs cat | md5sum)
@@ -89,14 +84,14 @@ jobs:
 
       - name: Run devtools::check
         run: |
-          R -q -e "library('devtools'); devtools::check(args = c('--no-tests', '--no-examples'))" | tee check.Rout
-          grep -q "^0 errors" check.Rout && grep -q " 0 warnings" check.Rout && grep -q " 0 notes" check.Rout
+          R -q -e "library('devtools'); devtools::check(args = c('--no-tests', '--no-examples'))" | tee ../check.Rout
+          grep -q "^0 errors" ../check.Rout && grep -q " 0 warnings" ../check.Rout && grep -q " 0 notes" ../check.Rout
         working-directory: dsBase
         continue-on-error: true
 
       - name: Run tests with coverage & JUnit report
         run: |
-          mkdir -p logs
+          mkdir -p ../logs
           sudo R --verbose -e 'devtools::reload()'
           sudo R -q -e '
             library(covr);
@@ -118,9 +113,9 @@ jobs:
               ),
               "coveragelist.csv"
             )'
-          mv coveragelist.csv logs/
-          mv test_results.xml logs/
-          mv test_console_output.txt logs/
+            
+          mv coveragelist.csv ../logs/
+          mv test_* ../logs/
           grep -q " FAIL 0 " logs/test_console_output.txt
         working-directory: dsBase
 
@@ -131,14 +126,14 @@ jobs:
           sed 's/failures="0" errors="0"//' test_results.xml | grep errors= > issues.log || true
           cat issues.log || true
           exit $issue_count
-        working-directory: dsBase/logs
+        working-directory: logs
 
       - name: Write versions to file
         run: |
           echo "branch:${{ env.branchName }}" > ${{ env.datetime }}.txt
           echo "os:$(lsb_release -ds)" >> ${{ env.datetime }}.txt
           echo "R:$(R --version | head -n1)" >> ${{ env.datetime }}.txt
-        working-directory: dsBase/logs
+        working-directory: logs
 
       - name: Commit results to testStatus
         if: github.repository == 'datashield/dsBase' && github.event_name != 'pull_request'
@@ -152,9 +147,9 @@ jobs:
           mkdir -p logs/${{ env.projectName }}/${{ env.branchName }}
           mkdir -p docs/${{ env.projectName }}/${{ env.branchName }}/latest
 
-          cp ../dsBase/logs/coveragelist.csv logs/${{ env.projectName }}/${{ env.branchName }}/
-          cp ../dsBase/logs/test_results.xml logs/${{ env.projectName }}/${{ env.branchName }}/
-          cp ../dsBase/logs/${{ env.datetime }}.txt logs/${{ env.projectName }}/${{ env.branchName }}/
+          cp logs/coveragelist.csv logs/${{ env.projectName }}/${{ env.branchName }}/
+          cp logs/test_results.xml logs/${{ env.projectName }}/${{ env.branchName }}/
+          cp logs/${{ env.datetime }}.txt logs/${{ env.projectName }}/${{ env.branchName }}/
 
           # Run status.py script here if applicable
           # e.g. source/status.py logs/... logs/... status.html ...
