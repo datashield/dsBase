@@ -65,7 +65,11 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck
+          extra-packages: |
+            any::rcmdcheck
+            cran::covr
+            cran::devtools
+            cran::testthat
           needs: check
           
       - name: Check man files up-to-date
