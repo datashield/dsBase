@@ -74,6 +74,13 @@ jobs:
             cran::testthat
           needs: check
           
+      - name: Install dependencies
+        run: |
+          install.packages('devtools')
+          install.packages('remotes')
+          remotes::install_deps(dependencies = TRUE)
+        shell: Rscript {0}
+          
       - name: Check man files up-to-date
         run: |
           orig_sum=$(find man -type f | sort -u | xargs cat | md5sum)
