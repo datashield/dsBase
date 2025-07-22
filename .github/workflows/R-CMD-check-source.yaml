@@ -95,7 +95,7 @@ jobs:
 
       - name: Run tests with coverage & JUnit report
         run: |
-          mkdir -p ../logs
+          mkdir -p logs
           R -q -e "library('devtools'); devtools::reload();"
           R -q -e '
             library(covr);
@@ -118,9 +118,9 @@ jobs:
               "coveragelist.csv"
             )'
           
-          mv coveragelist.csv ../logs/
-          mv test_* ../logs/
-          grep -q " FAIL 0 " ../logs/test_console_output.txt
+          mv coveragelist.csv logs/
+          mv test_* logs/
+          grep -q " FAIL 0 " logs/test_console_output.txt
         working-directory: dsBase
 
       - name: Check for JUnit errors
