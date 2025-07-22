@@ -112,7 +112,7 @@ jobs:
                     junit_rep <- JunitReporter$new(file = "test_results.xml");
                     progress_rep <- ProgressReporter$new(max_failures = 999999);
                     multi_rep <- MultiReporter$new(reporters = list(progress_rep, junit_rep));
-                    testthat::test_package("${{ env.projectName }}", filter = "${{ env.test_filter }}", reporter = multi_rep, stop_on_failure = FALSE)'"'"'
+                    testthat::test_local(filter = "${{ env.test_filter }}", reporter = multi_rep, stop_on_failure = FALSE)'"'"'
                   )
                 )
               ),
