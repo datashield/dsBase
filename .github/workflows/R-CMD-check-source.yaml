@@ -96,7 +96,7 @@ jobs:
       - name: Run tests with coverage & JUnit report
         run: |
           mkdir -p ../logs
-          R -q -e "library('devtools'); devtools::reload();""
+          R -q -e "library('devtools'); devtools::reload();"
           R -q -e '
             library(covr);
             write.csv(
