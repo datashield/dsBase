@@ -117,10 +117,14 @@ jobs:
               ),
               "coveragelist.csv"
             )'
-            
+          
+          echo '========== . ========='
+          ls .
+          echo '========== .. ========='
+          ls ..
           mv coveragelist.csv ../logs/
           mv test_* ../logs/
-          grep -q " FAIL 0 " logs/test_console_output.txt
+          grep -q " FAIL 0 " ../logs/test_console_output.txt
         working-directory: dsBase
 
       - name: Check for JUnit errors
