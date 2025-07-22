@@ -40,6 +40,8 @@ jobs:
       datetime: ${{ github.run_id }}-${{ github.run_attempt }}
       projectName: dsBase
       branchName: ${{ github.ref_name }}
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      R_KEEP_PKG_SOURCE: yes
 
     steps:
       - name: Checkout dsBase
