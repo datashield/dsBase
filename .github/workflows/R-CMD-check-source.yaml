@@ -52,7 +52,7 @@ jobs:
       - name: Checkout testStatus
         uses: actions/checkout@v4
         with:
-          repository: datashield/testStatus
+          repository: villegar/testStatus
           token: ${{ secrets.DATASHIELD_DEV }}
           ref: master
           path: testStatus
@@ -118,10 +118,6 @@ jobs:
               "coveragelist.csv"
             )'
           
-          echo '========== . ========='
-          ls .
-          echo '========== .. ========='
-          ls ..
           mv coveragelist.csv ../logs/
           mv test_* ../logs/
           grep -q " FAIL 0 " ../logs/test_console_output.txt
@@ -144,7 +140,7 @@ jobs:
         working-directory: logs
 
       - name: Commit results to testStatus
-        if: github.repository == 'datashield/dsBase' && github.event_name != 'pull_request'
+        if: github.repository == 'villegar/dsBase' && github.event_name != 'pull_request'
         run: |
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git config --global user.name "GitHub Actions"
