@@ -1,18 +1,15 @@
 ################################################################################
 # DataSHIELD GHA test suite - dsBase
 # Adapted from `azure-pipelines.yml` by Roberto Villegas-Diaz
-# 
-# OVERVIEW
 #
 # Inside the root directory $(Pipeline.Workspace) will be a file tree like:
 # /dsBase               <- Checked out version of datashield/dsBase
+# /dsBase/logs          <- Where results of tests and logs are collated
 # /testStatus           <- Checked out version of datashield/testStatus
-# /logs                 <- Where results of tests and logs are collated
 #
-# As of Jul 2025 this takes ~ 15 mins to run.
-#
+# As of Jul 2025 this takes ~ 9 mins to run.
 ################################################################################
-name: DataSHIELD GHA test suite
+name: DataSHIELD GHA test suite for dsBase
 
 on:
   push:
@@ -25,7 +22,7 @@ on:
     - cron: '0 1 * * *'   # Nightly on v6.3.3-dev
 
 jobs:
-  run_devtools_check:
+  dsBase_test_suite:
     runs-on: ubuntu-latest
     timeout-minutes: 120
     
