@@ -142,7 +142,7 @@ jobs:
       - name: Commit results to testStatus
         if: github.repository == 'villegar/dsBase' && github.event_name != 'pull_request'
         run: |
-          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git config --global user.name "GitHub Actions"
           cd testStatus
           git checkout master
@@ -151,9 +151,9 @@ jobs:
           mkdir -p logs/${{ env.projectName }}/${{ env.branchName }}
           mkdir -p docs/${{ env.projectName }}/${{ env.branchName }}/latest
 
-          cp logs/coveragelist.csv logs/${{ env.projectName }}/${{ env.branchName }}/
-          cp logs/test_results.xml logs/${{ env.projectName }}/${{ env.branchName }}/
-          cp logs/${{ env.datetime }}.txt logs/${{ env.projectName }}/${{ env.branchName }}/
+          cp ../dsBase/logs/*.csv logs/${{ env.projectName }}/${{ env.branchName }}/
+          cp ../dsBase/logs/*.xml logs/${{ env.projectName }}/${{ env.branchName }}/
+          cp ../dsBase/logs/${{ env.datetime }}.txt logs/${{ env.projectName }}/${{ env.branchName }}/
 
           # Run status.py script here if applicable
           # e.g. source/status.py logs/... logs/... status.html ...
