@@ -148,9 +148,9 @@ jobs:
           mkdir -p logs/${{ env.projectName }}/${{ env.branchName }}
           mkdir -p docs/${{ env.projectName }}/${{ env.branchName }}/latest
 
-          cp ../dsBase/logs/*.csv logs/${{ env.projectName }}/${{ env.branchName }}/
-          cp ../dsBase/logs/*.xml logs/${{ env.projectName }}/${{ env.branchName }}/
-          cp ../dsBase/logs/${{ env.datetime }}.txt logs/${{ env.projectName }}/${{ env.branchName }}/
+          cp -rv ../dsBase/logs/*.csv logs/${{ env.projectName }}/${{ env.branchName }}/
+          cp -rv ../dsBase/logs/*.xml logs/${{ env.projectName }}/${{ env.branchName }}/
+          cp -rv ../dsBase/logs/${{ env.datetime }}.txt logs/${{ env.projectName }}/${{ env.branchName }}/
 
           # Run status.py script here if applicable
           # e.g. source/status.py logs/... logs/... status.html ...
