@@ -130,14 +130,14 @@ jobs:
           sed 's/failures="0" errors="0"//' test_results.xml | grep errors= > issues.log || true
           cat issues.log || true
           exit $issue_count
-        working-directory: logs
+        working-directory: dsBase/logs
 
       - name: Write versions to file
         run: |
           echo "branch:${{ env.branchName }}" > ${{ env.datetime }}.txt
           echo "os:$(lsb_release -ds)" >> ${{ env.datetime }}.txt
           echo "R:$(R --version | head -n1)" >> ${{ env.datetime }}.txt
-        working-directory: logs
+        working-directory: dsBase/logs
 
       - name: Commit results to testStatus
         if: github.repository == 'villegar/dsBase' && github.event_name != 'pull_request'
