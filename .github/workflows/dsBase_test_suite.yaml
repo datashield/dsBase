@@ -36,7 +36,7 @@ jobs:
       _r_check_system_clock_: 0
       datetime: ${{ github.run_id }}-${{ github.run_attempt }}
       projectName: dsBase
-      branchName: ${{ github.ref_name }}
+      BRANCH_NAME: ${{ github.ref_name }}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
 
@@ -131,7 +131,7 @@ jobs:
 
       - name: Write versions to file
         run: |
-          echo "branch:${{ env.branchName }}" > ${{ env.datetime }}.txt
+          echo "branch:${{ env.BRANCH_NAME }}" > ${{ env.datetime }}.txt
           echo "os:$(lsb_release -ds)" >> ${{ env.datetime }}.txt
           echo "R:$(R --version | head -n1)" >> ${{ env.datetime }}.txt
         working-directory: dsBase/logs
@@ -145,17 +145,17 @@ jobs:
           git checkout master
           git pull
 
-          mkdir -p logs/${{ env.projectName }}/${{ env.branchName }}
-          mkdir -p docs/${{ env.projectName }}/${{ env.branchName }}/latest
+          mkdir -p logs/${{ env.projectName }}/${{ env.BRANCH_NAME }}
+          mkdir -p docs/${{ env.projectName }}/${{ env.BRANCH_NAME }}/latest
 
-          cp -rv ../dsBase/logs/* logs/${{ env.projectName }}/${{ env.branchName }}/
-          cp -rv ../dsBase/logs/${{ env.datetime }}.txt logs/${{ env.projectName }}/${{ env.branchName }}/
+          cp -rv ../dsBase/logs/* logs/${{ env.projectName }}/${{ env.BRANCH_NAME }}/
+          cp -rv ../dsBase/logs/${{ env.datetime }}.txt logs/${{ env.projectName }}/${{ env.BRANCH_NAME }}/
 
           # Run status.py script here if applicable
           # e.g. source/status.py logs/... logs/... status.html ...
 
           git add .
-          git commit -m "Auto test for ${{ env.projectName }}/${{ env.branchName }} @ ${{ env.datetime }}"
+          git commit -m "Auto test for ${{ env.projectName }}/${{ env.BRANCH_NAME }} @ ${{ env.datetime }}"
           git push
 
       - name: Dump environment info
