@@ -152,7 +152,7 @@ jobs:
           cp -rv ../dsBase/logs/${{ env.DATETIME }}.txt logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.DATETIME }}/
           
           # Create symbolic link
-          ln -sf logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.DATETIME }}/ logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/[latest]
+          ln -sf ${{ env.DATETIME }}/ logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/.LATEST
 
           # Run status.py script here if applicable
           # e.g. source/status.py logs/... logs/... status.html ...
