@@ -26,17 +26,18 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 120
     
-    # These should all be constant, except test_filter. This can be used to test 
+    # These should all be constant, except TEST_FILTER. This can be used to test 
     # subsets of test files in the testthat directory. Options are like:
     # '*'               <- Run all tests.
     # 'asNumericDS*'    <- Run all asNumericDS tests, i.e. all the arg, etc. tests.
     # '*_smk_*'         <- Run all the smoke tests for all functions.
     env:
-      test_filter: '*'
+      TEST_FILTER: '*'
       _r_check_system_clock_: 0
-      datetime: ${{ github.run_id }}-${{ github.run_attempt }}
-      projectName: dsBase
+      DATETIME: ${{ github.run_id }}-${{ github.run_attempt }}
+      PROJECT_NAME: dsBase
       BRANCH_NAME: ${{ github.ref_name }}
+      REPO_OWNER: ${{ github.repository_owner }}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       R_KEEP_PKG_SOURCE: yes
 
@@ -49,8 +50,8 @@ jobs:
       - name: Checkout testStatus
         uses: actions/checkout@v4
         with:
-          repository: villegar/testStatus
-          token: ${{ secrets.DATASHIELD_DEV }}
+          repository: ${{ env.REPO_OWNER }}/testStatus
+          token: ${{ secrets.GITHUB_TOKEN }}
           ref: master
           path: testStatus
 
@@ -108,7 +109,7 @@ jobs:
                     junit_rep <- JunitReporter$new(file = "test_results.xml");
                     progress_rep <- ProgressReporter$new(max_failures = 999999);
                     multi_rep <- MultiReporter$new(reporters = list(progress_rep, junit_rep));
-                    testthat::test_local(filter = "${{ env.test_filter }}", reporter = multi_rep, stop_on_failure = FALSE)'"'"'
+                    testthat::test_local(filter = "${{ env.TEST_FILTER }}", reporter = multi_rep, stop_on_failure = FALSE)'"'"'
                   )
                 )
               ),
@@ -131,13 +132,13 @@ jobs:
 
       - name: Write versions to file
         run: |
-          echo "branch:${{ env.BRANCH_NAME }}" > ${{ env.datetime }}.txt
-          echo "os:$(lsb_release -ds)" >> ${{ env.datetime }}.txt
-          echo "R:$(R --version | head -n1)" >> ${{ env.datetime }}.txt
+          echo "branch:${{ env.BRANCH_NAME }}" > ${{ env.DATETIME }}.txt
+          echo "os:$(lsb_release -ds)" >> ${{ env.DATETIME }}.txt
+          echo "R:$(R --version | head -n1)" >> ${{ env.DATETIME }}.txt
         working-directory: dsBase/logs
 
       - name: Commit results to testStatus
-        if: github.repository == 'villegar/dsBase' && github.event_name != 'pull_request'
+        # if: github.repository == 'villegar/dsBase' && github.event_name != 'pull_request'
         run: |
           git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git config --global user.name "$GITHUB_ACTOR"
@@ -145,17 +146,17 @@ jobs:
           git checkout master
           git pull
 
-          mkdir -p logs/${{ env.projectName }}/${{ env.BRANCH_NAME }}
-          mkdir -p docs/${{ env.projectName }}/${{ env.BRANCH_NAME }}/latest
+          mkdir -p logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}
+          mkdir -p docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/latest
 
-          cp -rv ../dsBase/logs/* logs/${{ env.projectName }}/${{ env.BRANCH_NAME }}/
-          cp -rv ../dsBase/logs/${{ env.datetime }}.txt logs/${{ env.projectName }}/${{ env.BRANCH_NAME }}/
+          cp -rv ../dsBase/logs/* logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/
+          cp -rv ../dsBase/logs/${{ env.DATETIME }}.txt logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/
 
           # Run status.py script here if applicable
           # e.g. source/status.py logs/... logs/... status.html ...
 
           git add .
-          git commit -m "Auto test for ${{ env.projectName }}/${{ env.BRANCH_NAME }} @ ${{ env.datetime }}"
+          git commit -m "Auto test for ${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }} @ ${{ env.DATETIME }}"
           git push
 
       - name: Dump environment info
