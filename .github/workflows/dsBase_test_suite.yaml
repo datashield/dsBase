@@ -51,7 +51,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: ${{ env.REPO_OWNER }}/testStatus
-          token: ${{ github.token }}
+          token: ${{ secrets.DATASHIELD_DEV }}
           ref: master
           path: testStatus
 
