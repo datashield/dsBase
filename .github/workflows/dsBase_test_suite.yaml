@@ -147,7 +147,8 @@ jobs:
         
       - name: Parse results from testthat and covr
         run: |
-          Rscript --verbose --vanilla testStatus/source/parse_test_report.R dsBase/logs/
+          Rscript --verbose --vanilla ../testStatus/source/parse_test_report.R logs/
+        working-directory: dsBase
 
       - name: Commit results to testStatus
         # if: github.repository == 'villegar/dsBase' && github.event_name != 'pull_request'
