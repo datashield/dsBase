@@ -77,6 +77,9 @@ jobs:
             cran::dplyr
             cran::stringr
             cran::tidyr
+            cran::quarto
+            cran::knitr
+            cran::kableExtra
           needs: check
           
       - name: Check man files up-to-date
@@ -160,14 +163,17 @@ jobs:
           git pull
 
           mkdir -p logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.DATETIME }}/
+          mkdir -p docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.DATETIME }}/
           
           # Copy logs to new logs directory location
           cp -rv ../dsBase/logs/* logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.DATETIME }}/
           cp -rv ../dsBase/logs/${{ env.DATETIME }}.txt logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.DATETIME }}/
           
-          # Create symbolic link
+          # Create symbolic links
           ln -sf ${{ env.DATETIME }}/ logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/.LATEST
-
+          ln -sf docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.DATETIME }}/ docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.DATETIME }}/latest
+          
+          R -e "quarto::render('source/test_report.qmd', execute_params = list(input_dir = '"logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}"'), output_file = '"docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.DATETIME }}/"index.html')"
           # Run status.py script here if applicable
           # e.g. source/status.py logs/... logs/... status.html ...
 
