@@ -173,9 +173,8 @@ jobs:
           ln -sf ${{ env.DATETIME }}/ logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/.LATEST
           ln -sf docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.DATETIME }}/ docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.DATETIME }}/latest
           
-          R -e "quarto::quarto_render('source/test_report.qmd', execute_params = list(input_dir = 'logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}'), output_file = 'docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.DATETIME }}/index.html')"
-          # Run status.py script here if applicable
-          # e.g. source/status.py logs/... logs/... status.html ...
+          R -e 'input_dir <- file.path("logs", Sys.getenv("env.PROJECT_NAME"), Sys.getenv("env.BRANCH_NAME")); quarto::quarto_render("source/test_report.qmd", execute_params = list(input_dir = input_dir), output_file = paste0(Sys.getenv("env.DATETIME"), "html"))'
+          mv source/${{ env.DATETIME }}.html docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.DATETIME }}/index.html
 
           git add .
           git commit -m "Auto test for ${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }} @ ${{ env.DATETIME }}"
