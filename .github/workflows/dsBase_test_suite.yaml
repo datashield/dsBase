@@ -80,6 +80,8 @@ jobs:
             cran::quarto
             cran::knitr
             cran::kableExtra
+            cran::rmarkdown
+            cran::downlit
           needs: check
           
       - name: Check man files up-to-date
@@ -172,8 +174,8 @@ jobs:
           ln -sf ${{ env.WORKFLOW_ID }}/ logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/.LATEST
           ln -sf docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/ docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/latest
           
-          R -e 'input_dir <- file.path("../logs", Sys.getenv("PROJECT_NAME"), Sys.getenv("BRANCH_NAME"), Sys.getenv("WORKFLOW_ID")); quarto::quarto_render("source/test_report.qmd", execute_params = list(input_dir = input_dir), output_file = paste0(Sys.getenv("WORKFLOW_ID"), ".html"))'
-          mv source/${{ env.WORKFLOW_ID }}.html docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/index.html
+          R -e 'input_dir <- file.path("../logs", Sys.getenv("PROJECT_NAME"), Sys.getenv("BRANCH_NAME"), Sys.getenv("WORKFLOW_ID")); quarto::quarto_render("source/test_report.qmd", execute_params = list(input_dir = input_dir))'
+          mv source/index.html docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/index.html
 
           git add .
           git commit -m "Auto test for ${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }} @ ${{ env.WORKFLOW_ID }}"
