@@ -68,6 +68,15 @@ jobs:
           extra-packages: |
             any::rcmdcheck
             cran::devtools
+            cran::git2r
+            cran::RCurl
+            cran::readr
+            cran::magrittr
+            cran::xml2
+            cran::purrr
+            cran::dplyr
+            cran::stringr
+            cran::tidyr
           needs: check
           
       - name: Check man files up-to-date
@@ -135,6 +144,10 @@ jobs:
           echo "os:$(lsb_release -ds)" >> ${{ env.DATETIME }}.txt
           echo "R:$(R --version | head -n1)" >> ${{ env.DATETIME }}.txt
         working-directory: dsBase/logs
+        
+      - name: Parse results from testthat and covr
+        run: |
+          Rscript --verbose --vanilla testStatus/source/parse_test_report.R dsBase/logs/
 
       - name: Commit results to testStatus
         # if: github.repository == 'villegar/dsBase' && github.event_name != 'pull_request'
