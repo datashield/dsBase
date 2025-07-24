@@ -172,13 +172,18 @@ jobs:
           ln -sf ${{ env.DATETIME }}/ logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/.LATEST
           ln -sf docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.DATETIME }}/ docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.DATETIME }}/latest
           
-          R -e 'input_dir <- file.path("../logs", Sys.getenv("env.PROJECT_NAME"), Sys.getenv("env.BRANCH_NAME"));print(input_dir);list.files(input_dir);'
-          R -e 'input_dir <- file.path("../logs", Sys.getenv("env.PROJECT_NAME"), Sys.getenv("env.BRANCH_NAME")); quarto::quarto_render("source/test_report.qmd", execute_params = list(input_dir = input_dir), output_file = paste0(Sys.getenv("env.DATETIME"), ".html"))'
+          R -e 'input_dir <- file.path("../logs", Sys.getenv("PROJECT_NAME"), Sys.getenv("BRANCH_NAME"));print(input_dir);list.files(input_dir);'
+          R -e 'input_dir <- file.path("../logs", Sys.getenv("PROJECT_NAME"), Sys.getenv("BRANCH_NAME")); quarto::quarto_render("source/test_report.qmd", execute_params = list(input_dir = input_dir), output_file = paste0(Sys.getenv("DATETIME"), ".html"))'
           mv source/${{ env.DATETIME }}.html docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.DATETIME }}/index.html
 
           git add .
           git commit -m "Auto test for ${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }} @ ${{ env.DATETIME }}"
           git push
+          
+        env:
+          PROJECT_NAME: ${{ env.PROJECT_NAME }}
+          BRANCH_NAME: ${{ env.BRANCH_NAME }}
+          DATETIME: ${{ env.DATETIME }}
 
       - name: Dump environment info
         run: |
