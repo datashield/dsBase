@@ -12,6 +12,9 @@
 # Set up
 #
 
+# Skip these tests on Apple M1 mac
+skip_on_os("mac", arch = "aarch64")
+
 context("corTestDS::smk::setup")
 
 #
