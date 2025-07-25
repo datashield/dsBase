@@ -9,7 +9,7 @@
 #
 # As of Jul 2025 this takes ~ 9 mins to run.
 ################################################################################
-name: DataSHIELD GHA test suite for dsBase
+name: dsBase tests' suite
 
 on:
   push:
