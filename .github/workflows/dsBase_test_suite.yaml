@@ -13,13 +13,10 @@ name: dsBase tests' suite
 
 on:
   push:
-    branches:
-      - master
-      - v6.3.3-dev
-      
+    branches: [master, v6.3.4-dev]
   schedule:
-    - cron: '0 0 * * 0'   # Weekly on master
-    - cron: '0 1 * * *'   # Nightly on v6.3.3-dev
+    - cron: '0 0 * * 0'   # Weekly
+    - cron: '0 1 * * *'   # Nightly
 
 jobs:
   dsBase_test_suite:
