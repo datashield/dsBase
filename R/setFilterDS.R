@@ -7,6 +7,7 @@
 #' @param x a dummy argument
 #' @return an integer between 1 and 5
 #' @keywords internal
+#' @noRd
 #' @author Gaye, A.
 #'
 setFilterDS <- function(x=getOption("datashield.privacyLevel", default=5)){

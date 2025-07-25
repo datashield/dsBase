@@ -1,6 +1,6 @@
 #' 
 #' @title glmDS2 called by ds.glm
-#' @description This is the second serverside aggregate function called by ds.glm.
+#' @description This is the second server-side aggregate function called by ds.glm.
 #' @details It is an aggregate function that uses the model structure and starting
 #' beta.vector constructed by glmDS1 to iteratively fit the generalized linear model
 #' that has been specified. The function glmDS2 also carries out a series of disclosure
@@ -18,7 +18,10 @@
 #' @param weights an optional variable providing regression weights
 #' @param dataName an optional character string specifying a data.frame object holding
 #' the data to be analysed under the specified model same 
+#' 
 #' @author Paul Burton, for DataSHIELD Development Team
+#' 
+#' @return List with values from GLM model
 #' @export
 #'
 glmDS2 <- function (formula, family, beta.vect, offset, weights, dataName) {

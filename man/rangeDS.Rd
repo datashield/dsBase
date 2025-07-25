@@ -13,7 +13,7 @@ rangeDS(xvect)
 a numeric vector which contains the minimum and the maximum values of the vector
 }
 \description{
-this function is similar to R function \code{range} but instead to not return 
+this function is similar to R function \code{range} but instead to not return
 the real minimum and maximum, the computed values are multiplied by a very small random number.
 }
 \author{

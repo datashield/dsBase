@@ -12,6 +12,10 @@
 # Set up
 #
 
+# avoid performance tests on CRAN and GitHub Actions
+testthat::skip_on_cran()
+testthat::skip_on_ci()
+
 context("meanDS::perf::setup")
 
 set.standard.disclosure.settings()
@@ -22,6 +26,8 @@ set.standard.disclosure.settings()
 
 context("meanDS::perf::numeric")
 test_that("numeric meanDS - performance", {
+    skip_on_cran()
+
     input <- c(0.0, 1.0, 2.0, 3.0, 4.0)
 
     .durationSec  <- 30 # seconds
@@ -55,6 +61,8 @@ test_that("numeric meanDS - performance", {
 
 context("meanDS::perf::numeric with NA")
 test_that("numeric meanDS, with NA - performance", {
+    skip_on_cran()
+
     input <- c(0.0, NA, 2.0, NA, 4.0)
 
     .durationSec  <- 30 # seconds

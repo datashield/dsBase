@@ -21,8 +21,11 @@ variables U on x,y and Z}
 optional character string specifying a data.frame object holding the data to be
 analysed under the specified model}
 }
+\value{
+List with values from GLM model.
+}
 \description{
-This is the first serverside aggregate function called by ds.glm
+This is the first server-side aggregate function called by ds.glm
 }
 \details{
 It is an

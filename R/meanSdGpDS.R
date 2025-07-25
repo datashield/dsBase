@@ -1,13 +1,15 @@
 #' 
 #' @title MeanSdGpDS
-#' @description Serverside function called by ds.meanSdGp 
+#' @description Server-side function called by ds.meanSdGp 
 #' @details Computes the mean and standard deviation across groups defined by one
 #' factor
-#' @param X a clientside supplied character string identifying the variable for which
+#' @param X a client-side supplied character string identifying the variable for which
 #' means/SDs are to be calculated
-#' @param INDEX a clientside supplied character string identifying the factor across
+#' @param INDEX a client-side supplied character string identifying the factor across
 #' which means/SDs are to be calculated
 #' @author Burton PR
+#' 
+#' @return List with results from the group statistics
 #' @export
 #'
 meanSdGpDS <- function (X, INDEX){

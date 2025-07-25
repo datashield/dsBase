@@ -27,7 +27,7 @@ expanded data}
 time in any of the sources}
 
 \item{idCol}{a clientside generated character string specifying the variable
-holding the IDs of indivuals in the data set to be expanded}
+holding the IDs of individuals in the data set to be expanded}
 
 \item{entryCol}{a clientside specified character string identifying the variable
 holding the time that each individual starts follow up}
@@ -43,6 +43,9 @@ column names of additional variables to include in the
 final expanded table. If the 'variables' argument is not set (is null) but the
 'data' argument is set the full data.frame will be expanded and carried forward}
 }
+\value{
+List with `expanded.table`
+}
 \description{
 The second serverside function called by ds.lexis.
 }
@@ -53,7 +56,7 @@ the expanded dataframe containing surival data for a piecewise exponential
 regression. lexisDS2 also
 carries out a series of disclosure checks and if the arguments or data fail any of
 those tests,
-creation of the exapanded dataframe is blocked and an appropriate serverside error
+creation of the expanded dataframe is blocked and an appropriate serverside error
 message is stored.
 For more details see the extensive header for ds.lexis.
 }
