@@ -6,7 +6,7 @@ ENV <- new.env()
   
   options(
     datashield.privacyLevel = 5, 
-    default.datashield.privacyControlLevel = "banana", 
+    default.datashield.privacyControlLevel = "permissive", 
     default.nfilter.glm = 0.33, 
     default.nfilter.kNN = 3, 
     default.nfilter.string = 80, 
