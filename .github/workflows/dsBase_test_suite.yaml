@@ -22,6 +22,8 @@ jobs:
   dsBase_test_suite:
     runs-on: ubuntu-latest
     timeout-minutes: 120
+    permissions:
+      contents: write
     
     # These should all be constant, except TEST_FILTER. This can be used to test 
     # subsets of test files in the testthat directory. Options are like:

@@ -4,6 +4,7 @@
 [![](https://www.r-pkg.org/badges/version/dsBase?color=black)](https://cran.r-project.org/package=dsBase)
 [![R build
 status](https://github.com/datashield/dsBase/workflows/R-CMD-check/badge.svg)](https://github.com/datashield/dsBase/actions)
+[![Codecov test coverage](https://codecov.io/gh/datashield/dsBase/graph/badge.svg)](https://app.codecov.io/gh/datashield/dsBase)
 
 ## Installation
 
