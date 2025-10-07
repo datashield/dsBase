@@ -9,7 +9,7 @@
 #'
 #' @return A dataframe with the specified number of rows and columns, containing mixed data types.
 #' @importFrom dplyr bind_cols
-#' @importFrom purrr map_dfc
+#' @importFrom purrr purrr::map_dfc
 #' @examples
 #' df <- create_mixed_dataframe(n_rows = 100, n_factor_cols = 10, n_other_cols = 5)
 create_mixed_dataframe <- function(n_rows = 10000, n_factor_cols = 15, n_other_cols = 15) {
@@ -37,7 +37,7 @@ create_mixed_dataframe <- function(n_rows = 10000, n_factor_cols = 15, n_other_c
     c("Summer", "Winter", "Spring", "Fall")
   )
 
-  factor_columns <- map_dfc(factor_levels[1:n_factor_cols], create_factor_column)
+  factor_columns <- purrr::map_dfc(factor_levels[1:n_factor_cols], create_factor_column)
   colnames(factor_columns) <- paste0("fac_col", 1:n_factor_cols)
 
   create_other_column <- function(type, n = n_rows) {
@@ -55,7 +55,7 @@ create_mixed_dataframe <- function(n_rows = 10000, n_factor_cols = 15, n_other_c
     "num", "str", "int", "num", "str"
   )
 
-  other_columns <- map_dfc(column_types[1:n_other_cols], create_other_column)
+  other_columns <- purrr::map_dfc(column_types[1:n_other_cols], create_other_column)
   colnames(other_columns) <- paste0("col", (n_factor_cols + 1):(n_factor_cols + n_other_cols))
   df <- bind_cols(factor_columns, other_columns)
 
