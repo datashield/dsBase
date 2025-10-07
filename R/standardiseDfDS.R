@@ -73,7 +73,7 @@ fixColsDS <- function(.data, cols) {
 #' @param factor_vars A character vector specifying the factor columns.
 #' @return A list of factor levels for the specified columns.
 #' @importFrom tidyselect all_of
-#' @importFrom purrr map
+#' @importFrom purrr map imap
 #' @export
 getAllLevelsDS <- function(df.name, factor_vars) {
   dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana', 'carrot'))
@@ -83,24 +83,37 @@ getAllLevelsDS <- function(df.name, factor_vars) {
   levels <- df %>% dplyr::select(all_of(factor_vars_split)) %>% map(levels)
   
   disclosure_check <- imap(levels, function(lvls, var) {
-    .checkLevelsDisclosure(df.name = df.name, var = var, levels = lvls)
+    .checkLevelsDisclosure(df = df, var = var, levels = lvls)
   })
   
-  failed <- paste(names(disclosure_check)[unlist(disclosure_check)], collapse = ", ")
+  failed_vars <- names(disclosure_check)[unlist(disclosure_check)]
   
-  if(length(failed) > 0) {
-  stop("Based on the value of nfilter.levels.density, these factor variables", " {", failed, "} ", "have too many levels compared to the length of the variable. Please reduce the numnber of levels or change the variable type and try again")
+  if(length(failed_vars) > 0) {
+  stop("Based on the value of nfilter.levels.density, these factor variables", " {", failed_vars, "} ", "have too many levels compared to the length of the variable. Please reduce the numnber of levels or change the variable type and try again")
   } else {
     return(levels)  
   }
 }
 
-.checkLevelsDisclosure <- function(df.name, var, levels) {
-  
-  thr <- dsBase::listDisclosureSettingsDS()                        
+#' Check variable levels against disclosure thresholds
+#'
+#' Internal helper function to verify whether the number of levels in a variable
+#' exceeds the allowed density threshold defined by `dsBase::listDisclosureSettingsDS()`.
+#'
+#' @param df A data frame containing the variable.
+#' @param var Character string. Name of the variable to check.
+#' @param levels Character vector. Levels of the variable.
+#'
+#' @return Logical. `TRUE` if the check fails (i.e., disclosure threshold is violated),
+#'   otherwise `FALSE`.
+#'
+#' @keywords internal
+#' @noRd
+.checkLevelsDisclosure <- function(df, var, levels) {
+  thr <- dsBase::listDisclosureSettingsDS()
   nfilter.levels.density <- as.numeric(thr$nfilter.levels.density)
   n_levels <- length(levels)
-  length_var <- length(get(df.name)[[var]])
+  length_var <- length(df[[var]])
   fail <- (length_var * nfilter.levels.density) < n_levels
   return(fail)
 }
