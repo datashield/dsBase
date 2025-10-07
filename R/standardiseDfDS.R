@@ -80,7 +80,7 @@ getAllLevelsDS <- function(df.name, factor_vars) {
   
   df <- eval(parse(text = df.name), envir = parent.frame())
   factor_vars_split <- strsplit(factor_vars, ",\\s*")[[1]]
-  levels <- df %>% dplyr::select(all_of(factor_vars_split)) %>% map(levels)
+  levels <- purrr::map(df[factor_vars_split], base::levels)
   
   disclosure_check <- imap(levels, function(lvls, var) {
     .checkLevelsDisclosure(df = df, var = var, levels = lvls)
