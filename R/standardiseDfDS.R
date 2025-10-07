@@ -81,12 +81,29 @@ getAllLevelsDS <- function(df.name, factor_vars) {
   df <- eval(parse(text = df.name), envir = parent.frame())
   factor_vars_split <- strsplit(factor_vars, ",\\s*")[[1]]
   levels <- df %>% dplyr::select(all_of(factor_vars_split)) %>% map(levels)
-  browser()
-  return()
+  
+  disclosure_check <- imap(levels, function(lvls, var) {
+    .checkLevelsDisclosure(df.name = df.name, var = var, levels = lvls)
+  })
+  
+  failed <- paste(names(disclosure_check)[unlist(disclosure_check)], collapse = ", ")
+  
+  if(length(failed) > 0) {
+  stop("Based on the value of nfilter.levels.density, these factor variables", " {", failed, "} ", "have too many levels compared to the length of the variable. Please reduce the numnber of levels or change the variable type and try again")
+  } else {
+    return(levels)  
+  }
 }
 
-
-
+.checkLevelsDisclosure <- function(df.name, var, levels) {
+  
+  thr <- dsBase::listDisclosureSettingsDS()                        
+  nfilter.levels.density <- as.numeric(thr$nfilter.levels.density)
+  n_levels <- length(levels)
+  length_var <- length(get(df.name)[[var]])
+  fail <- (length_var * nfilter.levels.density) < n_levels
+  return(fail)
+}
 
 #' Set Factor Levels for Specific Columns in a Data Frame
 #' @param df.name A string representing the name of the data frame to modify.
