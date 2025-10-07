@@ -69,7 +69,9 @@ AggregateMethods:
     is.null=base::is.null,
     is.numeric=base::is.numeric,
     NROW=base::NROW,
-    t.test=stats::t.test
+    t.test=stats::t.test, 
+    getClassAllColsDS,
+    getAllLevelsDS
 AssignMethods:
     absDS,
     asCharacterDS,
@@ -160,4 +162,8 @@ AssignMethods:
     acos=base::acos,
     atan=base::atan,
     sum=base::sum,
-    unlist=base::unlist
+    unlist=base::unlist, 
+    fixClassDS,
+    fixColsDS,
+    fixLevelsDS
+    
