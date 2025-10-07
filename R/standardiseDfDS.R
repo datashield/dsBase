@@ -6,6 +6,8 @@
 #' @importFrom purrr map
 #' @export
 getClassAllColsDS <- function(df.name){
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana', 'carrot'))
+  
   df.name <- eval(parse(text = df.name), envir = parent.frame())
   all_classes <- map(df.name, class) %>% as_tibble()
   return(all_classes)
@@ -21,6 +23,8 @@ getClassAllColsDS <- function(df.name){
 #' @importFrom tidyselect all_of
 #' @export
 fixClassDS <- function(df.name, target_vars, target_class) {
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana', 'carrot'))
+  
   df <- eval(parse(text = df.name), envir = parent.frame())
   df_transformed <- df %>%
     mutate(
@@ -54,6 +58,8 @@ fixClassDS <- function(df.name, target_vars, target_class) {
 #' @importFrom purrr set_names
 #' @export
 fixColsDS <- function(.data, cols) {
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana', 'carrot'))
+  
   .data <- eval(parse(text = .data), envir = parent.frame())
   missing <- setdiff(cols, colnames(.data))
   out <- .data %>%
@@ -70,9 +76,16 @@ fixColsDS <- function(.data, cols) {
 #' @importFrom purrr map
 #' @export
 getAllLevelsDS <- function(df.name, factor_vars) {
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana', 'carrot'))
+  
   df <- eval(parse(text = df.name), envir = parent.frame())
-  return(df %>% dplyr::select(all_of(factor_vars)) %>% map(levels))
+  factor_vars_split <- strsplit(factor_vars, ",\\s*")[[1]]
+  levels <- df %>% dplyr::select(all_of(factor_vars_split)) %>% map(levels)
+  browser()
+  return()
 }
+
+
 
 
 #' Set Factor Levels for Specific Columns in a Data Frame
@@ -82,6 +95,8 @@ getAllLevelsDS <- function(df.name, factor_vars) {
 #' @return A modified data frame with the specified columns converted to factors with the provided levels.
 #' @export
 fixLevelsDS <- function(df.name, vars, levels) {
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana', 'carrot'))
+  
   df.name <- eval(parse(text = df.name), envir = parent.frame())
   out <- df.name %>%
     mutate(across(all_of(vars), ~factor(., levels = levels[[dplyr::cur_column()]])))
