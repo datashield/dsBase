@@ -69,7 +69,9 @@ AggregateMethods:
     is.null=base::is.null,
     is.numeric=base::is.numeric,
     NROW=base::NROW,
-    t.test=stats::t.test
+    t.test=stats::t.test, 
+    getClassAllColsDS,
+    getAllLevelsDS
 AssignMethods:
     absDS,
     asCharacterDS,
@@ -160,6 +162,7 @@ AssignMethods:
     acos=base::acos,
     atan=base::atan,
     sum=base::sum,
+<<<<<<< HEAD
     unlist=base::unlist
 Options:
     datashield.privacyLevel=5,
@@ -173,3 +176,10 @@ Options:
     default.nfilter.noise=0.25,
     default.nfilter.levels.density=0.33,
     default.nfilter.levels.max=40
+=======
+    unlist=base::unlist, 
+    fixClassDS,
+    fixColsDS,
+    fixLevelsDS
+    
+>>>>>>> acb2b95 (export functions)

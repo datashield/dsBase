@@ -140,3 +140,12 @@ import(gamlss.dist)
 import(mice)
 importFrom(gamlss.dist,pST3)
 importFrom(gamlss.dist,qST3)
+<<<<<<< HEAD
+=======
+importFrom(purrr,imap)
+importFrom(purrr,map)
+importFrom(purrr,set_names)
+importFrom(tibble,as_tibble)
+importFrom(tidyselect,all_of)
+importFrom(tidyselect,peek_vars)
+>>>>>>> acb2b95 (export functions)
