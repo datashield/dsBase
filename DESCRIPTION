@@ -5,7 +5,7 @@ Description: Base 'DataSHIELD' functions for the server side. 'DataSHIELD' is a 
     been designed to only share non disclosive summary statistics, with built in automated output
     checking based on statistical disclosure control. With data sites setting the threshold values for
     the automated output checks. For more details, see 'citation("dsBase")'.
-Version: 6.3.5.9000
+Version: 7.0.0.9000
 Authors@R: c(person(given = "Paul",
                     family = "Burton",
                     role = c("aut"),
