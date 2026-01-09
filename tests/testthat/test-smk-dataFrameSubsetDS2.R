@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("gamlssDS::smk::setup")
+# contect("gamlssDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -21,7 +22,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("dataFrameSubsetDS2::smk::test1")
+# contect("dataFrameSubsetDS2::smk::test1")
 test_that("test1 dataFrameSubsetDS2", {
   
   D <- as.data.frame(matrix(NA, nrow=20, ncol=3))
@@ -47,7 +48,7 @@ test_that("test1 dataFrameSubsetDS2", {
     
 })
 
-context("dataFrameSubsetDS2::smk::test2")
+# contect("dataFrameSubsetDS2::smk::test2")
 test_that("test2 dataFrameSubsetDS2", {
   
   D <- as.data.frame(matrix(NA, nrow=20, ncol=3))
@@ -74,6 +75,6 @@ test_that("test2 dataFrameSubsetDS2", {
 # Done
 #
 
-context("dataFrameSubsetDS2::smk::shutdown")
+# contect("dataFrameSubsetDS2::smk::shutdown")
 
-context("dataFrameSubsetDS2::smk::done")
+# contect("dataFrameSubsetDS2::smk::done")

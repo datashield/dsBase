@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("subsetDS::smk::setup")
+# context("subsetDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +21,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("subsetDS::smk")
+# context("subsetDS::smk")
 test_that("simple subsetDS, no NAs", {
     data    <- data.frame(v1 = c(0, 0, 1, 1, 2, 2, 3, 3, 4, 4), v2 = c(4.0, 0.0, 3.0, 1.0, 2.0, 2.0, 1.0, 3.0, 0.0, 4.0))
     complt  <- FALSE
@@ -120,6 +121,6 @@ test_that("simple subsetDS, NAs, complete.case TRUE", {
 # Done
 #
 
-context("subsetDS::smk::shutdown")
+# context("subsetDS::smk::shutdown")
 
-context("subsetDS::smk::done")
+# context("subsetDS::smk::done")

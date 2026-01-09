@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +13,13 @@
 # Set up
 #
 
-context("isValidDS::smk::setup")
+# context("isValidDS::smk::setup")
 
 #
 # Tests
 #
 
-context("isValidDS::smk::character")
+# context("isValidDS::smk::character")
 test_that("simple isValidDS, character", {
     input <- "value"
 
@@ -39,7 +40,7 @@ test_that("simple isValidDS, character vector", {
     expect_equal(res, TRUE)
 })
 
-context("isValidDS::smk::integer")
+# context("isValidDS::smk::integer")
 test_that("simple isValidDS, integer", {
     input <- 1L
 
@@ -60,7 +61,7 @@ test_that("simple isValidDS, integer vector", {
     expect_equal(res,  TRUE)
 })
 
-context("isValidDS::smk::numeric")
+# context("isValidDS::smk::numeric")
 test_that("simple isValidDS, numeric", {
     input <- 1.1
 
@@ -81,7 +82,7 @@ test_that("simple isValidDS, numeric vector", {
     expect_equal(res, TRUE)
 })
 
-context("isValidDS::smk::logical")
+# context("isValidDS::smk::logical")
 test_that("simple isValidDS, logical, FALSE", {
     input <- FALSE
 
@@ -142,7 +143,7 @@ test_that("simple isValidDS, factor vector", {
     expect_equal(res, FALSE)
 })
 
-context("isValidDS::smk::data.frame")
+# context("isValidDS::smk::data.frame")
 test_that("simple isValidDS, data.frame", {
     input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
@@ -153,7 +154,7 @@ test_that("simple isValidDS, data.frame", {
     expect_equal(res, TRUE)
 })
 
-context("isValidDS::smk::array")
+# context("isValidDS::smk::array")
 test_that("simple isValidDS, array", {
     input <- array(c(0.0, 1.0, 2.0, 3.0, 4.0))
 
@@ -164,7 +165,7 @@ test_that("simple isValidDS, array", {
     expect_equal(res, FALSE)
 })
 
-context("isValidDS::smk::matrix")
+# context("isValidDS::smk::matrix")
 test_that("simple isValidDS, matrix", {
     input <- matrix(c(0.0, 1.0, 2.0, 3.0, 4.0))
 
@@ -175,7 +176,7 @@ test_that("simple isValidDS, matrix", {
     expect_equal(res, TRUE)
 })
 
-context("isValidDS::smk::data.matrix")
+# context("isValidDS::smk::data.matrix")
 test_that("simple isValidDS, data.matrix", {
     input <- data.matrix(data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0)))
 
@@ -186,7 +187,7 @@ test_that("simple isValidDS, data.matrix", {
     expect_equal(res, TRUE)
 })
 
-context("isValidDS::smk::date")
+# context("isValidDS::smk::date")
 test_that("simple isValidDS, date", {
     input <- Sys.Date()
 
@@ -197,7 +198,7 @@ test_that("simple isValidDS, date", {
     expect_equal(res, FALSE)
 })
 
-context("isValidDS::smk::formula")
+# context("isValidDS::smk::formula")
 test_that("simple isValidDS, formula", {
     input <- X ~ A + B
 
@@ -208,7 +209,7 @@ test_that("simple isValidDS, formula", {
     expect_equal(res, FALSE)
 })
 
-context("isValidDS::smk::environment")
+# context("isValidDS::smk::environment")
 test_that("simple isValidDS, environment", {
     input <- environment()
 
@@ -219,7 +220,7 @@ test_that("simple isValidDS, environment", {
     expect_equal(res, FALSE)
 })
 
-context("isValidDS::smk::NA")
+# context("isValidDS::smk::NA")
 test_that("special isValidDS, NA", {
     input <- NA
 
@@ -230,7 +231,7 @@ test_that("special isValidDS, NA", {
     expect_equal(res, FALSE)
 })
 
-context("isValidDS::smk::NULL")
+# context("isValidDS::smk::NULL")
 test_that("special isValidDS, NULL", {
     input <- NULL
 
@@ -245,6 +246,6 @@ test_that("special isValidDS, NULL", {
 # Done
 #
 
-context("isValidDS::smk::shutdown")
+# context("isValidDS::smk::shutdown")
 
-context("isValidDS::smk::done")
+# context("isValidDS::smk::done")

@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +13,13 @@
 # Set up
 #
 
-context("BooleDS::smk::setup")
+# context("BooleDS::smk::setup")
 
 #
 # Tests
 #
 
-context("BooleDS::smk::simple equal")
+# context("BooleDS::smk::simple equal")
 test_that("simple BooleDS, equal numeric", {
     input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
@@ -47,7 +48,7 @@ test_that("simple BooleDS, equal logical", {
     expect_equal(res[5], FALSE)
 })
 
-context("BooleDS::smk::simple not-equal")
+# context("BooleDS::smk::simple not-equal")
 test_that("simple BooleDS, not-equal numeric", {
     input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
@@ -76,7 +77,7 @@ test_that("simple BooleDS, not-equal logical", {
     expect_equal(res[5], TRUE)
 })
 
-context("BooleDS::smk::simple less-than")
+# context("BooleDS::smk::simple less-than")
 test_that("simple BooleDS, less-than numeric", {
     input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
@@ -105,7 +106,7 @@ test_that("simple BooleDS, less-than logical", {
     expect_equal(res[5], FALSE)
 })
 
-context("BooleDS::smk::simple less-than-equal")
+# context("BooleDS::smk::simple less-than-equal")
 test_that("simple BooleDS, less-than-equal numeric", {
     input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
@@ -134,7 +135,7 @@ test_that("simple BooleDS, less-than-equal logical", {
     expect_equal(res[5], FALSE)
 })
 
-context("BooleDS::smk::simple greater-than")
+# context("BooleDS::smk::simple greater-than")
 test_that("simple BooleDS, greater-than numeric", {
     input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
@@ -163,7 +164,7 @@ test_that("simple BooleDS, greater-than logical", {
     expect_equal(res[5], TRUE)
 })
 
-context("BooleDS::smk::simple greater-than-equal")
+# context("BooleDS::smk::simple greater-than-equal")
 test_that("simple BooleDS, greater-than-equal numeric", {
     input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
@@ -192,7 +193,7 @@ test_that("simple BooleDS, greater-than-equal logical", {
     expect_equal(res[5], TRUE)
 })
 
-context("BooleDS::smk::na-check numeric")
+# context("BooleDS::smk::na-check numeric")
 test_that("na-check BooleDS, numeric, NA=NA", {
     input <- data.frame(v1 = c(0.0, NA, 2.0, 3.0, NA), v2 = c(NA, 3.0, 2.0, 1.0, NA))
 
@@ -235,7 +236,7 @@ test_that("na-check BooleDS, numeric, NA=1", {
     expect_equal(res[5], 1)
 })
 
-context("BooleDS::smk::na-check logical")
+# context("BooleDS::smk::na-check logical")
 test_that("na-check BooleDS, logical, NA=NA", {
     input <- data.frame(v1 = c(0.0, NA, 2.0, 3.0, NA), v2 = c(NA, 3.0, 2.0, 1.0, NA))
 
@@ -282,6 +283,6 @@ test_that("na-check BooleDS, logical, NA=1", {
 # Done
 #
 
-context("BooleDS::smk::shutdown")
+# context("BooleDS::smk::shutdown")
 
-context("BooleDS::smk::done")
+# context("BooleDS::smk::done")

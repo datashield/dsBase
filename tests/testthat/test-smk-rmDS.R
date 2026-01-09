@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("rmDS::smk::setup")
+# context("rmDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +21,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("rmDS::smk::single")
+# context("rmDS::smk::single")
 test_that("single rmDS", {
     expect_false(exists("input"))
 
@@ -34,13 +35,13 @@ test_that("single rmDS", {
 
     expect_equal(class(res), "list")
     expect_length(res, 4)
-    expect_equal(res$return.message, "Object(s) 'input' was deleted.", fixed = TRUE)
-    expect_equal(res$deleted.objects, "input", fixed = TRUE)
-    expect_equal(res$missing.objects, "", fixed = TRUE)
-    expect_equal(res$problem.objects, "", fixed = TRUE)
+    expect_equal(res$return.message, "Object(s) 'input' was deleted.")
+    expect_equal(res$deleted.objects, "input")
+    expect_equal(res$missing.objects, "")
+    expect_equal(res$problem.objects, "")
 })
 
-context("rmDS::smk::multiple")
+# context("rmDS::smk::multiple")
 test_that("multiple rmDS", {
     expect_false(exists("input1"))
     expect_false(exists("input2"))
@@ -59,13 +60,13 @@ test_that("multiple rmDS", {
     expect_equal(class(res), "list")
     expect_length(res, 4)
 
-    expect_equal(res$return.message, "Object(s) 'input1,input2' was deleted.", fixed = TRUE)
-    expect_equal(res$deleted.objects, "input1,input2", fixed = TRUE)
-    expect_equal(res$missing.objects, "", fixed = TRUE)
-    expect_equal(res$problem.objects, "", fixed = TRUE)
+    expect_equal(res$return.message, "Object(s) 'input1,input2' was deleted.")
+    expect_equal(res$deleted.objects, "input1,input2")
+    expect_equal(res$missing.objects, "")
+    expect_equal(res$problem.objects, "")
 })
 
-context("rmDS::smk::single missing")
+# context("rmDS::smk::single missing")
 test_that("single missing rmDS", {
     expect_false(exists("input"))
 
@@ -75,14 +76,14 @@ test_that("single missing rmDS", {
 
     expect_equal(class(res), "list")
     expect_length(res, 4)
-    expect_equal(res$return.message, "Object(s) 'input' which are missing.", fixed = TRUE)
-    expect_equal(res$deleted.objects, "", fixed = TRUE)
-    expect_equal(res$missing.objects, "input", fixed = TRUE)
-    expect_equal(res$problem.objects, "", fixed = TRUE)
+    expect_equal(res$return.message, "Object(s) 'input' which are missing.")
+    expect_equal(res$deleted.objects, "")
+    expect_equal(res$missing.objects, "input")
+    expect_equal(res$problem.objects, "")
 })
 
 
-context("rmDS::smk::multiple missing")
+# context("rmDS::smk::multiple missing")
 test_that("multiple missing rmDS", {
     expect_false(exists("input1"))
     expect_false(exists("input2"))
@@ -94,13 +95,13 @@ test_that("multiple missing rmDS", {
 
     expect_equal(class(res), "list")
     expect_length(res, 4)
-    expect_equal(res$return.message, "Object(s) 'input1,input2' which are missing.", fixed = TRUE)
-    expect_equal(res$deleted.objects, "", fixed = TRUE)
-    expect_equal(res$missing.objects, "input1,input2", fixed = TRUE)
-    expect_equal(res$problem.objects, "", fixed = TRUE)
+    expect_equal(res$return.message, "Object(s) 'input1,input2' which are missing.")
+    expect_equal(res$deleted.objects, "")
+    expect_equal(res$missing.objects, "input1,input2")
+    expect_equal(res$problem.objects, "")
 })
 
-context("rmDS::smk::multiple mixed")
+# context("rmDS::smk::multiple mixed")
 test_that("multiple mixed rmDS", {
     expect_false(exists("input1"))
     expect_false(exists("input2"))
@@ -114,16 +115,16 @@ test_that("multiple mixed rmDS", {
 
     expect_equal(class(res), "list")
     expect_length(res, 4)
-    expect_equal(res$return.message, "Object(s) 'input1' was deleted. 'input2' which are missing.", fixed = TRUE)
-    expect_equal(res$deleted.objects, "input1", fixed = TRUE)
-    expect_equal(res$missing.objects, "input2", fixed = TRUE)
-    expect_equal(res$problem.objects, "", fixed = TRUE)
+    expect_equal(res$return.message, "Object(s) 'input1' was deleted. 'input2' which are missing.")
+    expect_equal(res$deleted.objects, "input1")
+    expect_equal(res$missing.objects, "input2")
+    expect_equal(res$problem.objects, "")
 })
 
 #
 # Done
 #
 
-context("rmDS::smk::shutdown")
+# context("rmDS::smk::shutdown")
 
-context("rmDS::smk::done")
+# context("rmDS::smk::done")

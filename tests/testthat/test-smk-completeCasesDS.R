@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +13,13 @@
 # Set up
 #
 
-context("completeCasesDS::smk::setup")
+# context("completeCasesDS::smk::setup")
 
 #
 # Tests
 #
 
-context("completeCasesDS::smk::vector")
+# context("completeCasesDS::smk::vector")
 test_that("simple completeCasesDS, vector, with no NAs", {
     input <- c(1.1, 2.1, 3.1, 4.1)
 
@@ -44,7 +45,7 @@ test_that("simple completeCasesDS, vector, with NAs", {
     expect_equal(res[3], 4.1)
 })
 
-context("completeCasesDS::smk::data.frame")
+# context("completeCasesDS::smk::data.frame")
 test_that("simple completeCasesDS, data.frame, with no NAs", {
     input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
@@ -93,7 +94,7 @@ test_that("simple completeCasesDS, data.frame, with NAs", {
     expect_equal(res.colnames[2], "v2")
 })
 
-context("completeCasesDS::smk::matrix")
+# context("completeCasesDS::smk::matrix")
 test_that("simple completeCasesDS, matrix, with no NAs", {
     input <- matrix(c(0.0, 1.0, 2.0, 3.0, 4.0))
 
@@ -120,7 +121,7 @@ test_that("simple completeCasesDS, matrix, with NAs", {
     expect_equal(res[3], 4.0)
 })
 
-context("completeCasesDS::smk::data.matrix")
+# context("completeCasesDS::smk::data.matrix")
 test_that("simple completeCasesDS, data.matrix, with no NAs", {
     input <- data.matrix(data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0)))
 
@@ -193,6 +194,6 @@ test_that("simple completeCasesDS, data.matrix, with NAs", {
 # Done
 #
 
-context("completeCasesDS::smk::shutdown")
+# context("completeCasesDS::smk::shutdown")
 
-context("completeCasesDS::smk::done")
+# context("completeCasesDS::smk::done")

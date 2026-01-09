@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("subsetByClassDS::smk::setup")
+# context("subsetByClassDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +21,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("subsetByClassDS::smk")
+# context("subsetByClassDS::smk")
 test_that("simple subsetByClassDS, data.frame, unspecified variables", {
     data      <- data.frame(v1 = factor(c(0, 0, 0, 1, 1, 1, 2, 1, 2, 2)), v2 = c(4.0, 0.0, 3.0, 1.0, 2.0, 2.0, 1.0, 3.0, 0.0, 4.0), v3 = c(1:10), v4 = c(1:10))
     variables <- NULL
@@ -82,6 +83,6 @@ test_that("simple subsetByClassDS, factor vector, specified variables", {
 # Done
 #
 
-context("subsetByClassDS::smk::shutdown")
+# context("subsetByClassDS::smk::shutdown")
 
-context("subsetByClassDS::smk::done")
+# context("subsetByClassDS::smk::done")

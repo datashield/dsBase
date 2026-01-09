@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("gamlssDS::smk::setup")
+# context("gamlssDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -21,7 +22,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("gamlssDS::smk::birthweight")
+# context("gamlssDS::smk::birthweight")
 test_that("birthweight gamlssDS", {
   
   D <- as.data.frame(matrix(NA, nrow=20, ncol=2))
@@ -88,6 +89,6 @@ test_that("birthweight gamlssDS", {
 # Done
 #
 
-context("gamlssDS::smk::shutdown")
+# context("gamlssDS::smk::shutdown")
 
-context("gamlssDS::smk::done")
+# context("gamlssDS::smk::done")

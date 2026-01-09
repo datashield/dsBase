@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +13,13 @@
 # Set up
 #
 
-context("setSeedDS::smk::setup")
+# context("setSeedDS::smk::setup")
 
 #
 # Tests
 #
 
-context("setSeedDS::smk::simple")
+# context("setSeedDS::smk::simple")
 test_that("simple setSeedDS", {
     seedtext    <- "19"
     kind        <- NULL
@@ -35,6 +36,6 @@ test_that("simple setSeedDS", {
 # Done
 #
 
-context("setSeedDS::smk::shutdown")
+# context("setSeedDS::smk::shutdown")
 
-context("setSeedDS::smk::done")
+# context("setSeedDS::smk::done")

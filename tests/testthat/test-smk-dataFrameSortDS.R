@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("dataFrameSortDS::smk::setup")
+# context("dataFrameSortDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +21,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("dataFrameSortDS::smk::numeric input")
+# context("dataFrameSortDS::smk::numeric input")
 test_that("simple dataFrameSortDS, ascending, default", {
     df              <- data.frame(v1 = c(-2.0, -3.0, 4.0, 2.0, 1.0, 0.0, -1.0, 3.0), v2 = c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0))
     sort.key.name   <- "df$v1"
@@ -243,7 +244,7 @@ test_that("simple dataFrameSortDS, descending, alphabetic", {
     expect_equal(res$v2[8], 6.0)
 })
 
-context("dataFrameSortDS::smk::string input")
+# context("dataFrameSortDS::smk::string input")
 test_that("simple dataFrameSortDS, ascending, default", {
     df              <- data.frame(v1 = c("-2.0", "-3.0", "4.0", "2.0", "1.0", "0.0", "-1.0", "3.0"), v2 = c("0.0", "1.0", "2.0", "3.0", "4.0", "5.0", "6.0", "7.0"), stringsAsFactors = FALSE)
     sort.key.name   <- "df$v1"
@@ -471,6 +472,6 @@ test_that("simple dataFrameSortDS, descending, alphabetic", {
 # Done
 #
 
-context("dataFrameSortDS::smk::shutdown")
+# context("dataFrameSortDS::smk::shutdown")
 
-context("dataFrameSortDS::smk::done")
+# context("dataFrameSortDS::smk::done")

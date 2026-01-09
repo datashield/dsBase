@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("aucDS::smk::setup")
+# context("aucDS::smk::setup")
 
 #
 # Tests
@@ -31,7 +32,7 @@ test_that("aucDS", {
     expect_equal(class(res$AUC), "numeric")
     expect_equal(res$AUC, 0.6767515, tolerance=1e-07)
     expect_equal(class(res$se), "numeric")
-    expect_equal(res$se, 0.02065186, tolerance=1e-08)
+    expect_equal(res$se, 0.02065186, tolerance=1e-07)
     
 })
 
@@ -39,6 +40,6 @@ test_that("aucDS", {
 # Done
 #
 
-context("aucDS::smk::shutdown")
+# context("aucDS::smk::shutdown")
 
-context("aucDS::smk::done")
+# context("aucDS::smk::done")

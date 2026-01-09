@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +13,13 @@
 # Set up
 #
 
-context("cbindDS::smk::setup")
+# context("cbindDS::smk::setup")
 
 #
 # Tests
 #
 
-context("cbindDS::smk::simple")
+# context("cbindDS::smk::simple")
 test_that("simple cbindDS", {
     inputs   <- 'input1,input2'
     input1   <- c(0.0, 1.0, 2.0, 3.0)
@@ -44,6 +45,6 @@ test_that("simple cbindDS", {
 # Done
 #
 
-context("cbindDS::smk::shutdown")
+# context("cbindDS::smk::shutdown")
 
-context("cbindDS::smk::done")
+# context("cbindDS::smk::done")

@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# Copyright (c) 2024 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2024-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -16,7 +16,7 @@
 testthat::skip_on_cran()
 testthat::skip_on_ci()
 
-context("meanDS::perf::setup")
+# context("meanDS::perf::setup")
 
 set.standard.disclosure.settings()
 
@@ -24,7 +24,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("meanDS::perf::numeric")
+# context("meanDS::perf::numeric")
 test_that("numeric meanDS - performance", {
     skip_on_cran()
 
@@ -59,7 +59,7 @@ test_that("numeric meanDS - performance", {
     expect_lt(.current.rate, .reference.rate * .reference.tolerance.upper, label = "Observed rate", expected.label = "upper threshold on rate")
 })
 
-context("meanDS::perf::numeric with NA")
+# context("meanDS::perf::numeric with NA")
 test_that("numeric meanDS, with NA - performance", {
     skip_on_cran()
 
@@ -98,6 +98,6 @@ test_that("numeric meanDS, with NA - performance", {
 # Done
 #
 
-context("meanDS::perf::shutdown")
+# context("meanDS::perf::shutdown")
 
-context("meanDS::perf::done")
+# context("meanDS::perf::done")

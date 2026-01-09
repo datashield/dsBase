@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# Copyright (c) 2024 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2024-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("asIntegerDS::arg::setup")
+# context("asIntegerDS::arg::setup")
 
 #
 # Tests
 #
 
-context("asIntegerDS::arg::direct input numeric")
+# context("asIntegerDS::arg::direct input numeric")
 test_that("simple asIntegerDS non-input", {
     expect_error(asIntegerDS(1.0), "ERROR: x.name must be specified as a character string", fixed = TRUE)
 })
@@ -27,6 +27,6 @@ test_that("simple asIntegerDS non-input", {
 # Done
 #
 
-context("asIntegerDS::arg::shutdown")
+# context("asIntegerDS::arg::shutdown")
 
-context("asIntegerDS::arg::done")
+# context("asIntegerDS::arg::done")

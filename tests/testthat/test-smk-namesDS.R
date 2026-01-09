@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("namesDS::smk::setup")
+# context("namesDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +21,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("namesDS::smk::list of atoms")
+# context("namesDS::smk::list of atoms")
 test_that("simple namesDS, data.frame", {
     input <- list(v1 = 0.0, v2 = 1.0)
 
@@ -32,7 +33,7 @@ test_that("simple namesDS, data.frame", {
     expect_true("v2" %in% res)
 })
 
-context("namesDS::smk::list of vectors")
+# context("namesDS::smk::list of vectors")
 test_that("simple namesDS, data.matrix", {
     input <- list(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
@@ -48,6 +49,6 @@ test_that("simple namesDS, data.matrix", {
 # Done
 #
 
-context("namesDS::smk::shutdown")
+# context("namesDS::smk::shutdown")
 
-context("namesDS::smk::done")
+# context("namesDS::smk::done")

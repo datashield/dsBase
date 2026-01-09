@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +13,13 @@
 # Set up
 #
 
-context("rPoisDS::smk::setup")
+# context("rPoisDS::smk::setup")
 
 #
 # Tests
 #
 
-context("rPoisDS::smk::simple")
+# context("rPoisDS::smk::simple")
 test_that("simple rPoisDS, by name", {
     n      <- 8
     lambda <- 32
@@ -59,6 +60,6 @@ test_that("simple rPoisDS, direct", {
 # Done
 #
 
-context("rPoisDS::smk::shutdown")
+# context("rPoisDS::smk::shutdown")
 
-context("rPoisDS::smk::done")
+# context("rPoisDS::smk::done")

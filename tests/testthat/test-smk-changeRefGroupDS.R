@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +13,13 @@
 # Set up
 #
 
-context("changeRefGroupDS::smk::setup")
+# context("changeRefGroupDS::smk::setup")
 
 #
 # Tests
 #
 
-context("changeRefGroupDS::smk")
+# context("changeRefGroupDS::smk")
 test_that("simple changeRefGroupDS, reorderByRef is FALSE", {
     x            <- c(8, 1, 6, 1, 4, 1, 2, 1)
     xf           <- as.factor(x)
@@ -107,6 +108,6 @@ test_that("simple changeRefGroupDS, reorderByRef is TRUE", {
 # Done
 #
 
-context("changeRefGroupDS::smk::shutdown")
+# context("changeRefGroupDS::smk::shutdown")
 
-context("changeRefGroupDS::smk::done")
+# context("changeRefGroupDS::smk::done")

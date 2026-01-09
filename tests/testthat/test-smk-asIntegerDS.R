@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +13,13 @@
 # Set up
 #
 
-context("asIntegerDS::smk::setup")
+# context("asIntegerDS::smk::setup")
 
 #
 # Tests
 #
 
-context("asIntegerDS::smk::numeric")
+# context("asIntegerDS::smk::numeric")
 test_that("numeric asIntegerDS", {
     input <- 3.141
 
@@ -29,7 +30,7 @@ test_that("numeric asIntegerDS", {
     expect_equal(res, 3)
 })
 
-context("asIntegerDS::smk::numeric vector")
+# context("asIntegerDS::smk::numeric vector")
 test_that("numeric vector asIntegerDS", {
     input <- c(0.1, 1.1, 2.1, 3.1, 4.1)
 
@@ -44,7 +45,7 @@ test_that("numeric vector asIntegerDS", {
     expect_equal(res[5], 4)
 })
 
-context("asIntegerDS::smk::character")
+# context("asIntegerDS::smk::character")
 test_that("character asIntegerDS - FALSE", {
     input <- "101"
 
@@ -55,7 +56,7 @@ test_that("character asIntegerDS - FALSE", {
     expect_equal(res, 101)
 })
 
-context("asIntegerDS::smk::character vector")
+# context("asIntegerDS::smk::character vector")
 test_that("character vector asIntegerDS", {
     input <- c("101", "202", "303", "404", "505")
 
@@ -74,6 +75,6 @@ test_that("character vector asIntegerDS", {
 # Done
 #
 
-context("asIntegerDS::smk::shutdown")
+# context("asIntegerDS::smk::shutdown")
 
-context("asIntegerDS::smk::done")
+# context("asIntegerDS::smk::done")

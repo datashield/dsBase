@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +13,13 @@
 # Set up
 #
 
-context("asLogicalDS::smk::setup")
+# context("asLogicalDS::smk::setup")
 
 #
 # Tests
 #
 
-context("asLogicalDS::smk::integer")
+# context("asLogicalDS::smk::integer")
 test_that("simple asLogicalDS integer - FALSE", {
     input <- 0L
 
@@ -39,7 +40,7 @@ test_that("simple asLogicalDS integer - TRUE", {
     expect_equal(res, TRUE)
 })
 
-context("asLogicalDS::smk::integer vector")
+# context("asLogicalDS::smk::integer vector")
 test_that("simple asLogicalDS integer vector", {
     input <- c(1L, 0L, 1L, 0L, 1L)
 
@@ -54,7 +55,7 @@ test_that("simple asLogicalDS integer vector", {
     expect_equal(res[5], TRUE)
 })
 
-context("asLogicalDS::smk::numeric")
+# context("asLogicalDS::smk::numeric")
 test_that("simple asLogicalDS numeric - FALSE", {
     input <- 0.0
 
@@ -75,7 +76,7 @@ test_that("simple asLogicalDS numeric - TRUE", {
     expect_equal(res, TRUE)
 })
 
-context("asLogicalDS::smk::numeric vector")
+# context("asLogicalDS::smk::numeric vector")
 test_that("simple asLogicalDS numeric vector", {
     input <- c(1.0, 0.0, 1.0, 0.0, 1.0)
 
@@ -90,7 +91,7 @@ test_that("simple asLogicalDS numeric vector", {
     expect_equal(res[5], TRUE)
 })
 
-context("asLogicalDS::smk::character")
+# context("asLogicalDS::smk::character")
 test_that("simple asLogicalDS, character - FALSE", {
     input <- "F"
 
@@ -170,6 +171,6 @@ test_that("simple asLogicalDS, character vector", {
 # Done
 #
 
-context("asLogicalDS::smk::shutdown")
+# context("asLogicalDS::smk::shutdown")
 
-context("asLogicalDS::smk::done")
+# context("asLogicalDS::smk::done")

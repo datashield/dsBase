@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +13,13 @@
 # Set up
 #
 
-context("rNormDS::smk::setup")
+# context("rNormDS::smk::setup")
 
 #
 # Tests
 #
 
-context("rNormDS::smk::simple")
+# context("rNormDS::smk::simple")
 test_that("simple rNormDS, by name", {
     n    <- 8
     mean <- 32.0
@@ -61,6 +62,6 @@ test_that("simple rNormDS, direct", {
 # Done
 #
 
-context("rNormDS::smk::shutdown")
+# context("rNormDS::smk::shutdown")
 
-context("rNormDS::smk::done")
+# context("rNormDS::smk::done")

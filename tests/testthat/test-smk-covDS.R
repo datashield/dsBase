@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("covDS::smk::setup")
+# context("covDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +21,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("covDS::smk::casewise.complete")
+# context("covDS::smk::casewise.complete")
 test_that("numeric covDS, casewise.complete", {
     input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0), v2 = c(7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.0))
 
@@ -123,7 +124,7 @@ test_that("numeric covDS, casewise.complete", {
     expect_true(is.na(res$errorMessage))
 })
 
-context("covDS::smk::pairwise.complete")
+# context("covDS::smk::pairwise.complete")
 test_that("numeric covDS, pairwise.complete", {
     input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0), v2 = c(7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.0))
 
@@ -235,6 +236,6 @@ test_that("numeric covDS, pairwise.complete", {
 # Done
 #
 
-context("covDS::smk::shutdown")
+# context("covDS::smk::shutdown")
 
-context("covDS::smk::done")
+# context("covDS::smk::done")

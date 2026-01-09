@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +13,13 @@
 # Set up
 #
 
-context("getWGSRDS::smk::setup")
+# context("getWGSRDS::smk::setup")
 
 #
 # Tests
 #
 
-context("getWGSRDS::smk::simple")
+# context("getWGSRDS::smk::simple")
 
 data <- data.frame(
     age    = c(6.0, 42.0, 23.0, 18.0, 52.0, 36.0, 30.0, NA, 29.0, 54.0),
@@ -152,6 +153,6 @@ test_that("simple getWGSRDS - mfa", {
 # Done
 #
 
-context("getWGSRDS::smk::shutdown")
+# context("getWGSRDS::smk::shutdown")
 
-context("getWGSRDS::smk::done")
+# context("getWGSRDS::smk::done")

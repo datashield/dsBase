@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +13,13 @@
 # Set up
 #
 
-context("lengthDS::smk::setup")
+# context("lengthDS::smk::setup")
 
 #
 # Tests
 #
 
-context("lengthDS::smk::data.frame")
+# context("lengthDS::smk::data.frame")
 test_that("simple lengthDS, numeric data.frame", {
     input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
@@ -37,7 +38,7 @@ test_that("simple lengthDS, character data.frame", {
     expect_equal(res, 2)
 })
 
-context("lengthDS::smk::vector")
+# context("lengthDS::smk::vector")
 test_that("simple lengthDS, numeric vector", {
     input <- c(0.0, 1.0, 2.0, 3.0, 4.0)
 
@@ -60,6 +61,6 @@ test_that("simple lengthDS, character vector", {
 # Done
 #
 
-context("lengthDS::smk::shutdown")
+# context("lengthDS::smk::shutdown")
 
-context("lengthDS::smk::done")
+# context("lengthDS::smk::done")
