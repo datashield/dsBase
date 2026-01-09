@@ -8,7 +8,7 @@
 #' @noRd
 .loadServersideObject <- function(x) {
   tryCatch(
-    eval(parse(text = x), envir = parent.frame(2)), 
+    get(x, envir = parent.frame(2)), 
     error = function(e) {
       stop("The server-side object", " '", x, "' ", "does not exist")
     }
