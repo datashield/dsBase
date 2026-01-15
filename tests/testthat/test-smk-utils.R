@@ -41,11 +41,27 @@ test_that(".checkClass() passes for correct class", {
   )
 })
 
-test_that(".checkClass() throws informative error for wrong class", {
+test_that(".checkClass() throws informative error for wrong class with one target class", {
   x <- list(a = 1)
   expect_error(
-    .checkClass(x, "x", c("data.frame", "matrix")),
-    regexp = "must be of type data.frame or matrix"
+    .checkClass(x, "x", "data.frame"),
+    regexp = "The server-side object must be of type data.frame. 'x' is type list."
+  )
+})
+
+test_that(".checkClass() throws informative error for wrong class with three target classes", {
+  x <- list(a = 1)
+  expect_error(
+    .checkClass(x, "x", c("data.frame", "matrix", "unicorn")),
+    regexp = "The server-side object must be of type data.frame, matrix or unicorn. 'x' is type list."
+  )
+})
+
+test_that(".checkClass() throws informative error for three target classes and three actual classes", {
+  x <- tibble(a = 1)
+  expect_error(
+    .checkClass(x, "x", c("Boolean", "unicorn", "donkey")),
+    regexp = "The server-side object must be of type Boolean, unicorn or donkey. 'x' is type tbl_df, tbl and data.frame."
   )
 })
 

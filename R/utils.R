@@ -8,7 +8,7 @@
 #' @noRd
 .loadServersideObject <- function(x) {
   tryCatch(
-    get(x, envir = parent.frame(2)), 
+    get(x, envir = parent.frame(2)),
     error = function(e) {
       stop("The server-side object", " '", x, "' ", "does not exist")
     }
@@ -28,15 +28,15 @@
 #' @noRd
 .checkClass <- function(obj, obj_name, permitted_classes) {
   typ <- class(obj)
-  
+
   if (!any(permitted_classes %in% typ)) {
     msg <- glue(
-      "The server-side object must be of type {glue_collapse(permitted_classes, sep = ' or ')}. ",
-      "'{obj_name}' is type {typ}."
+      "The server-side object must be of type {glue_collapse(permitted_classes, sep = ', ', last = ' or ')}. ",
+      "'{obj_name}' is type {glue_collapse(typ, sep = ', ', last = ' and ')}."
     )
-    
+
     stop(msg, call. = FALSE)
   }
-  
+
   invisible(TRUE)
 }
