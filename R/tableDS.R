@@ -135,9 +135,10 @@ exclude<-NULL
 
 if(!is.null(rvar)&&!is.null(cvar)&&!is.null(stvar))
 {
-#Check cell counts valid without NAs or NaNs
+##Check cell counts valid without NaNs. Note: NAs need to be included as
+##otherwise there's a disclosure risk when cross-tabulating.
 counts.valid<-TRUE
-test.outobj<-table(rvar,cvar,stvar,exclude="NaN",useNA="no")
+test.outobj<-table(rvar,cvar,stvar,exclude="NaN",useNA="yes")
 
 numcells<-length(test.outobj)
 
@@ -161,9 +162,10 @@ numcells<-length(test.outobj)
 
 if(!is.null(rvar)&&!is.null(cvar)&&is.null(stvar))
 {
-#Check cell counts valid without NAs or NaNs
+##Check cell counts valid without NaNs. Note: NAs need to be included as
+##otherwise there's a disclosure risk when cross-tabulating.
 counts.valid<-TRUE
-test.outobj<-table(rvar,cvar,exclude="NaN",useNA="no")
+test.outobj<-table(rvar,cvar,exclude="NaN",useNA="yes")
 
 numcells<-length(test.outobj)
 
