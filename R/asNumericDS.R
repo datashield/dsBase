@@ -1,4 +1,4 @@
-#' 
+#'
 #' @title Coerces an R object into class numeric
 #' @description This function is based on the native R function \code{as.numeric}.
 #' @details See help for function \code{as.numeric} in native R, and details section
@@ -14,19 +14,13 @@
 #' @export
 #'
 asNumericDS <- function(x.name){
+  x <- .loadServersideObject(x.name)
 
-  if(is.character(x.name)){
-    x <- eval(parse(text=x.name), envir = parent.frame())
-  }else{
-    studysideMessage <- "ERROR: x.name must be specified as a character string"
-    stop(studysideMessage, call. = FALSE)
-  }
-  
   # Check that it doesn't match any non-number
   numbers_only <- function(vec) !grepl("\\D", vec)
-  
+
   logical <- numbers_only(x)
-  
+
   if((is.factor(x) & any(logical==FALSE)==FALSE) | (is.character(x) & any(logical==FALSE)==FALSE)){
     output <- as.numeric(as.character(x))
   }else if((is.factor(x) & any(logical==FALSE)==TRUE) | (is.character(x) & any(logical==FALSE)==TRUE)){
@@ -34,9 +28,8 @@ asNumericDS <- function(x.name){
   }else{
     output <- as.numeric(x)
   }
-  
-  return(output)
 
+  return(output)
 }
 # ASSIGN FUNCTION
 # asNumericDS
