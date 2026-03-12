@@ -49,6 +49,21 @@ test_that("simple asFactorSimpleDS", {
     expect_equal(res.levels[3], "3")
 })
 
+test_that("asFactorSimpleDS throws error when object does not exist", {
+  expect_error(
+    asFactorSimpleDS("nonexistent_object"),
+    regexp = "does not exist"
+  )
+})
+
+test_that("asFactorSimpleDS throws error when object is not numeric or character", {
+  bad_input <- list(a = 1, b = 2)
+  expect_error(
+    asFactorSimpleDS("bad_input"),
+    regexp = "must be of type"
+  )
+})
+
 #
 # Done
 #

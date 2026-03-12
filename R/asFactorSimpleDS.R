@@ -16,7 +16,12 @@
 #'
 asFactorSimpleDS <- function(input.var.name=NULL){
 
-    input.var <- eval(parse(text=input.var.name), envir = parent.frame())
+    input.var <- .loadServersideObject(input.var.name)
+    .checkClass(
+        obj = input.var,
+        obj_name = input.var.name,
+        permitted_classes = c("numeric", "integer", "character", "factor")
+    )
 
     factor.obj <- factor(input.var)
     
@@ -27,4 +32,3 @@ asFactorSimpleDS <- function(input.var.name=NULL){
 
 #ASSIGN FUNCTION
 # asFactorSimpleDS
-

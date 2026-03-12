@@ -12,7 +12,7 @@ sqrtDS(x)
 \value{
 the object specified by the \code{newobj} argument
 of \code{ds.sqrt} (or default name \code{sqrt.newobj})
-which is written to the server-side. The output object is of class numeric 
+which is written to the server-side. The output object is of class numeric
 or integer.
 }
 \description{
