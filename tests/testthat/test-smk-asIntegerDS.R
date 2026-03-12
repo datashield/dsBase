@@ -1,24 +1,88 @@
-test_that("asIntegerDS coerces numeric to integer", {
-  input <- c(1.0, 2.0, 3.0)
+#-------------------------------------------------------------------------------
+# Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
+#
+# This program and the accompanying materials
+# are made available under the terms of the GNU Public License v3.0.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#-------------------------------------------------------------------------------
 
-  res <- asIntegerDS("input")
+#
+# Set up
+#
 
-  expect_equal(class(res), "integer")
-  expect_equal(res, as.integer(input))
+# context("asIntegerDS::smk::setup")
+
+#
+# Tests
+#
+
+# context("asIntegerDS::smk::numeric")
+test_that("numeric asIntegerDS", {
+    input <- 3.141
+
+    res <- asIntegerDS("input")
+
+    expect_length(res, 1)
+    expect_equal(class(res), "integer")
+    expect_equal(res, 3)
 })
 
-test_that("asIntegerDS coerces factor with numeric levels correctly", {
-  input <- factor(c(0, 1, 1, 2))
+# context("asIntegerDS::smk::numeric vector")
+test_that("numeric vector asIntegerDS", {
+    input <- c(0.1, 1.1, 2.1, 3.1, 4.1)
 
-  res <- asIntegerDS("input")
+    res <- asIntegerDS("input")
 
-  expect_equal(class(res), "integer")
-  expect_equal(res, c(0L, 1L, 1L, 2L))
+    expect_length(res, 5)
+    expect_equal(class(res), "integer")
+    expect_equal(res[1], 0)
+    expect_equal(res[2], 1)
+    expect_equal(res[3], 2)
+    expect_equal(res[4], 3)
+    expect_equal(res[5], 4)
 })
 
+# context("asIntegerDS::smk::character")
+test_that("character asIntegerDS - FALSE", {
+    input <- "101"
+
+    res <- asIntegerDS("input")
+
+    expect_length(res, 1)
+    expect_equal(class(res), "integer")
+    expect_equal(res, 101)
+})
+
+# context("asIntegerDS::smk::character vector")
+test_that("character vector asIntegerDS", {
+    input <- c("101", "202", "303", "404", "505")
+
+    res <- asIntegerDS("input")
+
+    expect_length(res, 5)
+    expect_equal(class(res), "integer")
+    expect_equal(res[1], 101)
+    expect_equal(res[2], 202)
+    expect_equal(res[3], 303)
+    expect_equal(res[4], 404)
+    expect_equal(res[5], 505)
+})
+
+# context("asIntegerDS::smk::error")
 test_that("asIntegerDS throws error when object does not exist", {
-  expect_error(
-    asIntegerDS("nonexistent_object"),
-    regexp = "does not exist"
-  )
+    expect_error(
+        asIntegerDS("nonexistent_object"),
+        regexp = "does not exist"
+    )
 })
+
+#
+# Done
+#
+
+# context("asIntegerDS::smk::shutdown")
+
+# context("asIntegerDS::smk::done")

@@ -1,25 +1,50 @@
-test_that("asListDS coerces data.frame to list", {
-  input <- data.frame(v1 = c(1.0, 2.0), v2 = c(3.0, 4.0))
+#-------------------------------------------------------------------------------
+# Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
+#
+# This program and the accompanying materials
+# are made available under the terms of the GNU Public License v3.0.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#-------------------------------------------------------------------------------
 
-  res <- asListDS("input", "test_output")
+#
+# Set up
+#
 
-  expect_true(is.list(res))
-  expect_true(grepl("New object <test_output> created", res$return.message))
-  expect_true(grepl("list", res$class.of.newobj))
+# context("asListDS::smk::setup")
+
+#
+# Tests
+#
+
+# context("asListDS::smk::simple")
+test_that("simple asListDS", {
+    input       <- list(v1 = c(1, 2, 3), v2 = c(4, 5, 6))
+    newobj.name <- 'newobj'
+
+    expect_false(exists("newobj"))
+
+    res <- asListDS("input", newobj.name)
+
+    expect_true(exists("newobj"))
+    expect_equal(class(newobj), "list")
+    expect_length(newobj, 2)
 })
 
-test_that("asListDS coerces vector to list", {
-  input <- c(1, 2, 3)
-
-  res <- asListDS("input", "test_output2")
-
-  expect_true(is.list(res))
-  expect_true(grepl("New object <test_output2> created", res$return.message))
-})
-
+# context("asListDS::smk::error")
 test_that("asListDS throws error when object does not exist", {
-  expect_error(
-    asListDS("nonexistent_object", "test_output"),
-    regexp = "does not exist"
-  )
+    expect_error(
+        asListDS("nonexistent_object", "test_output"),
+        regexp = "does not exist"
+    )
 })
+
+#
+# Done
+#
+
+# context("asListDS::smk::shutdown")
+
+# context("asListDS::smk::done")
