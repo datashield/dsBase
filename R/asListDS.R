@@ -26,13 +26,6 @@ asListDS <- function (x.name, newobj){
 
   result <- as.list(x)
   assign(newobj, result, envir = parent.frame())
-
-  newobj.class <- class(result)
-
-  return.message <- paste0("New object <", newobj, "> created")
-  object.class.text <- paste0("Class of <", newobj, "> is '", newobj.class, "'")
-
-  return(list(return.message = return.message, class.of.newobj = object.class.text))
 }
 # AGGREGATE FUNCTION
 # asListDS
