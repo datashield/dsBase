@@ -1,4 +1,4 @@
-#'
+#' 
 #' @title Coerces an R object into class integer
 #' @description This function is based on the native R function \code{as.integer}.
 #' @details See help for function \code{as.integer} in native R, and details section

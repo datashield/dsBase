@@ -71,7 +71,7 @@ Imports:
     gamlss,
     gamlss.dist,
     mice,
-    childsds,
+    childsds, 
     glue
 Suggests:
     spelling,

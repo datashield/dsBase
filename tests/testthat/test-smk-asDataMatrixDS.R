@@ -51,7 +51,7 @@ test_that("simple asDataMatrixDS", {
     expect_equal(res[10], 0)
 
     res.colnames <- colnames(res)
-    expect_length(res.colnames, 2)
+    expect_length(res.colnames, 2)    
     expect_equal(res.colnames[1], "v1")
     expect_equal(res.colnames[2], "v2")
 })

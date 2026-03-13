@@ -96,7 +96,7 @@ test_that("factor vector asNumericDS", {
 test_that("factor numeric levels vector asNumericDS", {
     vec           <- c("aa", "bb", "cc", "dd", "ee")
     input         <- as.factor(vec)
-    levels(input) <- c("11", "22", "33", "44", "55")
+    levels(input) <- c("11", "22", "33", "44", "55") 
 
     res <- asNumericDS("input")
 
@@ -111,10 +111,10 @@ test_that("factor numeric levels vector asNumericDS", {
 
 # context("asNumericDS::smk::factor vector with only numbers in its values")
 test_that("factor vector with only numbers in its values asNumericDS", {
-    input <- as.factor(c('1','1','2','2','1'))
-
+    input <- as.factor(c('1','1','2','2','1')) 
+    
     res <- asNumericDS("input")
-
+    
     expect_length(res, 5)
     expect_equal(class(res), "numeric")
     expect_equal(res[1], 1)
@@ -126,10 +126,10 @@ test_that("factor vector with only numbers in its values asNumericDS", {
 
 # context("asNumericDS::smk::factor vector with only characters in its values")
 test_that("factor vector with only characters in its values asNumericDS", {
-    input <- as.factor(c('b','b','a','a','b'))
-
+    input <- as.factor(c('b','b','a','a','b')) 
+    
     res <- asNumericDS("input")
-
+    
     expect_length(res, 5)
     expect_equal(class(res), "numeric")
     expect_equal(res[1], 2)
@@ -142,9 +142,9 @@ test_that("factor vector with only characters in its values asNumericDS", {
 # context("asNumericDS::smk::character vector with only numbers in its values")
 test_that("factor vector with only numbers in its values asNumericDS", {
     input <- c('1','1','2','2','1')
-
+    
     res <- asNumericDS("input")
-
+    
     expect_length(res, 5)
     expect_equal(class(res), "numeric")
     expect_equal(res[1], 1)
@@ -157,9 +157,9 @@ test_that("factor vector with only numbers in its values asNumericDS", {
 # context("asNumericDS::smk::character vector with only characters in its values")
 test_that("character vector with only characters in its values asNumericDS", {
     input <- c('b','b','a','a','b')
-
+    
     res <- asNumericDS("input")
-
+    
     expect_length(res, 5)
     expect_equal(class(res), "numeric")
     expect_equal(res[1], 2)
@@ -172,9 +172,9 @@ test_that("character vector with only characters in its values asNumericDS", {
 # context("asNumericDS::smk::character vector with strings having characters and numbers")
 test_that("character vector with strings having characters and numbers asNumericDS", {
     input <- c('b1','b2','1a','a','b')
-
+    
     res <- asNumericDS("input")
-
+    
     expect_length(res, 5)
     expect_equal(class(res), "numeric")
     expect_equal(res[1], 4)
@@ -187,9 +187,9 @@ test_that("character vector with strings having characters and numbers asNumeric
 # context("asNumericDS::smk::logical vector")
 test_that("logical vector asNumericDS", {
     input <- c(TRUE, TRUE, FALSE, TRUE)
-
+    
     res <- asNumericDS("input")
-
+    
     expect_length(res, 4)
     expect_equal(class(res), "numeric")
     expect_equal(res[1], 1)
@@ -201,9 +201,9 @@ test_that("logical vector asNumericDS", {
 # context("asNumericDS::smk::logical character vector")
 test_that("logical vector character asNumericDS", {
     input <- c("TRUE", "TRUE", "FALSE", "TRUE")
-
+    
     res <- asNumericDS("input")
-
+    
     expect_length(res, 4)
     expect_equal(class(res), "numeric")
     expect_equal(res[1], 2)
@@ -214,10 +214,10 @@ test_that("logical vector character asNumericDS", {
 
 # context("asNumericDS::smk::integer vector")
 test_that("integer vector asNumericDS", {
-    input <- as.integer(c('1','1','2','2','1'))
-
+    input <- as.integer(c('1','1','2','2','1')) 
+    
     res <- asNumericDS("input")
-
+    
     expect_length(res, 5)
     expect_equal(class(res), "numeric")
     expect_equal(res[1], 1)

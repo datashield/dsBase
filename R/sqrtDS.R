@@ -6,7 +6,7 @@
 #' @param x a string character, the name of a numeric or integer vector
 #' @return the object specified by the \code{newobj} argument
 #' of \code{ds.sqrt} (or default name \code{sqrt.newobj})
-#' which is written to the server-side. The output object is of class numeric
+#' which is written to the server-side. The output object is of class numeric 
 #' or integer.
 #' @author Demetris Avraam for DataSHIELD Development Team
 #' @export
