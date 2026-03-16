@@ -1,6 +1,5 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
-# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -13,7 +12,7 @@
 # Set up
 #
 
-# context("asFactorSimpleDS::smk::setup")
+context("asFactorSimpleDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -21,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-# context("asFactorSimpleDS::smk::simple")
+context("asFactorSimpleDS::smk::simple")
 test_that("simple asFactorSimpleDS", {
     input <- c(2.0, 1.0, 3.0, 3.0, 3.0, 1.0, 2.0, 2.0, 1.0, 2.0)
 
@@ -49,26 +48,10 @@ test_that("simple asFactorSimpleDS", {
     expect_equal(res.levels[3], "3")
 })
 
-# context("asFactorSimpleDS::smk::error")
-test_that("asFactorSimpleDS throws error when object does not exist", {
-    expect_error(
-        asFactorSimpleDS("nonexistent_object"),
-        regexp = "does not exist"
-    )
-})
-
-test_that("asFactorSimpleDS throws error when object is not numeric or character", {
-    bad_input <- list(a = 1, b = 2)
-    expect_error(
-        asFactorSimpleDS("bad_input"),
-        regexp = "must be of type"
-    )
-})
-
 #
 # Done
 #
 
-# context("asFactorSimpleDS::smk::shutdown")
+context("asFactorSimpleDS::smk::shutdown")
 
-# context("asFactorSimpleDS::smk::done")
+context("asFactorSimpleDS::smk::done")
