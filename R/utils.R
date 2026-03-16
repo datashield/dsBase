@@ -1,29 +1,36 @@
 #' Load a Server-Side Object by Name
 #'
-#' Retrieves a server-side object using `get()`, supporting both simple names
-#' (e.g. "D") and column access syntax (e.g. "D$LAB_TSC").
+#' Retrieves a server-side object using `get()`. Supports both simple object
+#' names (e.g. "D") and `$` column access (e.g. "D$LAB_TSC"). When `$` is
+#' present, the object is retrieved first, then the named column is extracted
+#' using `[[`.
 #'
 #' @param x A character string naming the object, optionally with "$column" syntax.
-#' @return The retrieved R object.
+#' @return The retrieved R object, or the specified column if `$` syntax is used.
 #' @noRd
 .loadServersideObject <- function(x) {
   env <- parent.frame(2)
 
-  parts <- unlist(strsplit(x, "$", fixed = TRUE))
-  obj_name <- parts[1]
-  has_column <- length(parts) > 1
+  hasColumn <- grepl("$", x, fixed = TRUE)
+
+  if(hasColumn) {
+    parts <- unlist(strsplit(x, "$", fixed = TRUE))
+    obj_name <- parts[1]
+    col_name <- parts[2]
+  } else {
+    obj_name <- x
+  }
 
   obj <- tryCatch(
     get(obj_name, envir = env),
     error = function(e) stop("The server-side object '", x, "' does not exist")
   )
 
-  if (has_column) {
-    column_name <- parts[2]
-    obj <- obj[[column_name]]
+  if (hasColumn) {
+    obj <- obj[[col_name]]
   }
 
-  obj
+  return(obj)
 }
 
 #' Check Class of a Server-Side Object
