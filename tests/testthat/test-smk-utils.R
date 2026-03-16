@@ -27,9 +27,23 @@ test_that(".loadServersideObject() returns existing object", {
   expect_identical(result, test_df)
 })
 
+test_that(".loadServersideObject() extracts column with $ syntax", {
+  test_df <- data.frame(a = 1:3, b = 4:6)
+  result <- .dsFunctionWrapper("test_df$b")
+  expect_identical(result, 4:6)
+})
+
+test_that(".loadServersideObject() throws error for nonexistent column", {
+  test_df <- data.frame(a = 1:3)
+  expect_error(
+    .dsFunctionWrapper("test_df$nonexistent"),
+    regexp = "Column 'nonexistent' not found in 'test_df'"
+  )
+})
+
 test_that(".loadServersideObject() throws error for missing object", {
   expect_error(
-    .dsFunctionWrapper("test_df"),
+    .dsFunctionWrapper("no_such_object"),
     regexp = "does not exist"
   )
 })

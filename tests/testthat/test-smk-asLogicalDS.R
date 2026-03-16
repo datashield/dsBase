@@ -166,15 +166,6 @@ test_that("simple asLogicalDS, character vector", {
      expect_equal(res[5], FALSE)
      expect_equal(res[6], FALSE)
 })
-
-# context("asLogicalDS::smk::error")
-test_that("asLogicalDS throws error when object does not exist", {
-    expect_error(
-        asLogicalDS("nonexistent_object"),
-        regexp = "does not exist"
-    )
-})
-
 #
 # Done
 #

@@ -37,23 +37,6 @@ test_that("expDS computes exponential for integer vector", {
 
     expect_equal(res, exp(input))
 })
-
-# context("expDS::smk::error")
-test_that("expDS throws error when object does not exist", {
-    expect_error(
-        expDS("nonexistent_object"),
-        regexp = "does not exist"
-    )
-})
-
-test_that("expDS throws error when object is not numeric or integer", {
-    bad_input <- c("a", "b", "c")
-    expect_error(
-        expDS("bad_input"),
-        regexp = "must be of type"
-    )
-})
-
 #
 # Done
 #

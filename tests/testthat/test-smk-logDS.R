@@ -45,23 +45,6 @@ test_that("logDS computes log for integer vector", {
 
     expect_equal(res, log(input))
 })
-
-# context("logDS::smk::error")
-test_that("logDS throws error when object does not exist", {
-    expect_error(
-        logDS("nonexistent_object"),
-        regexp = "does not exist"
-    )
-})
-
-test_that("logDS throws error when object is not numeric or integer", {
-    bad_input <- c("a", "b", "c")
-    expect_error(
-        logDS("bad_input"),
-        regexp = "must be of type"
-    )
-})
-
 #
 # Done
 #

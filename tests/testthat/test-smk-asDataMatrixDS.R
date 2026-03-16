@@ -55,15 +55,6 @@ test_that("simple asDataMatrixDS", {
     expect_equal(res.colnames[1], "v1")
     expect_equal(res.colnames[2], "v2")
 })
-
-# context("asDataMatrixDS::smk::error")
-test_that("asDataMatrixDS throws error when object does not exist", {
-    expect_error(
-        asDataMatrixDS("nonexistent_object"),
-        regexp = "does not exist"
-    )
-})
-
 #
 # Done
 #

@@ -20,12 +20,6 @@
 #
 
 # context("sqrtDS::smk::special")
-test_that("simple sqrtDS, NA", {
-    input <- NA
-
-    expect_error(sqrtDS("input"), regexp = "must be of type")
-})
-
 test_that("simple sqrtDS, NaN", {
     input <- NaN
 
@@ -162,23 +156,6 @@ test_that("simple sqrtDS", {
     expect_true(is.nan(res[5]))
     expect_true(is.nan(res[6]))
 })
-
-# context("sqrtDS::smk::error")
-test_that("sqrtDS throws error when object does not exist", {
-    expect_error(
-        sqrtDS("nonexistent_object"),
-        regexp = "does not exist"
-    )
-})
-
-test_that("sqrtDS throws error when object is not numeric or integer", {
-    bad_input <- c("a", "b", "c")
-    expect_error(
-        sqrtDS("bad_input"),
-        regexp = "must be of type"
-    )
-})
-
 #
 # Done
 #

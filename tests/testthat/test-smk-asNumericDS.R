@@ -226,15 +226,6 @@ test_that("integer vector asNumericDS", {
     expect_equal(res[4], 2)
     expect_equal(res[5], 1)
 })
-
-# context("asNumericDS::smk::error")
-test_that("asNumericDS throws error when object does not exist", {
-    expect_error(
-        asNumericDS("nonexistent_object"),
-        regexp = "does not exist"
-    )
-})
-
 #
 # Done
 #

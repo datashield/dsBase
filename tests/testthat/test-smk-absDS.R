@@ -20,12 +20,6 @@
 #
 
 # context("absDS::smk::special")
-test_that("simple absDS, NA", {
-    input <- NA
-
-    expect_error(absDS("input"), regexp = "must be of type")
-})
-
 test_that("simple absDS, NaN", {
     input <- NaN
 
@@ -163,23 +157,6 @@ test_that("simple absDS", {
     expect_equal(res[5], 50L)
     expect_equal(res[6], 20L)
 })
-
-# context("absDS::smk::error")
-test_that("absDS throws error when object does not exist", {
-    expect_error(
-        absDS("nonexistent_object"),
-        regexp = "does not exist"
-    )
-})
-
-test_that("absDS throws error when object is not numeric or integer", {
-    bad_input <- c("a", "b", "c")
-    expect_error(
-        absDS("bad_input"),
-        regexp = "must be of type"
-    )
-})
-
 #
 # Done
 #

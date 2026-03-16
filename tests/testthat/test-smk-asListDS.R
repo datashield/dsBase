@@ -32,15 +32,6 @@ test_that("simple asListDS", {
     expect_equal(class(newobj), "list")
     expect_length(newobj, 2)
 })
-
-# context("asListDS::smk::error")
-test_that("asListDS throws error when object does not exist", {
-    expect_error(
-        asListDS("nonexistent_object", "test_output"),
-        regexp = "does not exist"
-    )
-})
-
 #
 # Done
 #
