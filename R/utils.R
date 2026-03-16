@@ -28,6 +28,9 @@
 
   if (hasColumn) {
     obj <- obj[[col_name]]
+    if (is.null(obj)) {
+      stop("Column '", col_name, "' not found in '", obj_name, "'", call. = FALSE)
+    }
   }
 
   return(obj)
