@@ -9,6 +9,10 @@
 #' @return The retrieved R object, or the specified column if `$` syntax is used.
 #' @noRd
 .loadServersideObject <- function(x) {
+  if (!is.character(x) || length(x) != 1) {
+    stop("The input must be a single character string", call. = FALSE)
+  }
+
   env <- parent.frame(2)
 
   hasColumn <- grepl("$", x, fixed = TRUE)
