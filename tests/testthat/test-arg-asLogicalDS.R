@@ -21,21 +21,21 @@
 
 # context("asLogicalDS::arg::direct input numeric")
 test_that("simple asLogicalDS non-input", {
-    expect_error(asLogicalDS(1.0), "ERROR: x.name must be specified as a character string", fixed = TRUE)
+    expect_error(asLogicalDS(1.0), "The input must be a single character string", fixed = TRUE)
 })
 
 # context("asLogicalDS::arg::input NULL")
 test_that("simple asLogicalDS NULL", {
     input <- NULL
 
-    expect_error(asLogicalDS("input"), "ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer, character or matrix", fixed = TRUE)
+    expect_error(asLogicalDS("input"), "The server-side object must be of type numeric, integer, character or matrix. 'input' is type NULL.", fixed = TRUE)
 })
 
 # context("asLogicalDS::arg::input NA")
 test_that("simple asLogicalDS NA", {
     input <- NA
 
-    expect_error(asLogicalDS("input"), "ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer, character or matrix", fixed = TRUE)
+    expect_error(asLogicalDS("input"), "The server-side object must be of type numeric, integer, character or matrix. 'input' is type logical.", fixed = TRUE)
 })
 
 #
