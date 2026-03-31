@@ -13,29 +13,34 @@
 # Set up
 #
 
-# context("asListDS::smk::setup")
+# context("expDS::smk::setup")
 
 #
 # Tests
 #
 
-# context("asListDS::smk::simple")
-test_that("simple asListDS", {
-    input       <- list(v1 = c(1, 2, 3), v2 = c(4, 5, 6))
-    newobj.name <- 'newobj'
+# context("expDS::smk::numeric")
+test_that("expDS computes exponential for numeric vector", {
+    input <- c(0.0, 1.0, 2.0, -1.0)
 
-    expect_false(exists("newobj"))
+    res <- expDS("input")
 
-    res <- asListDS("input", newobj.name)
+    expect_equal(res, exp(input))
+    expect_true(is.numeric(res))
+})
 
-    expect_true(exists("newobj"))
-    expect_equal(class(newobj), "list")
-    expect_length(newobj, 2)
+# context("expDS::smk::integer")
+test_that("expDS computes exponential for integer vector", {
+    input <- as.integer(c(0, 1, 2, 3))
+
+    res <- expDS("input")
+
+    expect_equal(res, exp(input))
 })
 #
 # Done
 #
 
-# context("asListDS::smk::shutdown")
+# context("expDS::smk::shutdown")
 
-# context("asListDS::smk::done")
+# context("expDS::smk::done")

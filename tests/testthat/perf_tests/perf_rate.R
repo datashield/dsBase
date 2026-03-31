@@ -8,12 +8,26 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #-------------------------------------------------------------------------------
 
-.perf.reference.filename <- 'perf_files/default_perf_profile.csv'
+.perf.reference.filename <- getOption("perf.profile", "perf_files/default_perf_profile.csv")
 
 .perf.reference <- NULL
 
 .load.pref <- function() {
     .perf.reference <<- read.csv(.perf.reference.filename, header = TRUE, sep = ",")
+}
+
+perf.profile.tolerance.lower <- function() {
+    if (is.null(.perf.reference))
+        .load.pref()
+
+    return(as.numeric(.perf.reference$lower_tolerance[1]))
+}
+
+perf.profile.tolerance.upper <- function() {
+    if (is.null(.perf.reference))
+        .load.pref()
+
+    return(as.numeric(.perf.reference$upper_tolerance[1]))
 }
 
 perf.reference.save <- function(perf.ref.name, rate, tolerance.lower, tolerance.upper) {

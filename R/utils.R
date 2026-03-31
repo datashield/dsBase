@@ -1,18 +1,43 @@
 #' Load a Server-Side Object by Name
 #'
-#' Evaluates a character string referring to an object name and returns the corresponding
-#' object from the parent environment. If the object does not exist, an error is raised.
+#' Retrieves a server-side object using `get()`. Supports both simple object
+#' names (e.g. "D") and `$` column access (e.g. "D$LAB_TSC"). When `$` is
+#' present, the object is retrieved first, then the named column is extracted
+#' using `[[`.
 #'
-#' @param x A character string naming the object to be retrieved.
-#' @return The evaluated R object referred to by `x`.
+#' @param x A character string naming the object, optionally with "$column" syntax.
+#' @return The retrieved R object, or the specified column if `$` syntax is used.
 #' @noRd
 .loadServersideObject <- function(x) {
-  tryCatch(
-    get(x, envir = parent.frame(2)),
-    error = function(e) {
-      stop("The server-side object", " '", x, "' ", "does not exist")
-    }
+  if (!is.character(x) || length(x) != 1) {
+    stop("The input must be a single character string", call. = FALSE)
+  }
+
+  env <- parent.frame(2)
+
+  hasColumn <- grepl("$", x, fixed = TRUE)
+
+  if(hasColumn) {
+    parts <- unlist(strsplit(x, "$", fixed = TRUE))
+    obj_name <- parts[1]
+    col_name <- parts[2]
+  } else {
+    obj_name <- x
+  }
+
+  obj <- tryCatch(
+    get(obj_name, envir = env),
+    error = function(e) stop("The server-side object '", x, "' does not exist")
   )
+
+  if (hasColumn) {
+    obj <- obj[[col_name]]
+    if (is.null(obj)) {
+      stop("Column '", col_name, "' not found in '", obj_name, "'", call. = FALSE)
+    }
+  }
+
+  return(obj)
 }
 
 #' Check Class of a Server-Side Object

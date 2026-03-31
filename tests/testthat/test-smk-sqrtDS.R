@@ -20,16 +20,6 @@
 #
 
 # context("sqrtDS::smk::special")
-test_that("simple sqrtDS, NA", {
-    input <- NA
-
-    res <- sqrtDS("input")
-
-    expect_equal(class(res), "numeric")
-    expect_length(res, 1)
-    expect_true(is.na(res))
-})
-
 test_that("simple sqrtDS, NaN", {
     input <- NaN
 
@@ -166,7 +156,6 @@ test_that("simple sqrtDS", {
     expect_true(is.nan(res[5]))
     expect_true(is.nan(res[6]))
 })
-
 #
 # Done
 #

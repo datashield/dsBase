@@ -20,7 +20,7 @@
 
 # context("asIntegerDS::arg::direct input numeric")
 test_that("simple asIntegerDS non-input", {
-    expect_error(asIntegerDS(1.0), "ERROR: x.name must be specified as a character string", fixed = TRUE)
+    expect_error(asIntegerDS(1.0), "The input must be a single character string", fixed = TRUE)
 })
 
 #

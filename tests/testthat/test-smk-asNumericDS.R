@@ -226,7 +226,6 @@ test_that("integer vector asNumericDS", {
     expect_equal(res[4], 2)
     expect_equal(res[5], 1)
 })
-
 #
 # Done
 #

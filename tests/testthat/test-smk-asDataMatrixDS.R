@@ -55,7 +55,6 @@ test_that("simple asDataMatrixDS", {
     expect_equal(res.colnames[1], "v1")
     expect_equal(res.colnames[2], "v2")
 })
-
 #
 # Done
 #

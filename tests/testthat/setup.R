@@ -21,6 +21,7 @@ library(lme4)
 source("disclosure/set_disclosure_settings.R")
 source("random/set_random_seed_settings.R")
 
+options(perf.profile = "perf_files/performance_refactor_profile.csv")
 source("perf_tests/perf_rate.R")
 
 # context("setup - done")

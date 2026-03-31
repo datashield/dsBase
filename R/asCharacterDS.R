@@ -13,7 +13,7 @@
 #' @export
 #'
 asCharacterDS <- function(x.name) {
-  x <- eval(parse(text = x.name), envir = parent.frame())
+  x <- .loadServersideObject(x.name)
 
   output <- as.character(x)
   return(output)

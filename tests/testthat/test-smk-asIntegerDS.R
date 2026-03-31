@@ -70,7 +70,6 @@ test_that("character vector asIntegerDS", {
     expect_equal(res[4], 404)
     expect_equal(res[5], 505)
 })
-
 #
 # Done
 #

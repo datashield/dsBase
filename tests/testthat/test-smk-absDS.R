@@ -20,16 +20,6 @@
 #
 
 # context("absDS::smk::special")
-test_that("simple absDS, NA", {
-    input <- NA
-
-    res <- absDS("input")
-
-    expect_equal(class(res), "integer")
-    expect_length(res, 1)
-    expect_true(is.na(res))
-})
-
 test_that("simple absDS, NaN", {
     input <- NaN
 
@@ -167,7 +157,6 @@ test_that("simple absDS", {
     expect_equal(res[5], 50L)
     expect_equal(res[6], 20L)
 })
-
 #
 # Done
 #

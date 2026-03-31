@@ -166,7 +166,6 @@ test_that("simple asLogicalDS, character vector", {
      expect_equal(res[5], FALSE)
      expect_equal(res[6], FALSE)
 })
-
 #
 # Done
 #
