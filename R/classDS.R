@@ -8,15 +8,9 @@
 #' @export
 #'
 classDS <- function(x){
-
-  x.val <- eval(parse(text=x), envir = parent.frame())
-
-  # find the class of the input object
+  x.val <- .loadServersideObject(x)
   out <- class(x.val)
-
-  # return the class
   return(out)
-
 }
 #AGGREGATE FUNCTION
 # classDS

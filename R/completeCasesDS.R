@@ -111,10 +111,9 @@ completeCasesDS <- function(x1.transmit){
   }
 
   #Activate target object
-  #x1.transmit is the name of a serverside data.frame, matrix or vector
-  x1.use <- eval(parse(text=x1.transmit), envir = parent.frame())
+  x1.use <- .loadServersideObject(x1.transmit)
   complete.rows <- stats::complete.cases(x1.use)
-  
+
   if(is.matrix(x1.use) || is.data.frame(x1.use)){
     output.object <- x1.use[complete.rows,]
   }else if(is.atomic(x1.use) || is.factor(x1.use)){
