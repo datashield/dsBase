@@ -25,7 +25,7 @@ set.standard.disclosure.settings()
 test_that("numeric vector levelsDS", {
     input <- as.factor(c(0, 1, 2, 1, 2, 3, 1, 2, 1, 0, 1, 2, 0))
 
-    res <- levelsDS(input)
+    res <- levelsDS("input")
 
     expect_length(res, 2)
     expect_equal(class(res), "list")
@@ -37,6 +37,21 @@ test_that("numeric vector levelsDS", {
     expect_equal(res$Levels[4], "3")
     expect_equal(class(res$ValidityMessage), "character")
     expect_equal(res$ValidityMessage, "VALID ANALYSIS")
+})
+
+test_that("levelsDS throws error when object does not exist", {
+    expect_error(
+        levelsDS("nonexistent_object"),
+        regexp = "does not exist"
+    )
+})
+
+test_that("levelsDS throws error when object is not a factor", {
+    bad_input <- c(1, 2, 3)
+    expect_error(
+        levelsDS("bad_input"),
+        regexp = "must be of type factor"
+    )
 })
 
 #

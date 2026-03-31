@@ -45,6 +45,21 @@ test_that("simple namesDS, data.matrix", {
     expect_true("v2" %in% res)
 })
 
+test_that("namesDS throws error when object does not exist", {
+    expect_error(
+        namesDS("nonexistent_object"),
+        regexp = "does not exist"
+    )
+})
+
+test_that("namesDS throws error when object is not a list", {
+    bad_input <- c(1, 2, 3)
+    expect_error(
+        namesDS("bad_input"),
+        regexp = "not of class <list>"
+    )
+})
+
 #
 # Done
 #

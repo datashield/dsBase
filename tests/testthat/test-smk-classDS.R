@@ -230,6 +230,13 @@ test_that("special classDS, NULL", {
     expect_equal(res, "NULL")
 })
 
+test_that("classDS throws error when object does not exist", {
+    expect_error(
+        classDS("nonexistent_object"),
+        regexp = "does not exist"
+    )
+})
+
 #
 # Done
 #
