@@ -10,7 +10,8 @@ dimDS(x)
 \item{x}{a string character, the name of a dataframe or matrix}
 }
 \value{
-the dimension of the input object
+a list with two elements: \code{dim} (the dimension of the input object)
+  and \code{class} (the class of the input object, for client-side consistency checking)
 }
 \description{
 This function is similar to R function \code{dim}.
