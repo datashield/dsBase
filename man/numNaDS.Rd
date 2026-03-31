@@ -4,16 +4,16 @@
 \alias{numNaDS}
 \title{Counts the number of missing values}
 \usage{
-numNaDS(xvect)
+numNaDS(x)
 }
 \arguments{
-\item{xvect}{a vector}
+\item{x}{a character string, the name of a server-side vector}
 }
 \value{
 an integer, the number of missing values
 }
 \description{
-this function just counts the number of missing entries 
+this function just counts the number of missing entries
 in a vector.
 }
 \author{

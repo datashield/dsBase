@@ -8,27 +8,22 @@
 #' @export
 #'
 levelsDS <- function(x){
-  
+
+  x.val <- .loadServersideObject(x)
+  .checkClass(obj = x.val, obj_name = x, permitted_classes = "factor")
+
   # Check Permissive Privacy Control Level.
   dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana', 'carrot'))
-  
+
   ##################################################################
   #MODULE 1: CAPTURE THE nfilter SETTINGS                          #
   thr <- dsBase::listDisclosureSettingsDS()                        #
-  #nfilter.tab <- as.numeric(thr$nfilter.tab)                      #
-  #nfilter.glm <- as.numeric(thr$nfilter.glm)                      #
-  #nfilter.subset <- as.numeric(thr$nfilter.subset)                #
-  #nfilter.string <- as.numeric(thr$nfilter.string)                #
-  #nfilter.stringShort <- as.numeric(thr$nfilter.stringShort)      #
-  #nfilter.kNN <- as.numeric(thr$nfilter.kNN)                      #
-  #nfilter.noise <- as.numeric(thr$nfilter.noise)                  #
   nfilter.levels.density <- as.numeric(thr$nfilter.levels.density) #
-  #nfilter.levels.max <- as.numeric(thr$nfilter.levels.max)        #
   ##################################################################
-  
+
   # find the levels of the input vector
-  out <- levels(x)
-  input.length     <- length(x)
+  out <- levels(x.val)
+  input.length     <- length(x.val)
   output.length    <- length(out)
   studysideMessage <- "VALID ANALYSIS"
 
