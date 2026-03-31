@@ -190,6 +190,13 @@ test_that("simple completeCasesDS, data.matrix, with NAs", {
     expect_equal(res.colnames[2], "v2")
 })
 
+test_that("completeCasesDS throws error when object does not exist", {
+    expect_error(
+        completeCasesDS("nonexistent_object"),
+        regexp = "does not exist"
+    )
+})
+
 #
 # Done
 #

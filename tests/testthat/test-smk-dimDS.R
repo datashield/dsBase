@@ -25,10 +25,10 @@ test_that("numeric dimDS", {
 
     res <- dimDS("input")
 
-    expect_length(res, 2)
-    expect_equal(class(res), "integer")
-    expect_equal(res[1], 5)
-    expect_equal(res[2], 2)
+    expect_equal(class(res), "list")
+    expect_equal(res$dim[1], 5)
+    expect_equal(res$dim[2], 2)
+    expect_equal(res$class, "data.frame")
 })
 
 # context("dimDS::smk::character")
@@ -37,10 +37,35 @@ test_that("character dimDS", {
 
     res <- dimDS("input")
 
-    expect_length(res, 2)
-    expect_equal(class(res), "integer")
-    expect_equal(res[1], 5)
-    expect_equal(res[2], 2)
+    expect_equal(class(res), "list")
+    expect_equal(res$dim[1], 5)
+    expect_equal(res$dim[2], 2)
+    expect_equal(res$class, "data.frame")
+})
+
+test_that("dimDS with matrix", {
+    input <- matrix(1:6, nrow = 2, ncol = 3)
+
+    res <- dimDS("input")
+
+    expect_equal(res$dim[1], 2)
+    expect_equal(res$dim[2], 3)
+    expect_true("matrix" %in% res$class)
+})
+
+test_that("dimDS throws error when object does not exist", {
+    expect_error(
+        dimDS("nonexistent_object"),
+        regexp = "does not exist"
+    )
+})
+
+test_that("dimDS throws error when object is not data.frame or matrix", {
+    bad_input <- c(1, 2, 3)
+    expect_error(
+        dimDS("bad_input"),
+        regexp = "must be of type data.frame or matrix"
+    )
 })
 
 #

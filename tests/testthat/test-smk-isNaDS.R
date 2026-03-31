@@ -23,7 +23,7 @@
 test_that("numeric vector isNaDS", {
     input <- c(0.1, 1.1, 2.1, 3.1, 4.1)
 
-    res <- isNaDS(input)
+    res <- isNaDS("input")
 
     expect_length(res, 1)
     expect_equal(class(res), "logical")
@@ -33,7 +33,7 @@ test_that("numeric vector isNaDS", {
 test_that("numeric vector isNaDS - with NA single", {
     input <- c(0.1, NA, 2.1, 3.1, 4.1)
 
-    res <- isNaDS(input)
+    res <- isNaDS("input")
 
     expect_length(res, 1)
     expect_equal(class(res), "logical")
@@ -43,7 +43,7 @@ test_that("numeric vector isNaDS - with NA single", {
 test_that("numeric vector isNaDS - with NA all", {
     input <- c(NA, NA, NA, NA, NA)
 
-    res <- isNaDS(input)
+    res <- isNaDS("input")
 
     expect_length(res, 1)
     expect_equal(class(res), "logical")
@@ -54,7 +54,7 @@ test_that("numeric vector isNaDS - with NA all", {
 test_that("character vector isNaDS", {
     input <- c("101", "202", "303", "404", "505")
 
-    res <- isNaDS(input)
+    res <- isNaDS("input")
 
     expect_length(res, 1)
     expect_equal(class(res), "logical")
@@ -64,7 +64,7 @@ test_that("character vector isNaDS", {
 test_that("character vector isNaDS - with NA single", {
     input <- c("101", NA, "303", "404", "505")
 
-    res <- isNaDS(input)
+    res <- isNaDS("input")
 
     expect_length(res, 1)
     expect_equal(class(res), "logical")
@@ -74,11 +74,18 @@ test_that("character vector isNaDS - with NA single", {
 test_that("character vector isNaDS - with NA all", {
     input <- c(NA, NA, NA, NA, NA)
 
-    res <- isNaDS(input)
+    res <- isNaDS("input")
 
     expect_length(res, 1)
     expect_equal(class(res), "logical")
     expect_equal(res, TRUE)
+})
+
+test_that("isNaDS throws error when object does not exist", {
+    expect_error(
+        isNaDS("nonexistent_object"),
+        regexp = "does not exist"
+    )
 })
 
 #

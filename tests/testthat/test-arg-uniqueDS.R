@@ -19,25 +19,19 @@
 # Tests
 #
 
-# context("uniqueDS::arg::simple null argument")
-test_that("simple uniqueDS for NULL", {
-    expect_error(uniqueDS(NULL), "Variable's name can't be NULL", fixed = TRUE)
-})
-
-# context("uniqueDS::arg::null value")
-test_that("simple uniqueDS for NULL", {
-    input <- NULL
-    expect_error(uniqueDS("input"), "Variable can't be NULL", fixed = TRUE)
+# context("uniqueDS::arg::null argument")
+test_that("uniqueDS errors for NULL argument", {
+    expect_error(uniqueDS(NULL), "must be a single character string", fixed = TRUE)
 })
 
 # context("uniqueDS::arg::not character value")
-test_that("simple uniqueDS for NULL", {
-  expect_error(uniqueDS(17), "Variable's name isn't a single character vector", fixed = TRUE)
+test_that("uniqueDS errors for non-character argument", {
+    expect_error(uniqueDS(17), "must be a single character string", fixed = TRUE)
 })
 
 # context("uniqueDS::arg::missing value")
-test_that("simple uniqueDS for NULL", {
-    expect_error(uniqueDS("input"), "object 'input' not found", fixed = TRUE)
+test_that("uniqueDS errors for nonexistent object", {
+    expect_error(uniqueDS("nonexistent_object"), "does not exist")
 })
 
 #
