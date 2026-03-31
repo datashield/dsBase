@@ -4,16 +4,16 @@
 \alias{isNaDS}
 \title{Checks if a vector is empty}
 \usage{
-isNaDS(xvect)
+isNaDS(x)
 }
 \arguments{
-\item{xvect}{a numerical or character vector}
+\item{x}{a character string, the name of a server-side vector}
 }
 \value{
-the integer '1' if the vector contains on NAs and '0'  otherwise
+TRUE if the vector contains only NAs, FALSE otherwise
 }
 \description{
-this function is similar to R function \code{is.na} but instead of a vector 
+this function is similar to R function \code{is.na} but instead of a vector
 of booleans it returns just one boolean to tell if all the element are missing values.
 }
 \author{
