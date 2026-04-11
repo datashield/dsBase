@@ -23,8 +23,9 @@ kurtosisDS2 <- function(x, global.mean){
   nfilter.tab <- as.numeric(thr$nfilter.tab)
   #############################################################
   
-  x <- eval(parse(text=x), envir = parent.frame())
-  x <- x[stats::complete.cases(x)]
+  x.val <- .loadServersideObject(x)
+  .checkClass(obj = x.val, obj_name = x, permitted_classes = c("numeric", "integer"))
+  x <- x.val[stats::complete.cases(x.val)]
   
   if(length(x) < nfilter.tab){
     sum_quartics.out <- NA

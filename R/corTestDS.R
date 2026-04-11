@@ -17,8 +17,10 @@
 #'
 corTestDS <- function(x, y, method, exact, conf.level){
 
-  x.var <- eval(parse(text=x), envir = parent.frame())
-  y.var <- eval(parse(text=y), envir = parent.frame())
+  x.var <- .loadServersideObject(x)
+  .checkClass(obj = x.var, obj_name = x, permitted_classes = c("numeric", "integer"))
+  y.var <- .loadServersideObject(y)
+  .checkClass(obj = y.var, obj_name = y, permitted_classes = c("numeric", "integer"))
   
   # get the number of pairwise complete cases
   n <- sum(stats::complete.cases(x.var, y.var))

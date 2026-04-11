@@ -19,8 +19,9 @@ kurtosisDS1 <- function (x, method){
   nfilter.tab <- as.numeric(thr$nfilter.tab)
   #############################################################
   
-  x <- eval(parse(text=x), envir = parent.frame())
-  x <- x[stats::complete.cases(x)]
+  x.val <- .loadServersideObject(x)
+  .checkClass(obj = x.val, obj_name = x, permitted_classes = c("numeric", "integer"))
+  x <- x.val[stats::complete.cases(x.val)]
   
   if(length(x) < nfilter.tab){
     kurtosis.out <- NA

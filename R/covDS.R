@@ -36,9 +36,12 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
   #nfilter.string <- as.numeric(thr$nfilter.string)
   #############################################################
   
-  x.val <- eval(parse(text=x), envir = parent.frame())
+  x.val <- .loadServersideObject(x)
+  .checkClass(obj = x.val, obj_name = x, permitted_classes = c("numeric", "integer", "matrix", "data.frame"))
+
   if (!is.null(y)){
-    y.val <- eval(parse(text=y), envir = parent.frame())
+    y.val <- .loadServersideObject(y)
+    .checkClass(obj = y.val, obj_name = y, permitted_classes = c("numeric", "integer", "matrix", "data.frame"))
   }
   else{
     y.val <- NULL

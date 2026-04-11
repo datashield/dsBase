@@ -3,17 +3,17 @@
 #' @description Server-side function called by ds.meanSdGp 
 #' @details Computes the mean and standard deviation across groups defined by one
 #' factor
-#' @param X a client-side supplied character string identifying the variable for which
+#' @param x a client-side supplied character string identifying the variable for which
 #' means/SDs are to be calculated
-#' @param INDEX a client-side supplied character string identifying the factor across
+#' @param index a client-side supplied character string identifying the factor across
 #' which means/SDs are to be calculated
 #' @author Burton PR
-#' 
+#'
 #' @return List with results from the group statistics
 #' @export
 #'
-meanSdGpDS <- function (X, INDEX){
-  
+meanSdGpDS <- function (x, index){
+
   #############################################################
   # MODULE 1: CAPTURE THE nfilter SETTINGS
   thr <- dsBase::listDisclosureSettingsDS()
@@ -23,9 +23,14 @@ meanSdGpDS <- function (X, INDEX){
   #nfilter.string <- as.numeric(thr$nfilter.string)
   #############################################################
 
+  X <- .loadServersideObject(x)
+  .checkClass(obj = X, obj_name = x, permitted_classes = c("numeric", "integer"))
+  INDEX <- .loadServersideObject(index)
+  .checkClass(obj = INDEX, obj_name = index, permitted_classes = c("factor", "character", "integer"))
+
   FUN.mean <- function(x) {mean(x,na.rm=TRUE)}
   FUN.var <- function(x)  {stats::var(x,na.rm=TRUE)}
-  
+
   #Strip missings from both X and INDEX
   analysis.matrix<-cbind(X,INDEX)
   
