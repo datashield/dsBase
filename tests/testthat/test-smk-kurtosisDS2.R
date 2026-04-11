@@ -40,6 +40,15 @@ test_that("simple kurtosisDS2", {
     expect_equal(res$ValidityMessage, "VALID ANALYSIS")
 })
 
+test_that("kurtosisDS2 throws error when object does not exist", {
+    expect_error(kurtosisDS2("nonexistent_object", 2.5), regexp = "does not exist")
+})
+
+test_that("kurtosisDS2 throws error when object is not numeric or integer", {
+    bad_input <- c("a", "b", "c")
+    expect_error(kurtosisDS2("bad_input", 2.5), regexp = "must be of type numeric or integer")
+})
+
 #
 # Done
 #

@@ -232,6 +232,16 @@ test_that("numeric covDS, pairwise.complete", {
     expect_true(is.na(res$errorMessage))
 })
 
+test_that("covDS throws error when object does not exist", {
+    expect_error(covDS("nonexistent_x", "nonexistent_y", "pairwise.complete"), regexp = "does not exist")
+})
+
+test_that("covDS throws error when object is of invalid type", {
+    bad_input <- list(a = 1:3, b = 4:6)
+    y <- c(1.0, 2.0, 3.0)
+    expect_error(covDS("bad_input", "y", "pairwise.complete"), regexp = "must be of type")
+})
+
 #
 # Done
 #

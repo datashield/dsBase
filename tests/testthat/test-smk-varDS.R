@@ -25,7 +25,7 @@ set.standard.disclosure.settings()
 test_that("numeric varDS", {
     input <- c(0.0, 1.0, 2.0, 3.0, 4.0)
 
-    res <- varDS(input)
+    res <- varDS("input")
 
     expect_length(res, 6)
     expect_equal(class(res), "list")
@@ -47,7 +47,7 @@ test_that("numeric varDS", {
 test_that("numeric varDS, with NA", {
     input <- c(0.0, NA, 2.0, NA, 4.0)
 
-    res <- varDS(input)
+    res <- varDS("input")
 
     expect_length(res, 6)
     expect_equal(class(res), "list")
@@ -69,7 +69,7 @@ test_that("numeric varDS, with NA", {
 test_that("numeric varDS, with all NA", {
     input <- c(NA, NA, NA, NA, NA)
     
-    res <- varDS(input)
+    res <- varDS("input")
     
     expect_length(res, 6)
     expect_equal(class(res), "list")
@@ -85,6 +85,15 @@ test_that("numeric varDS, with all NA", {
     expect_equal(res$Ntotal, 5)
     expect_equal(class(res$ValidityMessage), "character")
     expect_equal(res$ValidityMessage, "VALID ANALYSIS")
+})
+
+test_that("varDS throws error when object does not exist", {
+    expect_error(varDS("nonexistent_object"), regexp = "does not exist")
+})
+
+test_that("varDS throws error when object is not numeric or integer", {
+    bad_input <- c("a", "b", "c")
+    expect_error(varDS("bad_input"), regexp = "must be of type numeric or integer")
 })
 
 #

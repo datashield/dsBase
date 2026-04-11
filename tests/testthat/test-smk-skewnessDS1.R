@@ -69,6 +69,15 @@ test_that("simple skewnessDS1, method 3", {
     expect_equal(res$ValidityMessage, "VALID ANALYSIS")
 })
 
+test_that("skewnessDS1 throws error when object does not exist", {
+    expect_error(skewnessDS1("nonexistent_object", 1), regexp = "does not exist")
+})
+
+test_that("skewnessDS1 throws error when object is not numeric or integer", {
+    bad_input <- c("a", "b", "c")
+    expect_error(skewnessDS1("bad_input", 1), regexp = "must be of type numeric or integer")
+})
+
 #
 # Done
 #

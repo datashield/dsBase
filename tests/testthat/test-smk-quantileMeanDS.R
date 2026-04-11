@@ -23,7 +23,7 @@
 test_that("numeric quantileMeanDS", {
     input <- c(0.0, 1.0, 2.0, 3.0, 4.0)
 
-    res <- quantileMeanDS(input)
+    res <- quantileMeanDS("input")
 
     expect_length(res, 8)
     expect_equal(class(res), "numeric")
@@ -54,7 +54,7 @@ test_that("numeric quantileMeanDS", {
 test_that("numeric quantileMeanDS, with NA", {
     input <- c(0.0, NA, 2.0, NA, 4.0)
 
-    res <- quantileMeanDS(input)
+    res <- quantileMeanDS("input")
 
     expect_length(res, 8)
     expect_equal(class(res), "numeric")
@@ -79,6 +79,15 @@ test_that("numeric quantileMeanDS, with NA", {
     expect_equal(res.names[[6]], "90%")
     expect_equal(res.names[[7]], "95%")
     expect_equal(res.names[[8]], "Mean")
+})
+
+test_that("quantileMeanDS throws error when object does not exist", {
+    expect_error(quantileMeanDS("nonexistent_object"), regexp = "does not exist")
+})
+
+test_that("quantileMeanDS throws error when object is not numeric or integer", {
+    bad_input <- c("a", "b", "c")
+    expect_error(quantileMeanDS("bad_input"), regexp = "must be of type numeric or integer")
 })
 
 #

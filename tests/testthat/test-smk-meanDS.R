@@ -25,7 +25,7 @@ set.standard.disclosure.settings()
 test_that("numeric meanDS", {
     input <- c(0.0, 1.0, 2.0, 3.0, 4.0)
 
-    res <- meanDS(input)
+    res <- meanDS("input")
 
     expect_length(res, 5)
     expect_equal(class(res), "list")
@@ -45,7 +45,7 @@ test_that("numeric meanDS", {
 test_that("numeric meanDS, with NA", {
     input <- c(0.0, NA, 2.0, NA, 4.0)
 
-    res <- meanDS(input)
+    res <- meanDS("input")
 
     expect_length(res, 5)
     expect_equal(class(res), "list")
@@ -65,7 +65,7 @@ test_that("numeric meanDS, with NA", {
 test_that("numeric meanDS, with all NA", {
     input <- c(NA, NA, NA, NA, NA)
     
-    res <- meanDS(input)
+    res <- meanDS("input")
     
     expect_length(res, 5)
     expect_equal(class(res), "list")
@@ -79,6 +79,15 @@ test_that("numeric meanDS, with all NA", {
     expect_equal(res$Ntotal, 5)
     expect_equal(class(res$ValidityMessage), "character")
     expect_equal(res$ValidityMessage, "VALID ANALYSIS")
+})
+
+test_that("meanDS throws error when object does not exist", {
+    expect_error(meanDS("nonexistent_object"), regexp = "does not exist")
+})
+
+test_that("meanDS throws error when object is not numeric or integer", {
+    bad_input <- c("a", "b", "c")
+    expect_error(meanDS("bad_input"), regexp = "must be of type numeric or integer")
 })
 
 #

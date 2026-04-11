@@ -602,6 +602,16 @@ test_that("simple corTestDS, some, with na, spearman", {
     expect_equal(res$`Correlation test`$data.name[[1]], "x.var and y.var")
 })
 
+test_that("corTestDS throws error when object does not exist", {
+    expect_error(corTestDS("nonexistent_x", "nonexistent_y", "pearson", NULL, 0.95), regexp = "does not exist")
+})
+
+test_that("corTestDS throws error when object is not numeric or integer", {
+    bad_input <- c("a", "b", "c")
+    y <- c(1.0, 2.0, 3.0)
+    expect_error(corTestDS("bad_input", "y", "pearson", NULL, 0.95), regexp = "must be of type numeric or integer")
+})
+
 #
 # Done
 #
