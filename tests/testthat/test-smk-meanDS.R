@@ -63,8 +63,8 @@ test_that("numeric meanDS, with NA", {
 
 # context("meanDS::smk::numeric with all NA")
 test_that("numeric meanDS, with all NA", {
-    input <- c(NA, NA, NA, NA, NA)
-    
+    input <- rep(NA_real_, 5)
+
     res <- meanDS("input")
     
     expect_length(res, 5)

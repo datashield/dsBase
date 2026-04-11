@@ -36,7 +36,7 @@ test_that("numeric meanDS - performance", {
     .current.time <- .start.time
 
     while (difftime(.current.time, .start.time, units = "secs")[[1]] < .durationSec) {
-        meanDS(input)
+        meanDS("input")
 
         .count <- .count + 1
         .current.time <- Sys.time()
@@ -71,7 +71,7 @@ test_that("numeric meanDS, with NA - performance", {
     .current.time <- .start.time
 
     while (difftime(.current.time, .start.time, units = "secs")[[1]] < .durationSec) {
-        meanDS(input)
+        meanDS("input")
 
         .count <- .count + 1
         .current.time <- Sys.time()

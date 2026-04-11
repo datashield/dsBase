@@ -67,13 +67,13 @@ test_that("numeric varDS, with NA", {
 
 # context("varDS::smk::numeric with all NA")
 test_that("numeric varDS, with all NA", {
-    input <- c(NA, NA, NA, NA, NA)
-    
+    input <- rep(NA_real_, 5)
+
     res <- varDS("input")
-    
+
     expect_length(res, 6)
     expect_equal(class(res), "list")
-    expect_equal(class(res$Sum), "integer")
+    expect_equal(class(res$Sum), "numeric")
     expect_equal(res$Sum, 0)
     expect_equal(class(res$SumOfSquares), "numeric")
     expect_equal(res$SumOfSquares, 0)

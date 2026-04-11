@@ -33,8 +33,8 @@ test_that("simple meanSdGpDS, numeric by factor", {
     expect_equal(res$Nvalid, 10)
     expect_equal(res$Nmissing, 0)
     expect_equal(res$Ntotal, 10)
-    expect_equal(res$Mean_gp[["A"]], 3.0)
-    expect_equal(res$Mean_gp[["B"]], 8.0)
+    expect_equal(as.numeric(res$Mean_gp)[1], 3.0)
+    expect_equal(as.numeric(res$Mean_gp)[2], 8.0)
 })
 
 test_that("meanSdGpDS throws error when X does not exist", {
