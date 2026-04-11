@@ -10,6 +10,7 @@
 #' of \code{ds.log} (or default name \code{log.newobj})
 #' which is written to the serverside. The output object is of class numeric.
 #' @author DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 logDS <- function(x, base=exp(1)) {

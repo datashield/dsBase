@@ -9,6 +9,7 @@
 #' which is written to the serverside. The output object is of class numeric
 #' or integer.
 #' @author Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 absDS <- function(x) {

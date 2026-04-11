@@ -9,6 +9,7 @@
 #' <x.name>.logic) which is written to the serverside. For further
 #' details see help on the clientside function \code{ds.asLogical}
 #' @author Amadou Gaye, Paul Burton for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 asLogicalDS <- function (x.name){
   x <- .loadServersideObject(x.name)

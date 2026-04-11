@@ -11,6 +11,7 @@
 #' "asinteger.newobj") which is written to the serverside. For further
 #' details see help on the clientside function \code{ds.asInteger}.
 #' @author Amadou Gaye, Paul Burton, Demetris Avraam, for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 asIntegerDS <- function(x.name){
