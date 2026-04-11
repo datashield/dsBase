@@ -13,6 +13,7 @@
 #' indicating indicating a valid analysis if the number of valid observations are above the protection filter 
 #' nfilter.tab or invalid analysis otherwise.
 #' @author Demetris Avraam, for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #' 
 skewnessDS2 <- function(x, global.mean){

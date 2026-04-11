@@ -13,6 +13,7 @@
 #' 4 complete pairs of observations.
 #' @return the results of the correlation test.
 #' @author Demetris Avraam, for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 corTestDS <- function(x, y, method, exact, conf.level){

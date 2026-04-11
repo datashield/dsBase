@@ -9,6 +9,7 @@
 #' @return a list including the skewness of the input numeric variable, the number of valid observations and
 #' the study-side validity message.
 #' @author Demetris Avraam, for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #' 
 skewnessDS1 <- function(x, method){

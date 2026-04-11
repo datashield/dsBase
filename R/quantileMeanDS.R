@@ -6,6 +6,7 @@
 #' @return a numeric vector that represents the sample quantiles
 #' @export
 #' @author Burton, P.; Gaye, A.
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #'
 quantileMeanDS <- function (x) {
 

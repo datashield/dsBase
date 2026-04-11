@@ -8,6 +8,7 @@
 #' @param index a client-side supplied character string identifying the factor across
 #' which means/SDs are to be calculated
 #' @author Burton PR
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #'
 #' @return List with results from the group statistics
 #' @export

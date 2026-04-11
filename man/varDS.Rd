@@ -4,10 +4,10 @@
 \alias{varDS}
 \title{Computes the variance of vector}
 \usage{
-varDS(xvect)
+varDS(x)
 }
 \arguments{
-\item{xvect}{a vector}
+\item{x}{a character string, the name of a numeric or integer vector}
 }
 \value{
 a list, with the sum of the input variable, the sum of squares of the input variable,
@@ -24,4 +24,6 @@ a missing value is returned.
 }
 \author{
 Amadou Gaye, Demetris Avraam, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

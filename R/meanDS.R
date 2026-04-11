@@ -6,6 +6,7 @@
 #' @param x a character string, the name of a numeric or integer vector
 #' @return a numeric, the statistical mean
 #' @author Gaye A, Burton PR
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 meanDS <- function(x){

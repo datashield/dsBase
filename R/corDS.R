@@ -16,6 +16,7 @@
 #' by the 'nfilter.glm'). The second disclosure control checks that none of them is dichotomous with a
 #' level having fewer counts than the pre-specified 'nfilter.tab' threshold.
 #' @author Paul Burton, and Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 corDS <- function(x=NULL, y=NULL){

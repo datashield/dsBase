@@ -29,4 +29,6 @@ of x across all studies and the number of valid observations of the input variab
 }
 \author{
 Demetris Avraam, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

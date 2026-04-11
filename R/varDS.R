@@ -9,6 +9,7 @@
 #' variable, and a study message indicating whether the number of valid is less than the
 #' disclosure threshold
 #' @author Amadou Gaye, Demetris Avraam, for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 varDS <- function(x){

@@ -23,6 +23,7 @@
 #' counts than the pre-specified 'nfilter.tab' threshold. If any of the input variables do not pass the disclosure
 #' controls then all the output values are replaced with NAs.
 #' @author Amadou Gaye, Paul Burton, and Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 covDS <- function(x=NULL, y=NULL, use=NULL){

@@ -40,4 +40,6 @@ variables
 }
 \author{
 Amadou Gaye, Paul Burton, and Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }
