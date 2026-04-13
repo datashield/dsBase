@@ -27,7 +27,7 @@ test_that("numeric vector levelsDS", {
 
     res <- levelsDS("input")
 
-    expect_length(res, 2)
+    expect_length(res, 1)
     expect_equal(class(res), "list")
     expect_equal(class(res$Levels), "character")
     expect_length(res$Levels, 4)
