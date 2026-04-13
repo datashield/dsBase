@@ -29,16 +29,13 @@ kurtosisDS2 <- function(x, global.mean){
   x <- x.val[stats::complete.cases(x.val)]
   
   if(length(x) < nfilter.tab){
-    sum_quartics.out <- NA
-    sum_squares.out <- NA
-    studysideMessage <- "FAILED: Nvalid less than nfilter.tab"
-  }else{
-    sum_quartics.out <- sum((x - global.mean)^4)
-    sum_squares.out <- sum((x - global.mean)^2)
-    studysideMessage <- "VALID ANALYSIS"
+    stop("FAILED: Nvalid less than nfilter.tab", call. = FALSE)
   }
-  
-  out.obj <- list(Sum.quartics=sum_quartics.out, Sum.squares=sum_squares.out, Nvalid=length(x), ValidityMessage=studysideMessage)
+
+  sum_quartics.out <- sum((x - global.mean)^4)
+  sum_squares.out <- sum((x - global.mean)^2)
+
+  out.obj <- list(Sum.quartics=sum_quartics.out, Sum.squares=sum_squares.out, Nvalid=length(x), class=class(x.val))
   return(out.obj)
   
 }

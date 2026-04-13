@@ -29,17 +29,13 @@ skewnessDS2 <- function(x, global.mean){
   x <- x.val[stats::complete.cases(x.val)]
   
   if(length(x) < nfilter.tab){
-    sum_cubes.out <- NA
-    sum_squares.out <- NA
-    studysideMessage <- "FAILED: Nvalid less than nfilter.tab"
-    stop(studysideMessage, call. = FALSE)
-  }else{
-    sum_cubes.out <- sum((x - global.mean)^3)
-    sum_squares.out <- sum((x - global.mean)^2)
-    studysideMessage <- "VALID ANALYSIS"
+    stop("FAILED: Nvalid less than nfilter.tab", call. = FALSE)
   }
-  
-  out.obj <- list(Sum.cubes=sum_cubes.out, Sum.squares=sum_squares.out, Nvalid=length(x), ValidityMessage=studysideMessage)
+
+  sum_cubes.out <- sum((x - global.mean)^3)
+  sum_squares.out <- sum((x - global.mean)^2)
+
+  out.obj <- list(Sum.cubes=sum_cubes.out, Sum.squares=sum_squares.out, Nvalid=length(x), class=class(x.val))
   return(out.obj)
   
 }

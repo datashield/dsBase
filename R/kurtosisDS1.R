@@ -34,19 +34,16 @@ kurtosisDS1 <- function (x, method){
     
     if(method==1){
       kurtosis.out <- g2
-      studysideMessage <- "VALID ANALYSIS"
     }
     if(method==2){
       kurtosis.out <- ((length(x) + 1) * g2 + 6) * (length(x) - 1)/((length(x) - 2) * (length(x) - 3))
-      studysideMessage <- "VALID ANALYSIS"
     }
     if(method==3){
       kurtosis.out <- (g2 + 3) * (1 - 1/length(x))^2 - 3
-      studysideMessage <- "VALID ANALYSIS"
     }
   }
-  
-  out.obj <- list(Kurtosis=kurtosis.out, Nvalid=length(x), ValidityMessage=studysideMessage)
+
+  out.obj <- list(Kurtosis=kurtosis.out, Nvalid=length(x), class=class(x.val))
   return(out.obj)
   
 }

@@ -34,19 +34,16 @@ skewnessDS1 <- function(x, method){
     
     if(method==1){
       skewness.out <- g1
-      studysideMessage <- "VALID ANALYSIS"
     }
     if(method==2){
       skewness.out <- g1 * sqrt(length(x)*(length(x)-1))/(length(x)-2)
-      studysideMessage <- "VALID ANALYSIS"
     }
     if(method==3){
       skewness.out <- g1 * ((length(x)-1)/(length(x)))^(3/2)
-      studysideMessage <- "VALID ANALYSIS"
     }
   }
 
-  out.obj <- list(Skewness=skewness.out, Nvalid=length(x), ValidityMessage=studysideMessage)
+  out.obj <- list(Skewness=skewness.out, Nvalid=length(x), class=class(x.val))
   return(out.obj)
   
 }

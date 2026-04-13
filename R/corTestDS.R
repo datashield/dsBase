@@ -29,9 +29,9 @@ corTestDS <- function(x, y, method, exact, conf.level){
   # runs a two-sided correlation test
   corTest <- stats::cor.test(x=x.var, y=y.var, method=method, exact=exact, conf.level=conf.level)
 
-  out <- list(n, corTest)
-  names(out) <- c("Number of pairwise complete cases", "Correlation test")
-  
+  out <- list(n, corTest, class = class(x.var))
+  names(out)[1:2] <- c("Number of pairwise complete cases", "Correlation test")
+
   # return the results
   return(out)
 
