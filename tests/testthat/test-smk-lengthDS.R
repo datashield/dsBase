@@ -56,12 +56,24 @@ test_that("lengthDS throws error when object does not exist", {
     )
 })
 
-test_that("lengthDS throws error when object is not a permitted type", {
-    bad_input <- data.frame(a = 1:3)
-    expect_error(
-        lengthDS("bad_input"),
-        regexp = "must be of type"
-    )
+test_that("simple lengthDS, numeric data.frame", {
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+
+    res <- lengthDS("input")
+
+    expect_equal(class(res), "list")
+    expect_equal(res$length, 2)
+    expect_equal(res$class, "data.frame")
+})
+
+test_that("simple lengthDS, character data.frame", {
+    input <- data.frame(v1 = c("0.0", "1.0", "2.0", "3.0", "4.0"), v2 = c("4.0", "3.0", "2.0", "1.0", "0.0"), stringsAsFactors = FALSE)
+
+    res <- lengthDS("input")
+
+    expect_equal(class(res), "list")
+    expect_equal(res$length, 2)
+    expect_equal(res$class, "data.frame")
 })
 
 #

@@ -12,7 +12,7 @@
 #'
 lengthDS <- function(x){
   x.val <- .loadServersideObject(x)
-  .checkClass(obj = x.val, obj_name = x, permitted_classes = c("character", "factor", "integer", "logical", "numeric", "list"))
+  .checkClass(obj = x.val, obj_name = x, permitted_classes = c("character", "factor", "integer", "logical", "numeric", "list", "data.frame"))
   list(length = length(x.val), class = class(x.val))
 }
 #AGGREGATE FUNCTION
