@@ -157,8 +157,7 @@ if(sum(is.na(keep.code.n))>0){
     }
   }
 
-  df.name.2 <- paste0("data.frame(",df.name,")")
-  df2subset <- eval(parse(text=df.name.2), envir = parent.frame())
+  df2subset <- data.frame(.loadServersideObject(df.name))
 
   if(V1.name=="ONES"||V2.name=="ONES")
   {
@@ -175,8 +174,16 @@ if(sum(is.na(keep.code.n))>0){
       ONES<-V1
     }
   } else {
-     V1 <- eval(parse(text=V1.name), envir = parent.frame())
-     V2 <- eval(parse(text=V2.name), envir = parent.frame())
+     V1 <- tryCatch(.loadServersideObject(V1.name), error = function(e) {
+       numeric.val <- suppressWarnings(as.numeric(V1.name))
+       if (is.na(numeric.val)) stop(e)
+       numeric.val
+     })
+     V2 <- tryCatch(.loadServersideObject(V2.name), error = function(e) {
+       numeric.val <- suppressWarnings(as.numeric(V2.name))
+       if (is.na(numeric.val)) stop(e)
+       numeric.val
+     })
   }
 
   ##########CHECK APPROPRIATE CLASSES ##############

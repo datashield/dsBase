@@ -50,8 +50,8 @@ thr <- dsBase::listDisclosureSettingsDS()                               #
 
 ##########CHECK NOT LONG SPECIFIED VECTOR##############
 
-V1<-eval(parse(text=V1.name), envir = parent.frame())
-V2<-eval(parse(text=V2.name), envir = parent.frame())
+V1<-.loadServersideObject(V1.name)
+V2<-.loadServersideObject(V2.name)
 
 
 if(is.character(V1)){

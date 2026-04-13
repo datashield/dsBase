@@ -65,8 +65,9 @@ nfilter.subset<-as.numeric(thr$nfilter.subset)                          #
 #########################################################################
 
 
- if(is.character(FROM.value.char)&&is.numeric(eval(parse(text=FROM.value.char), envir = parent.frame()))){
-	FROM<-eval(parse(text=FROM.value.char), envir = parent.frame())
+ FROM.eval <- tryCatch(.loadServersideObject(FROM.value.char), error = function(e) as.numeric(FROM.value.char))
+ if(is.character(FROM.value.char)&&is.numeric(FROM.eval)){
+	FROM<-FROM.eval
 	}else{
    studysideMessage<-"ERROR: FROM.value.char must be specified as a real number in inverted commas eg '-3.74' or '0'"
    stop(studysideMessage, call. = FALSE)
@@ -74,9 +75,10 @@ nfilter.subset<-as.numeric(thr$nfilter.subset)                          #
  
  if(!is.null(TO.value.char))
 	{
-	if(is.character(TO.value.char)&&is.numeric(eval(parse(text=TO.value.char), envir = parent.frame())))
+	TO.eval <- tryCatch(.loadServersideObject(TO.value.char), error = function(e) as.numeric(TO.value.char))
+	if(is.character(TO.value.char)&&is.numeric(TO.eval))
 		{
-		TO<-eval(parse(text=TO.value.char), envir = parent.frame())
+		TO<-TO.eval
 		}else{
 		studysideMessage<-"ERROR: TO.value.char must be specified as a real number in inverted commas eg '-3.74' or '0'"
 		stop(studysideMessage, call. = FALSE)
@@ -88,16 +90,18 @@ nfilter.subset<-as.numeric(thr$nfilter.subset)                          #
  TO<-NULL
  }
 	
- if(is.character(BY.value.char)&&is.numeric(eval(parse(text=BY.value.char), envir = parent.frame()))){
-	BY<-eval(parse(text=BY.value.char), envir = parent.frame())
+ BY.eval <- tryCatch(.loadServersideObject(BY.value.char), error = function(e) as.numeric(BY.value.char))
+ if(is.character(BY.value.char)&&is.numeric(BY.eval)){
+	BY<-BY.eval
 	}else{
    studysideMessage<-"ERROR: BY.value.char must be specified as a real number in inverted commas eg '-3.74' or '0'"
    stop(studysideMessage, call. = FALSE)
    }
 
  if(!is.null(LENGTH.OUT.value.char)){
-		if(is.character(LENGTH.OUT.value.char)&&is.numeric(eval(parse(text=LENGTH.OUT.value.char), envir = parent.frame()))){
-		LENGTH.OUT<-eval(parse(text=LENGTH.OUT.value.char), envir = parent.frame())
+		LENGTH.OUT.eval <- tryCatch(.loadServersideObject(LENGTH.OUT.value.char), error = function(e) as.numeric(LENGTH.OUT.value.char))
+		if(is.character(LENGTH.OUT.value.char)&&is.numeric(LENGTH.OUT.eval)){
+		LENGTH.OUT<-LENGTH.OUT.eval
 		}else{
 		studysideMessage<-"ERROR: If LENGTH.OUT.value.char is non-NULL, it must specify a positive integer in inverted commas eg '14'" 
 		stop(studysideMessage, call. = FALSE)
@@ -110,7 +114,7 @@ nfilter.subset<-as.numeric(thr$nfilter.subset)                          #
  
  if(!is.null(ALONG.WITH.name)){
 		if(is.character(ALONG.WITH.name)){
-		ALONG.WITH<-eval(parse(text=ALONG.WITH.name), envir = parent.frame())
+		ALONG.WITH<-.loadServersideObject(ALONG.WITH.name)
 		}else{
 		studysideMessage<-"ERROR: If ALONG.WITH.name is non-NULL, it must specify the name of a serverside vector in inverted commas" 
 		stop(studysideMessage, call. = FALSE)

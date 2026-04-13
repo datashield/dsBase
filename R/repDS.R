@@ -175,7 +175,7 @@ if(source.x1=="serverside")
 {
 #x1.transmit is the name of a serverside vector or scalar
 
-x1.use<-eval(parse(text=x1.transmit), envir = parent.frame())
+x1.use<-.loadServersideObject(x1.transmit)
 }
 
 if(source.x1=="clientside")
@@ -276,7 +276,7 @@ else
 	{
 	#times.transmit is the name of a serverside vector or scalar
 
-	times.use<-eval(parse(text=times.transmit), envir = parent.frame())
+	times.use<-.loadServersideObject(times.transmit)
 	}
 
 	if(source.times=="clientside")
@@ -364,7 +364,7 @@ else
 	if(source.length.out=="serverside")
 	{
 	#length.out.transmit is the name of the serverside vector or scalar
-	length.out.temp<-eval(parse(text=length.out.transmit), envir = parent.frame())
+	length.out.temp<-.loadServersideObject(length.out.transmit)
 	
 	arg.is.vector<-FALSE
 	if(length(length.out.temp)>=2)arg.is.vector<-TRUE
@@ -460,7 +460,7 @@ else
 	if(source.each=="serverside")
 	{
 	#each.transmit is the name of the serverside vector or scalar
-	each.use<-eval(parse(text=each.transmit), envir = parent.frame())
+	each.use<-.loadServersideObject(each.transmit)
 	}
 
 	if(source.each=="clientside")

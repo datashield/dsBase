@@ -65,9 +65,8 @@ dataFrameSortDS <- function(df.name=NULL,sort.key.name=NULL,sort.descending,sort
     stop(studysideMessage, call. = FALSE)
   }
 
-  df.name.2 <- paste0("data.frame(",df.name,")")
-  df2sort   <- eval(parse(text=df.name.2), envir = parent.frame())
-  sort.key  <- eval(parse(text=sort.key.name), envir = parent.frame())
+  df2sort   <- data.frame(.loadServersideObject(df.name))
+  sort.key  <- .loadServersideObject(sort.key.name)
 
   # TYPE CHECK
   if(any(class(sort.key) %in% 'factor')){
