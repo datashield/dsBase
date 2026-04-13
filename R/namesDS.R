@@ -16,6 +16,7 @@
 #' @return \code{namesDS} returns to the client-side the names
 #' of a list object stored on the server-side.
 #' @author Amadou Gaye, updated by Paul Burton 25/06/2020
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 namesDS <- function(xname.transmit){

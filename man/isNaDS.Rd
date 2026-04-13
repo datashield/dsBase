@@ -20,4 +20,6 @@ of booleans it returns just one boolean to tell if all the element are missing v
 }
 \author{
 Gaye, A.
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

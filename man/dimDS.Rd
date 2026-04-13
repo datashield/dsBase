@@ -21,4 +21,6 @@ The function returns the dimension of the input dataframe or matrix
 }
 \author{
 Demetris Avraam, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

@@ -20,4 +20,6 @@ The function returns the class of an object
 }
 \author{
 Stuart Wheater, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

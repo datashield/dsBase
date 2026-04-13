@@ -5,6 +5,7 @@
 #' @param x a string character, the name of an object
 #' @return the class of the input object
 #' @author Stuart Wheater, for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 classDS <- function(x){

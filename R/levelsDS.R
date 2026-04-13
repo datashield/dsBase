@@ -7,6 +7,7 @@
 #'   in the vector) and \code{class} (the class of the input object, for
 #'   client-side consistency checking)
 #' @author Alex Westerberg, for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 levelsDS <- function(x){

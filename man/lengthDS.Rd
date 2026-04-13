@@ -22,4 +22,6 @@ The function returns the length of the input vector or list.
 }
 \author{
 Demetris Avraam, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

@@ -7,6 +7,7 @@
 #'   only NAs, FALSE otherwise) and \code{class} (the class of the input object,
 #'   for client-side consistency checking)
 #' @author Gaye, A.
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 isNaDS <- function(x){

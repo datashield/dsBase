@@ -7,6 +7,7 @@
 #'   vector or list) and \code{class} (the class of the input object, for client-side
 #'   consistency checking)
 #' @author Demetris Avraam, for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 lengthDS <- function(x){

@@ -6,6 +6,7 @@
 #' @return the object specified by the \code{newobj} argument
 #' which is written to the server-side.
 #' @author Stuart Wheater for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 uniqueDS <- function(x.name.transmit = NULL){

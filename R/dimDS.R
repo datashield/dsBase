@@ -6,6 +6,7 @@
 #' @return a list with two elements: \code{dim} (the dimension of the input object)
 #'   and \code{class} (the class of the input object, for client-side consistency checking)
 #' @author Demetris Avraam, for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 dimDS <- function(x){

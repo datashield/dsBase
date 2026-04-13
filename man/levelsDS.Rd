@@ -22,4 +22,6 @@ The function returns the levels of the input vector or list.
 }
 \author{
 Alex Westerberg, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

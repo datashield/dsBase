@@ -31,4 +31,6 @@ is formally of double class "glm" and "ls" but responds TRUE to is.list(),
 }
 \author{
 Amadou Gaye, updated by Paul Burton 25/06/2020
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }
