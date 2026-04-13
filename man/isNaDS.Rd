@@ -10,7 +10,9 @@ isNaDS(x)
 \item{x}{a character string, the name of a server-side vector}
 }
 \value{
-TRUE if the vector contains only NAs, FALSE otherwise
+a list with two elements: \code{is.na} (TRUE if the vector contains
+  only NAs, FALSE otherwise) and \code{class} (the class of the input object,
+  for client-side consistency checking)
 }
 \description{
 this function is similar to R function \code{is.na} but instead of a vector

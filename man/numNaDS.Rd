@@ -10,7 +10,9 @@ numNaDS(x)
 \item{x}{a character string, the name of a server-side vector}
 }
 \value{
-an integer, the number of missing values
+a list with two elements: \code{numNA} (an integer, the number of
+  missing values) and \code{class} (the class of the input object, for
+  client-side consistency checking)
 }
 \description{
 this function just counts the number of missing entries
