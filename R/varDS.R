@@ -31,16 +31,11 @@ varDS <- function(x){
   out.numNa <- length(which(is.na(xvect)))
   out.totN <- length(xvect)
   out.validN <- out.totN-out.numNa
-  studysideMessage <- "VALID ANALYSIS"
-
   if((out.validN != 0) && (out.validN < nfilter.tab)){
-    out.sum <- NA
-    out.sumSquares <- NA
-    studysideMessage <- "FAILED: Nvalid less than nfilter.tab"
-    stop(studysideMessage, call. = FALSE)
+    stop("FAILED: Nvalid less than nfilter.tab", call. = FALSE)
   }
 
-  out.obj <- list(Sum=out.sum,SumOfSquares=out.sumSquares,Nmissing=out.numNa,Nvalid=out.validN,Ntotal=out.totN,ValidityMessage=studysideMessage)
+  out.obj <- list(Sum=out.sum,SumOfSquares=out.sumSquares,Nmissing=out.numNa,Nvalid=out.validN,Ntotal=out.totN,class=class(xvect))
   return(out.obj)
 
 }

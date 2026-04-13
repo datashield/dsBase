@@ -27,14 +27,11 @@ meanDS <- function(x){
   out.numNa <- length(which(is.na(xvect)))
   out.totN <- length(xvect)
   out.validN <- out.totN-out.numNa
-  studysideMessage <- "VALID ANALYSIS"
-
   if((out.validN != 0) && (out.validN < nfilter.tab)){
-    out.mean <- NA
     stop("FAILED: Nvalid less than nfilter.tab", call. = FALSE)
   }
 
-  out.obj <- list(EstimatedMean=out.mean,Nmissing=out.numNa,Nvalid=out.validN,Ntotal=out.totN,ValidityMessage=studysideMessage)
+  out.obj <- list(EstimatedMean=out.mean,Nmissing=out.numNa,Nvalid=out.validN,Ntotal=out.totN,class=class(xvect))
   return(out.obj)
 
 }
