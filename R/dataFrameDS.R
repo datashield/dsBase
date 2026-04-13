@@ -58,8 +58,12 @@ dataFrameDS <- function(vectors=NULL, r.names=NULL, ch.rows=FALSE, ch.names=TRUE
     r.names <- unlist(r.names)
   }
   
-  eval.code.vectors.names <- paste0("data.frame(", vectors, ")")
-  dtemp0 <- eval(parse(text=eval.code.vectors.names), envir = parent.frame())
+  vectors.names <- unlist(strsplit(vectors, split=","))
+  loaded.vectors <- vector("list", length(vectors.names))
+  for(i in seq_along(vectors.names)) {
+    loaded.vectors[[i]] <- .loadServersideObject(vectors.names[i])
+  }
+  dtemp0 <- do.call(data.frame, loaded.vectors)
   
   dtemp <- data.frame(dtemp0, row.names=r.names, check.rows=ch.rows, check.names=ch.names,
                     stringsAsFactors=strAsFactors)
