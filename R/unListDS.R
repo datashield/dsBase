@@ -35,13 +35,8 @@
 #' 
 unListDS <- function(x.name) {
 
-    if (is.character(x.name)) {
-	listvar<-eval(parse(text=x.name), envir = parent.frame())
-    } else {
-        studysideMessage<-"ERROR: x.name must be specified as a character string"
-        stop(studysideMessage, call. = FALSE)
-    } 
- 
+    listvar <- .loadServersideObject(x.name)
+
     outvar<-unlist(listvar)
 
     return(outvar)
