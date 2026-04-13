@@ -25,9 +25,9 @@ test_that("simple numNaDS", {
 
     res <- numNaDS("input")
 
-    expect_equal(class(res), "integer")
-    expect_length(res, 1)
-    expect_equal(res, 3)
+    expect_equal(class(res$numNA), "integer")
+    expect_length(res$numNA, 1)
+    expect_equal(res$numNA, 3)
 })
 
 test_that("simple numNaDS, single NA", {
@@ -35,9 +35,9 @@ test_that("simple numNaDS, single NA", {
 
     res <- numNaDS("input")
 
-    expect_equal(class(res), "integer")
-    expect_length(res, 1)
-    expect_equal(res, 1)
+    expect_equal(class(res$numNA), "integer")
+    expect_length(res$numNA, 1)
+    expect_equal(res$numNA, 1)
 })
 
 test_that("numNaDS throws error when object does not exist", {

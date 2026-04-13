@@ -25,9 +25,9 @@ test_that("numeric vector isNaDS", {
 
     res <- isNaDS("input")
 
-    expect_length(res, 1)
-    expect_equal(class(res), "logical")
-    expect_equal(res, FALSE)
+    expect_length(res$is.na, 1)
+    expect_equal(class(res$is.na), "logical")
+    expect_equal(res$is.na, FALSE)
 })
 
 test_that("numeric vector isNaDS - with NA single", {
@@ -35,9 +35,9 @@ test_that("numeric vector isNaDS - with NA single", {
 
     res <- isNaDS("input")
 
-    expect_length(res, 1)
-    expect_equal(class(res), "logical")
-    expect_equal(res, FALSE)
+    expect_length(res$is.na, 1)
+    expect_equal(class(res$is.na), "logical")
+    expect_equal(res$is.na, FALSE)
 })
 
 test_that("numeric vector isNaDS - with NA all", {
@@ -45,9 +45,9 @@ test_that("numeric vector isNaDS - with NA all", {
 
     res <- isNaDS("input")
 
-    expect_length(res, 1)
-    expect_equal(class(res), "logical")
-    expect_equal(res, TRUE)
+    expect_length(res$is.na, 1)
+    expect_equal(class(res$is.na), "logical")
+    expect_equal(res$is.na, TRUE)
 })
 
 # context("isNaDS::smk::character vector")
@@ -56,9 +56,9 @@ test_that("character vector isNaDS", {
 
     res <- isNaDS("input")
 
-    expect_length(res, 1)
-    expect_equal(class(res), "logical")
-    expect_equal(res, FALSE)
+    expect_length(res$is.na, 1)
+    expect_equal(class(res$is.na), "logical")
+    expect_equal(res$is.na, FALSE)
 })
 
 test_that("character vector isNaDS - with NA single", {
@@ -66,9 +66,9 @@ test_that("character vector isNaDS - with NA single", {
 
     res <- isNaDS("input")
 
-    expect_length(res, 1)
-    expect_equal(class(res), "logical")
-    expect_equal(res, FALSE)
+    expect_length(res$is.na, 1)
+    expect_equal(class(res$is.na), "logical")
+    expect_equal(res$is.na, FALSE)
 })
 
 test_that("character vector isNaDS - with NA all", {
@@ -76,9 +76,9 @@ test_that("character vector isNaDS - with NA all", {
 
     res <- isNaDS("input")
 
-    expect_length(res, 1)
-    expect_equal(class(res), "logical")
-    expect_equal(res, TRUE)
+    expect_length(res$is.na, 1)
+    expect_equal(class(res$is.na), "logical")
+    expect_equal(res$is.na, TRUE)
 })
 
 test_that("isNaDS throws error when object does not exist", {

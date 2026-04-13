@@ -35,8 +35,6 @@ test_that("numeric vector levelsDS", {
     expect_equal(res$Levels[2], "1")
     expect_equal(res$Levels[3], "2")
     expect_equal(res$Levels[4], "3")
-    expect_equal(class(res$ValidityMessage), "character")
-    expect_equal(res$ValidityMessage, "VALID ANALYSIS")
 })
 
 test_that("levelsDS throws error when object does not exist", {
