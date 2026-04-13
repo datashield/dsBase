@@ -21,7 +21,7 @@
 #' 
 dataFrameFillDS <- function(df.name, allNames.transmit, class.vect.transmit, levels.vec.transmit){
   
-  data <- eval(parse(text=df.name), envir = parent.frame())
+  data <- .loadServersideObject(df.name)
 
   if(!is.null(allNames.transmit)){
     allNames <- unlist(strsplit(allNames.transmit, split=","))

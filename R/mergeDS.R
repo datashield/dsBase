@@ -78,19 +78,12 @@ mergeDS <- function(x.name, y.name, by.x.names.transmit, by.y.names.transmit, al
   }
   
 	# activate data frame names
-  x.data.frame <- eval(parse(text=x.name), envir = parent.frame())
-  y.data.frame <- eval(parse(text=y.name), envir = parent.frame())
+  x.data.frame <- .loadServersideObject(x.name)
+  y.data.frame <- .loadServersideObject(y.name)
 
   # check data.frames are valid data.frames
-  if(!is.data.frame(x.data.frame)){
-    studysideMessage <- "Error: x.name must specify a data.frame"
-    stop(studysideMessage, call. = FALSE)
-  }
-  
-  if(!is.data.frame(y.data.frame)){
-    studysideMessage <- "Error: y.name must specify a data.frame"
-    stop(studysideMessage, call. = FALSE)
-  }
+  .checkClass(obj = x.data.frame, obj_name = x.name, permitted_classes = c("data.frame"))
+  .checkClass(obj = y.data.frame, obj_name = y.name, permitted_classes = c("data.frame"))
 
   # manage by.x.names and by.y.names
 	# check text to be activated is not too long because of disclosure risk

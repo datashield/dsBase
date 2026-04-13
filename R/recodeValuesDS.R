@@ -59,7 +59,7 @@ recodeValuesDS <- function(var.name.text=NULL, values2replace.text=NULL, new.val
     stop(studysideMessage, call. = FALSE)
   }
 
-  var2recode <- eval(parse(text=var.name.text), envir = parent.frame())
+  var2recode <- .loadServersideObject(var.name.text)
   
   values2replace <- unlist(strsplit(values2replace.text, split=","))
   new.values <- unlist(strsplit(new.values.text, split=","))
@@ -68,13 +68,10 @@ recodeValuesDS <- function(var.name.text=NULL, values2replace.text=NULL, new.val
   
   # get the class of the input variable
   var.class <- class(var2recode)
-  
-  # if the class of the input variable is not factor, numeric, character or integer then 
+
+  # if the class of the input variable is not factor, numeric, character or integer then
   # stop and return an error message
-  if (!(var.class %in% c('factor', 'character', 'numeric', 'integer'))){
-    studysideMessage <- "Error: The variable to recode must be either a factor, a character, a numeric or an integer"
-    stop(studysideMessage, call. = FALSE)
-  }
+  .checkClass(obj = var2recode, obj_name = var.name.text, permitted_classes = c('factor', 'character', 'numeric', 'integer'))
   
   # recode using the recode function from the dplyr package 
   if (var.class == 'factor'){
