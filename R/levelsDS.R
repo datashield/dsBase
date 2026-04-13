@@ -3,9 +3,9 @@
 #' @description This function is similar to R function \code{levels}.
 #' @details The function returns the levels of the input vector or list.
 #' @param x a factor vector
-#' @return a list with three elements: \code{Levels} (the factor levels present
-#'   in the vector), \code{ValidityMessage}, and \code{class} (the class of the
-#'   input object, for client-side consistency checking)
+#' @return a list with two elements: \code{Levels} (the factor levels present
+#'   in the vector) and \code{class} (the class of the input object, for
+#'   client-side consistency checking)
 #' @author Alex Westerberg, for DataSHIELD Development Team
 #' @export
 #'
@@ -27,15 +27,12 @@ levelsDS <- function(x){
   out <- levels(x.val)
   input.length     <- length(x.val)
   output.length    <- length(out)
-  studysideMessage <- "VALID ANALYSIS"
 
   if((input.length * nfilter.levels.density) < output.length) {
-    out <- NA
-    studysideMessage <- "FAILED: Result length less than nfilter.levels.density of input length."
-    stop(studysideMessage, call. = FALSE)
+    stop("FAILED: Result length less than nfilter.levels.density of input length.", call. = FALSE)
   }
-  
-  out.obj <- list(Levels=out, ValidityMessage=studysideMessage, class=class(x.val))
+
+  out.obj <- list(Levels=out, class=class(x.val))
   return(out.obj)
 }
 #AGGREGATE FUNCTION
