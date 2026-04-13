@@ -169,7 +169,7 @@ corDS <- function(x=NULL, y=NULL){
     
   }
   
-  return(list(sums.of.products=sums.of.products, sums=sums, complete.counts=complete.counts, na.counts=na.counts, sums.of.squares=sums.of.squares))
+  return(list(sums.of.products=sums.of.products, sums=sums, complete.counts=complete.counts, na.counts=na.counts, sums.of.squares=sums.of.squares, class=class(x.val)))
   
 }
 # AGGREGATE FUNCTION

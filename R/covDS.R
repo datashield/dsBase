@@ -302,7 +302,7 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
   
   }
 
-  return(list(sums.of.products=sums.of.products, sums=sums, complete.counts=complete.counts, na.counts=na.counts, errorMessage=errorMessage))
+  return(list(sums.of.products=sums.of.products, sums=sums, complete.counts=complete.counts, na.counts=na.counts, errorMessage=errorMessage, class=class(x.val)))
 
 }
 # AGGREGATE FUNCTION
