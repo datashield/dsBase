@@ -4,10 +4,10 @@
 \alias{cDS}
 \title{Concatenates objects into a vector or list}
 \usage{
-cDS(x.names)
+cDS(objs)
 }
 \arguments{
-\item{x.names}{a character vector of object names to concatenate.}
+\item{objs}{a list which contains the the objects to concatenate.}
 }
 \value{
 a vector or list
@@ -21,6 +21,4 @@ length are allowed as output
 }
 \author{
 Gaye, A.
-
-Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

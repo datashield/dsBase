@@ -21,11 +21,10 @@
 
 # context("listDS::smk::simple")
 test_that("simple listDS", {
-    v1 <- c(1, 2, 3)
-    v2 <- c(4, 5, 6)
+    input    <- list(v1 = c(1, 2, 3), v2 = c(4, 5, 6))
     eltnames <- c('n1', 'n2')
 
-    res <- listDS(c("v1", "v2"), eltnames)
+    res <- listDS(input, eltnames)
 
     expect_equal(class(res), "list")
     expect_length(res, 2)
