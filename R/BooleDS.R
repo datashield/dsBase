@@ -51,7 +51,14 @@ thr <- dsBase::listDisclosureSettingsDS()                               #
 ##########CHECK NOT LONG SPECIFIED VECTOR##############
 
 V1<-.loadServersideObject(V1.name)
-V2<-.loadServersideObject(V2.name)
+
+# V2 may be either a server-side object name or a literal scalar (e.g. "3", "-1")
+V2.numeric <- suppressWarnings(as.numeric(V2.name))
+if(!is.na(V2.numeric)){
+  V2 <- V2.numeric
+}else{
+  V2 <- .loadServersideObject(V2.name)
+}
 
 
 if(is.character(V1)){
