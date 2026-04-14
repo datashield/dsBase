@@ -8,6 +8,7 @@
 #' of \code{ds.exp} (or default name \code{exp.newobj})
 #' which is written to the serverside. The output object is of class numeric.
 #' @author DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 expDS <- function(x) {

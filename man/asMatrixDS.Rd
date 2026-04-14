@@ -25,4 +25,6 @@ See help for function \code{as.matrix} in native R
 }
 \author{
 Amadou Gaye, Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

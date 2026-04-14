@@ -37,4 +37,6 @@ and so additional information can be found in the help for \code{as.list}
 }
 \author{
 Amadou Gaye, Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

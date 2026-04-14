@@ -25,4 +25,6 @@ See help for function \code{as.character} in native R
 }
 \author{
 Amadou Gaye, Paul Burton, Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

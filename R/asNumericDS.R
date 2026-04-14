@@ -11,6 +11,7 @@
 #' <x.name>.num) which is written to the serverside. For further
 #' details see help on the clientside function \code{ds.asNumeric}.
 #' @author Amadou Gaye, Paul Burton, Demetris Avraam, for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 asNumericDS <- function(x.name){

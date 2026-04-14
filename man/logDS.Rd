@@ -26,4 +26,6 @@ or integer vector. By default natural logarithms are computed.
 }
 \author{
 DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

@@ -20,6 +20,7 @@
 #' coerces objects to list depends on the class of the object, but in general
 #' the class of the output object should usually be 'list'
 #' @author Amadou Gaye, Paul Burton for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 asListDS <- function (x.name, newobj){
   x <- .loadServersideObject(x.name)
