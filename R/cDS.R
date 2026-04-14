@@ -3,28 +3,30 @@
 #' @description This function is similar to the R base function 'c'.
 #' @details Unlike the R base function 'c' on vector or list of certain 
 #' length are allowed as output
-#' @param objs a list which contains the the objects to concatenate.
+#' @param x.names a character vector of object names to concatenate.
 #' @return a vector or list
 #' @author Gaye, A.
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
-#' 
-cDS <- function (objs) {
-  
+#'
+cDS <- function (x.names) {
+
   # Check Permissive Privacy Control Level.
   dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'avocado'))
-  
-  # this filter sets the minimum number of observations that are allowed 
+
+  # this filter sets the minimum number of observations that are allowed
 
   #############################################################
   # MODULE 1: CAPTURE THE nfilter SETTINGS
   thr <- dsBase::listDisclosureSettingsDS()
   nfilter.tab <- as.numeric(thr$nfilter.tab)
-  #nfilter.glm <- as.numeric(thr$nfilter.glm)
-  #nfilter.subset <- as.numeric(thr$nfilter.subset)
-  #nfilter.string <- as.numeric(thr$nfilter.string)
   #############################################################
-  
-  x <-  unlist(objs)
+
+  objs <- list()
+  for (i in seq_along(x.names)) {
+    objs[[i]] <- .loadServersideObject(x.names[i])
+  }
+  x <- unlist(objs)
 
   # check if the output is valid and output accordingly
   if(length(x) < nfilter.tab){
