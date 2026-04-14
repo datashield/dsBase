@@ -1,3 +1,4 @@
+
 #'
 #' @title Returns the length of a vector or list
 #' @description This function is similar to R function \code{length}.
