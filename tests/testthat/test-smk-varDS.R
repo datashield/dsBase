@@ -39,8 +39,7 @@ test_that("numeric varDS", {
     expect_equal(res$Nvalid, 5)
     expect_equal(class(res$Ntotal), "integer")
     expect_equal(res$Ntotal, 5)
-    expect_equal(class(res$ValidityMessage), "character")
-    expect_equal(res$ValidityMessage, "VALID ANALYSIS")
+    expect_equal(res$class, "numeric")
 })
 
 # context("varDS::smk::numeric with NA")
@@ -61,8 +60,7 @@ test_that("numeric varDS, with NA", {
     expect_equal(res$Nvalid, 3)
     expect_equal(class(res$Ntotal), "integer")
     expect_equal(res$Ntotal, 5)
-    expect_equal(class(res$ValidityMessage), "character")
-    expect_equal(res$ValidityMessage, "VALID ANALYSIS")
+    expect_equal(res$class, "numeric")
 })
 
 # context("varDS::smk::numeric with all NA")
@@ -83,8 +81,7 @@ test_that("numeric varDS, with all NA", {
     expect_equal(res$Nvalid, 0)
     expect_equal(class(res$Ntotal), "integer")
     expect_equal(res$Ntotal, 5)
-    expect_equal(class(res$ValidityMessage), "character")
-    expect_equal(res$ValidityMessage, "VALID ANALYSIS")
+    expect_equal(res$class, "numeric")
 })
 
 test_that("varDS throws error when object does not exist", {

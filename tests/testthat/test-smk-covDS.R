@@ -27,7 +27,7 @@ test_that("numeric covDS, casewise.complete", {
 
     res <- covDS("input$v1", "input$v2", "casewise.complete")
 
-    expect_length(res, 5)
+    expect_length(res, 6)
     expect_equal(class(res), "list")
 
     res.sums.of.products.class <- class(res$sums.of.products)
@@ -130,7 +130,7 @@ test_that("numeric covDS, pairwise.complete", {
 
     res <- covDS("input$v1", "input$v2", "pairwise.complete")
 
-    expect_length(res, 5)
+    expect_length(res, 6)
     expect_equal(class(res), "list")
 
     res.sums.of.products.class <- class(res$sums.of.products)

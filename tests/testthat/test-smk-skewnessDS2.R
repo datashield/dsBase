@@ -36,8 +36,7 @@ test_that("simple skewnessDS2", {
     expect_equal(res$Sum.squares, 3.25, tolerance = 1e-6)
     expect_equal(class(res$Nvalid), "integer")
     expect_equal(res$Nvalid, 5)
-    expect_equal(class(res$ValidityMessage), "character")
-    expect_equal(res$ValidityMessage, "VALID ANALYSIS")
+    expect_equal(res$class, "numeric")
 })
 
 test_that("skewnessDS2 throws error when object does not exist", {

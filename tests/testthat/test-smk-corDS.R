@@ -378,7 +378,7 @@ test_that("simple corDS, casewise, full", {
     res <- corDS("x", "y")
 
     expect_equal(class(res), "list")
-    expect_length(res, 5)
+    expect_length(res, 6)
 
     if (base::getRversion() < '4.0.0')
     {
@@ -465,7 +465,7 @@ test_that("simple corDS, casewise, neg. full", {
     res <- corDS("x", "y")
 
     expect_equal(class(res), "list")
-    expect_length(res, 5)
+    expect_length(res, 6)
 
     if (base::getRversion() < '4.0.0')
     {
@@ -552,7 +552,7 @@ test_that("simple corDS, casewise, some", {
     res <- corDS("x", "y")
 
     expect_equal(class(res), "list")
-    expect_length(res, 5)
+    expect_length(res, 6)
 
     if (base::getRversion() < '4.0.0')
     {
@@ -640,7 +640,7 @@ test_that("simple corDS, casewise, some", {
     res <- corDS("x", "y")
 
     expect_equal(class(res), "list")
-    expect_length(res, 5)
+    expect_length(res, 6)
 
     if (base::getRversion() < '4.0.0')
     {

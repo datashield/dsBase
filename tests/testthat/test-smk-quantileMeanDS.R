@@ -25,18 +25,23 @@ test_that("numeric quantileMeanDS", {
 
     res <- quantileMeanDS("input")
 
-    expect_length(res, 8)
-    expect_equal(class(res), "numeric")
-    expect_equal(res[[1]], 0.2)
-    expect_equal(res[[2]], 0.4)
-    expect_equal(res[[3]], 1.0)
-    expect_equal(res[[4]], 2.0)
-    expect_equal(res[[5]], 3.0)
-    expect_equal(res[[6]], 3.6)
-    expect_equal(res[[7]], 3.8)
-    expect_equal(res[[8]], 2.0)
+    expect_equal(class(res), "list")
+    expect_equal(res$class, "numeric")
 
-    res.names <- names(res)
+    qq <- res$quantiles
+
+    expect_length(qq, 8)
+    expect_equal(class(qq), "numeric")
+    expect_equal(qq[[1]], 0.2)
+    expect_equal(qq[[2]], 0.4)
+    expect_equal(qq[[3]], 1.0)
+    expect_equal(qq[[4]], 2.0)
+    expect_equal(qq[[5]], 3.0)
+    expect_equal(qq[[6]], 3.6)
+    expect_equal(qq[[7]], 3.8)
+    expect_equal(qq[[8]], 2.0)
+
+    res.names <- names(qq)
 
     expect_length(res.names, 8)
     expect_equal(class(res.names), "character")
@@ -56,18 +61,23 @@ test_that("numeric quantileMeanDS, with NA", {
 
     res <- quantileMeanDS("input")
 
-    expect_length(res, 8)
-    expect_equal(class(res), "numeric")
-    expect_equal(res[[1]], 0.2)
-    expect_equal(res[[2]], 0.4)
-    expect_equal(res[[3]], 1.0)
-    expect_equal(res[[4]], 2.0)
-    expect_equal(res[[5]], 3.0)
-    expect_equal(res[[6]], 3.6)
-    expect_equal(res[[7]], 3.8)
-    expect_equal(res[[8]], 2.0)
+    expect_equal(class(res), "list")
+    expect_equal(res$class, "numeric")
 
-    res.names <- names(res)
+    qq <- res$quantiles
+
+    expect_length(qq, 8)
+    expect_equal(class(qq), "numeric")
+    expect_equal(qq[[1]], 0.2)
+    expect_equal(qq[[2]], 0.4)
+    expect_equal(qq[[3]], 1.0)
+    expect_equal(qq[[4]], 2.0)
+    expect_equal(qq[[5]], 3.0)
+    expect_equal(qq[[6]], 3.6)
+    expect_equal(qq[[7]], 3.8)
+    expect_equal(qq[[8]], 2.0)
+
+    res.names <- names(qq)
 
     expect_length(res.names, 8)
     expect_equal(class(res.names), "character")

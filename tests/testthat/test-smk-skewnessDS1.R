@@ -33,8 +33,7 @@ test_that("simple skewnessDS1, method 1", {
     expect_equal(res$Skewness, 0.443147, tolerance = 1e-6)
     expect_equal(class(res$Nvalid), "integer")
     expect_equal(res$Nvalid,9)
-    expect_equal(class(res$ValidityMessage), "character")
-    expect_equal(res$ValidityMessage, "VALID ANALYSIS")
+    expect_equal(res$class, "numeric")
 })
 
 # context("skewnessDS1::smk::method 2")
@@ -49,8 +48,7 @@ test_that("simple skewnessDS1, method 2", {
     expect_equal(res$Skewness, 0.537175, tolerance = 1e-6)
     expect_equal(class(res$Nvalid), "integer")
     expect_equal(res$Nvalid,9)
-    expect_equal(class(res$ValidityMessage), "character")
-    expect_equal(res$ValidityMessage, "VALID ANALYSIS")
+    expect_equal(res$class, "numeric")
 })
 
 # context("skewnessDS1::smk::method 3")
@@ -65,8 +63,7 @@ test_that("simple skewnessDS1, method 3", {
     expect_equal(res$Skewness, 0.3713805, tolerance = 1e-6)
     expect_equal(class(res$Nvalid), "integer")
     expect_equal(res$Nvalid,9)
-    expect_equal(class(res$ValidityMessage), "character")
-    expect_equal(res$ValidityMessage, "VALID ANALYSIS")
+    expect_equal(res$class, "numeric")
 })
 
 test_that("skewnessDS1 throws error when object does not exist", {

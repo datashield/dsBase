@@ -29,7 +29,7 @@ test_that("simple corTestDS, full, without na, pearson", {
     res <- corTestDS("x", "y", "pearson", NULL, 0.95)
 
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
 
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 8)
@@ -82,7 +82,7 @@ test_that("simple corTestDS, neg. full, without na, pearson", {
     res <- corTestDS("x", "y", "pearson", NULL, 0.95)
 
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 8)
@@ -135,7 +135,7 @@ test_that("simple corTestDS, some, pearson, without na, pearson", {
     res <- corTestDS("x", "y", "pearson", NULL, 0.95)
 
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 8)
@@ -189,7 +189,7 @@ test_that("simple corTestDS, some, with na, pearson", {
     res <- corTestDS("x", "y", "pearson", NULL, 0.95)
 
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 3)
@@ -238,7 +238,7 @@ test_that("simple corTestDS, full, without na, kendall", {
     res <- corTestDS("x", "y", "kendall", NULL, 0.95)
     
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 8)
@@ -284,7 +284,7 @@ test_that("simple corTestDS, neg. full, without na, kendall", {
     res <- corTestDS("x", "y", "kendall", NULL, 0.95)
     
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 8)
@@ -330,7 +330,7 @@ test_that("simple corTestDS, some, kendall, without na, kendall", {
     res <- corTestDS("x", "y", "kendall", NULL, 0.95)
     
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 8)
@@ -377,7 +377,7 @@ test_that("simple corTestDS, some, with na, kendall", {
     res <- corTestDS("x", "y", "kendall", NULL, 0.95)
     
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 3)
@@ -424,7 +424,7 @@ test_that("simple corTestDS, full, without na, spearman", {
     res <- corTestDS("x", "y", "spearman", NULL, 0.95)
     
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 8)
@@ -470,7 +470,7 @@ test_that("simple corTestDS, neg. full, without na, spearman", {
     res <- corTestDS("x", "y", "spearman", NULL, 0.95)
     
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 8)
@@ -516,7 +516,7 @@ test_that("simple corTestDS, some, spearman, without na, spearman", {
     res <- corTestDS("x", "y", "spearman", NULL, 0.95)
     
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 8)
@@ -563,7 +563,7 @@ test_that("simple corTestDS, some, with na, spearman", {
     res <- corTestDS("x", "y", "spearman", NULL, 0.95)
     
     expect_equal(class(res), "list")
-    expect_length(res, 2)
+    expect_length(res, 3)
     
     expect_length(res$`Number of pairwise complete cases`, 1)
     expect_equal(res$`Number of pairwise complete cases`, 3)
