@@ -16,6 +16,7 @@
 #' @return \code{namesDS} returns to the client-side the names
 #' of a list object stored on the server-side.
 #' @author Amadou Gaye, updated by Paul Burton 25/06/2020
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 namesDS <- function(xname.transmit){
@@ -50,14 +51,14 @@ nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)                #
     stop(studysideMessage, call. = FALSE)
   }
 
-  list.obj<-eval(parse(text=xname.transmit), envir = parent.frame())
-
-  trace.message<-class(list.obj)
-
+  list.obj <- .loadServersideObject(xname.transmit)
 
   if(!is.list(list.obj)){
-    error.message <- "The input object is not of class <list>"
-    stop(paste0(error.message,trace.message), call. = FALSE)
+    stop(
+      "The input object is not of class <list>. '", xname.transmit, "' is type ",
+      paste(class(list.obj), collapse = ", "),
+      call. = FALSE
+    )
   }
 
 

@@ -10,7 +10,9 @@ levelsDS(x)
 \item{x}{a factor vector}
 }
 \value{
-a list, the factor levels present in the vector
+a list with two elements: \code{Levels} (the factor levels present
+  in the vector) and \code{class} (the class of the input object, for
+  client-side consistency checking)
 }
 \description{
 This function is similar to R function \code{levels}.
@@ -20,4 +22,6 @@ The function returns the levels of the input vector or list.
 }
 \author{
 Alex Westerberg, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

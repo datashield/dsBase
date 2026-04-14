@@ -10,7 +10,9 @@ lengthDS(x)
 \item{x}{a string character, the name of a vector or list}
 }
 \value{
-a numeric, the number of elements of the input vector or list.
+a list with two elements: \code{length} (the number of elements of the input
+  vector or list) and \code{class} (the class of the input object, for client-side
+  consistency checking)
 }
 \description{
 This function is similar to R function \code{length}.
@@ -20,4 +22,6 @@ The function returns the length of the input vector or list.
 }
 \author{
 Demetris Avraam, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }
