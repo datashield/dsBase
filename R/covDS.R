@@ -47,7 +47,11 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
   else{
     y.val <- NULL
   }
-  
+
+  if (is.null(y.val) && any(class(x.val) %in% c("numeric", "integer"))) {
+    stop("If x is a numeric vector, y must also be a numeric vector.", call. = FALSE)
+  }
+
   # create a data frame for the variables
   if (is.null(y.val)){
     dataframe <- as.data.frame(x.val)
