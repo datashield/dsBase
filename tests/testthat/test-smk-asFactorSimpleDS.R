@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -20,38 +21,16 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-# context("asFactorSimpleDS::smk::simple")
 test_that("simple asFactorSimpleDS", {
-    input <- c(2.0, 1.0, 3.0, 3.0, 3.0, 1.0, 2.0, 2.0, 1.0, 2.0)
+    input <- c(2, 1, 3, 3, 3, 1, 2, 2, 1, 2)
 
     res <- asFactorSimpleDS("input")
 
     expect_equal(class(res), "factor")
     expect_length(res, 10)
-    expect_true(res[1] == "2")
-    expect_true(res[2] == "1")
-    expect_true(res[3] == "3")
-    expect_true(res[4] == "3")
-    expect_true(res[5] == "3")
-    expect_true(res[6] == "1")
-    expect_true(res[7] == "2")
-    expect_true(res[8] == "2")
-    expect_true(res[9] == "1")
-    expect_true(res[10] == "2")
-
-    res.levels <- levels(res)
-
-    expect_equal(class(res.levels), "character")
-    expect_length(res.levels, 3)
-    expect_equal(res.levels[1], "1")
-    expect_equal(res.levels[2], "2")
-    expect_equal(res.levels[3], "3")
+    expect_equal(levels(res), c("1", "2", "3"))
 })
 
-#
-# Done
-#
-
-# context("asFactorSimpleDS::smk::shutdown")
-
-# context("asFactorSimpleDS::smk::done")
+test_that("asFactorSimpleDS errors when serverside object does not exist", {
+    expect_error(asFactorSimpleDS("nonexistent_object"), regexp = "does not exist")
+})
