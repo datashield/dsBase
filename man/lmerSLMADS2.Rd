@@ -61,4 +61,6 @@ the lme4 package
 }
 \author{
 Tom Bishop, with some additions by Paul Burton
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }
