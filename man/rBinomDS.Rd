@@ -42,4 +42,6 @@ the function rbinom() in native R and its arguments are the same.
 }
 \author{
 Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }
