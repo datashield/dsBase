@@ -14,6 +14,7 @@
 rowColCalcDS <- function (dataset.name, operation) {
 
   dataset <- .loadServersideObject(dataset.name)
+  .checkClass(obj = dataset, obj_name = dataset.name, permitted_classes = c("data.frame", "matrix"))
 
   if(operation == 1){
     result <- rowSums(dataset, na.rm=TRUE)
