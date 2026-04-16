@@ -15,6 +15,8 @@
 
 # context("setSeedDS::smk::setup")
 
+set.standard.disclosure.settings()
+
 #
 # Tests
 #
@@ -26,6 +28,14 @@ test_that("simple setSeedDS", {
     normal.kind <- NULL
 
     res <- setSeedDS(seedtext, kind, normal.kind)
+
+    expect_equal(class(res), "list")
+    expect_length(res, 1)
+    expect_length(res$seed.as.set, 626)
+})
+
+test_that("setSeedDS works with numeric string", {
+    res <- setSeedDS("42", NULL, NULL)
 
     expect_equal(class(res), "list")
     expect_length(res, 1)

@@ -38,7 +38,11 @@ setSeedDS<-function (seedtext=NULL, kind = NULL, normal.kind = NULL)
     # Check Permissive Privacy Control Level.
     dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'avocado'))
 
-    seed<-eval(parse(text=seedtext), envir = parent.frame())
+    if(is.null(seedtext) || seedtext == "NULL"){
+        seed <- NULL
+    } else {
+        seed <- as.integer(seedtext)
+    }
     set.seed(seed,kind,normal.kind)
     return(list(seed.as.set=.Random.seed))
 }

@@ -30,8 +30,7 @@ rPoisDS<-function (n, lambda = 1){
 #first convert its name into the corresponding active vectors
 
 	if(is.character(lambda)){
-	command.text<-lambda
-	lambda<-eval(parse(text=command.text), envir = parent.frame())
+	lambda<-.loadServersideObject(lambda)
 	}
 
 	stats::rpois(n, lambda=lambda)

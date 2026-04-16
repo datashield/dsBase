@@ -15,6 +15,8 @@
 
 # context("rUnifDS::smk::setup")
 
+set.standard.disclosure.settings()
+
 #
 # Tests
 #
@@ -56,6 +58,14 @@ test_that("simple rUnifDS, direct", {
     expect_true(res[6] >= 0)
     expect_true(res[7] >= 0)
     expect_true(res[8] >= 0)
+})
+
+test_that("rUnifDS fails when min references nonexistent object", {
+    expect_error(rUnifDS(8, "nonexistent_obj", 1, 9), "does not exist")
+})
+
+test_that("rUnifDS fails when max references nonexistent object", {
+    expect_error(rUnifDS(8, 0, "nonexistent_obj", 9), "does not exist")
 })
 
 #

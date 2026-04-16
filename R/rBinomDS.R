@@ -34,13 +34,11 @@ rBinomDS<-function (n, size = 1, prob = 0.5){
 #first convert their names into the corresponding active vectors
 
 	if(is.character(size)){
-	command.text<-size
-	size<-eval(parse(text=command.text), envir = parent.frame())
+	size<-.loadServersideObject(size)
 	}
 
 	if(is.character(prob)){
-	command.text<-prob
-	prob<-eval(parse(text=command.text), envir = parent.frame())
+	prob<-.loadServersideObject(prob)
 	}
 
 	stats::rbinom(n, size=size, prob=prob)

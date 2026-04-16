@@ -39,13 +39,11 @@ rNormDS<-function (n, mean = 0, sd = 1, force.output.to.k.decimal.places=9){
 #first convert their names into the corresponding active vectors
 
 	if(is.character(mean)){
-	command.text<-mean
-	mean<-eval(parse(text=command.text), envir = parent.frame())
+	mean<-.loadServersideObject(mean)
 	}
 
 	if(is.character(sd)){
-	command.text<-sd
-	sd<-eval(parse(text=command.text), envir = parent.frame())
+	sd<-.loadServersideObject(sd)
 	}
 
 	random.number.vector<-stats::rnorm(n, mean=mean, sd=sd)
