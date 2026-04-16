@@ -5,8 +5,8 @@
 \title{Generates a density grid with or without a priori defined limits}
 \usage{
 densityGridDS(
-  xvect,
-  yvect,
+  x,
+  y,
   limits = FALSE,
   x.min = NULL,
   x.max = NULL,
@@ -16,9 +16,9 @@ densityGridDS(
 )
 }
 \arguments{
-\item{xvect}{a numerical vector}
+\item{x}{a character string providing the name of a server-side numerical vector}
 
-\item{yvect}{a numerical vector}
+\item{y}{a character string providing the name of a server-side numerical vector}
 
 \item{limits}{a logical expression for whether or not limits of the density grid are defined by
 a user. If \code{limits} is set to "FALSE", min and max of xvect and yvect are used as a range.
@@ -46,4 +46,6 @@ counts in table cells) are turn to 0.
 }
 \author{
 Julia Isaeva, Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

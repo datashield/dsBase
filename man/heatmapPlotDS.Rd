@@ -4,12 +4,12 @@
 \alias{heatmapPlotDS}
 \title{Calculates the coordinates of the centroid of each n nearest neighbours}
 \usage{
-heatmapPlotDS(x, y, k, noise, method.indicator)
+heatmapPlotDS(x.name, y.name, k, noise, method.indicator)
 }
 \arguments{
-\item{x}{the name of a numeric vector, the x-variable.}
+\item{x.name}{a character string providing the name of a server-side numeric vector, the x-variable.}
 
-\item{y}{the name of a numeric vector, the y-variable.}
+\item{y.name}{a character string providing the name of a server-side numeric vector, the y-variable.}
 
 \item{k}{the number of the nearest neighbours for which their centroid is calculated if the 
 \code{method.indicator} is equal to 1 (i.e. deterministic method).}
@@ -39,4 +39,6 @@ plot of non-disclosive graphs (e.g. scatter plots, heatmap plots, contour plots,
 }
 \author{
 Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }
