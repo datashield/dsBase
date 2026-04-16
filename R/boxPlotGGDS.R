@@ -5,7 +5,7 @@
 #' parameters are passed. There are three different cases depending if there are grouping variables. 
 #' The outliers are also removed from the graphical parameters.
 #'
-#' @param data_table \code{data frame} Table that holds the information to be plotted, arranged as: \cr
+#' @param data_table.name \code{character} Name of a server-side data frame that holds the information to be plotted, arranged as: \cr
 #' 
 #'  Column 'x': Names on the X axis of the boxplot, aka variables to plot \cr
 #'  Column 'value': Values for that variable (raw data of columns rbinded) \cr
@@ -21,8 +21,10 @@
 #' 
 #' @export
 
-boxPlotGGDS <- function(data_table, group = NULL, group2 = NULL){
-  
+boxPlotGGDS <- function(data_table.name, group = NULL, group2 = NULL){
+
+  data_table <- .loadServersideObject(data_table.name)
+
   ###################################################################
   # MODULE 1: CAPTURE THE subset filter SETTINGS                    #
   thr <- dsBase::listDisclosureSettingsDS()                         #

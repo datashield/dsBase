@@ -9,8 +9,8 @@
 #' neighbours and the y-coordinate of the centroid is the average of the y-coordinates of the n nearest
 #' neighbours. The coordinates of the centroids return to the client side function and can be used for the
 #' plot of non-disclosive graphs (e.g. scatter plots, heatmap plots, contour plots, etc).    
-#' @param x the name of a numeric vector, the x-variable.
-#' @param y the name of a numeric vector, the y-variable.
+#' @param x.name a character string providing the name of a server-side numeric vector, the x-variable.
+#' @param y.name a character string providing the name of a server-side numeric vector, the y-variable.
 #' @param k the number of the nearest neighbours for which their centroid is calculated if the 
 #' \code{method.indicator} is equal to 1 (i.e. deterministic method).
 #' @param noise the percentage of the initial variance that is used as the variance of the embedded
@@ -22,7 +22,10 @@
 #' @author Demetris Avraam for DataSHIELD Development Team
 #' @export
 #' 
-heatmapPlotDS <- function(x, y, k, noise, method.indicator){
+heatmapPlotDS <- function(x.name, y.name, k, noise, method.indicator){
+
+  x <- .loadServersideObject(x.name)
+  y <- .loadServersideObject(y.name)
 
   ###################################################################
   # MODULE 1: CAPTURE THE nfilter SETTINGS                          #

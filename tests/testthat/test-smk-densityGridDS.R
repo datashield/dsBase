@@ -36,7 +36,7 @@ test_that("densityGridDS", {
   y.max <- NULL
   numints <- 3
   
-  res <- densityGridDS(xvect=xvect, yvect=yvect, limits=FALSE, x.min=NULL, 
+  res <- densityGridDS(x="xvect", y="yvect", limits=FALSE, x.min=NULL,
                         x.max=NULL, y.min=NULL, y.max=NULL, numints=numints)
   
     expect_equal(class(res), c("matrix","array"))
@@ -49,6 +49,15 @@ test_that("densityGridDS", {
     
 })
 
+
+test_that("densityGridDS fails when x references nonexistent object", {
+    expect_error(densityGridDS(x="nonexistent_obj", y="yvect", numints=3), "does not exist")
+})
+
+test_that("densityGridDS fails when y references nonexistent object", {
+    yvect <- c(1:20)
+    expect_error(densityGridDS(x="yvect", y="nonexistent_obj", numints=3), "does not exist")
+})
 
 #
 # Done

@@ -6,7 +6,7 @@
 #' size of a table. If a bin has less counts than this threshold then their counts 
 #' and its density are replaced by a 0 value.
 #' @details Please find more details in the documentation of the clientside ds.histogram function.
-#' @param xvect the numeric vector for which the histogram is desired.
+#' @param x a character string providing the name of the server-side numeric vector for which the histogram is desired.
 #' @param num.breaks the number of breaks that the range of the variable is divided.
 #' @param min a numeric, the lower limit of the distribution.
 #' @param max a numeric, the upper limit of the distribution.
@@ -22,7 +22,9 @@
 #' @author Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
 #' @export
 #' 
-histogramDS2 <- function (xvect, num.breaks, min, max, method.indicator, k, noise){
+histogramDS2 <- function (x, num.breaks, min, max, method.indicator, k, noise){
+
+  xvect <- .loadServersideObject(x)
 
   ##################################################################
   # MODULE 1: CAPTURE THE nfilter SETTINGS                         #
