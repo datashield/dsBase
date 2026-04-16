@@ -51,6 +51,7 @@
 #' without problems no studysideMessage will have been saved and ds.message(<newobj>)
 #' will return the message: "ALL OK: there are no studysideMessage(s) on this datasource".
 #' @author Paul Burton, Demetris Avraam, for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 mergeDS <- function(x.name, y.name, by.x.names.transmit, by.y.names.transmit, all.x, all.y,
 			 sort, suffixes.transmit, no.dups, incomparables){

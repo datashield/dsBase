@@ -88,6 +88,7 @@
 #' without problems no studysideMessage will have been saved and ds.message("newobj")
 #' will return the message: "ALL OK: there are no studysideMessage(s) on this datasource".
 #' @author Paul Burton for DataSHIELD Development Team, 14/10/2019
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 repDS <- function(x1.transmit, times.transmit, length.out.transmit, each.transmit,

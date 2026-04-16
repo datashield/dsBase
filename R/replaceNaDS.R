@@ -13,6 +13,7 @@
 #' more values for each study. 
 #' @return a new vector without missing values
 #' @author Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #' 
 replaceNaDS <- function(x, replacements){

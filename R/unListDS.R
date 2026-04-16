@@ -31,6 +31,7 @@
 #' function - one should check as far as one can
 #' the nature of the output from a call to ds.unList - e.g. ds.class, ds.length etc
 #' @author Amadou Gaye (2016), Paul Burton (19/09/2019) for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #' 
 unListDS <- function(x.name) {

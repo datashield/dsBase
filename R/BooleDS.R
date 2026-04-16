@@ -21,6 +21,7 @@
 #' input vector are all converted to 1 or 0 respectively.
 #' 
 #' @author DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' 
 #' @return the levels of the input variable.
 #' @export

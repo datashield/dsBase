@@ -45,6 +45,7 @@
 #' In consequence, it records error messages as studysideMessages which can only be
 #' retrieved using ds.message
 #' @author Paul Burton
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 dataFrameSubsetDS1 <- function(df.name=NULL,V1.name=NULL,V2.name=NULL,Boolean.operator.n=NULL,keep.cols=NULL,rm.cols=NULL,keep.NAs=NULL){

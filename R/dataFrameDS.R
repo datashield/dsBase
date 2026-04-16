@@ -35,6 +35,7 @@
 #' serverside and named according to the <newobj> argument of the clientside
 #' function ds.dataFrame()
 #' @author DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 dataFrameDS <- function(vectors=NULL, r.names=NULL, ch.rows=FALSE, ch.names=TRUE, clnames=NULL, strAsFactors=TRUE, completeCases=FALSE){

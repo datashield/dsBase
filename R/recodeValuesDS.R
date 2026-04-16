@@ -26,6 +26,7 @@
 #' initially specified in calling ds.recodeValues. The output object (the required
 #' recoded variable called <newobj> is written to the serverside.
 #' @author Paul Burton, Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 recodeValuesDS <- function(var.name.text=NULL, values2replace.text=NULL, new.values.text=NULL, missing=NULL){

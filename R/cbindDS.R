@@ -19,6 +19,7 @@
 #' of \code{ds.cbind} (or default name \code{cbind.newobj})
 #' which is written to the serverside. The output object is of class data.frame.
 #' @author Paul Burton and Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #' 
 cbindDS <- function(x.names.transmit=NULL, colnames.transmit=NULL){

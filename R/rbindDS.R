@@ -32,6 +32,7 @@
 #' without problems no studysideMessage will have been saved and ds.message("<newobj>")
 #' will return the message: "ALL OK: there are no studysideMessage(s) on this datasource".
 #' @author Paul Burton for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 rbindDS<-function(x.names.transmit=NULL,colnames.transmit=NULL){
   
