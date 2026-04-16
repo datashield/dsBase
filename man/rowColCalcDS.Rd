@@ -25,4 +25,6 @@ output vector is greater or equal to the allowed size.
 }
 \author{
 Gaye, A.
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }
