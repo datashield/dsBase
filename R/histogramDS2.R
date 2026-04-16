@@ -20,6 +20,7 @@
 #' noise if the \code{method.indicator} is equal to 3 (i.e. probabilistic method).
 #' @return a list with an object of class \code{histogram} and the number of invalid cells
 #' @author Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #' 
 histogramDS2 <- function (x, num.breaks, min, max, method.indicator, k, noise){

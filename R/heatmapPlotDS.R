@@ -20,6 +20,7 @@
 #' @return a list with the x and y coordinates of the centroids if the deterministic method is used
 #' or the x and y coordinated of the noisy data if the probabilistic method is used.
 #' @author Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #' 
 heatmapPlotDS <- function(x.name, y.name, k, noise, method.indicator){

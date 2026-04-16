@@ -18,6 +18,7 @@
 #' noise if the \code{method.indicator} is equal to 3 (i.e. probabilistic method).
 #' @return a numeric vector which contains the minimum and the maximum values of the vector
 #' @author Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 histogramDS1 <- function(x, method.indicator, k, noise){

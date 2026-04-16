@@ -25,6 +25,7 @@
 #' noise if the probabilistic method is selected.
 #' @return a list with the x and y coordinates of the data to be plot
 #' @author Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 scatterPlotDS <- function(x.name, y.name, method.indicator, k, noise){

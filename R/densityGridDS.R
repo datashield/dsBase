@@ -15,6 +15,7 @@
 #' @param numints a number of intervals for the grid density object, by default is 20
 #' @return a grid density matrix
 #' @author Julia Isaeva, Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #' 
 densityGridDS  <- function(x, y, limits=FALSE, x.min=NULL, x.max=NULL, y.min=NULL, y.max=NULL, numints=20){
