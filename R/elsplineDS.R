@@ -54,7 +54,7 @@ elsplineDS <- function(x = x, n = n, marginal = FALSE, names = NULL){
     structure(rval, knots = knots, marginal = marginal, class = c("lspline", "matrix"))
   }
   
-  x <- eval(parse(text=x), envir = parent.frame())
+  x <- .loadServersideObject(x)
   
   stopifnot(n >= 2)
   k <- seq(min(x, na.rm = TRUE), max(x, na.rm = TRUE), length.out = n + 1)[-c(1, n + 1)]

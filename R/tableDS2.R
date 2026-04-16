@@ -32,15 +32,13 @@
 tableDS2 <- function(newobj,rvar.transmit,cvar.transmit,stvar.transmit){
 
 
-calltext1<-paste0("out.table.real<-",newobj,"[[2]]")
-eval(parse(text=calltext1), envir = parent.frame())
+table.obj <- .loadServersideObject(newobj)
+out.table.real <- table.obj[[2]]
 out.table.cell.IDs<-as.vector(1:length(out.table.real))
 
-calltext2<-paste0("out.table.dim<-",newobj,"[[3]]")
-eval(parse(text=calltext2), envir = parent.frame())
+out.table.dim <- table.obj[[3]]
 
-calltext3<-paste0("out.table.dimnames<-",newobj,"[[4]]")
-eval(parse(text=calltext3), envir = parent.frame())
+out.table.dimnames <- table.obj[[4]]
 
 out.table.structure<-array(out.table.cell.IDs,dim=out.table.dim,dimnames=out.table.dimnames)
 

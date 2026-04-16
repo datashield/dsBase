@@ -39,7 +39,7 @@ tableDS.assign<-function(rvar.transmit, cvar.transmit, stvar.transmit, rvar.all.
 
 #Activate via eval when needed
 #rvar
-rvar<-eval(parse(text=rvar.transmit), envir = parent.frame())
+rvar<-.loadServersideObject(rvar.transmit)
 
 #coerce to factor if required
 if(!is.factor(rvar))
@@ -53,7 +53,7 @@ if(!is.factor(rvar))
 #cvar
 if(!is.null(cvar.transmit))
 {
-cvar<-eval(parse(text=cvar.transmit), envir = parent.frame())
+cvar<-.loadServersideObject(cvar.transmit)
 
 #coerce to factor if required
 if(!is.factor(cvar))
@@ -73,7 +73,7 @@ cvar<-NULL
 #stvar
 if(!is.null(stvar.transmit))
 {
-stvar<-eval(parse(text=stvar.transmit), envir = parent.frame())
+stvar<-.loadServersideObject(stvar.transmit)
 
 #coerce to factor if required
 if(!is.factor(stvar))

@@ -33,7 +33,7 @@ nsDS <- function(x, df, knots, intercept, Boundary.knots){
   thr <- dsBase::listDisclosureSettingsDS()
   nfilter.tab <- as.numeric(thr$nfilter.tab) 
   
-  x <- eval(parse(text=x), envir = parent.frame())
+  x <- .loadServersideObject(x)
   
   if(is.null(Boundary.knots)){
     Boundary.knots <- range(x, na.rm=TRUE)

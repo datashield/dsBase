@@ -51,7 +51,7 @@ lsplineDS <- function(x = x, knots = NULL, marginal = FALSE, names = NULL){
     structure(rval, knots = knots, marginal = marginal, class = c("lspline", "matrix"))
   }
   
-  x <- eval(parse(text=x), envir = parent.frame())
+  x <- .loadServersideObject(x)
   
   out <- lspline_copy(x = x, knots = knots, marginal = marginal, names = names)
   

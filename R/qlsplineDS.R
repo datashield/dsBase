@@ -59,7 +59,7 @@ qlsplineDS <- function(x = x, q = q, na.rm = TRUE, marginal = FALSE, names = NUL
     structure(rval, knots = knots, marginal = marginal, class = c("lspline", "matrix"))
   }
   
-  x <- eval(parse(text=x), envir = parent.frame())
+  x <- .loadServersideObject(x)
   
   if (length(q) == 1 && q >= 2) {
     q <- seq(0, 1, length.out = q + 1)[-c(1, q + 1)]

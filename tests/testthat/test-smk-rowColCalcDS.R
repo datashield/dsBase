@@ -25,7 +25,7 @@ set.standard.disclosure.settings()
 test_that("simple rowColCalcDS, operation 1", {
     input <- matrix(c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0), ncol = 2)
 
-    res <- rowColCalcDS(input, 1)
+    res <- rowColCalcDS("input", 1)
 
     expect_equal(class(res), "numeric")
     expect_length(res, 4)
@@ -38,7 +38,7 @@ test_that("simple rowColCalcDS, operation 1", {
 test_that("simple rowColCalcDS, operation 2", {
     input <- matrix(c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0), ncol = 4)
 
-    res <- rowColCalcDS(input, 2)
+    res <- rowColCalcDS("input", 2)
 
     expect_equal(class(res), "numeric")
     expect_length(res, 4)
@@ -51,7 +51,7 @@ test_that("simple rowColCalcDS, operation 2", {
 test_that("simple rowColCalcDS, operation 3", {
     input <- matrix(c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0), ncol = 2)
 
-    res <- rowColCalcDS(input, 3)
+    res <- rowColCalcDS("input", 3)
 
     expect_equal(class(res), "numeric")
     expect_length(res, 4)
@@ -64,7 +64,7 @@ test_that("simple rowColCalcDS, operation 3", {
 test_that("simple rowColCalcDS, operation 4", {
     input <- matrix(c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0), ncol = 4)
 
-    res <- rowColCalcDS(input, 4)
+    res <- rowColCalcDS("input", 4)
 
     expect_equal(class(res), "numeric")
     expect_length(res, 4)

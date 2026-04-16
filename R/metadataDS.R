@@ -16,7 +16,7 @@ metadataDS <- function(x)
     if ((! is.character(x)) || (length(x) != 1))
         stop("Variable's name isn't be single character vector", call. = FALSE)
 
-    x.var <- eval(parse(text=x), envir = parent.frame())
+    x.var <- .loadServersideObject(x)
 
     if (is.null(x.var))
         stop("Variable can't be NULL", call. = FALSE)

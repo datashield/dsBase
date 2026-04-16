@@ -28,7 +28,7 @@ lexisDS1 <- function(exitCol=NULL){
     stop(errorMessage, call. = FALSE)
   }
   
-  exposure <- eval(parse(text=exitCol), envir = parent.frame())
+  exposure <- .loadServersideObject(exitCol)
   
   max.time <- max(exposure, na.rm=TRUE)
   random.multiplier <- stats::runif(1,1.01,1.05)

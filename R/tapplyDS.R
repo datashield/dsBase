@@ -22,7 +22,7 @@ tapplyDS <- function(X.name, INDEX.names.transmit, FUN.name){
   nfilter.subset <- as.numeric(thr$nfilter.subset)
 
   if(is.character(X.name)){
-	  X <- eval(parse(text=X.name), envir = parent.frame())
+	  X <- .loadServersideObject(X.name)
 	}else{
     studysideMessage <- "ERROR: X.name must be specified as a character string"
     stop(studysideMessage, call. = FALSE)
@@ -39,8 +39,8 @@ tapplyDS <- function(X.name, INDEX.names.transmit, FUN.name){
 
   for(g in 1:num.factors){
     activation.text.0 <- paste0("INDEX.factors[",g,"]")
-    active.factor.name <- eval(parse(text=activation.text.0))
-    active.factor <- eval(parse(text=active.factor.name), envir = parent.frame())
+    active.factor.name <- INDEX.factors[g]
+    active.factor <- .loadServersideObject(active.factor.name)
     length.test.vector[g] <- length(active.factor)
   }
   
@@ -52,8 +52,10 @@ tapplyDS <- function(X.name, INDEX.names.transmit, FUN.name){
   }
 
   # convert INDEX.names format from transmittable to actionable form (a list of vectors)
-  INDEX.names.list <- paste0("list(",INDEX.names.transmit,")")
-  INDEX <- eval(parse(text=INDEX.names.list), envir = parent.frame())
+  INDEX <- vector("list", num.factors)
+  for(g in 1:num.factors){
+    INDEX[[g]] <- .loadServersideObject(INDEX.factors[g])
+  }
 
   # select complete cases on X and all INDEX factors only
   df <- as.data.frame(cbind(X, do.call(cbind, INDEX)))

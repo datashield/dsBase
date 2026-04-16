@@ -55,7 +55,7 @@ nfilter.tab<-as.numeric(thr$nfilter.tab)                                #
 
 if(!is.null(force.nfilter.transmit))
 {
-force.nfilter.active<-eval(parse(text=force.nfilter.transmit), envir = parent.frame())
+force.nfilter.active<-.loadServersideObject(force.nfilter.transmit)
 
 	if(force.nfilter.active<nfilter.tab)
 	{
@@ -77,7 +77,7 @@ nfilter.tab<-force.nfilter.active
 
 #Activate via eval when needed
 #rvar
-  rvar<-eval(parse(text=rvar.transmit), envir = parent.frame())
+  rvar<-.loadServersideObject(rvar.transmit)
   if(!is.factor(rvar))
   {
     rvar.all.unique.levels <- unlist(strsplit(rvar.all.unique.levels.transmit,split=","))
@@ -89,7 +89,7 @@ nfilter.tab<-force.nfilter.active
 #cvar
   if(!is.null(cvar.transmit))
 {
-    cvar<-eval(parse(text=cvar.transmit), envir = parent.frame())
+    cvar<-.loadServersideObject(cvar.transmit)
     if(!is.factor(cvar))
     {
       cvar.all.unique.levels <- unlist(strsplit(cvar.all.unique.levels.transmit,split=","))
@@ -107,7 +107,7 @@ cvar<-NULL
 #stvar
 if(!is.null(stvar.transmit))
 {
-  stvar<-eval(parse(text=stvar.transmit), envir = parent.frame())
+  stvar<-.loadServersideObject(stvar.transmit)
   if(!is.factor(stvar))
   {
     stvar.all.unique.levels<- unlist(strsplit(stvar.all.unique.levels.transmit,split=","))

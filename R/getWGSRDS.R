@@ -53,11 +53,13 @@
 #'
 getWGSRDS <- function(sex, firstPart, secondPart, index, standing=NA, thirdPart=NA){
   
-  sex <- eval(parse(text=sex), envir = parent.frame())
-  firstPart <- eval(parse(text=firstPart), envir = parent.frame())
-  secondPart <- eval(parse(text=secondPart), envir = parent.frame())
+  sex <- .loadServersideObject(sex)
+  firstPart <- .loadServersideObject(firstPart)
+  if (!is.na(secondPart)){
+    secondPart <- .loadServersideObject(secondPart)
+  }
   if (!is.na(thirdPart)){
-    thirdPart <- eval(parse(text=thirdPart), envir = parent.frame())
+    thirdPart <- .loadServersideObject(thirdPart)
   }
   
   # access the internal reference data

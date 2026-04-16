@@ -28,7 +28,7 @@
 #' 
 hetcorDS <- function(data, ML, std.err, bins, pd, use){
   
-  data <- eval(parse(text=data), envir = parent.frame())
+  data <- .loadServersideObject(data)
 
   out <- polycor::hetcor(data = data, ML = ML, std.err = std.err, bins = bins, pd = pd, use = use)
   
