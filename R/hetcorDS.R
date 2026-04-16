@@ -24,6 +24,7 @@
 #' any missing data were handled: "complete.obs" or "pairwise.complete.obs"; TRUE for ML estimates,
 #' FALSE for two-step estimates.
 #' @author Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #' 
 hetcorDS <- function(data, ML, std.err, bins, pd, use){

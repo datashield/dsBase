@@ -28,6 +28,7 @@
 #' For more information see help for \code{ds.table}
 #' @return For information see help for \code{ds.table}
 #' @author Paul Burton for DataSHIELD Development Team, 13/11/2019
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 tableDS2 <- function(newobj,rvar.transmit,cvar.transmit,stvar.transmit){
 

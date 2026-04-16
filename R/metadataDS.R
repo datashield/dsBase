@@ -6,6 +6,7 @@
 #' @return a list containing the metadata. The elements of the list will depend
 #' on the metadata available.
 #' @author Stuart Wheater, for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 metadataDS <- function(x)

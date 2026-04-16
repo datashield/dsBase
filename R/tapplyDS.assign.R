@@ -13,6 +13,7 @@
 #' @return an array of the summarized values created by the \code{tapplyDS.assign} function. This
 #' array is written as a newobj on the serverside. It has the same number of dimensions as INDEX.
 #' @author Paul Burton, Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 tapplyDS.assign <- function(X.name, INDEX.names.transmit, FUN.name){
   

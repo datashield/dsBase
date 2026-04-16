@@ -10,6 +10,7 @@
 #' @return a numeric vector
 #' @export
 #' @author Gaye, A.
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' 
 rowColCalcDS <- function (dataset.name, operation) {
 

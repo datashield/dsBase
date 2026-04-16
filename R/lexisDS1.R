@@ -7,6 +7,7 @@
 #' @param exitCol a character string specifying the variable holding the time that each individual is censored or fails
 #' 
 #' @author Burton PR
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' 
 #' @return List with `max.time`
 #' @export

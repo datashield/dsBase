@@ -49,6 +49,7 @@
 #' @return \code{ds.getWGSR} assigns a numeric vector that includes the z-scores for the
 #' specified index.
 #' @author Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 getWGSRDS <- function(sex, firstPart, secondPart, index, standing=NA, thirdPart=NA){

@@ -13,6 +13,7 @@
 #' @return an array of the summarized values created by the tapplyDS function. This array
 #' is returned to the clientside. It has the same number of dimensions as INDEX.
 #' @author Paul Burton, Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 tapplyDS <- function(X.name, INDEX.names.transmit, FUN.name){
 

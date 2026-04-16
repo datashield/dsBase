@@ -31,6 +31,7 @@
 #' 'data' argument is set the full data.frame will be expanded and carried forward
 #' 
 #' @author Burton PR
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' 
 #' @return List with `expanded.table`
 #' @export

@@ -15,6 +15,7 @@
 #' @return an object of class "lspline" and "matrix", which its name is specified by the
 #' \code{newobj} argument (or its default name "lspline.newobj"), is assigned on the serverside.
 #' @author Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 lsplineDS <- function(x = x, knots = NULL, marginal = FALSE, names = NULL){

@@ -25,6 +25,7 @@
 #' arguments to ns, and explicitly give the knots, Boundary.knots etc for use by predict.ns().
 #' The object is assigned at each serverside.
 #' @author Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 nsDS <- function(x, df, knots, intercept, Boundary.knots){
