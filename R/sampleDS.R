@@ -30,6 +30,7 @@
 #' 'newobj.sample') which is written to the serverside. For further details see 
 #' help for ds.sample and native R help for sample().
 #' @author Paul Burton, for DataSHIELD Development Team, 15/4/2020
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 sampleDS <- function(x.transmit, size.transmit, replace.transmit=NULL, prob.transmit=NULL){
   

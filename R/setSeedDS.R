@@ -32,6 +32,7 @@
 #' .Random.seed on each data source that is the true current state of the
 #' random seed in each source.
 #' @author Paul Burton for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 setSeedDS<-function (seedtext=NULL, kind = NULL, normal.kind = NULL)
 {

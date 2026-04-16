@@ -29,6 +29,7 @@
 #' also returns a vector reporting the length of the pseudorandom vector
 #' created in each source.
 #' @author Paul Burton for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 rNormDS<-function (n, mean = 0, sd = 1, force.output.to.k.decimal.places=9){
 

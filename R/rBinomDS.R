@@ -24,6 +24,7 @@
 #' also returns a vector reporting the length of the pseudorandom vector
 #' created in each source.
 #' @author Paul Burton for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 rBinomDS<-function (n, size = 1, prob = 0.5){
 
