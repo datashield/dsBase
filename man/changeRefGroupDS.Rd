@@ -4,14 +4,14 @@
 \alias{changeRefGroupDS}
 \title{Changes a reference level of a factor}
 \usage{
-changeRefGroupDS(xvect, ref = NULL, reorderByRef = NULL)
+changeRefGroupDS(x, ref = NULL, reorderByRef = NULL)
 }
 \arguments{
-\item{xvect}{a factor vector}
+\item{x}{a character string, the name of a factor vector.}
 
 \item{ref}{a character, the reference level}
 
-\item{reorderByRef}{a boolean that tells whether or not the new 
+\item{reorderByRef}{a boolean that tells whether or not the new
 vector should be ordered by the reference group.}
 }
 \value{
@@ -30,4 +30,6 @@ can render the results of operations on that table invalid.
 }
 \author{
 Isaeva, J., Gaye, A.
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

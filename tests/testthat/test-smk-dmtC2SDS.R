@@ -13,7 +13,7 @@
 # Set up
 #
 
-# context("asFactorDS2::smk::setup")
+# context("dmtC2SDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -21,16 +21,20 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-test_that("simple asFactorDS2", {
-    input <- c(2, 1, 3, 3, 3, 1, 2, 2, 1, 2)
+test_that("simple dmtC2SDS returns matrix", {
+    res <- dmtC2SDS(
+        dfdata.mat.transmit   = "1,2,3,4",
+        inout.object.transmit = "MAT",
+        from                  = "clientside.matdftbl",
+        nrows.transmit        = "2",
+        ncols.transmit        = "2",
+        colnames.transmit     = "a,b",
+        colclass.transmit     = "numeric,numeric",
+        byrow                 = FALSE
+    )
 
-    res <- asFactorDS2("input", "1,2,3,4", FALSE, NULL)
-
-    expect_equal(class(res), "factor")
-    expect_length(res, 10)
-    expect_equal(levels(res), c("1", "2", "3", "4"))
-})
-
-test_that("asFactorDS2 errors when serverside object does not exist", {
-    expect_error(asFactorDS2("nonexistent_object", "1,2", FALSE, NULL), regexp = "does not exist")
+    expect_true(is.matrix(res))
+    expect_equal(nrow(res), 2)
+    expect_equal(ncol(res), 2)
+    expect_equal(colnames(res), c("a", "b"))
 })

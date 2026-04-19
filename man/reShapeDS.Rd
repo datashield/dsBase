@@ -71,4 +71,6 @@ measurements in separate records. The reshaping can be in either direction
 }
 \author{
 Demetris Avraam, Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }
