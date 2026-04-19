@@ -15,36 +15,57 @@
 
 # context("cbindDS::smk::setup")
 
+set.standard.disclosure.settings()
+
 #
 # Tests
 #
 
-# context("cbindDS::smk::simple")
-test_that("simple cbindDS", {
-    inputs   <- 'input1,input2'
-    input1   <- c(0.0, 1.0, 2.0, 3.0)
-    input2   <- c(3.0, 2.0, 1.0, 0.0)
-    colnames <- 'v1,v2'
+test_that("cbindDS combines vectors into a data.frame", {
+    a <- c(1, 2, 3, 4, 5)
+    b <- c(10, 20, 30, 40, 50)
 
-    res <- cbindDS(inputs, colnames)
+    res <- cbindDS("a,b", "a,b")
 
     expect_equal(class(res), "data.frame")
-    expect_length(res, 2)
-    expect_equal(class(res[1]), "data.frame")
-    expect_equal(class(res[2]), "data.frame")
+    expect_equal(nrow(res), 5)
+    expect_equal(ncol(res), 2)
+    expect_equal(colnames(res), c("a", "b"))
+    expect_equal(res$a, a)
+    expect_equal(res$b, b)
+})
 
-    res.names <- names(res)
+test_that("cbindDS combines data.frame columns via $ syntax", {
+    df <- data.frame(x = c(1, 2, 3, 4, 5), y = c(6, 7, 8, 9, 10))
 
-    expect_equal(class(res.names), "character")
-    expect_length(res.names, 2)
-    expect_equal(res.names[1], 'v1')
-    expect_equal(res.names[2], 'v2')
+    res <- cbindDS("df$x,df$y", "df$x,df$y")
+
+    expect_equal(class(res), "data.frame")
+    expect_equal(nrow(res), 5)
+    expect_equal(ncol(res), 2)
+    expect_equal(colnames(res), c("x", "y"))
+    expect_equal(res$x, df$x)
+    expect_equal(res$y, df$y)
+})
+
+test_that("cbindDS makes duplicate column names unique", {
+    a <- c(1, 2, 3, 4, 5)
+    b <- c(10, 20, 30, 40, 50)
+
+    res <- cbindDS("a,b", "v,v")
+
+    expect_equal(colnames(res), c("v", "v.1"))
+})
+
+test_that("cbindDS errors when object does not exist", {
+    expect_error(
+        cbindDS("nonexistent_obj", "nonexistent_obj"),
+        regexp = "does not exist"
+    )
 })
 
 #
 # Done
 #
-
-# context("cbindDS::smk::shutdown")
 
 # context("cbindDS::smk::done")
