@@ -4,10 +4,10 @@
 \alias{boxPlotGGDS}
 \title{Create the identity stats and necessary data to draw a plot on the client}
 \usage{
-boxPlotGGDS(data_table, group = NULL, group2 = NULL)
+boxPlotGGDS(data_table.name, group = NULL, group2 = NULL)
 }
 \arguments{
-\item{data_table}{\code{data frame} Table that holds the information to be plotted, arranged as: \cr
+\item{data_table.name}{\code{character} Name of a server-side data frame that holds the information to be plotted, arranged as: \cr
 
  Column 'x': Names on the X axis of the boxplot, aka variables to plot \cr
  Column 'value': Values for that variable (raw data of columns rbinded) \cr

@@ -7,7 +7,7 @@
 #' function returns the minimum and maximum values of the vector with the scaled centroids. If the
 #' method.indicator is set to 3 (i.e. the 'probabilistic' method is used) the function returns the
 #' minimum and maximum values of the generated 'noisy' vector.
-#' @param xvect the numeric vector for which the histogram is desired.
+#' @param x a character string providing the name of the server-side numeric vector for which the histogram is desired.
 #' @param method.indicator a number equal to either 1, 2 or 3 indicating the method of disclosure
 #' control that is used for the generation of the histogram. If the value is equal to 1 then the
 #' 'smallCellsRule' is used. If the value is equal to 2 then the 'deterministic' method is used.
@@ -18,9 +18,12 @@
 #' noise if the \code{method.indicator} is equal to 3 (i.e. probabilistic method).
 #' @return a numeric vector which contains the minimum and the maximum values of the vector
 #' @author Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
-histogramDS1 <- function(xvect, method.indicator, k, noise){
+histogramDS1 <- function(x, method.indicator, k, noise){
+
+  xvect <- .loadServersideObject(x)
 
   ##################################################################
   # MODULE 1: CAPTURE THE nfilter SETTINGS                         #

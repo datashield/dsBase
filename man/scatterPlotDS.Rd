@@ -4,12 +4,12 @@
 \alias{scatterPlotDS}
 \title{Calculates the coordinates of the data to be plot}
 \usage{
-scatterPlotDS(x, y, method.indicator, k, noise)
+scatterPlotDS(x.name, y.name, method.indicator, k, noise)
 }
 \arguments{
-\item{x}{the name of a numeric vector, the x-variable.}
+\item{x.name}{a character string providing the name of a server-side numeric vector, the x-variable.}
 
-\item{y}{the name of a numeric vector, the y-variable.}
+\item{y.name}{a character string providing the name of a server-side numeric vector, the y-variable.}
 
 \item{method.indicator}{an integer either 1 or 2. If the user selects the deterministic
 method in the client side function the method.indicator is set to 1 while if the user selects
@@ -44,4 +44,6 @@ variables. Thus the function returns always the same noisy data for a given pair
 }
 \author{
 Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

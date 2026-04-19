@@ -3,8 +3,8 @@
 #' @description Generates a density grid that can then be used for heatmap or contour plots.
 #' @details Invalid cells (cells with count < to the set filter value for the minimum allowed
 #' counts in table cells) are turn to 0.
-#' @param xvect a numerical vector
-#' @param yvect a numerical vector
+#' @param x a character string providing the name of a server-side numerical vector
+#' @param y a character string providing the name of a server-side numerical vector
 #' @param limits a logical expression for whether or not limits of the density grid are defined by
 #' a user. If \code{limits} is set to "FALSE", min and max of xvect and yvect are used as a range.
 #' If \code{limits} is set to "TRUE", limits defined by x.min, x.max, y.min and y.max are used.
@@ -15,12 +15,16 @@
 #' @param numints a number of intervals for the grid density object, by default is 20
 #' @return a grid density matrix
 #' @author Julia Isaeva, Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #' 
-densityGridDS  <- function(xvect, yvect, limits=FALSE, x.min=NULL, x.max=NULL, y.min=NULL, y.max=NULL, numints=20){
-  
+densityGridDS  <- function(x, y, limits=FALSE, x.min=NULL, x.max=NULL, y.min=NULL, y.max=NULL, numints=20){
+
+  xvect <- .loadServersideObject(x)
+  yvect <- .loadServersideObject(y)
+
   #############################################################
-  # MODULE 1: CAPTURE THE nfilter SETTINGS                    
+  # MODULE 1: CAPTURE THE nfilter SETTINGS
   thr <- dsBase::listDisclosureSettingsDS()				
   nfilter.tab <- as.numeric(thr$nfilter.tab)					
   #nfilter.glm <- as.numeric(thr$nfilter.glm)					

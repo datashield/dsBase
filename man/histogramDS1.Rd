@@ -4,10 +4,10 @@
 \alias{histogramDS1}
 \title{returns the minimum and the maximum of the input numeric vector}
 \usage{
-histogramDS1(xvect, method.indicator, k, noise)
+histogramDS1(x, method.indicator, k, noise)
 }
 \arguments{
-\item{xvect}{the numeric vector for which the histogram is desired.}
+\item{x}{a character string providing the name of the server-side numeric vector for which the histogram is desired.}
 
 \item{method.indicator}{a number equal to either 1, 2 or 3 indicating the method of disclosure
 control that is used for the generation of the histogram. If the value is equal to 1 then the
@@ -34,4 +34,6 @@ minimum and maximum values of the generated 'noisy' vector.
 }
 \author{
 Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

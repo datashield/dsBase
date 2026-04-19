@@ -14,8 +14,8 @@
 #' and variance equal to 10% of the true variance of $x$ and $y$ respectively. To avoid inferential
 #' disclosure we fix the random number generator in a value that is specified by the input
 #' variables. Thus the function returns always the same noisy data for a given pair of variables.
-#' @param x the name of a numeric vector, the x-variable.
-#' @param y the name of a numeric vector, the y-variable.
+#' @param x.name a character string providing the name of a server-side numeric vector, the x-variable.
+#' @param y.name a character string providing the name of a server-side numeric vector, the y-variable.
 #' @param method.indicator an integer either 1 or 2. If the user selects the deterministic
 #' method in the client side function the method.indicator is set to 1 while if the user selects
 #' the probabilistic method this argument is set to 2.
@@ -25,10 +25,14 @@
 #' noise if the probabilistic method is selected.
 #' @return a list with the x and y coordinates of the data to be plot
 #' @author Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
-scatterPlotDS <- function(x, y, method.indicator, k, noise){
-  
+scatterPlotDS <- function(x.name, y.name, method.indicator, k, noise){
+
+  x <- .loadServersideObject(x.name)
+  y <- .loadServersideObject(y.name)
+
   ###################################################################
   # MODULE 1: CAPTURE THE nfilter SETTINGS                          #
   thr <- dsBase::listDisclosureSettingsDS()                         #
