@@ -30,6 +30,7 @@
 #' 'newobj.sample') which is written to the serverside. For further details see 
 #' help for ds.sample and native R help for sample().
 #' @author Paul Burton, for DataSHIELD Development Team, 15/4/2020
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 sampleDS <- function(x.transmit, size.transmit, replace.transmit=NULL, prob.transmit=NULL){
   
@@ -82,7 +83,7 @@ sampleDS <- function(x.transmit, size.transmit, replace.transmit=NULL, prob.tran
   #Activate <x> and <prob> if they are character strings
   if(is.character(x.transmit))
   {
-      x.active<-eval(parse(text=x.transmit), envir = parent.frame())
+      x.active<-.loadServersideObject(x.transmit)
   
   	if(is.data.frame(x.active)||is.matrix(x.active))
   		{
@@ -152,7 +153,7 @@ sampleDS <- function(x.transmit, size.transmit, replace.transmit=NULL, prob.tran
   prob.active<-NULL
   if(is.character(prob.transmit))
   {
-      prob.active<-eval(parse(text=prob.transmit), envir = parent.frame())
+      prob.active<-.loadServersideObject(prob.transmit)
   }
   
   #Check size <= length(x.active) if replace.transmit==FALSE

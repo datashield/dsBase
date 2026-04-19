@@ -29,6 +29,7 @@
 #' also returns a vector reporting the length of the pseudorandom vector
 #' created in each source.
 #' @author Paul Burton for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 rUnifDS<-function (n, min = 0, max = 1, force.output.to.k.decimal.places=9){
 
@@ -39,13 +40,11 @@ rUnifDS<-function (n, min = 0, max = 1, force.output.to.k.decimal.places=9){
 #first convert their names into the corresponding active vectors
 
 	if(is.character(min)){
-	command.text<-min
-	min<-eval(parse(text=command.text), envir = parent.frame())
+	min<-.loadServersideObject(min)
 	}
 
 	if(is.character(max)){
-	command.text<-max
-	max<-eval(parse(text=command.text), envir = parent.frame())
+	max<-.loadServersideObject(max)
 	}
 
 	random.number.vector<-stats::runif(n, min=min, max=max)

@@ -24,6 +24,7 @@
 #' also returns a vector reporting the length of the pseudorandom vector
 #' created in each source.
 #' @author Paul Burton for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 rBinomDS<-function (n, size = 1, prob = 0.5){
 
@@ -34,13 +35,11 @@ rBinomDS<-function (n, size = 1, prob = 0.5){
 #first convert their names into the corresponding active vectors
 
 	if(is.character(size)){
-	command.text<-size
-	size<-eval(parse(text=command.text), envir = parent.frame())
+	size<-.loadServersideObject(size)
 	}
 
 	if(is.character(prob)){
-	command.text<-prob
-	prob<-eval(parse(text=command.text), envir = parent.frame())
+	prob<-.loadServersideObject(prob)
 	}
 
 	stats::rbinom(n, size=size, prob=prob)

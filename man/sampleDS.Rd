@@ -54,4 +54,6 @@ help for ds.sample and native R help for sample().
 }
 \author{
 Paul Burton, for DataSHIELD Development Team, 15/4/2020
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

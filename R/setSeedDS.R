@@ -32,13 +32,18 @@
 #' .Random.seed on each data source that is the true current state of the
 #' random seed in each source.
 #' @author Paul Burton for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 setSeedDS<-function (seedtext=NULL, kind = NULL, normal.kind = NULL)
 {
     # Check Permissive Privacy Control Level.
     dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'avocado'))
 
-    seed<-eval(parse(text=seedtext), envir = parent.frame())
+    if(is.null(seedtext) || seedtext == "NULL"){
+        seed <- NULL
+    } else {
+        seed <- as.integer(seedtext)
+    }
     set.seed(seed,kind,normal.kind)
     return(list(seed.as.set=.Random.seed))
 }

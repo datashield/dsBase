@@ -20,6 +20,7 @@
 #' also returns a vector reporting the length of the pseudorandom vector
 #' created in each source.
 #' @author Paul Burton for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 rPoisDS<-function (n, lambda = 1){
 
@@ -30,8 +31,7 @@ rPoisDS<-function (n, lambda = 1){
 #first convert its name into the corresponding active vectors
 
 	if(is.character(lambda)){
-	command.text<-lambda
-	lambda<-eval(parse(text=command.text), envir = parent.frame())
+	lambda<-.loadServersideObject(lambda)
 	}
 
 	stats::rpois(n, lambda=lambda)
