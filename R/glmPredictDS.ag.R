@@ -34,6 +34,7 @@
 #' ds.glmPredict and glmPredict.as and help in native R for predict.glm
 #' predict.glm in native R
 #' @author Paul Burton for DataSHIELD Development Team (20/7/20)
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #' 
 glmPredictDS.ag <- function(glmname.transmit, newdataname.transmit,
@@ -148,13 +149,11 @@ if(!string.safe)
 }
 
 #Activate all arguments
-#glmobj<-eval(parse(text=glmname.transmit))
-glmobj<-get(glmname.transmit)
+glmobj <- .loadServersideObject(glmname.transmit)
 
 if(!is.null(newdataname.transmit))
 	{
-	newdf<-get(newdataname.transmit)
-#	newdf<-geeval(parse(text=newdataname.transmit))
+	newdf <- .loadServersideObject(newdataname.transmit)
 	}else{
 	newdf<-NULL
 	}

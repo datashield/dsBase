@@ -18,6 +18,7 @@
 #' @return writes lmerMod object summarising the fitted model to the serverside.
 #' For more detailed information see help for ds.lmerSLMA.
 #' @author TDemetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 lmerSLMADS.assign <- function(formula, offset, weights, dataName, REML = TRUE,
 			   control_type, control_value.transmit, optimizer, verbose=0){
@@ -37,7 +38,8 @@ lmerSLMADS.assign <- function(formula, offset, weights, dataName, REML = TRUE,
   # Same is done for offset and weights lower down function
   
   if(!is.null(dataName)){
-    dataDF <- eval(parse(text=dataName), envir = parent.frame())
+    dataDF <- .loadServersideObject(dataName)
+    .checkClass(obj = dataDF, obj_name = dataName, permitted_classes = c("data.frame", "matrix"))
   }else{
     dataDF <- NULL
   }
