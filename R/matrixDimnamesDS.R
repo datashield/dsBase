@@ -18,6 +18,7 @@
 #' (or default name diag_<x1>) with specified dimnames (row and column
 #' names) which is written to the serverside.
 #' @author Paul Burton for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 matrixDimnamesDS <- function(M1.name=NULL,dimnames){
 
@@ -28,22 +29,10 @@ thr<-dsBase::listDisclosureSettingsDS()                                 #
 #nfilter.glm<-as.numeric(thr$nfilter.glm)                               #
 #nfilter.subset<-as.numeric(thr$nfilter.subset)                         #
 nfilter.string<-as.numeric(thr$nfilter.string)                          #
-nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)                #
+#nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)               #
 #nfilter.kNN<-as.numeric(thr$nfilter.kNN)                               #
 #datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)       #
 #########################################################################
-
-#Check length of M1.name not so long as to provide a risk of hidden code
-length.M1.name<-length(unlist(strsplit(M1.name,'')))
-
-if(length.M1.name>nfilter.stringShort)
-	{
-	studysideMessage<-
-	paste0("FAILED: M1.name is too long it could hide concealed code, please shorten to <= nfilter.stringShort = ",
-	       nfilter.stringShort," characters")
-	stop(studysideMessage, call. = FALSE)
-	}
-
 
 #Check length of dimnames string not so long as to provide a risk of hidden code
 #This could legitimately be quite long so allow 2*nfilter.string
@@ -61,15 +50,8 @@ if(!is.null(dimnames))
 		}
 	}
 
-#EVAL M1
-
-M1<-eval(parse(text=M1.name), envir = parent.frame())
-
-if(!is.matrix(M1)&&!is.data.frame(M1))
-	{
-	studysideMessage<-"FAILED: M1 must be of class matrix or data.frame, please respecify"
-	stop(studysideMessage, call. = FALSE)
-	}
+M1 <- .loadServersideObject(M1.name)
+.checkClass(obj = M1, obj_name = M1.name, permitted_classes = c("matrix", "data.frame"))
 
 #coerce to matrix if a data.frame
 if(is.data.frame(M1))
