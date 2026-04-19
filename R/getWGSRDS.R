@@ -49,15 +49,25 @@
 #' @return \code{ds.getWGSR} assigns a numeric vector that includes the z-scores for the
 #' specified index.
 #' @author Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 getWGSRDS <- function(sex, firstPart, secondPart, index, standing=NA, thirdPart=NA){
   
-  sex <- eval(parse(text=sex), envir = parent.frame())
-  firstPart <- eval(parse(text=firstPart), envir = parent.frame())
-  secondPart <- eval(parse(text=secondPart), envir = parent.frame())
+  sex.name <- sex
+  firstPart.name <- firstPart
+  sex <- .loadServersideObject(sex)
+  firstPart <- .loadServersideObject(firstPart)
+  .checkClass(obj = firstPart, obj_name = firstPart.name, permitted_classes = c("numeric", "integer"))
+  if (!is.na(secondPart)){
+    secondPart.name <- secondPart
+    secondPart <- .loadServersideObject(secondPart)
+    .checkClass(obj = secondPart, obj_name = secondPart.name, permitted_classes = c("numeric", "integer"))
+  }
   if (!is.na(thirdPart)){
-    thirdPart <- eval(parse(text=thirdPart), envir = parent.frame())
+    thirdPart.name <- thirdPart
+    thirdPart <- .loadServersideObject(thirdPart)
+    .checkClass(obj = thirdPart, obj_name = thirdPart.name, permitted_classes = c("numeric", "integer"))
   }
   
   # access the internal reference data

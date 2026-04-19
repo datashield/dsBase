@@ -33,13 +33,14 @@
 #' of \code{ds.table}. Fully specified by <useNA> argument of \code{ds.table}
 #' @return For information see help for \code{ds.table}
 #' @author Paul Burton for DataSHIELD Development Team, 13/11/2019
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 tableDS.assign<-function(rvar.transmit, cvar.transmit, stvar.transmit, rvar.all.unique.levels.transmit, cvar.all.unique.levels.transmit,
                   stvar.all.unique.levels.transmit, exclude.transmit, useNA.transmit){
 
 #Activate via eval when needed
 #rvar
-rvar<-eval(parse(text=rvar.transmit), envir = parent.frame())
+rvar<-.loadServersideObject(rvar.transmit)
 
 #coerce to factor if required
 if(!is.factor(rvar))
@@ -53,7 +54,7 @@ if(!is.factor(rvar))
 #cvar
 if(!is.null(cvar.transmit))
 {
-cvar<-eval(parse(text=cvar.transmit), envir = parent.frame())
+cvar<-.loadServersideObject(cvar.transmit)
 
 #coerce to factor if required
 if(!is.factor(cvar))
@@ -73,7 +74,7 @@ cvar<-NULL
 #stvar
 if(!is.null(stvar.transmit))
 {
-stvar<-eval(parse(text=stvar.transmit), envir = parent.frame())
+stvar<-.loadServersideObject(stvar.transmit)
 
 #coerce to factor if required
 if(!is.factor(stvar))

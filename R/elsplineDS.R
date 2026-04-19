@@ -18,6 +18,7 @@
 #' @return an object of class "lspline" and "matrix", which its name is specified by the
 #' \code{newobj} argument (or its default name "elspline.newobj"), is assigned on the serverside.
 #' @author Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 elsplineDS <- function(x = x, n = n, marginal = FALSE, names = NULL){
@@ -54,7 +55,7 @@ elsplineDS <- function(x = x, n = n, marginal = FALSE, names = NULL){
     structure(rval, knots = knots, marginal = marginal, class = c("lspline", "matrix"))
   }
   
-  x <- eval(parse(text=x), envir = parent.frame())
+  x <- .loadServersideObject(x)
   
   stopifnot(n >= 2)
   k <- seq(min(x, na.rm = TRUE), max(x, na.rm = TRUE), length.out = n + 1)[-c(1, n + 1)]
