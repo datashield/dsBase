@@ -30,7 +30,7 @@ test_that("numeric varDS - performance", {
 
     input <- c(0.0, 1.0, 2.0, 3.0, 4.0)
 
-    .durationSec  <- base::as.integer(base::Sys.getenv("PERF_DURATION_SEC", unset = "30")) # defaults to 30 seconds
+    .durationSec  <- perf.testduration(30)
     .count        <- 0
     .start.time   <- Sys.time()
     .current.time <- .start.time
@@ -65,7 +65,7 @@ test_that("numeric varDS, with NA - performance", {
 
     input <- c(0.0, NA, 2.0, NA, 4.0)
 
-    .durationSec  <- base::as.integer(base::Sys.getenv("PERF_DURATION_SEC", unset = "30")) # defaults to 30 seconds
+    .durationSec  <- perf.testduration(30)
     .count        <- 0
     .start.time   <- Sys.time()
     .current.time <- .start.time
