@@ -382,7 +382,7 @@ glmDS2 <- function (formula, family, beta.vect, offset, weights, dataName) {
     errorMessage.combined <- "No errors"
   }
   
-  return(list(family=f, info.matrix=info.matrix, score.vect=score.vect, numsubs=numsubs, dev=dev,
+  return(list(family=f$family, info.matrix=info.matrix, score.vect=score.vect, numsubs=numsubs, dev=dev,
               Nvalid=Nvalid,Nmissing=Nmissing,Ntotal=Ntotal,disclosure.risk=disclosure.risk,
               errorMessage2=errorMessage.combined))  
  
