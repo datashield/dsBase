@@ -21,21 +21,21 @@ glmSLMADS.assign <- function(formula, family, offsetName, weightsName, dataName)
   # Convert transmitable text for special link variance combinations back to full representation
   if(family=="quasigamma.link_log")
   {family<-"quasi(link=log,variance=mu^2)"}
-  
+
   if(family=="Gamma.link_log")
   {family<-"Gamma(link=log)"}
-  
+
   # Correctly name offset, weights and data objects in function call
   # (to allow glmPredict to work correctly later)
   calltext <- paste0("mg<-glm(formula,family=",family,",offset=",
              offsetName,",weights=",weightsName,",data=", dataName,",x=TRUE)")
-  
+
   eval(parse(text=calltext))
-  
+
   # update the call object to include the actual formula
   mg$call$formula <- formula
-  
-  return(mg)		
+
+  return(mg)
 
 }
 # ASSIGN FUNCTION
