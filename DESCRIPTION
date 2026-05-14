@@ -78,6 +78,6 @@ Imports:
 Suggests:
     spelling,
     testthat
-RoxygenNote: 7.3.3
+RoxygenNote: 8.0.0
 Encoding: UTF-8
 Language: en-GB
