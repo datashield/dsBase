@@ -74,6 +74,7 @@ AggregateMethods:
 AssignMethods:
     absDS,
     asCharacterDS,
+    asDataFrameDS,
     asDataMatrixDS,
     asFactorDS2,
     asFactorSimpleDS,
