@@ -39,6 +39,7 @@
 <url><loc>/reference/dataFrameSortDS.html</loc></url>
 <url><loc>/reference/dataFrameSubsetDS1.html</loc></url>
 <url><loc>/reference/dataFrameSubsetDS2.html</loc></url>
+<url><loc>/reference/dateDS.html</loc></url>
 <url><loc>/reference/densityGridDS.html</loc></url>
 <url><loc>/reference/dimDS.html</loc></url>
 <url><loc>/reference/dmtC2SDS.html</loc></url>
@@ -106,6 +107,7 @@
 <url><loc>/reference/namesDS.html</loc></url>
 <url><loc>/reference/nsDS.html</loc></url>
 <url><loc>/reference/numNaDS.html</loc></url>
+<url><loc>/reference/predictDS.html</loc></url>
 <url><loc>/reference/qlsplineDS.html</loc></url>
 <url><loc>/reference/quantileMeanDS.html</loc></url>
 <url><loc>/reference/rBinomDS.html</loc></url>
@@ -125,8 +127,10 @@
 <url><loc>/reference/repDS.html</loc></url>
 <url><loc>/reference/replaceNaDS.html</loc></url>
 <url><loc>/reference/rmDS.html</loc></url>
+<url><loc>/reference/roundDS.html</loc></url>
 <url><loc>/reference/rowColCalcDS.html</loc></url>
 <url><loc>/reference/sampleDS.html</loc></url>
+<url><loc>/reference/scaleDS.html</loc></url>
 <url><loc>/reference/scatterPlotDS.html</loc></url>
 <url><loc>/reference/seqDS.html</loc></url>
 <url><loc>/reference/setFilterDS.html</loc></url>
