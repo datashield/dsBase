@@ -11,7 +11,8 @@
 #' @param conf.level confidence level for the returned confidence interval. Currently
 #' only used for the Pearson product moment correlation coefficient if there are at least
 #' 4 complete pairs of observations.
-#' @return the results of the correlation test.
+#' @return a list with the results of the correlation test and \code{class}, the class of the
+#' input object for client-side consistency checking.
 #' @author Demetris Avraam, for DataSHIELD Development Team
 #' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
