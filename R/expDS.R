@@ -15,7 +15,7 @@ expDS <- function(x) {
   x.var <- .loadServersideObject(x)
   .checkClass(obj = x.var, obj_name = x, permitted_classes = c("numeric", "integer"))
 
-out <- exp(x.var)
+  out <- exp(x.var)
   return(out)
 }
 # ASSIGN FUNCTION
