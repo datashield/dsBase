@@ -3,7 +3,9 @@
 #' @description the probabilities 5%, 10%, 25%, 50%, 75%, 90%, 95% and the mean
 #' are used to compute the corresponding quantiles.
 #' @param x a character string, the name of a numeric or integer vector
-#' @return a numeric vector that represents the sample quantiles
+#' @return a list, with \code{quantiles}, a numeric vector that represents the sample
+#' quantiles, and \code{class}, the class of the input object for client-side consistency
+#' checking
 #' @export
 #' @author Burton, P.; Gaye, A.
 #' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

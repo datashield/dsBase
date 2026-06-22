@@ -7,7 +7,7 @@
 #' @param method an integer between 1 and 3 selecting one of the algorithms for computing skewness
 #' detailed in the headers of the client-side \code{ds.skewness} function.
 #' @return a list including the skewness of the input numeric variable, the number of valid observations and
-#' the study-side validity message.
+#' \code{class}, the class of the input object for client-side consistency checking.
 #' @author Demetris Avraam, for DataSHIELD Development Team
 #' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export

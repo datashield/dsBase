@@ -4,7 +4,9 @@
 #' @details if the length of input vector is less than the set filter
 #' a missing value is returned.
 #' @param x a character string, the name of a numeric or integer vector
-#' @return a numeric, the statistical mean
+#' @return a list, with the estimated mean, the number of missing values, the number of
+#' valid values, the total number of values, and \code{class}, the class of the input
+#' object for client-side consistency checking
 #' @author Gaye A, Burton PR
 #' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export

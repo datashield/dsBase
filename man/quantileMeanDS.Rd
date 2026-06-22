@@ -10,7 +10,9 @@ quantileMeanDS(x)
 \item{x}{a character string, the name of a numeric or integer vector}
 }
 \value{
-a numeric vector that represents the sample quantiles
+a list, with \code{quantiles}, a numeric vector that represents the sample
+quantiles, and \code{class}, the class of the input object for client-side consistency
+checking
 }
 \description{
 the probabilities 5%, 10%, 25%, 50%, 75%, 90%, 95% and the mean

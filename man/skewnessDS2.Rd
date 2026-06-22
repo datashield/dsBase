@@ -14,9 +14,8 @@ skewnessDS2(x, global.mean)
 \value{
 a list including the sum of cubed differences between the values of x and the global mean of x across
 all studies, the sum of squared differences between the values of x and the global mean of x across all studies,
-the number of valid observations (i.e. the length of x after excluding missing values), and a validity message 
-indicating indicating a valid analysis if the number of valid observations are above the protection filter 
-nfilter.tab or invalid analysis otherwise.
+the number of valid observations (i.e. the length of x after excluding missing values), and \code{class},
+the class of the input object for client-side consistency checking.
 }
 \description{
 This function calculates summary statistics that are returned to the client-side and 

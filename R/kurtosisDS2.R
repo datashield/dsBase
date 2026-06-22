@@ -9,9 +9,8 @@
 #' @param global.mean a numeric, the combined mean of the input variable across all studies.
 #' @return a list including the sum of quartic differences between the values of x and the global mean of x across
 #' all studies, the sum of squared differences between the values of x and the global mean of x across all studies,
-#' the number of valid observations (i.e. the length of x after excluding missing values), and a validity message 
-#' indicating indicating a valid analysis if the number of valid observations are above the protection filter 
-#' nfilter.tab or invalid analysis otherwise.
+#' the number of valid observations (i.e. the length of x after excluding missing values), and \code{class},
+#' the class of the input object for client-side consistency checking.
 #' @author Demetris Avraam, for DataSHIELD Development Team
 #' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
