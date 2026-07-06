@@ -1,0 +1,32 @@
+# Converts a numeric vector into a factor
+
+This function is an assign DataSHIELD function that coerces a numeric or
+character vector into a factor
+
+## Usage
+
+``` r
+asFactorSimpleDS(input.var.name = NULL)
+```
+
+## Arguments
+
+- input.var.name:
+
+  the name of the variable that is to be converted to a factor.
+
+## Value
+
+an object of class factor
+
+## Details
+
+The functions converts the input variable into a factor. Unlike
+ds.asFactor and its serverside functions, ds.asFactorSimple does no more
+than coerce the class of a variable to factor in each study. It does not
+check for or enforce consistency of factor levels across sources or
+allow you to force an arbitrary set of levels unless those levels
+actually exist in the sources. In addition, it does not allow you to
+create an array of binary dummy variables that is equivalent to a
+factor. If you need to do any of these things you will have to use the
+ds.asFactor function.

@@ -1,0 +1,37 @@
+# Creates 1-dimensional contingency tables
+
+This function generates a 1-dimensional table where potentially
+disclosive cells. (based on the set threshold) are replaced by a missing
+value ('NA').
+
+## Usage
+
+``` r
+table1DDS(xvect)
+```
+
+## Arguments
+
+- xvect:
+
+  a numerical vector with discrete values - usually a factor.
+
+## Value
+
+a list which contains two elements: 'table', the 1-dimensional table and
+'message' a message which informs about the validity of the table.
+
+## Details
+
+It generates a 1-dimensional tables where valid (non-disclosive)
+1-dimensional tables are defined as data from sources where no table
+cells have counts between 1 and the set threshold. When the output table
+is invalid all cells but the total count are replaced by missing values.
+Only the total count is visible on the table returned to the client
+side. A message is also returned with the 1-dimensional; the message
+says "invalid table - invalid counts present" if the table is invalid
+and 'valid table' otherwise.
+
+## Author
+
+Gaye A.
