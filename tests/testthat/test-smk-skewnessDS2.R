@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("skewnessDS2::smk::setup")
+# context("skewnessDS2::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("skewnessDS2::smk")
+# context("skewnessDS2::smk")
 test_that("simple skewnessDS2", {
     input       <- c(1.0, 2.0, 2.0, 3.0, 3.0)
     global.mean <- 2.5
@@ -43,6 +43,6 @@ test_that("simple skewnessDS2", {
 # Done
 #
 
-context("skewnessDS2::smk::shutdown")
+# context("skewnessDS2::smk::shutdown")
 
-context("skewnessDS2::smk::done")
+# context("skewnessDS2::smk::done")

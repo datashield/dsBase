@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("uniqueDS::smk::setup")
+# context("uniqueDS::smk::setup")
 
 #
 # Tests
 #
 
-context("uniqueDS::smk::simple for vector")
+# context("uniqueDS::smk::simple for vector")
 test_that("simple uniqueDS for vector", {
     input <- c(1, 2, 3, 2, 3, 6)
 
@@ -32,7 +32,7 @@ test_that("simple uniqueDS for vector", {
     expect_equal(res[[4]], 6)
 })
 
-context("uniqueDS::smk::simple for vector")
+# context("uniqueDS::smk::simple for vector")
 test_that("simple uniqueDS for list", {
     input <- list(a=1, b=2, c=3, d=2, e=3, f=6)
 
@@ -52,6 +52,6 @@ test_that("simple uniqueDS for list", {
 # Done
 #
 
-context("uniqueDS::smk::shutdown")
+# context("uniqueDS::smk::shutdown")
 
-context("uniqueDS::smk::done")
+# context("uniqueDS::smk::done")

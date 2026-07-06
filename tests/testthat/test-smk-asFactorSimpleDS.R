@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("asFactorSimpleDS::smk::setup")
+# context("asFactorSimpleDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("asFactorSimpleDS::smk::simple")
+# context("asFactorSimpleDS::smk::simple")
 test_that("simple asFactorSimpleDS", {
     input <- c(2.0, 1.0, 3.0, 3.0, 3.0, 1.0, 2.0, 2.0, 1.0, 2.0)
 
@@ -52,6 +52,6 @@ test_that("simple asFactorSimpleDS", {
 # Done
 #
 
-context("asFactorSimpleDS::smk::shutdown")
+# context("asFactorSimpleDS::smk::shutdown")
 
-context("asFactorSimpleDS::smk::done")
+# context("asFactorSimpleDS::smk::done")

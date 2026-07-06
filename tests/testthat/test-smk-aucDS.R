@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("aucDS::smk::setup")
+# context("aucDS::smk::setup")
 
 #
 # Tests
@@ -39,6 +39,6 @@ test_that("aucDS", {
 # Done
 #
 
-context("aucDS::smk::shutdown")
+# context("aucDS::smk::shutdown")
 
-context("aucDS::smk::done")
+# context("aucDS::smk::done")

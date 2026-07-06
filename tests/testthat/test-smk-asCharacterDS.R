@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("asCharacterDS::smk::setup")
+# context("asCharacterDS::smk::setup")
 
 #
 # Tests
 #
 
-context("asCharacterDS::smk::numeric")
+# context("asCharacterDS::smk::numeric")
 test_that("numeric asCharacterDS", {
     input <- 3.141
 
@@ -29,7 +29,7 @@ test_that("numeric asCharacterDS", {
     expect_equal(res, "3.141")
 })
 
-context("asCharacterDS::smk::numeric vector")
+# context("asCharacterDS::smk::numeric vector")
 test_that("numeric vector asCharacterDS", {
     input <- c(0.0, 1.0, 2.0, 3.0, 4.0)
 
@@ -44,7 +44,7 @@ test_that("numeric vector asCharacterDS", {
     expect_equal(res[5], "4")
 })
 
-context("asCharacterDS::smk::logical")
+# context("asCharacterDS::smk::logical")
 test_that("logical asCharacterDS - FALSE", {
     input <- FALSE
 
@@ -65,7 +65,7 @@ test_that("logical asCharacterDS - TRUE", {
     expect_equal(res, "TRUE")
 })
 
-context("asCharacterDS::smk::logical vector")
+# context("asCharacterDS::smk::logical vector")
 test_that("logical vector asCharacterDS", {
     input <- c(TRUE, FALSE, TRUE, FALSE, TRUE)
 
@@ -84,6 +84,6 @@ test_that("logical vector asCharacterDS", {
 # Done
 #
 
-context("asCharacterDS::smk::shutdown")
+# context("asCharacterDS::smk::shutdown")
 
-context("asCharacterDS::smk::done")
+# context("asCharacterDS::smk::done")

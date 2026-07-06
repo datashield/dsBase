@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("unListDS::smk::setup")
+# context("unListDS::smk::setup")
 
 #
 # Tests
 #
 
-context("unListDS::smk::simple")
+# context("unListDS::smk::simple")
 test_that("simple unListDS", {
     input <- list(v1 = c(1, 2, 3), v2 = c(4, 5, 6))
 
@@ -49,6 +49,6 @@ test_that("simple unListDS", {
 # Done
 #
 
-context("unListDS::smk::shutdown")
+# context("unListDS::smk::shutdown")
 
-context("unListDS::smk::done")
+# context("unListDS::smk::done")

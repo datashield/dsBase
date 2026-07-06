@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("replaceNaDS::smk::setup")
+# context("replaceNaDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("replaceNaDS::smk")
+# context("replaceNaDS::smk")
 test_that("simple replaceNaDS", {
     input        <- c(0.0, NA, 2.0, NA, 4.0, NA, 6.0, NA)
     replacements <- c(1.1, 3.3, 5.5, 7.7)
@@ -43,6 +43,6 @@ test_that("simple replaceNaDS", {
 # Done
 #
 
-context("replaceNaDS::smk::shutdown")
+# context("replaceNaDS::smk::shutdown")
 
-context("replaceNaDS::smk::done")
+# context("replaceNaDS::smk::done")

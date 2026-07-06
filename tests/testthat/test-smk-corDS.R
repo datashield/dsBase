@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("corDS::smk::setup")
+# context("corDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-#context("corDS::smk::pairwise without na")
+# context("corDS::smk::pairwise without na")
 #test_that("simple corDS, pairwise, full", {
 #    x   <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
 #    y   <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
@@ -280,7 +280,7 @@ set.standard.disclosure.settings()
 #    expect_equal(res$sums.of.squares[4], 141.06)
 #})
 
-#context("corDS::smk::pairwise with na")
+# context("corDS::smk::pairwise with na")
 #test_that("simple corDS, pairwise, some", {
 #    x   <- c(0.0, NA, 2.0, 3.0, NA, 5.0, NA, 7.0)
 #    y   <- c(0.0, 1.0, NA, 3.0, 4.0, NA, NA, 7.0)
@@ -367,7 +367,7 @@ set.standard.disclosure.settings()
 #    expect_equal(res$sums.of.squares[4], 75.0)
 #})
 
-context("corDS::smk::casewise without na")
+# context("corDS::smk::casewise without na")
 test_that("simple corDS, casewise, full", {
     x   <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
     y   <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
@@ -629,7 +629,7 @@ test_that("simple corDS, casewise, some", {
     expect_equal(res$sums.of.squares[4], 141.06)
 })
 
-context("corDS::smk::casewise with na")
+# context("corDS::smk::casewise with na")
 test_that("simple corDS, casewise, some", {
     x   <- c(0.0, NA, 2.0, 3.0, NA, 5.0, NA, 7.0)
     y   <- c(0.0, 1.0, NA, 3.0, 4.0, NA, NA, 7.0)
@@ -721,6 +721,6 @@ test_that("simple corDS, casewise, some", {
 # Done
 #
 
-context("corDS::smk::shutdown")
+# context("corDS::smk::shutdown")
 
-context("corDS::smk::done")
+# context("corDS::smk::done")
