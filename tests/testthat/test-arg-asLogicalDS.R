@@ -12,25 +12,25 @@
 # Set up
 #
 
-context("asLogicalDS::arg::setup")
+# context("asLogicalDS::arg::setup")
 
 #
 # Tests
 #
 
-context("asLogicalDS::arg::direct input numeric")
+# context("asLogicalDS::arg::direct input numeric")
 test_that("simple asLogicalDS non-input", {
     expect_error(asLogicalDS(1.0), "ERROR: x.name must be specified as a character string", fixed = TRUE)
 })
 
-context("asLogicalDS::arg::input NULL")
+# context("asLogicalDS::arg::input NULL")
 test_that("simple asLogicalDS NULL", {
     input <- NULL
 
     expect_error(asLogicalDS("input"), "ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer, character or matrix", fixed = TRUE)
 })
 
-context("asLogicalDS::arg::input NA")
+# context("asLogicalDS::arg::input NA")
 test_that("simple asLogicalDS NA", {
     input <- NA
 
@@ -41,6 +41,6 @@ test_that("simple asLogicalDS NA", {
 # Done
 #
 
-context("asLogicalDS::arg::shutdown")
+# context("asLogicalDS::arg::shutdown")
 
-context("asLogicalDS::arg::done")
+# context("asLogicalDS::arg::done")

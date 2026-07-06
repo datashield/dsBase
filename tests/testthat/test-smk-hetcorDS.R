@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("hetcorDS::smk::setup")
+# context("hetcorDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -21,7 +21,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("hetcorDS::smk")
+# context("hetcorDS::smk")
 test_that("hetcorDS", {
   
   D <- as.data.frame(matrix(NA, nrow=20, ncol=3))
@@ -86,6 +86,6 @@ test_that("hetcorDS", {
 # Done
 #
 
-context("hetcorDS::smk::shutdown")
+# context("hetcorDS::smk::shutdown")
 
-context("hetcorDS::smk::done")
+# context("hetcorDS::smk::done")

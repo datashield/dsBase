@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("asDataMatrixDS::smk::setup")
+# context("asDataMatrixDS::smk::setup")
 
 #
 # Tests
 #
 
-context("asDataMatrixDS::smk::simple")
+# context("asDataMatrixDS::smk::simple")
 test_that("simple asDataMatrixDS", {
     input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
@@ -59,6 +59,6 @@ test_that("simple asDataMatrixDS", {
 # Done
 #
 
-context("asDataMatrixDS::smk::shutdown")
+# context("asDataMatrixDS::smk::shutdown")
 
-context("asDataMatrixDS::smk::done")
+# context("asDataMatrixDS::smk::done")

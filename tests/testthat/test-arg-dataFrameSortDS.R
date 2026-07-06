@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("dataFrameSortDS::arg::setup")
+# context("dataFrameSortDS::arg::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("dataFrameSortDS::arg")
+# context("dataFrameSortDS::arg")
 test_that("simple dataFrameSortDS, factor error check", {
     df              <- data.frame(v1 = as.factor(c("a", "b", "c", "d", "b", "e", "f", "f")), v2 = c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0))
     sort.key.name   <- "df$v1"
@@ -34,10 +34,10 @@ test_that("simple dataFrameSortDS, factor error check", {
 # Shutdown
 #
 
-context("dataFrameSortDS::arg::shutdown")
+# context("dataFrameSortDS::arg::shutdown")
 
 #
 # Done
 #
 
-context("dataFrameSortDS::arg::done")
+# context("dataFrameSortDS::arg::done")

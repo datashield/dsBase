@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("varDS::smk::setup")
+# context("varDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("varDS::smk::numeric")
+# context("varDS::smk::numeric")
 test_that("numeric varDS", {
     input <- c(0.0, 1.0, 2.0, 3.0, 4.0)
 
@@ -42,7 +42,7 @@ test_that("numeric varDS", {
     expect_equal(res$ValidityMessage, "VALID ANALYSIS")
 })
 
-context("varDS::smk::numeric with NA")
+# context("varDS::smk::numeric with NA")
 test_that("numeric varDS, with NA", {
     input <- c(0.0, NA, 2.0, NA, 4.0)
 
@@ -64,7 +64,7 @@ test_that("numeric varDS, with NA", {
     expect_equal(res$ValidityMessage, "VALID ANALYSIS")
 })
 
-context("varDS::smk::numeric with all NA")
+# context("varDS::smk::numeric with all NA")
 test_that("numeric varDS, with all NA", {
     input <- c(NA, NA, NA, NA, NA)
     
@@ -90,6 +90,6 @@ test_that("numeric varDS, with all NA", {
 # Done
 #
 
-context("varDS::smk::shutdown")
+# context("varDS::smk::shutdown")
 
-context("varDS::smk::done")
+# context("varDS::smk::done")

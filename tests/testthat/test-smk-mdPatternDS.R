@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("mdPatternDS::smk::setup")
+# context("mdPatternDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("mdPatternDS::smk::sample 1 complete data.frame")
+# context("mdPatternDS::smk::sample 1 complete data.frame")
 test_that("mdPatternDS: sample 1 complete data.frame", {
     x_val <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
     x     <- "x_val"
@@ -57,7 +57,7 @@ test_that("mdPatternDS: sample 1 complete data.frame", {
 })
 
 
-context("mdPatternDS::smk::sample 2 complete data.frame")
+# context("mdPatternDS::smk::sample 2 complete data.frame")
 test_that("mdPatternDS: sample 2 complete data.frame", {
     x_val <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0), v2 = c(9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.0))
     x     <- "x_val"
@@ -98,6 +98,6 @@ test_that("mdPatternDS: sample 2 complete data.frame", {
 # Done
 #
 
-context("mdPatternDS::smk::shutdown")
+# context("mdPatternDS::smk::shutdown")
 
-context("mdPatternDS::smk::done")
+# context("mdPatternDS::smk::done")

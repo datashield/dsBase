@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("varDS::disc::setup")
+# context("varDS::disc::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("varDS::disc::numeric with below nfilter.tab values")
+# context("varDS::disc::numeric with below nfilter.tab values")
 test_that("numeric varDS, with below nfilter.tab values", {
     input <- c(NA, NA, 2.0, NA, 4.0)
 
@@ -31,6 +31,6 @@ test_that("numeric varDS, with below nfilter.tab values", {
 # Done
 #
 
-context("varDS::disc::shutdown")
+# context("varDS::disc::shutdown")
 
-context("varDS::disc::done")
+# context("varDS::disc::done")

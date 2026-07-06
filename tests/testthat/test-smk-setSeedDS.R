@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("setSeedDS::smk::setup")
+# context("setSeedDS::smk::setup")
 
 #
 # Tests
 #
 
-context("setSeedDS::smk::simple")
+# context("setSeedDS::smk::simple")
 test_that("simple setSeedDS", {
     seedtext    <- "19"
     kind        <- NULL
@@ -35,6 +35,6 @@ test_that("simple setSeedDS", {
 # Done
 #
 
-context("setSeedDS::smk::shutdown")
+# context("setSeedDS::smk::shutdown")
 
-context("setSeedDS::smk::done")
+# context("setSeedDS::smk::done")

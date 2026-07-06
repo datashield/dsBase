@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("miceDS::smk::setup")
+# context("miceDS::smk::setup")
 
 #
 # Tests
 #
 
-context("miceDS::smk")
+# context("miceDS::smk")
 test_that("miceDS", {
   
     load(file = 'data_files/CNSIM/CNSIM1.rda')
@@ -53,6 +53,6 @@ test_that("miceDS", {
 # Done
 #
 
-context("miceDS::smk::shutdown")
+# context("miceDS::smk::shutdown")
 
-context("miceDS::smk::done")
+# context("miceDS::smk::done")

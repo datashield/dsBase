@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("setFilterDS::smk::setup")
+# context("setFilterDS::smk::setup")
 
 set.standard.disclosure.settings
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings
 # Tests
 #
 
-context("setFilterDS::smk::simple")
+# context("setFilterDS::smk::simple")
 test_that("simple setFilterDS", {
     res <- setFilterDS()
 
@@ -43,6 +43,6 @@ test_that("simple setFilterDS", {
 # Done
 #
 
-context("setFilterDS::smk::shutdown")
+# context("setFilterDS::smk::shutdown")
 
-context("setFilterDS::smk::done")
+# context("setFilterDS::smk::done")

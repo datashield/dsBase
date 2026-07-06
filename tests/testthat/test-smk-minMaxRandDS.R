@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("minMaxRandDS::smk::setup")
+# context("minMaxRandDS::smk::setup")
 
 #
 # Tests
@@ -33,6 +33,6 @@ test_that("minMaxRandDS", {
 # Done
 #
 
-context("minMaxRandDS::smk::shutdown")
+# context("minMaxRandDS::smk::shutdown")
 
-context("minMaxRandDS::smk::done")
+# context("minMaxRandDS::smk::done")

@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("rUnifDS::smk::setup")
+# context("rUnifDS::smk::setup")
 
 #
 # Tests
 #
 
-context("rUnifDS::smk::simple")
+# context("rUnifDS::smk::simple")
 test_that("simple rUnifDS, by name", {
     n   <- 8
     min <- 2
@@ -61,6 +61,6 @@ test_that("simple rUnifDS, direct", {
 # Done
 #
 
-context("rUnifDS::smk::shutdown")
+# context("rUnifDS::smk::shutdown")
 
-context("rUnifDS::smk::done")
+# context("rUnifDS::smk::done")
