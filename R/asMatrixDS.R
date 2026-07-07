@@ -9,19 +9,12 @@
 #' <x.name>.mat) which is written to the serverside. For further
 #' details see help on the clientside function \code{ds.asMatrix}
 #' @author Amadou Gaye, Paul Burton for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 asMatrixDS <- function (x.name){
-
-if(is.character(x.name)){
-	x<-eval(parse(text=x.name), envir = parent.frame())
-
-	}else{
-   studysideMessage<-"ERROR: x.name must be specified as a character string"
-   stop(studysideMessage, call. = FALSE)
-   }
+  x <- .loadServersideObject(x.name)
 
   output <- as.matrix(x)
-
   return(output)
 }
 #ASSIGN FUNCTION

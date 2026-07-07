@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("rowColCalcDS::smk::setup")
+# context("rowColCalcDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +21,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("rowColCalcDS::smk")
+# context("rowColCalcDS::smk")
 test_that("simple rowColCalcDS, operation 1", {
     input <- matrix(c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0), ncol = 2)
 
@@ -77,6 +78,6 @@ test_that("simple rowColCalcDS, operation 4", {
 # Done
 #
 
-context("rowColCalcDS::smk::shutdown")
+# context("rowColCalcDS::smk::shutdown")
 
-context("rowColCalcDS::smk::done")
+# context("rowColCalcDS::smk::done")

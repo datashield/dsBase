@@ -8,15 +8,10 @@
 #' @export
 #'
 colnamesDS <- function(x){
-
-  x.val <- eval(parse(text=x), envir = parent.frame())
-
-  # find the dim of the input dataframe or matrix
+  x.val <- .loadServersideObject(x)
+  .checkClass(obj = x.val, obj_name = x, permitted_classes = c("data.frame", "matrix"))
   out <- colnames(x.val)
-
-  # return the dimension
   return(out)
-
 }
 #AGGREGATE FUNCTION
 # colnamesDS

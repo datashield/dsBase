@@ -26,4 +26,6 @@ in the help file of the clientside function \code{ds.asNumeric}.
 }
 \author{
 Amadou Gaye, Paul Burton, Demetris Avraam, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

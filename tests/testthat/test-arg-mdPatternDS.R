@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("mdPatternDS::arg::setup")
+# context("mdPatternDS::arg::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,14 +20,14 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("mdPatternDS::arg::x NULL")
+# context("mdPatternDS::arg::x NULL")
 test_that("mdPatternDS x NULL", {
     x <- NULL
 
     expect_error(mdPatternDS(x), "The input object must be of type 'data.frame' or 'matrix'. Current type: NULL")
 })
 
-context("mdPatternDS::arg::x not valid variable")
+# context("mdPatternDS::arg::x not valid variable")
 test_that("mdPatternDS x not variable", {
     x <- "not a variable"
 
@@ -38,6 +38,6 @@ test_that("mdPatternDS x not variable", {
 # Done
 #
 
-context("mdPatternDS::arg::shutdown")
+# context("mdPatternDS::arg::shutdown")
 
-context("mdPatternDS::arg::done")
+# context("mdPatternDS::arg::done")

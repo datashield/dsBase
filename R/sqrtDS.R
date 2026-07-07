@@ -9,18 +9,15 @@
 #' which is written to the server-side. The output object is of class numeric 
 #' or integer.
 #' @author Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 sqrtDS <- function(x){
+  x.var <- .loadServersideObject(x)
+  .checkClass(obj = x.var, obj_name = x, permitted_classes = c("numeric", "integer"))
 
-  x.var <- eval(parse(text=x), envir = parent.frame())
-
-  # compute the square root values of x
   out <- sqrt(x.var)
-  
-  # assign the outcome to the data servers
   return(out)
-
 }
 # ASSIGN FUNCTION
 # sqrtDS

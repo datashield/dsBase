@@ -10,10 +10,11 @@
 #' "ascharacter.newobj") which is written to the serverside. For further
 #' details see help on the clientside function \code{ds.asCharacter}
 #' @author Amadou Gaye, Paul Burton, Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 asCharacterDS <- function(x.name) {
-  x <- eval(parse(text = x.name), envir = parent.frame())
+  x <- .loadServersideObject(x.name)
 
   output <- as.character(x)
   return(output)

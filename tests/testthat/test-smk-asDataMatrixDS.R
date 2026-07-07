@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +13,13 @@
 # Set up
 #
 
-context("asDataMatrixDS::smk::setup")
+# context("asDataMatrixDS::smk::setup")
 
 #
 # Tests
 #
 
-context("asDataMatrixDS::smk::simple")
+# context("asDataMatrixDS::smk::simple")
 test_that("simple asDataMatrixDS", {
     input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
@@ -54,11 +55,10 @@ test_that("simple asDataMatrixDS", {
     expect_equal(res.colnames[1], "v1")
     expect_equal(res.colnames[2], "v2")
 })
-
 #
 # Done
 #
 
-context("asDataMatrixDS::smk::shutdown")
+# context("asDataMatrixDS::smk::shutdown")
 
-context("asDataMatrixDS::smk::done")
+# context("asDataMatrixDS::smk::done")

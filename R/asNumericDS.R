@@ -11,16 +11,11 @@
 #' <x.name>.num) which is written to the serverside. For further
 #' details see help on the clientside function \code{ds.asNumeric}.
 #' @author Amadou Gaye, Paul Burton, Demetris Avraam, for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 asNumericDS <- function(x.name){
-
-  if(is.character(x.name)){
-    x <- eval(parse(text=x.name), envir = parent.frame())
-  }else{
-    studysideMessage <- "ERROR: x.name must be specified as a character string"
-    stop(studysideMessage, call. = FALSE)
-  }
+  x <- .loadServersideObject(x.name)
   
   # Check that it doesn't match any non-number
   numbers_only <- function(vec) !grepl("\\D", vec)
@@ -36,7 +31,6 @@ asNumericDS <- function(x.name){
   }
   
   return(output)
-
 }
 # ASSIGN FUNCTION
 # asNumericDS

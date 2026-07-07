@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +13,13 @@
 # Set up
 #
 
-context("testObjExistsDS::smk::setup")
+# context("testObjExistsDS::smk::setup")
 
 #
 # Tests
 #
 
-context("testObjExistsDS::smk::character")
+# context("testObjExistsDS::smk::character")
 test_that("simple testObjExistsDS, character", {
     input <- "value"
 
@@ -41,7 +42,7 @@ test_that("simple testObjExistsDS, character vector", {
     expect_equal(res$test.obj.class, "character")
 })
 
-context("testObjExistsDS::smk::integer")
+# context("testObjExistsDS::smk::integer")
 test_that("simple testObjExistsDS, integer", {
     input <- 1L
 
@@ -64,7 +65,7 @@ test_that("simple testObjExistsDS, integer vector", {
     expect_equal(res$test.obj.class, "integer")
 })
 
-context("testObjExistsDS::smk::numeric")
+# context("testObjExistsDS::smk::numeric")
 test_that("simple testObjExistsDS, numeric", {
     input <- 1.1
 
@@ -87,7 +88,7 @@ test_that("simple testObjExistsDS, numeric vector", {
     expect_equal(res$test.obj.class, "numeric")
 })
 
-context("testObjExistsDS::smk::logical")
+# context("testObjExistsDS::smk::logical")
 test_that("simple testObjExistsDS, logical, FALSE", {
     input <- FALSE
 
@@ -121,7 +122,7 @@ test_that("simple testObjExistsDS, logical vector", {
     expect_equal(res$test.obj.class, "logical")
 })
 
-context("testObjExistsDS::smk::data.frame")
+# context("testObjExistsDS::smk::data.frame")
 test_that("simple testObjExistsDS, data.frame", {
     input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
@@ -133,7 +134,7 @@ test_that("simple testObjExistsDS, data.frame", {
     expect_equal(res$test.obj.class, "data.frame")
 })
 
-context("testObjExistsDS::smk::array")
+# context("testObjExistsDS::smk::array")
 test_that("simple testObjExistsDS, array", {
     input <- array(c(0.0, 1.0, 2.0, 3.0, 4.0))
 
@@ -145,7 +146,7 @@ test_that("simple testObjExistsDS, array", {
     expect_equal(res$test.obj.class, "array")
 })
 
-context("testObjExistsDS::smk::matrix")
+# context("testObjExistsDS::smk::matrix")
 test_that("simple testObjExistsDS, matrix", {
     input <- matrix(c(0.0, 1.0, 2.0, 3.0, 4.0))
 
@@ -167,7 +168,7 @@ test_that("simple testObjExistsDS, matrix", {
     }
 })
 
-context("testObjExistsDS::smk::data.matrix")
+# context("testObjExistsDS::smk::data.matrix")
 test_that("simple testObjExistsDS, data.matrix", {
     input <- data.matrix(data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0)))
 
@@ -190,7 +191,7 @@ test_that("simple testObjExistsDS, data.matrix", {
     }
 })
 
-context("testObjExistsDS::smk::date")
+# context("testObjExistsDS::smk::date")
 test_that("simple testObjExistsDS, date", {
     input <- Sys.Date()
 
@@ -202,7 +203,7 @@ test_that("simple testObjExistsDS, date", {
     expect_equal(res$test.obj.class, "Date")
 })
 
-context("testObjExistsDS::smk::formula")
+# context("testObjExistsDS::smk::formula")
 test_that("simple testObjExistsDS, formula", {
     input <- X ~ A + B
 
@@ -214,7 +215,7 @@ test_that("simple testObjExistsDS, formula", {
     expect_equal(res$test.obj.class, "formula")
 })
 
-context("testObjExistsDS::smk::environment")
+# context("testObjExistsDS::smk::environment")
 test_that("simple testObjExistsDS, environment", {
     input <- environment()
 
@@ -226,7 +227,7 @@ test_that("simple testObjExistsDS, environment", {
     expect_equal(res$test.obj.class, "environment")
 })
 
-context("testObjExistsDS::smk::NA")
+# context("testObjExistsDS::smk::NA")
 test_that("special testObjExistsDS, NA", {
     input <- NA
 
@@ -238,7 +239,7 @@ test_that("special testObjExistsDS, NA", {
     expect_equal(res$test.obj.class, "logical")
 })
 
-context("testObjExistsDS::smk::NULL")
+# context("testObjExistsDS::smk::NULL")
 test_that("special testObjExistsDS, NULL", {
     input <- NULL
 
@@ -250,7 +251,7 @@ test_that("special testObjExistsDS, NULL", {
     expect_equal(res$test.obj.class, "NULL")
 })
 
-context("testObjExistsDS::smk::not exists")
+# context("testObjExistsDS::smk::not exists")
 test_that("special testObjExistsDS, not exists", {
     res <- testObjExistsDS("XXXinputXXX")
 
@@ -264,6 +265,6 @@ test_that("special testObjExistsDS, not exists", {
 # Done
 #
 
-context("testObjExistsDS::smk::shutdown")
+# context("testObjExistsDS::smk::shutdown")
 
-context("testObjExistsDS::smk::done")
+# context("testObjExistsDS::smk::done")

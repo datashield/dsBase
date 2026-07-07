@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("asFactorDS2::smk::setup")
+# context("asFactorDS2::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("asFactorDS2::smk::simple")
+# context("asFactorDS2::smk::simple")
 test_that("simple asFactorDS2, fixed.dummy.vars is FALSE", {
     input                      <- c(2, 1, 3, 3, 3, 1, 2, 2, 1, 2)
     all.unique.levels.transmit <- "1,2,3,4"
@@ -113,6 +113,6 @@ test_that("simple asFactorDS2, fixed.dummy.vars is TRUE", {
 # Done
 #
 
-context("asFactorDS2::smk::shutdown")
+# context("asFactorDS2::smk::shutdown")
 
-context("asFactorDS2::smk::done")
+# context("asFactorDS2::smk::done")

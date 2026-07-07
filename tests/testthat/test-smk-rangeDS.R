@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("rangeDS::smk::setup")
+# context("rangeDS::smk::setup")
 
 set.random.seed.setting(1234)
 
@@ -20,7 +21,7 @@ set.random.seed.setting(1234)
 # Tests
 #
 
-context("rangeDS::smk::without NAs")
+# context("rangeDS::smk::without NAs")
 test_that("numeric rangeDS", {
     input <- c(0.0, 1.0, 2.0, 3.0, 4.0, 4.0, 3.0, 2.0, 1.0, 0.0)
 
@@ -32,7 +33,7 @@ test_that("numeric rangeDS", {
     expect_equal(res[2], 4.12446, tolerance = 1e-6)
 })
 
-context("rangeDS::smk::with NAs")
+# context("rangeDS::smk::with NAs")
 test_that("character rangeDS", {
     input <- c(0.0, NA, 2.0, NA, 4.0, NA, 3.0, NA, 1.0, NA)
 
@@ -48,6 +49,6 @@ test_that("character rangeDS", {
 # Done
 #
 
-context("rangeDS::smk::shutdown")
+# context("rangeDS::smk::shutdown")
 
-context("rangeDS::smk::done")
+# context("rangeDS::smk::done")

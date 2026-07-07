@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +13,13 @@
 # Set up
 #
 
-context("rBinomDS::smk::setup")
+# context("rBinomDS::smk::setup")
 
 #
 # Tests
 #
 
-context("rBinomDS::smk::simple")
+# context("rBinomDS::smk::simple")
 test_that("simple rBinomDS, by name", {
     n    <- 8
     size <- 32
@@ -61,6 +62,6 @@ test_that("simple rBinomDS, direct", {
 # Done
 #
 
-context("rBinomDS::smk::shutdown")
+# context("rBinomDS::smk::shutdown")
 
-context("rBinomDS::smk::done")
+# context("rBinomDS::smk::done")

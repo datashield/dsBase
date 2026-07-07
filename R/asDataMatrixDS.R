@@ -15,17 +15,12 @@
 #' "asdatamatrix.newobj") which is written to the serverside. For further
 #' details see help on the clientside function \code{ds.asDataMatrix}
 #' @author Paul Burton for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 asDataMatrixDS <- function(x.name) {
-  if (is.character(x.name)) {
-    x <- eval(parse(text = x.name), envir = parent.frame())
-  } else {
-    studysideMessage <- "ERROR: x.name must be specified as a character string"
-    stop(studysideMessage, call. = FALSE)
-  }
+  x <- .loadServersideObject(x.name)
 
   output <- data.matrix(x)
-
   return(output)
 }
 # ASSIGN FUNCTION

@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("mdPatternDS::disc::setup")
+# context("mdPatternDS::disc::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("mdPatternDS::disc::sample incomplete data.frame")
+# context("mdPatternDS::disc::sample incomplete data.frame")
 test_that("mdPatternDS: sample incomplete data.frame", {
     x_val <- data.frame(v1 = c(0.0, NA, 2.0, 3.0, 4.0, 5.0, 6.0), v2 = c(6.0, 5.0, 4.0, 3.0, 2.0, 1.0, 0.0))
     x     <- "x_val"
@@ -64,6 +64,6 @@ test_that("mdPatternDS: sample incomplete data.frame", {
 # Done
 #
 
-context("mdPatternDS::disc::shutdown")
+# context("mdPatternDS::disc::shutdown")
 
-context("mdPatternDS::disc::done")
+# context("mdPatternDS::disc::done")

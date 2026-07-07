@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,23 +13,13 @@
 # Set up
 #
 
-context("absDS::smk::setup")
+# context("absDS::smk::setup")
 
 #
 # Tests
 #
 
-context("absDS::smk::special")
-test_that("simple absDS, NA", {
-    input <- NA
-
-    res <- absDS("input")
-
-    expect_equal(class(res), "integer")
-    expect_length(res, 1)
-    expect_true(is.na(res))
-})
-
+# context("absDS::smk::special")
 test_that("simple absDS, NaN", {
     input <- NaN
 
@@ -59,7 +50,7 @@ test_that("simple absDS, -Inf", {
     expect_true(is.infinite(res))
 })
 
-context("absDS::smk::numeric")
+# context("absDS::smk::numeric")
 test_that("simple absDS, numeric 0.0", {
     input <- 0.0
 
@@ -90,7 +81,7 @@ test_that("simple absDS, numeric -10.0", {
     expect_equal(res, 10.0)
 })
 
-context("absDS::smk::integer")
+# context("absDS::smk::integer")
 test_that("simple absDS, integer 0L", {
     input <- 0L
 
@@ -121,7 +112,7 @@ test_that("simple absDS, integer -10L", {
     expect_equal(res, 10L)
 })
 
-context("absDS::smk::special vector")
+# context("absDS::smk::special vector")
 test_that("simple absDS", {
     input <- c(NA, NaN, Inf, -Inf)
 
@@ -135,7 +126,7 @@ test_that("simple absDS", {
     expect_true(is.infinite(res[4]))
 })
 
-context("absDS::smk::numeric vector")
+# context("absDS::smk::numeric vector")
 test_that("simple absDS", {
     input <- c(0.0, 4.0, 9.0, -10.0, -50.0, -20.0)
 
@@ -151,7 +142,7 @@ test_that("simple absDS", {
     expect_equal(res[6], 20.0)
 })
 
-context("absDS::smk::integer vector")
+# context("absDS::smk::integer vector")
 test_that("simple absDS", {
     input        <- c(0L, 4L, 9L, -10L, -50L, -20L)
 
@@ -166,11 +157,10 @@ test_that("simple absDS", {
     expect_equal(res[5], 50L)
     expect_equal(res[6], 20L)
 })
-
 #
 # Done
 #
 
-context("absDS::smk::shutdown")
+# context("absDS::smk::shutdown")
 
-context("absDS::smk::done")
+# context("absDS::smk::done")

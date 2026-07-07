@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("densityGridDS::smk::setup")
+# context("densityGridDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -21,7 +22,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("densityGridDS::smk")
+# context("densityGridDS::smk")
 test_that("densityGridDS", {
   
   xvect <- c(11.95, 10.06, 9.98,  9.50, 12.26,  9.66, 11.08, 12.29, 11.00,  9.91,  
@@ -53,6 +54,6 @@ test_that("densityGridDS", {
 # Done
 #
 
-context("densityGridDS::smk::shutdown")
+# context("densityGridDS::smk::shutdown")
 
-context("densityGridDS::smk::done")
+# context("densityGridDS::smk::done")

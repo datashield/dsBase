@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +13,13 @@
 # Set up
 #
 
-context("checkNegValueDS::smk::setup")
+# context("checkNegValueDS::smk::setup")
 
 #
 # Tests
 #
 
-context("checkNegValueDS::smk::with no neg")
+# context("checkNegValueDS::smk::with no neg")
 test_that("simple checkNegValueDS, with no neg and no NA", {
     input <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
 
@@ -39,7 +40,7 @@ test_that("simple checkNegValueDS, with no neg and NA", {
     expect_equal(res, FALSE)
 })
 
-context("checkNegValueDS::smk::with neg")
+# context("checkNegValueDS::smk::with neg")
 test_that("simple checkNegValueDS, with neg and no NA", {
     input <- c(0.0, -1.0, -2.0, 3.0, -4.0, 5.0, -6.0, 7.0)
 
@@ -64,6 +65,6 @@ test_that("simple checkNegValueDS, with neg and NA", {
 # Done
 #
 
-context("checkNegValueDS::smk::shutdown")
+# context("checkNegValueDS::smk::shutdown")
 
-context("checkNegValueDS::smk::done")
+# context("checkNegValueDS::smk::done")

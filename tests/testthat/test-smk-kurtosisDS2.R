@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("kurtosisDS2::smk::setup")
+# context("kurtosisDS2::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +21,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("kurtosisDS2::smk")
+# context("kurtosisDS2::smk")
 test_that("simple kurtosisDS2", {
     input       <- c(1.0, 2.0, 2.0, 3.0, 3.0)
     global.mean <- 2.5
@@ -43,6 +44,6 @@ test_that("simple kurtosisDS2", {
 # Done
 #
 
-context("kurtosisDS2::smk::shutdown")
+# context("kurtosisDS2::smk::shutdown")
 
-context("kurtosisDS2::smk::done")
+# context("kurtosisDS2::smk::done")

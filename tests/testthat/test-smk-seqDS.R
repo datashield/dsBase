@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("seqDS::smk::setup")
+# context("seqDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +21,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("seqDS::smk")
+# context("seqDS::smk")
 test_that("simple seqDS", {
     FROM.value.char       <- "1"
     TO.value.char         <- "12"
@@ -121,6 +122,6 @@ test_that("simple seqDS", {
 # Done
 #
 
-context("seqDS::smk::shutdown")
+# context("seqDS::smk::shutdown")
 
-context("seqDS::smk::done")
+# context("seqDS::smk::done")

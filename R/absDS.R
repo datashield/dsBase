@@ -9,15 +9,14 @@
 #' which is written to the serverside. The output object is of class numeric
 #' or integer.
 #' @author Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 absDS <- function(x) {
-  x.var <- eval(parse(text = x), envir = parent.frame())
+  x.var <- .loadServersideObject(x)
+  .checkClass(obj = x.var, obj_name = x, permitted_classes = c("numeric", "integer"))
 
-  # compute the absolute values of x
   out <- abs(x.var)
-
-  # assign the outcome to the data servers
   return(out)
 }
 # ASSIGN FUNCTION

@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# Copyright (c) 2024 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("metadataDS::smk::setup")
+# context("metadataDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("metadataDS::smk::list")
+# context("metadataDS::smk::list")
 test_that("simple metadataDS, list of values", {
     input <- list(v1 = 0.0, v2 = 1.0)
 
@@ -36,7 +36,7 @@ test_that("simple metadataDS, list of values", {
     expect_true("v2" %in% res$names)
 })
 
-context("metadataDS::smk::list field")
+# context("metadataDS::smk::list field")
 test_that("simple metadataDS, list of vectors", {
     input <- list(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
@@ -50,6 +50,6 @@ test_that("simple metadataDS, list of vectors", {
 # Done
 #
 
-context("metadataDS::smk::shutdown")
+# context("metadataDS::smk::shutdown")
 
-context("metadataDS::smk::done")
+# context("metadataDS::smk::done")

@@ -1,0 +1,15 @@
+## Description
+[Write a description of the changes you have made]
+
+## Checklist (all items may not apply)
+
+### Refactor
+- [ ] Replace `eval(parse(text = x), envir = parent.frame())` with  `.loadServersideObject()`
+- [ ] Where appropriate, check object class using `.checkClass()
+- [ ] Check whether additional checks are required on the server-side 
+
+### Testing
+- [ ] Writen server-side unit tests for unhappy flow
+- [ ] Run and passed `devtools::test(filter = "smk-|disc|arg")`
+- [ ] Run and passed `devtools::check(args = '--no-tests')` (we run tests separately to skip performance checks)
+- [ ] Run and passed `devtools::build`

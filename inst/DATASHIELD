@@ -70,7 +70,9 @@ AggregateMethods:
     is.null=base::is.null,
     is.numeric=base::is.numeric,
     NROW=base::NROW,
-    t.test=stats::t.test
+    t.test=stats::t.test,
+    getClassAllColsDS,
+    getAllLevelsDS
 AssignMethods:
     absDS,
     asCharacterDS,
@@ -150,8 +152,8 @@ AssignMethods:
     c=dsBase::vectorDS,
     complete.cases=stats::complete.cases,
     list=base::list,
-    exp=base::exp,
-    log=base::log,
+    expDS,
+    logDS,
     sqrt=base::sqrt,
     abs=base::abs,
     sin=base::sin,
@@ -161,7 +163,10 @@ AssignMethods:
     acos=base::acos,
     atan=base::atan,
     sum=base::sum,
-    unlist=base::unlist
+    unlist=base::unlist,
+    fixClassDS,
+    fixColsDS,
+    fixLevelsDS
 Options:
     datashield.privacyLevel=5,
     default.datashield.privacyControlLevel="banana",

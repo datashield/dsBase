@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -11,7 +12,7 @@
 # Datashield test suite set up
 #
 
-context("setup - start")
+# context("setup - start")
 
 library(RANN)
 library(stringr)
@@ -20,6 +21,7 @@ library(lme4)
 source("disclosure/set_disclosure_settings.R")
 source("random/set_random_seed_settings.R")
 
+options(perf.profile = "perf_files/performance_refactor_profile.csv")
 source("perf_tests/perf_rate.R")
 
-context("setup - done")
+# context("setup - done")

@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +13,13 @@
 # Set up
 #
 
-context("rUnifDS::smk::setup")
+# context("rUnifDS::smk::setup")
 
 #
 # Tests
 #
 
-context("rUnifDS::smk::simple")
+# context("rUnifDS::smk::simple")
 test_that("simple rUnifDS, by name", {
     n   <- 8
     min <- 2
@@ -61,6 +62,6 @@ test_that("simple rUnifDS, direct", {
 # Done
 #
 
-context("rUnifDS::smk::shutdown")
+# context("rUnifDS::smk::shutdown")
 
-context("rUnifDS::smk::done")
+# context("rUnifDS::smk::done")

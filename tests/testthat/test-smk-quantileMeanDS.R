@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +13,13 @@
 # Set up
 #
 
-context("quantileMeanDS::smk::setup")
+# context("quantileMeanDS::smk::setup")
 
 #
 # Tests
 #
 
-context("quantileMeanDS::smk")
+# context("quantileMeanDS::smk")
 test_that("numeric quantileMeanDS", {
     input <- c(0.0, 1.0, 2.0, 3.0, 4.0)
 
@@ -49,7 +50,7 @@ test_that("numeric quantileMeanDS", {
     expect_equal(res.names[[8]], "Mean")
 })
 
-context("quantileMeanDS::smk::with NA")
+# context("quantileMeanDS::smk::with NA")
 test_that("numeric quantileMeanDS, with NA", {
     input <- c(0.0, NA, 2.0, NA, 4.0)
 
@@ -84,6 +85,6 @@ test_that("numeric quantileMeanDS, with NA", {
 # Done
 #
 
-context("quantileMeanDS::smk::shutdown")
+# context("quantileMeanDS::smk::shutdown")
 
-context("quantileMeanDS::smk::done")
+# context("quantileMeanDS::smk::done")

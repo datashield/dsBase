@@ -20,26 +20,13 @@
 #' coerces objects to list depends on the class of the object, but in general
 #' the class of the output object should usually be 'list'
 #' @author Amadou Gaye, Paul Burton for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 asListDS <- function (x.name, newobj){
+  x <- .loadServersideObject(x.name)
 
-    newobj.class <- NULL
-    if(is.character(x.name)){
-        active.text<-paste0(newobj,"<-as.list(",x.name,")")
-        eval(parse(text=active.text), envir = parent.frame())
-
-        active.text2<-paste0("class(",newobj,")")
-        assign("newobj.class", eval(parse(text=active.text2), envir = parent.frame()))
-
-    }else{
-        studysideMessage<-"ERROR: x.name must be specified as a character string"
-        stop(studysideMessage, call. = FALSE)
-    }
-
-    return.message<-paste0("New object <",newobj,"> created")
-    object.class.text<-paste0("Class of <",newobj,"> is '",newobj.class,"'")
-
-    return(list(return.message=return.message,class.of.newobj=object.class.text))
+  result <- as.list(x)
+  assign(newobj, result, envir = parent.frame())
 }
-# AGGEGATE FUNCTION
+# AGGREGATE FUNCTION
 # asListDS

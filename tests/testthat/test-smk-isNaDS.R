@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,78 +13,85 @@
 # Set up
 #
 
-context("isNaDS::smk::setup")
+# context("isNaDS::smk::setup")
 
 #
 # Tests
 #
 
-context("isNaDS::smk::numeric vector")
+# context("isNaDS::smk::numeric vector")
 test_that("numeric vector isNaDS", {
     input <- c(0.1, 1.1, 2.1, 3.1, 4.1)
 
-    res <- isNaDS(input)
+    res <- isNaDS("input")
 
-    expect_length(res, 1)
-    expect_equal(class(res), "logical")
-    expect_equal(res, FALSE)
+    expect_length(res$is.na, 1)
+    expect_equal(class(res$is.na), "logical")
+    expect_equal(res$is.na, FALSE)
 })
 
 test_that("numeric vector isNaDS - with NA single", {
     input <- c(0.1, NA, 2.1, 3.1, 4.1)
 
-    res <- isNaDS(input)
+    res <- isNaDS("input")
 
-    expect_length(res, 1)
-    expect_equal(class(res), "logical")
-    expect_equal(res, FALSE)
+    expect_length(res$is.na, 1)
+    expect_equal(class(res$is.na), "logical")
+    expect_equal(res$is.na, FALSE)
 })
 
 test_that("numeric vector isNaDS - with NA all", {
     input <- c(NA, NA, NA, NA, NA)
 
-    res <- isNaDS(input)
+    res <- isNaDS("input")
 
-    expect_length(res, 1)
-    expect_equal(class(res), "logical")
-    expect_equal(res, TRUE)
+    expect_length(res$is.na, 1)
+    expect_equal(class(res$is.na), "logical")
+    expect_equal(res$is.na, TRUE)
 })
 
-context("isNaDS::smk::character vector")
+# context("isNaDS::smk::character vector")
 test_that("character vector isNaDS", {
     input <- c("101", "202", "303", "404", "505")
 
-    res <- isNaDS(input)
+    res <- isNaDS("input")
 
-    expect_length(res, 1)
-    expect_equal(class(res), "logical")
-    expect_equal(res, FALSE)
+    expect_length(res$is.na, 1)
+    expect_equal(class(res$is.na), "logical")
+    expect_equal(res$is.na, FALSE)
 })
 
 test_that("character vector isNaDS - with NA single", {
     input <- c("101", NA, "303", "404", "505")
 
-    res <- isNaDS(input)
+    res <- isNaDS("input")
 
-    expect_length(res, 1)
-    expect_equal(class(res), "logical")
-    expect_equal(res, FALSE)
+    expect_length(res$is.na, 1)
+    expect_equal(class(res$is.na), "logical")
+    expect_equal(res$is.na, FALSE)
 })
 
 test_that("character vector isNaDS - with NA all", {
     input <- c(NA, NA, NA, NA, NA)
 
-    res <- isNaDS(input)
+    res <- isNaDS("input")
 
-    expect_length(res, 1)
-    expect_equal(class(res), "logical")
-    expect_equal(res, TRUE)
+    expect_length(res$is.na, 1)
+    expect_equal(class(res$is.na), "logical")
+    expect_equal(res$is.na, TRUE)
+})
+
+test_that("isNaDS throws error when object does not exist", {
+    expect_error(
+        isNaDS("nonexistent_object"),
+        regexp = "does not exist"
+    )
 })
 
 #
 # Done
 #
 
-context("isNaDS::smk::shutdown")
+# context("isNaDS::smk::shutdown")
 
-context("isNaDS::smk::done")
+# context("isNaDS::smk::done")

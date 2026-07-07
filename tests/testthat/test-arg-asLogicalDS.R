@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,35 +13,35 @@
 # Set up
 #
 
-context("asLogicalDS::arg::setup")
+# context("asLogicalDS::arg::setup")
 
 #
 # Tests
 #
 
-context("asLogicalDS::arg::direct input numeric")
+# context("asLogicalDS::arg::direct input numeric")
 test_that("simple asLogicalDS non-input", {
-    expect_error(asLogicalDS(1.0), "ERROR: x.name must be specified as a character string", fixed = TRUE)
+    expect_error(asLogicalDS(1.0), "The input must be a single character string", fixed = TRUE)
 })
 
-context("asLogicalDS::arg::input NULL")
+# context("asLogicalDS::arg::input NULL")
 test_that("simple asLogicalDS NULL", {
     input <- NULL
 
-    expect_error(asLogicalDS("input"), "ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer, character or matrix", fixed = TRUE)
+    expect_error(asLogicalDS("input"), "The server-side object must be of type numeric, integer, character or matrix. 'input' is type NULL.", fixed = TRUE)
 })
 
-context("asLogicalDS::arg::input NA")
+# context("asLogicalDS::arg::input NA")
 test_that("simple asLogicalDS NA", {
     input <- NA
 
-    expect_error(asLogicalDS("input"), "ERROR: for ds.asLogical function, x.name must specify an input object of class numeric, integer, character or matrix", fixed = TRUE)
+    expect_error(asLogicalDS("input"), "The server-side object must be of type numeric, integer, character or matrix. 'input' is type logical.", fixed = TRUE)
 })
 
 #
 # Done
 #
 
-context("asLogicalDS::arg::shutdown")
+# context("asLogicalDS::arg::shutdown")
 
-context("asLogicalDS::arg::done")
+# context("asLogicalDS::arg::done")

@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,13 +13,13 @@
 # Set up
 #
 
-context("asListDS::smk::setup")
+# context("asListDS::smk::setup")
 
 #
 # Tests
 #
 
-context("asListDS::smk::simple")
+# context("asListDS::smk::simple")
 test_that("simple asListDS", {
     input       <- list(v1 = c(1, 2, 3), v2 = c(4, 5, 6))
     newobj.name <- 'newobj'
@@ -28,19 +29,13 @@ test_that("simple asListDS", {
     res <- asListDS("input", newobj.name)
 
     expect_true(exists("newobj"))
-
-    expect_equal(class(res), "list")
-    expect_length(res, 2)
-    expect_equal(res[[1]], "New object <newobj> created")
-    expect_equal(res[[2]], "Class of <newobj> is 'list'")
-    expect_equal(res$return.message, "New object <newobj> created")
-    expect_equal(res$class.of.newobj, "Class of <newobj> is 'list'")
+    expect_equal(class(newobj), "list")
+    expect_length(newobj, 2)
 })
-
 #
 # Done
 #
 
-context("asListDS::smk::shutdown")
+# context("asListDS::smk::shutdown")
 
-context("asListDS::smk::done")
+# context("asListDS::smk::done")

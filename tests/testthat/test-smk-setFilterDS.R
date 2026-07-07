@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("setFilterDS::smk::setup")
+# context("setFilterDS::smk::setup")
 
 set.standard.disclosure.settings
 
@@ -20,7 +21,7 @@ set.standard.disclosure.settings
 # Tests
 #
 
-context("setFilterDS::smk::simple")
+# context("setFilterDS::smk::simple")
 test_that("simple setFilterDS", {
     res <- setFilterDS()
 
@@ -43,6 +44,6 @@ test_that("simple setFilterDS", {
 # Done
 #
 
-context("setFilterDS::smk::shutdown")
+# context("setFilterDS::smk::shutdown")
 
-context("setFilterDS::smk::done")
+# context("setFilterDS::smk::done")
