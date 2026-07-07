@@ -79,11 +79,11 @@ Imports:
     tibble,
     tidyselect,
     stats,
-    lubridate,
-    tidytable
+    lubridate
 Suggests:
     spelling,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    tidytable
 RoxygenNote: 8.0.0
 Encoding: UTF-8
 Language: en-GB
