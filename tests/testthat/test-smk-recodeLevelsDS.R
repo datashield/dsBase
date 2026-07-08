@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("recodeLevelsDS::smk::setup")
+# context("recodeLevelsDS::smk::setup")
 
 #
 # Tests
@@ -41,6 +41,6 @@ test_that("simple recodeLevelsDS", {
 # Done
 #
 
-context("recodeLevelsDS::smk::shutdown")
+# context("recodeLevelsDS::smk::shutdown")
 
-context("recodeLevelsDS::smk::done")
+# context("recodeLevelsDS::smk::done")

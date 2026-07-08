@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("igb_standardsDS::smk::setup")
+# context("igb_standardsDS::smk::setup")
 
 #
 # Tests
 #
 
-context("igb_standardsDS::smk::simple")
+# context("igb_standardsDS::smk::simple")
 
 data <- data.frame(
     gagebrth = c(287, 287, 287, 280, 280, 280, 280, 266, 266, 259, 
@@ -157,6 +157,6 @@ test_that("igb_standardsDS - igb_centile2value", {
 # Done
 #
 
-context("igb_standardsDS::smk::shutdown")
+# context("igb_standardsDS::smk::shutdown")
 
-context("igb_standardsDS::smk::done")
+# context("igb_standardsDS::smk::done")

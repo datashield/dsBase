@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("densityGridDS::smk::setup")
+# context("densityGridDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -21,7 +21,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("densityGridDS::smk")
+# context("densityGridDS::smk")
 test_that("densityGridDS", {
   
   xvect <- c(11.95, 10.06, 9.98,  9.50, 12.26,  9.66, 11.08, 12.29, 11.00,  9.91,  
@@ -53,6 +53,6 @@ test_that("densityGridDS", {
 # Done
 #
 
-context("densityGridDS::smk::shutdown")
+# context("densityGridDS::smk::shutdown")
 
-context("densityGridDS::smk::done")
+# context("densityGridDS::smk::done")

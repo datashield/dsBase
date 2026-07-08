@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("bp_standardsDS::smk::setup")
+# context("bp_standardsDS::smk::setup")
 
 #
 # Tests
 #
 
-context("bp_standardsDS::smk::systolic")
+# context("bp_standardsDS::smk::systolic")
 test_that("systolic bp_standardsDS", {
   
   sex <- c(2, 2, 2, 2, 2, 1, 2, 1, 2, 1)
@@ -46,7 +46,7 @@ test_that("systolic bp_standardsDS", {
     
 })
 
-context("bp_standardsDS::smk::diastolic")
+# context("bp_standardsDS::smk::diastolic")
 test_that("diastolic bp_standardsDS", {
   
   sex <- c(2, 2, 2, 2, 2, 1, 2, 1, 2, 1)
@@ -79,6 +79,6 @@ test_that("diastolic bp_standardsDS", {
 # Done
 #
 
-context("bp_standardsDS::smk::shutdown")
+# context("bp_standardsDS::smk::shutdown")
 
-context("bp_standardsDS::smk::done")
+# context("bp_standardsDS::smk::done")

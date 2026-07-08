@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("sampleDS::smk::setup")
+# context("sampleDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("sampleDS::smk::simple")
+# context("sampleDS::smk::simple")
 test_that("simple sampleDS", {
     x       <- c(1:32)
     size    <- 16
@@ -49,6 +49,6 @@ test_that("simple sampleDS", {
 # Done
 #
 
-context("sampleDS::smk::shutdown")
+# context("sampleDS::smk::shutdown")
 
-context("sampleDS::smk::done")
+# context("sampleDS::smk::done")

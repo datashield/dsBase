@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("rPoisDS::smk::setup")
+# context("rPoisDS::smk::setup")
 
 #
 # Tests
 #
 
-context("rPoisDS::smk::simple")
+# context("rPoisDS::smk::simple")
 test_that("simple rPoisDS, by name", {
     n      <- 8
     lambda <- 32
@@ -59,6 +59,6 @@ test_that("simple rPoisDS, direct", {
 # Done
 #
 
-context("rPoisDS::smk::shutdown")
+# context("rPoisDS::smk::shutdown")
 
-context("rPoisDS::smk::done")
+# context("rPoisDS::smk::done")

@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("recodeValuesDS::smk::setup")
+# context("recodeValuesDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -126,6 +126,6 @@ test_that("simple recodeValuesDS, character input with missings", {
 # Done
 #
 
-context("recodeValuesDS::smk::shutdown")
+# context("recodeValuesDS::smk::shutdown")
 
-context("recodeValuesDS::smk::done")
+# context("recodeValuesDS::smk::done")

@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("listDS::smk::setup")
+# context("listDS::smk::setup")
 
 #
 # Tests
 #
 
-context("listDS::smk::simple")
+# context("listDS::smk::simple")
 test_that("simple listDS", {
     input    <- list(v1 = c(1, 2, 3), v2 = c(4, 5, 6))
     eltnames <- c('n1', 'n2')
@@ -42,6 +42,6 @@ test_that("simple listDS", {
 # Done
 #
 
-context("listDS::smk::shutdown")
+# context("listDS::smk::shutdown")
 
-context("listDS::smk::done")
+# context("listDS::smk::done")

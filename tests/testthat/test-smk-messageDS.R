@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("messageDS::smk::setup")
+# context("messageDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("messageDS::smk")
+# context("messageDS::smk")
 test_that("simple messageDS", {
     expect_warning(base::rm("object"), "object 'object' not found", fixed = TRUE)
 
@@ -86,6 +86,6 @@ test_that("simple messageDS", {
 # Done
 #
 
-context("messageDS::smk::shutdown")
+# context("messageDS::smk::shutdown")
 
-context("messageDS::smk::done")
+# context("messageDS::smk::done")

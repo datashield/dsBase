@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("isNaDS::smk::setup")
+# context("isNaDS::smk::setup")
 
 #
 # Tests
 #
 
-context("isNaDS::smk::numeric vector")
+# context("isNaDS::smk::numeric vector")
 test_that("numeric vector isNaDS", {
     input <- c(0.1, 1.1, 2.1, 3.1, 4.1)
 
@@ -49,7 +49,7 @@ test_that("numeric vector isNaDS - with NA all", {
     expect_equal(res, TRUE)
 })
 
-context("isNaDS::smk::character vector")
+# context("isNaDS::smk::character vector")
 test_that("character vector isNaDS", {
     input <- c("101", "202", "303", "404", "505")
 
@@ -84,6 +84,6 @@ test_that("character vector isNaDS - with NA all", {
 # Done
 #
 
-context("isNaDS::smk::shutdown")
+# context("isNaDS::smk::shutdown")
 
-context("isNaDS::smk::done")
+# context("isNaDS::smk::done")

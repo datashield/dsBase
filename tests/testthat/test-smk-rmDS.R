@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("rmDS::smk::setup")
+# context("rmDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("rmDS::smk::single")
+# context("rmDS::smk::single")
 test_that("single rmDS", {
     expect_false(exists("input"))
 
@@ -40,7 +40,7 @@ test_that("single rmDS", {
     expect_equal(res$problem.objects, "", fixed = TRUE)
 })
 
-context("rmDS::smk::multiple")
+# context("rmDS::smk::multiple")
 test_that("multiple rmDS", {
     expect_false(exists("input1"))
     expect_false(exists("input2"))
@@ -65,7 +65,7 @@ test_that("multiple rmDS", {
     expect_equal(res$problem.objects, "", fixed = TRUE)
 })
 
-context("rmDS::smk::single missing")
+# context("rmDS::smk::single missing")
 test_that("single missing rmDS", {
     expect_false(exists("input"))
 
@@ -82,7 +82,7 @@ test_that("single missing rmDS", {
 })
 
 
-context("rmDS::smk::multiple missing")
+# context("rmDS::smk::multiple missing")
 test_that("multiple missing rmDS", {
     expect_false(exists("input1"))
     expect_false(exists("input2"))
@@ -100,7 +100,7 @@ test_that("multiple missing rmDS", {
     expect_equal(res$problem.objects, "", fixed = TRUE)
 })
 
-context("rmDS::smk::multiple mixed")
+# context("rmDS::smk::multiple mixed")
 test_that("multiple mixed rmDS", {
     expect_false(exists("input1"))
     expect_false(exists("input2"))
@@ -124,6 +124,6 @@ test_that("multiple mixed rmDS", {
 # Done
 #
 
-context("rmDS::smk::shutdown")
+# context("rmDS::smk::shutdown")
 
-context("rmDS::smk::done")
+# context("rmDS::smk::done")

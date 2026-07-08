@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("seqDS::smk::setup")
+# context("seqDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("seqDS::smk")
+# context("seqDS::smk")
 test_that("simple seqDS", {
     FROM.value.char       <- "1"
     TO.value.char         <- "12"
@@ -121,6 +121,6 @@ test_that("simple seqDS", {
 # Done
 #
 
-context("seqDS::smk::shutdown")
+# context("seqDS::smk::shutdown")
 
-context("seqDS::smk::done")
+# context("seqDS::smk::done")

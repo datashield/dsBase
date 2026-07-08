@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("meanDS::smk::setup")
+# context("meanDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("meanDS::smk::numeric")
+# context("meanDS::smk::numeric")
 test_that("numeric meanDS", {
     input <- c(0.0, 1.0, 2.0, 3.0, 4.0)
 
@@ -40,7 +40,7 @@ test_that("numeric meanDS", {
     expect_equal(res$ValidityMessage, "VALID ANALYSIS")
 })
 
-context("meanDS::smk::numeric with NA")
+# context("meanDS::smk::numeric with NA")
 test_that("numeric meanDS, with NA", {
     input <- c(0.0, NA, 2.0, NA, 4.0)
 
@@ -60,7 +60,7 @@ test_that("numeric meanDS, with NA", {
     expect_equal(res$ValidityMessage, "VALID ANALYSIS")
 })
 
-context("meanDS::smk::numeric with all NA")
+# context("meanDS::smk::numeric with all NA")
 test_that("numeric meanDS, with all NA", {
     input <- c(NA, NA, NA, NA, NA)
     
@@ -84,6 +84,6 @@ test_that("numeric meanDS, with all NA", {
 # Done
 #
 
-context("meanDS::smk::shutdown")
+# context("meanDS::smk::shutdown")
 
-context("meanDS::smk::done")
+# context("meanDS::smk::done")

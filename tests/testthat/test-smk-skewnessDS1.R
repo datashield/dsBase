@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("skewnessDS1::smk::setup")
+# context("skewnessDS1::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("skewnessDS1::smk::method 1")
+# context("skewnessDS1::smk::method 1")
 test_that("simple skewnessDS1, method 1", {
     input <- c(0.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 3.0, 4.0)
 
@@ -36,7 +36,7 @@ test_that("simple skewnessDS1, method 1", {
     expect_equal(res$ValidityMessage, "VALID ANALYSIS")
 })
 
-context("skewnessDS1::smk::method 2")
+# context("skewnessDS1::smk::method 2")
 test_that("simple skewnessDS1, method 2", {
     input <- c(0.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 3.0, 4.0)
 
@@ -52,7 +52,7 @@ test_that("simple skewnessDS1, method 2", {
     expect_equal(res$ValidityMessage, "VALID ANALYSIS")
 })
 
-context("skewnessDS1::smk::method 3")
+# context("skewnessDS1::smk::method 3")
 test_that("simple skewnessDS1, method 3", {
     input <- c(0.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 3.0, 4.0)
 
@@ -72,6 +72,6 @@ test_that("simple skewnessDS1, method 3", {
 # Done
 #
 
-context("skewnessDS1::smk::shutdown")
+# context("skewnessDS1::smk::shutdown")
 
-context("skewnessDS1::smk::done")
+# context("skewnessDS1::smk::done")

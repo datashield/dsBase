@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("lsDS::smk::setup")
+# context("lsDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("lsDS::smk::simple")
+# context("lsDS::smk::simple")
 test_that("simple lsDS", {
     .GlobalEnv$test.obj <- "value"
 
@@ -36,7 +36,7 @@ test_that("simple lsDS", {
     expect_true("test.obj" %in% res$objects.found)
 })
 
-context("lsDS::smk::simple")
+# context("lsDS::smk::simple")
 test_that("simple lsDS", {
     .GlobalEnv$test.obj <- "value"
 
@@ -58,6 +58,6 @@ test_that("simple lsDS", {
 # Done
 #
 
-context("lsDS::smk::shutdown")
+# context("lsDS::smk::shutdown")
 
-context("lsDS::smk::done")
+# context("lsDS::smk::done")

@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("changeRefGroupDS::smk::setup")
+# context("changeRefGroupDS::smk::setup")
 
 #
 # Tests
 #
 
-context("changeRefGroupDS::smk")
+# context("changeRefGroupDS::smk")
 test_that("simple changeRefGroupDS, reorderByRef is FALSE", {
     x            <- c(8, 1, 6, 1, 4, 1, 2, 1)
     xf           <- as.factor(x)
@@ -107,6 +107,6 @@ test_that("simple changeRefGroupDS, reorderByRef is TRUE", {
 # Done
 #
 
-context("changeRefGroupDS::smk::shutdown")
+# context("changeRefGroupDS::smk::shutdown")
 
-context("changeRefGroupDS::smk::done")
+# context("changeRefGroupDS::smk::done")

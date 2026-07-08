@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("classDS::smk::setup")
+# context("classDS::smk::setup")
 
 #
 # Tests
 #
 
-context("classDS::smk::character")
+# context("classDS::smk::character")
 test_that("simple classDS, character", {
     input <- "value"
 
@@ -39,7 +39,7 @@ test_that("simple classDS, character vector", {
     expect_equal(res, "character")
 })
 
-context("classDS::smk::integer")
+# context("classDS::smk::integer")
 test_that("simple classDS, integer", {
     input <- 1L
 
@@ -60,7 +60,7 @@ test_that("simple classDS, integer vector", {
     expect_equal(res, "integer")
 })
 
-context("classDS::smk::numeric")
+# context("classDS::smk::numeric")
 test_that("simple classDS, numeric", {
     input <- 1.1
 
@@ -81,7 +81,7 @@ test_that("simple classDS, numeric vector", {
     expect_equal(res, "numeric")
 })
 
-context("classDS::smk::logical")
+# context("classDS::smk::logical")
 test_that("simple classDS, logical, FALSE", {
     input <- FALSE
 
@@ -112,7 +112,7 @@ test_that("simple classDS, logical vector", {
     expect_equal(res, "logical")
 })
 
-context("classDS::smk::data.frame")
+# context("classDS::smk::data.frame")
 test_that("simple classDS, data.frame", {
     input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
@@ -123,7 +123,7 @@ test_that("simple classDS, data.frame", {
     expect_equal(res, "data.frame")
 })
 
-context("classDS::smk::array")
+# context("classDS::smk::array")
 test_that("simple classDS, array", {
     input <- array(c(0.0, 1.0, 2.0, 3.0, 4.0))
 
@@ -134,7 +134,7 @@ test_that("simple classDS, array", {
     expect_equal(res, "array")
 })
 
-context("classDS::smk::matrix")
+# context("classDS::smk::matrix")
 test_that("simple classDS, matrix", {
     input <- matrix(c(0.0, 1.0, 2.0, 3.0, 4.0))
 
@@ -154,7 +154,7 @@ test_that("simple classDS, matrix", {
     }
 })
 
-context("classDS::smk::data.matrix")
+# context("classDS::smk::data.matrix")
 test_that("simple classDS, data.matrix", {
     input <- data.matrix(data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0)))
 
@@ -174,7 +174,7 @@ test_that("simple classDS, data.matrix", {
     }
 })
 
-context("classDS::smk::date")
+# context("classDS::smk::date")
 test_that("simple classDS, date", {
     input <- Sys.Date()
 
@@ -185,7 +185,7 @@ test_that("simple classDS, date", {
     expect_equal(res, "Date")
 })
 
-context("classDS::smk::formula")
+# context("classDS::smk::formula")
 test_that("simple classDS, formula", {
     input <- X ~ A + B
 
@@ -196,7 +196,7 @@ test_that("simple classDS, formula", {
     expect_equal(res, "formula")
 })
 
-context("classDS::smk::environment")
+# context("classDS::smk::environment")
 test_that("simple classDS, environment", {
     input <- environment()
 
@@ -207,7 +207,7 @@ test_that("simple classDS, environment", {
     expect_equal(res, "environment")
 })
 
-context("classDS::smk::NA")
+# context("classDS::smk::NA")
 test_that("special classDS, NA", {
     input <- NA
 
@@ -218,7 +218,7 @@ test_that("special classDS, NA", {
     expect_equal(res, "logical")
 })
 
-context("classDS::smk::NULL")
+# context("classDS::smk::NULL")
 test_that("special classDS, NULL", {
     input <- NULL
 
@@ -233,6 +233,6 @@ test_that("special classDS, NULL", {
 # Done
 #
 
-context("classDS::smk::shutdown")
+# context("classDS::smk::shutdown")
 
-context("classDS::smk::done")
+# context("classDS::smk::done")

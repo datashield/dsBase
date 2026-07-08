@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("dimDS::smk::setup")
+# context("dimDS::smk::setup")
 
 #
 # Tests
 #
 
-context("dimDS::smk::numeric")
+# context("dimDS::smk::numeric")
 test_that("numeric dimDS", {
     input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
@@ -30,7 +30,7 @@ test_that("numeric dimDS", {
     expect_equal(res[2], 2)
 })
 
-context("dimDS::smk::character")
+# context("dimDS::smk::character")
 test_that("character dimDS", {
     input <- data.frame(v1 = c("0.0", "1.0", "2.0", "3.0", "4.0"), v2 = c("4.0", "3.0", "2.0", "1.0", "0.0"), stringsAsFactors = FALSE)
 
@@ -46,6 +46,6 @@ test_that("character dimDS", {
 # Done
 #
 
-context("dimDS::smk::shutdown")
+# context("dimDS::smk::shutdown")
 
-context("dimDS::smk::done")
+# context("dimDS::smk::done")
