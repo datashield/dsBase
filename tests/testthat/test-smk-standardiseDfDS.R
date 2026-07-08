@@ -12,7 +12,13 @@
 # Set up
 #
 
-context("standardiseDfDS::smk::setup")
+# context("standardiseDfDS::smk::setup")
+
+set.standard.disclosure.settings()
+
+#
+# Tests
+#
 
 df <- create_mixed_dataframe()
 df_list <- create_additional_dataframes(df)
@@ -22,7 +28,7 @@ df_2 <- df_list[[1]]
 df_3 <- df_list[[2]]
 df_4 <- df_list[[3]]
 
-context("standardiseDfDS::smk")
+# context("standardiseDfDS::smk")
 test_that("getClassAllColsDS returns correct classes", {
   expect_equal(
     getClassAllColsDS("df_1"),
@@ -158,6 +164,6 @@ test_that("fixLevelsDS throws an error for invalid input", {
 # Done
 #
 
-context("standardiseDfDS::smk::shutdown")
+# context("standardiseDfDS::smk::shutdown")
 
-context("standardiseDfDS::smk::done")
+# context("standardiseDfDS::smk::done")
