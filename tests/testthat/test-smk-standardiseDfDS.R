@@ -49,7 +49,7 @@ test_that("fixClassDS sets classes correctly", {
   )
 
   expect_equal(
-    classes_changed_df %>% tidytable::map_chr(class) %>% unname(),
+    classes_changed_df %>% purrr::map_chr(class) %>% unname(),
     c("factor", "factor", "numeric", "factor", "factor", "factor", "factor", "integer", "factor",
       "factor", "factor", "factor", "character", "logical", "factor", "integer", "integer",
       "numeric", "logical", "integer", "character", "numeric", "numeric", "character", "numeric",
@@ -89,9 +89,7 @@ test_that("fixColsDS correctly adds missing columns", {
 
 test_that("getAllLevelsDS correctly retrieves the levels of specified factor columns", {
 
-  factor_vars <- c("fac_col1", "fac_col2", "fac_col3", "fac_col4", "fac_col5", "fac_col6", "fac_col7",
-                  "fac_col8", "fac_col9", "fac_col10", "fac_col11", "fac_col12", "fac_col14",
-                  "fac_col15", "col27")
+  factor_vars <- "fac_col1, fac_col2, fac_col3, fac_col4, fac_col5, fac_col6, fac_col7, fac_col8, fac_col9, fac_col10, fac_col11, fac_col12, fac_col14, fac_col15, col27"
 
   observed <- getAllLevelsDS("df_3", factor_vars)
 
@@ -152,6 +150,16 @@ test_that("fixLevelsDS throws an error for invalid input", {
   )
 
   expect_error(fixLevelsDS("example_df", c("col1", "non_existent_col"), levels))
+})
+
+test_that("getAllLevelsDS stops when a variable exceeds disclosure threshold", {
+  
+  mtcars_bad_group <- mtcars %>% mutate(qsec = as.factor(qsec))
+
+  expect_error(
+    getAllLevelsDS("mtcars_bad_group", "qsec"),
+    regexp = "Based on the value of nfilter.levels.density"
+  )
 })
 
 #
