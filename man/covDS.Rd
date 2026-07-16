@@ -28,7 +28,8 @@ whether or not the input variables pass the disclosure controls. The first discl
 of variables is not bigger than a percentage of the individual-level records (the allowed percentage is pre-specified
 by the 'nfilter.glm'). The second disclosure control checks that none of them is dichotomous with a level having fewer
 counts than the pre-specified 'nfilter.tab' threshold. If any of the input variables do not pass the disclosure
-controls then all the output values are replaced with NAs.
+controls then all the output values are replaced with NAs. The list also includes \code{class}, the class
+of the input object for client-side consistency checking.
 }
 \description{
 This function computes the sum of each vector of variable and the sum of the products of each two
@@ -40,4 +41,6 @@ variables
 }
 \author{
 Amadou Gaye, Paul Burton, and Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

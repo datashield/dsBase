@@ -4,13 +4,15 @@
 \alias{meanDS}
 \title{Computes statistical mean of a vector}
 \usage{
-meanDS(xvect)
+meanDS(x)
 }
 \arguments{
-\item{xvect}{a vector}
+\item{x}{a character string, the name of a numeric or integer vector}
 }
 \value{
-a numeric, the statistical mean
+a list, with the estimated mean, the number of missing values, the number of
+valid values, the total number of values, and \code{class}, the class of the input
+object for client-side consistency checking
 }
 \description{
 Calculates the mean value.
@@ -21,4 +23,6 @@ a missing value is returned.
 }
 \author{
 Gaye A, Burton PR
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

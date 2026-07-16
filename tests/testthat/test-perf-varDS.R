@@ -36,7 +36,7 @@ test_that("numeric varDS - performance", {
     .current.time <- .start.time
 
     while (difftime(.current.time, .start.time, units = "secs")[[1]] < .durationSec) {
-        varDS(input)
+        varDS("input")
 
         .count <- .count + 1
         .current.time <- Sys.time()
@@ -71,7 +71,7 @@ test_that("numeric varDS, with NA - performance", {
     .current.time <- .start.time
 
     while (difftime(.current.time, .start.time, units = "secs")[[1]] < .durationSec) {
-        varDS(input)
+        varDS("input")
 
         .count <- .count + 1
         .current.time <- Sys.time()

@@ -4,13 +4,15 @@
 \alias{quantileMeanDS}
 \title{Generates quantiles and mean information without maximum and minimum}
 \usage{
-quantileMeanDS(xvect)
+quantileMeanDS(x)
 }
 \arguments{
-\item{xvect}{a numerical vector}
+\item{x}{a character string, the name of a numeric or integer vector}
 }
 \value{
-a numeric vector that represents the sample quantiles
+a list, with \code{quantiles}, a numeric vector that represents the sample
+quantiles, and \code{class}, the class of the input object for client-side consistency
+checking
 }
 \description{
 the probabilities 5%, 10%, 25%, 50%, 75%, 90%, 95% and the mean
@@ -18,4 +20,6 @@ are used to compute the corresponding quantiles.
 }
 \author{
 Burton, P.; Gaye, A.
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

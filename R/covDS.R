@@ -21,8 +21,10 @@
 #' of variables is not bigger than a percentage of the individual-level records (the allowed percentage is pre-specified
 #' by the 'nfilter.glm'). The second disclosure control checks that none of them is dichotomous with a level having fewer
 #' counts than the pre-specified 'nfilter.tab' threshold. If any of the input variables do not pass the disclosure
-#' controls then all the output values are replaced with NAs.
+#' controls then all the output values are replaced with NAs. The list also includes \code{class}, the class
+#' of the input object for client-side consistency checking.
 #' @author Amadou Gaye, Paul Burton, and Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 covDS <- function(x=NULL, y=NULL, use=NULL){
@@ -36,14 +38,21 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
   #nfilter.string <- as.numeric(thr$nfilter.string)
   #############################################################
   
-  x.val <- eval(parse(text=x), envir = parent.frame())
+  x.val <- .loadServersideObject(x)
+  .checkClass(obj = x.val, obj_name = x, permitted_classes = c("numeric", "integer", "matrix", "data.frame"))
+
   if (!is.null(y)){
-    y.val <- eval(parse(text=y), envir = parent.frame())
+    y.val <- .loadServersideObject(y)
+    .checkClass(obj = y.val, obj_name = y, permitted_classes = c("numeric", "integer", "matrix", "data.frame"))
   }
   else{
     y.val <- NULL
   }
-  
+
+  if (is.null(y.val) && any(class(x.val) %in% c("numeric", "integer"))) {
+    stop("If x is a numeric vector, y must also be a numeric vector.", call. = FALSE)
+  }
+
   # create a data frame for the variables
   if (is.null(y.val)){
     dataframe <- as.data.frame(x.val)
@@ -298,7 +307,7 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
   
   }
 
-  return(list(sums.of.products=sums.of.products, sums=sums, complete.counts=complete.counts, na.counts=na.counts, errorMessage=errorMessage))
+  return(list(sums.of.products=sums.of.products, sums=sums, complete.counts=complete.counts, na.counts=na.counts, errorMessage=errorMessage, class=class(x.val)))
 
 }
 # AGGREGATE FUNCTION
