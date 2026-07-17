@@ -15,7 +15,7 @@ changeRefGroupDS(x, ref = NULL, reorderByRef = NULL)
 vector should be ordered by the reference group.}
 }
 \value{
-a factor of the same length as xvect
+a factor of the same length as the input vector
 }
 \description{
 This function is similar to R function \code{relevel},

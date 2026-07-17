@@ -11,7 +11,7 @@
 #' @param ref a character, the reference level
 #' @param reorderByRef a boolean that tells whether or not the new
 #' vector should be ordered by the reference group.
-#' @return  a factor of the same length as xvect
+#' @return  a factor of the same length as the input vector
 #' @author Isaeva, J., Gaye, A.
 #' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
