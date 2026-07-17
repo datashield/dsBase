@@ -15,6 +15,8 @@
 
 # context("BooleDS::smk::setup")
 
+set.standard.disclosure.settings()
+
 #
 # Tests
 #
@@ -277,6 +279,24 @@ test_that("na-check BooleDS, logical, NA=1", {
     expect_equal(res[3], TRUE)
     expect_equal(res[4], FALSE)
     expect_equal(res[5], TRUE)
+})
+
+test_that("BooleDS errors when V1 object does not exist", {
+    input <- data.frame(v2 = c(1.0, 2.0, 3.0, 4.0, 5.0))
+
+    expect_error(
+        BooleDS("nonexistent$v1", "input$v2", 1, "NA", TRUE),
+        regexp = "does not exist"
+    )
+})
+
+test_that("BooleDS errors when V2 object does not exist", {
+    input <- data.frame(v1 = c(1.0, 2.0, 3.0, 4.0, 5.0))
+
+    expect_error(
+        BooleDS("input$v1", "nonexistent$v2", 1, "NA", TRUE),
+        regexp = "does not exist"
+    )
 })
 
 #
