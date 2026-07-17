@@ -4,16 +4,16 @@
 \alias{varDS}
 \title{Computes the variance of vector}
 \usage{
-varDS(xvect)
+varDS(x)
 }
 \arguments{
-\item{xvect}{a vector}
+\item{x}{a character string, the name of a numeric or integer vector}
 }
 \value{
 a list, with the sum of the input variable, the sum of squares of the input variable,
 the number of missing values, the number of valid values, the number of total length of the
-variable, and a study message indicating whether the number of valid is less than the
-disclosure threshold
+variable, and \code{class}, the class of the input object for client-side
+consistency checking
 }
 \description{
 Calculates the variance.
@@ -24,4 +24,6 @@ a missing value is returned.
 }
 \author{
 Amadou Gaye, Demetris Avraam, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

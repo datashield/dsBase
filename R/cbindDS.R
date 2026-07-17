@@ -19,6 +19,7 @@
 #' of \code{ds.cbind} (or default name \code{cbind.newobj})
 #' which is written to the serverside. The output object is of class data.frame.
 #' @author Paul Burton and Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #' 
 cbindDS <- function(x.names.transmit=NULL, colnames.transmit=NULL){
@@ -28,11 +29,13 @@ cbindDS <- function(x.names.transmit=NULL, colnames.transmit=NULL){
   
   x.names.input <- x.names.transmit
   x.names.act1 <- unlist(strsplit(x.names.input, split=","))
-  x.names.act2 <- paste(x.names.act1, collapse=",")
-  
-  eval.code.x.names <- paste0("data.frame(", x.names.act2, ")")
-  
-  output.cbind <- eval(parse(text=eval.code.x.names), envir = parent.frame())
+
+  loaded.objects <- vector("list", length(x.names.act1))
+  for(i in seq_along(x.names.act1)) {
+    loaded.objects[[i]] <- .loadServersideObject(x.names.act1[i])
+  }
+
+  output.cbind <- do.call(data.frame, loaded.objects)
   
   colnames.input <- colnames.transmit
   colnames.act1 <- unlist(strsplit(colnames.input, split=","))

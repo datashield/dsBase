@@ -11,14 +11,18 @@
 #' @param conf.level confidence level for the returned confidence interval. Currently
 #' only used for the Pearson product moment correlation coefficient if there are at least
 #' 4 complete pairs of observations.
-#' @return the results of the correlation test.
+#' @return a list with the results of the correlation test and \code{class}, the class of the
+#' input object for client-side consistency checking.
 #' @author Demetris Avraam, for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 corTestDS <- function(x, y, method, exact, conf.level){
 
-  x.var <- eval(parse(text=x), envir = parent.frame())
-  y.var <- eval(parse(text=y), envir = parent.frame())
+  x.var <- .loadServersideObject(x)
+  .checkClass(obj = x.var, obj_name = x, permitted_classes = c("numeric", "integer"))
+  y.var <- .loadServersideObject(y)
+  .checkClass(obj = y.var, obj_name = y, permitted_classes = c("numeric", "integer"))
   
   # get the number of pairwise complete cases
   n <- sum(stats::complete.cases(x.var, y.var))
@@ -26,9 +30,9 @@ corTestDS <- function(x, y, method, exact, conf.level){
   # runs a two-sided correlation test
   corTest <- stats::cor.test(x=x.var, y=y.var, method=method, exact=exact, conf.level=conf.level)
 
-  out <- list(n, corTest)
-  names(out) <- c("Number of pairwise complete cases", "Correlation test")
-  
+  out <- list(n, corTest, class = class(x.var))
+  names(out)[1:2] <- c("Number of pairwise complete cases", "Correlation test")
+
   # return the results
   return(out)
 

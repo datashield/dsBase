@@ -26,7 +26,7 @@ test_that("simple replaceNaDS", {
     input        <- c(0.0, NA, 2.0, NA, 4.0, NA, 6.0, NA)
     replacements <- c(1.1, 3.3, 5.5, 7.7)
 
-    res <- replaceNaDS(input, replacements)
+    res <- replaceNaDS("input", replacements)
 
     expect_equal(class(res), "numeric")
     expect_length(res, 8)
