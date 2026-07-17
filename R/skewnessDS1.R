@@ -7,8 +7,9 @@
 #' @param method an integer between 1 and 3 selecting one of the algorithms for computing skewness
 #' detailed in the headers of the client-side \code{ds.skewness} function.
 #' @return a list including the skewness of the input numeric variable, the number of valid observations and
-#' the study-side validity message.
+#' \code{class}, the class of the input object for client-side consistency checking.
 #' @author Demetris Avraam, for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #' 
 skewnessDS1 <- function(x, method){
@@ -19,8 +20,9 @@ skewnessDS1 <- function(x, method){
   nfilter.tab <- as.numeric(thr$nfilter.tab)
   #############################################################
   
-  x <- eval(parse(text=x), envir = parent.frame())
-  x <- x[stats::complete.cases(x)]
+  x.val <- .loadServersideObject(x)
+  .checkClass(obj = x.val, obj_name = x, permitted_classes = c("numeric", "integer"))
+  x <- x.val[stats::complete.cases(x.val)]
   
   if(length(x) < nfilter.tab){
     skewness.out <- NA
@@ -32,19 +34,16 @@ skewnessDS1 <- function(x, method){
     
     if(method==1){
       skewness.out <- g1
-      studysideMessage <- "VALID ANALYSIS"
     }
     if(method==2){
       skewness.out <- g1 * sqrt(length(x)*(length(x)-1))/(length(x)-2)
-      studysideMessage <- "VALID ANALYSIS"
     }
     if(method==3){
       skewness.out <- g1 * ((length(x)-1)/(length(x)))^(3/2)
-      studysideMessage <- "VALID ANALYSIS"
     }
   }
 
-  out.obj <- list(Skewness=skewness.out, Nvalid=length(x), ValidityMessage=studysideMessage)
+  out.obj <- list(Skewness=skewness.out, Nvalid=length(x), class=class(x.val))
   return(out.obj)
   
 }

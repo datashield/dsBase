@@ -13,7 +13,7 @@
 # Set up
 #
 
-# contect("gamlssDS::smk::setup")
+# context("gamlssDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -22,7 +22,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-# contect("dataFrameSubsetDS2::smk::test1")
+# context("dataFrameSubsetDS2::smk::test1")
 test_that("test1 dataFrameSubsetDS2", {
   
   D <- as.data.frame(matrix(NA, nrow=20, ncol=3))
@@ -48,7 +48,7 @@ test_that("test1 dataFrameSubsetDS2", {
     
 })
 
-# contect("dataFrameSubsetDS2::smk::test2")
+# context("dataFrameSubsetDS2::smk::test2")
 test_that("test2 dataFrameSubsetDS2", {
   
   D <- as.data.frame(matrix(NA, nrow=20, ncol=3))
@@ -71,10 +71,32 @@ test_that("test2 dataFrameSubsetDS2", {
   
 })
 
+test_that("dataFrameSubsetDS2 errors when df does not exist", {
+    expect_error(
+        dataFrameSubsetDS2(df.name="nonexistent", V1.name="x", V2.name="1",
+                           Boolean.operator.n=1, keep.NAs=FALSE),
+        regexp = "does not exist"
+    )
+})
+
+test_that("dataFrameSubsetDS2 errors when V1 object does not exist", {
+    D <- as.data.frame(matrix(NA, nrow=20, ncol=3))
+    colnames(D) <- c('integer','numeric','binary')
+    D$integer <- rep(1, 20)
+    D$numeric <- rep(1, 20)
+    D$binary <- rep(1, 20)
+
+    expect_error(
+        dataFrameSubsetDS2(df.name="D", V1.name="nonexistent$col", V2.name="1",
+                           Boolean.operator.n=1, keep.NAs=FALSE),
+        regexp = "does not exist"
+    )
+})
+
 #
 # Done
 #
 
-# contect("dataFrameSubsetDS2::smk::shutdown")
+# context("dataFrameSubsetDS2::smk::shutdown")
 
-# contect("dataFrameSubsetDS2::smk::done")
+# context("dataFrameSubsetDS2::smk::done")

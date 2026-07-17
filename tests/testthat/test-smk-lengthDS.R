@@ -76,6 +76,26 @@ test_that("simple lengthDS, character data.frame", {
     expect_equal(res$class, "data.frame")
 })
 
+test_that("simple lengthDS, matrix", {
+    input <- matrix(1:6, nrow = 2, ncol = 3)
+
+    res <- lengthDS("input")
+
+    expect_equal(class(res), "list")
+    expect_equal(res$length, 6)
+    expect_equal(res$class, c("matrix", "array"))
+})
+
+test_that("simple lengthDS, array", {
+    input <- array(1:24, dim = c(2, 3, 4))
+
+    res <- lengthDS("input")
+
+    expect_equal(class(res), "list")
+    expect_equal(res$length, 24)
+    expect_equal(res$class, "array")
+})
+
 #
 # Done
 #
