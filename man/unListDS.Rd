@@ -46,4 +46,6 @@ see 'details' in the help for \code{ds.unList}.
 }
 \author{
 Amadou Gaye (2016), Paul Burton (19/09/2019) for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

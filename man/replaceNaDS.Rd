@@ -29,4 +29,6 @@ values have been replaced a new vector is created.
 }
 \author{
 Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }
