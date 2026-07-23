@@ -16,6 +16,11 @@
 
 matrixDetDS1 <- function(M1.name=NULL,logarithm){
 
+dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'avocado', 'banana'))
+
+thr <- dsBase::listDisclosureSettingsDS()
+nfilter.subset <- as.numeric(thr$nfilter.subset)
+
 M1 <- .loadServersideObject(M1.name)
 .checkClass(obj = M1, obj_name = M1.name, permitted_classes = c("matrix", "data.frame"))
 
@@ -33,6 +38,12 @@ if(ncol(M1)!=nrow(M1))
 	stop(error.message, call. = FALSE)
 	}
 
+#Check matrix large enough to reduce disclosure risk
+if(nrow(M1)<nfilter.subset)
+	{
+	error.message<-"FAILED: matrix is too small (nrows < nfilter.subset), please respecify"
+	stop(error.message, call. = FALSE)
+	}
 
 output<-determinant(M1,logarithm=logarithm)
 
