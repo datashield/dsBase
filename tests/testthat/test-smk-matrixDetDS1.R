@@ -14,6 +14,8 @@ set.standard.disclosure.settings()
 test_that("simple matrixDetDS1 passes with matrix of sufficient dimensions", {
     M1 <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 10), 3, 3)
     res <- matrixDetDS1("M1", logarithm=FALSE)
+    
+    expect_true(is.list(res))
     expect_equal(res$matrix.determinant, determinant(M1, logarithm=FALSE))
 })
 
