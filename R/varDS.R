@@ -3,15 +3,16 @@
 #' @description Calculates the variance.
 #' @details if the length of input vector is less than the set filter
 #' a missing value is returned.
-#' @param xvect a vector
+#' @param x a character string, the name of a numeric or integer vector
 #' @return a list, with the sum of the input variable, the sum of squares of the input variable,
 #' the number of missing values, the number of valid values, the number of total length of the
-#' variable, and a study message indicating whether the number of valid is less than the
-#' disclosure threshold
+#' variable, and \code{class}, the class of the input object for client-side
+#' consistency checking
 #' @author Amadou Gaye, Demetris Avraam, for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
-varDS <- function(xvect){
+varDS <- function(x){
 
   #############################################################
   # MODULE 1: CAPTURE THE nfilter SETTINGS
@@ -22,21 +23,19 @@ varDS <- function(xvect){
   #nfilter.string <- as.numeric(thr$nfilter.string)
   #############################################################
 
+  xvect <- .loadServersideObject(x)
+  .checkClass(obj = xvect, obj_name = x, permitted_classes = c("numeric", "integer"))
+
   out.sum <- sum(xvect, na.rm=TRUE)
   out.sumSquares <- sum(xvect^2, na.rm=TRUE)
   out.numNa <- length(which(is.na(xvect)))
   out.totN <- length(xvect)
   out.validN <- out.totN-out.numNa
-  studysideMessage <- "VALID ANALYSIS"
-
   if((out.validN != 0) && (out.validN < nfilter.tab)){
-    out.sum <- NA
-    out.sumSquares <- NA
-    studysideMessage <- "FAILED: Nvalid less than nfilter.tab"
-    stop(studysideMessage, call. = FALSE)
+    stop("FAILED: Nvalid less than nfilter.tab", call. = FALSE)
   }
 
-  out.obj <- list(Sum=out.sum,SumOfSquares=out.sumSquares,Nmissing=out.numNa,Nvalid=out.validN,Ntotal=out.totN,ValidityMessage=studysideMessage)
+  out.obj <- list(Sum=out.sum,SumOfSquares=out.sumSquares,Nmissing=out.numNa,Nvalid=out.validN,Ntotal=out.totN,class=class(xvect))
   return(out.obj)
 
 }

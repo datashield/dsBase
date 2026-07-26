@@ -27,7 +27,7 @@ test_that("numeric covDS, casewise.complete", {
 
     res <- covDS("input$v1", "input$v2", "casewise.complete")
 
-    expect_length(res, 5)
+    expect_length(res, 6)
     expect_equal(class(res), "list")
 
     res.sums.of.products.class <- class(res$sums.of.products)
@@ -130,7 +130,7 @@ test_that("numeric covDS, pairwise.complete", {
 
     res <- covDS("input$v1", "input$v2", "pairwise.complete")
 
-    expect_length(res, 5)
+    expect_length(res, 6)
     expect_equal(class(res), "list")
 
     res.sums.of.products.class <- class(res$sums.of.products)
@@ -230,6 +230,16 @@ test_that("numeric covDS, pairwise.complete", {
     expect_equal(res.errorMessage.class, "logical")
 
     expect_true(is.na(res$errorMessage))
+})
+
+test_that("covDS throws error when object does not exist", {
+    expect_error(covDS("nonexistent_x", "nonexistent_y", "pairwise.complete"), regexp = "does not exist")
+})
+
+test_that("covDS throws error when object is of invalid type", {
+    bad_input <- list(a = 1:3, b = 4:6)
+    y <- c(1.0, 2.0, 3.0)
+    expect_error(covDS("bad_input", "y", "pairwise.complete"), regexp = "must be of type")
 })
 
 #

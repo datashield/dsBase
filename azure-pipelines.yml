@@ -27,6 +27,7 @@ variables:
   branchName:  $(Build.SourceBranchName)
   test_filter: '*'
   _r_check_system_clock_: 0
+  PERF_PROFILE: 'azure-pipeline'
 
 
 
@@ -46,17 +47,18 @@ resources:
 # When and under what condition to run the pipeline.
 schedules:
   - cron: "0 0 * * 0"
-    displayName: Weekly build - master
+    displayName: Weekly build - latest release
     branches:
       include:
-      - master
-      - 6.3.0
+      - 6.3.4
     always: true
   - cron: "0 1 * * *"
-    displayName: Nightly build - v6.3.1-dev
+    displayName: Nightly build - development branchs
     branches:
       include:
-      - v6.3.1-dev
+      - v6.3.5-dev
+      - v6.4.0-dev
+      - v7.0.0-dev
     always: true
 
 jobs:
@@ -188,6 +190,7 @@ jobs:
       # testthat::testpackage uses a MultiReporter, comprised of a ProgressReporter and JunitReporter
       # R output and messages are redirected by sink() to test_console_output.txt
       # junit reporter output is to test_results.xml
+
       sudo R -q -e '
         library(covr);
         write.csv(
@@ -250,7 +253,6 @@ jobs:
       echo 'branch:'$(branchName) >> $(datetime).txt
       echo 'os:'$(lsb_release -ds) >> $(datetime).txt
       echo 'R:'$(R --version | head -n 1) >> $(datetime).txt
-      echo 'opal:'$(opal system --opal localhost:8080 --user administrator --password "datashield_test&" --version) >> $(datetime).txt
 
     workingDirectory: $(Pipeline.Workspace)/logs
     displayName: 'Write versions to file'

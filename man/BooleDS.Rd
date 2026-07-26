@@ -46,4 +46,6 @@ The function converts the input vector into Boolean indicators.
 }
 \author{
 DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

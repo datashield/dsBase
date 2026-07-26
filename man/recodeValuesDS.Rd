@@ -49,4 +49,6 @@ For all details see the help header for ds.recodeValues
 }
 \author{
 Paul Burton, Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

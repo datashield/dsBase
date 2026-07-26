@@ -4,10 +4,10 @@
 \alias{replaceNaDS}
 \title{Replaces the missing values in a vector}
 \usage{
-replaceNaDS(xvect, replacements)
+replaceNaDS(x, replacements)
 }
 \arguments{
-\item{xvect}{a character, the name of the vector to process.}
+\item{x}{a character, the name of the vector to process.}
 
 \item{replacements}{a vector which contains the replacement value(s), a vector one or 
 more values for each study.}
@@ -29,4 +29,6 @@ values have been replaced a new vector is created.
 }
 \author{
 Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

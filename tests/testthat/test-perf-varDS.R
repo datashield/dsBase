@@ -30,13 +30,13 @@ test_that("numeric varDS - performance", {
 
     input <- c(0.0, 1.0, 2.0, 3.0, 4.0)
 
-    .durationSec  <- 30 # seconds
+    .durationSec  <- perf.testduration(30)
     .count        <- 0
     .start.time   <- Sys.time()
     .current.time <- .start.time
 
     while (difftime(.current.time, .start.time, units = "secs")[[1]] < .durationSec) {
-        varDS(input)
+        varDS("input")
 
         .count <- .count + 1
         .current.time <- Sys.time()
@@ -65,13 +65,13 @@ test_that("numeric varDS, with NA - performance", {
 
     input <- c(0.0, NA, 2.0, NA, 4.0)
 
-    .durationSec  <- 30 # seconds
+    .durationSec  <- perf.testduration(30)
     .count        <- 0
     .start.time   <- Sys.time()
     .current.time <- .start.time
 
     while (difftime(.current.time, .start.time, units = "secs")[[1]] < .durationSec) {
-        varDS(input)
+        varDS("input")
 
         .count <- .count + 1
         .current.time <- Sys.time()
