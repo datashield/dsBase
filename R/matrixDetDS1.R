@@ -11,42 +11,18 @@
 #' @return Output is the determinant of the matrix identified by argument <M1>
 #' which is returned to the clientside. For more details see help for ds.matrixDet
 #' @author Paul Burton for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 
 matrixDetDS1 <- function(M1.name=NULL,logarithm){
 
-#########################################################################
-# DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
-thr<-dsBase::listDisclosureSettingsDS()                                 #
-#nfilter.tab<-as.numeric(thr$nfilter.tab)                               #
-#nfilter.glm<-as.numeric(thr$nfilter.glm)                               #
-#nfilter.subset<-as.numeric(thr$nfilter.subset)                         #
-#nfilter.string<-as.numeric(thr$nfilter.string)                         #
-nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)                #
-#nfilter.kNN<-as.numeric(thr$nfilter.kNN)                               #
-#datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)       #
-#########################################################################
+dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'avocado', 'banana'))
 
-#Check length of M1.name not so long as to provide a risk of hidden code
-length.M1.name<-length(unlist(strsplit(M1.name,'')))
+thr <- dsBase::listDisclosureSettingsDS()
+nfilter.subset <- as.numeric(thr$nfilter.subset)
 
-if(length.M1.name>nfilter.stringShort)
-	{
-	error.message<-
-	paste0("FAILED: M1.name is too long it could hide concealed code, please shorten to <= nfilter.stringShort = ",
-	       nfilter.stringShort," characters")
-	stop(error.message, call. = FALSE)
-	}
-
-#EVAL M1
-
-M1<-eval(parse(text=M1.name), envir = parent.frame())
-
-if(!is.matrix(M1)&&!is.data.frame(M1))
-	{
-	error.message<-"FAILED: M1 must be of class matrix or data.frame, please respecify"
-	stop(error.message, call. = FALSE)
-	}
+M1 <- .loadServersideObject(M1.name)
+.checkClass(obj = M1, obj_name = M1.name, permitted_classes = c("matrix", "data.frame"))
 
 #coerce to matrix if a data.frame
 if(is.data.frame(M1))
@@ -62,6 +38,12 @@ if(ncol(M1)!=nrow(M1))
 	stop(error.message, call. = FALSE)
 	}
 
+#Check matrix large enough to reduce disclosure risk
+if(nrow(M1)<nfilter.subset)
+	{
+	error.message<-"FAILED: matrix is too small (nrows < nfilter.subset), please respecify"
+	stop(error.message, call. = FALSE)
+	}
 
 output<-determinant(M1,logarithm=logarithm)
 
