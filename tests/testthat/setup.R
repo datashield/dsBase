@@ -11,7 +11,7 @@
 # Datashield test suite set up
 #
 
-context("setup - start")
+# context("setup - start")
 
 library(RANN)
 library(stringr)
@@ -22,4 +22,4 @@ source("random/set_random_seed_settings.R")
 
 source("perf_tests/perf_rate.R")
 
-context("setup - done")
+# context("setup - done")

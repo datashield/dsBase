@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("absDS::smk::setup")
+# context("absDS::smk::setup")
 
 #
 # Tests
 #
 
-context("absDS::smk::special")
+# context("absDS::smk::special")
 test_that("simple absDS, NA", {
     input <- NA
 
@@ -59,7 +59,7 @@ test_that("simple absDS, -Inf", {
     expect_true(is.infinite(res))
 })
 
-context("absDS::smk::numeric")
+# context("absDS::smk::numeric")
 test_that("simple absDS, numeric 0.0", {
     input <- 0.0
 
@@ -90,7 +90,7 @@ test_that("simple absDS, numeric -10.0", {
     expect_equal(res, 10.0)
 })
 
-context("absDS::smk::integer")
+# context("absDS::smk::integer")
 test_that("simple absDS, integer 0L", {
     input <- 0L
 
@@ -121,7 +121,7 @@ test_that("simple absDS, integer -10L", {
     expect_equal(res, 10L)
 })
 
-context("absDS::smk::special vector")
+# context("absDS::smk::special vector")
 test_that("simple absDS", {
     input <- c(NA, NaN, Inf, -Inf)
 
@@ -135,7 +135,7 @@ test_that("simple absDS", {
     expect_true(is.infinite(res[4]))
 })
 
-context("absDS::smk::numeric vector")
+# context("absDS::smk::numeric vector")
 test_that("simple absDS", {
     input <- c(0.0, 4.0, 9.0, -10.0, -50.0, -20.0)
 
@@ -151,7 +151,7 @@ test_that("simple absDS", {
     expect_equal(res[6], 20.0)
 })
 
-context("absDS::smk::integer vector")
+# context("absDS::smk::integer vector")
 test_that("simple absDS", {
     input        <- c(0L, 4L, 9L, -10L, -50L, -20L)
 
@@ -171,6 +171,6 @@ test_that("simple absDS", {
 # Done
 #
 
-context("absDS::smk::shutdown")
+# context("absDS::smk::shutdown")
 
-context("absDS::smk::done")
+# context("absDS::smk::done")

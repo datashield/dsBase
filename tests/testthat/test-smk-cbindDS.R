@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("cbindDS::smk::setup")
+# context("cbindDS::smk::setup")
 
 #
 # Tests
 #
 
-context("cbindDS::smk::simple")
+# context("cbindDS::smk::simple")
 test_that("simple cbindDS", {
     inputs   <- 'input1,input2'
     input1   <- c(0.0, 1.0, 2.0, 3.0)
@@ -44,6 +44,6 @@ test_that("simple cbindDS", {
 # Done
 #
 
-context("cbindDS::smk::shutdown")
+# context("cbindDS::smk::shutdown")
 
-context("cbindDS::smk::done")
+# context("cbindDS::smk::done")

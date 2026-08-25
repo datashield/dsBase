@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("gamlssDS::smk::setup")
+# context("gamlssDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -21,7 +21,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("gamlssDS::smk::birthweight")
+# context("gamlssDS::smk::birthweight")
 test_that("birthweight gamlssDS", {
   
   D <- as.data.frame(matrix(NA, nrow=20, ncol=2))
@@ -88,6 +88,6 @@ test_that("birthweight gamlssDS", {
 # Done
 #
 
-context("gamlssDS::smk::shutdown")
+# context("gamlssDS::smk::shutdown")
 
-context("gamlssDS::smk::done")
+# context("gamlssDS::smk::done")

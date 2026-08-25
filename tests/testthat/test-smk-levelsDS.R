@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("levelsDS::smk::setup")
+# context("levelsDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("levelsDS::smk::numeric vector")
+# context("levelsDS::smk::numeric vector")
 test_that("numeric vector levelsDS", {
     input <- as.factor(c(0, 1, 2, 1, 2, 3, 1, 2, 1, 0, 1, 2, 0))
 
@@ -42,6 +42,6 @@ test_that("numeric vector levelsDS", {
 # Done
 #
 
-context("levelsDS::smk::shutdown")
+# context("levelsDS::smk::shutdown")
 
-context("levelsDS::smk::done")
+# context("levelsDS::smk::done")

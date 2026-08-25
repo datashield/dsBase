@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("rBinomDS::smk::setup")
+# context("rBinomDS::smk::setup")
 
 #
 # Tests
 #
 
-context("rBinomDS::smk::simple")
+# context("rBinomDS::smk::simple")
 test_that("simple rBinomDS, by name", {
     n    <- 8
     size <- 32
@@ -61,6 +61,6 @@ test_that("simple rBinomDS, direct", {
 # Done
 #
 
-context("rBinomDS::smk::shutdown")
+# context("rBinomDS::smk::shutdown")
 
-context("rBinomDS::smk::done")
+# context("rBinomDS::smk::done")

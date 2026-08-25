@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("numNaDS::smk::setup")
+# context("numNaDS::smk::setup")
 
 #
 # Tests
 #
 
-context("numNaDS::smk::simple")
+# context("numNaDS::smk::simple")
 test_that("simple numNaDS", {
     input <- c(NA, 1, NA, 2, NA)
 
@@ -43,6 +43,6 @@ test_that("simple numNaDS", {
 # Done
 #
 
-context("numNaDS::smk::shutdown")
+# context("numNaDS::smk::shutdown")
 
-context("numNaDS::smk::done")
+# context("numNaDS::smk::done")

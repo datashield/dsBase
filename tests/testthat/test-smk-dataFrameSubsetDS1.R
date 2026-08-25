@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("gamlssDS::smk::setup")
+# context("gamlssDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -21,7 +21,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("dataFrameSubsetDS1::smk::test1")
+# context("dataFrameSubsetDS1::smk::test1")
 test_that("test1 dataFrameSubsetDS1", {
   
   D <- as.data.frame(matrix(NA, nrow=20, ncol=3))
@@ -42,7 +42,7 @@ test_that("test1 dataFrameSubsetDS1", {
     
 })
 
-context("dataFrameSubsetDS1::smk::test2")
+# context("dataFrameSubsetDS1::smk::test2")
 test_that("test2 dataFrameSubsetDS1", {
   
   D <- as.data.frame(matrix(NA, nrow=20, ncol=3))
@@ -77,6 +77,6 @@ test_that("test2 dataFrameSubsetDS1", {
 # Done
 #
 
-context("dataFrameSubsetDS1::smk::shutdown")
+# context("dataFrameSubsetDS1::smk::shutdown")
 
-context("dataFrameSubsetDS1::smk::done")
+# context("dataFrameSubsetDS1::smk::done")

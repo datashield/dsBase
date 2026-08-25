@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("meanDS::disc::setup")
+# context("meanDS::disc::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("meanDS::disc::numeric with below nfilter.tab values")
+# context("meanDS::disc::numeric with below nfilter.tab values")
 test_that("numeric meanDS, with below nfilter.tab values", {
     input <- c(NA, NA, 2.0, NA, 4.0)
     
@@ -31,6 +31,6 @@ test_that("numeric meanDS, with below nfilter.tab values", {
 # Done
 #
 
-context("meanDS::disc::shutdown")
+# context("meanDS::disc::shutdown")
 
-context("meanDS::disc::done")
+# context("meanDS::disc::done")

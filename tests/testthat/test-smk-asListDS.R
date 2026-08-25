@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("asListDS::smk::setup")
+# context("asListDS::smk::setup")
 
 #
 # Tests
 #
 
-context("asListDS::smk::simple")
+# context("asListDS::smk::simple")
 test_that("simple asListDS", {
     input       <- list(v1 = c(1, 2, 3), v2 = c(4, 5, 6))
     newobj.name <- 'newobj'
@@ -41,6 +41,6 @@ test_that("simple asListDS", {
 # Done
 #
 
-context("asListDS::smk::shutdown")
+# context("asListDS::smk::shutdown")
 
-context("asListDS::smk::done")
+# context("asListDS::smk::done")

@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("namesDS::smk::setup")
+# context("namesDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("namesDS::smk::list of atoms")
+# context("namesDS::smk::list of atoms")
 test_that("simple namesDS, data.frame", {
     input <- list(v1 = 0.0, v2 = 1.0)
 
@@ -32,7 +32,7 @@ test_that("simple namesDS, data.frame", {
     expect_true("v2" %in% res)
 })
 
-context("namesDS::smk::list of vectors")
+# context("namesDS::smk::list of vectors")
 test_that("simple namesDS, data.matrix", {
     input <- list(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
@@ -48,6 +48,6 @@ test_that("simple namesDS, data.matrix", {
 # Done
 #
 
-context("namesDS::smk::shutdown")
+# context("namesDS::smk::shutdown")
 
-context("namesDS::smk::done")
+# context("namesDS::smk::done")

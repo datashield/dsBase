@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("tapplyDS.assign::smk::setup")
+# context("tapplyDS.assign::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("tapplyDS.assign::smk::simple")
+# context("tapplyDS.assign::smk::simple")
 test_that("simple tapplyDS.assign", {
     x           <- c(1, 2, 1, 2, 1, 2, 1, 2)
     index       <- factor(c(1, 2, 1, 2, 1, 2, 1, 2))
@@ -54,6 +54,6 @@ test_that("simple tapplyDS.assign", {
 # Done
 #
 
-context("tapplyDS.assign::smk::shutdown")
+# context("tapplyDS.assign::smk::shutdown")
 
-context("tapplyDS.assign::smk::done")
+# context("tapplyDS.assign::smk::done")
