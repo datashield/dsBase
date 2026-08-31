@@ -122,6 +122,12 @@ jobs:
       sudo R -e "install.packages('data.table', dependencies=TRUE)"
       sudo R -e "install.packages('childsds', dependencies=TRUE)"
 
+      # Use Posit Public Package Manager, which serves precompiled binary packages
+      # for this Ubuntu release instead of source - so dependencies are downloaded
+      # rather than compiled (the slow part). The HTTPUserAgent option is what makes
+      # the manager hand back binaries.
+      sudo R -q -e "options(repos=c(CRAN=paste0('https://packagemanager.posit.co/cran/__linux__/', system('lsb_release -cs', intern=TRUE), '/latest')), HTTPUserAgent=sprintf('R/%s R (%s)', getRversion(), paste(getRversion(), R.version\$platform, R.version\$arch, R.version\$os)), Ncpus=4); install.packages(c('devtools','RANN','stringr','lme4','dplyr','reshape2','polycor','splines','gamlss','gamlss.dist','mice','data.table','childsds'), dependencies=TRUE)"
+
     displayName: 'Install all dependencies for dsBase'
     condition: succeeded()
 
