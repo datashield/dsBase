@@ -108,19 +108,6 @@ jobs:
       sudo apt-get install -qq libxml2-dev libcurl4-openssl-dev libssl-dev libgit2-dev libharfbuzz-dev libfribidi-dev libfontconfig1-dev -y
       sudo apt-get install -qq libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev libuv1-dev -y
       sudo apt-get install -qq r-base -y
-      sudo R -e "install.packages('devtools', dependencies=TRUE)"
-      sudo R -e "install.packages('RANN', dependencies=TRUE)"
-      sudo R -e "install.packages('stringr', dependencies=TRUE)"
-      sudo R -e "install.packages('lme4', dependencies=TRUE)"
-      sudo R -e "install.packages('dplyr', dependencies=TRUE)"
-      sudo R -e "install.packages('reshape2', dependencies=TRUE)"
-      sudo R -e "install.packages('polycor', dependencies=TRUE)"
-      sudo R -e "install.packages('splines', dependencies=TRUE)"
-      sudo R -e "install.packages('gamlss', dependencies=TRUE)"
-      sudo R -e "install.packages('gamlss.dist', dependencies=TRUE)"
-      sudo R -e "install.packages('mice', dependencies=TRUE)"
-      sudo R -e "install.packages('data.table', dependencies=TRUE)"
-      sudo R -e "install.packages('childsds', dependencies=TRUE)"
 
       # Use Posit Public Package Manager, which serves precompiled binary packages
       # for this Ubuntu release instead of source - so dependencies are downloaded
