@@ -22,6 +22,7 @@
 #' @return Output is the matrix A written
 #' to the serverside. For more details see help for ds.matrix
 #' @author Paul Burton for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 matrixDS <- function(mdata.transmit, from, nrows.transmit, ncols.transmit, byrow, dimnames){
@@ -92,7 +93,7 @@ if(!is.null(dimnames))
 
 if(from=="serverside.vector"||from=="serverside.scalar")
 {
-mdata<-eval(parse(text=mdata.transmit), envir = parent.frame())
+mdata <- .loadServersideObject(mdata.transmit)
 }
 
 

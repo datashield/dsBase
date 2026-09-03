@@ -49,4 +49,6 @@ help for \code{ds.rbind} and the native R function \code{rbind}.
 }
 \author{
 Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }
