@@ -146,17 +146,27 @@ import(dplyr)
 import(gamlss)
 import(gamlss.dist)
 import(mice)
-importFrom(dplyr,"%>%")
-importFrom(dplyr,across)
-importFrom(dplyr,mutate)
-importFrom(dplyr,select)
-importFrom(gamlss.dist,pST3)
-importFrom(gamlss.dist,qST3)
-importFrom(glue,glue)
-importFrom(glue,glue_collapse)
-importFrom(purrr,imap)
-importFrom(purrr,map)
-importFrom(purrr,set_names)
+importFrom(dplyr,
+  "%>%",
+  across,
+  mutate,
+  select
+)
+importFrom(gamlss.dist,
+  pST3,
+  qST3
+)
+importFrom(glue,
+  glue,
+  glue_collapse
+)
+importFrom(purrr,
+  imap,
+  map,
+  set_names
+)
 importFrom(tibble,as_tibble)
-importFrom(tidyselect,all_of)
-importFrom(tidyselect,peek_vars)
+importFrom(tidyselect,
+  all_of,
+  peek_vars
+)
