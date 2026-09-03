@@ -37,3 +37,6 @@ The functions converts the input variable into a factor which is presented as a 
 if the \code{fixed.dummy.vars} is set to FALSE or as a matrix with dummy variables if the
 \code{fixed.dummy.vars} is set to TRUE (see the help file of ds.asFactor.b for more details).
 }
+\author{
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
+}

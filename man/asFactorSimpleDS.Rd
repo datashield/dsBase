@@ -26,3 +26,6 @@ In addition, it does not allow you to create an array of
 binary dummy variables that is equivalent to a factor. If you need to do any
 of these things you will have to use the ds.asFactor function.
 }
+\author{
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
+}

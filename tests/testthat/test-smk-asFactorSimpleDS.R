@@ -20,38 +20,17 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-# context("asFactorSimpleDS::smk::simple")
 test_that("simple asFactorSimpleDS", {
-    input <- c(2.0, 1.0, 3.0, 3.0, 3.0, 1.0, 2.0, 2.0, 1.0, 2.0)
+    input <- c(2, 1, 3, 3, 3, 1, 2, 2, 1, 2)
 
     res <- asFactorSimpleDS("input")
 
     expect_equal(class(res), "factor")
     expect_length(res, 10)
-    expect_true(res[1] == "2")
-    expect_true(res[2] == "1")
-    expect_true(res[3] == "3")
-    expect_true(res[4] == "3")
-    expect_true(res[5] == "3")
-    expect_true(res[6] == "1")
-    expect_true(res[7] == "2")
-    expect_true(res[8] == "2")
-    expect_true(res[9] == "1")
-    expect_true(res[10] == "2")
-
-    res.levels <- levels(res)
-
-    expect_equal(class(res.levels), "character")
-    expect_length(res.levels, 3)
-    expect_equal(res.levels[1], "1")
-    expect_equal(res.levels[2], "2")
-    expect_equal(res.levels[3], "3")
+    expect_equal(levels(res), c("1", "2", "3"))
+    expect_equal(as.character(res), as.character(input))
 })
 
-#
-# Done
-#
-
-# context("asFactorSimpleDS::smk::shutdown")
-
-# context("asFactorSimpleDS::smk::done")
+test_that("asFactorSimpleDS errors when serverside object does not exist", {
+    expect_error(asFactorSimpleDS("nonexistent_object"), regexp = "does not exist")
+})

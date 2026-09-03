@@ -7,16 +7,20 @@
 #' as this can introduce a mismatch of values if the vector is put back
 #' into a table that is not reordered in the same way. Such mismatch
 #' can render the results of operations on that table invalid.
-#' @param xvect a factor vector
+#' @param x a character string, the name of a factor vector.
 #' @param ref a character, the reference level
-#' @param reorderByRef a boolean that tells whether or not the new 
+#' @param reorderByRef a boolean that tells whether or not the new
 #' vector should be ordered by the reference group.
-#' @return  a factor of the same length as xvect
+#' @return  a factor of the same length as the input vector
 #' @author Isaeva, J., Gaye, A.
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
-changeRefGroupDS <- function(xvect, ref=NULL, reorderByRef=NULL){
-  
+changeRefGroupDS <- function(x, ref=NULL, reorderByRef=NULL){
+
+  xvect <- .loadServersideObject(x)
+  .checkClass(obj = xvect, obj_name = x, permitted_classes = "factor")
+
   if(reorderByRef){
     temp_xvect = stats::relevel(xvect, ref)
     # now reorder puting the ref group first
@@ -26,7 +30,7 @@ changeRefGroupDS <- function(xvect, ref=NULL, reorderByRef=NULL){
   }else{
     new_xvect <- stats::relevel(xvect, ref)
   }
-  
+
   return(new_xvect)
-  
+
 }
