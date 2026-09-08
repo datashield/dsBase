@@ -21,3 +21,6 @@ The function encodes the input vector as factor and returns its levels in
 ascending order if the levels are numerical or in alphabetical order if the levels
 are of type character.
 }
+\author{
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
+}

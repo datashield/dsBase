@@ -13,61 +13,16 @@
 #' @return Output is the matrix representing the product of M1 and M2 which is written
 #' to the serverside. For more details see help for ds.matrixMult
 #' @author Paul Burton for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 matrixMultDS <- function(M1.name=NULL, M2.name=NULL){
 
-#########################################################################
-# DataSHIELD MODULE: CAPTURE THE nfilter SETTINGS                       #
-thr<-dsBase::listDisclosureSettingsDS()                                 #
-#nfilter.tab<-as.numeric(thr$nfilter.tab)                               #
-#nfilter.glm<-as.numeric(thr$nfilter.glm)                               #
-#nfilter.subset<-as.numeric(thr$nfilter.subset)                         #
-#nfilter.string<-as.numeric(thr$nfilter.string)                         #
-nfilter.stringShort<-as.numeric(thr$nfilter.stringShort)                #
-#nfilter.kNN<-as.numeric(thr$nfilter.kNN)                               #
-#datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)       #
-#########################################################################
-#EVAL M1 and M2
+M1 <- .loadServersideObject(M1.name)
+.checkClass(obj = M1, obj_name = M1.name, permitted_classes = c("matrix", "data.frame"))
 
-#Check length of M1.name not so long as to provide a risk of hidden code
-length.M1.name<-length(unlist(strsplit(M1.name,'')))
-
-if(length.M1.name>nfilter.stringShort)
-	{
-	studysideMessage<-
-	paste0("FAILED: M1.name is too long it could hide concealed code, please shorten to <= nfilter.stringShort = ",
-	       nfilter.stringShort," characters")
-	stop(studysideMessage, call. = FALSE)
-	}
-
-#Check length of M2.name not so long as to provide a risk of hidden code
-length.M2.name<-length(unlist(strsplit(M2.name,'')))
-
-if(length.M2.name>nfilter.stringShort)
-	{
-	studysideMessage<-
-	paste0("FAILED: M2.name is too long it could hide concealed code, please shorten to <= nfilter.stringShort = ",
-	       nfilter.stringShort," characters")
-	stop(studysideMessage, call. = FALSE)
-	}
-
-M1<-eval(parse(text=M1.name), envir = parent.frame())
-M2<-eval(parse(text=M2.name), envir = parent.frame())
-
-
-
-if(!is.matrix(M1)&&!is.data.frame(M1))
-	{
-	studysideMessage<-"FAILED: M1 must be of class matrix or data.frame, please respecify"
-	stop(studysideMessage, call. = FALSE)
-	}
-
-if(!is.matrix(M2)&&!is.data.frame(M2))
-	{
-	studysideMessage<-"FAILED: M2 must be of class matrix or data.frame, please respecify"
-	stop(studysideMessage, call. = FALSE)
-	}
+M2 <- .loadServersideObject(M2.name)
+.checkClass(obj = M2, obj_name = M2.name, permitted_classes = c("matrix", "data.frame"))
 
 if(is.data.frame(M1))
 	{

@@ -468,6 +468,22 @@ test_that("simple dataFrameSortDS, descending, alphabetic", {
     expect_equal(res$v2[8], "6.0")
 })
 
+test_that("dataFrameSortDS errors when df does not exist", {
+    expect_error(
+        dataFrameSortDS("nonexistent", "nonexistent$v1", FALSE, "default"),
+        regexp = "does not exist"
+    )
+})
+
+test_that("dataFrameSortDS errors when sort key does not exist", {
+    df <- data.frame(v1 = c(1, 2, 3, 4, 5, 6, 7, 8), v2 = c(1, 2, 3, 4, 5, 6, 7, 8))
+
+    expect_error(
+        dataFrameSortDS("df", "nonexistent$col", FALSE, "default"),
+        regexp = "does not exist"
+    )
+})
+
 #
 # Done
 #

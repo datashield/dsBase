@@ -27,6 +27,7 @@ variables:
   branchName:  $(Build.SourceBranchName)
   test_filter: '*'
   _r_check_system_clock_: 0
+  PERF_PROFILE: 'azure-pipeline'
 
 
 
@@ -46,17 +47,18 @@ resources:
 # When and under what condition to run the pipeline.
 schedules:
   - cron: "0 0 * * 0"
-    displayName: Weekly build - master
+    displayName: Weekly build - latest release
     branches:
       include:
-      - master
-      - 6.3.0
+      - 6.3.4
     always: true
   - cron: "0 1 * * *"
-    displayName: Nightly build - v6.3.1-dev
+    displayName: Nightly build - development branchs
     branches:
       include:
-      - v6.3.1-dev
+      - v6.3.5-dev
+      - v6.4.0-dev
+      - v7.0.0-dev
     always: true
 
 jobs:
@@ -104,21 +106,14 @@ jobs:
 
       sudo apt-get install -qq pkg-config -y
       sudo apt-get install -qq libxml2-dev libcurl4-openssl-dev libssl-dev libgit2-dev libharfbuzz-dev libfribidi-dev libfontconfig1-dev -y
-      sudo apt-get install -qq libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev -y
+      sudo apt-get install -qq libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev libuv1-dev -y
       sudo apt-get install -qq r-base -y
-      sudo R -e "install.packages('devtools', dependencies=TRUE)"
-      sudo R -e "install.packages('RANN', dependencies=TRUE)"
-      sudo R -e "install.packages('stringr', dependencies=TRUE)"
-      sudo R -e "install.packages('lme4', dependencies=TRUE)"
-      sudo R -e "install.packages('dplyr', dependencies=TRUE)"
-      sudo R -e "install.packages('reshape2', dependencies=TRUE)"
-      sudo R -e "install.packages('polycor', dependencies=TRUE)"
-      sudo R -e "install.packages('splines', dependencies=TRUE)"
-      sudo R -e "install.packages('gamlss', dependencies=TRUE)"
-      sudo R -e "install.packages('gamlss.dist', dependencies=TRUE)"
-      sudo R -e "install.packages('mice', dependencies=TRUE)"
-      sudo R -e "install.packages('data.table', dependencies=TRUE)"
-      sudo R -e "install.packages('childsds', dependencies=TRUE)"
+
+      # Use Posit Public Package Manager, which serves precompiled binary packages
+      # for this Ubuntu release instead of source - so dependencies are downloaded
+      # rather than compiled (the slow part). The HTTPUserAgent option is what makes
+      # the manager hand back binaries.
+      sudo R -q -e "options(repos=c(CRAN=paste0('https://packagemanager.posit.co/cran/__linux__/', system('lsb_release -cs', intern=TRUE), '/latest')), HTTPUserAgent=sprintf('R/%s R (%s)', getRversion(), paste(getRversion(), R.version\$platform, R.version\$arch, R.version\$os)), Ncpus=4); install.packages(c('devtools','RANN','stringr','lme4','dplyr','reshape2','polycor','splines','gamlss','gamlss.dist','mice','data.table','childsds'), dependencies=TRUE)"
 
     displayName: 'Install all dependencies for dsBase'
     condition: succeeded()
@@ -188,6 +183,7 @@ jobs:
       # testthat::testpackage uses a MultiReporter, comprised of a ProgressReporter and JunitReporter
       # R output and messages are redirected by sink() to test_console_output.txt
       # junit reporter output is to test_results.xml
+
       sudo R -q -e '
         library(covr);
         write.csv(
@@ -250,7 +246,6 @@ jobs:
       echo 'branch:'$(branchName) >> $(datetime).txt
       echo 'os:'$(lsb_release -ds) >> $(datetime).txt
       echo 'R:'$(R --version | head -n 1) >> $(datetime).txt
-      echo 'opal:'$(opal system --opal localhost:8080 --user administrator --password "datashield_test&" --version) >> $(datetime).txt
 
     workingDirectory: $(Pipeline.Workspace)/logs
     displayName: 'Write versions to file'

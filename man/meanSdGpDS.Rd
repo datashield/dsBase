@@ -4,13 +4,13 @@
 \alias{meanSdGpDS}
 \title{MeanSdGpDS}
 \usage{
-meanSdGpDS(X, INDEX)
+meanSdGpDS(x, index)
 }
 \arguments{
-\item{X}{a client-side supplied character string identifying the variable for which
+\item{x}{a client-side supplied character string identifying the variable for which
 means/SDs are to be calculated}
 
-\item{INDEX}{a client-side supplied character string identifying the factor across
+\item{index}{a client-side supplied character string identifying the factor across
 which means/SDs are to be calculated}
 }
 \value{
@@ -25,4 +25,6 @@ factor
 }
 \author{
 Burton PR
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

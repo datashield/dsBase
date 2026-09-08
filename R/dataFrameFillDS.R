@@ -17,11 +17,12 @@
 #' The classes supported are 'numeric', 'integer', 'character', 'factor' and 'logical'.
 #' @return Nothing is returned to the client. The generated object is written to the serverside.
 #' @author Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #' 
 dataFrameFillDS <- function(df.name, allNames.transmit, class.vect.transmit, levels.vec.transmit){
   
-  data <- eval(parse(text=df.name), envir = parent.frame())
+  data <- .loadServersideObject(df.name)
 
   if(!is.null(allNames.transmit)){
     allNames <- unlist(strsplit(allNames.transmit, split=","))

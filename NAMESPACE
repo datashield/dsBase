@@ -42,7 +42,12 @@ export(elsplineDS)
 export(expDS)
 export(extractQuantilesDS1)
 export(extractQuantilesDS2)
+export(fixClassDS)
+export(fixColsDS)
+export(fixLevelsDS)
 export(gamlssDS)
+export(getAllLevelsDS)
+export(getClassAllColsDS)
 export(getWGSRDS)
 export(glmDS1)
 export(glmDS2)
@@ -84,6 +89,7 @@ export(matrixDimnamesDS)
 export(matrixInvertDS)
 export(matrixMultDS)
 export(matrixTransposeDS)
+export(mdPatternDS)
 export(meanDS)
 export(meanSdGpDS)
 export(mergeDS)
@@ -140,7 +146,27 @@ import(dplyr)
 import(gamlss)
 import(gamlss.dist)
 import(mice)
-importFrom(gamlss.dist,pST3)
-importFrom(gamlss.dist,qST3)
-importFrom(glue,glue)
-importFrom(glue,glue_collapse)
+importFrom(dplyr,
+  "%>%",
+  across,
+  mutate,
+  select
+)
+importFrom(gamlss.dist,
+  pST3,
+  qST3
+)
+importFrom(glue,
+  glue,
+  glue_collapse
+)
+importFrom(purrr,
+  imap,
+  map,
+  set_names
+)
+importFrom(tibble,as_tibble)
+importFrom(tidyselect,
+  all_of,
+  peek_vars
+)

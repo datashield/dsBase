@@ -59,12 +59,15 @@ Authors@R: c(person(given = "Paul",
                     comment = c(ORCID = "0009-0003-2419-1964")))
 License: GPL-3
 Depends: 
-    R (>= 4.0.0)
+    R (>= 4.1.0)
 Imports:
     RANN,
     stringr,
     lme4,
     dplyr,
+    tibble,
+    purrr,
+    tidyselect,
     reshape2,
     polycor (>= 0.8),
     splines,
@@ -76,7 +79,7 @@ Imports:
 Suggests:
     spelling,
     testthat (>= 3.0.0)
-RoxygenNote: 7.3.3
 Encoding: UTF-8
 Language: en-GB
 Config/testthat/edition: 3
+Config/roxygen2/version: 8.1.0

@@ -1,6 +1,5 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
-# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -15,99 +14,41 @@
 
 # context("changeRefGroupDS::smk::setup")
 
+set.standard.disclosure.settings()
+
 #
 # Tests
 #
 
-# context("changeRefGroupDS::smk")
-test_that("simple changeRefGroupDS, reorderByRef is FALSE", {
-    x            <- c(8, 1, 6, 1, 4, 1, 2, 1)
-    xf           <- as.factor(x)
-    ref          <- 2
-    reorderByRef <- FALSE
+test_that("simple changeRefGroupDS", {
+    xf <- as.factor(c(8, 1, 6, 1, 4, 1, 2, 1))
 
-    res <- changeRefGroupDS(xf, ref, reorderByRef)
+    res <- changeRefGroupDS("xf", ref = 2, reorderByRef = FALSE)
 
     expect_equal(class(res), "factor")
     expect_length(res, 8)
-
-    res.num <- as.numeric(res)
-
-    expect_equal(class(res.num), "numeric")
-    expect_length(res.num, 8)
-
-    expect_equal(res.num[1], 5)
-    expect_equal(res.num[2], 2)
-    expect_equal(res.num[3], 4)
-    expect_equal(res.num[4], 2)
-    expect_equal(res.num[5], 3)
-    expect_equal(res.num[6], 2)
-    expect_equal(res.num[7], 1)
-    expect_equal(res.num[8], 2)
-
-    res.levels <- levels(res)
-
-    expect_equal(class(res.levels), "character")
-    expect_length(res.levels, 5)
-    expect_equal(res.levels[1], "2")
-    expect_equal(res.levels[2], "1")
-    expect_equal(res.levels[3], "4")
-    expect_equal(res.levels[4], "6")
-    expect_equal(res.levels[5], "8")
+    expect_equal(levels(res), c("2", "1", "4", "6", "8"))
+    expect_equal(as.character(res), c("8", "1", "6", "1", "4", "1", "2", "1"))
 })
 
-test_that("simple changeRefGroupDS, reorderByRef is TRUE", {
-    x            <- rep(8, 1, 6, 1, 4, 1, 2, 1)
-    xf           <- as.factor(x)
-    ref          <- 1
-    reorderByRef <- TRUE
+test_that("changeRefGroupDS with reorderByRef", {
+    xf <- as.factor(c(8, 1, 6, 1, 4, 1, 2, 1))
 
-    res <- changeRefGroupDS(xf, ref, reorderByRef)
+    res <- changeRefGroupDS("xf", ref = 2, reorderByRef = TRUE)
 
-    if (base::getRversion() < '4.1.0')
-    {
-        expect_equal(class(res), "integer")
-        expect_length(res, 6)
-        expect_equal(res[1], 1)
-        expect_equal(res[2], 1)
-        expect_equal(res[3], 1)
-        expect_equal(res[4], 1)
-        expect_equal(res[5], 1)
-        expect_equal(res[6], 1)
-
-        res.levels <- levels(res)
-
-        expect_true(is.null(res.levels))
-    }
-    else
-    {
-        expect_equal(class(res), "factor")
-        expect_length(res, 6)
-
-        res.num <- as.numeric(res)
-
-        expect_equal(class(res.num), "numeric")
-        expect_length(res.num, 6)
-
-        expect_equal(res.num[1], 1)
-        expect_equal(res.num[2], 1)
-        expect_equal(res.num[3], 1)
-        expect_equal(res.num[4], 1)
-        expect_equal(res.num[5], 1)
-        expect_equal(res.num[6], 1)
-
-        res.levels <- levels(res)
-
-        expect_equal(class(res.levels), "character")
-        expect_length(res.levels, 1)
-        expect_equal(res.levels[1], "8")
-    }
+    expect_equal(class(res), "factor")
+    expect_length(res, 8)
+    expect_equal(levels(res), c("2", "1", "4", "6", "8"))
+    expect_equal(as.character(res), c("2", "8", "1", "6", "1", "4", "1", "1"))
 })
 
-#
-# Done
-#
+test_that("changeRefGroupDS errors when serverside object does not exist", {
+    expect_error(changeRefGroupDS("nonexistent_object", ref = 1, reorderByRef = FALSE),
+                 regexp = "does not exist")
+})
 
-# context("changeRefGroupDS::smk::shutdown")
-
-# context("changeRefGroupDS::smk::done")
+test_that("changeRefGroupDS errors when object is not a factor", {
+    bad_input <- c(1, 2, 3)
+    expect_error(changeRefGroupDS("bad_input", ref = 1, reorderByRef = FALSE),
+                 regexp = "must be of type")
+})
