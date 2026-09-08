@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("corTestDS::smk::setup")
+# context("corTestDS::smk::setup")
 
 #
 # Tests
@@ -20,7 +20,7 @@ context("corTestDS::smk::setup")
 
 ###########
 
-context("corTestDS::smk::without na, pearson")
+# context("corTestDS::smk::without na, pearson")
 test_that("simple corTestDS, full, without na, pearson", {
     x   <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
     y   <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
@@ -180,7 +180,7 @@ test_that("simple corTestDS, some, pearson, without na, pearson", {
     expect_equal(res$`Correlation test`$conf.int[[2]], 0.9998169, tolerance = 1e-6)
 })
 
-context("corTestDS::smk::with na, pearson")
+# context("corTestDS::smk::with na, pearson")
 test_that("simple corTestDS, some, with na, pearson", {
     x   <- c(NA, 1.0, 2.0, 3.0, NA, 5.0, NA, 7.0)
     y   <- c(0.0, 1.0, NA, 3.0, 4.0, NA, NA, 7.0)
@@ -229,7 +229,7 @@ test_that("simple corTestDS, some, with na, pearson", {
     expect_equal(res$`Correlation test`$data.name[[1]], "x.var and y.var")
 })
 
-context("corTestDS::smk::without na, kendall")
+# context("corTestDS::smk::without na, kendall")
 test_that("simple corTestDS, full, without na, kendall", {
     x   <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
     y   <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
@@ -368,7 +368,7 @@ test_that("simple corTestDS, some, kendall, without na, kendall", {
     expect_equal(res$`Correlation test`$data.name[[1]], "x.var and y.var")
 })
 
-context("corTestDS::smk::with na, kendall")
+# context("corTestDS::smk::with na, kendall")
 test_that("simple corTestDS, some, with na, kendall", {
     x   <- c(0.0, NA, 2.0, 3.0, NA, 5.0, NA, 7.0)
     y   <- c(0.0, 1.0, NA, 3.0, 4.0, NA, NA, 7.0)
@@ -415,7 +415,7 @@ test_that("simple corTestDS, some, with na, kendall", {
     expect_equal(res$`Correlation test`$data.name[[1]], "x.var and y.var")
 })
 
-context("corTestDS::smk::without na, spearman")
+# context("corTestDS::smk::without na, spearman")
 test_that("simple corTestDS, full, without na, spearman", {
     x   <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
     y   <- c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0)
@@ -554,7 +554,7 @@ test_that("simple corTestDS, some, spearman, without na, spearman", {
     expect_equal(res$`Correlation test`$data.name[[1]], "x.var and y.var")
 })
 
-context("corTestDS::smk::with na, spearman")
+# context("corTestDS::smk::with na, spearman")
 test_that("simple corTestDS, some, with na, spearman", {
     x   <- c(0.0, NA, 2.0, 3.0, NA, 5.0, NA, 7.0)
     y   <- c(0.0, 1.0, NA, 3.0, 4.0, NA, NA, 7.0)
@@ -605,7 +605,7 @@ test_that("simple corTestDS, some, with na, spearman", {
 # Done
 #
 
-context("corTestDS::smk::shutdown")
+# context("corTestDS::smk::shutdown")
 
-context("corTestDS::smk::done")
+# context("corTestDS::smk::done")
 

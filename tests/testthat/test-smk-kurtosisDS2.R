@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("kurtosisDS2::smk::setup")
+# context("kurtosisDS2::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("kurtosisDS2::smk")
+# context("kurtosisDS2::smk")
 test_that("simple kurtosisDS2", {
     input       <- c(1.0, 2.0, 2.0, 3.0, 3.0)
     global.mean <- 2.5
@@ -43,6 +43,6 @@ test_that("simple kurtosisDS2", {
 # Done
 #
 
-context("kurtosisDS2::smk::shutdown")
+# context("kurtosisDS2::smk::shutdown")
 
-context("kurtosisDS2::smk::done")
+# context("kurtosisDS2::smk::done")

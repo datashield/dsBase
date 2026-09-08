@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("dataFrameFillDS::arg::setup")
+# context("dataFrameFillDS::arg::setup")
 
 #
 # Tests
 #
 
-context("dataFrameFillDS::arg")
+# context("dataFrameFillDS::arg")
 test_that("simple dataFrameFillDS, ascending, numeric", {
     df                  <- data.frame(v1 = c(-2.0, -3.0, 4.0, 2.0, 1.0, 0.0, -1.0, 3.0), v2 = c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0))
     allNames.transmit   <- "v1,v2,v3,v4,v5,v6,v7"
@@ -45,10 +45,10 @@ test_that("simple dataFrameFillDS, ascending, numeric", {
 # Shutdown
 #
 
-context("dataFrameFillDS::arg::shutdown")
+# context("dataFrameFillDS::arg::shutdown")
 
 #
 # Done
 #
 
-context("dataFrameFillDS::arg::done")
+# context("dataFrameFillDS::arg::done")

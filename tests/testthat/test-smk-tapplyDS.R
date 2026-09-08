@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("tapplyDS::smk::setup")
+# context("tapplyDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -161,6 +161,6 @@ test_that("simple tapplyDS, quantile", {
 # Done
 #
 
-context("tapplyDS::smk::shutdown")
+# context("tapplyDS::smk::shutdown")
 
-context("tapplyDS::smk::done")
+# context("tapplyDS::smk::done")

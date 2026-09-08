@@ -16,7 +16,7 @@
 testthat::skip_on_cran()
 testthat::skip_on_ci()
 
-context("varDS::perf::setup")
+# context("varDS::perf::setup")
 
 set.standard.disclosure.settings()
 
@@ -24,7 +24,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("varDS::perf::numeric")
+# context("varDS::perf::numeric")
 test_that("numeric varDS - performance", {
     skip_on_cran()
 
@@ -59,7 +59,7 @@ test_that("numeric varDS - performance", {
     expect_lt(.current.rate, .reference.rate * .reference.tolerance.upper, label = "Observed rate", expected.label = "upper threshold on rate")
 })
 
-context("varDS::perf::numeric with NA")
+# context("varDS::perf::numeric with NA")
 test_that("numeric varDS, with NA - performance", {
     skip_on_cran()
 
@@ -98,6 +98,6 @@ test_that("numeric varDS, with NA - performance", {
 # Done
 #
 
-context("varDS::perf::shutdown")
+# context("varDS::perf::shutdown")
 
-context("varDS::perf::done")
+# context("varDS::perf::done")

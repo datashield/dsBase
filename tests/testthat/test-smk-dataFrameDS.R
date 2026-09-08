@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("dataFrameDS::smk::setup")
+# context("dataFrameDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("dataFrameDS::smk")
+# context("dataFrameDS::smk")
 test_that("simple dataFrameDS", {
     v1            <- c(0.0, 1.0, 2.0, 3.0, 4.0)
     v2            <- c(4.0, 3.0, 2.0, 1.0, 0.0)
@@ -81,10 +81,10 @@ test_that("simple dataFrameDS, strAsFactors is TRUE", {
 # Stutdown
 #
 
-context("dataFrameDS::smk::shutdown")
+# context("dataFrameDS::smk::shutdown")
 
 #
 # Done
 #
 
-context("dataFrameDS::smk::done")
+# context("dataFrameDS::smk::done")

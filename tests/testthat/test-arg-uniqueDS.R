@@ -12,29 +12,29 @@
 # Set up
 #
 
-context("uniqueDS::arg::setup")
+# context("uniqueDS::arg::setup")
 
 #
 # Tests
 #
 
-context("uniqueDS::arg::simple null argument")
+# context("uniqueDS::arg::simple null argument")
 test_that("simple uniqueDS for NULL", {
     expect_error(uniqueDS(NULL), "Variable's name can't be NULL", fixed = TRUE)
 })
 
-context("uniqueDS::arg::null value")
+# context("uniqueDS::arg::null value")
 test_that("simple uniqueDS for NULL", {
     input <- NULL
     expect_error(uniqueDS("input"), "Variable can't be NULL", fixed = TRUE)
 })
 
-context("uniqueDS::arg::not character value")
+# context("uniqueDS::arg::not character value")
 test_that("simple uniqueDS for NULL", {
   expect_error(uniqueDS(17), "Variable's name isn't a single character vector", fixed = TRUE)
 })
 
-context("uniqueDS::arg::missing value")
+# context("uniqueDS::arg::missing value")
 test_that("simple uniqueDS for NULL", {
     expect_error(uniqueDS("input"), "object 'input' not found", fixed = TRUE)
 })
@@ -43,6 +43,6 @@ test_that("simple uniqueDS for NULL", {
 # Done
 #
 
-context("uniqueDS::arg::shutdown")
+# context("uniqueDS::arg::shutdown")
 
-context("uniqueDS::arg::done")
+# context("uniqueDS::arg::done")

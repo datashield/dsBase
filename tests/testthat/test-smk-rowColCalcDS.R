@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("rowColCalcDS::smk::setup")
+# context("rowColCalcDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("rowColCalcDS::smk")
+# context("rowColCalcDS::smk")
 test_that("simple rowColCalcDS, operation 1", {
     input <- matrix(c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0), ncol = 2)
 
@@ -77,6 +77,6 @@ test_that("simple rowColCalcDS, operation 4", {
 # Done
 #
 
-context("rowColCalcDS::smk::shutdown")
+# context("rowColCalcDS::smk::shutdown")
 
-context("rowColCalcDS::smk::done")
+# context("rowColCalcDS::smk::done")

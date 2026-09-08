@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("cDS::smk::setup")
+# context("cDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("cDS::smk::numeric list")
+# context("cDS::smk::numeric list")
 test_that("numeric list cDS", {
     input <- list(a=0.0, b=1.0, c=2.0, d=3.0)
 
@@ -34,7 +34,7 @@ test_that("numeric list cDS", {
     expect_equal(res[[4]], 3.0)
 })
 
-context("cDS::smk::character list")
+# context("cDS::smk::character list")
 test_that("character list cDS", {
     input <- list(a="0.0", b="1.0", c="2.0", d="3.0")
 
@@ -48,7 +48,7 @@ test_that("character list cDS", {
     expect_equal(res[[4]], "3.0")
 })
 
-context("cDS::smk::numeric list small")
+# context("cDS::smk::numeric list small")
 test_that("single numeric list small cDS", {
     input <- list(a=0, b=1)
 
@@ -60,7 +60,7 @@ test_that("single numeric list small cDS", {
     expect_equal(res[[2]], NA)
 })
 
-context("cDS::smk::empty list")
+# context("cDS::smk::empty list")
 test_that("empty list cDS", {
     input <- list()
 
@@ -74,6 +74,6 @@ test_that("empty list cDS", {
 # Done
 #
 
-context("cDS::smk::shutdown")
+# context("cDS::smk::shutdown")
 
-context("cDS::smk::done")
+# context("cDS::smk::done")

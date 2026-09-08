@@ -12,13 +12,13 @@
 # Set up
 #
 
-context("extract::smk::setup")
+# context("extract::smk::setup")
 
 #
 # Tests
 #
 
-context("extract::smk::simple")
+# context("extract::smk::simple")
 test_that("simple extract no holder", {
     input <- "variable"
 
@@ -45,7 +45,7 @@ test_that("simple extract", {
     expect_equal(res$elements, "variable")
 })
 
-context("extract::smk::simple vector")
+# context("extract::smk::simple vector")
 test_that("simple extract no holder, vector", {
     input <- c("v1", "v2", "v3", "v4")
 
@@ -107,6 +107,6 @@ test_that("simple extract, mixed, vector", {
 # Done
 #
 
-context("extract::smk::shutdown")
+# context("extract::smk::shutdown")
 
-context("extract::smk::done")
+# context("extract::smk::done")

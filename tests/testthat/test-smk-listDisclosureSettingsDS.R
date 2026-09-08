@@ -12,7 +12,7 @@
 # Set up
 #
 
-context("listDisclosureSettingsDS::smk::setup")
+# context("listDisclosureSettingsDS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -20,7 +20,7 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-context("listDisclosureSettingsDS::smk")
+# context("listDisclosureSettingsDS::smk")
 test_that("simple listDisclosureSettingsDS", {
     res <- listDisclosureSettingsDS()
 
@@ -70,6 +70,6 @@ test_that("simple listDisclosureSettingsDS", {
 # Done
 #
 
-context("listDisclosureSettingsDS::smk::shutdown")
+# context("listDisclosureSettingsDS::smk::shutdown")
 
-context("listDisclosureSettingsDS::smk::done")
+# context("listDisclosureSettingsDS::smk::done")
