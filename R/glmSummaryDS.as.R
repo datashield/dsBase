@@ -58,8 +58,8 @@ input.obj <- .loadServersideObject(x.transmit)
 summary.obj<-summary(input.obj)
 
 #block na.action and deviance residual components of summary object
-summary.obj[[12]]<-NA
-summary.obj[[11]]<-NA
+if (!is.null(summary.obj$na.action)) summary.obj$na.action<-NA
+summary.obj$deviance.resid<-NA
 
 summary.obj<-summary.obj
 
