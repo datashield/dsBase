@@ -359,8 +359,7 @@ if(!is.null(optimizer)&&optimizer!="nloptwrap")
 	}
 
 
-    mg <- lme4::lmer(formula2use, offset=offset, weights=weights, data=dataDF, REML = REML, verbose = verbose, control = control.obj)
-    #iterations <- utils::capture.output(try(mg <- lme4::lmer(formula2use, offset=offset.to.use, weights=weights.to.use, data=dataDF, REML = REML, verbose = verbose, control = control.obj)))
+    mg <- lme4::lmer(formula2use, offset=offset.to.use, weights=weights.to.use, data=dataDF, REML = REML, verbose = verbose, control = control.obj)
 
     outlist <- mg
     
