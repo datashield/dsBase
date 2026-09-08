@@ -104,8 +104,7 @@ errorMessage2<-"No errors"
 #bringing back in the mg output saved from that previous call
 #	mg <- stats::glm(formula2use, family=final.family.object, x=TRUE, offset=offset.to.use, weights=weights.to.use, data=dataDF)
 
-activate.text<- paste0("mg<-",newobj)
-eval(parse(text=activate.text))
+mg <- .loadServersideObject(newobj)
 	
 y.vect<-mg$y
 X.mat<-mg$x
