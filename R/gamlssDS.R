@@ -69,6 +69,7 @@
 #' residuals (the normalised quantile residuals of the model) are not disclosed to 
 #' the client-side.
 #' @author Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @import gamlss
 #' @import gamlss.dist
 #' @export
@@ -81,8 +82,9 @@ gamlssDS <- function(formula=formula, sigma.formula=sigma.formula, nu.formula=nu
   
   thr <- dsBase::listDisclosureSettingsDS()
   nfilter.glm <- as.numeric(thr$nfilter.glm)
-  
-  data <- eval(parse(text = data), envir = parent.frame())
+
+  data <- .loadServersideObject(data)
+  .checkClass(obj = data, obj_name = "data", permitted_classes = c("data.frame", "matrix"))
   
   family <- gsub("left_parenthesis", "(", family, fixed = TRUE)
   family <- gsub("right_parenthesis", ")", family, fixed = TRUE)
@@ -187,8 +189,8 @@ gamlssDS <- function(formula=formula, sigma.formula=sigma.formula, nu.formula=nu
   base::assign(newobj, results$residuals, envir = parent.frame())
   
   if(centiles==TRUE){
-    xvar <- eval(parse(text=xvar), envir = parent.frame())
-    centiles_out <- gamlss::centiles(obj = results, xvar = xvar, points = FALSE, 
+    xvar <- .loadServersideObject(xvar)
+    centiles_out <- gamlss::centiles(obj = results, xvar = xvar, points = FALSE,
                                      save = TRUE)
   }else{
     centiles_out <- NA

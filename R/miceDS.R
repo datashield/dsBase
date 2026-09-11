@@ -43,7 +43,8 @@
 #' The function also saves in each server the mids object and all completed datasets as 
 #' dataframes.
 #' @author Demetris Avraam for DataSHIELD Development Team
-#' @import mice 
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
+#' @import mice
 #' @export
 #'
 miceDS <- function(data=data, m=m, maxit=maxit, method=method, post=post, seed=seed,
@@ -57,7 +58,8 @@ miceDS <- function(data=data, m=m, maxit=maxit, method=method, post=post, seed=s
     seed <- getOption("datashield.seed")
   }
 
-  data <- eval(parse(text=data), envir = parent.frame())
+  data <- .loadServersideObject(data)
+  .checkClass(obj = data, obj_name = "data", permitted_classes = c("data.frame", "matrix"))
 
   if(!is.null(method)){
     method <- unlist(stringr::str_split(method, pattern=","))

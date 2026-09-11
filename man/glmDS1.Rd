@@ -36,4 +36,6 @@ been specified. For more details please see the extensive header for ds.glm.
 }
 \author{
 Burton PR for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

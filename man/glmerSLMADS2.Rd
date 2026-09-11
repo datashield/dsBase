@@ -74,4 +74,6 @@ glmes using the glmer engine can be obtained using R help for glmer and the lme4
 }
 \author{
 Tom Bishop, with some additions by Paul Burton
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

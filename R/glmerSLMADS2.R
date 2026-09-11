@@ -36,6 +36,7 @@
 #' function ds.glmerSLMA
 #' @return all key model components see help for ds.glmerSLMA
 #' @author Tom Bishop, with some additions by Paul Burton
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
                 control_type=NULL, control_value.transmit=NULL, nAGQ=1L, verbose = 0, theta = NULL, fixef = NULL){
@@ -53,7 +54,8 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
   # Same is done for offset and weights lower down function
   
   if(!is.null(dataName)){
-    dataDF <- eval(parse(text=dataName), envir = parent.frame())
+    dataDF <- .loadServersideObject(dataName)
+    .checkClass(obj = dataDF, obj_name = dataName, permitted_classes = c("data.frame", "matrix"))
   }else{
     dataDF <- NULL
   }

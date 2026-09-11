@@ -37,4 +37,6 @@ For more detailed information see help for ds.glmSLMA.
 }
 \author{
 Paul Burton for DataSHIELD Development Team (14/7/20)
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }
