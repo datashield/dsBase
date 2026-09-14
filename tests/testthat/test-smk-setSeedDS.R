@@ -34,12 +34,16 @@ test_that("simple setSeedDS", {
     expect_length(res$seed.as.set, 626)
 })
 
-test_that("setSeedDS works with numeric string", {
-    res <- setSeedDS("42", NULL, NULL)
+test_that("setSeedDS with \"NULL\" seedtext", {
+    res <- setSeedDS("NULL", NULL, NULL)
 
     expect_equal(class(res), "list")
     expect_length(res, 1)
     expect_length(res$seed.as.set, 626)
+})
+
+test_that("setSeedDS fails with non-numeric seedtext", {
+    expect_error(suppressWarnings(setSeedDS("abc", NULL, NULL)), "supplied seed is not a valid integer")
 })
 
 #
