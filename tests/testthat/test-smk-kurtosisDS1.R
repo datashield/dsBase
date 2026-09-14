@@ -33,8 +33,7 @@ test_that("simple kurtosisDS1, method 1", {
     expect_equal(res$Kurtosis, -0.458210, tolerance = 1e-6)
     expect_equal(class(res$Nvalid), "integer")
     expect_equal(res$Nvalid,9)
-    expect_equal(class(res$ValidityMessage), "character")
-    expect_equal(res$ValidityMessage, "VALID ANALYSIS")
+    expect_equal(res$class, "numeric")
 })
 
 # context("kurtosisDS1::smk::method 2")
@@ -49,8 +48,7 @@ test_that("simple kurtosisDS1, method 2", {
     expect_equal(res$Kurtosis, 0.270076, tolerance = 1e-6)
     expect_equal(class(res$Nvalid), "integer")
     expect_equal(res$Nvalid,9)
-    expect_equal(class(res$ValidityMessage), "character")
-    expect_equal(res$ValidityMessage, "VALID ANALYSIS")
+    expect_equal(res$class, "numeric")
 })
 
 # context("kurtosisDS1::smk::method 3")
@@ -65,8 +63,16 @@ test_that("simple kurtosisDS1, method 3", {
     expect_equal(res$Kurtosis, -0.991672, tolerance = 1e-6)
     expect_equal(class(res$Nvalid), "integer")
     expect_equal(res$Nvalid,9)
-    expect_equal(class(res$ValidityMessage), "character")
-    expect_equal(res$ValidityMessage, "VALID ANALYSIS")
+    expect_equal(res$class, "numeric")
+})
+
+test_that("kurtosisDS1 throws error when object does not exist", {
+    expect_error(kurtosisDS1("nonexistent_object", 1), regexp = "does not exist")
+})
+
+test_that("kurtosisDS1 throws error when object is not numeric or integer", {
+    bad_input <- c("a", "b", "c")
+    expect_error(kurtosisDS1("bad_input", 1), regexp = "must be of type numeric or integer")
 })
 
 #

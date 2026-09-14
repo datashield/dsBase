@@ -52,4 +52,6 @@ effects - on data from each single data source and saves the regression outcomes
 }
 \author{
 TDemetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

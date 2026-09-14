@@ -22,7 +22,8 @@ only used for the Pearson product moment correlation coefficient if there are at
 4 complete pairs of observations.}
 }
 \value{
-the results of the correlation test.
+a list with the results of the correlation test and \code{class}, the class of the
+input object for client-side consistency checking.
 }
 \description{
 This function is similar to R function \code{cor.test}.
@@ -32,4 +33,6 @@ The function runs a two-sided correlation test
 }
 \author{
 Demetris Avraam, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

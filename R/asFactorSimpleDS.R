@@ -12,11 +12,12 @@
 #' of these things you will have to use the ds.asFactor function.
 #' @param input.var.name the name of the variable that is to be converted to a factor.
 #' @return an object of class factor
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 asFactorSimpleDS <- function(input.var.name=NULL){
 
-    input.var <- eval(parse(text=input.var.name), envir = parent.frame())
+    input.var <- .loadServersideObject(input.var.name)
 
     factor.obj <- factor(input.var)
     

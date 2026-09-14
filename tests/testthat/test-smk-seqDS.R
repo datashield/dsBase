@@ -118,6 +118,23 @@ test_that("simple seqDS", {
     expect_equal(res[7], 1.5)
 })
 
+test_that("seqDS with ALONG.WITH server-side vector", {
+    myVec <- c(10, 20, 30, 40, 50)
+
+    res <- seqDS("1", NULL, "1", NULL, "myVec")
+
+    expect_equal(class(res), "numeric")
+    expect_length(res, 5)
+    expect_equal(res, c(1, 2, 3, 4, 5))
+})
+
+test_that("seqDS errors when ALONG.WITH object does not exist", {
+    expect_error(
+        seqDS("1", NULL, "1", NULL, "nonexistent_obj"),
+        regexp = "does not exist"
+    )
+})
+
 #
 # Done
 #

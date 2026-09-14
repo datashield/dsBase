@@ -87,4 +87,6 @@ and the DataSHIELD clientside function \code{ds.merge}.
 }
 \author{
 Paul Burton, Demetris Avraam, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

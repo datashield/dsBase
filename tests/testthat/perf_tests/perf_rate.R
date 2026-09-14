@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# Copyright (c) 2024 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2024-2026 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -8,12 +8,24 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #-------------------------------------------------------------------------------
 
-.perf.reference.filename <- getOption("perf.profile", "perf_files/default_perf_profile.csv")
+.perf.reference.filename.base.prefix  <- 'perf_files/'
+.perf.reference.filename.base.postfix <- '_perf-profile.csv'
+.perf.reference.save.filename         <- NULL
 
 .perf.reference <- NULL
 
 .load.pref <- function() {
-    .perf.reference <<- read.csv(.perf.reference.filename, header = TRUE, sep = ",")
+    perf.profile <- base::Sys.getenv("PERF_PROFILE")
+    if (nchar(perf.profile) > 0)
+        perf.reference.filename.platform.infix <- base::tolower(perf.profile)
+    else
+    {
+        perf.reference.filename.platform.infix <- "default"
+        warning("Unknown performance profile platform, using 'default'")
+    }
+
+    perf.reference.filename <-  paste(.perf.reference.filename.base.prefix, perf.reference.filename.platform.infix, .perf.reference.filename.base.postfix, sep = "")
+    .perf.reference         <<- read.csv(perf.reference.filename, header = TRUE, sep = ",")
 }
 
 perf.profile.tolerance.lower <- function() {
@@ -36,9 +48,20 @@ perf.reference.save <- function(perf.ref.name, rate, tolerance.lower, tolerance.
 
     .perf.reference[nrow(.perf.reference)+1,] <- c(perf.ref.name, rate, tolerance.lower, tolerance.upper)
 
-    write.csv(.perf.reference, .perf.reference.filename, row.names = FALSE)
+    if (is.null(.perf.reference.save.filename))
+    {
+        .perf.reference.save.filename <<- base::tempfile(pattern = "perf_file_", fileext = ".csv")
+        message(paste0("Additional perf record added to '", .perf.reference.save.filename, "'"))
+    }
+
+    write.csv(.perf.reference, .perf.reference.save.filename, row.names = FALSE)
 
     .perf.reference <<- .perf.reference
+}
+
+# Obtain performance test duration from PERF_DURATION_SEC environment variable, otherwise default.duration argument, otherwise "30".
+perf.testduration <- function(default.duration = 30) {
+    base::as.integer(base::Sys.getenv("PERF_DURATION_SEC", unset = base::as.character(default.duration)))
 }
 
 perf.reference.rate <- function(perf.ref.name) {
@@ -61,4 +84,3 @@ perf.reference.tolerance.upper <- function(perf.ref.name) {
 
     return(as.numeric(.perf.reference[which(.perf.reference$refer_name == perf.ref.name),]$upper_tolerance))
 }
-

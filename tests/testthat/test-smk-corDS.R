@@ -378,7 +378,7 @@ test_that("simple corDS, casewise, full", {
     res <- corDS("x", "y")
 
     expect_equal(class(res), "list")
-    expect_length(res, 5)
+    expect_length(res, 6)
 
     if (base::getRversion() < '4.0.0')
     {
@@ -465,7 +465,7 @@ test_that("simple corDS, casewise, neg. full", {
     res <- corDS("x", "y")
 
     expect_equal(class(res), "list")
-    expect_length(res, 5)
+    expect_length(res, 6)
 
     if (base::getRversion() < '4.0.0')
     {
@@ -552,7 +552,7 @@ test_that("simple corDS, casewise, some", {
     res <- corDS("x", "y")
 
     expect_equal(class(res), "list")
-    expect_length(res, 5)
+    expect_length(res, 6)
 
     if (base::getRversion() < '4.0.0')
     {
@@ -640,7 +640,7 @@ test_that("simple corDS, casewise, some", {
     res <- corDS("x", "y")
 
     expect_equal(class(res), "list")
-    expect_length(res, 5)
+    expect_length(res, 6)
 
     if (base::getRversion() < '4.0.0')
     {
@@ -716,6 +716,16 @@ test_that("simple corDS, casewise, some", {
     expect_equal(res$sums.of.squares[2], 58.0)
     expect_equal(res$sums.of.squares[3], 58.0)
     expect_equal(res$sums.of.squares[4], 58.0)
+})
+
+test_that("corDS throws error when object does not exist", {
+    expect_error(corDS("nonexistent_x", "nonexistent_y"), regexp = "does not exist")
+})
+
+test_that("corDS throws error when object is of invalid type", {
+    bad_input <- list(a = 1:3, b = 4:6)
+    y <- c(1.0, 2.0, 3.0)
+    expect_error(corDS("bad_input", "y"), regexp = "must be of type")
 })
 
 #

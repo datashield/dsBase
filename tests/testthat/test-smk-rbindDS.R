@@ -15,53 +15,47 @@
 
 # context("rbindDS::smk::setup")
 
+set.standard.disclosure.settings()
+
 #
 # Tests
 #
 
-# context("rbindDS::smk::simple")
-test_that("simple rbindDS", {
-    inputs   <- 'input1, input2'
-    input1   <- c(0.0, 1.0, 2.0, 3.0)
-    input2   <- c(3.0, 2.0, 1.0, 0.0)
-    colnames <- 'v1'
+test_that("rbindDS combines two data.frames by row", {
+    df1 <- data.frame(a = c(1, 2, 3), b = c(4, 5, 6))
+    df2 <- data.frame(a = c(7, 8), b = c(9, 10))
 
-    res <- rbindDS(inputs, colnames)
+    res <- rbindDS("df1,df2", "a,b")
 
-    res.class <- class(res)
-    if (base::getRversion() < '4.0.0')
-    {
-        expect_length(res.class, 1)
-        expect_true("matrix" %in% res.class)
-    }
-    else
-    {
-        expect_length(res.class, 2)
-        expect_true("matrix" %in% res.class)
-        expect_true("array" %in% res.class)
-    }
+    expect_true(is.matrix(res))
+    expect_equal(nrow(res), 5)
+    expect_equal(ncol(res), 2)
+    expect_equal(colnames(res), c("a", "b"))
+    expect_equal(res[, "a"], c(1, 2, 3, 7, 8))
+    expect_equal(res[, "b"], c(4, 5, 6, 9, 10))
+})
 
-    expect_length(res, 8)
-    expect_equal(class(res[1]), "numeric")
-    expect_equal(class(res[2]), "numeric")
-    expect_equal(class(res[3]), "numeric")
-    expect_equal(class(res[4]), "numeric")
-    expect_equal(class(res[5]), "numeric")
-    expect_equal(class(res[6]), "numeric")
-    expect_equal(class(res[7]), "numeric")
-    expect_equal(class(res[8]), "numeric")
+test_that("rbindDS combines vectors", {
+    v1 <- c(1, 2, 3)
+    v2 <- c(4, 5, 6)
 
-    res.colnames <- colnames(res)
+    res <- rbindDS("v1,v2", "V1")
 
-    expect_equal(class(res.colnames), "character")
-    expect_length(res.colnames, 1)
-    expect_equal(res.colnames[1], 'v1')
+    expect_true(is.matrix(res))
+    expect_equal(nrow(res), 6)
+    expect_equal(ncol(res), 1)
+    expect_equal(colnames(res), "V1")
+})
+
+test_that("rbindDS errors when object does not exist", {
+    expect_error(
+        rbindDS("nonexistent_obj", "a"),
+        regexp = "does not exist"
+    )
 })
 
 #
 # Done
 #
-
-# context("rbindDS::smk::shutdown")
 
 # context("rbindDS::smk::done")

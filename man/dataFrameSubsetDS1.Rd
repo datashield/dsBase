@@ -74,4 +74,6 @@ which is of class 'data.frame'. For all details see the help header for ds.dataF
 }
 \author{
 Paul Burton
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

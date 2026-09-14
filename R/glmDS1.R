@@ -19,6 +19,7 @@
 #' @return List with values from GLM model.
 #' 
 #' @author Burton PR for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 glmDS1 <- function(formula, family, weights, offset, data){
@@ -41,7 +42,8 @@ nfilter.glm <- as.numeric(thr$nfilter.glm)
   if(is.null(data)){
     dataTable <- NULL 
   }else{
-    dataTable <- eval(parse(text=data), envir = parent.frame())
+    dataTable <- .loadServersideObject(data)
+    .checkClass(obj = dataTable, obj_name = data, permitted_classes = c("data.frame", "matrix"))
   }
   
   formulatext <- Reduce(paste, deparse(formula))

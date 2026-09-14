@@ -31,17 +31,13 @@
 #' function - one should check as far as one can
 #' the nature of the output from a call to ds.unList - e.g. ds.class, ds.length etc
 #' @author Amadou Gaye (2016), Paul Burton (19/09/2019) for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #' 
 unListDS <- function(x.name) {
 
-    if (is.character(x.name)) {
-	listvar<-eval(parse(text=x.name), envir = parent.frame())
-    } else {
-        studysideMessage<-"ERROR: x.name must be specified as a character string"
-        stop(studysideMessage, call. = FALSE)
-    } 
- 
+    listvar <- .loadServersideObject(x.name)
+
     outvar<-unlist(listvar)
 
     return(outvar)

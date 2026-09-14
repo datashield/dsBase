@@ -27,6 +27,7 @@
 #' @param verbose see help for ds.lmerSLMA
 #' @return all key model components see help for ds.lmerSLMA
 #' @author Tom Bishop, with some additions by Paul Burton
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE,
 			   control_type, control_value.transmit, optimizer, verbose=0){
@@ -46,7 +47,8 @@ lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE,
   # Same is done for offset and weights lower down function
   
   if(!is.null(dataName)){
-    dataDF <- eval(parse(text=dataName), envir = parent.frame())
+    dataDF <- .loadServersideObject(dataName)
+    .checkClass(obj = dataDF, obj_name = dataName, permitted_classes = c("data.frame", "matrix"))
   }else{
     dataDF <- NULL
   }
@@ -133,39 +135,44 @@ lmerSLMADS2 <- function(formula, offset, weights, dataName, REML = TRUE,
 
    ################################################################## 
    #sort out offset and weights
+   #
+   # offset.to.use/weights.to.use are needed in two different environments:
+   # stats::glm() below resolves them via environment(formula2use), which is
+   # this function's *caller* (matching where the other formula variables are
+   # assigned, see the model.variables loop above); lme4::lmer() further down
+   # resolves them relative to its own call frame, i.e. this function's *own*
+   # frame. Assign to both so each modelling call finds them.
    if(is.null(offset))
    {
      varname.offset<-NULL
-     #offset.to.use <- NULL
-     cbindtext.offset <- paste0("offset.to.use <- NULL")
-     eval(parse(text=cbindtext.offset), envir = parent.frame())
+     offset.to.use <- NULL
+     assign("offset.to.use", NULL, envir = parent.frame())
    }else{
      varname.offset <- paste0(offset)
    }
-   
+
    if(!(is.null(offset)))
    {
-     cbindtext.offset <- paste0("offset.to.use <- cbind(", offset,")")
-     eval(parse(text=cbindtext.offset), envir = parent.frame())
+     cbindtext.offset <- paste0("cbind(", offset,")")
+     offset.to.use <- eval(parse(text=cbindtext.offset), envir = parent.frame())
+     assign("offset.to.use", offset.to.use, envir = parent.frame())
    }
-   
+
    if(is.null(weights))
    {
      varname.weights<-NULL
-     cbindtext.weights <- paste0("weights.to.use <- NULL")
-     eval(parse(text=cbindtext.weights), envir = parent.frame())
-     #weights.to.use <- NULL
+     weights.to.use <- NULL
+     assign("weights.to.use", NULL, envir = parent.frame())
    }else{
      varname.weights <- paste0(weights)
    }
-   
-   
+
+
    if(!(is.null(weights)))
    {
-     cbindtext.weights <- paste0("weights.to.use <- cbind(", weights,")")
-     eval(parse(text=cbindtext.weights), envir = parent.frame())
-     #cbindtext.weights <- paste0("cbind(", weights,")")
-     #weights.to.use <- eval(parse(text=cbindtext.weights), envir = parent.frame())
+     cbindtext.weights <- paste0("cbind(", weights,")")
+     weights.to.use <- eval(parse(text=cbindtext.weights), envir = parent.frame())
+     assign("weights.to.use", weights.to.use, envir = parent.frame())
    }
   
   #### BEFORE going further we use the glm1 checks

@@ -23,9 +23,9 @@ set.standard.disclosure.settings()
 
 # context("cDS::smk::numeric list")
 test_that("numeric list cDS", {
-    input <- list(a=0.0, b=1.0, c=2.0, d=3.0)
+    a <- 0.0; b <- 1.0; c <- 2.0; d <- 3.0
 
-    res <- cDS(input)
+    res <- cDS(c("a", "b", "c", "d"))
 
     expect_length(res, 4)
     expect_equal(class(res), "numeric")
@@ -37,9 +37,9 @@ test_that("numeric list cDS", {
 
 # context("cDS::smk::character list")
 test_that("character list cDS", {
-    input <- list(a="0.0", b="1.0", c="2.0", d="3.0")
+    a <- "0.0"; b <- "1.0"; c <- "2.0"; d <- "3.0"
 
-    res <- cDS(input)
+    res <- cDS(c("a", "b", "c", "d"))
 
     expect_length(res, 4)
     expect_equal(class(res), "character")
@@ -51,9 +51,9 @@ test_that("character list cDS", {
 
 # context("cDS::smk::numeric list small")
 test_that("single numeric list small cDS", {
-    input <- list(a=0, b=1)
+    a <- 0; b <- 1
 
-    res <- cDS(input)
+    res <- cDS(c("a", "b"))
 
     expect_length(res, 2)
     expect_equal(class(res), "logical")
@@ -63,9 +63,7 @@ test_that("single numeric list small cDS", {
 
 # context("cDS::smk::empty list")
 test_that("empty list cDS", {
-    input <- list()
-
-    res <- cDS(input)
+    res <- cDS(character(0))
 
     expect_length(res, 0)
     expect_equal(class(res), "NULL")

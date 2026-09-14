@@ -20,6 +20,7 @@
 #' the data to be analysed under the specified model same 
 #' 
 #' @author Paul Burton, for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' 
 #' @return List with values from GLM model
 #' @export
@@ -39,7 +40,8 @@ glmDS2 <- function (formula, family, beta.vect, offset, weights, dataName) {
   # Same is done for offset and weights lower down function
   
   if(!is.null(dataName)){
-    dataDF <- eval(parse(text=dataName), envir = parent.frame())
+    dataDF <- .loadServersideObject(dataName)
+    .checkClass(obj = dataDF, obj_name = dataName, permitted_classes = c("data.frame", "matrix"))
   }else{
     dataDF <- NULL
   }

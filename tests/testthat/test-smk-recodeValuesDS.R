@@ -123,6 +123,22 @@ test_that("simple recodeValuesDS, character input with missings", {
   expect_true(is.na(res[7]))
 })
 
+test_that("recodeValuesDS errors when object does not exist", {
+    expect_error(
+        recodeValuesDS("nonexistent_object", "1,2", "10,20", NULL),
+        regexp = "does not exist"
+    )
+})
+
+test_that("recodeValuesDS errors when object has wrong type", {
+    input <- list(a = 1, b = 2)
+
+    expect_error(
+        recodeValuesDS("input", "1,2", "10,20", NULL),
+        regexp = "must be of type"
+    )
+})
+
 #
 # Done
 #

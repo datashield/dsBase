@@ -21,68 +21,51 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-# context("dataFrameDS::smk")
-test_that("simple dataFrameDS", {
-    v1            <- c(0.0, 1.0, 2.0, 3.0, 4.0)
-    v2            <- c(4.0, 3.0, 2.0, 1.0, 0.0)
-    vectors       <- "v1,v2"
-    r.names       <- NULL
-    ch.rows       <- FALSE
-    ch.names      <- FALSE
-    clnames       <- "x1,x2"
-    strAsFactors  <- FALSE
-    completeCases <- FALSE
+test_that("dataFrameDS creates a data.frame from vectors", {
+    a <- c(1, 2, 3, 4, 5)
+    b <- c(10, 20, 30, 40, 50)
 
-    res <- dataFrameDS(vectors, r.names, ch.rows, ch.names, clnames, strAsFactors, completeCases)
+    res <- dataFrameDS("a,b", r.names=NULL, ch.rows=FALSE, ch.names=TRUE,
+                       clnames="a,b", strAsFactors=TRUE, completeCases=FALSE)
 
     expect_equal(class(res), "data.frame")
-    expect_length(res, 2)
-
-    res.classes <- colnames(res)
-    expect_length(res.classes, 2)
-    expect_equal(res.classes[1], "x1")
-    expect_equal(res.classes[2], "x2")
-
-    for (index in 1:length(res))
-    {
-        expect_equal(v1[index], res$x1[index], info = paste0('index=', index, ', column=x1'))
-        expect_equal(v2[index], res$x2[index], info = paste0('index=', index, ', column=x2'))
-    }
+    expect_equal(nrow(res), 5)
+    expect_equal(ncol(res), 2)
+    expect_equal(colnames(res), c("a", "b"))
+    expect_equal(res$a, a)
+    expect_equal(res$b, b)
 })
 
-test_that("simple dataFrameDS, strAsFactors is TRUE", {
-    v1            <- c(0.0, 1.0, 2.0, 3.0, 4.0)
-    v2            <- c(4.0, 3.0, 2.0, 1.0, 0.0)
-    vectors       <- "v1,v2"
-    r.names       <- NULL
-    ch.rows       <- FALSE
-    ch.names      <- FALSE
-    clnames       <- "x1,x2"
-    strAsFactors  <- TRUE
-    completeCases <- FALSE
+test_that("dataFrameDS handles $ column name syntax", {
+    df <- data.frame(x = c(1, 2, 3, 4, 5), y = c(6, 7, 8, 9, 10))
 
-    res <- dataFrameDS(vectors, r.names, ch.rows, ch.names, clnames, strAsFactors, completeCases)
+    res <- dataFrameDS("df$x,df$y", r.names=NULL, ch.rows=FALSE, ch.names=TRUE,
+                       clnames="df$x,df$y", strAsFactors=TRUE, completeCases=FALSE)
 
     expect_equal(class(res), "data.frame")
-    expect_length(res, 2)
-
-    res.classes <- colnames(res)
-    expect_length(res.classes, 2)
-    expect_equal(res.classes[1], "x1")
-    expect_equal(res.classes[2], "x2")
-
-    for (index in 1:length(res))
-    {
-        expect_equal(v1[index], res$x1[index], info = paste0('index=', index, ', column=x1'))
-        expect_equal(v2[index], res$x2[index], info = paste0('index=', index, ', column=x2'))
-    }
+    expect_equal(colnames(res), c("x", "y"))
+    expect_equal(res$x, df$x)
+    expect_equal(res$y, df$y)
 })
 
-#
-# Stutdown
-#
+test_that("dataFrameDS removes rows with NAs when completeCases is TRUE", {
+    a <- c(1, NA, 3, 4, 5)
+    b <- c(10, 20, NA, 40, 50)
 
-# context("dataFrameDS::smk::shutdown")
+    res <- dataFrameDS("a,b", r.names=NULL, ch.rows=FALSE, ch.names=TRUE,
+                       clnames="a,b", strAsFactors=TRUE, completeCases=TRUE)
+
+    expect_equal(class(res), "data.frame")
+    expect_equal(nrow(res), 3)
+})
+
+test_that("dataFrameDS errors when object does not exist", {
+    expect_error(
+        dataFrameDS("nonexistent_obj", r.names=NULL, ch.rows=FALSE, ch.names=TRUE,
+                     clnames="nonexistent_obj", strAsFactors=TRUE, completeCases=FALSE),
+        regexp = "does not exist"
+    )
+})
 
 #
 # Done

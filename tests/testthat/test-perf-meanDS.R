@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# Copyright (c) 2024-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2024-2026 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -30,13 +30,13 @@ test_that("numeric meanDS - performance", {
 
     input <- c(0.0, 1.0, 2.0, 3.0, 4.0)
 
-    .durationSec  <- 30 # seconds
+    .durationSec  <- perf.testduration(30)
     .count        <- 0
     .start.time   <- Sys.time()
     .current.time <- .start.time
 
     while (difftime(.current.time, .start.time, units = "secs")[[1]] < .durationSec) {
-        meanDS(input)
+        meanDS("input")
 
         .count <- .count + 1
         .current.time <- Sys.time()
@@ -65,13 +65,13 @@ test_that("numeric meanDS, with NA - performance", {
 
     input <- c(0.0, NA, 2.0, NA, 4.0)
 
-    .durationSec  <- 30 # seconds
+    .durationSec  <- perf.testduration(30)
     .count        <- 0
     .start.time   <- Sys.time()
     .current.time <- .start.time
 
     while (difftime(.current.time, .start.time, units = "secs")[[1]] < .durationSec) {
-        meanDS(input)
+        meanDS("input")
 
         .count <- .count + 1
         .current.time <- Sys.time()
