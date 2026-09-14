@@ -6,22 +6,25 @@
 #' @param x a character string providing the name of a server-side numerical vector
 #' @param y a character string providing the name of a server-side numerical vector
 #' @param limits a logical expression for whether or not limits of the density grid are defined by
-#' a user. If \code{limits} is set to "FALSE", min and max of xvect and yvect are used as a range.
+#' a user. If \code{limits} is set to "FALSE", min and max of x and y are used as a range.
 #' If \code{limits} is set to "TRUE", limits defined by x.min, x.max, y.min and y.max are used.
 #' @param x.min a minimum value for the x axis of the grid density object, if needed
 #' @param x.max a maximum value for the x axis of the grid density object, if needed
 #' @param y.min a minimum value for the y axis of the grid density object, if needed
 #' @param y.max a maximum value for the y axis of the grid density object, if needed
 #' @param numints a number of intervals for the grid density object, by default is 20
-#' @return a grid density matrix
+#' @return a list with the grid density matrix (\code{grid}) and the classes of the x and y inputs
+#' (\code{class.x} and \code{class.y})
 #' @author Julia Isaeva, Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
 #' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
-#' 
+#'
 densityGridDS  <- function(x, y, limits=FALSE, x.min=NULL, x.max=NULL, y.min=NULL, y.max=NULL, numints=20){
 
   xvect <- .loadServersideObject(x)
   yvect <- .loadServersideObject(y)
+  .checkClass(obj = xvect, obj_name = x, permitted_classes = c("numeric", "integer"))
+  .checkClass(obj = yvect, obj_name = y, permitted_classes = c("numeric", "integer"))
 
   #############################################################
   # MODULE 1: CAPTURE THE nfilter SETTINGS
@@ -97,9 +100,9 @@ densityGridDS  <- function(x, y, limits=FALSE, x.min=NULL, x.max=NULL, y.min=NUL
   
   names(dimnames(grid.density.obj))[2] <- title.text
   names(dimnames(grid.density.obj))[1] <- ''
-  
-  return(grid.density.obj)
-  
+
+  return(list(grid=grid.density.obj, class.x=class(xvect), class.y=class(yvect)))
+
 }
 # AGGREGATE FUNCTION
 # densityGridDS

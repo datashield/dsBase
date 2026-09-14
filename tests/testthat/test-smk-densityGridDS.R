@@ -39,13 +39,15 @@ test_that("densityGridDS", {
   res <- densityGridDS(x="xvect", y="yvect", limits=FALSE, x.min=NULL,
                         x.max=NULL, y.min=NULL, y.max=NULL, numints=numints)
   
-    expect_equal(class(res), c("matrix","array"))
-    expect_equal(colnames(res), c("", "", "", "x.mids", "y.mids"))
-    expect_equal(as.numeric(round(res[1,], digits=3)), c(3.000, 0.000, 0.000, 8.798, 13.870))
-    expect_equal(as.numeric(round(res[2,], digits=3)), c(4.000, 5.000, 0.000, 10.195, 16.870))
-    expect_equal(as.numeric(round(res[3,], digits=3)), c(3.000, 0.000, 0.000, 11.592, 19.870))
-    
-    expect_equal(names(dimnames(res))[2], "Number of invalid cells (cells with counts >0 and < nfilter.tab ) is 4")
+    expect_equal(class(res$grid), c("matrix","array"))
+    expect_equal(colnames(res$grid), c("", "", "", "x.mids", "y.mids"))
+    expect_equal(as.numeric(round(res$grid[1,], digits=3)), c(3.000, 0.000, 0.000, 8.798, 13.870))
+    expect_equal(as.numeric(round(res$grid[2,], digits=3)), c(4.000, 5.000, 0.000, 10.195, 16.870))
+    expect_equal(as.numeric(round(res$grid[3,], digits=3)), c(3.000, 0.000, 0.000, 11.592, 19.870))
+
+    expect_equal(names(dimnames(res$grid))[2], "Number of invalid cells (cells with counts >0 and < nfilter.tab ) is 4")
+    expect_equal(res$class.x, "numeric")
+    expect_equal(res$class.y, "numeric")
     
 })
 
@@ -57,6 +59,18 @@ test_that("densityGridDS fails when x references nonexistent object", {
 test_that("densityGridDS fails when y references nonexistent object", {
     yvect <- c(1:20)
     expect_error(densityGridDS(x="yvect", y="nonexistent_obj", numints=3), "does not exist")
+})
+
+test_that("densityGridDS fails when x is not numeric or integer", {
+    xvect <- c("a", "b", "c")
+    yvect <- c(1, 2, 3)
+    expect_error(densityGridDS(x="xvect", y="yvect", numints=3), "must be of type numeric or integer")
+})
+
+test_that("densityGridDS fails when y is not numeric or integer", {
+    xvect <- c(1, 2, 3)
+    yvect <- c("a", "b", "c")
+    expect_error(densityGridDS(x="xvect", y="yvect", numints=3), "must be of type numeric or integer")
 })
 
 #

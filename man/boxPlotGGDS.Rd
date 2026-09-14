@@ -29,3 +29,6 @@ is purely geometrical aspects of the plot, as a ggplot object contains all the d
 parameters are passed. There are three different cases depending if there are grouping variables. 
 The outliers are also removed from the graphical parameters.
 }
+\author{
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
+}

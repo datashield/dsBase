@@ -26,6 +26,7 @@
 histogramDS2 <- function (x, num.breaks, min, max, method.indicator, k, noise){
 
   xvect <- .loadServersideObject(x)
+  .checkClass(obj = xvect, obj_name = x, permitted_classes = c("numeric", "integer"))
 
   ##################################################################
   # MODULE 1: CAPTURE THE nfilter SETTINGS                         #

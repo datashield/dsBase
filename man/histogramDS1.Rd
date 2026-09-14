@@ -21,7 +21,8 @@ If the value is set to 3 then the 'probabilistic' method is used.}
 noise if the \code{method.indicator} is equal to 3 (i.e. probabilistic method).}
 }
 \value{
-a numeric vector which contains the minimum and the maximum values of the vector
+a list with the numeric vector containing the minimum and the maximum values of the
+vector (\code{range}) and the class of the input vector (\code{class})
 }
 \description{
 this function returns the minimum and maximum of the input numeric vector which

@@ -22,7 +22,8 @@ deterministic method is selected.}
 noise if the probabilistic method is selected.}
 }
 \value{
-a list with the x and y coordinates of the data to be plot
+a list with the x and y coordinates of the data to be plot, along with the classes of
+the x and y inputs (\code{class.x} and \code{class.y})
 }
 \description{
 This function uses two disclosure control methods to generate non-disclosive

@@ -18,7 +18,8 @@
 #' @return \code{list} with: \cr
 #' -\code{data frame} Geometrical parameters (identity stats of ggplot) \cr
 #' -\code{character} Type of plot (single_group, double_group or no_group) \cr
-#' 
+#'
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 
 boxPlotGGDS <- function(data_table.name, group = NULL, group2 = NULL){

@@ -21,7 +21,7 @@ densityGridDS(
 \item{y}{a character string providing the name of a server-side numerical vector}
 
 \item{limits}{a logical expression for whether or not limits of the density grid are defined by
-a user. If \code{limits} is set to "FALSE", min and max of xvect and yvect are used as a range.
+a user. If \code{limits} is set to "FALSE", min and max of x and y are used as a range.
 If \code{limits} is set to "TRUE", limits defined by x.min, x.max, y.min and y.max are used.}
 
 \item{x.min}{a minimum value for the x axis of the grid density object, if needed}
@@ -35,7 +35,8 @@ If \code{limits} is set to "TRUE", limits defined by x.min, x.max, y.min and y.m
 \item{numints}{a number of intervals for the grid density object, by default is 20}
 }
 \value{
-a grid density matrix
+a list with the grid density matrix (\code{grid}) and the classes of the x and y inputs
+(\code{class.x} and \code{class.y})
 }
 \description{
 Generates a density grid that can then be used for heatmap or contour plots.

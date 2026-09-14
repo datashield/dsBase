@@ -22,7 +22,8 @@ noise if the \code{method.indicator} is equal to 2 (i.e. probabilistic method).}
 }
 \value{
 a list with the x and y coordinates of the centroids if the deterministic method is used
-or the x and y coordinated of the noisy data if the probabilistic method is used.
+or the x and y coordinated of the noisy data if the probabilistic method is used, along with the
+classes of the x and y inputs (\code{class.x} and \code{class.y})
 }
 \description{
 This function calculates the coordinates of the centroids for each n nearest neighbours.

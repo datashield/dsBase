@@ -23,7 +23,8 @@
 #' deterministic method is selected.
 #' @param noise the percentage of the initial variance that is used as the variance of the embedded
 #' noise if the probabilistic method is selected.
-#' @return a list with the x and y coordinates of the data to be plot
+#' @return a list with the x and y coordinates of the data to be plot, along with the classes of
+#' the x and y inputs (\code{class.x} and \code{class.y})
 #' @author Demetris Avraam for DataSHIELD Development Team
 #' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
@@ -32,6 +33,8 @@ scatterPlotDS <- function(x.name, y.name, method.indicator, k, noise){
 
   x <- .loadServersideObject(x.name)
   y <- .loadServersideObject(y.name)
+  .checkClass(obj = x, obj_name = x.name, permitted_classes = c("numeric", "integer"))
+  .checkClass(obj = y, obj_name = y.name, permitted_classes = c("numeric", "integer"))
 
   ###################################################################
   # MODULE 1: CAPTURE THE nfilter SETTINGS                          #
@@ -135,8 +138,8 @@ scatterPlotDS <- function(x.name, y.name, method.indicator, k, noise){
   }
   
   # Return a list with the x and y coordinates of the centroids
-  return(list(x.new, y.new))
-  
+  return(list(x.new, y.new, class.x=class(x), class.y=class(y)))
+
 }
 # AGGREGATE FUNCTION
 # scatterPlotDS
