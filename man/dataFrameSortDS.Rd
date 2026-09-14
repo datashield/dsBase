@@ -53,5 +53,7 @@ For more details see help for the clientside function: [ds.dataFrameShort]
 }
 \author{
 Paul Burton, with critical error identification by
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 Leire Abarrategui-Martinez, for DataSHIELD Development Team, 2/4/2020
 }

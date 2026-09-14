@@ -3,17 +3,18 @@
 #' @description Server-side function called by ds.meanSdGp 
 #' @details Computes the mean and standard deviation across groups defined by one
 #' factor
-#' @param X a client-side supplied character string identifying the variable for which
+#' @param x a client-side supplied character string identifying the variable for which
 #' means/SDs are to be calculated
-#' @param INDEX a client-side supplied character string identifying the factor across
+#' @param index a client-side supplied character string identifying the factor across
 #' which means/SDs are to be calculated
 #' @author Burton PR
-#' 
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
+#'
 #' @return List with results from the group statistics
 #' @export
 #'
-meanSdGpDS <- function (X, INDEX){
-  
+meanSdGpDS <- function (x, index){
+
   #############################################################
   # MODULE 1: CAPTURE THE nfilter SETTINGS
   thr <- dsBase::listDisclosureSettingsDS()
@@ -23,9 +24,16 @@ meanSdGpDS <- function (X, INDEX){
   #nfilter.string <- as.numeric(thr$nfilter.string)
   #############################################################
 
+  X <- .loadServersideObject(x)
+  .checkClass(obj = X, obj_name = x, permitted_classes = c("numeric", "integer"))
+  INDEX <- .loadServersideObject(index)
+  .checkClass(obj = INDEX, obj_name = index, permitted_classes = c("factor", "character", "integer"))
+  x.class <- class(X)
+  index.class <- class(INDEX)
+
   FUN.mean <- function(x) {mean(x,na.rm=TRUE)}
   FUN.var <- function(x)  {stats::var(x,na.rm=TRUE)}
-  
+
   #Strip missings from both X and INDEX
   analysis.matrix<-cbind(X,INDEX)
   
@@ -114,8 +122,8 @@ meanSdGpDS <- function (X, INDEX){
   {
     table.valid<-TRUE
     cell.count.warning<-paste0("All tables valid") 
-    result<-list(table.valid,ansmat.mean,ansmat.sd,ansmat.count,Nvalid,Nmissing,Ntotal,cell.count.warning)
-    names(result)<-list("Table_valid","Mean_gp","StDev_gp", "N_gp","Nvalid","Nmissing","Ntotal","Message")
+    result<-list(table.valid,ansmat.mean,ansmat.sd,ansmat.count,Nvalid,Nmissing,Ntotal,cell.count.warning,x.class,index.class)
+    names(result)<-list("Table_valid","Mean_gp","StDev_gp", "N_gp","Nvalid","Nmissing","Ntotal","Message","class.x","class.index")
     return(result)
   }
   
@@ -123,8 +131,8 @@ meanSdGpDS <- function (X, INDEX){
   {
     table.valid<-FALSE
     cell.count.warning<-paste0("At least one group has between 1 and ", nfilter.tab-1, " observations. Please change groups") 
-    result<-list(table.valid,Nvalid,Nmissing,Ntotal,cell.count.warning)
-    names(result)<-list("Table_valid","Nvalid","Nmissing","Ntotal","Warning")
+    result<-list(table.valid,Nvalid,Nmissing,Ntotal,cell.count.warning,x.class,index.class)
+    names(result)<-list("Table_valid","Nvalid","Nmissing","Ntotal","Warning","class.x","class.index")
     return(result)
   }
   

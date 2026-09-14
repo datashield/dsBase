@@ -4,12 +4,12 @@
 \alias{listDS}
 \title{Coerce objects into a list}
 \usage{
-listDS(input = NULL, eltnames = NULL)
+listDS(x.names = NULL, eltnames = NULL)
 }
 \arguments{
-\item{input}{a list of objects to coerce into a list}
+\item{x.names}{a character vector of object names to coerce into a list.}
 
-\item{eltnames}{a character list, the names of the elements in the list.}
+\item{eltnames}{a character vector, the names of the elements in the list.}
 }
 \value{
 a list
@@ -23,4 +23,6 @@ the names of the elements in the output list.
 }
 \author{
 Gaye, A.
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

@@ -23,4 +23,6 @@ is non-singular - positive definite (eg there is no row or column that is all ze
 }
 \author{
 Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

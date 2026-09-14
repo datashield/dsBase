@@ -14,8 +14,10 @@
 #' sum of squares of each variable. The first disclosure control checks that the number of variables is
 #' not bigger than a percentage of the individual-level records (the allowed percentage is pre-specified
 #' by the 'nfilter.glm'). The second disclosure control checks that none of them is dichotomous with a
-#' level having fewer counts than the pre-specified 'nfilter.tab' threshold.
+#' level having fewer counts than the pre-specified 'nfilter.tab' threshold. The list also includes
+#' \code{class}, the class of the input object for client-side consistency checking.
 #' @author Paul Burton, and Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 corDS <- function(x=NULL, y=NULL){
@@ -27,14 +29,21 @@ corDS <- function(x=NULL, y=NULL){
   nfilter.glm <- as.numeric(thr$nfilter.glm)
   #############################################################
   
-  x.val <- eval(parse(text=x), envir = parent.frame())
+  x.val <- .loadServersideObject(x)
+  .checkClass(obj = x.val, obj_name = x, permitted_classes = c("numeric", "integer", "matrix", "data.frame"))
+
   if (!is.null(y)){
-    y.val <- eval(parse(text=y), envir = parent.frame())
+    y.val <- .loadServersideObject(y)
+    .checkClass(obj = y.val, obj_name = y, permitted_classes = c("numeric", "integer", "matrix", "data.frame"))
   }
   else{
     y.val <- NULL
   }
-  
+
+  if (is.null(y.val) && any(class(x.val) %in% c("numeric", "integer"))) {
+    stop("If x is a numeric vector, y must also be a numeric vector.", call. = FALSE)
+  }
+
   # create a data frame for the variables
   if (is.null(y.val)){
     dataframe <- as.data.frame(x.val)
@@ -165,7 +174,7 @@ corDS <- function(x=NULL, y=NULL){
     
   }
   
-  return(list(sums.of.products=sums.of.products, sums=sums, complete.counts=complete.counts, na.counts=na.counts, sums.of.squares=sums.of.squares))
+  return(list(sums.of.products=sums.of.products, sums=sums, complete.counts=complete.counts, na.counts=na.counts, sums.of.squares=sums.of.squares, class=class(x.val)))
   
 }
 # AGGREGATE FUNCTION

@@ -17,6 +17,7 @@
 #' elements (and only the non-disclosive elements) of a specified serverside glm
 #' and its corresponding summary_glm object.
 #' @author Paul Burton for DataSHIELD Development Team (20/7/20)
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 
 glmSummaryDS.ag <- function(x.transmit){
@@ -55,7 +56,7 @@ if(!string.safe)
 #create safe glm object with disclosive elements deleted for clientside
 #######################################################################
 
-input.obj<-eval(parse(text=x.transmit))
+input.obj <- .loadServersideObject(x.transmit)
 
 
 if (is.null(input.obj)) {
@@ -90,7 +91,7 @@ glm.obj<-input.obj
 #create safe summary.glm object with disclosive elements deleted for clientside
 ###############################################################################
 
-input.obj<-eval(parse(text=x.transmit))
+input.obj <- .loadServersideObject(x.transmit)
 
 summary.obj<-summary(input.obj)
 

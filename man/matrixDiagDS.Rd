@@ -35,4 +35,6 @@ For details see help for function \code{ds.matrixDiag}.
 }
 \author{
 Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

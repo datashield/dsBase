@@ -25,7 +25,7 @@ set.standard.disclosure.settings()
 test_that("numeric meanDS, with below nfilter.tab values", {
     input <- c(NA, NA, 2.0, NA, 4.0)
     
-    expect_error(meanDS(input), "FAILED: Nvalid less than nfilter.tab", fixed = TRUE)
+    expect_error(meanDS("input"), "FAILED: Nvalid less than nfilter.tab", fixed = TRUE)
 })
 
 #

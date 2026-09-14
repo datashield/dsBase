@@ -40,4 +40,6 @@ specified by the argument \code{newobj} on the clientside.
 }
 \author{
 Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

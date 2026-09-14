@@ -18,40 +18,25 @@
 #' @export
 glmSLMADS.assign <- function(formula, family, offsetName, weightsName, dataName){
 
-#############################################################
-#MODULE 1: CAPTURE THE nfilter SETTINGS                     #
-thr <- dsBase::listDisclosureSettingsDS()                   #
-nfilter.tab <- as.numeric(thr$nfilter.tab)                  #
-nfilter.glm <- as.numeric(thr$nfilter.glm)                  #
-#nfilter.subset<-as.numeric(thr$nfilter.subset)             #
-#nfilter.string<-as.numeric(thr$nfilter.string)             #
-#############################################################
+  # Convert transmitable text for special link variance combinations back to full representation
+  if(family=="quasigamma.link_log")
+  {family<-"quasi(link=log,variance=mu^2)"}
 
-########################################
-############
-#Convert transmitable text for special link variance combinations back to full representation
-if(family=="quasigamma.link_log")
-{family<-"quasi(link=log,variance=mu^2)"}
+  if(family=="Gamma.link_log")
+  {family<-"Gamma(link=log)"}
 
-if(family=="Gamma.link_log")
-{family<-"Gamma(link=log)"}
-#############
+  # Correctly name offset, weights and data objects in function call
+  # (to allow glmPredict to work correctly later)
+  calltext <- paste0("mg<-glm(formula,family=",family,",offset=",
+             offsetName,",weights=",weightsName,",data=", dataName,",x=TRUE)")
 
-#Activate family object (this may not be necessary as character string may already be OK
-#but just checking
-final.family.object<-eval(parse(text=family))
+  eval(parse(text=calltext))
 
+  # update the call object to include the actual formula
+  mg$call$formula <- formula
 
-#Correctly name offset, weights and data objects in function call
-#(to allow glmPredict to work correctly later)
-calltext<-paste0("mg<-glm(formula,family=",family,",offset=",
-           offsetName,",weights=",weightsName,",data=", dataName,",x=TRUE)")
-
-eval(parse(text=calltext))
-
-return(mg)		
+  return(mg)
 
 }
-
 # ASSIGN FUNCTION
 # glmSLMADS.assign

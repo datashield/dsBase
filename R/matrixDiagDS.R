@@ -17,6 +17,7 @@
 #' (or default name diag_<x1>) which is written to the serverside.
 #' For more details see help for \code{ds.matrixDiag}.
 #' @author Paul Burton for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 matrixDiagDS <- function(x1.transmit,aim,nrows.transmit){
 #########################################################################
@@ -65,7 +66,7 @@ if(aim=="serverside.vector.2.matrix"||aim=="serverside.scalar.2.matrix"||aim=="s
 {
 #x1 is name of the serverside vector, scalar or matrix
 
-x1<-eval(parse(text=x1.transmit), envir = parent.frame())
+x1 <- .loadServersideObject(x1.transmit)
 
 #coerce to matrix if x1 is a data.frame
 if(is.data.frame(x1))

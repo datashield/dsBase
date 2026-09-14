@@ -15,11 +15,12 @@
 #' @param baseline.level a number indicating the baseline level to be used in the creation of the
 #' matrix of dummy variables.
 #' @return an object of class factor
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 asFactorDS2 <- function(input.var.name=NULL, all.unique.levels.transmit=NULL, fixed.dummy.vars=NULL, baseline.level=NULL){
 
-  input.var <- eval(parse(text=input.var.name), envir = parent.frame())
+  input.var <- .loadServersideObject(input.var.name)
 
   code.input <- all.unique.levels.transmit
   code.c <- unlist(strsplit(code.input, split=","))

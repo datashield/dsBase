@@ -121,4 +121,6 @@ for each.
 }
 \author{
 Paul Burton for DataSHIELD Development Team, 14/10/2019
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

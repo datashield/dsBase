@@ -8,15 +8,18 @@
 #' it might be more sensible to replace all missing values by one specific value e.g. 
 #' replace all missing values in a vector by the mean or median value. Once the missing
 #' values have been replaced a new vector is created.
-#' @param xvect a character, the name of the vector to process.
+#' @param x a character, the name of the vector to process.
 #' @param replacements a vector which contains the replacement value(s), a vector one or 
 #' more values for each study. 
 #' @return a new vector without missing values
 #' @author Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #' 
-replaceNaDS <- function(xvect, replacements){
-  
+replaceNaDS <- function(x, replacements){
+
+  xvect <- .loadServersideObject(x)
+
   # check if the input vector is valid (i.e. meets DataSHIELD criteria)
   check <- dsBase::isValidDS(xvect)
   

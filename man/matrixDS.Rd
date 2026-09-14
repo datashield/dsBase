@@ -43,4 +43,6 @@ and assigns the values of all its elements based on the <mdata> argument
 }
 \author{
 Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

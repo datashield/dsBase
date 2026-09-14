@@ -15,6 +15,7 @@
 #' @return writes object to serverside which is precisely equivalent
 #' to summary(glm object) in native R
 #' @author Paul Burton for DataSHIELD Development Team (20/7/20)
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 
 glmSummaryDS.as <- function(x.transmit){
@@ -52,13 +53,13 @@ if(!string.safe)
 
 #create summary.glm object
 
-input.obj<-eval(parse(text=x.transmit))
+input.obj <- .loadServersideObject(x.transmit)
 
 summary.obj<-summary(input.obj)
 
 #block na.action and deviance residual components of summary object
-summary.obj[[12]]<-NA
-summary.obj[[11]]<-NA
+if (!is.null(summary.obj$na.action)) summary.obj$na.action<-NA
+summary.obj$deviance.resid<-NA
 
 summary.obj<-summary.obj
 
