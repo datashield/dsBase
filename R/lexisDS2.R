@@ -73,23 +73,39 @@ lexisDS2 <- function(datatext=NULL, intervalWidth, maxmaxtime, idCol, entryCol, 
   length.collapseDF <- length(idSeq)
   
   #IDENTIFY VARIABLES TO BE CARRIED WITH THE EXPANDED SURVIVAL DATA
-  
-  if(is.null(vartext)){
+
+  # loads each comma-separated name; whole data.frame names are unpacked into
+  # their own columns (matching data.frame()'s handling of a data.frame argument),
+  # single columns are added under their make.names()-sanitised name (matching
+  # data.frame()'s default naming for a non-symbol argument such as D$var)
+  if(is.null(vartext) && !is.null(datatext)){
     col.names <- unlist(strsplit(datatext, split=","))
-    col.list <- vector("list", length(col.names))
-    for(i in seq_along(col.names)) col.list[[i]] <- .loadServersideObject(col.names[i])
+    col.list <- list()
+    for(nm in col.names){
+      obj <- .loadServersideObject(nm)
+      if(is.data.frame(obj)){
+        col.list <- c(col.list, as.list(obj))
+      }else{
+        col.list[[make.names(nm)]] <- obj
+      }
+    }
     DF <- data.frame(col.list)
-    colnames(DF) <- col.names
   }
 
   if(!is.null(vartext)){
     col.names <- unlist(strsplit(vartext, split=","))
-    col.list <- vector("list", length(col.names))
-    for(i in seq_along(col.names)) col.list[[i]] <- .loadServersideObject(col.names[i])
+    col.list <- list()
+    for(nm in col.names){
+      obj <- .loadServersideObject(nm)
+      if(is.data.frame(obj)){
+        col.list <- c(col.list, as.list(obj))
+      }else{
+        col.list[[make.names(nm)]] <- obj
+      }
+    }
     DF <- data.frame(col.list)
-    colnames(DF) <- col.names
   }
-  
+
   if(is.null(datatext)&&is.null(vartext)){
     DF<-data.frame(SURVTIME,CENS)
   }

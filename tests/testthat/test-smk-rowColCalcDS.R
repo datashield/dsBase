@@ -74,6 +74,21 @@ test_that("simple rowColCalcDS, operation 4", {
     expect_equal(res[4], 6.5)
 })
 
+test_that("rowColCalcDS throws error when object does not exist", {
+  expect_error(
+    rowColCalcDS("nonexistent_object", 1),
+    regexp = "does not exist"
+  )
+})
+
+test_that("rowColCalcDS throws error when object is not data.frame or matrix", {
+  bad_input <- list(a = 1:3, b = 4:6)
+  expect_error(
+    rowColCalcDS("bad_input", 1),
+    regexp = "must be of type data.frame or matrix"
+  )
+})
+
 #
 # Done
 #

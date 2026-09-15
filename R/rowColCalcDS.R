@@ -30,13 +30,12 @@ rowColCalcDS <- function (dataset.name, operation) {
     result <- colMeans(dataset, na.rm=TRUE)
   }
 
-  # check if the output is valid (i.e. meets DataSHIELD criteria)
-  check <- isValidDS(result)
-  if(check){
-    return(result)
-  }else{
-    resultNA <- rep(NA, length(result))
-    return(resultNA)
+  # check if the output is valid (i.e. meets DataSHIELD criteria); result is
+  # always numeric, so only the numeric-vector branch of isValidDS applies
+  thr <- dsBase::listDisclosureSettingsDS()
+  nfilter.tab <- as.numeric(thr$nfilter.tab)
+  if(length(result) > 0 && length(result) < nfilter.tab){
+    result <- rep(NA, length(result))
   }
 
   return(result)

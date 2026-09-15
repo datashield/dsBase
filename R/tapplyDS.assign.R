@@ -28,29 +28,29 @@ tapplyDS.assign <- function(X.name, INDEX.names.transmit, FUN.name){
     studysideMessage <- "ERROR: X.name must be specified as a character string"
     stop(studysideMessage, call. = FALSE)
   }
-
+  
   INDEX.factors <- unlist(strsplit(INDEX.names.transmit, split=","))
-
+  
   num.factors <- length(INDEX.factors)
-
+  
   # test that output vector and indexing factor all have the same length
   length.2.test <- length(X)
-
+  
   length.test.vector <- rep(NA, num.factors)
-
+  
   for(g in 1:num.factors){
     active.factor.name <- INDEX.factors[g]
     active.factor <- .loadServersideObject(active.factor.name)
     length.test.vector[g] <- length(active.factor)
   }
-
+  
   for(h in 1:num.factors){
     if(length.2.test!=length.test.vector[h]){
       return.message <- "Error: the output variable and all indexing factors must be of equal length"
       stop(return.message, call. = FALSE)
-    }
+    }  
   }
-
+  
   # convert INDEX.names format from transmittable to actionable form (a list of vectors)
   INDEX <- vector("list", num.factors)
   for(g in 1:num.factors){
