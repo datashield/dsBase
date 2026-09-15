@@ -25,6 +25,7 @@
 #' arguments to ns, and explicitly give the knots, Boundary.knots etc for use by predict.ns().
 #' The object is assigned at each serverside.
 #' @author Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 nsDS <- function(x, df, knots, intercept, Boundary.knots){
@@ -33,7 +34,7 @@ nsDS <- function(x, df, knots, intercept, Boundary.knots){
   thr <- dsBase::listDisclosureSettingsDS()
   nfilter.tab <- as.numeric(thr$nfilter.tab) 
   
-  x <- eval(parse(text=x), envir = parent.frame())
+  x <- .loadServersideObject(x)
   
   if(is.null(Boundary.knots)){
     Boundary.knots <- range(x, na.rm=TRUE)
