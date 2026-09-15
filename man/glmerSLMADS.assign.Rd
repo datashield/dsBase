@@ -67,4 +67,6 @@ from each single data source and saves the regression outcomes on the serverside
 }
 \author{
 Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

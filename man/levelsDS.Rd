@@ -10,9 +10,8 @@ levelsDS(x)
 \item{x}{a factor vector}
 }
 \value{
-a list with two elements: \code{Levels} (the factor levels present
-  in the vector) and \code{class} (the class of the input object, for
-  client-side consistency checking)
+a list with one element: \code{Levels} (the factor levels present
+  in the vector)
 }
 \description{
 This function is similar to R function \code{levels}.

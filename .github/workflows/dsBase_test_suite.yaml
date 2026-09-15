@@ -15,7 +15,6 @@ on:
   push:
   schedule:
     - cron: '0 0 * * 0'   # Weekly
-    - cron: '0 1 * * *'   # Nightly
 
 jobs:
   dsBase_test_suite:
@@ -153,19 +152,22 @@ jobs:
           echo "branch:${{ env.BRANCH_NAME }}" > ${{ env.WORKFLOW_ID }}.txt
           echo "os:$(lsb_release -ds)" >> ${{ env.WORKFLOW_ID }}.txt
           echo "R:$(R --version | head -n1)" >> ${{ env.WORKFLOW_ID }}.txt
+          Rscript --vanilla -e 'sessionInfo()' >> session_info_${{ env.WORKFLOW_ID }}.txt
         working-directory: dsBase/logs
         
       - name: Parse results from testthat and covr
         run: |
-          Rscript --verbose --vanilla ../testStatus/source/parse_test_report.R logs/
+          Rscript --verbose --vanilla ../testStatus/source/parse_test_report.R logs/ logs/ https://github.com/datashield/${{ env.PROJECT_NAME }}/blob/${{ env.BRANCH_NAME }} '[^-:.]+' '(?<=::)[^:]+(?=::)'
         working-directory: dsBase
+        env:
+          PROJECT_NAME: ${{ env.PROJECT_NAME }}
+          BRANCH_NAME: ${{ env.BRANCH_NAME }}
         
       - name: Render report
         run: |
           cd testStatus
           
           mkdir -p new/logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/
-          mkdir -p new/docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/
           mkdir -p new/docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/latest/
           
           # Copy logs to new logs directory location
@@ -173,8 +175,7 @@ jobs:
           cp -rv ../${{ env.PROJECT_NAME }}/logs/${{ env.WORKFLOW_ID }}.txt new/logs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/
           
           R -e 'input_dir <- file.path("../new/logs", Sys.getenv("PROJECT_NAME"), Sys.getenv("BRANCH_NAME"), Sys.getenv("WORKFLOW_ID")); quarto::quarto_render("source/test_report.qmd", execute_params = list(input_dir = input_dir))'
-          mv source/test_report.html new/docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/index.html
-          cp -r new/docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/${{ env.WORKFLOW_ID }}/* new/docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/latest
+          mv source/test_report.html new/docs/${{ env.PROJECT_NAME }}/${{ env.BRANCH_NAME }}/latest/index.html
           
         env:
           PROJECT_NAME: ${{ env.PROJECT_NAME }}

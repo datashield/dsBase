@@ -25,7 +25,7 @@ set.standard.disclosure.settings()
 test_that("numeric varDS, with below nfilter.tab values", {
     input <- c(NA, NA, 2.0, NA, 4.0)
 
-    expect_error(varDS(input), "FAILED: Nvalid less than nfilter.tab", fixed = TRUE)
+    expect_error(varDS("input"), "FAILED: Nvalid less than nfilter.tab", fixed = TRUE)
 })
 
 #

@@ -52,6 +52,15 @@ test_that("levelsDS throws error when object is not a factor", {
     )
 })
 
+test_that("levelsDS blocks when levels density exceeds threshold", {
+    input <- factor(1:10, levels = 1:10)
+
+    expect_error(
+        levelsDS("input"),
+        regexp = "nfilter.levels.density"
+    )
+})
+
 #
 # Done
 #

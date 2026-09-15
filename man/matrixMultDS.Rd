@@ -29,4 +29,6 @@ is only valid if the number of columns of A is the same as the number of rows of
 }
 \author{
 Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

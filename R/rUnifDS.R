@@ -20,15 +20,12 @@
 #' have k decimal places. If k = 9, no rounding occurs of native output.
 #' Default=9. Value specified by <force.output.to.k.decimal.places> argument
 #' in ds.rUnif
-#' @return Writes the pseudorandom number vector with the characteristics specified
-#' in the function call as a new serverside vector on the data source on which
-#' it has been called. Also returns key information to the clientside:
-#' the random seed as specified by you in each
-#' source + (if requested) the full 626 length random seed vector this generated in
-#' each source (see info for the argument <return.full.seed.as.set>). It
-#' also returns a vector reporting the length of the pseudorandom vector
-#' created in each source.
+#' @return the numeric vector of pseudorandom numbers from a uniform distribution,
+#' rounded to <force.output.to.k.decimal.places> decimal places if that is less
+#' than 9, which is written to the serverside as the object named by the <newobj>
+#' argument of ds.rUnif.
 #' @author Paul Burton for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 rUnifDS<-function (n, min = 0, max = 1, force.output.to.k.decimal.places=9){
 
@@ -39,13 +36,11 @@ rUnifDS<-function (n, min = 0, max = 1, force.output.to.k.decimal.places=9){
 #first convert their names into the corresponding active vectors
 
 	if(is.character(min)){
-	command.text<-min
-	min<-eval(parse(text=command.text), envir = parent.frame())
+	min<-.loadServersideObject(min)
 	}
 
 	if(is.character(max)){
-	command.text<-max
-	max<-eval(parse(text=command.text), envir = parent.frame())
+	max<-.loadServersideObject(max)
 	}
 
 	random.number.vector<-stats::runif(n, min=min, max=max)

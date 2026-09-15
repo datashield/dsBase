@@ -14,7 +14,7 @@ detailed in the headers of the client-side \code{ds.skewness} function.}
 }
 \value{
 a list including the skewness of the input numeric variable, the number of valid observations and
-the study-side validity message.
+\code{class}, the class of the input object for client-side consistency checking.
 }
 \description{
 This function calculates the skewness of a numeric variable for each study separately.
@@ -25,4 +25,6 @@ The method is specified by the argument \code{method} in the client-side \code{d
 }
 \author{
 Demetris Avraam, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

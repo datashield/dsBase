@@ -17,6 +17,7 @@
 #' such as test of model complexity (saturation).
 #' For more detailed information see help for ds.glmSLMA.
 #' @author Paul Burton for DataSHIELD Development Team (14/7/20)
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 
 glmSLMADS1<- function(formula, family, weights, offset, data){
@@ -51,7 +52,8 @@ final.family.object<-eval(parse(text=family))
   if(is.null(data)){
     dataTable <- NULL 
   }else{
-    dataTable <- eval(parse(text=data), envir = parent.frame())
+    dataTable <- .loadServersideObject(data)
+    .checkClass(obj = dataTable, obj_name = data, permitted_classes = c("data.frame", "matrix"))
   }
    
    

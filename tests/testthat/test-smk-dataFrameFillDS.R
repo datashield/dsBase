@@ -90,6 +90,13 @@ test_that("simple dataFrameFillDS, ascending, numeric", {
     expect_equal(res.v6.levels[3], "3")
 })
 
+test_that("dataFrameFillDS errors when object does not exist", {
+    expect_error(
+        dataFrameFillDS("nonexistent_object", "a,b", "numeric,numeric", NULL),
+        regexp = "does not exist"
+    )
+})
+
 #
 # Shutdown
 #

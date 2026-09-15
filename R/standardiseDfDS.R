@@ -1,0 +1,133 @@
+#' Get the Class of All Columns in a Data Frame
+#' @param df.name A string representing the name of the data frame.
+#' @return A tibble with the class of each column in the data frame.
+#' @importFrom dplyr %>%
+#' @importFrom tibble as_tibble
+#' @importFrom purrr map
+#' @export
+getClassAllColsDS <- function(df.name){
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana', 'carrot'))
+  
+  df.name <- eval(parse(text = df.name), envir = parent.frame())
+  all_classes <- map(df.name, class) %>% as_tibble()
+  return(all_classes)
+}
+
+#' Change Class of Target Variables in a Data Frame
+#' @param df.name A string representing the name of the data frame.
+#' @param target_vars A character vector specifying the columns to be modified.
+#' @param target_class A character vector specifying the new classes for each column (1 = factor,
+#' 2 = integer, 3 = numeric, 4 = character, 5 = logical).
+#' @return A modified data frame with the specified columns converted to the target classes.
+#' @importFrom dplyr mutate across
+#' @importFrom tidyselect all_of
+#' @export
+fixClassDS <- function(df.name, target_vars, target_class) {
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana', 'carrot'))
+  
+  df <- eval(parse(text = df.name), envir = parent.frame())
+  df_transformed <- df %>%
+    mutate(
+      across(all_of(target_vars),
+             ~ .convertClass(.x, target_class[which(target_vars == cur_column())])))
+  return(df_transformed)
+}
+
+#' Convert a Vector to a Specified Class
+#' @param x The vector to be converted.
+#' @param class_name A string indicating the target class (1 = factor, 2 = integer, 3 = numeric,
+#' 4 = character, 5 = logical).
+#' @return The converted vector.
+#' @noRd
+.convertClass <- function(target_var, target_class_code) {
+  switch(target_class_code,
+         "1" = as.factor(target_var),
+         "2" = as.integer(target_var),
+         "3" = as.numeric(target_var),
+         "4" = as.character(target_var),
+         "5" = as.logical(target_var)
+  )
+}
+
+#' Add Missing Columns with NA Values
+#' @param .data A string representing the name of the data frame.
+#' @param cols A character vector specifying the columns to be added if missing.
+#' @return A modified data frame with missing columns added and filled with NA.
+#' @importFrom dplyr mutate select
+#' @importFrom tidyselect peek_vars
+#' @importFrom purrr set_names
+#' @export
+fixColsDS <- function(.data, cols) {
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana', 'carrot'))
+  
+  .data <- eval(parse(text = .data), envir = parent.frame())
+  missing <- setdiff(cols, colnames(.data))
+  out <- .data %>%
+    mutate(!!!set_names(rep(list(NA), length(missing)), missing)) %>%
+    select(sort(peek_vars()))
+  return(out)
+}
+
+#' Retrieve Factor Levels for Specific Columns
+#' @param df.name A string representing the name of the data frame.
+#' @param factor_vars A character vector specifying the factor columns.
+#' @return A list of factor levels for the specified columns.
+#' @importFrom tidyselect all_of
+#' @importFrom purrr map imap
+#' @export
+getAllLevelsDS <- function(df.name, factor_vars) {
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana', 'carrot'))
+  
+  df <- eval(parse(text = df.name), envir = parent.frame())
+  factor_vars_split <- strsplit(factor_vars, ",\\s*")[[1]]
+  levels <- purrr::map(df[factor_vars_split], base::levels)
+  
+  disclosure_check <- imap(levels, function(lvls, var) {
+    .checkLevelsDisclosure(df = df, var = var, levels = lvls)
+  })
+  
+  failed_vars <- names(disclosure_check)[unlist(disclosure_check)]
+  
+  if(length(failed_vars) > 0) {
+  stop("Based on the value of nfilter.levels.density, these factor variables", " {", failed_vars, "} ", "have too many levels compared to the length of the variable. Please reduce the numnber of levels or change the variable type and try again")
+  } else {
+    return(levels)  
+  }
+}
+
+#' Check variable levels against disclosure thresholds
+#'
+#' Internal helper function to verify whether the number of levels in a variable
+#' exceeds the allowed density threshold defined by `dsBase::listDisclosureSettingsDS()`.
+#'
+#' @param df A data frame containing the variable.
+#' @param var Character string. Name of the variable to check.
+#' @param levels Character vector. Levels of the variable.
+#'
+#' @return Logical. `TRUE` if the check fails (i.e., disclosure threshold is violated),
+#'   otherwise `FALSE`.
+#'
+#' @keywords internal
+#' @noRd
+.checkLevelsDisclosure <- function(df, var, levels) {
+  thr <- dsBase::listDisclosureSettingsDS()
+  nfilter.levels.density <- as.numeric(thr$nfilter.levels.density)
+  n_levels <- length(levels)
+  length_var <- length(df[[var]])
+  fail <- (length_var * nfilter.levels.density) < n_levels
+  return(fail)
+}
+
+#' Set Factor Levels for Specific Columns in a Data Frame
+#' @param df.name A string representing the name of the data frame to modify.
+#' @param vars A character vector specifying the columns to be modified.
+#' @param levels A named list where each element contains the levels for the corresponding factor variable.
+#' @return A modified data frame with the specified columns converted to factors with the provided levels.
+#' @export
+fixLevelsDS <- function(df.name, vars, levels) {
+  dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana', 'carrot'))
+  
+  df.name <- eval(parse(text = df.name), envir = parent.frame())
+  out <- df.name %>%
+    mutate(across(all_of(vars), ~factor(., levels = levels[[dplyr::cur_column()]])))
+}

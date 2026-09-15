@@ -25,7 +25,7 @@ set.standard.disclosure.settings()
 test_that("numeric varDS", {
     input <- c(0.0, 1.0, 2.0, 3.0, 4.0)
 
-    res <- varDS(input)
+    res <- varDS("input")
 
     expect_length(res, 6)
     expect_equal(class(res), "list")
@@ -39,15 +39,14 @@ test_that("numeric varDS", {
     expect_equal(res$Nvalid, 5)
     expect_equal(class(res$Ntotal), "integer")
     expect_equal(res$Ntotal, 5)
-    expect_equal(class(res$ValidityMessage), "character")
-    expect_equal(res$ValidityMessage, "VALID ANALYSIS")
+    expect_equal(res$class, "numeric")
 })
 
 # context("varDS::smk::numeric with NA")
 test_that("numeric varDS, with NA", {
     input <- c(0.0, NA, 2.0, NA, 4.0)
 
-    res <- varDS(input)
+    res <- varDS("input")
 
     expect_length(res, 6)
     expect_equal(class(res), "list")
@@ -61,19 +60,18 @@ test_that("numeric varDS, with NA", {
     expect_equal(res$Nvalid, 3)
     expect_equal(class(res$Ntotal), "integer")
     expect_equal(res$Ntotal, 5)
-    expect_equal(class(res$ValidityMessage), "character")
-    expect_equal(res$ValidityMessage, "VALID ANALYSIS")
+    expect_equal(res$class, "numeric")
 })
 
 # context("varDS::smk::numeric with all NA")
 test_that("numeric varDS, with all NA", {
-    input <- c(NA, NA, NA, NA, NA)
-    
-    res <- varDS(input)
-    
+    input <- rep(NA_real_, 5)
+
+    res <- varDS("input")
+
     expect_length(res, 6)
     expect_equal(class(res), "list")
-    expect_equal(class(res$Sum), "integer")
+    expect_equal(class(res$Sum), "numeric")
     expect_equal(res$Sum, 0)
     expect_equal(class(res$SumOfSquares), "numeric")
     expect_equal(res$SumOfSquares, 0)
@@ -83,8 +81,16 @@ test_that("numeric varDS, with all NA", {
     expect_equal(res$Nvalid, 0)
     expect_equal(class(res$Ntotal), "integer")
     expect_equal(res$Ntotal, 5)
-    expect_equal(class(res$ValidityMessage), "character")
-    expect_equal(res$ValidityMessage, "VALID ANALYSIS")
+    expect_equal(res$class, "numeric")
+})
+
+test_that("varDS throws error when object does not exist", {
+    expect_error(varDS("nonexistent_object"), regexp = "does not exist")
+})
+
+test_that("varDS throws error when object is not numeric or integer", {
+    bad_input <- c("a", "b", "c")
+    expect_error(varDS("bad_input"), regexp = "must be of type numeric or integer")
 })
 
 #

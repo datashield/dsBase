@@ -54,6 +54,7 @@
 #' without problems no studysideMessage will have been saved and ds.message("newobj")
 #' will return the message: "ALL OK: there are no studysideMessage(s) on this datasource".
 #' @author DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 dataFrameSubsetDS2<-function(df.name=NULL,V1.name=NULL, V2.name=NULL, Boolean.operator.n=NULL,keep.cols=NULL, rm.cols=NULL, keep.NAs=NULL){
@@ -177,8 +178,7 @@ if(!is.null(V2.name)){
 }
 
 
-   df.name.2<-paste0("data.frame(",df.name,")")
-   df2subset <- eval(parse(text=df.name.2), envir = parent.frame())
+   df2subset <- data.frame(.loadServersideObject(df.name))
 
    if(V1.name=="ONES"||V2.name=="ONES")
    {
@@ -195,8 +195,16 @@ if(!is.null(V2.name)){
        ONES<-V1
      }
    }else{
-     V1<-eval(parse(text=V1.name), envir = parent.frame())
-     V2<-eval(parse(text=V2.name), envir = parent.frame())
+     V1<-tryCatch(.loadServersideObject(V1.name), error = function(e) {
+       numeric.val <- suppressWarnings(as.numeric(V1.name))
+       if (is.na(numeric.val)) stop(e)
+       numeric.val
+     })
+     V2<-tryCatch(.loadServersideObject(V2.name), error = function(e) {
+       numeric.val <- suppressWarnings(as.numeric(V2.name))
+       if (is.na(numeric.val)) stop(e)
+       numeric.val
+     })
    }
 
 
