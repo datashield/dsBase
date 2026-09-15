@@ -46,6 +46,16 @@ test_that("simple sampleDS", {
     expect_length(res$sampling.order, 16)
 })
 
+test_that("sampleDS fails when x references nonexistent object", {
+    expect_error(sampleDS("nonexistent_obj", 5, FALSE, NULL), "does not exist")
+})
+
+test_that("sampleDS fails when prob references nonexistent object", {
+    x <- c(1:32)
+
+    expect_error(sampleDS("x", 5, FALSE, "nonexistent_obj"), "does not exist")
+})
+
 #
 # Done
 #

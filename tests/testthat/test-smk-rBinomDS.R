@@ -15,6 +15,8 @@
 
 # context("rBinomDS::smk::setup")
 
+set.standard.disclosure.settings()
+
 #
 # Tests
 #
@@ -56,6 +58,14 @@ test_that("simple rBinomDS, direct", {
     expect_true(res[6] >= 0)
     expect_true(res[7] >= 0)
     expect_true(res[8] >= 0)
+})
+
+test_that("rBinomDS fails when size references nonexistent object", {
+    expect_error(rBinomDS(8, "nonexistent_obj", 0.5), "does not exist")
+})
+
+test_that("rBinomDS fails when prob references nonexistent object", {
+    expect_error(rBinomDS(8, 1, "nonexistent_obj"), "does not exist")
 })
 
 #
