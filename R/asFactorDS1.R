@@ -7,6 +7,7 @@
 #' are of type character.
 #' @param input.var.name the name of the variable that is to be converted to a factor.
 #' @return the levels of the input variable.
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 asFactorDS1 <- function(input.var.name=NULL){
@@ -24,7 +25,7 @@ asFactorDS1 <- function(input.var.name=NULL){
   nfilter.levels.max <- as.numeric(thr$nfilter.levels.max)         #
   ##################################################################
 
-  input.var <- eval(parse(text=input.var.name), envir = parent.frame())
+  input.var <- .loadServersideObject(input.var.name)
   factor.levels.present.in.source <- levels(factor(input.var))
   num.levels<-length(factor.levels.present.in.source)
   

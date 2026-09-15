@@ -50,4 +50,6 @@ theoretical work with random number generators it is likely that the
 }
 \author{
 Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }
