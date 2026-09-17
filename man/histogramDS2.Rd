@@ -4,10 +4,10 @@
 \alias{histogramDS2}
 \title{Computes a histogram of the input variable without plotting.}
 \usage{
-histogramDS2(xvect, num.breaks, min, max, method.indicator, k, noise)
+histogramDS2(x, num.breaks, min, max, method.indicator, k, noise)
 }
 \arguments{
-\item{xvect}{the numeric vector for which the histogram is desired.}
+\item{x}{a character string providing the name of the server-side numeric vector for which the histogram is desired.}
 
 \item{num.breaks}{the number of breaks that the range of the variable is divided.}
 
@@ -41,4 +41,6 @@ Please find more details in the documentation of the clientside ds.histogram fun
 }
 \author{
 Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }
