@@ -23,6 +23,7 @@
 #' @return an object of class "lspline" and "matrix", which its name is specified by the
 #' \code{newobj} argument (or its default name "qlspline.newobj"), is assigned on the serverside.
 #' @author Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 qlsplineDS <- function(x = x, q = q, na.rm = TRUE, marginal = FALSE, names = NULL){
@@ -59,7 +60,7 @@ qlsplineDS <- function(x = x, q = q, na.rm = TRUE, marginal = FALSE, names = NUL
     structure(rval, knots = knots, marginal = marginal, class = c("lspline", "matrix"))
   }
   
-  x <- eval(parse(text=x), envir = parent.frame())
+  x <- .loadServersideObject(x)
   
   if (length(q) == 1 && q >= 2) {
     q <- seq(0, 1, length.out = q + 1)[-c(1, q + 1)]
