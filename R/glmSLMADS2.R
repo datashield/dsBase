@@ -22,6 +22,7 @@
 #' in particular including the study-specific regression coefficients and their corresponding
 #' standard errors.
 #' @author Paul Burton for DataSHIELD Development Team (14/7/20)
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 glmSLMADS2 <- function(formula, family, offset, weights, newobj, dataName){
 
@@ -52,7 +53,8 @@ errorMessage2<-"No errors"
 # Same is done for offset and weights lower down function
 
   if(!is.null(dataName)){
-    dataDF <- eval(parse(text=dataName), envir = parent.frame())
+    dataDF <- .loadServersideObject(dataName)
+    .checkClass(obj = dataDF, obj_name = dataName, permitted_classes = c("data.frame", "matrix"))
   }else{
 	dataDF<-NULL
 	}
@@ -102,8 +104,7 @@ errorMessage2<-"No errors"
 #bringing back in the mg output saved from that previous call
 #	mg <- stats::glm(formula2use, family=final.family.object, x=TRUE, offset=offset.to.use, weights=weights.to.use, data=dataDF)
 
-activate.text<- paste0("mg<-",newobj)
-eval(parse(text=activate.text))
+mg <- .loadServersideObject(newobj)
 	
 y.vect<-mg$y
 X.mat<-mg$x

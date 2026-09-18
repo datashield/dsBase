@@ -15,6 +15,8 @@
 
 # context("rPoisDS::smk::setup")
 
+set.standard.disclosure.settings()
+
 #
 # Tests
 #
@@ -54,6 +56,10 @@ test_that("simple rPoisDS, direct", {
     expect_true(res[6] >= 0)
     expect_true(res[7] >= 0)
     expect_true(res[8] >= 0)
+})
+
+test_that("rPoisDS fails when lambda references nonexistent object", {
+    expect_error(rPoisDS(8, "nonexistent_obj"), "does not exist")
 })
 
 #

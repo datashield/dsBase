@@ -16,14 +16,9 @@ by the lambda argument in ds.rPois. May be a scalar or a vector allowing lambda
 to vary from observation to observation.}
 }
 \value{
-Writes the pseudorandom number vector with the characteristics specified
-in the function call as a new serverside vector on the data source on which
-it has been called. Also returns key information to the clientside:
-the random seed as specified by you in each
-source + (if requested) the full 626 length random seed vector this generated in
-each source (see info for the argument <return.full.seed.as.set>). It
-also returns a vector reporting the length of the pseudorandom vector
-created in each source.
+the vector of pseudorandom non-negative integers from a Poisson
+distribution, which is written to the serverside as the object named by the
+<newobj> argument of ds.rPois.
 }
 \description{
 primary serverside assign function called by ds.rPois
@@ -37,4 +32,6 @@ and its arguments are the same.
 }
 \author{
 Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }
