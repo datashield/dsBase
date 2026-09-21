@@ -49,13 +49,13 @@ schedules:
     displayName: Weekly build - latest release
     branches:
       include:
-      - 6.3.4
+      - 6.3.5
     always: true
   - cron: "0 1 * * *"
     displayName: Nightly build - development branchs
     branches:
       include:
-      - v6.3.5-dev
+      - v6.3.6-dev
       - v6.4.0-dev
       - v7.0.0-dev
     always: true
