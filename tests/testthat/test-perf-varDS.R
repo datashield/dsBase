@@ -51,8 +51,6 @@ test_that("numeric varDS - performance", {
         print(paste("varDS::perf::numeric::0 ", format(.current.rate, digits = 8), ", ", format(100.0 * .current.rate / .reference.rate, digits = 4), "%", sep = ''))
     }
 
-    expect_equal(.current.rate, 0.0)
-
     .reference.rate            <- perf.reference.rate("varDS::perf::numeric::0")
     .reference.tolerance.lower <- perf.reference.tolerance.lower("varDS::perf::numeric::0")
     .reference.tolerance.upper <- perf.reference.tolerance.upper("varDS::perf::numeric::0")
@@ -88,15 +86,9 @@ test_that("numeric varDS, with NA - performance", {
         print(paste("varDS::perf::numberAndNA::0 ", format(.current.rate, digits = 8), ", ", format(100.0 * .current.rate / .reference.rate, digits = 4), "%", sep = ''))
     }
 
-    expect_equal(.current.rate, 0.0)
-
     .reference.rate            <- perf.reference.rate("varDS::perf::numberAndNA::0")
     .reference.tolerance.lower <- perf.reference.tolerance.lower("varDS::perf::numberAndNA::0")
     .reference.tolerance.upper <- perf.reference.tolerance.upper("varDS::perf::numberAndNA::0")
-
-    expect_equal(.current.rate, 0.0)
-    expect_equal(.reference.rate * .reference.tolerance.lower, 0.0)
-    expect_equal(.reference.rate * .reference.tolerance.upper, 0.0)
 
     expect_gt(.current.rate, .reference.rate * .reference.tolerance.lower, label = "Observed rate", expected.label = "lower threshold on rate")
     expect_lt(.current.rate, .reference.rate * .reference.tolerance.upper, label = "Observed rate", expected.label = "upper threshold on rate")
