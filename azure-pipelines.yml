@@ -27,8 +27,7 @@ variables:
   branchName:  $(Build.SourceBranchName)
   test_filter: '*'
   _r_check_system_clock_: 0
-  PERF_PROFILE: 'azure-pipeline'
-
+  perf.profile: 'azure-pipeline'
 
 
 #########################################################################################
@@ -184,7 +183,7 @@ jobs:
       # R output and messages are redirected by sink() to test_console_output.txt
       # junit reporter output is to test_results.xml
 
-      sudo R -q -e '
+      sudo env PERF_PROFILE=$PERF_PROFILE R -q -e '
         library(covr);
         write.csv(
             coverage_to_list(
