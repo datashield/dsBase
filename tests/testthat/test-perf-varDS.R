@@ -48,7 +48,7 @@ test_that("numeric varDS - performance", {
         write(paste("varDS::perf::numeric::0 ", .current.rate, perf.profile.tolerance.lower(), perf.profile.tolerance.upper()), stderr())
         perf.reference.save("varDS::perf::numeric::0", .current.rate, perf.profile.tolerance.lower(), perf.profile.tolerance.upper())
     } else {
-        write((paste("varDS::perf::numeric::0 ", format(.current.rate, digits = 8), ", ", format(100.0 * .current.rate / .reference.rate, digits = 4), "%", sep = ''), stderr())
+        write(paste("varDS::perf::numeric::0 ", format(.current.rate, digits = 8), ", ", format(100.0 * .current.rate / .reference.rate, digits = 4), "%", sep = ''), stderr())
     }
 
     .reference.rate            <- perf.reference.rate("varDS::perf::numeric::0")
