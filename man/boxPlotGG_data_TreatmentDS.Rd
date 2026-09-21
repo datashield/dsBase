@@ -4,10 +4,10 @@
 \alias{boxPlotGG_data_TreatmentDS}
 \title{Arrange data frame to pass it to the boxplot function}
 \usage{
-boxPlotGG_data_TreatmentDS(table, variables, group = NULL, group2 = NULL)
+boxPlotGG_data_TreatmentDS(table.name, variables, group = NULL, group2 = NULL)
 }
 \arguments{
-\item{table}{\code{data frame} Table that holds the information to be plotted later}
+\item{table.name}{\code{character} Name of a server-side data frame that holds the information to be plotted later}
 
 \item{variables}{\code{character vector} Name of the column(s) of the data frame to include on the boxplot}
 
@@ -25,4 +25,7 @@ boxPlotGG_data_TreatmentDS(table, variables, group = NULL, group2 = NULL)
 }
 \description{
 Arrange data frame to pass it to the boxplot function
+}
+\author{
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

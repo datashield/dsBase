@@ -9,8 +9,8 @@
 #' neighbours and the y-coordinate of the centroid is the average of the y-coordinates of the n nearest
 #' neighbours. The coordinates of the centroids return to the client side function and can be used for the
 #' plot of non-disclosive graphs (e.g. scatter plots, heatmap plots, contour plots, etc).    
-#' @param x the name of a numeric vector, the x-variable.
-#' @param y the name of a numeric vector, the y-variable.
+#' @param x.name a character string providing the name of a server-side numeric vector, the x-variable.
+#' @param y.name a character string providing the name of a server-side numeric vector, the y-variable.
 #' @param k the number of the nearest neighbours for which their centroid is calculated if the 
 #' \code{method.indicator} is equal to 1 (i.e. deterministic method).
 #' @param noise the percentage of the initial variance that is used as the variance of the embedded
@@ -18,11 +18,18 @@
 #' @param method.indicator a number equal to either 1 or 2. If the value is equal to 1 then the
 #' 'deterministic' method is used. If the value is set to 2 the 'probabilistic' method is used. 
 #' @return a list with the x and y coordinates of the centroids if the deterministic method is used
-#' or the x and y coordinated of the noisy data if the probabilistic method is used.
+#' or the x and y coordinated of the noisy data if the probabilistic method is used, along with the
+#' classes of the x and y inputs (\code{class.x} and \code{class.y})
 #' @author Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
-#' 
-heatmapPlotDS <- function(x, y, k, noise, method.indicator){
+#'
+heatmapPlotDS <- function(x.name, y.name, k, noise, method.indicator){
+
+  x <- .loadServersideObject(x.name)
+  y <- .loadServersideObject(y.name)
+  .checkClass(obj = x, obj_name = x.name, permitted_classes = c("numeric", "integer"))
+  .checkClass(obj = y, obj_name = y.name, permitted_classes = c("numeric", "integer"))
 
   ###################################################################
   # MODULE 1: CAPTURE THE nfilter SETTINGS                          #
@@ -125,8 +132,8 @@ heatmapPlotDS <- function(x, y, k, noise, method.indicator){
   }
   
   # Return a list with the x and y coordinates of the centroids
-  return(list(x.new, y.new))
-  
+  return(list(x.new, y.new, class.x=class(x), class.y=class(y)))
+
 }
 # AGGREGATE FUNCTION
 # heatmapPlotDS
