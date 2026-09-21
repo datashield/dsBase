@@ -1,14 +1,3 @@
-#-------------------------------------------------------------------------------
-# Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
-# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
-#
-# This program and the accompanying materials
-# are made available under the terms of the GNU Public License v3.0.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#-------------------------------------------------------------------------------
-
 #
 # Set up
 #
@@ -77,6 +66,20 @@ test_that("lexisDS2 throws error when object does not exist", {
         ),
         regexp = "does not exist"
     )
+})
+
+# context("lexisDS2::smk::no.entryCol")
+test_that("simple lexisDS2, entryCol not given defaults entry times to 0", {
+    D <- data.frame(id = 1:6, end = rep(5, 6), status = rep(1, 6))
+
+    res <- lexisDS2(
+        datatext = NULL, intervalWidth = "10", maxmaxtime = 10,
+        idCol = "D$id", entryCol = NULL, exitCol = "D$end", statusCol = "D$status", vartext = NULL
+    )
+
+    expect_equal(class(res), "list")
+    expect_equal(nrow(res$expanded.table), 6)
+    expect_true(all(res$expanded.table$SURVTIME == 5))
 })
 
 #

@@ -4,10 +4,10 @@
 \alias{rangeDS}
 \title{returns the minimum and maximum of a numeric vector}
 \usage{
-rangeDS(xvect)
+rangeDS(x)
 }
 \arguments{
-\item{xvect}{a numerical}
+\item{x}{a character string, the name of a numeric or integer vector}
 }
 \value{
 a numeric vector which contains the minimum and the maximum values of the vector
@@ -18,4 +18,6 @@ the real minimum and maximum, the computed values are multiplied by a very small
 }
 \author{
 Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

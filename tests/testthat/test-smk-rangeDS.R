@@ -25,7 +25,7 @@ set.random.seed.setting(1234)
 test_that("numeric rangeDS", {
     input <- c(0.0, 1.0, 2.0, 3.0, 4.0, 4.0, 3.0, 2.0, 1.0, 0.0)
 
-    res <- rangeDS(input)
+    res <- rangeDS("input")
 
     expect_length(res, 2)
     expect_equal(class(res), "numeric")
@@ -37,12 +37,22 @@ test_that("numeric rangeDS", {
 test_that("character rangeDS", {
     input <- c(0.0, NA, 2.0, NA, 4.0, NA, 3.0, NA, 1.0, NA)
 
-    res <- rangeDS(input)
+    res <- rangeDS("input")
 
     expect_length(res, 2)
     expect_equal(class(res), "numeric")
     expect_equal(res[1], 0.0, tolerance = 1e-6)
     expect_equal(res[2], 4.12446, tolerance = 1e-6)
+})
+
+test_that("rangeDS throws error when object does not exist", {
+    expect_error(rangeDS("nonexistent_object"), regexp = "does not exist")
+})
+
+test_that("rangeDS throws error when object is not numeric", {
+    input <- c("a", "b", "c")
+
+    expect_error(rangeDS("input"), regexp = "must be of type numeric or integer")
 })
 
 #

@@ -158,6 +158,18 @@ test_that("simple tapplyDS, quantile", {
     expect_equal(res[[2]][[15]], 2.0)
 })
 
+test_that("tapplyDS throws error when X does not exist", {
+    index <- as.factor(c(1, 2, 1, 2, 1, 2, 1, 2))
+
+    expect_error(tapplyDS("nonexistent_object", "index", "mean"), regexp = "does not exist")
+})
+
+test_that("tapplyDS throws error when INDEX does not exist", {
+    x <- c(1, 2, 1, 2, 1, 2, 1, 2)
+
+    expect_error(tapplyDS("x", "nonexistent_object", "mean"), regexp = "does not exist")
+})
+
 #
 # Done
 #

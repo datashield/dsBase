@@ -13,8 +13,8 @@
 #
 
 # avoid performance tests on CRAN and GitHub Actions
-# testthat::skip_on_cran()
-# testthat::skip_on_ci()
+testthat::skip_on_cran()
+testthat::skip_on_ci()
 
 # context("varDS::perf::setup")
 

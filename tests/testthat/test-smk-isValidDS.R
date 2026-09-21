@@ -15,6 +15,8 @@
 
 # context("isValidDS::smk::setup")
 
+set.standard.disclosure.settings()
+
 #
 # Tests
 #
@@ -23,229 +25,195 @@
 test_that("simple isValidDS, character", {
     input <- "value"
 
-    res <- isValidDS(input)
+    res <- isValidDS("input")
 
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res, FALSE)
+    expect_equal(class(res$valid), "logical")
+    expect_length(res$valid, 1)
+    expect_equal(res$valid, FALSE)
 })
 
 test_that("simple isValidDS, character vector", {
     input <- c("value1", "value2", "value3", "value4")
 
-    res <- isValidDS(input)
+    res <- isValidDS("input")
 
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res, TRUE)
+    expect_equal(class(res$valid), "logical")
+    expect_length(res$valid, 1)
+    expect_equal(res$valid, TRUE)
 })
 
 # context("isValidDS::smk::integer")
 test_that("simple isValidDS, integer", {
     input <- 1L
 
-    res <- isValidDS(input)
+    res <- isValidDS("input")
 
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res, FALSE)
+    expect_equal(class(res$valid), "logical")
+    expect_length(res$valid, 1)
+    expect_equal(res$valid, FALSE)
 })
 
 test_that("simple isValidDS, integer vector", {
     input <- c(1L, 2L, 3L, 4L)
 
-    res <- isValidDS(input)
+    res <- isValidDS("input")
 
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res,  TRUE)
+    expect_equal(class(res$valid), "logical")
+    expect_length(res$valid, 1)
+    expect_equal(res$valid, TRUE)
 })
 
 # context("isValidDS::smk::numeric")
 test_that("simple isValidDS, numeric", {
     input <- 1.1
 
-    res <- isValidDS(input)
+    res <- isValidDS("input")
 
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res, FALSE)
+    expect_equal(class(res$valid), "logical")
+    expect_length(res$valid, 1)
+    expect_equal(res$valid, FALSE)
 })
 
 test_that("simple isValidDS, numeric vector", {
     input <- c(1.1, 2.1, 3.1, 4.1)
 
-    res <- isValidDS(input)
+    res <- isValidDS("input")
 
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res, TRUE)
+    expect_equal(class(res$valid), "logical")
+    expect_length(res$valid, 1)
+    expect_equal(res$valid, TRUE)
 })
 
 # context("isValidDS::smk::logical")
 test_that("simple isValidDS, logical, FALSE", {
     input <- FALSE
 
-    res <- isValidDS(input)
+    res <- isValidDS("input")
 
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res, FALSE)
+    expect_equal(class(res$valid), "logical")
+    expect_length(res$valid, 1)
+    expect_equal(res$valid, FALSE)
 })
 
 test_that("simple isValidDS, logical, TRUE", {
     input <- TRUE
 
-    res <- isValidDS(input)
+    res <- isValidDS("input")
 
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res, FALSE)
+    expect_equal(class(res$valid), "logical")
+    expect_length(res$valid, 1)
+    expect_equal(res$valid, FALSE)
 })
 
 test_that("simple isValidDS, logical vector", {
     input <- c(FALSE, TRUE, FALSE, TRUE)
 
-    res <- isValidDS(input)
+    res <- isValidDS("input")
 
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res, TRUE)
+    expect_equal(class(res$valid), "logical")
+    expect_length(res$valid, 1)
+    expect_equal(res$valid, TRUE)
 })
 
 test_that("simple isValidDS, factor", {
     input <- as.factor("a")
 
-    res <- isValidDS(input)
+    res <- isValidDS("input")
 
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res, FALSE)
+    expect_equal(class(res$valid), "logical")
+    expect_length(res$valid, 1)
+    expect_equal(res$valid, FALSE)
 })
 
 test_that("simple isValidDS, factor vector", {
     input <- as.factor(c("a", "a", "a", "a", "b", "b", "b", "b"))
 
-    res <- isValidDS(input)
+    res <- isValidDS("input")
 
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res, TRUE)
+    expect_equal(class(res$valid), "logical")
+    expect_length(res$valid, 1)
+    expect_equal(res$valid, TRUE)
 })
 
 test_that("simple isValidDS, factor vector", {
     input <- as.factor(c("a", "b", "c", "d", "e", "f"))
 
-    res <- isValidDS(input)
+    res <- isValidDS("input")
 
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res, FALSE)
+    expect_equal(class(res$valid), "logical")
+    expect_length(res$valid, 1)
+    expect_equal(res$valid, FALSE)
 })
 
 # context("isValidDS::smk::data.frame")
 test_that("simple isValidDS, data.frame", {
     input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
 
-    res <- isValidDS(input)
+    res <- isValidDS("input")
 
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res, TRUE)
+    expect_equal(class(res$valid), "logical")
+    expect_length(res$valid, 1)
+    expect_equal(res$valid, TRUE)
 })
 
 # context("isValidDS::smk::array")
-test_that("simple isValidDS, array", {
+test_that("isValidDS throws error for a 1-d array", {
     input <- array(c(0.0, 1.0, 2.0, 3.0, 4.0))
 
-    res <- isValidDS(input)
-
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res, FALSE)
+    expect_error(isValidDS("input"), regexp = "must be of type")
 })
 
 # context("isValidDS::smk::matrix")
 test_that("simple isValidDS, matrix", {
     input <- matrix(c(0.0, 1.0, 2.0, 3.0, 4.0))
 
-    res <- isValidDS(input)
+    res <- isValidDS("input")
 
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res, TRUE)
+    expect_equal(class(res$valid), "logical")
+    expect_length(res$valid, 1)
+    expect_equal(res$valid, TRUE)
 })
 
 # context("isValidDS::smk::data.matrix")
 test_that("simple isValidDS, data.matrix", {
     input <- data.matrix(data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0)))
 
-    res <- isValidDS(input)
+    res <- isValidDS("input")
 
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res, TRUE)
+    expect_equal(class(res$valid), "logical")
+    expect_length(res$valid, 1)
+    expect_equal(res$valid, TRUE)
 })
 
 # context("isValidDS::smk::date")
-test_that("simple isValidDS, date", {
+test_that("isValidDS throws error for a date", {
     input <- Sys.Date()
 
-    res <- isValidDS(input)
-
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res, FALSE)
+    expect_error(isValidDS("input"), regexp = "must be of type")
 })
 
-# context("isValidDS::smk::formula")
-test_that("simple isValidDS, formula", {
-    input <- X ~ A + B
+test_that("isValidDS returns the class of the input", {
+    input <- c(1.1, 2.1, 3.1, 4.1)
 
-    res <- isValidDS(input)
+    res <- isValidDS("input")
 
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res, FALSE)
+    expect_equal(res$class, "numeric")
 })
 
-# context("isValidDS::smk::environment")
-test_that("simple isValidDS, environment", {
-    input <- environment()
-
-    res <- isValidDS(input)
-
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res, FALSE)
+test_that("isValidDS throws error when object does not exist", {
+    expect_error(isValidDS("nonexistent_object"), regexp = "does not exist")
 })
 
-# context("isValidDS::smk::NA")
 test_that("special isValidDS, NA", {
     input <- NA
 
-    res <- isValidDS(input)
+    res <- isValidDS("input")
 
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res, FALSE)
+    expect_equal(res$valid, FALSE)
 })
 
-# context("isValidDS::smk::NULL")
 test_that("special isValidDS, NULL", {
     input <- NULL
 
-    res <- isValidDS(input)
-
-    expect_equal(class(res), "logical")
-    expect_length(res, 1)
-    expect_equal(res, FALSE)
+    expect_error(isValidDS("input"), regexp = "must be of type")
 })
-
-#
-# Done
-#
-
-# context("isValidDS::smk::shutdown")
-
-# context("isValidDS::smk::done")

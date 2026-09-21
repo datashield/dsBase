@@ -54,20 +54,21 @@
 #'
 getWGSRDS <- function(sex, firstPart, secondPart, index, standing=NA, thirdPart=NA){
   
-  sex.name <- sex
   firstPart.name <- firstPart
   sex <- .loadServersideObject(sex)
   firstPart <- .loadServersideObject(firstPart)
-  .checkClass(obj = firstPart, obj_name = firstPart.name, permitted_classes = c("numeric", "integer"))
+  .checkClass(obj = firstPart, obj_name = firstPart.name, permitted_classes = "numeric")
   if (!is.na(secondPart)){
     secondPart.name <- secondPart
     secondPart <- .loadServersideObject(secondPart)
-    .checkClass(obj = secondPart, obj_name = secondPart.name, permitted_classes = c("numeric", "integer"))
+    .checkClass(obj = secondPart, obj_name = secondPart.name, permitted_classes = "numeric")
   }
   if (!is.na(thirdPart)){
     thirdPart.name <- thirdPart
     thirdPart <- .loadServersideObject(thirdPart)
-    .checkClass(obj = thirdPart, obj_name = thirdPart.name, permitted_classes = c("numeric", "integer"))
+    if (index == "bfa"){
+      .checkClass(obj = thirdPart, obj_name = thirdPart.name, permitted_classes = "numeric")
+    }
   }
   
   # access the internal reference data

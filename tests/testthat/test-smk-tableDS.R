@@ -1,14 +1,3 @@
-#-------------------------------------------------------------------------------
-# Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
-# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
-#
-# This program and the accompanying materials
-# are made available under the terms of the GNU Public License v3.0.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#-------------------------------------------------------------------------------
-
 #
 # Set up
 #
@@ -49,6 +38,45 @@ test_that("tableDS throws error when object does not exist", {
         tableDS("nonexistent_object", NULL, NULL, "a,b", NULL, NULL, NULL, "no", NULL),
         regexp = "does not exist"
     )
+})
+
+test_that("tableDS accepts a forced nfilter given as a number", {
+    input <- factor(rep(c("a", "b"), each = 5))
+
+    res <- tableDS("input", NULL, NULL, "a,b", NULL, NULL, NULL, "no", "3")
+
+    expect_equal(class(res), "table")
+    expect_equal(as.vector(res), c(5, 5))
+})
+
+test_that("tableDS throws error when forced nfilter is below nfilter.tab", {
+    input <- factor(rep(c("a", "b"), each = 5))
+
+    expect_error(
+        tableDS("input", NULL, NULL, "a,b", NULL, NULL, NULL, "no", "1"),
+        regexp = "force.nfilter is non-null it must be >= to nfilter.tab"
+    )
+})
+
+test_that("tableDS excludes levels given as literal values", {
+    input <- factor(rep(c("a", "b", "c"), each = 5))
+
+    res <- tableDS("input", NULL, NULL, "a,b,c", NULL, NULL, "a", "no", NULL)
+
+    expect_equal(names(res), c("b", "c"))
+    expect_equal(as.vector(res), c(5, 5))
+})
+
+test_that("tableDS treats NA in a list of excluded values as missing", {
+    input <- factor(c(rep(c("a", "b"), each = 5), rep(NA, 5)))
+
+    expect_warning(
+        res <- tableDS("input", NULL, NULL, "a,b", NULL, NULL, "a,NA", "always", NULL),
+        regexp = "'exclude' containing NA"
+    )
+
+    expect_equal(names(res), "b")
+    expect_equal(as.vector(res), 5)
 })
 
 #

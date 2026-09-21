@@ -56,7 +56,7 @@ nfilter.tab<-as.numeric(thr$nfilter.tab)                                #
 
 if(!is.null(force.nfilter.transmit))
 {
-force.nfilter.active<-.loadServersideObject(force.nfilter.transmit)
+force.nfilter.active<-as.numeric(force.nfilter.transmit)
 
 	if(force.nfilter.active<nfilter.tab)
 	{
@@ -126,8 +126,8 @@ stvar<-NULL
 #exclude
 if(!is.null(exclude.transmit))
 {
-exclude.text<-strsplit(exclude.transmit, split=",")
-exclude<-eval(parse(text=exclude.text), envir = parent.frame())
+exclude<-unlist(strsplit(exclude.transmit, split=","))
+exclude[exclude=="NA"]<-NA
 }
 else
 {

@@ -13,9 +13,13 @@
 #' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' 
 rowColCalcDS <- function (dataset.name, operation) {
-
+  
   dataset <- .loadServersideObject(dataset.name)
   .checkClass(obj = dataset, obj_name = dataset.name, permitted_classes = c("data.frame", "matrix"))
+  column.classes <- lapply(as.data.frame(dataset), class)
+  if(!all(vapply(column.classes, function(cls) any(cls %in% c("numeric", "integer")), logical(1)))){
+    stop("One or more columns of '", dataset.name, "' are not of numeric type", call. = FALSE)
+  }
 
   if(operation == 1){
     result <- rowSums(dataset, na.rm=TRUE)
@@ -29,15 +33,16 @@ rowColCalcDS <- function (dataset.name, operation) {
   if(operation == 4){
     result <- colMeans(dataset, na.rm=TRUE)
   }
-
-  # check if the output is valid (i.e. meets DataSHIELD criteria); result is
-  # always numeric, so only the numeric-vector branch of isValidDS applies
-  thr <- dsBase::listDisclosureSettingsDS()
-  nfilter.tab <- as.numeric(thr$nfilter.tab)
-  if(length(result) > 0 && length(result) < nfilter.tab){
-    result <- rep(NA, length(result))
+  
+  # check if the output is valid (i.e. meets DataSHIELD criteria)
+  check <- .checkDisclosureSize(result)
+  if(check){
+    return(result)
+  }else{
+    resultNA <- rep(NA, length(result))
+    return(resultNA)
   }
-
+  
   return(result)
-
+  
 }

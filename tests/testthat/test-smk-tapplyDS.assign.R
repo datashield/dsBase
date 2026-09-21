@@ -51,6 +51,18 @@ test_that("simple tapplyDS.assign", {
     expect_equal(res$N[[2]], 4)
 })
 
+test_that("tapplyDS.assign throws error when X does not exist", {
+    index <- factor(c(1, 2, 1, 2, 1, 2, 1, 2))
+
+    expect_error(tapplyDS.assign("nonexistent_object", "index", "mean"), regexp = "does not exist")
+})
+
+test_that("tapplyDS.assign throws error when INDEX does not exist", {
+    x <- c(1, 2, 1, 2, 1, 2, 1, 2)
+
+    expect_error(tapplyDS.assign("x", "nonexistent_object", "mean"), regexp = "does not exist")
+})
+
 #
 # Done
 #
