@@ -26,7 +26,8 @@ jobs:
       - run:
           command: |
               echo "options(Ncpus=4)" >> ~/.Rprofile
-              sudo R -q -e "options(repos=c(CRAN=paste0('https://packagemanager.posit.co/cran/__linux__/', system('lsb_release -cs', intern=TRUE), '/latest')), HTTPUserAgent=sprintf('R/%s>
+
+              sudo R -q -e "options(repos=c(CRAN=paste0('https://packagemanager.posit.co/cran/__linux__/', system('lsb_release -cs', intern=TRUE), '/latest')), HTTPUserAgent=sprintf('R/%s R (%s)', getRversion(), paste(getRversion(), R.version\$platform, R.version\$arch, R.version\$os)), Ncpus=4); install.packages(c('devtools','RANN','stringr','lme4','dplyr','reshape2','polycor','splines','gamlss','gamlss.dist','mice','data.table','childsds'), dependencies=TRUE)"
       - run:
           command: |
               sudo Rscript -e 'library(covr); covr::codecov(token = "'$CODECOV_TOKEN'")'
