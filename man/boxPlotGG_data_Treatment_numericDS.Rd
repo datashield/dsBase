@@ -4,17 +4,20 @@
 \alias{boxPlotGG_data_Treatment_numericDS}
 \title{Arrange vector to pass it to the boxplot function}
 \usage{
-boxPlotGG_data_Treatment_numericDS(vector)
+boxPlotGG_data_Treatment_numericDS(vector.name)
 }
 \arguments{
-\item{vector}{\code{numeric vector} Vector to arrange to be plotted later}
+\item{vector.name}{\code{character} Name of a server-side numeric vector to arrange to be plotted later}
 }
 \value{
 \code{data frame} with the following structure: \cr
 
- Column 'x': Names on the X axis of the boxplot, aka name of the vector (vector argument) \cr
+ Column 'x': Names on the X axis of the boxplot, aka name of the vector (vector.name argument) \cr
  Column 'value': Values for that variable \cr
 }
 \description{
 Arrange vector to pass it to the boxplot function
+}
+\author{
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }
