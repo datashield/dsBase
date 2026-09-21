@@ -1,5 +1,5 @@
 "refer_name","rate","lower_tolerance","upper_tolerance"
 "meanDS::perf::numeric::0","4497.0","0.5","2"
 "meanDS::perf::numberAndNA::0","4542.0","0.5","2"
-"varDS::perf::numeric::0","4584.0","0.5","2"
-"varDS::perf::numberAndNA::0","4590.0","0.5","2"
+"varDS::perf::numeric::0","6220.0","0.5","2"
+"varDS::perf::numberAndNA::0","6250.0","0.5","2"
