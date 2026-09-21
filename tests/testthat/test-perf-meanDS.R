@@ -45,10 +45,10 @@ test_that("numeric meanDS - performance", {
     .current.rate   <- .count / (difftime(.current.time, .start.time, units = "secs")[[1]])
     .reference.rate <- perf.reference.rate("meanDS::perf::numeric::0")
     if (any(length(.reference.rate) == 0) || any(is.null(.reference.rate))) {
-        print(paste("meanDS::perf::numeric::0 ", .current.rate, perf.profile.tolerance.lower(), perf.profile.tolerance.upper()))
+        write(paste("meanDS::perf::numeric::0 ", .current.rate, perf.profile.tolerance.lower(), perf.profile.tolerance.upper()), stderr())
         perf.reference.save("meanDS::perf::numeric::0", .current.rate, perf.profile.tolerance.lower(), perf.profile.tolerance.upper())
     } else {
-        print(paste("meanDS::perf::numeric::0 ", format(.current.rate, digits = 8), ", ", format(100.0 * .current.rate / .reference.rate, digits = 4), "%", sep = ''))
+        write(paste("meanDS::perf::numeric::0 ", format(.current.rate, digits = 8), ", ", format(100.0 * .current.rate / .reference.rate, digits = 4), "%", sep = ''), stderr())
     }
 
     .reference.rate            <- perf.reference.rate("meanDS::perf::numeric::0")
@@ -80,10 +80,10 @@ test_that("numeric meanDS, with NA - performance", {
     .current.rate   <- .count / (difftime(.current.time, .start.time, units = "secs")[[1]])
     .reference.rate <- perf.reference.rate("meanDS::perf::numberAndNA::0")
     if (any(length(.reference.rate) == 0) || any(is.null(.reference.rate))) {
-        print(paste("meanDS::perf::numberAndNA::0 ", .current.rate, perf.profile.tolerance.lower(), perf.profile.tolerance.upper()))
+        write(paste("meanDS::perf::numberAndNA::0 ", .current.rate, perf.profile.tolerance.lower(), perf.profile.tolerance.upper()), stderr())
         perf.reference.save("meanDS::perf::numberAndNA::0", .current.rate, perf.profile.tolerance.lower(), perf.profile.tolerance.upper())
     } else {
-        print(paste("meanDS::perf::numberAndNA::0 ", format(.current.rate, digits = 8), ", ", format(100.0 * .current.rate / .reference.rate, digits = 4), "%", sep = ''))
+        write(paste("meanDS::perf::numberAndNA::0 ", format(.current.rate, digits = 8), ", ", format(100.0 * .current.rate / .reference.rate, digits = 4), "%", sep = ''), stderr())
     }
 
     .reference.rate            <- perf.reference.rate("meanDS::perf::numberAndNA::0")
