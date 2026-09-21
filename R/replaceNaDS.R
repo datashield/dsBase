@@ -21,7 +21,7 @@ replaceNaDS <- function(x, replacements){
   xvect <- .loadServersideObject(x)
 
   # check if the input vector is valid (i.e. meets DataSHIELD criteria)
-  check <- dsBase::isValidDS(xvect)
+  check <- .checkDisclosureSize(xvect)
   
   # if the input vector is a factor convert it to numeric
   cls <- class(xvect)

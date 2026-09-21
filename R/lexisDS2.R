@@ -47,8 +47,8 @@ lexisDS2 <- function(datatext=NULL, intervalWidth, maxmaxtime, idCol, entryCol, 
   #nfilter.string<-as.numeric(thr$nfilter.string)
   #############################################################
   
-  starttime <- .loadServersideObject(entryCol)
   endtime <- .loadServersideObject(exitCol)
+  starttime <- if(is.null(entryCol)) rep(0, length(endtime)) else .loadServersideObject(entryCol)
   cens <- .loadServersideObject(statusCol)
   id.orig <- .loadServersideObject(idCol)
   
@@ -73,39 +73,24 @@ lexisDS2 <- function(datatext=NULL, intervalWidth, maxmaxtime, idCol, entryCol, 
   length.collapseDF <- length(idSeq)
   
   #IDENTIFY VARIABLES TO BE CARRIED WITH THE EXPANDED SURVIVAL DATA
-
-  # loads each comma-separated name; whole data.frame names are unpacked into
-  # their own columns (matching data.frame()'s handling of a data.frame argument),
-  # single columns are added under their make.names()-sanitised name (matching
-  # data.frame()'s default naming for a non-symbol argument such as D$var)
-  if(is.null(vartext) && !is.null(datatext)){
-    col.names <- unlist(strsplit(datatext, split=","))
+  
+  # 'vartext' takes precedence over 'datatext'. A data.frame name is unpacked into its
+  # columns and a single column such as D$var is named make.names("D$var"), matching
+  # how data.frame() named them when the names were parsed as R code.
+  carried.text <- if(is.null(vartext)) datatext else vartext
+  if(!is.null(carried.text)){
     col.list <- list()
-    for(nm in col.names){
+    for(nm in unlist(strsplit(carried.text, split=","))){
       obj <- .loadServersideObject(nm)
       if(is.data.frame(obj)){
         col.list <- c(col.list, as.list(obj))
       }else{
-        col.list[[make.names(nm)]] <- obj
+        col.list <- c(col.list, stats::setNames(list(obj), make.names(nm)))
       }
     }
     DF <- data.frame(col.list)
   }
-
-  if(!is.null(vartext)){
-    col.names <- unlist(strsplit(vartext, split=","))
-    col.list <- list()
-    for(nm in col.names){
-      obj <- .loadServersideObject(nm)
-      if(is.data.frame(obj)){
-        col.list <- c(col.list, as.list(obj))
-      }else{
-        col.list[[make.names(nm)]] <- obj
-      }
-    }
-    DF <- data.frame(col.list)
-  }
-
+  
   if(is.null(datatext)&&is.null(vartext)){
     DF<-data.frame(SURVTIME,CENS)
   }

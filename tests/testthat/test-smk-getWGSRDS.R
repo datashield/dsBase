@@ -156,27 +156,27 @@ test_that("getWGSRDS throws error when firstPart does not exist", {
     )
 })
 
-test_that("getWGSRDS throws error when firstPart is not numeric or integer", {
+test_that("getWGSRDS throws error when firstPart is not numeric", {
     bad_input <- factor(c("a", "b"))
     expect_error(
         getWGSRDS("data$sex", "bad_input", "data$age", "hfa", NA, NA),
-        regexp = "must be of type numeric or integer"
+        regexp = "must be of type numeric\\."
     )
 })
 
-test_that("getWGSRDS throws error when secondPart is not numeric or integer", {
+test_that("getWGSRDS throws error when secondPart is not numeric", {
     bad_input <- factor(c("a", "b"))
     expect_error(
         getWGSRDS("data$sex", "data$height", "bad_input", "hfa", NA, NA),
-        regexp = "must be of type numeric or integer"
+        regexp = "must be of type numeric\\."
     )
 })
 
-test_that("getWGSRDS throws error when thirdPart is not numeric or integer", {
+test_that("getWGSRDS throws error when thirdPart is not numeric", {
     bad_input <- factor(c("a", "b"))
     expect_error(
         getWGSRDS("data$sex", "data$weight", "data$height", "bfa", NA, "bad_input"),
-        regexp = "must be of type numeric or integer"
+        regexp = "must be of type numeric\\."
     )
 })
 

@@ -39,7 +39,6 @@ tapplyDS <- function(X.name, INDEX.names.transmit, FUN.name){
   length.test.vector <- rep(NA, num.factors)
 
   for(g in 1:num.factors){
-    activation.text.0 <- paste0("INDEX.factors[",g,"]")
     active.factor.name <- INDEX.factors[g]
     active.factor <- .loadServersideObject(active.factor.name)
     length.test.vector[g] <- length(active.factor)

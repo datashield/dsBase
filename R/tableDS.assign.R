@@ -94,8 +94,8 @@ stvar<-NULL
 #exclude
 if(!is.null(exclude.transmit))
 {
-exclude.text<-strsplit(exclude.transmit, split=",")
-exclude<-eval(parse(text=exclude.text), envir = parent.frame())
+exclude<-unlist(strsplit(exclude.transmit, split=","))
+exclude[exclude=="NA"]<-NA
 }
 else
 {

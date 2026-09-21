@@ -83,6 +83,13 @@ test_that("hetcorDS", {
 })
 
 
+test_that("hetcorDS throws error when object does not exist", {
+    expect_error(
+        hetcorDS(data = "nonexistent_object", ML = FALSE, std.err = TRUE, bins = 2, pd = TRUE, use = "complete.obs"),
+        regexp = "does not exist"
+    )
+})
+
 #
 # Done
 #

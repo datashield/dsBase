@@ -89,6 +89,12 @@ test_that("rowColCalcDS throws error when object is not data.frame or matrix", {
   )
 })
 
+test_that("rowColCalcDS throws error when a column is not numeric", {
+    input <- data.frame(v1 = c(1.0, 2.0, 3.0, 4.0), v2 = c("a", "b", "c", "d"))
+
+    expect_error(rowColCalcDS("input", 1), regexp = "are not of numeric type")
+})
+
 #
 # Done
 #
