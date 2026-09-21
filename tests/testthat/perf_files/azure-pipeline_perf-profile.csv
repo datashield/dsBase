@@ -2,4 +2,4 @@
 "meanDS::perf::numeric::0","4497.0","0.5","2"
 "meanDS::perf::numberAndNA::0","4542.0","0.5","2"
 "varDS::perf::numeric::0","6373.0","0.5","2"
-"varDS::perf::numberAndNA::0","25090.0","0.5","2"
+"varDS::perf::numberAndNA::0","4500.0","0.5","2"
