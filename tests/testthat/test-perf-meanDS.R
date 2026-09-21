@@ -26,7 +26,7 @@ set.standard.disclosure.settings()
 
 # context("meanDS::perf::numeric")
 test_that("numeric meanDS - performance", {
-    skip_on_cran()
+#    skip_on_cran()
 
     input <- c(0.0, 1.0, 2.0, 3.0, 4.0)
 
@@ -61,7 +61,7 @@ test_that("numeric meanDS - performance", {
 
 # context("meanDS::perf::numeric with NA")
 test_that("numeric meanDS, with NA - performance", {
-    skip_on_cran()
+#    skip_on_cran()
 
     input <- c(0.0, NA, 2.0, NA, 4.0)
 
