@@ -728,6 +728,17 @@ test_that("corDS throws error when object is of invalid type", {
     expect_error(corDS("bad_input", "y"), regexp = "must be of type")
 })
 
+test_that("corDS ignores y when x is a data.frame", {
+    input <- data.frame(v1 = c(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0),
+                        v2 = c(2.0, 1.0, 4.0, 3.0, 6.0, 5.0, 8.0, 7.0, 10.0, 9.0))
+    other <- c(10.0, 9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0)
+
+    res.x  <- corDS("input", NULL)
+    res.xy <- corDS("input", "other")
+
+    expect_equal(res.xy, res.x)
+})
+
 #
 # Done
 #
