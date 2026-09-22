@@ -27,7 +27,7 @@ test_that("mdPatternDS: sample incomplete data.frame", {
 
     res <- mdPatternDS(x)
 
-    expect_length(res, 3)
+    expect_length(res, 4)
     expect_length(class(res), 1)
     expect_true(all(class(res) %in% c("list")))
     expect_length(class(res$pattern), 2)
