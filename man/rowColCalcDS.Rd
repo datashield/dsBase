@@ -4,10 +4,10 @@
 \alias{rowColCalcDS}
 \title{Computes sums and means of rows or columns of numeric arrays}
 \usage{
-rowColCalcDS(dataset, operation)
+rowColCalcDS(dataset.name, operation)
 }
 \arguments{
-\item{dataset}{an array of two or more dimensions.}
+\item{dataset.name}{a character string providing the name of a server-side array of two or more dimensions.}
 
 \item{operation}{an integer that indicates the operation to carry out:
 1 for 'rowSums', 2 for 'colSums', 3 for 'rowMeans' or 4 for 'colMeans'}
@@ -25,4 +25,6 @@ output vector is greater or equal to the allowed size.
 }
 \author{
 Gaye, A.
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

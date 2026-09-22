@@ -4,15 +4,23 @@
 #' 'rowMeans' and 'colMeans'.
 #' @details the output is returned to the user only the number of entries in the 
 #' output vector is greater or equal to the allowed size. 
-#' @param dataset an array of two or more dimensions.
+#' @param dataset.name a character string providing the name of a server-side array of two or more dimensions.
 #' @param operation an integer that indicates the operation to carry out:
 #' 1 for 'rowSums', 2 for 'colSums', 3 for 'rowMeans' or 4 for 'colMeans'
 #' @return a numeric vector
 #' @export
 #' @author Gaye, A.
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' 
-rowColCalcDS <- function (dataset, operation) {
+rowColCalcDS <- function (dataset.name, operation) {
   
+  dataset <- .loadServersideObject(dataset.name)
+  .checkClass(obj = dataset, obj_name = dataset.name, permitted_classes = c("data.frame", "matrix"))
+  column.classes <- lapply(as.data.frame(dataset), class)
+  if(!all(vapply(column.classes, function(cls) any(cls %in% c("numeric", "integer")), logical(1)))){
+    stop("One or more columns of '", dataset.name, "' are not of numeric type", call. = FALSE)
+  }
+
   if(operation == 1){
     result <- rowSums(dataset, na.rm=TRUE)
   }
@@ -27,7 +35,7 @@ rowColCalcDS <- function (dataset, operation) {
   }
   
   # check if the output is valid (i.e. meets DataSHIELD criteria)
-  check <- isValidDS(result)
+  check <- .checkDisclosureSize(result)
   if(check){
     return(result)
   }else{

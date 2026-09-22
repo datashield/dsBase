@@ -27,8 +27,7 @@ variables:
   branchName:  $(Build.SourceBranchName)
   test_filter: '*'
   _r_check_system_clock_: 0
-  PERF_PROFILE: 'azure-pipeline'
-
+  perf.profile: 'azure-pipeline'
 
 
 #########################################################################################
@@ -50,13 +49,13 @@ schedules:
     displayName: Weekly build - latest release
     branches:
       include:
-      - 6.3.4
+      - 6.3.5
     always: true
   - cron: "0 1 * * *"
     displayName: Nightly build - development branchs
     branches:
       include:
-      - v6.3.5-dev
+      - v6.3.6-dev
       - v6.4.0-dev
       - v7.0.0-dev
     always: true
@@ -184,7 +183,7 @@ jobs:
       # R output and messages are redirected by sink() to test_console_output.txt
       # junit reporter output is to test_results.xml
 
-      sudo R -q -e '
+      sudo env PERF_PROFILE=$PERF_PROFILE R -q -e '
         library(covr);
         write.csv(
             coverage_to_list(

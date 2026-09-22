@@ -46,6 +46,16 @@ test_that("simple metadataDS, list of vectors", {
     expect_length(res, 0)
 })
 
+test_that("metadataDS throws error when object does not exist", {
+    expect_error(metadataDS("nonexistent_object"), regexp = "does not exist")
+})
+
+test_that("metadataDS throws error when column does not exist", {
+    input <- list(v1 = c(0.0, 1.0, 2.0))
+
+    expect_error(metadataDS("input$nonexistent_column"), regexp = "not found in 'input'")
+})
+
 #
 # Done
 #

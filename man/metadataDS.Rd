@@ -21,4 +21,6 @@ The function returns the metadata, obtained from attributes function.
 }
 \author{
 Stuart Wheater, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

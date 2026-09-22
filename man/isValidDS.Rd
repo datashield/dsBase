@@ -4,13 +4,16 @@
 \alias{isValidDS}
 \title{Checks if an input is valid}
 \usage{
-isValidDS(obj)
+isValidDS(x)
 }
 \arguments{
-\item{obj, }{a vector (numeric, integer, factor, character), data.frame or matrix}
+\item{x}{a character string, the name of a vector (numeric, integer, factor, character,
+logical), data.frame or matrix}
 }
 \value{
-a boolean, TRUE if input is valid or FALSE if not.
+a list with \code{valid}, a boolean that is TRUE if the input is valid or FALSE
+if not, and \code{class}, the class of the input object for client-side consistency
+checking
 }
 \description{
 Tells if an object on the server side is valid.
@@ -20,4 +23,6 @@ This function checks if an object is valid.
 }
 \author{
 Gaye, A.
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

@@ -31,6 +31,7 @@
 #' 'data' argument is set the full data.frame will be expanded and carried forward
 #' 
 #' @author Burton PR
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' 
 #' @return List with `expanded.table`
 #' @export
@@ -46,10 +47,10 @@ lexisDS2 <- function(datatext=NULL, intervalWidth, maxmaxtime, idCol, entryCol, 
   #nfilter.string<-as.numeric(thr$nfilter.string)
   #############################################################
   
-  starttime <- eval(parse(text=entryCol), envir = parent.frame())
-  endtime <- eval(parse(text=exitCol), envir = parent.frame())
-  cens <- eval(parse(text=statusCol), envir = parent.frame())
-  id.orig <- eval(parse(text=idCol), envir = parent.frame())
+  endtime <- .loadServersideObject(exitCol)
+  starttime <- if(is.null(entryCol)) rep(0, length(endtime)) else .loadServersideObject(entryCol)
+  cens <- .loadServersideObject(statusCol)
+  id.orig <- .loadServersideObject(idCol)
   
   starttime <- as.numeric(starttime)
   endtime <- as.numeric(endtime)
@@ -73,14 +74,21 @@ lexisDS2 <- function(datatext=NULL, intervalWidth, maxmaxtime, idCol, entryCol, 
   
   #IDENTIFY VARIABLES TO BE CARRIED WITH THE EXPANDED SURVIVAL DATA
   
-  if(is.null(vartext)){
-    datatext2<-paste0("data.frame(",datatext,")")
-    DF <- eval(parse(text=datatext2), envir = parent.frame())
-  }
-  
-  if(!is.null(vartext)){
-    vartext2<-paste0("data.frame(",vartext,")")
-    DF<-eval(parse(text=vartext2), envir = parent.frame())
+  # 'vartext' takes precedence over 'datatext'. A data.frame name is unpacked into its
+  # columns and a single column such as D$var is named make.names("D$var"), matching
+  # how data.frame() named them when the names were parsed as R code.
+  carried.text <- if(is.null(vartext)) datatext else vartext
+  if(!is.null(carried.text)){
+    col.list <- list()
+    for(nm in unlist(strsplit(carried.text, split=","))){
+      obj <- .loadServersideObject(nm)
+      if(is.data.frame(obj)){
+        col.list <- c(col.list, as.list(obj))
+      }else{
+        col.list <- c(col.list, stats::setNames(list(obj), make.names(nm)))
+      }
+    }
+    DF <- data.frame(col.list)
   }
   
   if(is.null(datatext)&&is.null(vartext)){

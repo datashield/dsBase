@@ -26,22 +26,8 @@ jobs:
       - run:
           command: |
               echo "options(Ncpus=4)" >> ~/.Rprofile
-              sudo Rscript -e "install.packages('RANN', dependencies=TRUE)"
-              sudo Rscript -e "install.packages('stringr', dependencies=TRUE)"
-              sudo Rscript -e "install.packages('lme4', dependencies=TRUE)"
-              sudo Rscript -e "install.packages('dplyr', dependencies=TRUE)"
-              sudo Rscript -e "install.packages('reshape2', dependencies=TRUE)"
-              sudo Rscript -e "install.packages('polycor', dependencies=TRUE)"
-              sudo Rscript -e "install.packages('splines', dependencies=TRUE)"
-              sudo Rscript -e "install.packages('gamlss', dependencies=TRUE)"
-              sudo Rscript -e "install.packages('gamlss.dist', dependencies=TRUE)"
-              sudo Rscript -e "install.packages('mice', dependencies=TRUE)"
-              sudo Rscript -e "install.packages('childsds', dependencies=TRUE)"
-              sudo Rscript -e "install.packages('xml2', dependencies=TRUE)"
-              sudo Rscript -e "install.packages('covr', dependencies=TRUE)"
-              sudo Rscript -e "install.packages('devtools', dependencies=TRUE)"
-              sudo Rscript -e "install.packages('DSI', dependencies=TRUE)"
-              sudo Rscript -e "install.packages('DSLite', dependencies=TRUE)"
+
+              sudo R -q -e "options(repos=c(CRAN=paste0('https://packagemanager.posit.co/cran/__linux__/', system('lsb_release -cs', intern=TRUE), '/latest')), HTTPUserAgent=sprintf('R/%s R (%s)', getRversion(), paste(getRversion(), R.version\$platform, R.version\$arch, R.version\$os)), Ncpus=4); install.packages(c('devtools','RANN','stringr','lme4','dplyr','reshape2','polycor','splines','gamlss','gamlss.dist','mice','data.table','childsds'), dependencies=TRUE)"
       - run:
           command: |
               sudo Rscript -e 'library(covr); covr::codecov(token = "'$CODECOV_TOKEN'")'

@@ -14,7 +14,7 @@ recodeLevelsDS <- function (x=NULL, classes=NULL){
   dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana', 'carrot'))
   
   # check if the input vector is valid (i.e. meets DataSHIELD criteria)
-  check <- isValidDS(x)
+  check <- .checkDisclosureSize(x)
   
   if(check){
     # generate the new variable with the specified levels
