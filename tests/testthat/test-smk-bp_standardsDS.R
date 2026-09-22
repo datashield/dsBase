@@ -28,7 +28,7 @@ test_that("systolic bp_standardsDS", {
   bp <- c(118.54, 87.62, 72.13, 91.18, 88.47, 73.28, 100.27, 86.84, 103.51, 115.28)
   systolic <- TRUE
   
-  res <- bp_standardsDS(sex=sex, age=age, height=height, bp=bp, systolic=systolic)
+  res <- bp_standardsDS(sex="sex", age="age", height="height", bp="bp", systolic=systolic)
   
     expect_equal(class(res), "list")
     expect_length(res, 2)
@@ -56,7 +56,7 @@ test_that("diastolic bp_standardsDS", {
   bp <- c(118.54, 87.62, 72.13, 91.18, 88.47, 73.28, 100.27, 86.84, 103.51, 115.28)
   systolic <- FALSE
   
-  res <- bp_standardsDS(sex=sex, age=age, height=height, bp=bp, systolic=systolic)
+  res <- bp_standardsDS(sex="sex", age="age", height="height", bp="bp", systolic=systolic)
   
   expect_equal(class(res), "list")
   expect_length(res, 2)
@@ -75,6 +75,14 @@ test_that("diastolic bp_standardsDS", {
   
 })
 
+
+test_that("bp_standardsDS throws error when an input does not exist", {
+  sex <- c(2, 1)
+  age <- c(5.26, 7.73)
+  height <- c(113.57, 92.30)
+
+  expect_error(bp_standardsDS(sex="sex", age="age", height="height", bp="nonexistent_object", systolic=TRUE), regexp = "does not exist")
+})
 
 #
 # Done
