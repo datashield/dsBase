@@ -15,6 +15,7 @@ A list containing:
 \item{pattern}{The missing data pattern matrix with disclosure control applied}
 \item{valid}{Logical indicating if all patterns meet disclosure requirements}
 \item{message}{A message describing the validity status}
+\item{class}{The class of the input object, for client-side consistency checking}
 }
 \description{
 This function is a serverside aggregate function that computes the 
@@ -51,4 +52,6 @@ suppressed in some studies.
 }
 \author{
 Xavier Escribà montagut for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }
