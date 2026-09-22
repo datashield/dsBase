@@ -41,7 +41,7 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
   x.val <- .loadServersideObject(x)
   .checkClass(obj = x.val, obj_name = x, permitted_classes = c("numeric", "integer", "matrix", "data.frame"))
 
-  if (!is.null(y)){
+  if (!is.null(y) && !any(class(x.val) %in% c("matrix", "data.frame"))){
     y.val <- .loadServersideObject(y)
     .checkClass(obj = y.val, obj_name = y, permitted_classes = c("numeric", "integer", "matrix", "data.frame"))
   }

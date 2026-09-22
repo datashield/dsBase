@@ -58,8 +58,9 @@ miceDS <- function(data=data, m=m, maxit=maxit, method=method, post=post, seed=s
     seed <- getOption("datashield.seed")
   }
 
-  data <- .loadServersideObject(data)
-  .checkClass(obj = data, obj_name = "data", permitted_classes = c("data.frame", "matrix"))
+  data.name <- data
+  data <- .loadServersideObject(data.name)
+  .checkClass(obj = data, obj_name = data.name, permitted_classes = c("data.frame", "matrix"))
 
   if(!is.null(method)){
     method <- unlist(stringr::str_split(method, pattern=","))

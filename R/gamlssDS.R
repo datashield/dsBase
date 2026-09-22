@@ -83,8 +83,9 @@ gamlssDS <- function(formula=formula, sigma.formula=sigma.formula, nu.formula=nu
   thr <- dsBase::listDisclosureSettingsDS()
   nfilter.glm <- as.numeric(thr$nfilter.glm)
 
-  data <- .loadServersideObject(data)
-  .checkClass(obj = data, obj_name = "data", permitted_classes = c("data.frame", "matrix"))
+  data.name <- data
+  data <- .loadServersideObject(data.name)
+  .checkClass(obj = data, obj_name = data.name, permitted_classes = c("data.frame", "list"))
   
   family <- gsub("left_parenthesis", "(", family, fixed = TRUE)
   family <- gsub("right_parenthesis", ")", family, fixed = TRUE)
