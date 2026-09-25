@@ -223,11 +223,7 @@ test_that("special classDS, NA", {
 test_that("special classDS, NULL", {
     input <- NULL
 
-    res <- classDS("input")
-
-    expect_equal(class(res), "character")
-    expect_length(res, 1)
-    expect_equal(res, "NULL")
+    expect_error(classDS("input"), "The server-side object 'input' is NULL", fixed = TRUE)
 })
 
 test_that("classDS throws error when object does not exist", {

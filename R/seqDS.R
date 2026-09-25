@@ -66,8 +66,8 @@ nfilter.subset<-as.numeric(thr$nfilter.subset)                          #
 #########################################################################
 
 
- FROM.eval <- tryCatch(.loadServersideObject(FROM.value.char), error = function(e) as.numeric(FROM.value.char))
- if(is.character(FROM.value.char)&&is.numeric(FROM.eval)){
+ FROM.eval <- suppressWarnings(as.numeric(FROM.value.char))
+ if(is.character(FROM.value.char)&&!anyNA(FROM.eval)){
 	FROM<-FROM.eval
 	}else{
    studysideMessage<-"ERROR: FROM.value.char must be specified as a real number in inverted commas eg '-3.74' or '0'"
@@ -76,8 +76,8 @@ nfilter.subset<-as.numeric(thr$nfilter.subset)                          #
  
  if(!is.null(TO.value.char))
 	{
-	TO.eval <- tryCatch(.loadServersideObject(TO.value.char), error = function(e) as.numeric(TO.value.char))
-	if(is.character(TO.value.char)&&is.numeric(TO.eval))
+	TO.eval <- suppressWarnings(as.numeric(TO.value.char))
+	if(is.character(TO.value.char)&&!anyNA(TO.eval))
 		{
 		TO<-TO.eval
 		}else{
@@ -91,8 +91,8 @@ nfilter.subset<-as.numeric(thr$nfilter.subset)                          #
  TO<-NULL
  }
 	
- BY.eval <- tryCatch(.loadServersideObject(BY.value.char), error = function(e) as.numeric(BY.value.char))
- if(is.character(BY.value.char)&&is.numeric(BY.eval)){
+ BY.eval <- suppressWarnings(as.numeric(BY.value.char))
+ if(is.character(BY.value.char)&&!anyNA(BY.eval)){
 	BY<-BY.eval
 	}else{
    studysideMessage<-"ERROR: BY.value.char must be specified as a real number in inverted commas eg '-3.74' or '0'"
@@ -100,8 +100,8 @@ nfilter.subset<-as.numeric(thr$nfilter.subset)                          #
    }
 
  if(!is.null(LENGTH.OUT.value.char)){
-		LENGTH.OUT.eval <- tryCatch(.loadServersideObject(LENGTH.OUT.value.char), error = function(e) as.numeric(LENGTH.OUT.value.char))
-		if(is.character(LENGTH.OUT.value.char)&&is.numeric(LENGTH.OUT.eval)){
+		LENGTH.OUT.eval <- suppressWarnings(as.numeric(LENGTH.OUT.value.char))
+		if(is.character(LENGTH.OUT.value.char)&&!anyNA(LENGTH.OUT.eval)){
 		LENGTH.OUT<-LENGTH.OUT.eval
 		}else{
 		studysideMessage<-"ERROR: If LENGTH.OUT.value.char is non-NULL, it must specify a positive integer in inverted commas eg '14'" 

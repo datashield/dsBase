@@ -45,7 +45,7 @@ test_that("glmSLMADS1 throws error when data does not exist", {
     )
 })
 
-test_that("glmSLMADS1 throws error when data is not a data.frame or matrix", {
+test_that("glmSLMADS1 throws error when data is not a data.frame or list", {
     bad_input <- c(1, 2, 3)
     expect_error(
         glmSLMADS1(formula = stats::as.formula("y ~ x"), family = "gaussian",

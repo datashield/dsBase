@@ -2,7 +2,7 @@
 #' @title Returns the levels of a factor vector
 #' @description This function is similar to R function \code{levels}.
 #' @details The function returns the levels of the input vector or list.
-#' @param x a factor vector
+#' @param x a character string, the name of a factor vector
 #' @return a list with one element: \code{Levels} (the factor levels present
 #'   in the vector)
 #' @author Alex Westerberg, for DataSHIELD Development Team
@@ -11,11 +11,11 @@
 #'
 levelsDS <- function(x){
 
-  x.val <- .loadServersideObject(x)
-  .checkClass(obj = x.val, obj_name = x, permitted_classes = "factor")
-
   # Check Permissive Privacy Control Level.
   dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana', 'carrot'))
+
+  x.val <- .loadServersideObject(x)
+  .checkClass(obj = x.val, obj_name = x, permitted_classes = "factor")
 
   ##################################################################
   #MODULE 1: CAPTURE THE nfilter SETTINGS                          #

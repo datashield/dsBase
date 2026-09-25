@@ -299,6 +299,22 @@ test_that("BooleDS errors when V2 object does not exist", {
     )
 })
 
+test_that("BooleDS accepts a literal TRUE for V2", {
+    input <- data.frame(flag = c(TRUE, FALSE, TRUE, FALSE))
+
+    res <- BooleDS("input$flag", "TRUE", 1, "NA", TRUE)
+
+    expect_equal(res, c(1, 0, 1, 0))
+})
+
+test_that("BooleDS accepts a literal FALSE for V2", {
+    input <- data.frame(flag = c(TRUE, FALSE, TRUE, FALSE))
+
+    res <- BooleDS("input$flag", "FALSE", 1, "NA", TRUE)
+
+    expect_equal(res, c(0, 1, 0, 1))
+})
+
 #
 # Done
 #

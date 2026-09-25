@@ -215,5 +215,5 @@ test_that("special isValidDS, NA", {
 test_that("special isValidDS, NULL", {
     input <- NULL
 
-    expect_error(isValidDS("input"), regexp = "must be of type")
+    expect_error(isValidDS("input"), "The server-side object 'input' is NULL", fixed = TRUE)
 })

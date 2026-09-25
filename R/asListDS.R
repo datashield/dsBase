@@ -1,32 +1,21 @@
-#' @title asListDS a serverside aggregate function called by ds.asList
+#' @title asListDS a serverside assign function called by ds.asList
 #' @description Coerces an R object into a list
-#' @details Unlike most other class coercing functions this is
-#' an aggregate function rather than an assign function. This
-#' is because the \code{datashield.assign} function in the data repository deals specially with
-#' a created object (newobj) if it is of class list. Reconfiguring the
-#' function as an aggregate function works around this problem.
-#' This aggregate function is based on the native R function \code{as.list}
+#' @details This assign function is based on the native R function \code{as.list}
 #' and so additional information can be found in the help for \code{as.list}
 #' @param x.name the name of the input object to be coerced to class
 #' data.matrix. Must be specified in inverted commas. But this argument is
 #' usually specified directly by <x.name> argument of the clientside function
 #' \code{ds.asList}
-#' @param newobj is the object hard assigned '<<-' to be the output of the
-#' function written to the serverside
-#' @return the object specified by the <newobj> argument (or its default name
-#' <x.name>.mat) which is written to the serverside.
-#' In addition, two validity messages are returned. The first confirms an output
-#' object has been created, the second states its class. The way that \code{as.list}
-#' coerces objects to list depends on the class of the object, but in general
-#' the class of the output object should usually be 'list'
+#' @return the input object coerced to a list, which \code{ds.asList} writes to the
+#' serverside. The way that \code{as.list} coerces objects to list depends on the class
+#' of the object
 #' @author Amadou Gaye, Paul Burton for DataSHIELD Development Team
 #' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
-asListDS <- function (x.name, newobj){
+asListDS <- function (x.name){
   x <- .loadServersideObject(x.name)
 
-  result <- as.list(x)
-  assign(newobj, result, envir = parent.frame())
+  as.list(x)
 }
-# AGGREGATE FUNCTION
+# ASSIGN FUNCTION
 # asListDS

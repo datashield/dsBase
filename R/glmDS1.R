@@ -43,7 +43,7 @@ nfilter.glm <- as.numeric(thr$nfilter.glm)
     dataTable <- NULL 
   }else{
     dataTable <- .loadServersideObject(data)
-    .checkClass(obj = dataTable, obj_name = data, permitted_classes = c("data.frame", "matrix"))
+    .checkClass(obj = dataTable, obj_name = data, permitted_classes = c("data.frame", "list"))
   }
   
   formulatext <- Reduce(paste, deparse(formula))
