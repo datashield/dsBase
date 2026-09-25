@@ -15,7 +15,7 @@
 #'
 table1DDS  <- function(xvect){
 
-  # the minimum number of observations that are allowed (the below function gets the value from opal)
+  # the minimum number of observations that are allowed (the below function gets the value from the server)
   
   #############################################################
   # MODULE 1: CAPTURE THE nfilter SETTINGS

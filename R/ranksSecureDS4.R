@@ -71,7 +71,7 @@ if((length(sR8.df$global.ranks.input.from.sR5)!=lenx)||
   error.message<-
     paste0("FAILED: ranking components of different lengths. This could reflect
             modification of the clientside code which is not recommended. It can
-            also occur if the R session on one or more of the opal data servers
+            also occur if the R session on one or more of the Armadillo/Opal data servers
             runs out of memory")
   stop(error.message, call. = FALSE)
 }  
@@ -96,7 +96,7 @@ if(ranks.consistent==0)
     paste0("FAILED: inconsistent ranking across different components of ranking matrix,
             try a different seed. Altenatively this could reflect modification of the
             clientside code which is not recommended. Finally, it can also occur
-            if the R session on one or more of the opal data servers runs out
+            if the R session on one or more of the Armadillo/Opal data servers runs out
             of memory")
   stop(error.message, call. = FALSE)
 }
