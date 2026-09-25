@@ -8,16 +8,13 @@
 #' the complete cases that are used in the regression model.
 #' @return returns the AUC and its standard error
 #' @author Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 aucDS <- function(pred=pred, y=y){
   
-  if(is.character(pred)){
-    pred <- eval(parse(text = pred), envir = parent.frame())
-  }
-  if(is.character(y)){
-    y <- eval(parse(text = y), envir = parent.frame())
-  }
+  pred <- .loadServersideObject(pred)
+  y <- .loadServersideObject(y)
   
   y <- as.numeric(as.character(y))
   

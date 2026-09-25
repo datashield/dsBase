@@ -25,7 +25,7 @@ test_that("aucDS", {
     
     model <- glm(formula = D$DIS_DIAB~D$GENDER+D$PM_BMI_CONTINUOUS, family = 'binomial')
     pred <- predict(object = model, type = "link")
-    res <- aucDS(pred = pred, y = model$y)
+    res <- aucDS(pred = "pred", y = "model$y")
     
     expect_equal(class(res), "list")
     expect_length(res, 2)
@@ -34,6 +34,18 @@ test_that("aucDS", {
     expect_equal(class(res$se), "numeric")
     expect_equal(res$se, 0.02065186, tolerance=1e-07)
     
+})
+
+test_that("aucDS throws error when pred does not exist", {
+    y <- c(0, 1, 0, 1)
+
+    expect_error(aucDS(pred = "nonexistent_object", y = "y"), regexp = "does not exist")
+})
+
+test_that("aucDS throws error when y does not exist", {
+    pred <- c(0.1, 0.8, 0.3, 0.9)
+
+    expect_error(aucDS(pred = "pred", y = "nonexistent_object"), regexp = "does not exist")
 })
 
 #

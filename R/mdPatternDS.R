@@ -36,7 +36,9 @@
 #' \item{pattern}{The missing data pattern matrix with disclosure control applied}
 #' \item{valid}{Logical indicating if all patterns meet disclosure requirements}
 #' \item{message}{A message describing the validity status}
+#' \item{class}{The class of the input object, for client-side consistency checking}
 #' @author Xavier Escribà montagut for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @import mice
 #' @export
 #'
@@ -48,24 +50,8 @@ mdPatternDS <- function(x){
   nfilter.tab <- as.numeric(thr$nfilter.tab)
   #############################################################
 
-  # Parse the input data name with error handling
-  x.val <- tryCatch(
-    {
-      eval(parse(text=x), envir = parent.frame())
-    },
-    error = function(e) {
-      stop(paste0("Object '", x, "' does not exist on the server"), call. = FALSE)
-    }
-  )
-
-  # Check object class
-  typ <- class(x.val)
-
-  # Check that input is a data frame or matrix
-  if(!("data.frame" %in% typ || "matrix" %in% typ)){
-    stop(paste0("The input object must be of type 'data.frame' or 'matrix'. Current type: ", 
-                paste(typ, collapse = ", ")), call. = FALSE)
-  }
+  x.val <- .loadServersideObject(x)
+  .checkClass(obj = x.val, obj_name = x, permitted_classes = c("data.frame", "matrix"))
 
   # Use x.val for further processing
   x <- x.val
@@ -113,7 +99,8 @@ mdPatternDS <- function(x){
     message = ifelse(validity == "valid", 
                      "Valid: all pattern counts meet disclosure requirements",
                      paste0("Invalid: some pattern counts below threshold (", 
-                            nfilter.tab, ") have been suppressed"))
+                            nfilter.tab, ") have been suppressed")),
+    class = class(x.val)
   ))
 }
 
