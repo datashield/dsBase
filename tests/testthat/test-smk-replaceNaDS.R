@@ -40,6 +40,10 @@ test_that("simple replaceNaDS", {
     expect_equal(res[8], 7.7)
 })
 
+test_that("replaceNaDS throws error when object does not exist", {
+    expect_error(replaceNaDS("nonexistent_object", replacements = 0), regexp = "does not exist")
+})
+
 #
 # Done
 #

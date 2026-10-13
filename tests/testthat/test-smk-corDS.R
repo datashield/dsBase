@@ -739,6 +739,31 @@ test_that("corDS ignores y when x is a data.frame", {
     expect_equal(res.xy, res.x)
 })
 
+test_that("corDS gives the same result for integer input as for numeric", {
+    x.numeric <- c(0.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 3.0, 4.0)
+    y.numeric <- c(4.0, 3.0, 3.0, 1.0, 2.0, 0.0, 2.0, 1.0, 1.0)
+    x.integer <- as.integer(x.numeric)
+    y.integer <- as.integer(y.numeric)
+
+    res.numeric <- corDS("x.numeric", "y.numeric")
+    res.integer <- corDS("x.integer", "y.integer")
+
+    expect_equal(res.integer$class, "integer")
+    expect_equal(res.integer[names(res.integer) != "class"], res.numeric[names(res.numeric) != "class"])
+})
+
+test_that("corDS gives the same result for a matrix as for a data.frame", {
+    input.df <- data.frame(v1 = c(0.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 3.0, 4.0),
+                           v2 = c(4.0, 3.0, 3.0, 1.0, 2.0, 0.0, 2.0, 1.0, 1.0))
+    input.matrix <- as.matrix(input.df)
+
+    res.df <- corDS("input.df")
+    res.matrix <- corDS("input.matrix")
+
+    expect_true("matrix" %in% res.matrix$class)
+    expect_equal(res.matrix[names(res.matrix) != "class"], res.df[names(res.df) != "class"])
+})
+
 #
 # Done
 #

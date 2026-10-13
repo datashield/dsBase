@@ -85,6 +85,51 @@ test_that("birthweight gamlssDS", {
 })
 
 
+test_that("gamlssDS throws error when object does not exist", {
+    expect_error(gamlssDS(formula="e3_bwtilde_symbole3_gac_None", sigma.formula="e3_bwtilde_symbole3_gac_None",
+                 nu.formula="tilde_symbol1", tau.formula="tilde_symbol1",
+                 family="NOleft_parenthesisright_parenthesis", data="nonexistent_object", method="RS", mu.fix=FALSE,
+                 sigma.fix=FALSE, nu.fix=FALSE, tau.fix=FALSE,
+                 control="0.001,20,1,1,1,1,Inf", i.control="0.001,50,30,0.001", centiles=TRUE,
+                 xvar="D$e3_gac_None", newobj="z_scores_e3_bw"), regexp = "does not exist")
+})
+
+test_that("gamlssDS throws error when object is the wrong type", {
+    bad_input <- c("a", "b", "c")
+    expect_error(gamlssDS(formula="e3_bwtilde_symbole3_gac_None", sigma.formula="e3_bwtilde_symbole3_gac_None",
+                 nu.formula="tilde_symbol1", tau.formula="tilde_symbol1",
+                 family="NOleft_parenthesisright_parenthesis", data="bad_input", method="RS", mu.fix=FALSE,
+                 sigma.fix=FALSE, nu.fix=FALSE, tau.fix=FALSE,
+                 control="0.001,20,1,1,1,1,Inf", i.control="0.001,50,30,0.001", centiles=TRUE,
+                 xvar="D$e3_gac_None", newobj="z_scores_e3_bw"), regexp = "must be of type data.frame or list")
+})
+
+test_that("gamlssDS gives the same result for data as a list as for a data.frame", {
+  D <- data.frame(
+    e3_bw = c(4100, 4158, 4110, 2900, 3580, 3780, 4220, 4210, 2460, 3510,
+              2800, 3730, 3300, 3310, 2390, 3480, 3040, 3050, 3500, 3420),
+    e3_gac_None = c(41.00, 41.00, 39.00, 38.86, 40.57, 41.00, 40.71, 41.43, 36.00, 39.00,
+                    37.57, 40.00, 40.29, 40.71, 37.00, 40.00, 41.57, 36.29, 39.29, 40.00)
+  )
+  D.list <- as.list(D)
+
+  res.df <- gamlssDS(formula="e3_bwtilde_symbole3_gac_None", sigma.formula="e3_bwtilde_symbole3_gac_None",
+                 nu.formula="tilde_symbol1", tau.formula="tilde_symbol1",
+                 family="NOleft_parenthesisright_parenthesis", data="D", method="RS", mu.fix=FALSE,
+                 sigma.fix=FALSE, nu.fix=FALSE, tau.fix=FALSE,
+                 control="0.001,20,1,1,1,1,Inf", i.control="0.001,50,30,0.001", centiles=TRUE,
+                 xvar="D$e3_gac_None", newobj="z_scores_e3_bw")
+  res.list <- gamlssDS(formula="e3_bwtilde_symbole3_gac_None", sigma.formula="e3_bwtilde_symbole3_gac_None",
+                 nu.formula="tilde_symbol1", tau.formula="tilde_symbol1",
+                 family="NOleft_parenthesisright_parenthesis", data="D.list", method="RS", mu.fix=FALSE,
+                 sigma.fix=FALSE, nu.fix=FALSE, tau.fix=FALSE,
+                 control="0.001,20,1,1,1,1,Inf", i.control="0.001,50,30,0.001", centiles=TRUE,
+                 xvar="D.list$e3_gac_None", newobj="z_scores_e3_bw")
+
+  expect_equal(stats::coef(res.list$results), stats::coef(res.df$results))
+  expect_equal(res.list$centiles, res.df$centiles)
+})
+
 #
 # Done
 #

@@ -32,3 +32,15 @@ test_that("matrixMultDS errors when input is wrong type", {
     M2 <- matrix(c(1, 2, 3, 4), 2, 2)
     expect_error(matrixMultDS("bad_input", "M2"), regexp = "must be of type")
 })
+
+test_that("matrixMultDS gives the same result for a data.frame as for a matrix", {
+    M1 <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 10), 3, 3)
+    M2 <- matrix(c(5, 6, 7, 8, 9, 1, 2, 3, 4), 3, 3)
+    M1.df <- as.data.frame(M1)
+    M2.df <- as.data.frame(M2)
+
+    res.matrix <- matrixMultDS("M1", "M2")
+    res.df <- matrixMultDS("M1.df", "M2.df")
+
+    expect_equal(unname(res.df), unname(res.matrix))
+})

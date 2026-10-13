@@ -157,6 +157,16 @@ test_that("simple absDS", {
     expect_equal(res[5], 50L)
     expect_equal(res[6], 20L)
 })
+
+test_that("absDS throws error when object does not exist", {
+    expect_error(absDS("nonexistent_object"), regexp = "does not exist")
+})
+
+test_that("absDS throws error when object is the wrong type", {
+    bad_input <- c("a", "b", "c")
+    expect_error(absDS("bad_input"), regexp = "must be of type numeric or integer")
+})
+
 #
 # Done
 #
