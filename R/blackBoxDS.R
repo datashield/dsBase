@@ -367,7 +367,7 @@ if(sum(round(rank(blackbox.output.df[,3])-rank(blackbox.output.df[,4]),2)==0)!=n
     paste0("FAILED: inconsistent values across different transformations in black box,
             try a different seed. Altenatively this could reflect modification of the
             clientside code which is not recommended. Finally, it can also occur
-            if the R session on one or more of the opal data servers runs out
+            if the R session on one or more of the Armadillo/Opal data servers runs out
             of memory")
   stop(error.message, call. = FALSE)
 }else{
