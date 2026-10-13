@@ -88,6 +88,47 @@ test_that("isNaDS throws error when object does not exist", {
     )
 })
 
+test_that("isNaDS throws error when object is the wrong type", {
+    bad_input <- list(1, 2, 3)
+    expect_error(isNaDS("bad_input"), regexp = "must be of type character, factor, integer, logical, numeric, data.frame or matrix")
+})
+
+test_that("isNaDS accepts a factor", {
+    input <- as.factor(c("a", "b", NA))
+
+    res <- isNaDS("input")
+
+    expect_equal(res$class, "factor")
+    expect_false(res$is.na)
+})
+
+test_that("isNaDS accepts an integer vector", {
+    input <- c(1L, NA, 3L)
+
+    res <- isNaDS("input")
+
+    expect_equal(res$class, "integer")
+    expect_false(res$is.na)
+})
+
+test_that("isNaDS accepts a data.frame", {
+    input <- data.frame(v1 = c(1, NA), v2 = c("x", "y"))
+
+    res <- isNaDS("input")
+
+    expect_equal(res$class, "data.frame")
+    expect_false(res$is.na)
+})
+
+test_that("isNaDS accepts a matrix", {
+    input <- matrix(c(1, NA, 3, 4), nrow = 2)
+
+    res <- isNaDS("input")
+
+    expect_true("matrix" %in% res$class)
+    expect_false(res$is.na)
+})
+
 #
 # Done
 #

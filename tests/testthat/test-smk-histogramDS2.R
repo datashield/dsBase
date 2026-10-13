@@ -30,6 +30,14 @@ test_that("histogramDS2 fails when x is not numeric or integer", {
     expect_error(histogramDS2("xvect", num.breaks=10, min=1, max=100, method.indicator=1, k=3, noise=0.25), "must be of type numeric or integer")
 })
 
+test_that("histogramDS2 gives the same result for numeric input as for integer", {
+    x.integer <- c(1:100)
+    x.numeric <- as.numeric(x.integer)
+
+    expect_equal(histogramDS2("x.numeric", num.breaks=10, min=1, max=100, method.indicator=1, k=3, noise=0.25),
+                 histogramDS2("x.integer", num.breaks=10, min=1, max=100, method.indicator=1, k=3, noise=0.25))
+})
+
 #
 # Done
 #

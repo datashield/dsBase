@@ -32,3 +32,13 @@ test_that("matrixDimnamesDS errors when input is wrong type", {
     bad_input <- c("a", "b", "c")
     expect_error(matrixDimnamesDS("bad_input", dimnames = list(c("r1"), c("c1"))), regexp = "must be of type")
 })
+
+test_that("matrixDimnamesDS gives the same result for a data.frame as for a matrix", {
+    M1 <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 10), 3, 3)
+    M1.df <- as.data.frame(M1)
+
+    res.matrix <- matrixDimnamesDS("M1", dimnames = list(c("r1", "r2", "r3"), c("c1", "c2", "c3")))
+    res.df <- matrixDimnamesDS("M1.df", dimnames = list(c("r1", "r2", "r3"), c("c1", "c2", "c3")))
+
+    expect_equal(res.df, res.matrix)
+})

@@ -612,6 +612,19 @@ test_that("corTestDS throws error when object is not numeric or integer", {
     expect_error(corTestDS("bad_input", "y", "pearson", NULL, 0.95), regexp = "must be of type numeric or integer")
 })
 
+test_that("corTestDS gives the same result for integer input as for numeric", {
+    x.numeric <- c(0.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 3.0, 4.0)
+    y.numeric <- c(4.0, 3.0, 3.0, 1.0, 2.0, 0.0, 2.0, 1.0, 1.0)
+    x.integer <- as.integer(x.numeric)
+    y.integer <- as.integer(y.numeric)
+
+    res.numeric <- corTestDS("x.numeric", "y.numeric", "pearson", NULL, 0.95)
+    res.integer <- corTestDS("x.integer", "y.integer", "pearson", NULL, 0.95)
+
+    expect_equal(res.integer$class, "integer")
+    expect_equal(res.integer[names(res.integer) != "class"], res.numeric[names(res.numeric) != "class"])
+})
+
 #
 # Done
 #

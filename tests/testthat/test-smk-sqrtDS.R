@@ -156,6 +156,16 @@ test_that("simple sqrtDS", {
     expect_true(is.nan(res[5]))
     expect_true(is.nan(res[6]))
 })
+
+test_that("sqrtDS throws error when object does not exist", {
+    expect_error(sqrtDS("nonexistent_object"), regexp = "does not exist")
+})
+
+test_that("sqrtDS throws error when object is the wrong type", {
+    bad_input <- c("a", "b", "c")
+    expect_error(sqrtDS("bad_input"), regexp = "must be of type numeric or integer")
+})
+
 #
 # Done
 #

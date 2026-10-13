@@ -41,6 +41,14 @@ test_that("boxPlotGG_data_TreatmentDS fails when group is not a factor", {
     expect_error(boxPlotGG_data_TreatmentDS("D", variables = c("v1"), group = "group"), "must be of type factor")
 })
 
+test_that("boxPlotGG_data_TreatmentDS gives the same result for numeric columns as for integer", {
+    D.integer <- data.frame(v1 = c(1:20), v2 = c(20:1))
+    D.numeric <- data.frame(v1 = as.numeric(1:20), v2 = as.numeric(20:1))
+
+    expect_equal(boxPlotGG_data_TreatmentDS("D.numeric", variables = c("v1", "v2")),
+                 boxPlotGG_data_TreatmentDS("D.integer", variables = c("v1", "v2")))
+})
+
 #
 # Done
 #

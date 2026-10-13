@@ -69,6 +69,10 @@ test_that("empty list cDS", {
     expect_equal(class(res), "NULL")
 })
 
+test_that("cDS throws error when object does not exist", {
+    expect_error(cDS("nonexistent_object"), regexp = "does not exist")
+})
+
 #
 # Done
 #
