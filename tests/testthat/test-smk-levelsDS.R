@@ -61,6 +61,13 @@ test_that("levelsDS blocks when levels density exceeds threshold", {
     )
 })
 
+test_that("levelsDS is blocked in non-permissive mode before any object lookup", {
+    options(datashield.privacyControlLevel = "non-permissive")
+    on.exit(options(datashield.privacyControlLevel = NULL), add = TRUE)
+
+    expect_error(levelsDS("nonexistent_object"), regexp = "non-permissive")
+})
+
 #
 # Done
 #

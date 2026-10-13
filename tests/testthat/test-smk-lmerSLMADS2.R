@@ -48,7 +48,7 @@ test_that("lmerSLMADS2 throws error when dataName does not exist", {
     )
 })
 
-test_that("lmerSLMADS2 throws error when dataName is not a data.frame or matrix", {
+test_that("lmerSLMADS2 throws error when dataName is not a data.frame or list", {
     bad_input <- c(1, 2, 3)
     expect_error(
         lmerSLMADS2(formula = stats::as.formula("y ~ x + (1|group)"),

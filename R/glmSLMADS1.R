@@ -53,7 +53,7 @@ final.family.object<-eval(parse(text=family))
     dataTable <- NULL 
   }else{
     dataTable <- .loadServersideObject(data)
-    .checkClass(obj = dataTable, obj_name = data, permitted_classes = c("data.frame", "matrix"))
+    .checkClass(obj = dataTable, obj_name = data, permitted_classes = c("data.frame", "list"))
   }
    
    

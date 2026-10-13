@@ -7,6 +7,7 @@
 #'
 #' @param x A character string naming the object, optionally with "$column" syntax.
 #' @return The retrieved R object, or the specified column if `$` syntax is used.
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @noRd
 .loadServersideObject <- function(x) {
   if (!is.character(x) || length(x) != 1) {
@@ -27,8 +28,12 @@
 
   obj <- tryCatch(
     get(obj_name, envir = env),
-    error = function(e) stop("The server-side object '", x, "' does not exist")
+    error = function(e) stop("The server-side object '", x, "' does not exist", call. = FALSE)
   )
+
+  if (is.null(obj)) {
+    stop("The server-side object '", x, "' is NULL", call. = FALSE)
+  }
 
   if (hasColumn) {
     obj <- obj[[col_name]]

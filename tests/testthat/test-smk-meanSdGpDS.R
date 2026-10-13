@@ -37,6 +37,18 @@ test_that("simple meanSdGpDS, numeric by factor", {
     expect_equal(as.numeric(res$Mean_gp)[2], 8.0)
 })
 
+# context("meanSdGpDS::smk::numeric by double 0/1")
+test_that("simple meanSdGpDS, numeric by a double 0/1 grouping variable", {
+    x_var <- c(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0)
+    index_var <- c(0, 0, 0, 0, 0, 1, 1, 1, 1, 1)
+
+    res <- meanSdGpDS("x_var", "index_var")
+
+    expect_equal(res$class.index, "numeric")
+    expect_equal(as.numeric(res$Mean_gp)[1], 3.0)
+    expect_equal(as.numeric(res$Mean_gp)[2], 8.0)
+})
+
 test_that("meanSdGpDS throws error when X does not exist", {
     index_var <- as.factor(c("A", "A", "B", "B"))
     expect_error(meanSdGpDS("nonexistent_x", "index_var"), regexp = "does not exist")

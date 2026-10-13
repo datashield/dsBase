@@ -39,7 +39,7 @@ lmerSLMADS.assign <- function(formula, offset, weights, dataName, REML = TRUE,
   
   if(!is.null(dataName)){
     dataDF <- .loadServersideObject(dataName)
-    .checkClass(obj = dataDF, obj_name = dataName, permitted_classes = c("data.frame", "matrix"))
+    .checkClass(obj = dataDF, obj_name = dataName, permitted_classes = c("data.frame", "list"))
   }else{
     dataDF <- NULL
   }
@@ -126,13 +126,9 @@ lmerSLMADS.assign <- function(formula, offset, weights, dataName, REML = TRUE,
 
    ################################################################## 
    #sort out offset and weights
-   #
-   # offset.to.use/weights.to.use are needed in two different environments:
-   # stats::glm() below resolves them via environment(formula2use), which is
-   # this function's *caller* (matching where the other formula variables are
-   # assigned, see the model.variables loop above); lme4::lmer() further down
-   # resolves them relative to its own call frame, i.e. this function's *own*
-   # frame. Assign to both so each modelling call finds them.
+   # stats::glm() finds offset.to.use/weights.to.use in the caller's frame
+   # (environment(formula2use)) but lme4::lmer() in this function's own frame,
+   # so they are assigned in both.
    if(is.null(offset))
    {
      varname.offset<-NULL
@@ -141,14 +137,14 @@ lmerSLMADS.assign <- function(formula, offset, weights, dataName, REML = TRUE,
    }else{
      varname.offset <- paste0(offset)
    }
-
+   
    if(!(is.null(offset)))
    {
      cbindtext.offset <- paste0("cbind(", offset,")")
      offset.to.use <- eval(parse(text=cbindtext.offset), envir = parent.frame())
      assign("offset.to.use", offset.to.use, envir = parent.frame())
    }
-
+   
    if(is.null(weights))
    {
      varname.weights<-NULL
@@ -157,8 +153,8 @@ lmerSLMADS.assign <- function(formula, offset, weights, dataName, REML = TRUE,
    }else{
      varname.weights <- paste0(weights)
    }
-
-
+   
+   
    if(!(is.null(weights)))
    {
      cbindtext.weights <- paste0("cbind(", weights,")")
@@ -367,7 +363,7 @@ if(!is.null(optimizer)&&optimizer!="nloptwrap")
     mg <- lme4::lmer(formula2use, offset=offset.to.use, weights=weights.to.use, data=dataDF, REML = REML, verbose = verbose, control = control.obj)
 
     outlist <- mg
-
+    
   }
   #tidy up in parent.frame()
   eval(quote(rm(offset.to.use)), envir = parent.frame())

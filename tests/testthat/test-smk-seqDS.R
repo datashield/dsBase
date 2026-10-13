@@ -135,6 +135,13 @@ test_that("seqDS errors when ALONG.WITH object does not exist", {
     )
 })
 
+test_that("seqDS rejects a FROM value that is not a number", {
+    expect_error(
+        seqDS("not_a_number", "12", "2", NULL, NULL),
+        regexp = "FROM.value.char must be specified as a real number"
+    )
+})
+
 #
 # Done
 #

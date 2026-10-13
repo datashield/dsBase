@@ -84,13 +84,28 @@ test_that("numeric varDS, with all NA", {
     expect_equal(res$class, "numeric")
 })
 
+# context("varDS::smk::logical with all NA")
+test_that("logical varDS, with all NA", {
+    input <- c(NA, NA, NA, NA, NA)
+
+    res <- varDS("input")
+
+    expect_equal(class(res$Sum), "integer")
+    expect_equal(res$Sum, 0)
+    expect_equal(res$SumOfSquares, 0)
+    expect_equal(res$Nmissing, 5)
+    expect_equal(res$Nvalid, 0)
+    expect_equal(res$Ntotal, 5)
+    expect_equal(res$class, "logical")
+})
+
 test_that("varDS throws error when object does not exist", {
     expect_error(varDS("nonexistent_object"), regexp = "does not exist")
 })
 
 test_that("varDS throws error when object is not numeric or integer", {
     bad_input <- c("a", "b", "c")
-    expect_error(varDS("bad_input"), regexp = "must be of type numeric or integer")
+    expect_error(varDS("bad_input"), regexp = "must be of type numeric, integer or logical")
 })
 
 #

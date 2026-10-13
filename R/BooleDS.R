@@ -53,9 +53,13 @@ thr <- dsBase::listDisclosureSettingsDS()                               #
 
 V1<-.loadServersideObject(V1.name)
 
-# V2 may be either a server-side object name or a literal scalar (e.g. "3", "-1")
+# V2 may be either a server-side object name or a literal scalar (e.g. "3", "-1", "TRUE", "NA")
 V2.numeric <- suppressWarnings(as.numeric(V2.name))
-if(!is.na(V2.numeric)){
+if(V2.name %in% c("TRUE", "FALSE")){
+  V2 <- as.logical(V2.name)
+}else if(V2.name == "NA"){
+  V2 <- NA
+}else if(!is.na(V2.numeric)){
   V2 <- V2.numeric
 }else{
   V2 <- .loadServersideObject(V2.name)

@@ -27,7 +27,7 @@ meanSdGpDS <- function (x, index){
   X <- .loadServersideObject(x)
   .checkClass(obj = X, obj_name = x, permitted_classes = c("numeric", "integer"))
   INDEX <- .loadServersideObject(index)
-  .checkClass(obj = INDEX, obj_name = index, permitted_classes = c("factor", "character", "integer"))
+  .checkClass(obj = INDEX, obj_name = index, permitted_classes = c("factor", "character", "integer", "numeric"))
   x.class <- class(X)
   index.class <- class(INDEX)
 

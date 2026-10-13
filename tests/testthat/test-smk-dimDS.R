@@ -60,12 +60,12 @@ test_that("dimDS throws error when object does not exist", {
     )
 })
 
-test_that("dimDS throws error when object is not data.frame or matrix", {
-    bad_input <- c(1, 2, 3)
-    expect_error(
-        dimDS("bad_input"),
-        regexp = "must be of type data.frame or matrix"
-    )
+test_that("dimDS accepts any class, e.g. a 3-D array or a table", {
+    arr <- array(1:24, dim = c(2, 3, 4))
+    tab <- table(c("a", "b", "a"))
+
+    expect_equal(dimDS("arr")$dim, c(2L, 3L, 4L))
+    expect_equal(dimDS("tab")$dim, 2L)
 })
 
 #

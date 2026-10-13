@@ -49,7 +49,7 @@ test_that("glmSLMADS2 throws error when dataName does not exist", {
     )
 })
 
-test_that("glmSLMADS2 throws error when dataName is not a data.frame or matrix", {
+test_that("glmSLMADS2 throws error when dataName is not a data.frame or list", {
     bad_input <- c(1, 2, 3)
 
     expect_error(

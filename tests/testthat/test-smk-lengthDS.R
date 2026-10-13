@@ -96,6 +96,15 @@ test_that("simple lengthDS, array", {
     expect_equal(res$class, "array")
 })
 
+test_that("lengthDS accepts any class, e.g. a Date vector", {
+    input <- as.Date(c("2020-01-01", "2020-06-01"))
+
+    res <- lengthDS("input")
+
+    expect_equal(res$length, 2)
+    expect_equal(res$class, "Date")
+})
+
 #
 # Done
 #
