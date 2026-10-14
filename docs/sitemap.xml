@@ -1,6 +1,7 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>/404.html</loc></url>
 <url><loc>/LICENSE.html</loc></url>
+<url><loc>/PULL_REQUEST_TEMPLATE.html</loc></url>
 <url><loc>/authors.html</loc></url>
 <url><loc>/index.html</loc></url>
 <url><loc>/reference/BooleDS.html</loc></url>
@@ -43,6 +44,7 @@
 <url><loc>/reference/dmtC2SDS.html</loc></url>
 <url><loc>/reference/dsBase-package.html</loc></url>
 <url><loc>/reference/elsplineDS.html</loc></url>
+<url><loc>/reference/expDS.html</loc></url>
 <url><loc>/reference/extract.html</loc></url>
 <url><loc>/reference/extractQuantilesDS1.html</loc></url>
 <url><loc>/reference/extractQuantilesDS2.html</loc></url>
@@ -84,6 +86,7 @@
 <url><loc>/reference/listDisclosureSettingsDS.html</loc></url>
 <url><loc>/reference/lmerSLMADS.assign.html</loc></url>
 <url><loc>/reference/lmerSLMADS2.html</loc></url>
+<url><loc>/reference/logDS.html</loc></url>
 <url><loc>/reference/lsDS.html</loc></url>
 <url><loc>/reference/lsplineDS.html</loc></url>
 <url><loc>/reference/matrixDS.html</loc></url>

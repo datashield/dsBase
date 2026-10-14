@@ -25,3 +25,5 @@ The function returns the class of an object
 ## Author
 
 Stuart Wheater, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

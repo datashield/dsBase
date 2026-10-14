@@ -30,3 +30,5 @@ See help for function `as.matrix` in native R
 ## Author
 
 Amadou Gaye, Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

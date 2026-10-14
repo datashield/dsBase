@@ -36,3 +36,5 @@ only possible if the number of columns and rows of A are the same.
 ## Author
 
 Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

@@ -25,11 +25,11 @@
 - [`asIntegerDS()`](asIntegerDS.md) : Coerces an R object into class
   integer
 
-- [`asListDS()`](asListDS.md) : asListDS a serverside aggregate function
+- [`asListDS()`](asListDS.md) : asListDS a serverside assign function
   called by ds.asList
 
 - [`asLogicalDS()`](asLogicalDS.md) : Coerces an R object into class
-  numeric
+  logical
 
 - [`asMatrixDS()`](asMatrixDS.md) : Coerces an R object into a matrix
 
@@ -110,6 +110,9 @@
 
 - [`elsplineDS()`](elsplineDS.md) : Basis for a piecewise linear spline
   with meaningful coefficients
+
+- [`expDS()`](expDS.md) : Computes the exponential values of the input
+  variable
 
 - [`extractQuantilesDS1()`](extractQuantilesDS1.md) : Secure ranking of
   "V2BR" (vector to be ranked) across all sources and use of these ranks
@@ -214,6 +217,9 @@
 
 - [`lmerSLMADS2()`](lmerSLMADS2.md) : Fitting linear mixed effect
   models - serverside function
+
+- [`logDS()`](logDS.md) : Computes the logarithm values of the input
+  variable
 
 - [`lsDS()`](lsDS.md) : lists all objects on a serverside environment
 

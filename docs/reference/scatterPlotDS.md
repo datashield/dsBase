@@ -7,18 +7,20 @@ generates the non-disclosive scatter plots.
 ## Usage
 
 ``` r
-scatterPlotDS(x, y, method.indicator, k, noise)
+scatterPlotDS(x.name, y.name, method.indicator, k, noise)
 ```
 
 ## Arguments
 
-- x:
+- x.name:
 
-  the name of a numeric vector, the x-variable.
+  a character string providing the name of a server-side numeric vector,
+  the x-variable.
 
-- y:
+- y.name:
 
-  the name of a numeric vector, the y-variable.
+  a character string providing the name of a server-side numeric vector,
+  the y-variable.
 
 - method.indicator:
 
@@ -38,7 +40,8 @@ scatterPlotDS(x, y, method.indicator, k, noise)
 
 ## Value
 
-a list with the x and y coordinates of the data to be plot
+a list with the x and y coordinates of the data to be plot, along with
+the classes of the x and y inputs (`class.x` and `class.y`)
 
 ## Details
 
@@ -61,3 +64,5 @@ always the same noisy data for a given pair of variables.
 ## Author
 
 Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

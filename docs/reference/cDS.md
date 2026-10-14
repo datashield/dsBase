@@ -5,14 +5,14 @@ This function is similar to the R base function 'c'.
 ## Usage
 
 ``` r
-cDS(objs)
+cDS(x.names)
 ```
 
 ## Arguments
 
-- objs:
+- x.names:
 
-  a list which contains the the objects to concatenate.
+  a character vector of object names to concatenate.
 
 ## Value
 
@@ -26,3 +26,5 @@ allowed as output
 ## Author
 
 Gaye, A.
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

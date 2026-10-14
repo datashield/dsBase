@@ -53,3 +53,5 @@ help for `ds.unList`.
 
 Amadou Gaye (2016), Paul Burton (19/09/2019) for DataSHIELD Development
 Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

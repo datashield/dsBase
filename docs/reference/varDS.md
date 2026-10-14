@@ -5,22 +5,21 @@ Calculates the variance.
 ## Usage
 
 ``` r
-varDS(xvect)
+varDS(x)
 ```
 
 ## Arguments
 
-- xvect:
+- x:
 
-  a vector
+  a character string, the name of a numeric or integer vector
 
 ## Value
 
 a list, with the sum of the input variable, the sum of squares of the
 input variable, the number of missing values, the number of valid
-values, the number of total length of the variable, and a study message
-indicating whether the number of valid is less than the disclosure
-threshold
+values, the number of total length of the variable, and `class`, the
+class of the input object for client-side consistency checking
 
 ## Details
 
@@ -30,3 +29,5 @@ value is returned.
 ## Author
 
 Amadou Gaye, Demetris Avraam, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

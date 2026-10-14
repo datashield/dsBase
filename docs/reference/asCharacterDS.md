@@ -31,3 +31,5 @@ See help for function `as.character` in native R
 
 Amadou Gaye, Paul Burton, Demetris Avraam for DataSHIELD Development
 Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

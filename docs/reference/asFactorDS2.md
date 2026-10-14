@@ -49,3 +49,7 @@ The functions converts the input variable into a factor which is
 presented as a vector if the `fixed.dummy.vars` is set to FALSE or as a
 matrix with dummy variables if the `fixed.dummy.vars` is set to TRUE
 (see the help file of ds.asFactor.b for more details).
+
+## Author
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

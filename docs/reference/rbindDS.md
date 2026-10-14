@@ -54,3 +54,5 @@ details see help for `ds.rbind` and the native R function `rbind`.
 ## Author
 
 Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

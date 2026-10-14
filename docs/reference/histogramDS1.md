@@ -14,14 +14,15 @@ the function returns the minimum and maximum values of the generated
 ## Usage
 
 ``` r
-histogramDS1(xvect, method.indicator, k, noise)
+histogramDS1(x, method.indicator, k, noise)
 ```
 
 ## Arguments
 
-- xvect:
+- x:
 
-  the numeric vector for which the histogram is desired.
+  a character string providing the name of the server-side numeric
+  vector for which the histogram is desired.
 
 - method.indicator:
 
@@ -45,9 +46,12 @@ histogramDS1(xvect, method.indicator, k, noise)
 
 ## Value
 
-a numeric vector which contains the minimum and the maximum values of
-the vector
+a list with the numeric vector containing the minimum and the maximum
+values of the vector (`range`) and the class of the input vector
+(`class`)
 
 ## Author
 
 Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

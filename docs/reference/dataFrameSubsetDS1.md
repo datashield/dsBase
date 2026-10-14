@@ -94,3 +94,5 @@ ds.dataFrameSubset
 ## Author
 
 Paul Burton
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

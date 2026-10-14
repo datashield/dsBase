@@ -66,3 +66,5 @@ preterm standard is used.
 ## Author
 
 Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

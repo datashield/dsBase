@@ -55,3 +55,5 @@ clientside. For more details please see the extensive header for ds.glm.
 ## Author
 
 Paul Burton, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

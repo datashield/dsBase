@@ -7,8 +7,8 @@ plots.
 
 ``` r
 densityGridDS(
-  xvect,
-  yvect,
+  x,
+  y,
   limits = FALSE,
   x.min = NULL,
   x.max = NULL,
@@ -20,20 +20,22 @@ densityGridDS(
 
 ## Arguments
 
-- xvect:
+- x:
 
-  a numerical vector
+  a character string providing the name of a server-side numerical
+  vector
 
-- yvect:
+- y:
 
-  a numerical vector
+  a character string providing the name of a server-side numerical
+  vector
 
 - limits:
 
   a logical expression for whether or not limits of the density grid are
-  defined by a user. If `limits` is set to "FALSE", min and max of xvect
-  and yvect are used as a range. If `limits` is set to "TRUE", limits
-  defined by x.min, x.max, y.min and y.max are used.
+  defined by a user. If `limits` is set to "FALSE", min and max of x and
+  y are used as a range. If `limits` is set to "TRUE", limits defined by
+  x.min, x.max, y.min and y.max are used.
 
 - x.min:
 
@@ -57,7 +59,8 @@ densityGridDS(
 
 ## Value
 
-a grid density matrix
+a list with the grid density matrix (`grid`) and the classes of the x
+and y inputs (`class.x` and `class.y`)
 
 ## Details
 
@@ -68,3 +71,5 @@ minimum allowed counts in table cells) are turn to 0.
 
 Julia Isaeva, Amadou Gaye, Demetris Avraam for DataSHIELD Development
 Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

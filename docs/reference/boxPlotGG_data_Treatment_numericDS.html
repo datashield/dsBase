@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">dsBase</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">6.3.6.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">7.0.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,22 +37,26 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">boxPlotGG_data_Treatment_numericDS</span><span class="op">(</span><span class="va">vector</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">boxPlotGG_data_Treatment_numericDS</span><span class="op">(</span><span class="va">vector.name</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-vector">vector<a class="anchor" aria-label="anchor" href="#arg-vector"></a></dt>
-<dd><p><code>numeric vector</code> Vector to arrange to be plotted later</p></dd>
+<dl><dt id="arg-vector-name">vector.name<a class="anchor" aria-label="anchor" href="#arg-vector-name"></a></dt>
+<dd><p><code>character</code> Name of a server-side numeric vector to arrange to be plotted later</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p><code>data frame</code> with the following structure: <br></p>
-<p>Column 'x': Names on the X axis of the boxplot, aka name of the vector (vector argument) <br>
+<p>Column 'x': Names on the X axis of the boxplot, aka name of the vector (vector.name argument) <br>
  Column 'value': Values for that variable <br></p>
+    </div>
+    <div class="section level2">
+    <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
+    <p>Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands</p>
     </div>
 
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -64,7 +68,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>

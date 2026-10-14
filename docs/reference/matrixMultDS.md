@@ -41,3 +41,5 @@ columns of A is the same as the number of rows of B
 ## Author
 
 Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

@@ -58,3 +58,5 @@ of all its elements based on the \<mdata\> argument
 ## Author
 
 Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

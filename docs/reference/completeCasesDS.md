@@ -52,3 +52,5 @@ can therefore be found under help("complete.cases") in native R.
 ## Author
 
 Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

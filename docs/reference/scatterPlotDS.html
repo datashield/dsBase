@@ -9,7 +9,7 @@ coordinates that are returned to the client that generates the non-disclosive sc
 
     <a class="navbar-brand me-2" href="../index.html">dsBase</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">6.3.6.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">7.0.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,19 +40,19 @@ coordinates that are returned to the client that generates the non-disclosive sc
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">scatterPlotDS</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">method.indicator</span>, <span class="va">k</span>, <span class="va">noise</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">scatterPlotDS</span><span class="op">(</span><span class="va">x.name</span>, <span class="va">y.name</span>, <span class="va">method.indicator</span>, <span class="va">k</span>, <span class="va">noise</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-x">x<a class="anchor" aria-label="anchor" href="#arg-x"></a></dt>
-<dd><p>the name of a numeric vector, the x-variable.</p></dd>
+<dl><dt id="arg-x-name">x.name<a class="anchor" aria-label="anchor" href="#arg-x-name"></a></dt>
+<dd><p>a character string providing the name of a server-side numeric vector, the x-variable.</p></dd>
 
 
-<dt id="arg-y">y<a class="anchor" aria-label="anchor" href="#arg-y"></a></dt>
-<dd><p>the name of a numeric vector, the y-variable.</p></dd>
+<dt id="arg-y-name">y.name<a class="anchor" aria-label="anchor" href="#arg-y-name"></a></dt>
+<dd><p>a character string providing the name of a server-side numeric vector, the y-variable.</p></dd>
 
 
 <dt id="arg-method-indicator">method.indicator<a class="anchor" aria-label="anchor" href="#arg-method-indicator"></a></dt>
@@ -73,7 +73,8 @@ noise if the probabilistic method is selected.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>a list with the x and y coordinates of the data to be plot</p>
+    <p>a list with the x and y coordinates of the data to be plot, along with the classes of
+the x and y inputs (<code>class.x</code> and <code>class.y</code>)</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -93,6 +94,7 @@ variables. Thus the function returns always the same noisy data for a given pair
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
     <p>Demetris Avraam for DataSHIELD Development Team</p>
+<p>Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands</p>
     </div>
 
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -104,7 +106,7 @@ variables. Thus the function returns always the same noisy data for a given pair
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>

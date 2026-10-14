@@ -43,3 +43,5 @@ For details see help for function `ds.matrixDiag`.
 ## Author
 
 Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
