@@ -26,3 +26,5 @@ The function computes the uniques values of a variable.
 ## Author
 
 Stuart Wheater for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

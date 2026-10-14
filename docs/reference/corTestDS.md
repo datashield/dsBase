@@ -37,7 +37,8 @@ corTestDS(x, y, method, exact, conf.level)
 
 ## Value
 
-the results of the correlation test.
+a list with the results of the correlation test and `class`, the class
+of the input object for client-side consistency checking.
 
 ## Details
 
@@ -46,3 +47,5 @@ The function runs a two-sided correlation test
 ## Author
 
 Demetris Avraam, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

@@ -9,14 +9,15 @@ counts and its density are replaced by a 0 value.
 ## Usage
 
 ``` r
-histogramDS2(xvect, num.breaks, min, max, method.indicator, k, noise)
+histogramDS2(x, num.breaks, min, max, method.indicator, k, noise)
 ```
 
 ## Arguments
 
-- xvect:
+- x:
 
-  the numeric vector for which the histogram is desired.
+  a character string providing the name of the server-side numeric
+  vector for which the histogram is desired.
 
 - num.breaks:
 
@@ -63,3 +64,5 @@ ds.histogram function.
 ## Author
 
 Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

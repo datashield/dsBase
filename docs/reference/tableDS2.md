@@ -56,3 +56,5 @@ DataSHIELD and the `table` function in native R.
 ## Author
 
 Paul Burton for DataSHIELD Development Team, 13/11/2019
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

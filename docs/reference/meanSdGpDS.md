@@ -5,17 +5,17 @@ Server-side function called by ds.meanSdGp
 ## Usage
 
 ``` r
-meanSdGpDS(X, INDEX)
+meanSdGpDS(x, index)
 ```
 
 ## Arguments
 
-- X:
+- x:
 
   a client-side supplied character string identifying the variable for
   which means/SDs are to be calculated
 
-- INDEX:
+- index:
 
   a client-side supplied character string identifying the factor across
   which means/SDs are to be calculated
@@ -32,3 +32,5 @@ factor
 ## Author
 
 Burton PR
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

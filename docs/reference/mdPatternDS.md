@@ -33,6 +33,10 @@ A list containing:
 
   A message describing the validity status
 
+- class:
+
+  The class of the input object, for client-side consistency checking
+
 ## Details
 
 This function calls the mice::md.pattern function to generate a matrix
@@ -65,3 +69,5 @@ total when patterns are suppressed in some studies.
 ## Author
 
 Xavier Escribà montagut for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

@@ -16,7 +16,9 @@ lengthDS(x)
 
 ## Value
 
-a numeric, the number of elements of the input vector or list.
+a list with two elements: `length` (the number of elements of the input
+vector or list) and `class` (the class of the input object, for
+client-side consistency checking)
 
 ## Details
 
@@ -25,3 +27,5 @@ The function returns the length of the input vector or list.
 ## Author
 
 Demetris Avraam, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

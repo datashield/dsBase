@@ -54,3 +54,5 @@ with a name specified by the argument `newobj` on the clientside.
 ## Author
 
 Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

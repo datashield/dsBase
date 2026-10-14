@@ -60,3 +60,5 @@ see help for ds.glmSLMA.
 ## Author
 
 Paul Burton for DataSHIELD Development Team (14/7/20)
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

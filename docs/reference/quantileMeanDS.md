@@ -5,19 +5,23 @@ the probabilities 5 are used to compute the corresponding quantiles.
 ## Usage
 
 ``` r
-quantileMeanDS(xvect)
+quantileMeanDS(x)
 ```
 
 ## Arguments
 
-- xvect:
+- x:
 
-  a numerical vector
+  a character string, the name of a numeric or integer vector
 
 ## Value
 
-a numeric vector that represents the sample quantiles
+a list, with `quantiles`, a numeric vector that represents the sample
+quantiles, and `class`, the class of the input object for client-side
+consistency checking
 
 ## Author
 
 Burton, P.; Gaye, A.
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

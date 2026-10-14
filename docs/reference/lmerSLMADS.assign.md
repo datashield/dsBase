@@ -73,3 +73,5 @@ single data source and saves the regression outcomes on the serverside.
 ## Author
 
 TDemetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

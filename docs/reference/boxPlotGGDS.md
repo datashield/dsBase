@@ -9,15 +9,15 @@ variables. The outliers are also removed from the graphical parameters.
 ## Usage
 
 ``` r
-boxPlotGGDS(data_table, group = NULL, group2 = NULL)
+boxPlotGGDS(data_table.name, group = NULL, group2 = NULL)
 ```
 
 ## Arguments
 
-- data_table:
+- data_table.name:
 
-  `data frame` Table that holds the information to be plotted, arranged
-  as:  
+  `character` Name of a server-side data frame that holds the
+  information to be plotted, arranged as:  
 
   Column 'x': Names on the X axis of the boxplot, aka variables to
   plot  
@@ -39,3 +39,7 @@ boxPlotGGDS(data_table, group = NULL, group2 = NULL)
 `list` with:  
 -`data frame` Geometrical parameters (identity stats of ggplot)  
 -`character` Type of plot (single_group, double_group or no_group)  
+
+## Author
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

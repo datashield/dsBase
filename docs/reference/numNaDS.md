@@ -5,19 +5,23 @@ this function just counts the number of missing entries in a vector.
 ## Usage
 
 ``` r
-numNaDS(xvect)
+numNaDS(x)
 ```
 
 ## Arguments
 
-- xvect:
+- x:
 
-  a vector
+  a character string, the name of a server-side vector
 
 ## Value
 
-an integer, the number of missing values
+a list with two elements: `numNA` (an integer, the number of missing
+values) and `class` (the class of the input object, for client-side
+consistency checking)
 
 ## Author
 
 Gaye, A.
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

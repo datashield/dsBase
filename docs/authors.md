@@ -37,12 +37,12 @@
 Burton P, Wilson R, Butters O, Ryser-Welch P, Westerberg A, Abarrategui
 L, Villegas-Diaz R, Avraam D, Marcon Y, Bishop T, Gaye A,
 Escribà-Montagut X, Wheater S (????). *dsBase: 'DataSHIELD' Server Side
-Base Functions*. R package version 6.3.6.9000.
+Base Functions*. R package version 7.0.0.9000.
 
     @Manual{,
       title = {dsBase: 'DataSHIELD' Server Side Base Functions},
       author = {Paul Burton and Rebecca Wilson and Olly Butters and Patricia Ryser-Welch and Alex Westerberg and Leire Abarrategui and Roberto Villegas-Diaz and Demetris Avraam and Yannick Marcon and Tom Bishop and Amadou Gaye and Xavier Escribà-Montagut and Stuart Wheater},
-      note = {R package version 6.3.6.9000},
+      note = {R package version 7.0.0.9000},
     }
 
 Gaye A, Marcon Y, Isaeva J, LaFlamme P, Turner A, Jones E, Minion J,

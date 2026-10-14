@@ -6,18 +6,20 @@ nearest neighbours.
 ## Usage
 
 ``` r
-heatmapPlotDS(x, y, k, noise, method.indicator)
+heatmapPlotDS(x.name, y.name, k, noise, method.indicator)
 ```
 
 ## Arguments
 
-- x:
+- x.name:
 
-  the name of a numeric vector, the x-variable.
+  a character string providing the name of a server-side numeric vector,
+  the x-variable.
 
-- y:
+- y.name:
 
-  the name of a numeric vector, the y-variable.
+  a character string providing the name of a server-side numeric vector,
+  the y-variable.
 
 - k:
 
@@ -41,7 +43,8 @@ heatmapPlotDS(x, y, k, noise, method.indicator)
 
 a list with the x and y coordinates of the centroids if the
 deterministic method is used or the x and y coordinated of the noisy
-data if the probabilistic method is used.
+data if the probabilistic method is used, along with the classes of the
+x and y inputs (`class.x` and `class.y`)
 
 ## Details
 
@@ -61,3 +64,5 @@ contour plots, etc).
 ## Author
 
 Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

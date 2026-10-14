@@ -101,3 +101,5 @@ lme4 package
 ## Author
 
 Tom Bishop, with some additions by Paul Burton
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

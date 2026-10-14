@@ -32,3 +32,5 @@ the help file of the clientside function `ds.asNumeric`.
 
 Amadou Gaye, Paul Burton, Demetris Avraam, for DataSHIELD Development
 Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

@@ -29,3 +29,5 @@ has columns and vice versa.
 ## Author
 
 Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

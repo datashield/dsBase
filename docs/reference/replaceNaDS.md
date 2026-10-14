@@ -6,12 +6,12 @@ values specified by the analyst.
 ## Usage
 
 ``` r
-replaceNaDS(xvect, replacements)
+replaceNaDS(x, replacements)
 ```
 
 ## Arguments
 
-- xvect:
+- x:
 
   a character, the name of the vector to process.
 
@@ -37,3 +37,5 @@ replaced a new vector is created.
 ## Author
 
 Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

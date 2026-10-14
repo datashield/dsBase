@@ -35,7 +35,8 @@ variables is not bigger than a percentage of the individual-level
 records (the allowed percentage is pre-specified by the 'nfilter.glm').
 The second disclosure control checks that none of them is dichotomous
 with a level having fewer counts than the pre-specified 'nfilter.tab'
-threshold.
+threshold. The list also includes `class`, the class of the input object
+for client-side consistency checking.
 
 ## Details
 
@@ -45,3 +46,5 @@ of each two variables
 ## Author
 
 Paul Burton, and Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

@@ -80,3 +80,5 @@ ds.lexis.
 ## Author
 
 Burton PR
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

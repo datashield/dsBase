@@ -24,7 +24,8 @@ kurtosisDS1(x, method)
 ## Value
 
 a list including the kurtosis of the input numeric variable, the number
-of valid observations and the study-side validity message.
+of valid observations and `class`, the class of the input object for
+client-side consistency checking.
 
 ## Details
 
@@ -35,3 +36,5 @@ the client-side `ds.kurtosis` function.
 ## Author
 
 Demetris Avraam, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

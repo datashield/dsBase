@@ -85,3 +85,5 @@ the help() for data.frame().
 ## Author
 
 DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
