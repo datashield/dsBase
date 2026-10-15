@@ -92,8 +92,6 @@ auc
 aucDS
 bfa
 blackBox
-blackBoxDS
-blackBoxRanksDS
 blackbox
 booleans
 bp
@@ -119,7 +117,6 @@ cyc
 dataFrame
 dataFrameDS
 dataFrameFill
-dataFrameFillDS
 dataFrameShort
 dataFrameSort
 dataFrameSortDS
@@ -208,7 +205,6 @@ maxit
 mdata
 meanSdGp
 mergeDS
-messageDS
 messageobj
 metafor
 mfa
@@ -302,7 +298,6 @@ tableDS
 tapply
 tapplyDS
 testObjExists
-testObjExistsDS
 th
 tibble
 timevar
