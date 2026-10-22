@@ -50,6 +50,30 @@ test_that("miceDS", {
     
 })
 
+test_that("miceDS throws error when object does not exist", {
+    expect_error(miceDS(data='nonexistent_object', m=1, maxit=5, method=NULL, post=NULL, predictorMatrix=NULL, seed=NA,
+               ncol.pred.mat=NULL, newobj_mids='mids_object', newobj_df='impSet'), regexp = "does not exist")
+})
+
+test_that("miceDS throws error when object is the wrong type", {
+    bad_input <- c("a", "b", "c")
+    expect_error(miceDS(data='bad_input', m=1, maxit=5, method=NULL, post=NULL, predictorMatrix=NULL, seed=NA,
+               ncol.pred.mat=NULL, newobj_mids='mids_object', newobj_df='impSet'), regexp = "must be of type data.frame or matrix")
+})
+
+test_that("miceDS gives the same result for a matrix as for a data.frame", {
+    load(file = 'data_files/CNSIM/CNSIM1.rda')
+    D <- study1[, c("LAB_TSC", "LAB_TRIG", "LAB_HDL")]
+    D.matrix <- as.matrix(D)
+
+    res.df <- miceDS(data='D', m=1, maxit=2, method=NULL, post=NULL, predictorMatrix=NULL, seed=123,
+                     ncol.pred.mat=NULL, newobj_mids='mids_object', newobj_df='impSet')
+    res.matrix <- miceDS(data='D.matrix', m=1, maxit=2, method=NULL, post=NULL, predictorMatrix=NULL, seed=123,
+                         ncol.pred.mat=NULL, newobj_mids='mids_object', newobj_df='impSet')
+
+    expect_equal(res.matrix, res.df)
+})
+
 #
 # Done
 #

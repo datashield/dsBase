@@ -59,6 +59,25 @@ test_that("lmerSLMADS2 throws error when dataName is not a data.frame or list", 
     )
 })
 
+test_that("lmerSLMADS2 gives the same result for data as a list as for a data.frame", {
+    set.seed(42)
+    D <- data.frame(
+        group = factor(rep(1:4, each = 6)),
+        x = rep(1:6, times = 4)
+    )
+    D$y <- 2 + 0.5 * D$x + rep(rnorm(4, sd = 1), each = 6) + rnorm(24, sd = 0.3)
+    D.list <- as.list(D)
+
+    res.df <- suppressWarnings(lmerSLMADS2(formula = stats::as.formula("y ~ x + (1|group)"),
+        offset = NULL, weights = NULL, dataName = "D", REML = TRUE,
+        control_type = NULL, control_value.transmit = NULL, optimizer = NULL, verbose = 0))
+    res.list <- suppressWarnings(lmerSLMADS2(formula = stats::as.formula("y ~ x + (1|group)"),
+        offset = NULL, weights = NULL, dataName = "D.list", REML = TRUE,
+        control_type = NULL, control_value.transmit = NULL, optimizer = NULL, verbose = 0))
+
+    expect_equal(res.list, res.df)
+})
+
 #
 # Done
 #

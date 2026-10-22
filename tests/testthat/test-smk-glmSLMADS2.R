@@ -59,6 +59,25 @@ test_that("glmSLMADS2 throws error when dataName is not a data.frame or list", {
     )
 })
 
+test_that("glmSLMADS2 gives the same result for data as a list as for a data.frame", {
+    D <- data.frame(
+        y = c(4.1, 4.2, 3.9, 2.9, 3.6, 3.8, 4.2, 4.2, 2.5, 3.5,
+              2.8, 3.7, 3.3, 3.3, 2.4, 3.5, 3.0, 3.1, 3.5, 3.4),
+        x = c(41.0, 41.0, 39.0, 38.9, 40.6, 41.0, 40.7, 41.4, 36.0, 39.0,
+              37.6, 40.0, 40.3, 40.7, 37.0, 40.0, 41.6, 36.3, 39.3, 40.0)
+    )
+    D.list <- as.list(D)
+    my.glm.obj <- glm(y ~ x, family = gaussian(), data = D, x = TRUE)
+
+    res.df <- glmSLMADS2(formula = stats::as.formula("y ~ x"), family = "gaussian",
+                         offset = NULL, weights = NULL, newobj = "my.glm.obj", dataName = "D")
+    res.list <- glmSLMADS2(formula = stats::as.formula("y ~ x"), family = "gaussian",
+                           offset = NULL, weights = NULL, newobj = "my.glm.obj", dataName = "D.list")
+
+    expect_equal(res.list$data, "D.list")
+    expect_equal(res.list[names(res.list) != "data"], res.df[names(res.df) != "data"])
+})
+
 #
 # Done
 #

@@ -56,6 +56,28 @@ test_that("glmerSLMADS.assign throws error when dataName is not a data.frame or 
     )
 })
 
+test_that("glmerSLMADS.assign gives the same result for data as a list as for a data.frame", {
+    set.seed(7)
+    D <- data.frame(
+        group = factor(rep(1:5, each = 10)),
+        x = rep(1:10, times = 5)
+    )
+    lp <- -1.5 + 0.35 * D$x + rep(rnorm(5, sd = 1.5), each = 10)
+    D$y <- rbinom(50, 1, plogis(lp))
+    D.list <- as.list(D)
+
+    res.df <- suppressWarnings(glmerSLMADS.assign(formula = stats::as.formula("y ~ x + (1|group)"),
+        offset = NULL, weights = NULL, dataName = "D", family = "binomial",
+        control_type = NULL, control_value.transmit = NULL,
+        nAGQ = 1L, verbose = 0, theta = NULL, fixef = NULL))
+    res.list <- suppressWarnings(glmerSLMADS.assign(formula = stats::as.formula("y ~ x + (1|group)"),
+        offset = NULL, weights = NULL, dataName = "D.list", family = "binomial",
+        control_type = NULL, control_value.transmit = NULL,
+        nAGQ = 1L, verbose = 0, theta = NULL, fixef = NULL))
+
+    expect_equal(lme4::fixef(res.list), lme4::fixef(res.df))
+})
+
 #
 # Done
 #

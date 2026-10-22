@@ -73,6 +73,23 @@ test_that("densityGridDS fails when y is not numeric or integer", {
     expect_error(densityGridDS(x="xvect", y="yvect", numints=3), "must be of type numeric or integer")
 })
 
+test_that("densityGridDS gives the same result for integer input as for numeric", {
+  x.numeric <- c(119, 101, 100, 95, 123, 97, 111, 123, 110, 99,
+                 100, 118, 93, 98, 103, 102, 81, 97, 91, 94)
+  y.numeric <- rev(x.numeric) + c(1:20)
+  x.integer <- as.integer(x.numeric)
+  y.integer <- as.integer(y.numeric)
+
+  res.numeric <- densityGridDS(x="x.numeric", y="y.numeric", limits=FALSE, x.min=NULL,
+                               x.max=NULL, y.min=NULL, y.max=NULL, numints=3)
+  res.integer <- densityGridDS(x="x.integer", y="y.integer", limits=FALSE, x.min=NULL,
+                               x.max=NULL, y.min=NULL, y.max=NULL, numints=3)
+
+  expect_equal(res.integer$class.x, "integer")
+  expect_equal(res.integer$class.y, "integer")
+  expect_equal(res.integer$grid, res.numeric$grid)
+})
+
 #
 # Done
 #

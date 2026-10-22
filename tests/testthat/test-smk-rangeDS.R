@@ -55,6 +55,13 @@ test_that("rangeDS throws error when object is not numeric", {
     expect_error(rangeDS("input"), regexp = "must be of type numeric or integer")
 })
 
+test_that("rangeDS gives the same result for integer input as for numeric", {
+    input.numeric <- c(0.0, 1.0, 2.0, 3.0, 4.0, 4.0, 3.0, 2.0, 1.0, 0.0)
+    input.integer <- as.integer(input.numeric)
+
+    expect_equal(rangeDS("input.integer"), rangeDS("input.numeric"))
+})
+
 #
 # Done
 #
