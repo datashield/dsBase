@@ -39,17 +39,17 @@ covDS <- function(x=NULL, y=NULL, use=NULL){
   #############################################################
   
   x.val <- .loadServersideObject(x)
-  .checkClass(obj = x.val, obj_name = x, permitted_classes = c("numeric", "integer", "matrix", "data.frame"))
+  .checkClass(obj = x.val, obj_name = x, permitted_classes = c("numeric", "integer", "factor", "matrix", "data.frame"))
 
   if (!is.null(y) && !any(class(x.val) %in% c("matrix", "data.frame"))){
     y.val <- .loadServersideObject(y)
-    .checkClass(obj = y.val, obj_name = y, permitted_classes = c("numeric", "integer", "matrix", "data.frame"))
+    .checkClass(obj = y.val, obj_name = y, permitted_classes = c("numeric", "integer", "factor", "matrix", "data.frame"))
   }
   else{
     y.val <- NULL
   }
 
-  if (is.null(y.val) && any(class(x.val) %in% c("numeric", "integer"))) {
+  if (is.null(y.val) && any(class(x.val) %in% c("numeric", "integer", "factor"))) {
     stop("If x is a numeric vector, y must also be a numeric vector.", call. = FALSE)
   }
 
