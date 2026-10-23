@@ -1,6 +1,5 @@
 AggregateMethods:
     asFactorDS1,
-    asListDS,
     aucDS,
     boxPlotGGDS,
     checkNegValueDS,
