@@ -63,7 +63,7 @@ Depends:
 Imports:
     RANN,
     stringr,
-    lme4,
+    lme4 (>= 2.1-0),
     dplyr,
     tibble,
     purrr,
