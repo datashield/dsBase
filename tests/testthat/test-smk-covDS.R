@@ -278,6 +278,16 @@ test_that("covDS gives the same result for a matrix as for a data.frame", {
     expect_equal(res.matrix[names(res.matrix) != "class"], res.df[names(res.df) != "class"])
 })
 
+test_that("covDS accepts a factor x, using its level codes", {
+    fvar <- factor(c("m", "f", "m", "f", "m", "f", "m", "f", "m", "f"))
+    yvar <- c(1.0, 5.0, 2.0, 6.0, 3.0, 7.0, 2.0, 8.0, 1.0, 9.0)
+
+    res <- covDS("fvar", "yvar", "pairwise.complete")
+
+    expect_equal(res$class, "factor")
+    expect_equal(res$sums[1, 2], sum(as.integer(fvar)))
+})
+
 #
 # Done
 #

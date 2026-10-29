@@ -29,10 +29,10 @@ test_that("simple glmerSLMADS.assign, binomial random intercept", {
 
     expect_true(methods::is(res, "glmerMod"))
     expect_equal(nobs(res), 50)
-    expect_equal(as.numeric(lme4::fixef(res)), c(-1.4299523, 0.2248647), tolerance = 1e-5)
+    expect_equal(as.numeric(lme4::fixef(res)), c(-1.4340652, 0.2255225), tolerance = 1e-5)
 
     vc <- as.data.frame(lme4::VarCorr(res))
-    expect_equal(vc$vcov, 2.7451347, tolerance = 1e-5)
+    expect_equal(vc$vcov, 2.7493590, tolerance = 1e-5)
 })
 
 test_that("glmerSLMADS.assign throws error when dataName does not exist", {

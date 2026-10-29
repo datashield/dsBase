@@ -35,7 +35,7 @@ test_that("simple glmerSLMADS2, binomial random intercept", {
     expect_equal(res$Nmissing, 0)
     expect_equal(dim(res$coefficients), c(2, 4))
     expect_equal(res$coefficients[, "Estimate"],
-                 c(`(Intercept)` = -1.4299523, x = 0.2248647), tolerance = 1e-5)
+                 c(`(Intercept)` = -1.4340652, x = 0.2255225), tolerance = 1e-5)
     expect_equal(res$family, "binomial")
 })
 

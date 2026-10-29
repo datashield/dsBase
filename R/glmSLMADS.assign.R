@@ -27,10 +27,10 @@ glmSLMADS.assign <- function(formula, family, offsetName, weightsName, dataName)
 
   # Correctly name offset, weights and data objects in function call
   # (to allow glmPredict to work correctly later)
-  calltext <- paste0("mg<-glm(formula,family=",family,",offset=",
+  calltext <- paste0("glm(formula,family=",family,",offset=",
              offsetName,",weights=",weightsName,",data=", dataName,",x=TRUE)")
 
-  eval(parse(text=calltext))
+  mg <- eval(parse(text=calltext), envir = list(formula = formula), enclos = parent.frame())
 
   # update the call object to include the actual formula
   mg$call$formula <- formula
