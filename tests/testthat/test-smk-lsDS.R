@@ -28,7 +28,7 @@ test_that("simple lsDS", {
     search.filter <- NULL
     env.to.search <- 1L
 
-    res <- lsDS(search.filter, env.to.search)
+    res <- eval(call("lsDS", search.filter, env.to.search), envir = .GlobalEnv)
 
     expect_equal(class(res), "list")
     expect_length(res, 2)
@@ -44,7 +44,7 @@ test_that("simple lsDS", {
     search.filter <- "_:A:_"
     env.to.search <- 1L
 
-    res <- lsDS(search.filter, env.to.search)
+    res <- eval(call("lsDS", search.filter, env.to.search), envir = .GlobalEnv)
 
     expect_equal(class(res), "list")
     expect_length(res, 3)
@@ -53,6 +53,15 @@ test_that("simple lsDS", {
     expect_true("test.obj" %in% res$objects.found)
     expect_length(res$search.filter.final, 1)
     expect_equal(res$search.filter.final, "*")
+})
+
+# context("lsDS::smk::calling environment")
+test_that("lsDS lists the environment it is called from", {
+    local.obj <- "value"
+
+    res <- lsDS(NULL, 1L)
+
+    expect_true("local.obj" %in% res$objects.found)
 })
 
 #
