@@ -50,7 +50,9 @@ records (the allowed percentage is pre-specified by the 'nfilter.glm').
 The second disclosure control checks that none of them is dichotomous
 with a level having fewer counts than the pre-specified 'nfilter.tab'
 threshold. If any of the input variables do not pass the disclosure
-controls then all the output values are replaced with NAs.
+controls then all the output values are replaced with NAs. The list also
+includes `class`, the class of the input object for client-side
+consistency checking.
 
 ## Details
 
@@ -61,3 +63,5 @@ of each two variables
 
 Amadou Gaye, Paul Burton, and Demetris Avraam for DataSHIELD Development
 Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

@@ -5,14 +5,14 @@ This function is similar to R function `relevel`,
 ## Usage
 
 ``` r
-changeRefGroupDS(xvect, ref = NULL, reorderByRef = NULL)
+changeRefGroupDS(x, ref = NULL, reorderByRef = NULL)
 ```
 
 ## Arguments
 
-- xvect:
+- x:
 
-  a factor vector
+  a character string, the name of a factor vector.
 
 - ref:
 
@@ -25,7 +25,7 @@ changeRefGroupDS(xvect, ref = NULL, reorderByRef = NULL)
 
 ## Value
 
-a factor of the same length as xvect
+a factor of the same length as the input vector
 
 ## Details
 
@@ -39,3 +39,5 @@ operations on that table invalid.
 ## Author
 
 Isaeva, J., Gaye, A.
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

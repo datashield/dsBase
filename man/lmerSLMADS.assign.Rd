@@ -41,7 +41,7 @@ writes lmerMod object summarising the fitted model to the serverside.
 For more detailed information see help for ds.lmerSLMA.
 }
 \description{
-lmerSLMADS.assign is the same as lmerSLMADS2 which fits a linear
+lmerSLMADS.assign is the same as lmerSLMA2DS which fits a linear
 mixed effects model (lme) per study and saves the outcomes in each study
 }
 \details{

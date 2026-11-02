@@ -79,3 +79,5 @@ allowable combinations of arguments etc.
 ## Author
 
 Paul Burton for DataSHIELD Development Team, 17/9/2019
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

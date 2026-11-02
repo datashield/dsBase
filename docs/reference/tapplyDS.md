@@ -41,3 +41,5 @@ see details for `ds.tapply` function
 ## Author
 
 Paul Burton, Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

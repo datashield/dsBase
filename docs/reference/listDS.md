@@ -5,18 +5,18 @@ this function is similar to R function 'list'
 ## Usage
 
 ``` r
-listDS(input = NULL, eltnames = NULL)
+listDS(x.names = NULL, eltnames = NULL)
 ```
 
 ## Arguments
 
-- input:
+- x.names:
 
-  a list of objects to coerce into a list
+  a character vector of object names to coerce into a list.
 
 - eltnames:
 
-  a character list, the names of the elements in the list.
+  a character vector, the names of the elements in the list.
 
 ## Value
 
@@ -30,3 +30,5 @@ names of the elements in the output list.
 ## Author
 
 Gaye, A.
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

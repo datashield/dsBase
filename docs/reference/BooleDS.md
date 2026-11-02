@@ -58,3 +58,5 @@ The function converts the input vector into Boolean indicators.
 ## Author
 
 DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

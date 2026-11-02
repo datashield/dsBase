@@ -1,6 +1,6 @@
-# Coerces an R object into class numeric
+# Coerces an R object into class logical
 
-this function is based on the native R function `as.numeric`
+this function is based on the native R function `as.logical`
 
 ## Usage
 
@@ -12,10 +12,10 @@ asLogicalDS(x.name)
 
 - x.name:
 
-  the name of the input object to be coerced to class numeric. Must be
+  the name of the input object to be coerced to class logical. Must be
   specified in inverted commas. But this argument is usually specified
   directly by \<x.name\> argument of the clientside function
-  `ds.aslogical`
+  `ds.asLogical`
 
 ## Value
 
@@ -30,3 +30,5 @@ See help for function `as.logical` in native R
 ## Author
 
 Amadou Gaye, Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

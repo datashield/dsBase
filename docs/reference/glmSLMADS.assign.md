@@ -44,8 +44,8 @@ more detailed information see help for ds.glmSLMA.
 ## Details
 
 glmSLMADS.assign is an assign function called by clientside function
-ds.glmSLMA. ds.glmSLMA also calls two aggregate functions glmSLMADS1 and
-glmSLMADS2. For more detailed information see help for ds.glmSLMA.
+ds.glmSLMA. ds.glmSLMA also calls two aggregate functions glmSLMA1DS and
+glmSLMA2DS. For more detailed information see help for ds.glmSLMA.
 
 ## Author
 

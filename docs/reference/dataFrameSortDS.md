@@ -70,3 +70,5 @@ For more details see help for the clientside function:
 
 Paul Burton, with critical error identification by Leire
 Abarrategui-Martinez, for DataSHIELD Development Team, 2/4/2020
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

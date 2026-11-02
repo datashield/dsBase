@@ -7,14 +7,14 @@ very small random number.
 ## Usage
 
 ``` r
-rangeDS(xvect)
+rangeDS(x)
 ```
 
 ## Arguments
 
-- xvect:
+- x:
 
-  a numerical
+  a character string, the name of a numeric or integer vector
 
 ## Value
 
@@ -24,3 +24,5 @@ the vector
 ## Author
 
 Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

@@ -5,18 +5,20 @@ Calculates the mean value.
 ## Usage
 
 ``` r
-meanDS(xvect)
+meanDS(x)
 ```
 
 ## Arguments
 
-- xvect:
+- x:
 
-  a vector
+  a character string, the name of a numeric or integer vector
 
 ## Value
 
-a numeric, the statistical mean
+a list, with the estimated mean, the number of missing values, the
+number of valid values, the total number of values, and `class`, the
+class of the input object for client-side consistency checking
 
 ## Details
 
@@ -26,3 +28,5 @@ value is returned.
 ## Author
 
 Gaye A, Burton PR
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

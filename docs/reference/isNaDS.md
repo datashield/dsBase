@@ -7,19 +7,23 @@ missing values.
 ## Usage
 
 ``` r
-isNaDS(xvect)
+isNaDS(x)
 ```
 
 ## Arguments
 
-- xvect:
+- x:
 
-  a numerical or character vector
+  a character string, the name of a server-side vector
 
 ## Value
 
-the integer '1' if the vector contains on NAs and '0' otherwise
+a list with two elements: `is.na` (TRUE if the vector contains only NAs,
+FALSE otherwise) and `class` (the class of the input object, for
+client-side consistency checking)
 
 ## Author
 
 Gaye, A.
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

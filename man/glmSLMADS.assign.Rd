@@ -30,7 +30,7 @@ with pooled co-analysis across studies being based on SLMA (Study Level Meta Ana
 }
 \details{
 glmSLMADS.assign is an assign function called by clientside function ds.glmSLMA.
-ds.glmSLMA also calls two aggregate functions glmSLMADS1 and glmSLMADS2.
+ds.glmSLMA also calls two aggregate functions glmSLMA1DS and glmSLMA2DS.
 For more detailed information see help for ds.glmSLMA.
 }
 \author{

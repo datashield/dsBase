@@ -1,5 +1,5 @@
 #' @title Fitting generalized linear mixed effect models - serverside function
-#' @description glmerSLMADS.assign is the same as glmerSLMADS2 which fits a generalized linear
+#' @description glmerSLMADS.assign is the same as glmerSLMA2DS which fits a generalized linear
 #' mixed effects model (glme) per study and saves the outcomes in each study
 #' @details glmerSLMADS.assign is a serverside function called by ds.glmerSLMA on the clientside.
 #' The analytic work engine is the glmer function in R which sits in the lme4 package.

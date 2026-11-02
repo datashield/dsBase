@@ -1,6 +1,6 @@
 # Fitting generalized linear mixed effect models - serverside function
 
-glmerSLMADS.assign is the same as glmerSLMADS2 which fits a generalized
+glmerSLMADS.assign is the same as glmerSLMA2DS which fits a generalized
 linear mixed effects model (glme) per study and saves the outcomes in
 each study
 
@@ -93,3 +93,5 @@ serverside.
 ## Author
 
 Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

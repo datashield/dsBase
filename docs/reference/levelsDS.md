@@ -12,11 +12,12 @@ levelsDS(x)
 
 - x:
 
-  a factor vector
+  a character string, the name of a factor vector
 
 ## Value
 
-a list, the factor levels present in the vector
+a list with one element: `Levels` (the factor levels present in the
+vector)
 
 ## Details
 
@@ -25,3 +26,5 @@ The function returns the levels of the input vector or list.
 ## Author
 
 Alex Westerberg, for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
