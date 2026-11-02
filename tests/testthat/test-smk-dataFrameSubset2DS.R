@@ -22,8 +22,8 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-# context("dataFrameSubsetDS2::smk::test1")
-test_that("test1 dataFrameSubsetDS2", {
+# context("dataFrameSubset2DS::smk::test1")
+test_that("test1 dataFrameSubset2DS", {
   
   D <- as.data.frame(matrix(NA, nrow=20, ncol=3))
   colnames(D) <- c('integer','numeric','binary')
@@ -35,7 +35,7 @@ test_that("test1 dataFrameSubsetDS2", {
   Boolean.operator.n <- 1
   keep.NAs <- FALSE
 
-  res <- dataFrameSubsetDS2(df.name="D", V1.name="D$binary", V2.name="2",
+  res <- dataFrameSubset2DS(df.name="D", V1.name="D$binary", V2.name="2",
                             Boolean.operator.n=Boolean.operator.n, keep.NAs = keep.NAs)
   
     expect_equal(class(res), "data.frame")
@@ -48,8 +48,8 @@ test_that("test1 dataFrameSubsetDS2", {
     
 })
 
-# context("dataFrameSubsetDS2::smk::test2")
-test_that("test2 dataFrameSubsetDS2", {
+# context("dataFrameSubset2DS::smk::test2")
+test_that("test2 dataFrameSubset2DS", {
   
   D <- as.data.frame(matrix(NA, nrow=20, ncol=3))
   colnames(D) <- c('integer','numeric','binary')
@@ -61,7 +61,7 @@ test_that("test2 dataFrameSubsetDS2", {
   Boolean.operator.n <- 3
   keep.NAs <- FALSE
   
-  res <- dataFrameSubsetDS2(df.name="D", V1.name="D$numeric", V2.name="41.10",
+  res <- dataFrameSubset2DS(df.name="D", V1.name="D$numeric", V2.name="41.10",
                             Boolean.operator.n=Boolean.operator.n, keep.NAs = keep.NAs)
   
   expect_equal(class(res), "data.frame")
@@ -71,15 +71,15 @@ test_that("test2 dataFrameSubsetDS2", {
   
 })
 
-test_that("dataFrameSubsetDS2 errors when df does not exist", {
+test_that("dataFrameSubset2DS errors when df does not exist", {
     expect_error(
-        dataFrameSubsetDS2(df.name="nonexistent", V1.name="x", V2.name="1",
+        dataFrameSubset2DS(df.name="nonexistent", V1.name="x", V2.name="1",
                            Boolean.operator.n=1, keep.NAs=FALSE),
         regexp = "does not exist"
     )
 })
 
-test_that("dataFrameSubsetDS2 errors when V1 object does not exist", {
+test_that("dataFrameSubset2DS errors when V1 object does not exist", {
     D <- as.data.frame(matrix(NA, nrow=20, ncol=3))
     colnames(D) <- c('integer','numeric','binary')
     D$integer <- rep(1, 20)
@@ -87,7 +87,7 @@ test_that("dataFrameSubsetDS2 errors when V1 object does not exist", {
     D$binary <- rep(1, 20)
 
     expect_error(
-        dataFrameSubsetDS2(df.name="D", V1.name="nonexistent$col", V2.name="1",
+        dataFrameSubset2DS(df.name="D", V1.name="nonexistent$col", V2.name="1",
                            Boolean.operator.n=1, keep.NAs=FALSE),
         regexp = "does not exist"
     )
@@ -97,6 +97,6 @@ test_that("dataFrameSubsetDS2 errors when V1 object does not exist", {
 # Done
 #
 
-# context("dataFrameSubsetDS2::smk::shutdown")
+# context("dataFrameSubset2DS::smk::shutdown")
 
-# context("dataFrameSubsetDS2::smk::done")
+# context("dataFrameSubset2DS::smk::done")

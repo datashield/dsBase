@@ -2,7 +2,7 @@
 # Set up
 #
 
-# context("glmSLMADS2::smk::setup")
+# context("glmSLMA2DS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -10,8 +10,8 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-# context("glmSLMADS2::smk::gaussian")
-test_that("simple glmSLMADS2, gaussian", {
+# context("glmSLMA2DS::smk::gaussian")
+test_that("simple glmSLMA2DS, gaussian", {
     D <- data.frame(
         y = c(4.1, 4.2, 3.9, 2.9, 3.6, 3.8, 4.2, 4.2, 2.5, 3.5,
               2.8, 3.7, 3.3, 3.3, 2.4, 3.5, 3.0, 3.1, 3.5, 3.4),
@@ -20,7 +20,7 @@ test_that("simple glmSLMADS2, gaussian", {
     )
     my.glm.obj <- glm(y ~ x, family = gaussian(), data = D, x = TRUE)
 
-    res <- glmSLMADS2(formula = stats::as.formula("y ~ x"), family = "gaussian",
+    res <- glmSLMA2DS(formula = stats::as.formula("y ~ x"), family = "gaussian",
                       offset = NULL, weights = NULL, newobj = "my.glm.obj", dataName = "D")
 
     expect_equal(class(res), "list")
@@ -40,26 +40,26 @@ test_that("simple glmSLMADS2, gaussian", {
     expect_equal(res$family$family, "gaussian")
 })
 
-test_that("glmSLMADS2 throws error when dataName does not exist", {
+test_that("glmSLMA2DS throws error when dataName does not exist", {
     # dataName is validated before newobj is loaded, so no glm object needs to exist here.
     expect_error(
-        glmSLMADS2(formula = stats::as.formula("y ~ x"), family = "gaussian",
+        glmSLMA2DS(formula = stats::as.formula("y ~ x"), family = "gaussian",
                   offset = NULL, weights = NULL, newobj = "my.glm.obj", dataName = "nonexistent_object"),
         regexp = "does not exist"
     )
 })
 
-test_that("glmSLMADS2 throws error when dataName is not a data.frame or list", {
+test_that("glmSLMA2DS throws error when dataName is not a data.frame or list", {
     bad_input <- c(1, 2, 3)
 
     expect_error(
-        glmSLMADS2(formula = stats::as.formula("y ~ x"), family = "gaussian",
+        glmSLMA2DS(formula = stats::as.formula("y ~ x"), family = "gaussian",
                   offset = NULL, weights = NULL, newobj = "my.glm.obj", dataName = "bad_input"),
         regexp = "must be of type"
     )
 })
 
-test_that("glmSLMADS2 gives the same result for data as a list as for a data.frame", {
+test_that("glmSLMA2DS gives the same result for data as a list as for a data.frame", {
     D <- data.frame(
         y = c(4.1, 4.2, 3.9, 2.9, 3.6, 3.8, 4.2, 4.2, 2.5, 3.5,
               2.8, 3.7, 3.3, 3.3, 2.4, 3.5, 3.0, 3.1, 3.5, 3.4),
@@ -69,9 +69,9 @@ test_that("glmSLMADS2 gives the same result for data as a list as for a data.fra
     D.list <- as.list(D)
     my.glm.obj <- glm(y ~ x, family = gaussian(), data = D, x = TRUE)
 
-    res.df <- glmSLMADS2(formula = stats::as.formula("y ~ x"), family = "gaussian",
+    res.df <- glmSLMA2DS(formula = stats::as.formula("y ~ x"), family = "gaussian",
                          offset = NULL, weights = NULL, newobj = "my.glm.obj", dataName = "D")
-    res.list <- glmSLMADS2(formula = stats::as.formula("y ~ x"), family = "gaussian",
+    res.list <- glmSLMA2DS(formula = stats::as.formula("y ~ x"), family = "gaussian",
                            offset = NULL, weights = NULL, newobj = "my.glm.obj", dataName = "D.list")
 
     expect_equal(res.list$data, "D.list")
@@ -82,6 +82,6 @@ test_that("glmSLMADS2 gives the same result for data as a list as for a data.fra
 # Done
 #
 
-# context("glmSLMADS2::smk::shutdown")
+# context("glmSLMA2DS::smk::shutdown")
 
-# context("glmSLMADS2::smk::done")
+# context("glmSLMA2DS::smk::done")

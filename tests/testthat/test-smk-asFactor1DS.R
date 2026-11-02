@@ -13,7 +13,7 @@
 # Set up
 #
 
-# context("asFactorDS1::smk::setup")
+# context("asFactor1DS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -21,10 +21,10 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-test_that("simple asFactorDS1", {
+test_that("simple asFactor1DS", {
     input <- c(2.0, 1.0, 3.0, 3.0, 3.0, 1.0, 2.0, 2.0, 1.0, 2.0)
 
-    res <- asFactorDS1("input")
+    res <- asFactor1DS("input")
 
     expect_equal(class(res), "character")
     expect_length(res, 3)
@@ -33,6 +33,6 @@ test_that("simple asFactorDS1", {
     expect_equal(res[3], "3")
 })
 
-test_that("asFactorDS1 errors when serverside object does not exist", {
-    expect_error(asFactorDS1("nonexistent_object"), regexp = "does not exist")
+test_that("asFactor1DS errors when serverside object does not exist", {
+    expect_error(asFactor1DS("nonexistent_object"), regexp = "does not exist")
 })

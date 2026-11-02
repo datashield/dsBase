@@ -2,7 +2,7 @@
 # Set up
 #
 
-# context("glmDS2::smk::setup")
+# context("glm2DS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -10,8 +10,8 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-# context("glmDS2::smk::gaussian")
-test_that("simple glmDS2, gaussian", {
+# context("glm2DS::smk::gaussian")
+test_that("simple glm2DS, gaussian", {
     D <- data.frame(
         y = c(4.1, 4.2, 3.9, 2.9, 3.6, 3.8, 4.2, 4.2, 2.5, 3.5,
               2.8, 3.7, 3.3, 3.3, 2.4, 3.5, 3.0, 3.1, 3.5, 3.4),
@@ -20,7 +20,7 @@ test_that("simple glmDS2, gaussian", {
     )
 
     expect_warning(
-        res <- glmDS2(formula = stats::as.formula("y ~ x"), family = "gaussian",
+        res <- glm2DS(formula = stats::as.formula("y ~ x"), family = "gaussian",
                       beta.vect = "0,0", offset = NULL, weights = NULL, dataName = "D"),
         regexp = "did not converge"
     )
@@ -42,24 +42,24 @@ test_that("simple glmDS2, gaussian", {
     expect_equal(res$errorMessage2, "No errors")
 })
 
-test_that("glmDS2 throws error when dataName does not exist", {
+test_that("glm2DS throws error when dataName does not exist", {
     expect_error(
-        glmDS2(formula = stats::as.formula("y ~ x"), family = "gaussian",
+        glm2DS(formula = stats::as.formula("y ~ x"), family = "gaussian",
               beta.vect = "0,0", offset = NULL, weights = NULL, dataName = "nonexistent_object"),
         regexp = "does not exist"
     )
 })
 
-test_that("glmDS2 throws error when dataName is not a data.frame or list", {
+test_that("glm2DS throws error when dataName is not a data.frame or list", {
     bad_input <- c(1, 2, 3)
     expect_error(
-        glmDS2(formula = stats::as.formula("y ~ x"), family = "gaussian",
+        glm2DS(formula = stats::as.formula("y ~ x"), family = "gaussian",
               beta.vect = "0,0", offset = NULL, weights = NULL, dataName = "bad_input"),
         regexp = "must be of type"
     )
 })
 
-test_that("glmDS2 gives the same result for data as a list as for a data.frame", {
+test_that("glm2DS gives the same result for data as a list as for a data.frame", {
     D <- data.frame(
         y = c(4.1, 4.2, 3.9, 2.9, 3.6, 3.8, 4.2, 4.2, 2.5, 3.5,
               2.8, 3.7, 3.3, 3.3, 2.4, 3.5, 3.0, 3.1, 3.5, 3.4),
@@ -68,16 +68,16 @@ test_that("glmDS2 gives the same result for data as a list as for a data.frame",
     )
     D.list <- as.list(D)
 
-    res.df <- suppressWarnings(glmDS2(formula = stats::as.formula("y ~ x"), family = "gaussian", beta.vect = "0,0", offset = NULL, weights = NULL, dataName = "D"))
-    res.list <- suppressWarnings(glmDS2(formula = stats::as.formula("y ~ x"), family = "gaussian", beta.vect = "0,0", offset = NULL, weights = NULL, dataName = "D.list"))
+    res.df <- suppressWarnings(glm2DS(formula = stats::as.formula("y ~ x"), family = "gaussian", beta.vect = "0,0", offset = NULL, weights = NULL, dataName = "D"))
+    res.list <- suppressWarnings(glm2DS(formula = stats::as.formula("y ~ x"), family = "gaussian", beta.vect = "0,0", offset = NULL, weights = NULL, dataName = "D.list"))
 
     expect_equal(res.list, res.df)
 })
 
-test_that("glmDS2 throws error when data is a matrix", {
+test_that("glm2DS throws error when data is a matrix", {
     D.matrix <- cbind(y = c(1, 2, 3), x = c(4, 5, 6))
     expect_error(
-        glmDS2(formula = stats::as.formula("y ~ x"), family = "gaussian", beta.vect = "0,0", offset = NULL, weights = NULL, dataName = "D.matrix"),
+        glm2DS(formula = stats::as.formula("y ~ x"), family = "gaussian", beta.vect = "0,0", offset = NULL, weights = NULL, dataName = "D.matrix"),
         regexp = "must be of type data.frame or list"
     )
 })
@@ -86,6 +86,6 @@ test_that("glmDS2 throws error when data is a matrix", {
 # Done
 #
 
-# context("glmDS2::smk::shutdown")
+# context("glm2DS::smk::shutdown")
 
-# context("glmDS2::smk::done")
+# context("glm2DS::smk::done")

@@ -2,7 +2,7 @@
 # Set up
 #
 
-# context("glmSLMADS1::smk::setup")
+# context("glmSLMA1DS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -10,8 +10,8 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-# context("glmSLMADS1::smk::gaussian")
-test_that("simple glmSLMADS1, gaussian", {
+# context("glmSLMA1DS::smk::gaussian")
+test_that("simple glmSLMA1DS, gaussian", {
     D <- data.frame(
         y = c(4.1, 4.2, 3.9, 2.9, 3.6, 3.8, 4.2, 4.2, 2.5, 3.5,
               2.8, 3.7, 3.3, 3.3, 2.4, 3.5, 3.0, 3.1, 3.5, 3.4),
@@ -20,7 +20,7 @@ test_that("simple glmSLMADS1, gaussian", {
     )
 
     expect_warning(
-        res <- glmSLMADS1(formula = stats::as.formula("y ~ x"), family = "gaussian",
+        res <- glmSLMA1DS(formula = stats::as.formula("y ~ x"), family = "gaussian",
                           weights = NULL, offset = NULL, data = "D"),
         regexp = "did not converge"
     )
@@ -37,24 +37,24 @@ test_that("simple glmSLMADS1, gaussian", {
     expect_equal(res$errorMessage, "No errors")
 })
 
-test_that("glmSLMADS1 throws error when data does not exist", {
+test_that("glmSLMA1DS throws error when data does not exist", {
     expect_error(
-        glmSLMADS1(formula = stats::as.formula("y ~ x"), family = "gaussian",
+        glmSLMA1DS(formula = stats::as.formula("y ~ x"), family = "gaussian",
                   weights = NULL, offset = NULL, data = "nonexistent_object"),
         regexp = "does not exist"
     )
 })
 
-test_that("glmSLMADS1 throws error when data is not a data.frame or list", {
+test_that("glmSLMA1DS throws error when data is not a data.frame or list", {
     bad_input <- c(1, 2, 3)
     expect_error(
-        glmSLMADS1(formula = stats::as.formula("y ~ x"), family = "gaussian",
+        glmSLMA1DS(formula = stats::as.formula("y ~ x"), family = "gaussian",
                   weights = NULL, offset = NULL, data = "bad_input"),
         regexp = "must be of type"
     )
 })
 
-test_that("glmSLMADS1 gives the same result for data as a list as for a data.frame", {
+test_that("glmSLMA1DS gives the same result for data as a list as for a data.frame", {
     D <- data.frame(
         y = c(4.1, 4.2, 3.9, 2.9, 3.6, 3.8, 4.2, 4.2, 2.5, 3.5,
               2.8, 3.7, 3.3, 3.3, 2.4, 3.5, 3.0, 3.1, 3.5, 3.4),
@@ -63,8 +63,8 @@ test_that("glmSLMADS1 gives the same result for data as a list as for a data.fra
     )
     D.list <- as.list(D)
 
-    res.df <- suppressWarnings(glmSLMADS1(formula = stats::as.formula("y ~ x"), family = "gaussian", weights = NULL, offset = NULL, data = "D"))
-    res.list <- suppressWarnings(glmSLMADS1(formula = stats::as.formula("y ~ x"), family = "gaussian", weights = NULL, offset = NULL, data = "D.list"))
+    res.df <- suppressWarnings(glmSLMA1DS(formula = stats::as.formula("y ~ x"), family = "gaussian", weights = NULL, offset = NULL, data = "D"))
+    res.list <- suppressWarnings(glmSLMA1DS(formula = stats::as.formula("y ~ x"), family = "gaussian", weights = NULL, offset = NULL, data = "D.list"))
 
     expect_equal(res.list, res.df)
 })
@@ -73,6 +73,6 @@ test_that("glmSLMADS1 gives the same result for data as a list as for a data.fra
 # Done
 #
 
-# context("glmSLMADS1::smk::shutdown")
+# context("glmSLMA1DS::smk::shutdown")
 
-# context("glmSLMADS1::smk::done")
+# context("glmSLMA1DS::smk::done")

@@ -13,7 +13,7 @@
 # Set up
 #
 
-# context("skewnessDS2::smk::setup")
+# context("skewness2DS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -21,12 +21,12 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-# context("skewnessDS2::smk")
-test_that("simple skewnessDS2", {
+# context("skewness2DS::smk")
+test_that("simple skewness2DS", {
     input       <- c(1.0, 2.0, 2.0, 3.0, 3.0)
     global.mean <- 2.5
 
-    res <- skewnessDS2("input", global.mean)
+    res <- skewness2DS("input", global.mean)
 
     expect_length(res, 4)
     expect_equal(class(res), "list")
@@ -39,21 +39,21 @@ test_that("simple skewnessDS2", {
     expect_equal(res$class, "numeric")
 })
 
-test_that("skewnessDS2 throws error when object does not exist", {
-    expect_error(skewnessDS2("nonexistent_object", 2.5), regexp = "does not exist")
+test_that("skewness2DS throws error when object does not exist", {
+    expect_error(skewness2DS("nonexistent_object", 2.5), regexp = "does not exist")
 })
 
-test_that("skewnessDS2 throws error when object is not numeric or integer", {
+test_that("skewness2DS throws error when object is not numeric or integer", {
     bad_input <- c("a", "b", "c")
-    expect_error(skewnessDS2("bad_input", 2.5), regexp = "must be of type numeric or integer")
+    expect_error(skewness2DS("bad_input", 2.5), regexp = "must be of type numeric or integer")
 })
 
-test_that("skewnessDS2 gives the same result for integer input as for numeric", {
+test_that("skewness2DS gives the same result for integer input as for numeric", {
     input.numeric <- c(0.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 3.0, 4.0)
     input.integer <- as.integer(input.numeric)
 
-    res.numeric <- skewnessDS2("input.numeric", 1.8)
-    res.integer <- skewnessDS2("input.integer", 1.8)
+    res.numeric <- skewness2DS("input.numeric", 1.8)
+    res.integer <- skewness2DS("input.integer", 1.8)
 
     expect_equal(res.integer$class, "integer")
     expect_equal(res.integer[names(res.integer) != "class"], res.numeric[names(res.numeric) != "class"])
@@ -63,6 +63,6 @@ test_that("skewnessDS2 gives the same result for integer input as for numeric", 
 # Done
 #
 
-# context("skewnessDS2::smk::shutdown")
+# context("skewness2DS::smk::shutdown")
 
-# context("skewnessDS2::smk::done")
+# context("skewness2DS::smk::done")

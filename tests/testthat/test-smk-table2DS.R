@@ -2,7 +2,7 @@
 # Set up
 #
 
-# context("tableDS2::smk::setup")
+# context("table2DS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -10,13 +10,13 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-# context("tableDS2::smk")
-test_that("simple tableDS2", {
+# context("table2DS::smk")
+test_that("simple table2DS", {
     rvar <- factor(rep(c("a", "b"), each = 10))
     cvar <- factor(rep(rep(c("x", "y"), each = 5), 2))
     res.assign <- tableDS.assign("rvar", "cvar", NULL, "a,b", "x,y", NULL, NULL, "no")
 
-    res <- tableDS2("res.assign", "rvar", "cvar", NULL)
+    res <- table2DS("res.assign", "rvar", "cvar", NULL)
 
     expect_equal(class(res), "list")
     expect_equal(
@@ -27,9 +27,9 @@ test_that("simple tableDS2", {
     expect_equal(res$table.cell.IDs, 1:4)
 })
 
-test_that("tableDS2 throws error when object does not exist", {
+test_that("table2DS throws error when object does not exist", {
     expect_error(
-        tableDS2("nonexistent_object", "rvar", "cvar", NULL),
+        table2DS("nonexistent_object", "rvar", "cvar", NULL),
         regexp = "does not exist"
     )
 })
@@ -38,6 +38,6 @@ test_that("tableDS2 throws error when object does not exist", {
 # Done
 #
 
-# context("tableDS2::smk::shutdown")
+# context("table2DS::smk::shutdown")
 
-# context("tableDS2::smk::done")
+# context("table2DS::smk::done")

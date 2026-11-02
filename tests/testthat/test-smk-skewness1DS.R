@@ -13,7 +13,7 @@
 # Set up
 #
 
-# context("kurtosisDS1::smk::setup")
+# context("skewness1DS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -21,66 +21,66 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-# context("kurtosisDS1::smk::method 1")
-test_that("simple kurtosisDS1, method 1", {
+# context("skewness1DS::smk::method 1")
+test_that("simple skewness1DS, method 1", {
     input <- c(0.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 3.0, 4.0)
 
-    res <- kurtosisDS1("input", 1)
+    res <- skewness1DS("input", 1)
 
     expect_length(res, 3)
     expect_equal(class(res), "list")
-    expect_equal(class(res$Kurtosis), "numeric")
-    expect_equal(res$Kurtosis, -0.458210, tolerance = 1e-6)
+    expect_equal(class(res$Skewness), "numeric")
+    expect_equal(res$Skewness, 0.443147, tolerance = 1e-6)
     expect_equal(class(res$Nvalid), "integer")
     expect_equal(res$Nvalid,9)
     expect_equal(res$class, "numeric")
 })
 
-# context("kurtosisDS1::smk::method 2")
-test_that("simple kurtosisDS1, method 2", {
+# context("skewness1DS::smk::method 2")
+test_that("simple skewness1DS, method 2", {
     input <- c(0.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 3.0, 4.0)
 
-    res <- kurtosisDS1("input", 2)
+    res <- skewness1DS("input", 2)
 
     expect_length(res, 3)
     expect_equal(class(res), "list")
-    expect_equal(class(res$Kurtosis), "numeric")
-    expect_equal(res$Kurtosis, 0.270076, tolerance = 1e-6)
+    expect_equal(class(res$Skewness), "numeric")
+    expect_equal(res$Skewness, 0.537175, tolerance = 1e-6)
     expect_equal(class(res$Nvalid), "integer")
     expect_equal(res$Nvalid,9)
     expect_equal(res$class, "numeric")
 })
 
-# context("kurtosisDS1::smk::method 3")
-test_that("simple kurtosisDS1, method 3", {
+# context("skewness1DS::smk::method 3")
+test_that("simple skewness1DS, method 3", {
     input <- c(0.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 3.0, 4.0)
 
-    res <- kurtosisDS1("input", 3)
+    res <- skewness1DS("input", 3)
 
     expect_length(res, 3)
     expect_equal(class(res), "list")
-    expect_equal(class(res$Kurtosis), "numeric")
-    expect_equal(res$Kurtosis, -0.991672, tolerance = 1e-6)
+    expect_equal(class(res$Skewness), "numeric")
+    expect_equal(res$Skewness, 0.3713805, tolerance = 1e-6)
     expect_equal(class(res$Nvalid), "integer")
     expect_equal(res$Nvalid,9)
     expect_equal(res$class, "numeric")
 })
 
-test_that("kurtosisDS1 throws error when object does not exist", {
-    expect_error(kurtosisDS1("nonexistent_object", 1), regexp = "does not exist")
+test_that("skewness1DS throws error when object does not exist", {
+    expect_error(skewness1DS("nonexistent_object", 1), regexp = "does not exist")
 })
 
-test_that("kurtosisDS1 throws error when object is not numeric or integer", {
+test_that("skewness1DS throws error when object is not numeric or integer", {
     bad_input <- c("a", "b", "c")
-    expect_error(kurtosisDS1("bad_input", 1), regexp = "must be of type numeric or integer")
+    expect_error(skewness1DS("bad_input", 1), regexp = "must be of type numeric or integer")
 })
 
-test_that("kurtosisDS1 gives the same result for integer input as for numeric", {
+test_that("skewness1DS gives the same result for integer input as for numeric", {
     input.numeric <- c(0.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 3.0, 4.0)
     input.integer <- as.integer(input.numeric)
 
-    res.numeric <- kurtosisDS1("input.numeric", 1)
-    res.integer <- kurtosisDS1("input.integer", 1)
+    res.numeric <- skewness1DS("input.numeric", 1)
+    res.integer <- skewness1DS("input.integer", 1)
 
     expect_equal(res.integer$class, "integer")
     expect_equal(res.integer[names(res.integer) != "class"], res.numeric[names(res.numeric) != "class"])
@@ -90,6 +90,6 @@ test_that("kurtosisDS1 gives the same result for integer input as for numeric", 
 # Done
 #
 
-# context("kurtosisDS1::smk::shutdown")
+# context("skewness1DS::smk::shutdown")
 
-# context("kurtosisDS1::smk::done")
+# context("skewness1DS::smk::done")

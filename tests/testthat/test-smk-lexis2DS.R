@@ -2,7 +2,7 @@
 # Set up
 #
 
-# context("lexisDS2::smk::setup")
+# context("lexis2DS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -10,28 +10,28 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-# context("lexisDS2::smk::datatext")
-test_that("simple lexisDS2, datatext names a whole data.frame", {
+# context("lexis2DS::smk::datatext")
+test_that("simple lexis2DS, datatext names a whole data.frame", {
     D <- data.frame(id = 1:6, start = rep(0, 6), end = rep(5, 6), status = rep(1, 6), extra = 101:106)
 
-    res <- lexisDS2(
+    res <- lexis2DS(
         datatext = "D", intervalWidth = "10", maxmaxtime = 10,
         idCol = "D$id", entryCol = "D$start", exitCol = "D$end", statusCol = "D$status", vartext = NULL
     )
 
     expect_equal(class(res), "list")
     # carried-forward columns must keep D's own column names, not be corrupted
-    # or misaligned by the data.frame construction (see lexisDS2 datatext/vartext handling)
+    # or misaligned by the data.frame construction (see lexis2DS datatext/vartext handling)
     expect_true(all(c("id", "start", "end", "status", "extra") %in% names(res$expanded.table)))
     expect_equal(res$expanded.table$extra, 101:106)
     expect_equal(nrow(res$expanded.table), 6)
 })
 
-# context("lexisDS2::smk::vartext")
-test_that("simple lexisDS2, vartext names individual $-qualified columns", {
+# context("lexis2DS::smk::vartext")
+test_that("simple lexis2DS, vartext names individual $-qualified columns", {
     D <- data.frame(id = 1:6, start = rep(0, 6), end = rep(5, 6), status = rep(1, 6), extra = 101:106, extra2 = 201:206)
 
-    res <- lexisDS2(
+    res <- lexis2DS(
         datatext = NULL, intervalWidth = "10", maxmaxtime = 10,
         idCol = "D$id", entryCol = "D$start", exitCol = "D$end", statusCol = "D$status",
         vartext = "D$extra,D$extra2"
@@ -43,11 +43,11 @@ test_that("simple lexisDS2, vartext names individual $-qualified columns", {
     expect_equal(res$expanded.table$D.extra2, 201:206)
 })
 
-# context("lexisDS2::smk::no.carry.forward")
-test_that("simple lexisDS2, no datatext or vartext", {
+# context("lexis2DS::smk::no.carry.forward")
+test_that("simple lexis2DS, no datatext or vartext", {
     D <- data.frame(id = 1:6, start = rep(0, 6), end = rep(5, 6), status = rep(1, 6))
 
-    res <- lexisDS2(
+    res <- lexis2DS(
         datatext = NULL, intervalWidth = "10", maxmaxtime = 10,
         idCol = "D$id", entryCol = "D$start", exitCol = "D$end", statusCol = "D$status", vartext = NULL
     )
@@ -56,11 +56,11 @@ test_that("simple lexisDS2, no datatext or vartext", {
     expect_equal(nrow(res$expanded.table), 6)
 })
 
-test_that("lexisDS2 throws error when object does not exist", {
+test_that("lexis2DS throws error when object does not exist", {
     D <- data.frame(id = 1:6, start = rep(0, 6), end = rep(5, 6), status = rep(1, 6))
 
     expect_error(
-        lexisDS2(
+        lexis2DS(
             datatext = NULL, intervalWidth = "10", maxmaxtime = 10,
             idCol = "D$id", entryCol = "D$start", exitCol = "nonexistent_object", statusCol = "D$status", vartext = NULL
         ),
@@ -68,11 +68,11 @@ test_that("lexisDS2 throws error when object does not exist", {
     )
 })
 
-# context("lexisDS2::smk::no.entryCol")
-test_that("simple lexisDS2, entryCol not given defaults entry times to 0", {
+# context("lexis2DS::smk::no.entryCol")
+test_that("simple lexis2DS, entryCol not given defaults entry times to 0", {
     D <- data.frame(id = 1:6, end = rep(5, 6), status = rep(1, 6))
 
-    res <- lexisDS2(
+    res <- lexis2DS(
         datatext = NULL, intervalWidth = "10", maxmaxtime = 10,
         idCol = "D$id", entryCol = NULL, exitCol = "D$end", statusCol = "D$status", vartext = NULL
     )
@@ -86,6 +86,6 @@ test_that("simple lexisDS2, entryCol not given defaults entry times to 0", {
 # Done
 #
 
-# context("lexisDS2::smk::shutdown")
+# context("lexis2DS::smk::shutdown")
 
-# context("lexisDS2::smk::done")
+# context("lexis2DS::smk::done")

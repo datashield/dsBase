@@ -13,7 +13,7 @@
 # Set up
 #
 
-# context("kurtosisDS2::smk::setup")
+# context("kurtosis2DS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -21,12 +21,12 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-# context("kurtosisDS2::smk")
-test_that("simple kurtosisDS2", {
+# context("kurtosis2DS::smk")
+test_that("simple kurtosis2DS", {
     input       <- c(1.0, 2.0, 2.0, 3.0, 3.0)
     global.mean <- 2.5
 
-    res <- kurtosisDS2("input", global.mean)
+    res <- kurtosis2DS("input", global.mean)
 
     expect_length(res, 4)
     expect_equal(class(res), "list")
@@ -39,21 +39,21 @@ test_that("simple kurtosisDS2", {
     expect_equal(res$class, "numeric")
 })
 
-test_that("kurtosisDS2 throws error when object does not exist", {
-    expect_error(kurtosisDS2("nonexistent_object", 2.5), regexp = "does not exist")
+test_that("kurtosis2DS throws error when object does not exist", {
+    expect_error(kurtosis2DS("nonexistent_object", 2.5), regexp = "does not exist")
 })
 
-test_that("kurtosisDS2 throws error when object is not numeric or integer", {
+test_that("kurtosis2DS throws error when object is not numeric or integer", {
     bad_input <- c("a", "b", "c")
-    expect_error(kurtosisDS2("bad_input", 2.5), regexp = "must be of type numeric or integer")
+    expect_error(kurtosis2DS("bad_input", 2.5), regexp = "must be of type numeric or integer")
 })
 
-test_that("kurtosisDS2 gives the same result for integer input as for numeric", {
+test_that("kurtosis2DS gives the same result for integer input as for numeric", {
     input.numeric <- c(0.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 3.0, 4.0)
     input.integer <- as.integer(input.numeric)
 
-    res.numeric <- kurtosisDS2("input.numeric", 1.8)
-    res.integer <- kurtosisDS2("input.integer", 1.8)
+    res.numeric <- kurtosis2DS("input.numeric", 1.8)
+    res.integer <- kurtosis2DS("input.integer", 1.8)
 
     expect_equal(res.integer$class, "integer")
     expect_equal(res.integer[names(res.integer) != "class"], res.numeric[names(res.numeric) != "class"])
@@ -63,6 +63,6 @@ test_that("kurtosisDS2 gives the same result for integer input as for numeric", 
 # Done
 #
 
-# context("kurtosisDS2::smk::shutdown")
+# context("kurtosis2DS::smk::shutdown")
 
-# context("kurtosisDS2::smk::done")
+# context("kurtosis2DS::smk::done")

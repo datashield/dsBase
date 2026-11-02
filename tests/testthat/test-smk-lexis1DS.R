@@ -2,7 +2,7 @@
 # Set up
 #
 
-# context("lexisDS1::smk::setup")
+# context("lexis1DS::smk::setup")
 
 set.standard.disclosure.settings()
 
@@ -10,11 +10,11 @@ set.standard.disclosure.settings()
 # Tests
 #
 
-# context("lexisDS1::smk")
-test_that("simple lexisDS1", {
+# context("lexis1DS::smk")
+test_that("simple lexis1DS", {
     input <- c(1, 5, 3, 9, 2)
 
-    res <- lexisDS1("input")
+    res <- lexis1DS("input")
 
     expect_equal(class(res), "list")
     expect_equal(names(res), "max.time")
@@ -23,9 +23,9 @@ test_that("simple lexisDS1", {
     expect_lte(res$max.time, 9 * 1.05)
 })
 
-test_that("lexisDS1 throws error when object does not exist", {
+test_that("lexis1DS throws error when object does not exist", {
     expect_error(
-        lexisDS1("nonexistent_object"),
+        lexis1DS("nonexistent_object"),
         regexp = "does not exist"
     )
 })
@@ -34,6 +34,6 @@ test_that("lexisDS1 throws error when object does not exist", {
 # Done
 #
 
-# context("lexisDS1::smk::shutdown")
+# context("lexis1DS::smk::shutdown")
 
-# context("lexisDS1::smk::done")
+# context("lexis1DS::smk::done")
