@@ -104,8 +104,6 @@ analysis platform.” *Bioinformatics Advances*, *5*(1), 1-21.
 
 ## All functions
 
-- [`BooleDS()`](BooleDS.md) : BooleDS
-
 - [`absDS()`](absDS.md) : Computes the absolute values of the input
   variable
 
@@ -139,6 +137,8 @@ analysis platform.” *Bioinformatics Advances*, *5*(1), 1-21.
   numeric
 
 - [`aucDS()`](aucDS.md) : aucDS an aggregate function called by ds.auc
+
+- [`booleDS()`](booleDS.md) : booleDS
 
 - [`boxPlotGGDS()`](boxPlotGGDS.md) : Create the identity stats and
   necessary data to draw a plot on the client

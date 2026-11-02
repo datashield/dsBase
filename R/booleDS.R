@@ -1,5 +1,5 @@
 #' 
-#' @title BooleDS
+#' @title booleDS
 #' @description Converts the individual elements of a vector or other object into
 #' Boolean indicators.
 #' @details The function converts the input vector into Boolean indicators.
@@ -26,7 +26,7 @@
 #' @return the levels of the input variable.
 #' @export
 #'
-BooleDS <- function(V1.name=NULL, V2.name=NULL, Boolean.operator.n=NULL, na.assign.text, numeric.output=TRUE){
+booleDS <- function(V1.name=NULL, V2.name=NULL, Boolean.operator.n=NULL, na.assign.text, numeric.output=TRUE){
 
   # Check Permissive Privacy Control Level.
   dsBase::checkPermissivePrivacyControlLevel(c('permissive', 'banana', 'carrot'))

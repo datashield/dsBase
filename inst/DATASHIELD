@@ -75,7 +75,7 @@ AssignMethods:
     asLogicalDS,
     asMatrixDS,
     asNumericDS,
-    BooleDS,
+    booleDS,
     boxPlotGG_data_TreatmentDS,
     boxPlotGG_data_Treatment_numericDS,
     bp_standardsDS,

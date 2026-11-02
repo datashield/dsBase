@@ -2,8 +2,6 @@
 
 ## All functions
 
-- [`BooleDS()`](BooleDS.md) : BooleDS
-
 - [`absDS()`](absDS.md) : Computes the absolute values of the input
   variable
 
@@ -37,6 +35,8 @@
   numeric
 
 - [`aucDS()`](aucDS.md) : aucDS an aggregate function called by ds.auc
+
+- [`booleDS()`](booleDS.md) : booleDS
 
 - [`boxPlotGGDS()`](boxPlotGGDS.md) : Create the identity stats and
   necessary data to draw a plot on the client
