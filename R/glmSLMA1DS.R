@@ -20,7 +20,7 @@
 #' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 
-glmSLMA11DS<- function(formula, family, weights, offset, data){
+glmSLMA1DS<- function(formula, family, weights, offset, data){
 
 errorMessage="No errors"
 
