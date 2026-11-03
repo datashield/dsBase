@@ -238,8 +238,8 @@ analysis platform.” *Bioinformatics Advances*, *5*(1), 1-21.
 - [`glmPredictDS.as()`](glmPredictDS.as.md) : predict regression
   responses from a glm object
 
-- [`glmSLMA11DS()`](glmSLMA11DS.md) : Fit a Generalized Linear Model
-  (GLM) with pooling via Study Level Meta-Analysis (SLMA)
+- [`glmSLMA1DS()`](glmSLMA1DS.md) : Fit a Generalized Linear Model (GLM)
+  with pooling via Study Level Meta-Analysis (SLMA)
 
 - [`glmSLMA2DS()`](glmSLMA2DS.md) : Fit a Generalized Linear Model (GLM)
   with pooling via Study Level Meta-Analysis (SLMA)
