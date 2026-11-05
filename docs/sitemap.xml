@@ -3,7 +3,6 @@
 <url><loc>/LICENSE.html</loc></url>
 <url><loc>/authors.html</loc></url>
 <url><loc>/index.html</loc></url>
-<url><loc>/reference/BooleDS.html</loc></url>
 <url><loc>/reference/absDS.html</loc></url>
 <url><loc>/reference/asCharacterDS.html</loc></url>
 <url><loc>/reference/asDataMatrixDS.html</loc></url>
@@ -53,7 +52,6 @@
 <url><loc>/reference/glm2DS.html</loc></url>
 <url><loc>/reference/glmPredictDS.ag.html</loc></url>
 <url><loc>/reference/glmPredictDS.as.html</loc></url>
-<url><loc>/reference/glmSLMA11DS.html</loc></url>
 <url><loc>/reference/glmSLMA1DS.html</loc></url>
 <url><loc>/reference/glmSLMA2DS.html</loc></url>
 <url><loc>/reference/glmSLMADS.assign.html</loc></url>

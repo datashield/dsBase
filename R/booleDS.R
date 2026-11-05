@@ -165,4 +165,4 @@ if(numeric.output==TRUE){
 return(Boole.obj)
 }
 #ASSIGN FUNCTION
-# BooleDS
+# booleDS
