@@ -1,6 +1,6 @@
 # Fitting linear mixed effect models - serverside function
 
-lmerSLMADS.assign is the same as lmerSLMADS2 which fits a linear mixed
+lmerSLMADS.assign is the same as lmerSLMA2DS which fits a linear mixed
 effects model (lme) per study and saves the outcomes in each study
 
 ## Usage
@@ -73,3 +73,5 @@ single data source and saves the regression outcomes on the serverside.
 ## Author
 
 TDemetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

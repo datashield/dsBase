@@ -1,0 +1,324 @@
+#-------------------------------------------------------------------------------
+# Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
+#
+# This program and the accompanying materials
+# are made available under the terms of the GNU Public License v3.0.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#-------------------------------------------------------------------------------
+
+#
+# Set up
+#
+
+# context("booleDS::smk::setup")
+
+set.standard.disclosure.settings()
+
+#
+# Tests
+#
+
+# context("booleDS::smk::simple equal")
+test_that("simple booleDS, equal numeric", {
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+
+    res <- booleDS("input$v1", "input$v2", 1, "NA", TRUE)
+
+    expect_length(res, 5)
+    expect_equal(class(res), "numeric")
+    expect_equal(res[1], 0)
+    expect_equal(res[2], 0)
+    expect_equal(res[3], 1)
+    expect_equal(res[4], 0)
+    expect_equal(res[5], 0)
+})
+
+test_that("simple booleDS, equal logical", {
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+
+    res <- booleDS("input$v1", "input$v2", 1, "NA", FALSE)
+
+    expect_length(res, 5)
+    expect_equal(class(res), "logical")
+    expect_equal(res[1], FALSE)
+    expect_equal(res[2], FALSE)
+    expect_equal(res[3], TRUE)
+    expect_equal(res[4], FALSE)
+    expect_equal(res[5], FALSE)
+})
+
+# context("booleDS::smk::simple not-equal")
+test_that("simple booleDS, not-equal numeric", {
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+
+    res <- booleDS("input$v1", "input$v2", 2, "NA", TRUE)
+
+    expect_length(res, 5)
+    expect_equal(class(res), "numeric")
+    expect_equal(res[1], 1)
+    expect_equal(res[2], 1)
+    expect_equal(res[3], 0)
+    expect_equal(res[4], 1)
+    expect_equal(res[5], 1)
+})
+
+test_that("simple booleDS, not-equal logical", {
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+
+    res <- booleDS("input$v1", "input$v2", 2, "NA", FALSE)
+
+    expect_length(res, 5)
+    expect_equal(class(res), "logical")
+    expect_equal(res[1], TRUE)
+    expect_equal(res[2], TRUE)
+    expect_equal(res[3], FALSE)
+    expect_equal(res[4], TRUE)
+    expect_equal(res[5], TRUE)
+})
+
+# context("booleDS::smk::simple less-than")
+test_that("simple booleDS, less-than numeric", {
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+
+    res <- booleDS("input$v1", "input$v2", 3, "NA", TRUE)
+
+    expect_length(res, 5)
+    expect_equal(class(res), "numeric")
+    expect_equal(res[1], 1)
+    expect_equal(res[2], 1)
+    expect_equal(res[3], 0)
+    expect_equal(res[4], 0)
+    expect_equal(res[5], 0)
+})
+
+test_that("simple booleDS, less-than logical", {
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+
+    res <- booleDS("input$v1", "input$v2", 3, "NA", FALSE)
+
+    expect_length(res, 5)
+    expect_equal(class(res), "logical")
+    expect_equal(res[1], TRUE)
+    expect_equal(res[2], TRUE)
+    expect_equal(res[3], FALSE)
+    expect_equal(res[4], FALSE)
+    expect_equal(res[5], FALSE)
+})
+
+# context("booleDS::smk::simple less-than-equal")
+test_that("simple booleDS, less-than-equal numeric", {
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+
+    res <- booleDS("input$v1", "input$v2", 4, "NA", TRUE)
+
+    expect_length(res, 5)
+    expect_equal(class(res), "numeric")
+    expect_equal(res[1], 1)
+    expect_equal(res[2], 1)
+    expect_equal(res[3], 1)
+    expect_equal(res[4], 0)
+    expect_equal(res[5], 0)
+})
+
+test_that("simple booleDS, less-than-equal logical", {
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+
+    res <- booleDS("input$v1", "input$v2", 4, "NA", FALSE)
+
+    expect_length(res, 5)
+    expect_equal(class(res), "logical")
+    expect_equal(res[1], TRUE)
+    expect_equal(res[2], TRUE)
+    expect_equal(res[3], TRUE)
+    expect_equal(res[4], FALSE)
+    expect_equal(res[5], FALSE)
+})
+
+# context("booleDS::smk::simple greater-than")
+test_that("simple booleDS, greater-than numeric", {
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+
+    res <- booleDS("input$v1", "input$v2", 5, "NA", TRUE)
+
+    expect_length(res, 5)
+    expect_equal(class(res), "numeric")
+    expect_equal(res[1], 0)
+    expect_equal(res[2], 0)
+    expect_equal(res[3], 0)
+    expect_equal(res[4], 1)
+    expect_equal(res[5], 1)
+})
+
+test_that("simple booleDS, greater-than logical", {
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+
+    res <- booleDS("input$v1", "input$v2", 5, "NA", FALSE)
+
+    expect_length(res, 5)
+    expect_equal(class(res), "logical")
+    expect_equal(res[1], FALSE)
+    expect_equal(res[2], FALSE)
+    expect_equal(res[3], FALSE)
+    expect_equal(res[4], TRUE)
+    expect_equal(res[5], TRUE)
+})
+
+# context("booleDS::smk::simple greater-than-equal")
+test_that("simple booleDS, greater-than-equal numeric", {
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+
+    res <- booleDS("input$v1", "input$v2", 6, "NA", TRUE)
+
+    expect_length(res, 5)
+    expect_equal(class(res), "numeric")
+    expect_equal(res[1], 0)
+    expect_equal(res[2], 0)
+    expect_equal(res[3], 1)
+    expect_equal(res[4], 1)
+    expect_equal(res[5], 1)
+})
+
+test_that("simple booleDS, greater-than-equal logical", {
+    input <- data.frame(v1 = c(0.0, 1.0, 2.0, 3.0, 4.0), v2 = c(4.0, 3.0, 2.0, 1.0, 0.0))
+
+    res <- booleDS("input$v1", "input$v2", 6, "NA", FALSE)
+
+    expect_length(res, 5)
+    expect_equal(class(res), "logical")
+    expect_equal(res[1], FALSE)
+    expect_equal(res[2], FALSE)
+    expect_equal(res[3], TRUE)
+    expect_equal(res[4], TRUE)
+    expect_equal(res[5], TRUE)
+})
+
+# context("booleDS::smk::na-check numeric")
+test_that("na-check booleDS, numeric, NA=NA", {
+    input <- data.frame(v1 = c(0.0, NA, 2.0, 3.0, NA), v2 = c(NA, 3.0, 2.0, 1.0, NA))
+
+    res <- booleDS("input$v1", "input$v2", 1, "NA", TRUE)
+
+    expect_length(res, 5)
+    expect_equal(class(res), "numeric")
+    expect_true(is.na(res[1]))
+    expect_true(is.na(res[2]))
+    expect_equal(res[3], 1)
+    expect_equal(res[4], 0)
+    expect_true(is.na(res[5]))
+})
+
+test_that("na-check booleDS, numeric, NA=0", {
+    input <- data.frame(v1 = c(0.0, NA, 2.0, 3.0, NA), v2 = c(NA, 3.0, 2.0, 1.0, NA))
+
+    res <- booleDS("input$v1", "input$v2", 1, "0", TRUE)
+
+    expect_length(res, 5)
+    expect_equal(class(res), "numeric")
+    expect_equal(res[1], 0)
+    expect_equal(res[2], 0)
+    expect_equal(res[3], 1)
+    expect_equal(res[4], 0)
+    expect_equal(res[5], 0)
+})
+
+test_that("na-check booleDS, numeric, NA=1", {
+    input <- data.frame(v1 = c(0.0, NA, 2.0, 3.0, NA), v2 = c(NA, 3.0, 2.0, 1.0, NA))
+
+    res <- booleDS("input$v1", "input$v2", 1, "1", TRUE)
+
+    expect_length(res, 5)
+    expect_equal(class(res), "numeric")
+    expect_equal(res[1], 1)
+    expect_equal(res[2], 1)
+    expect_equal(res[3], 1)
+    expect_equal(res[4], 0)
+    expect_equal(res[5], 1)
+})
+
+# context("booleDS::smk::na-check logical")
+test_that("na-check booleDS, logical, NA=NA", {
+    input <- data.frame(v1 = c(0.0, NA, 2.0, 3.0, NA), v2 = c(NA, 3.0, 2.0, 1.0, NA))
+
+    res <- booleDS("input$v1", "input$v2", 1, "NA", FALSE)
+
+    expect_length(res, 5)
+    expect_equal(class(res), "logical")
+    expect_true(is.na(res[1]))
+    expect_true(is.na(res[2]))
+    expect_equal(res[3], TRUE)
+    expect_equal(res[4], FALSE)
+    expect_true(is.na(res[5]))
+})
+
+test_that("na-check booleDS, logical, NA=0", {
+    input <- data.frame(v1 = c(0.0, NA, 2.0, 3.0, NA), v2 = c(NA, 3.0, 2.0, 1.0, NA))
+
+    res <- booleDS("input$v1", "input$v2", 1, "0", FALSE)
+
+    expect_length(res, 5)
+    expect_equal(class(res), "logical")
+    expect_equal(res[1], FALSE)
+    expect_equal(res[2], FALSE)
+    expect_equal(res[3], TRUE)
+    expect_equal(res[4], FALSE)
+    expect_equal(res[5], FALSE)
+})
+
+test_that("na-check booleDS, logical, NA=1", {
+    input <- data.frame(v1 = c(0.0, NA, 2.0, 3.0, NA), v2 = c(NA, 3.0, 2.0, 1.0, NA))
+
+    res <- booleDS("input$v1", "input$v2", 1, "1", FALSE)
+
+    expect_length(res, 5)
+    expect_equal(class(res), "logical")
+    expect_equal(res[1], TRUE)
+    expect_equal(res[2], TRUE)
+    expect_equal(res[3], TRUE)
+    expect_equal(res[4], FALSE)
+    expect_equal(res[5], TRUE)
+})
+
+test_that("booleDS errors when V1 object does not exist", {
+    input <- data.frame(v2 = c(1.0, 2.0, 3.0, 4.0, 5.0))
+
+    expect_error(
+        booleDS("nonexistent$v1", "input$v2", 1, "NA", TRUE),
+        regexp = "does not exist"
+    )
+})
+
+test_that("booleDS errors when V2 object does not exist", {
+    input <- data.frame(v1 = c(1.0, 2.0, 3.0, 4.0, 5.0))
+
+    expect_error(
+        booleDS("input$v1", "nonexistent$v2", 1, "NA", TRUE),
+        regexp = "does not exist"
+    )
+})
+
+test_that("booleDS accepts a literal TRUE for V2", {
+    input <- data.frame(flag = c(TRUE, FALSE, TRUE, FALSE))
+
+    res <- booleDS("input$flag", "TRUE", 1, "NA", TRUE)
+
+    expect_equal(res, c(1, 0, 1, 0))
+})
+
+test_that("booleDS accepts a literal FALSE for V2", {
+    input <- data.frame(flag = c(TRUE, FALSE, TRUE, FALSE))
+
+    res <- booleDS("input$flag", "FALSE", 1, "NA", TRUE)
+
+    expect_equal(res, c(0, 1, 0, 1))
+})
+
+#
+# Done
+#
+
+# context("booleDS::smk::shutdown")
+
+# context("booleDS::smk::done")

@@ -2,7 +2,7 @@
 #' @description Fits a generalized linear model (GLM) on data from single or multiple sources
 #' with pooled co-analysis across studies being based on SLMA (Study Level Meta Analysis).
 #' @details glmSLMADS.assign is an assign function called by clientside function ds.glmSLMA.
-#' ds.glmSLMA also calls two aggregate functions glmSLMADS1 and glmSLMADS2.
+#' ds.glmSLMA also calls two aggregate functions glmSLMA1DS and glmSLMA2DS.
 #' For more detailed information see help for ds.glmSLMA.
 #' @param formula a glm formula, specified in call to ds.glmSLMA
 #' @param family a glm family, specified in call to ds.glmSLMA

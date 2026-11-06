@@ -43,3 +43,5 @@ For more details see help for `ds.cbind` and the native R function
 ## Author
 
 Paul Burton and Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

@@ -39,14 +39,10 @@ rNormDS(n, mean = 0, sd = 1, force.output.to.k.decimal.places = 9)
 
 ## Value
 
-Writes the pseudorandom number vector with the characteristics specified
-in the function call as a new serverside vector on the data source on
-which it has been called. Also returns key information to the
-clientside: the random seed as specified by you in each source + (if
-requested) the full 626 length random seed vector this generated in each
-source (see info for the argument \<return.full.seed.as.set\>). It also
-returns a vector reporting the length of the pseudorandom vector created
-in each source.
+the numeric vector of pseudorandom numbers from a normal distribution,
+rounded to \<force.output.to.k.decimal.places\> decimal places if that
+is less than 9, which is written to the serverside as the object named
+by the \<newobj\> argument of ds.rNorm.
 
 ## Details
 
@@ -58,3 +54,5 @@ native R and its arguments are the same.
 ## Author
 
 Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

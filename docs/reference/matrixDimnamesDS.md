@@ -40,3 +40,5 @@ details see help for function `ds.matrixDimnames`
 ## Author
 
 Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

@@ -1,5 +1,5 @@
 #' @title Fitting linear mixed effect models - serverside function
-#' @description lmerSLMADS.assign is the same as lmerSLMADS2 which fits a linear
+#' @description lmerSLMADS.assign is the same as lmerSLMA2DS which fits a linear
 #' mixed effects model (lme) per study and saves the outcomes in each study
 #' @details lmerSLMADS.assign is a serverside function called by ds.lmerSLMA on the clientside.
 #' The analytic work engine is the lmer function in R which sits in the lme4 package.

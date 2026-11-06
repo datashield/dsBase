@@ -90,3 +90,5 @@ to check the ranges and the units of their data.
 ## Author
 
 Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

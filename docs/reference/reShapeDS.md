@@ -74,10 +74,7 @@ reShapeDS(
 a reshaped data.frame converted from long to wide format or from wide to
 long format which is written to the serverside and given the name
 provided as the \<newobj\> argument of `ds.reShape` or 'newObject' if no
-name is specified. In addition, two validity messages are returned to
-the clientside indicating whether \<newobj\> has been created in each
-data source and if so whether it is in a valid form (see header for
-`ds.reShape`.
+name is specified.
 
 ## Details
 
@@ -90,3 +87,5 @@ records. The reshaping can be in either direction
 ## Author
 
 Demetris Avraam, Paul Burton for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

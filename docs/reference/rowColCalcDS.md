@@ -6,14 +6,15 @@ The function is similar to R base functions 'rowSums', 'colSums',
 ## Usage
 
 ``` r
-rowColCalcDS(dataset, operation)
+rowColCalcDS(dataset.name, operation)
 ```
 
 ## Arguments
 
-- dataset:
+- dataset.name:
 
-  an array of two or more dimensions.
+  a character string providing the name of a server-side array of two or
+  more dimensions.
 
 - operation:
 
@@ -32,3 +33,5 @@ output vector is greater or equal to the allowed size.
 ## Author
 
 Gaye, A.
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

@@ -35,3 +35,5 @@ and summary.glm
 ## Author
 
 Paul Burton for DataSHIELD Development Team (20/7/20)
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
