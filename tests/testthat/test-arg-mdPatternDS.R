@@ -24,14 +24,22 @@ set.standard.disclosure.settings()
 test_that("mdPatternDS x NULL", {
     x <- NULL
 
-    expect_error(mdPatternDS(x), "The input object must be of type 'data.frame' or 'matrix'. Current type: NULL")
+    expect_error(mdPatternDS(x), "The input must be a single character string")
 })
 
 # context("mdPatternDS::arg::x not valid variable")
 test_that("mdPatternDS x not variable", {
     x <- "not a variable"
 
-    expect_error(mdPatternDS(x), "Object 'not a variable' does not exist on the server")
+    expect_error(mdPatternDS(x), "does not exist")
+})
+
+# context("mdPatternDS::arg::x wrong type")
+test_that("mdPatternDS x wrong type", {
+    x_val <- c(1.0, 2.0, 3.0)
+    x     <- "x_val"
+
+    expect_error(mdPatternDS(x), "must be of type data.frame or matrix")
 })
 
 #

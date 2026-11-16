@@ -6,6 +6,7 @@
 #' @return a list containing the metadata. The elements of the list will depend
 #' on the metadata available.
 #' @author Stuart Wheater, for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 metadataDS <- function(x)
@@ -16,7 +17,7 @@ metadataDS <- function(x)
     if ((! is.character(x)) || (length(x) != 1))
         stop("Variable's name isn't be single character vector", call. = FALSE)
 
-    x.var <- eval(parse(text=x), envir = parent.frame())
+    x.var <- .loadServersideObject(x)
 
     if (is.null(x.var))
         stop("Variable can't be NULL", call. = FALSE)

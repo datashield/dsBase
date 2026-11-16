@@ -48,6 +48,14 @@ test_that(".loadServersideObject() throws error for missing object", {
   )
 })
 
+test_that(".loadServersideObject() throws error for a NULL object", {
+  null_obj <- NULL
+  expect_error(
+    .dsFunctionWrapper("null_obj"),
+    regexp = "The server-side object 'null_obj' is NULL"
+  )
+})
+
 test_that(".checkClass() passes for correct class", {
   df <- data.frame(a = 1)
   expect_invisible(

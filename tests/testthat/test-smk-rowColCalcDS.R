@@ -25,7 +25,7 @@ set.standard.disclosure.settings()
 test_that("simple rowColCalcDS, operation 1", {
     input <- matrix(c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0), ncol = 2)
 
-    res <- rowColCalcDS(input, 1)
+    res <- rowColCalcDS("input", 1)
 
     expect_equal(class(res), "numeric")
     expect_length(res, 4)
@@ -38,7 +38,7 @@ test_that("simple rowColCalcDS, operation 1", {
 test_that("simple rowColCalcDS, operation 2", {
     input <- matrix(c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0), ncol = 4)
 
-    res <- rowColCalcDS(input, 2)
+    res <- rowColCalcDS("input", 2)
 
     expect_equal(class(res), "numeric")
     expect_length(res, 4)
@@ -51,7 +51,7 @@ test_that("simple rowColCalcDS, operation 2", {
 test_that("simple rowColCalcDS, operation 3", {
     input <- matrix(c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0), ncol = 2)
 
-    res <- rowColCalcDS(input, 3)
+    res <- rowColCalcDS("input", 3)
 
     expect_equal(class(res), "numeric")
     expect_length(res, 4)
@@ -64,7 +64,7 @@ test_that("simple rowColCalcDS, operation 3", {
 test_that("simple rowColCalcDS, operation 4", {
     input <- matrix(c(0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0), ncol = 4)
 
-    res <- rowColCalcDS(input, 4)
+    res <- rowColCalcDS("input", 4)
 
     expect_equal(class(res), "numeric")
     expect_length(res, 4)
@@ -72,6 +72,27 @@ test_that("simple rowColCalcDS, operation 4", {
     expect_equal(res[2], 2.5)
     expect_equal(res[3], 4.5)
     expect_equal(res[4], 6.5)
+})
+
+test_that("rowColCalcDS throws error when object does not exist", {
+  expect_error(
+    rowColCalcDS("nonexistent_object", 1),
+    regexp = "does not exist"
+  )
+})
+
+test_that("rowColCalcDS throws error when object is not data.frame or matrix", {
+  bad_input <- list(a = 1:3, b = 4:6)
+  expect_error(
+    rowColCalcDS("bad_input", 1),
+    regexp = "must be of type data.frame or matrix"
+  )
+})
+
+test_that("rowColCalcDS throws error when a column is not numeric", {
+    input <- data.frame(v1 = c(1.0, 2.0, 3.0, 4.0), v2 = c("a", "b", "c", "d"))
+
+    expect_error(rowColCalcDS("input", 1), regexp = "are not of numeric type")
 })
 
 #

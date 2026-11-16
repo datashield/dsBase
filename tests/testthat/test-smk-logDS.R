@@ -45,6 +45,16 @@ test_that("logDS computes log for integer vector", {
 
     expect_equal(res, log(input))
 })
+
+test_that("logDS throws error when object does not exist", {
+    expect_error(logDS("nonexistent_object"), regexp = "does not exist")
+})
+
+test_that("logDS throws error when object is the wrong type", {
+    bad_input <- c("a", "b", "c")
+    expect_error(logDS("bad_input"), regexp = "must be of type numeric or integer")
+})
+
 #
 # Done
 #

@@ -100,6 +100,17 @@ test_that("quantileMeanDS throws error when object is not numeric or integer", {
     expect_error(quantileMeanDS("bad_input"), regexp = "must be of type numeric or integer")
 })
 
+test_that("quantileMeanDS gives the same result for integer input as for numeric", {
+    input.numeric <- c(0.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 3.0, 4.0)
+    input.integer <- as.integer(input.numeric)
+
+    res.numeric <- quantileMeanDS("input.numeric")
+    res.integer <- quantileMeanDS("input.integer")
+
+    expect_equal(res.integer$class, "integer")
+    expect_equal(res.integer[names(res.integer) != "class"], res.numeric[names(res.numeric) != "class"])
+})
+
 #
 # Done
 #

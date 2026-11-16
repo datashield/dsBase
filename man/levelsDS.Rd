@@ -7,7 +7,7 @@
 levelsDS(x)
 }
 \arguments{
-\item{x}{a factor vector}
+\item{x}{a character string, the name of a factor vector}
 }
 \value{
 a list with one element: \code{Levels} (the factor levels present

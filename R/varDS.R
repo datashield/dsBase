@@ -24,7 +24,7 @@ varDS <- function(x){
   #############################################################
 
   xvect <- .loadServersideObject(x)
-  .checkClass(obj = xvect, obj_name = x, permitted_classes = c("numeric", "integer"))
+  .checkClass(obj = xvect, obj_name = x, permitted_classes = c("numeric", "integer", "logical"))
 
   out.sum <- sum(xvect, na.rm=TRUE)
   out.sumSquares <- sum(xvect^2, na.rm=TRUE)

@@ -78,13 +78,48 @@ test_that("numeric meanDS, with all NA", {
     expect_equal(res$class, "numeric")
 })
 
+# context("meanDS::smk::logical with all NA")
+test_that("logical meanDS, with all NA", {
+    input <- c(NA, NA, NA, NA, NA)
+
+    res <- meanDS("input")
+
+    expect_equal(res$EstimatedMean, NaN)
+    expect_equal(res$Nmissing, 5)
+    expect_equal(res$Nvalid, 0)
+    expect_equal(res$Ntotal, 5)
+    expect_equal(res$class, "logical")
+})
+
+# context("meanDS::smk::logical")
+test_that("logical meanDS is the proportion TRUE", {
+    input <- c(TRUE, FALSE, TRUE, TRUE, NA)
+
+    res <- meanDS("input")
+
+    expect_equal(res$EstimatedMean, 0.75)
+    expect_equal(res$Nvalid, 4)
+    expect_equal(res$class, "logical")
+})
+
 test_that("meanDS throws error when object does not exist", {
     expect_error(meanDS("nonexistent_object"), regexp = "does not exist")
 })
 
 test_that("meanDS throws error when object is not numeric or integer", {
     bad_input <- c("a", "b", "c")
-    expect_error(meanDS("bad_input"), regexp = "must be of type numeric or integer")
+    expect_error(meanDS("bad_input"), regexp = "must be of type numeric, integer or logical")
+})
+
+test_that("meanDS gives the same result for integer input as for numeric", {
+    input.numeric <- c(0.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 3.0, 4.0)
+    input.integer <- as.integer(input.numeric)
+
+    res.numeric <- meanDS("input.numeric")
+    res.integer <- meanDS("input.integer")
+
+    expect_equal(res.integer$class, "integer")
+    expect_equal(res.integer[names(res.integer) != "class"], res.numeric[names(res.numeric) != "class"])
 })
 
 #

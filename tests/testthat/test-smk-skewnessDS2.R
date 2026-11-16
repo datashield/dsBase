@@ -48,6 +48,17 @@ test_that("skewnessDS2 throws error when object is not numeric or integer", {
     expect_error(skewnessDS2("bad_input", 2.5), regexp = "must be of type numeric or integer")
 })
 
+test_that("skewnessDS2 gives the same result for integer input as for numeric", {
+    input.numeric <- c(0.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 3.0, 4.0)
+    input.integer <- as.integer(input.numeric)
+
+    res.numeric <- skewnessDS2("input.numeric", 1.8)
+    res.integer <- skewnessDS2("input.integer", 1.8)
+
+    expect_equal(res.integer$class, "integer")
+    expect_equal(res.integer[names(res.integer) != "class"], res.numeric[names(res.numeric) != "class"])
+})
+
 #
 # Done
 #

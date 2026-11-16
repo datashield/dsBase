@@ -166,6 +166,25 @@ test_that("simple asLogicalDS, character vector", {
      expect_equal(res[5], FALSE)
      expect_equal(res[6], FALSE)
 })
+
+test_that("asLogicalDS throws error when object does not exist", {
+    expect_error(asLogicalDS("nonexistent_object"), regexp = "does not exist")
+})
+
+test_that("asLogicalDS throws error when object is the wrong type", {
+    bad_input <- list(1, 2, 3)
+    expect_error(asLogicalDS("bad_input"), regexp = "must be of type numeric, integer, character or matrix")
+})
+
+test_that("simple asLogicalDS matrix", {
+    input <- matrix(c(0, 1, 2, 0), nrow = 2)
+
+    res <- asLogicalDS("input")
+
+    expect_equal(class(res), "logical")
+    expect_equal(res, c(FALSE, TRUE, TRUE, FALSE))
+})
+
 #
 # Done
 #

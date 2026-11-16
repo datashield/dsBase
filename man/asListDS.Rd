@@ -2,37 +2,26 @@
 % Please edit documentation in R/asListDS.R
 \name{asListDS}
 \alias{asListDS}
-\title{asListDS a serverside aggregate function called by ds.asList}
+\title{asListDS a serverside assign function called by ds.asList}
 \usage{
-asListDS(x.name, newobj)
+asListDS(x.name)
 }
 \arguments{
 \item{x.name}{the name of the input object to be coerced to class
 data.matrix. Must be specified in inverted commas. But this argument is
 usually specified directly by <x.name> argument of the clientside function
 \code{ds.asList}}
-
-\item{newobj}{is the object hard assigned '<<-' to be the output of the
-function written to the serverside}
 }
 \value{
-the object specified by the <newobj> argument (or its default name
-<x.name>.mat) which is written to the serverside.
-In addition, two validity messages are returned. The first confirms an output
-object has been created, the second states its class. The way that \code{as.list}
-coerces objects to list depends on the class of the object, but in general
-the class of the output object should usually be 'list'
+the input object coerced to a list, which \code{ds.asList} writes to the
+serverside. The way that \code{as.list} coerces objects to list depends on the class
+of the object
 }
 \description{
 Coerces an R object into a list
 }
 \details{
-Unlike most other class coercing functions this is
-an aggregate function rather than an assign function. This
-is because the \code{datashield.assign} function in the data repository deals specially with
-a created object (newobj) if it is of class list. Reconfiguring the
-function as an aggregate function works around this problem.
-This aggregate function is based on the native R function \code{as.list}
+This assign function is based on the native R function \code{as.list}
 and so additional information can be found in the help for \code{as.list}
 }
 \author{

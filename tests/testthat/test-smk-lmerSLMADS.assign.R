@@ -71,7 +71,7 @@ test_that("lmerSLMADS.assign throws error when dataName does not exist", {
     )
 })
 
-test_that("lmerSLMADS.assign throws error when dataName is not a data.frame or matrix", {
+test_that("lmerSLMADS.assign throws error when dataName is not a data.frame or list", {
     bad_input <- c(1, 2, 3)
     expect_error(
         lmerSLMADS.assign(formula = stats::as.formula("y ~ x + (1|group)"),
@@ -80,6 +80,25 @@ test_that("lmerSLMADS.assign throws error when dataName is not a data.frame or m
                           optimizer = NULL, verbose = 0),
         regexp = "must be of type"
     )
+})
+
+test_that("lmerSLMADS.assign gives the same result for data as a list as for a data.frame", {
+    set.seed(42)
+    D <- data.frame(
+        group = factor(rep(1:4, each = 6)),
+        x = rep(1:6, times = 4)
+    )
+    D$y <- 2 + 0.5 * D$x + rep(rnorm(4, sd = 1), each = 6) + rnorm(24, sd = 0.3)
+    D.list <- as.list(D)
+
+    res.df <- suppressWarnings(lmerSLMADS.assign(formula = stats::as.formula("y ~ x + (1|group)"),
+        offset = NULL, weights = NULL, dataName = "D", REML = TRUE,
+        control_type = NULL, control_value.transmit = NULL, optimizer = NULL, verbose = 0))
+    res.list <- suppressWarnings(lmerSLMADS.assign(formula = stats::as.formula("y ~ x + (1|group)"),
+        offset = NULL, weights = NULL, dataName = "D.list", REML = TRUE,
+        control_type = NULL, control_value.transmit = NULL, optimizer = NULL, verbose = 0))
+
+    expect_equal(lme4::fixef(res.list), lme4::fixef(res.df))
 })
 
 #

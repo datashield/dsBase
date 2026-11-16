@@ -7,6 +7,7 @@
 #' @param exitCol a character string specifying the variable holding the time that each individual is censored or fails
 #' 
 #' @author Burton PR
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' 
 #' @return List with `max.time`
 #' @export
@@ -28,7 +29,7 @@ lexisDS1 <- function(exitCol=NULL){
     stop(errorMessage, call. = FALSE)
   }
   
-  exposure <- eval(parse(text=exitCol), envir = parent.frame())
+  exposure <- .loadServersideObject(exitCol)
   
   max.time <- max(exposure, na.rm=TRUE)
   random.multiplier <- stats::runif(1,1.01,1.05)

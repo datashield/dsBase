@@ -17,6 +17,7 @@
 #' standard is used.
 #' @return assigns the converted measurement as a new object on the server-side
 #' @author Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @import dplyr
 #' @importFrom gamlss.dist qST3 pST3
 #' @export
@@ -228,15 +229,11 @@ igb_standardsDS <- function(gagebrth=gagebrth, z=z, p=p, val=val, var=var, sex=s
   
   
   # Start the analysis
-  if(is.character(gagebrth)){
-    gagebrth <- eval(parse(text = gagebrth), envir = parent.frame())
+  gagebrth <- .loadServersideObject(gagebrth)
+  if(!is.null(val)){
+    val <- .loadServersideObject(val)
   }
-  if(is.character(val)){
-    val <- eval(parse(text = val), envir = parent.frame())
-  }
-  if(is.character(sex)){
-    sex <- eval(parse(text = sex), envir = parent.frame())
-  }
+  sex <- .loadServersideObject(sex)
   
   x.out <- rep(NA, t=length(sex))
   idx.males <- which(sex=="Male")

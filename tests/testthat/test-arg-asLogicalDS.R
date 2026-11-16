@@ -28,7 +28,7 @@ test_that("simple asLogicalDS non-input", {
 test_that("simple asLogicalDS NULL", {
     input <- NULL
 
-    expect_error(asLogicalDS("input"), "The server-side object must be of type numeric, integer, character or matrix. 'input' is type NULL.", fixed = TRUE)
+    expect_error(asLogicalDS("input"), "The server-side object 'input' is NULL", fixed = TRUE)
 })
 
 # context("asLogicalDS::arg::input NA")

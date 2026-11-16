@@ -46,6 +46,10 @@ test_that("simple unListDS", {
     expect_equal(res.names[6], 'v23')
 })
 
+test_that("unListDS throws error when object does not exist", {
+    expect_error(unListDS("nonexistent_object"), regexp = "does not exist")
+})
+
 #
 # Done
 #

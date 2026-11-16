@@ -47,4 +47,6 @@ in DataSHIELD and the \code{table} function in native R.
 }
 \author{
 Paul Burton for DataSHIELD Development Team, 13/11/2019
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

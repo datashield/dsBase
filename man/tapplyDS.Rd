@@ -31,4 +31,6 @@ see details for \code{ds.tapply} function
 }
 \author{
 Paul Burton, Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

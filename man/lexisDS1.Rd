@@ -21,4 +21,6 @@ For more details see the extensive header for ds.lexis.
 }
 \author{
 Burton PR
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 }

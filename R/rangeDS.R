@@ -2,12 +2,16 @@
 #' @title returns the minimum and maximum of a numeric vector
 #' @description this function is similar to R function \code{range} but instead to not return
 #' the real minimum and maximum, the computed values are multiplied by a very small random number.
-#' @param xvect a numerical
+#' @param x a character string, the name of a numeric or integer vector
 #' @return a numeric vector which contains the minimum and the maximum values of the vector
 #' @author Amadou Gaye, Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
-rangeDS <- function(xvect) {
+rangeDS <- function(x) {
+  xvect <- .loadServersideObject(x)
+  .checkClass(obj = xvect, obj_name = x, permitted_classes = c("numeric", "integer"))
+
   # back-up current .Random.seed and revert on.exit
   if (exists(x = ".Random.seed", envir = globalenv())) {
       assign(x = ".old_seed", value = .Random.seed, envir = parent.frame());

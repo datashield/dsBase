@@ -16,7 +16,7 @@ quantileMeanDS <- function (x) {
   .checkClass(obj = xvect, obj_name = x, permitted_classes = c("numeric", "integer"))
 
   # check if the input vector is valid (i.e. meets DataSHIELD criteria)
-  check <- isValidDS(xvect)
+  check <- .checkDisclosureSize(xvect)
 
   if(check){
     # if the input vector is valid

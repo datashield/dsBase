@@ -81,6 +81,10 @@ test_that("logical vector asCharacterDS", {
     expect_equal(res[5], "TRUE")
 })
 
+test_that("asCharacterDS throws error when object does not exist", {
+    expect_error(asCharacterDS("nonexistent_object"), regexp = "does not exist")
+})
+
 #
 # Done
 #

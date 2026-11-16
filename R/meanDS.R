@@ -23,7 +23,7 @@ meanDS <- function(x){
   #############################################################
 
   xvect <- .loadServersideObject(x)
-  .checkClass(obj = xvect, obj_name = x, permitted_classes = c("numeric", "integer"))
+  .checkClass(obj = xvect, obj_name = x, permitted_classes = c("numeric", "integer", "logical"))
 
   out.mean <- mean(xvect, na.rm=TRUE)
   out.numNa <- length(which(is.na(xvect)))

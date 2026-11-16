@@ -27,7 +27,7 @@ meanSdGpDS <- function (x, index){
   X <- .loadServersideObject(x)
   .checkClass(obj = X, obj_name = x, permitted_classes = c("numeric", "integer"))
   INDEX <- .loadServersideObject(index)
-  .checkClass(obj = INDEX, obj_name = index, permitted_classes = c("factor", "character", "integer"))
+  .checkClass(obj = INDEX, obj_name = index, permitted_classes = c("factor", "character", "integer", "numeric"))
   x.class <- class(X)
   index.class <- class(INDEX)
 
@@ -116,7 +116,7 @@ meanSdGpDS <- function (x, index){
   ansmat.count<-table(group)
   
   # Set filter for cell sizes that are too small
-  # the minimum number of observations that are allowed (the below function gets the value from opal)
+  # the minimum number of observations that are allowed (the below function gets the value from the server)
   any.invalid.cell<-(sum(ansmat.count<nfilter.tab&ansmat.count>0)>=1)
   if(!any.invalid.cell)
   {

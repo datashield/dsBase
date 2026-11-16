@@ -20,23 +20,16 @@
 #' @note The z-scores of height based on CDC growth charts are calculated 
 #' by the sds function from the childsds R package.
 #' @author Demetris Avraam for DataSHIELD Development Team
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @import childsds
 #' @export
 #' 
 bp_standardsDS <- function(sex=sex, age=age, height=height, bp=bp, systolic=systolic){
   
-  if(is.character(sex)){
-    sex <- eval(parse(text = sex), envir = parent.frame())
-  }
-  if(is.character(age)){
-    age <- eval(parse(text = age), envir = parent.frame())
-  }
-  if(is.character(height)){
-    height <- eval(parse(text = height), envir = parent.frame())
-  }
-  if(is.character(bp)){
-    bp <- eval(parse(text = bp), envir = parent.frame())
-  }
+  sex <- .loadServersideObject(sex)
+  age <- .loadServersideObject(age)
+  height <- .loadServersideObject(height)
+  bp <- .loadServersideObject(bp)
   
   # convert height to a Z-score relative to age and sex based on CDC growth charts
   Zht <- sds(value=height, age=age, sex=sex, male="1", female="2",

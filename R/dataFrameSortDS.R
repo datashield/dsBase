@@ -30,8 +30,8 @@
 #' R environment as a data.frame named according to the <newobj> argument(or with
 #' default name 'dataframesort.newobj') if no name is specified
 #' @author Paul Burton, with critical error identification by
-#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' Leire Abarrategui-Martinez, for DataSHIELD Development Team, 2/4/2020
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
 dataFrameSortDS <- function(df.name=NULL,sort.key.name=NULL,sort.descending,sort.method){

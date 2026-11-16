@@ -2,12 +2,33 @@
 #' @title Checks if an input is valid
 #' @description Tells if an object on the server side is valid.
 #' @details This function checks if an object is valid.
-#' @param obj, a vector (numeric, integer, factor, character), data.frame or matrix
-#' @return a boolean, TRUE if input is valid or FALSE if not.
+#' @param x a character string, the name of a vector (numeric, integer, factor, character,
+#' logical), data.frame or matrix
+#' @return a list with \code{valid}, a boolean that is TRUE if the input is valid or FALSE
+#' if not, and \code{class}, the class of the input object for client-side consistency
+#' checking
 #' @author Gaye, A.
+#' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #'@export
 #'
-isValidDS <- function(obj) {
+isValidDS <- function(x) {
+
+  obj <- .loadServersideObject(x)
+  .checkClass(
+    obj = obj,
+    obj_name = x,
+    permitted_classes = c("character", "factor", "integer", "logical", "numeric", "data.frame", "matrix")
+  )
+
+  list(valid = .checkDisclosureSize(obj), class = class(obj))
+}
+
+#' Check a Server-Side Object Meets the Disclosure Size Threshold
+#'
+#' @param obj The object to check: a vector, data.frame or matrix.
+#' @return A boolean, TRUE if the object meets the threshold or FALSE if not.
+#' @noRd
+.checkDisclosureSize <- function(obj) {
   
   # this filter sets the minimum number of observations that are allowed 
 

@@ -42,3 +42,13 @@ test_that("matrixDetDS1 is blocked in non-permissive mode", {
     M1 <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 10), 3, 3)
     expect_error(matrixDetDS1("M1", logarithm=FALSE), regexp = "non-permissive")
 })
+
+test_that("matrixDetDS1 gives the same result for a data.frame as for a matrix", {
+    M1 <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 10), 3, 3)
+    M1.df <- as.data.frame(M1)
+
+    res.matrix <- matrixDetDS1("M1", logarithm=FALSE)
+    res.df <- matrixDetDS1("M1.df", logarithm=FALSE)
+
+    expect_equal(res.df, res.matrix)
+})

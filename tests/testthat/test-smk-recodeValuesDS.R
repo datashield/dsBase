@@ -139,6 +139,13 @@ test_that("recodeValuesDS errors when object has wrong type", {
     )
 })
 
+test_that("recodeValuesDS gives the same result for integer input as for numeric", {
+    input.numeric <- c(1, 2, 3, 4, 1, 3)
+    input.integer <- as.integer(input.numeric)
+
+    expect_equal(recodeValuesDS("input.integer", "1,3", "10,30"), recodeValuesDS("input.numeric", "1,3", "10,30"))
+})
+
 #
 # Done
 #

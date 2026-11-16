@@ -55,7 +55,7 @@ glmerSLMADS2 <- function(formula, offset, weights, dataName, family,
   
   if(!is.null(dataName)){
     dataDF <- .loadServersideObject(dataName)
-    .checkClass(obj = dataDF, obj_name = dataName, permitted_classes = c("data.frame", "matrix"))
+    .checkClass(obj = dataDF, obj_name = dataName, permitted_classes = c("data.frame", "list"))
   }else{
     dataDF <- NULL
   }

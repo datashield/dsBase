@@ -29,6 +29,15 @@ test_that("boxPlotGG_data_Treatment_numericDS fails when vector is not numeric o
     expect_error(boxPlotGG_data_Treatment_numericDS("v1"), "must be of type numeric or integer")
 })
 
+test_that("boxPlotGG_data_Treatment_numericDS gives the same result for numeric input as for integer", {
+    v1 <- c(1:20)
+    res.integer <- boxPlotGG_data_Treatment_numericDS("v1")
+    v1 <- as.numeric(v1)
+    res.numeric <- boxPlotGG_data_Treatment_numericDS("v1")
+
+    expect_equal(res.numeric, res.integer)
+})
+
 #
 # Done
 #

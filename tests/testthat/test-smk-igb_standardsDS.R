@@ -154,6 +154,18 @@ test_that("igb_standardsDS - igb_centile2value", {
 })
 
 
+test_that("igb_standardsDS throws error when gagebrth does not exist", {
+  data <- data.frame(sex = c("Male", "Female"))
+
+  expect_error(igb_standardsDS(gagebrth="nonexistent_object", z=0, p=50, val=NULL, var="lencm", sex="data$sex", fun="igb_centile2value"), regexp = "does not exist")
+})
+
+test_that("igb_standardsDS throws error when val does not exist", {
+  data <- data.frame(gagebrth = c(250, 270), sex = c("Male", "Female"))
+
+  expect_error(igb_standardsDS(gagebrth="data$gagebrth", z=0, p=50, val="nonexistent_object", var="lencm", sex="data$sex", fun="igb_value2zscore"), regexp = "does not exist")
+})
+
 #
 # Done
 #

@@ -37,11 +37,9 @@ nfilter.string<-as.numeric(thr$nfilter.string)                          #
 #datashield.privacyLevel<-as.numeric(thr$datashield.privacyLevel)       #
 #########################################################################
 
-envir.text<-".GlobalEnv"
-
 if(env.to.search==1L)
 {
-envir.2.search<-eval(parse(text=envir.text))
+envir.2.search<-parent.frame()
 }else{
 envir.2.search<-as.environment(env.to.search)
 }
@@ -51,7 +49,7 @@ j<-0
 
 if(is.null(search.filter))
 {
-outobj<-ls(pos=env.to.search)
+outobj<-ls(envir=envir.2.search)
 
 outlist<-list(environment.searched=environmentName(envir.2.search),objects.found=outobj)
 
@@ -92,10 +90,10 @@ return(outlist)
     
     search.filter.final<-paste(search.filter.temp1,collapse="")
     
-    outobj<-ls(pos=env.to.search,pattern=utils::glob2rx(search.filter.final))
+    outobj<-ls(envir=envir.2.search,pattern=utils::glob2rx(search.filter.final))
   }else{
 
-   outobj<-ls(pos=env.to.search,pattern=utils::glob2rx(search.filter))
+   outobj<-ls(envir=envir.2.search,pattern=utils::glob2rx(search.filter))
    search.filter.final<-search.filter
   }
 

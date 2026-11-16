@@ -49,6 +49,10 @@ test_that("simple uniqueDS for list", {
     expect_length(names(res), 0)
 })
 
+test_that("uniqueDS throws error when object does not exist", {
+    expect_error(uniqueDS("nonexistent_object"), regexp = "does not exist")
+})
+
 #
 # Done
 #

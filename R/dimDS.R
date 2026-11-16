@@ -11,7 +11,6 @@
 #'
 dimDS <- function(x){
   x.val <- .loadServersideObject(x)
-  .checkClass(obj = x.val, obj_name = x, permitted_classes = c("data.frame", "matrix"))
   list(dim = dim(x.val), class = class(x.val))
 }
 #AGGREGATE FUNCTION

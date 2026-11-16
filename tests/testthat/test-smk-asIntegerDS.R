@@ -70,6 +70,11 @@ test_that("character vector asIntegerDS", {
     expect_equal(res[4], 404)
     expect_equal(res[5], 505)
 })
+
+test_that("asIntegerDS throws error when object does not exist", {
+    expect_error(asIntegerDS("nonexistent_object"), regexp = "does not exist")
+})
+
 #
 # Done
 #

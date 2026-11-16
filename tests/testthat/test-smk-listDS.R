@@ -40,6 +40,10 @@ test_that("simple listDS", {
     expect_equal(res.names[2], 'n2')
 })
 
+test_that("listDS throws error when object does not exist", {
+    expect_error(listDS(x.names = "nonexistent_object", eltnames = "a"), regexp = "does not exist")
+})
+
 #
 # Done
 #

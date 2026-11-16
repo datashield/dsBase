@@ -242,6 +242,52 @@ test_that("covDS throws error when object is of invalid type", {
     expect_error(covDS("bad_input", "y", "pairwise.complete"), regexp = "must be of type")
 })
 
+test_that("covDS ignores y when x is a data.frame", {
+    input <- data.frame(v1 = c(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0),
+                        v2 = c(2.0, 1.0, 4.0, 3.0, 6.0, 5.0, 8.0, 7.0, 10.0, 9.0))
+    other <- c(10.0, 9.0, 8.0, 7.0, 6.0, 5.0, 4.0, 3.0, 2.0, 1.0)
+
+    res.x  <- covDS("input", NULL, "pairwise.complete")
+    res.xy <- covDS("input", "other", "pairwise.complete")
+
+    expect_equal(res.xy, res.x)
+})
+
+test_that("covDS gives the same result for integer input as for numeric", {
+    x.numeric <- c(0.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 3.0, 4.0)
+    y.numeric <- c(4.0, 3.0, 3.0, 1.0, 2.0, 0.0, 2.0, 1.0, 1.0)
+    x.integer <- as.integer(x.numeric)
+    y.integer <- as.integer(y.numeric)
+
+    res.numeric <- covDS("x.numeric", "y.numeric", "casewise.complete")
+    res.integer <- covDS("x.integer", "y.integer", "casewise.complete")
+
+    expect_equal(res.integer$class, "integer")
+    expect_equal(res.integer[names(res.integer) != "class"], res.numeric[names(res.numeric) != "class"])
+})
+
+test_that("covDS gives the same result for a matrix as for a data.frame", {
+    input.df <- data.frame(v1 = c(0.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 3.0, 4.0),
+                           v2 = c(4.0, 3.0, 3.0, 1.0, 2.0, 0.0, 2.0, 1.0, 1.0))
+    input.matrix <- as.matrix(input.df)
+
+    res.df <- covDS("input.df", NULL, "casewise.complete")
+    res.matrix <- covDS("input.matrix", NULL, "casewise.complete")
+
+    expect_true("matrix" %in% res.matrix$class)
+    expect_equal(res.matrix[names(res.matrix) != "class"], res.df[names(res.df) != "class"])
+})
+
+test_that("covDS accepts a factor x, using its level codes", {
+    fvar <- factor(c("m", "f", "m", "f", "m", "f", "m", "f", "m", "f"))
+    yvar <- c(1.0, 5.0, 2.0, 6.0, 3.0, 7.0, 2.0, 8.0, 1.0, 9.0)
+
+    res <- covDS("fvar", "yvar", "pairwise.complete")
+
+    expect_equal(res$class, "factor")
+    expect_equal(res$sums[1, 2], sum(as.integer(fvar)))
+})
+
 #
 # Done
 #
